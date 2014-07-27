@@ -1,12 +1,12 @@
 //Andraste v2.0 - Vico
 
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.Events;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	[SpellHandler("ArrowDamageTypes")]
 	public class ArrowDamageTypes : SpellHandler

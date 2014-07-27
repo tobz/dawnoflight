@@ -1,8 +1,8 @@
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&deal",
 		ePrivLevel.Player,
 		"Deal one card to a player in your group. Cards must first be prepared with /shuffle.",

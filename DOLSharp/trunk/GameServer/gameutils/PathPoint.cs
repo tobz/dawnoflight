@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS.Movement
+namespace DawnOfLight.GameServer.Movement
 {
 	/// <summary>
 	/// represents a point in a way path

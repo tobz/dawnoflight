@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Cleric, "Cleric", "Acolyte")]
+	[CharacterClass((int)eCharacterClass.Cleric, "Cleric", "Acolyte")]
 	public class ClassCleric : ClassAcolyte
 	{
 		public ClassCleric() : base() 

@@ -1,7 +1,7 @@
-using DOL.GS;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	public class VampiirAbility : StatChangingAbility
 	{

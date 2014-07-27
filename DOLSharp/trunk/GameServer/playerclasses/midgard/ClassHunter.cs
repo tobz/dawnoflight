@@ -17,17 +17,17 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	///
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Hunter, "Hunter", "MidgardRogue", "Huntress")]
+	[CharacterClass((int)eCharacterClass.Hunter, "Hunter", "MidgardRogue", "Huntress")]
 	public class ClassHunter : ClassMidgardRogue
 	{
 		private static readonly string[] AutotrainableSkills = new[] { Specs.Archery, Specs.CompositeBow };

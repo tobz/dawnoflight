@@ -18,16 +18,16 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
- 
- 
-namespace DOL.GS.Spells
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+
+
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[SpellHandlerAttribute("Bladeturn")]
+	[SpellHandler("Bladeturn")]
 	public class BladeturnSpellHandler : SpellHandler
 	{
 		/// <summary>

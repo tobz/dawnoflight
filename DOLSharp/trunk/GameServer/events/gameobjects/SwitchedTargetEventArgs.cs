@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
     /// <summary>
     /// This class holds the old and the new target for

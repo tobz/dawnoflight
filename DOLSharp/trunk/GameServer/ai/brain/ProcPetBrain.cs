@@ -17,9 +17,9 @@
  *
  */
 
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	public class ProcPetBrain : StandardMobBrain, IControlledBrain
 	{

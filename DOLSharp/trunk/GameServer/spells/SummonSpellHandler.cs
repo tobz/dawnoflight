@@ -19,13 +19,13 @@
 
 using System;
 using System.Collections.Generic;
-using DOL.AI.Brain;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Pet summon spell handler

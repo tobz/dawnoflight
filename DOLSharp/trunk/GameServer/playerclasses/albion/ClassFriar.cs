@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	///
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Friar, "Friar", "Acolyte")]
+	[CharacterClass((int)eCharacterClass.Friar, "Friar", "Acolyte")]
 	public class ClassFriar : ClassAcolyte
 	{
 		public ClassFriar() : base()

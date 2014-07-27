@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// callback handler for a spec that is activated by clicking on an associated icon

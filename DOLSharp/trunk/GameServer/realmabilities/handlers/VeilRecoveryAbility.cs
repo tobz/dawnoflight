@@ -1,8 +1,8 @@
 using System;
-using DOL.Database;
-using DOL.GS.PropertyCalc;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PropertyCalc;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	public class VeilRecoveryAbility : RAPropertyEnhancer
 	{

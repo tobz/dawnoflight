@@ -20,7 +20,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 
     public class GiftOfPerizorEffect : TimedEffect

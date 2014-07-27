@@ -18,12 +18,12 @@
  */
 using System;
 using System.Collections;
-using DOL.Language;
-using DOL.GS;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP,0x1D^168,"Handles Pick up object request")]
+	[PacketHandler(PacketHandlerType.TCP,0x1D^168,"Handles Pick up object request")]
 	public class PlayerPickUpRequestHandler : IPacketHandler
 	{
 		public void HandlePacket(GameClient client, GSPacketIn packet)

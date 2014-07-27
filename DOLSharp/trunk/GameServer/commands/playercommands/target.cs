@@ -17,11 +17,12 @@
  *
  */
 using System.Collections;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&target", ePrivLevel.Player, "target a player by name", "/target <playerName>")]
+	[Cmd("&target", ePrivLevel.Player, "target a player by name", "/target <playerName>")]
 	public class TargetCommandHandler : AbstractCommandHandler, ICommandHandler
 	{
 		public void OnCommand(GameClient client, string[] args)

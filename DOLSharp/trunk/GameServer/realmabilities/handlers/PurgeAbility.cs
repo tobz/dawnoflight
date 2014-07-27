@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using System.Collections.Generic;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
     /// <summary>
     /// Purge Ability, removes negative effects

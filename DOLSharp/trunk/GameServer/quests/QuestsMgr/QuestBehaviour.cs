@@ -17,16 +17,16 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Collections;
-using DOL.Database;
-using DOL.Events;
-using DOL.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.AI.Brain;
 using log4net;
 using System.Reflection;
-using DOL.GS.Behaviour;
 
-namespace DOL.GS.Quests
+namespace DawnOfLight.GameServer.Quests
 {    
         			
 	/// <summary>

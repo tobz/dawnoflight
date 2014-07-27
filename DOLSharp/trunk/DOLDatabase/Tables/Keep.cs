@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// Skin types to use for this keep

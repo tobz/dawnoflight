@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// The Archery Speed bonus percent calculator

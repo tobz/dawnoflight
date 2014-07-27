@@ -18,13 +18,14 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("Confusion")]
+	[SpellHandler("Confusion")]
 	public class ConfusionSpellHandler : SpellHandler
 	{
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

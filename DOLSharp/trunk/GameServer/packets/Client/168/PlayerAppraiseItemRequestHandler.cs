@@ -16,10 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.Database;
-using DOL.GS.Housing;
 
-namespace DOL.GS.PacketHandler.Client.v168
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Housing;
+
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerAppraiseItemRequest, ClientStatus.PlayerInGame)]
 	public class PlayerAppraiseItemRequestHandler : IPacketHandler

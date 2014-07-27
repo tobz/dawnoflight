@@ -19,14 +19,14 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-    [CmdAttribute("&rearrange", ePrivLevel.Player, "Allows you to rearrange your character overview.",
+    [Cmd("&rearrange", ePrivLevel.Player, "Allows you to rearrange your character overview.",
         "/rearrange list - Shows a list with all to this account assigned characters and their slots.",
         "/rearrange setslot [source slot] [target slot] - Sets the given source slot to the given target slot.")]
     public class RearrangeCommandHandler : AbstractCommandHandler, ICommandHandler

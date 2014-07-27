@@ -19,14 +19,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Quests;
 
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.GS.Housing;
-using DOL.GS.Keeps;
-using DOL.GS.Quests;
-
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	public enum eServerPackets : byte
 	{

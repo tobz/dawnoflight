@@ -27,11 +27,11 @@
 
 using System;
 using System.Reflection;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	//First, declare our Event and have it implement the IGameEvent interface
 	public class DOLTestServer

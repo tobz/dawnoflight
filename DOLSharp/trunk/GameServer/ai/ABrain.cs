@@ -16,15 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using System.Collections;
 using System.Reflection;
 using System.Text;
-using DOL.Events;
-using DOL.GS;
+using DawnOfLight.Events;
 using log4net;
 
-namespace DOL.AI
+namespace DawnOfLight.GameServer.AI
 {
 	/// <summary>
 	/// This class is the base of all arteficial intelligence in game objects
@@ -124,7 +123,7 @@ namespace DOL.AI
 				if (IsActive) return false;
 
 				m_brainTimer = new RegionTimer(m_body);
-				m_brainTimer.Callback = new RegionTimerCallback(BrainTimerCallback);
+				m_brainTimer.Callback = BrainTimerCallback;
 				m_brainTimer.Start(ThinkInterval);
 			}
 			return true;

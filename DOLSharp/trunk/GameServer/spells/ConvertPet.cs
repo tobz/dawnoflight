@@ -18,16 +18,16 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Based on HealSpellHandler.cs
 	/// Spell calculates a percentage of the caster's health.
 	/// Heals target for the full amount, Caster loses half that amount in health.
 	/// </summary>
-	[SpellHandlerAttribute("PetConversion")]
+	[SpellHandler("PetConversion")]
 	public class PetConversionSpellHandler : SpellHandler
 	{
 		// constructor

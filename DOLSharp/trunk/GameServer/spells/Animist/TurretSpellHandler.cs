@@ -16,11 +16,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
-using DOL.Language;
 
-namespace DOL.GS.Spells
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+
+namespace DawnOfLight.GameServer.Spells
 {
 	[SpellHandler("TurretsRelease")]
 	public class TurretsReleaseSpellHandler : SpellHandler

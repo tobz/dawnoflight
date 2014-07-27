@@ -18,11 +18,13 @@
  */
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.Events;
-using DOL.Language;
+using DawnOfLight.Base;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class represents a static Item in the gameworld
@@ -433,7 +435,7 @@ namespace DOL.GS
 			{
 				foreach(WeakReference weak in m_owners)
 					if(weak.Target==player) return;
-				m_owners.Add(new WeakRef(player));
+				m_owners.Add(new WeakReference(player));
 			}
 		}
 		/// <summary>

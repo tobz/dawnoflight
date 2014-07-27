@@ -20,13 +20,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Reflection;
-
-using DOL.Database;
-using DOL.GS.Keeps;
-
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// DoorMgr is manager of all door regular door and keep door

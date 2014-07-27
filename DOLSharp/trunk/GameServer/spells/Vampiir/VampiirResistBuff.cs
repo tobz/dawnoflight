@@ -18,13 +18,13 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.GS.RealmAbilities;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.RealmAbilities;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("VampiirMeleeResistance")]
+	[SpellHandler("VampiirMeleeResistance")]
 	public class VampiirMeleeResistance : SpellHandler
 	{
 		public override void FinishSpellCast(GameLiving target)
@@ -115,7 +115,7 @@ namespace DOL.GS.Spells
 		public VampiirMeleeResistance(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) {}
 	}
 
-	[SpellHandlerAttribute("VampiirMagicResistance")]
+	[SpellHandler("VampiirMagicResistance")]
 	public class VampiirMagicResistance : SpellHandler
 	{
 		public override void FinishSpellCast(GameLiving target)

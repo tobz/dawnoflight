@@ -17,12 +17,13 @@
  *
  */
 
-using DOL.Database;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
 using System;
 using System.Collections.Generic;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class Alchemy : AdvancedCraftingSkill
 	{

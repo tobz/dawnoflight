@@ -17,9 +17,9 @@
 *
 */
 
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// the master for armorcrafting

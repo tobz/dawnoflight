@@ -16,12 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 using System.Reflection;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP,0x54^168,"Handles account realm info and sending char overview")]
+	[PacketHandler(PacketHandlerType.TCP,0x54^168,"Handles account realm info and sending char overview")]
 	public class CharacterOverviewRequestHandler : IPacketHandler
 	{
 		/// <summary>

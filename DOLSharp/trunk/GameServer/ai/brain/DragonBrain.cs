@@ -20,14 +20,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS;
-using DOL.GS.Effects;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
 using log4net;
 using System.Reflection;
-using DOL.Events;
 
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// AI for dragon like NPCs.
@@ -113,7 +113,7 @@ namespace DOL.AI.Brain
 				if (!npc.IsAlive || npc.ObjectState != GameObject.eObjectState.Active)
 					continue;
 
-				if (!GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
+				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
 					continue;
 
 				if (m_aggroTable.ContainsKey(npc))
@@ -136,7 +136,7 @@ namespace DOL.AI.Brain
 		/// <param name="e">The event that occured.</param>
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="args">The event details.</param>
-		public override void Notify(DOL.Events.DOLEvent e, object sender, EventArgs args)
+		public override void Notify(DOLEvent e, object sender, EventArgs args)
 		{
 			base.Notify(e, sender, args);
 			if (sender == Body)

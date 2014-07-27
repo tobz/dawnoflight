@@ -20,16 +20,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.AI.Brain;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 using log4net;
 
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     /// <summary>
     /// Charms target NPC for the spell duration.
@@ -37,7 +37,7 @@ namespace DOL.GS.Spells
     /// Spell.Value is used for hard NPC level cap
     /// Spell.Damage is used for percent of caster level cap
     /// </summary>
-    [SpellHandlerAttribute("Charm")]
+    [SpellHandler("Charm")]
     public class CharmSpellHandler : SpellHandler
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

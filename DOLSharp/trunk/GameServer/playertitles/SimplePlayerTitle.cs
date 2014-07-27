@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles
 {
 	/// <summary>
 	/// Base abstract class for simple player titles.

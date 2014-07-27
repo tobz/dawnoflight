@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// This class holds all possible player events.

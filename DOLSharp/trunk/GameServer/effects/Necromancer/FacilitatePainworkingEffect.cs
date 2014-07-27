@@ -19,10 +19,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.Effects;
-using DOL.GS.Spells;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// The Facilitate Painworking effect.

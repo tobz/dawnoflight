@@ -20,13 +20,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
 
-using DOL.Database;
-using DOL.Language;
-using DOL.GS.Keeps;
-using DOL.GS.PacketHandler;
-
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
     [Cmd("&translate", ePrivLevel.GM,
          "Use '/translate add [Language] [TranslationId] [Text]' to add a new translation.",

@@ -18,16 +18,16 @@
  */
 using System;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Heal Over Time spell handler
 	/// </summary>
-	[SpellHandlerAttribute("HpPwrEndRegen")]
+	[SpellHandler("HpPwrEndRegen")]
 	public class HpPwrEndRegenSpellHandler : SpellHandler
 	{
 		/// <summary>

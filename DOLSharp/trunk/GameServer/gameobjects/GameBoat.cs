@@ -21,15 +21,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.GS;
-using DOL.Database;
-using DOL.Language;
-using DOL.GS.Movement;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Movement;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class GameBoat : GameMovingObject
 	{

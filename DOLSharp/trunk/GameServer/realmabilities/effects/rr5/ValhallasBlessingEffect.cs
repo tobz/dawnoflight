@@ -20,9 +20,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.Events;
+using DawnOfLight.Events;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 
     public class ValhallasBlessingEffect : TimedEffect

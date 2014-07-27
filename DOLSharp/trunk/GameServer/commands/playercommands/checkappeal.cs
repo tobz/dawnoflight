@@ -18,12 +18,12 @@
  */
 
 using System.Collections.Generic;
-using DOL.GS.Appeal;
-using DOL.Language;
+using DawnOfLight.GameServer.Appeal;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&checkappeal",
 		ePrivLevel.Player,
 		"Checks the status of your appeal or cancels it.",

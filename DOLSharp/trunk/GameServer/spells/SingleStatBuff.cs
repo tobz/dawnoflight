@@ -18,11 +18,11 @@
  */
 using System;
 using System.Reflection;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     /// <summary>
     /// Buffs a single stat,
@@ -117,7 +117,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Str stat baseline buff
     /// </summary>
-    [SpellHandlerAttribute("StrengthBuff")]
+    [SpellHandler("StrengthBuff")]
     public class StrengthBuff : SingleStatBuff
     {
         public override void ApplyEffectOnTarget(GameLiving target, double effectiveness)
@@ -138,7 +138,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Dex stat baseline buff
     /// </summary>
-    [SpellHandlerAttribute("DexterityBuff")]
+    [SpellHandler("DexterityBuff")]
     public class DexterityBuff : SingleStatBuff
     {
         public override void ApplyEffectOnTarget(GameLiving target, double effectiveness)
@@ -159,7 +159,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Con stat baseline buff
     /// </summary>
-    [SpellHandlerAttribute("ConstitutionBuff")]
+    [SpellHandler("ConstitutionBuff")]
     public class ConstitutionBuff : SingleStatBuff
     {
         public override void ApplyEffectOnTarget(GameLiving target, double effectiveness)
@@ -180,7 +180,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Armor factor buff
     /// </summary>
-    [SpellHandlerAttribute("ArmorFactorBuff")]
+    [SpellHandler("ArmorFactorBuff")]
     public class ArmorFactorBuff : SingleStatBuff
     {
         public override int BonusCategory1
@@ -201,7 +201,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Armor Absorption buff
     /// </summary>
-    [SpellHandlerAttribute("ArmorAbsorptionBuff")]
+    [SpellHandler("ArmorAbsorptionBuff")]
     public class ArmorAbsorptionBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.ArmorAbsorption; } }
@@ -221,7 +221,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Combat speed buff
     /// </summary>
-    [SpellHandlerAttribute("CombatSpeedBuff")]
+    [SpellHandler("CombatSpeedBuff")]
     public class CombatSpeedBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.MeleeSpeed; } }
@@ -250,7 +250,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Fatigue reduction buff
     /// </summary>
-    [SpellHandlerAttribute("FatigueConsumptionBuff")]
+    [SpellHandler("FatigueConsumptionBuff")]
     public class FatigueConsumptionBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.FatigueConsumption; } }
@@ -270,7 +270,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Melee damage buff
     /// </summary>
-    [SpellHandlerAttribute("MeleeDamageBuff")]
+    [SpellHandler("MeleeDamageBuff")]
     public class MeleeDamageBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.MeleeDamage; } }
@@ -290,7 +290,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Mesmerize duration buff
     /// </summary>
-    [SpellHandlerAttribute("MesmerizeDurationBuff")]
+    [SpellHandler("MesmerizeDurationBuff")]
     public class MesmerizeDurationBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.MesmerizeDurationReduction; } }
@@ -311,7 +311,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Acuity buff
     /// </summary>
-    [SpellHandlerAttribute("AcuityBuff")]
+    [SpellHandler("AcuityBuff")]
     public class AcuityBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.Acuity; } }
@@ -323,7 +323,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Quickness buff
     /// </summary>
-    [SpellHandlerAttribute("QuicknessBuff")]
+    [SpellHandler("QuicknessBuff")]
     public class QuicknessBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.Quickness; } }
@@ -335,7 +335,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// DPS buff
     /// </summary>
-    [SpellHandlerAttribute("DPSBuff")]
+    [SpellHandler("DPSBuff")]
     public class DPSBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.DPS; } }
@@ -347,7 +347,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Evade chance buff
     /// </summary>
-    [SpellHandlerAttribute("EvadeBuff")]
+    [SpellHandler("EvadeBuff")]
     public class EvadeChanceBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.EvadeChance; } }
@@ -358,7 +358,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Parry chance buff
     /// </summary>
-    [SpellHandlerAttribute("ParryBuff")]
+    [SpellHandler("ParryBuff")]
     public class ParryChanceBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.ParryChance; } }
@@ -369,7 +369,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// WeaponSkill buff
     /// </summary>
-    [SpellHandlerAttribute("WeaponSkillBuff")]
+    [SpellHandler("WeaponSkillBuff")]
     public class WeaponSkillBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.WeaponSkill; } }
@@ -380,7 +380,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Stealth Skill buff
     /// </summary>
-    [SpellHandlerAttribute("StealthSkillBuff")]
+    [SpellHandler("StealthSkillBuff")]
     public class StealthSkillBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.Skill_Stealth; } }
@@ -391,7 +391,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// To Hit buff
     /// </summary>
-    [SpellHandlerAttribute("ToHitBuff")]
+    [SpellHandler("ToHitBuff")]
     public class ToHitSkillBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.ToHitBonus; } }
@@ -402,7 +402,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Magic Resists Buff
     /// </summary>
-    [SpellHandlerAttribute("MagicResistsBuff")]
+    [SpellHandler("MagicResistsBuff")]
     public class MagicResistsBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.MagicAbsorption; } }
@@ -411,14 +411,14 @@ namespace DOL.GS.Spells
         public MagicResistsBuff(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
     }
 
-    [SpellHandlerAttribute("StyleAbsorbBuff")]
+    [SpellHandler("StyleAbsorbBuff")]
     public class StyleAbsorbBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.StyleAbsorb; } }
         public StyleAbsorbBuff(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
     }
 
-    [SpellHandlerAttribute("ExtraHP")]
+    [SpellHandler("ExtraHP")]
     public class ExtraHP : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.ExtraHP; } }
@@ -428,7 +428,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Paladin Armor factor buff
     /// </summary>
-    [SpellHandlerAttribute("PaladinArmorFactorBuff")]
+    [SpellHandler("PaladinArmorFactorBuff")]
     public class PaladinArmorFactorBuff : SingleStatBuff
     {
         public override int BonusCategory1
@@ -449,7 +449,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Flexible skill buff
     /// </summary>
-    [SpellHandlerAttribute("FelxibleSkillBuff")]
+    [SpellHandler("FelxibleSkillBuff")]
     public class FelxibleSkillBuff : SingleStatBuff
     {
         public override eProperty Property1 { get { return eProperty.Skill_Flexible_Weapon; } }

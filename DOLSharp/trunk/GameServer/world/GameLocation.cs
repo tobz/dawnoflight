@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// 

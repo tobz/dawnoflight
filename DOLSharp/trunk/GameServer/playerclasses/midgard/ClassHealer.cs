@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Healer, "Healer", "Seer")]
+	[CharacterClass((int)eCharacterClass.Healer, "Healer", "Seer")]
 	public class ClassHealer : ClassSeer
 	{
 		public ClassHealer() : base() 

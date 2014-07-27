@@ -16,7 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-namespace DOL.GS
+
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// interface for classes that represent a point in 3d space

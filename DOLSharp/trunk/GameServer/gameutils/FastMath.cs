@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.Utils
+namespace DawnOfLight.GameServer.Utils
 {
 	public static class FastMath
 	{

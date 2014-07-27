@@ -18,14 +18,15 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Keeps;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	#region GameSiegeweapon
 	/// <summary>
@@ -465,7 +466,7 @@ namespace DOL.GS
 		}
 		#endregion
 		#region override function
-		public override bool ReceiveItem(GameLiving source, DOL.Database.InventoryItem item)
+		public override bool ReceiveItem(GameLiving source, InventoryItem item)
 		{
 			//todo check if bullet
 			return base.ReceiveItem(source, item);

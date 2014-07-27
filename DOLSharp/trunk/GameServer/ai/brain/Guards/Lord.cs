@@ -1,7 +1,7 @@
-using DOL.GS;
-using DOL.GS.Keeps;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// The Brain for the Area Lord

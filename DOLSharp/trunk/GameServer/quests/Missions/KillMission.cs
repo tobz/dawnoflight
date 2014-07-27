@@ -1,8 +1,7 @@
 using System;
+using DawnOfLight.Events;
 
-using DOL.Events;
-
-namespace DOL.GS.Quests
+namespace DawnOfLight.GameServer.Quests
 {
 	public class KillMission : AbstractMission
 	{

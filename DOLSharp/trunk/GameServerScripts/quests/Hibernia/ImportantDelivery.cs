@@ -33,10 +33,11 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.Language;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 /* I suggest you declare yourself some namespaces for your quests
  * Like: DOL.GS.Quests.Albion
@@ -47,7 +48,7 @@ using log4net;
  * Database Code
  */
 
-namespace DOL.GS.Quests.Hibernia
+namespace DawnOfLight.GameServer.Quests.Hibernia
 {
 	/* The first thing we do, is to declare the class we create
 	 * as Quest. To do this, we derive from the abstract class

@@ -18,13 +18,13 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.GS.SkillHandler;
-using DOL.Events;
-using DOL.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.Language;
+using DawnOfLight.Events;
 using System.Collections.Generic;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// The helper class for the berserk ability

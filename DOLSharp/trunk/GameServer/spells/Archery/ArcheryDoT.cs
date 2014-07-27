@@ -18,13 +18,13 @@
  */
 using System;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Language;
-using DOL.AI.Brain;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.Language;
+using DawnOfLight.AI.Brain;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     [SpellHandler("ArcheryDoT")]
     public class ArcheryDoTSpellHandler : DoTSpellHandler

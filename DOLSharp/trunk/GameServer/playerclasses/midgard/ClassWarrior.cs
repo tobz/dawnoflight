@@ -17,17 +17,17 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Warrior, "Warrior", "Viking")]
+	[CharacterClass((int)eCharacterClass.Warrior, "Warrior", "Viking")]
 	public class ClassWarrior : ClassViking
 	{
 		private static readonly string[] AutotrainableSkills = new[] { Specs.Axe, Specs.Hammer, Specs.Sword };

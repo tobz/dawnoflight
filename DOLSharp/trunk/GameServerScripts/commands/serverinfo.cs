@@ -18,11 +18,12 @@
  */
 using System;
 using System.Reflection;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&serverinfo", //command to handle
+	[Cmd("&serverinfo", //command to handle
 		ePrivLevel.Player, //minimum privelege level
 		"Shows information about the server", //command description
 		"/serverinfo")] //usage

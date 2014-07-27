@@ -17,18 +17,18 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Events;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     /// <summary>
     /// Alvarus spell handler
     /// Water breathing is a subspell
     /// </summary>
-    [SpellHandlerAttribute("AlvarusMorph")]
+    [SpellHandler("AlvarusMorph")]
     public class AlvarusMorph : Morph
     {
     	GameSpellEffect m_effect = null;
@@ -54,7 +54,7 @@ namespace DOL.GS.Spells
                     Effect.SpellHandler.Spell.SpellType.Equals("MaddeningScalars") ||
                     Effect.SpellHandler.Spell.SpellType.Equals("AtlantisTabletMorph"))
                 {
-                    targetPlayer.Out.SendMessage("You already have an active morph!", DOL.GS.PacketHandler.eChatType.CT_SpellResisted, DOL.GS.PacketHandler.eChatLoc.CL_ChatWindow);
+                    targetPlayer.Out.SendMessage("You already have an active morph!", eChatType.CT_SpellResisted, eChatLoc.CL_ChatWindow);
                     return;
                 }
             }

@@ -23,28 +23,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.Housing;
-using DOL.GS.Keeps;
-using DOL.GS.PacketHandler;
-using DOL.GS.PacketHandler.Client.v168;
-using DOL.GS.PlayerTitles;
-using DOL.GS.PropertyCalc;
-using DOL.GS.Quests;
-using DOL.GS.RealmAbilities;
-using DOL.GS.ServerProperties;
-using DOL.GS.SkillHandler;
-using DOL.GS.Spells;
-using DOL.GS.Styles;
-using DOL.GS.Utils;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Base;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler.Client.v168;
+using DawnOfLight.GameServer.PlayerTitles;
+using DawnOfLight.GameServer.PropertyCalc;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Styles;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.GameServer.World.Instance;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utils;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	
 	/// <summary>
@@ -12322,7 +12325,7 @@ namespace DOL.GS
 				return false;
 			}
 
-			if ((floorObject is GameBoat == false) && !checkRange && !floorObject.IsWithinRadius(this, GS.ServerProperties.Properties.WORLD_PICKUP_DISTANCE, true))
+			if ((floorObject is GameBoat == false) && !checkRange && !floorObject.IsWithinRadius(this, Properties.WORLD_PICKUP_DISTANCE, true))
 			{
 				Out.SendMessage(LanguageMgr.GetTranslation(Client.Account.Language, "GamePlayer.PickupObject.ObjectTooFarAway", floorObject.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
 				try
@@ -16258,9 +16261,9 @@ namespace DOL.GS
 			: base()
 		{
 			IsJumping = false;
-			m_steed = new WeakRef(null);
-			m_rangeAttackAmmo = new WeakRef(null);
-			m_rangeAttackTarget = new WeakRef(null);
+			m_steed = new WeakReference(null);
+			m_rangeAttackAmmo = new WeakReference(null);
+			m_rangeAttackTarget = new WeakReference(null);
 			m_client = client;
 			m_dbCharacter = dbChar;
 			m_controlledHorse = new ControlledHorse(this);

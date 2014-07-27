@@ -35,11 +35,11 @@
 using System;
 using System.Reflection;
 using System.Timers;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	//First we declare our event class, this class must implement the
 	//IGameEvent interface to be recognized as event

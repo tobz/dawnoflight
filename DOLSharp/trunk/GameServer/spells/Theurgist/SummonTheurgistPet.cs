@@ -19,13 +19,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
-using DOL.GS.Effects;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 using System.Reflection;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Summon a theurgist pet.

@@ -17,12 +17,14 @@
  *
  */
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.GS.Keeps;
-using DOL.GS.ServerProperties;
-using DOL.Language;
+using DawnOfLight.Base;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.DoorRequest, ClientStatus.PlayerInGame)]
 	public class DoorRequestHandler : IPacketHandler

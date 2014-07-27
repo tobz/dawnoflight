@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.GS.Effects;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	/// <summary>
 	/// Blade Barrier

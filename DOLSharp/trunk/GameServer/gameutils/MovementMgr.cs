@@ -19,10 +19,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS.Movement
+namespace DawnOfLight.GameServer.Movement
 {
     /// <summary>
     /// TODO: instead movement manager we need AI when npc should travel on path and attack 

@@ -1,12 +1,12 @@
 using System;
 using System.Reflection;
-using DOL.Database;
+using DawnOfLight.Database;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.Events;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// A class for individual NPC inventories

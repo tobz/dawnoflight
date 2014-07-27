@@ -19,9 +19,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Teleporter for entering and leaving the throne room.
@@ -106,7 +108,7 @@ namespace DOL.GS
 				if (throneRegionID == 0)
 				{
 					log.ErrorFormat("Can't find King for player {0} speaking to {1} of realm {2}!", player.Name, Name, Realm);
-					player.Out.SendMessage("Server error, can't find throne room.", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Server error, can't find throne room.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
 					return false;
 				}
 
@@ -118,7 +120,7 @@ namespace DOL.GS
 					if (teleport == null)
 					{
 						log.ErrorFormat("Can't find throne room exit TeleportID {0}!", teleportExitID);
-						player.Out.SendMessage("Server error, can't find exit to this throne room.  Moving you to your last bind point.", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("Server error, can't find exit to this throne room.  Moving you to your last bind point.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
 						player.MoveToBind();
 					}
 				}
@@ -128,7 +130,7 @@ namespace DOL.GS
 					if (teleport == null)
 					{
 						log.ErrorFormat("Can't find throne room TeleportID {0}!", teleportThroneID);
-						player.Out.SendMessage("Server error, can't find throne room teleport location.", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("Server error, can't find throne room teleport location.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
 					}
 				}
 

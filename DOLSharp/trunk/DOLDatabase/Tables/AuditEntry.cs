@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// Tracks and holds generic audit history (account changes, chat history, etc) across the game server.

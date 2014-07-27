@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// 

@@ -21,18 +21,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.GS.RealmAbilities;
-using DOL.GS.SkillHandler;
-using DOL.Language;
-
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Default class for spell handler

@@ -19,7 +19,7 @@
 using System;
 using log4net;
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// Purpose of a property calculator is to serve

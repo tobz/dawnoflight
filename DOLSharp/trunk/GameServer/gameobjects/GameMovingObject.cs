@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// GameMovingObject is a base class for boats and siege weapons.

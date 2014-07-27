@@ -1,8 +1,8 @@
 using System;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&discard",
 		ePrivLevel.Player,
 		"Discard card # from your hand, or discard all cards.",

@@ -18,12 +18,12 @@
  */
 using System;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Vamps magical strike 
 	/// </summary>
-	[SpellHandlerAttribute("MagicalStrike")]
+	[SpellHandler("MagicalStrike")]
 	public class VampMagicalStrike : DirectDamageSpellHandler
 	{
 		public VampMagicalStrike(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }

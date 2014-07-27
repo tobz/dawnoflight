@@ -19,11 +19,11 @@
 
 using System;
 using System.Collections.Generic;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-using DOL.GS.RealmAbilities;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.RealmAbilities;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
     /// <summary>
     /// BloodDrinking Effect SB RR5 RA

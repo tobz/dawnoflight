@@ -22,10 +22,11 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class GameNpcInventoryTemplate : GameLivingInventory
 	{

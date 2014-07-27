@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// Defines walk state when brain is not in combat

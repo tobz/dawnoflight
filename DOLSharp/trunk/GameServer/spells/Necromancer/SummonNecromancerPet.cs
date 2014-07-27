@@ -19,15 +19,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.Effects;
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-using DOL.GS.PropertyCalc;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.PropertyCalc;
+using DawnOfLight.Language;
+using DawnOfLight.Events;
 using System.Collections;
-using DOL.Language;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Spell handler to summon a necromancer pet.

@@ -20,12 +20,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.PacketHandler;
-using DOL.GS.Quests;
-using DOL.GS.Quests.Atlantis;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Quests.Atlantis;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     /// <summary>
     /// Artifact scholars.

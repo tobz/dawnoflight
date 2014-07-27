@@ -20,11 +20,12 @@ using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Reflection;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 using log4net;
 using System.Collections.Generic;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// the LootMgr holds pointers to all LootGenerators at 

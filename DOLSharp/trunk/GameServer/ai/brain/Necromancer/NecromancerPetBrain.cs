@@ -19,16 +19,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.Language;
 using System.Collections;
 using System.Reflection;
 using log4net;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Language;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// A brain for the necromancer pets.
@@ -118,7 +119,7 @@ namespace DOL.AI.Brain
         /// <param name="e"></param>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-		public override void Notify(DOL.Events.DOLEvent e, object sender, EventArgs args)
+		public override void Notify(DOLEvent e, object sender, EventArgs args)
 		{
 			base.Notify(e, sender, args);
 
@@ -546,7 +547,7 @@ namespace DOL.AI.Brain
         /// <param name="message"></param>
         private void DebugMessageToOwner(String message)
         {
-			if (DOL.GS.ServerProperties.Properties.ENABLE_DEBUG)
+			if (Properties.ENABLE_DEBUG)
 			{
 				int tick = Environment.TickCount;
 				int seconds = tick / 1000;

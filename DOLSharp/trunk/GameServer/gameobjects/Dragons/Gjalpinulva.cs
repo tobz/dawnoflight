@@ -19,15 +19,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Database;
-using DOL.Events;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
 using log4net;
 using System.Reflection;
 using System.Collections;
-using DOL.AI.Brain;
 
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// The Midgard dragon.

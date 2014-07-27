@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// Holfs the arguments for AreaEvents, this one can be used for either player, npcs or monster Enter/Leave

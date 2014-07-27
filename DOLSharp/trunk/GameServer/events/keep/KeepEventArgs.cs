@@ -17,11 +17,10 @@
  *
  */
 using System;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
 
-using DOL.GS;
-using DOL.GS.Keeps;
-
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// Holds the arguments for the Keep event

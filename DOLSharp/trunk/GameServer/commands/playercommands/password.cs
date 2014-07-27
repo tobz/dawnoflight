@@ -11,10 +11,11 @@
  */
 
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS.PacketHandler.Client.v168;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler.Client.v168;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	[Cmd("&password", ePrivLevel.Player,
 		"Changes your account password",

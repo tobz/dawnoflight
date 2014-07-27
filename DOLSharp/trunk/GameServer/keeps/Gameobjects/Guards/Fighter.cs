@@ -1,4 +1,4 @@
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	public class GuardFighter : GameKeepGuard
 	{

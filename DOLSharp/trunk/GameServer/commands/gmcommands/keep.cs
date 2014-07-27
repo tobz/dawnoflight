@@ -17,13 +17,15 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS.Keeps;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&keep",
 		ePrivLevel.GM,
 		"GMCommands.Keep.Description",

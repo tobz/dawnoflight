@@ -17,9 +17,9 @@
  *
  */
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&pray",
 		ePrivLevel.Player,
 		"You can pray on your gravestones to get some experience back",

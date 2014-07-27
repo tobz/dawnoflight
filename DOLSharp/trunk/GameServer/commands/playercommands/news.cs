@@ -17,12 +17,12 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&news",
 		ePrivLevel.Player,
 		"Show news on social interface",

@@ -18,7 +18,7 @@
  */
 using System.Collections;
 
-namespace DOL.Database.Cache
+namespace DawnOfLight.Database.Cache
 {
 	/// <summary>
 	/// Implementors define a caching algorithm.

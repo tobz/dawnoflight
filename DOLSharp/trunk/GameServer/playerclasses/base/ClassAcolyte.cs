@@ -17,16 +17,16 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Acolyte, "Acolyte", "Acolyte")]
-	public class ClassAcolyte : DOL.GS.CharacterClassBase
+	[CharacterClass((int)eCharacterClass.Acolyte, "Acolyte", "Acolyte")]
+	public class ClassAcolyte : CharacterClassBase
 	{
 		public ClassAcolyte() : base() {
 			m_specializationMultiplier = 10;

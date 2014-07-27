@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("VampiirBolt")]
+	[SpellHandler("VampiirBolt")]
 	public class VampiirBoltSpellHandler : SpellHandler
 	{
 		public override bool CheckBeginCast(GameLiving selectedTarget)

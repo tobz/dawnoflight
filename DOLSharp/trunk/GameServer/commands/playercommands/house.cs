@@ -18,13 +18,14 @@
  */
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.GS.Housing;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&house",
 		ePrivLevel.Player,
 		"Show various housing information"

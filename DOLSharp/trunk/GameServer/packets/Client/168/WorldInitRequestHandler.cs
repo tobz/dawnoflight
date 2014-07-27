@@ -20,10 +20,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.Database;
+using DawnOfLight.Database;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x7C ^ 168, "Handles world init replies")]
 	public class WorldInitRequestHandler : IPacketHandler

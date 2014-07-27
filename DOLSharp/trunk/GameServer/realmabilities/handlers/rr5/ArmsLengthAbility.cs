@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	/// <summary>
 	/// Arms Length Realm Ability

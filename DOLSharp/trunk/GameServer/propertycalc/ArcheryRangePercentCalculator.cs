@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.GS.Spells;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// The Archery Range bonus percent calculator

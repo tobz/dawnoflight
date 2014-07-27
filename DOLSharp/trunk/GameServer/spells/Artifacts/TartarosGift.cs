@@ -17,13 +17,13 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-    [SpellHandlerAttribute("Tartaros")]
+    [SpellHandler("Tartaros")]
     public class Tartaros : LifedrainSpellHandler
     {
 		public override int CalculateSpellResistChance(GameLiving target)

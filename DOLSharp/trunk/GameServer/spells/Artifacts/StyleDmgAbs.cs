@@ -21,17 +21,16 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Collections;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Events;
-
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-    [SpellHandlerAttribute("StyleDmgAbs")]
+    [SpellHandler("StyleDmgAbs")]
     public class StyleDmgAbsSpellHandler : SpellHandler
     {
 

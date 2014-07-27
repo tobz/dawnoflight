@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     /// <summary>
     /// Spell handler for speed decreasing spells.  Special for vampiirs

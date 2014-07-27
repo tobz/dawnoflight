@@ -1,10 +1,10 @@
 using System.Reflection;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	public class ChargeAbility : TimedRealmAbility
 	{

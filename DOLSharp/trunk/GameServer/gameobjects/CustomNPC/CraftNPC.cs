@@ -18,11 +18,11 @@
  */
 using System.Collections;
 using System.Reflection;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public abstract class CraftNPC : GameNPC
 	{

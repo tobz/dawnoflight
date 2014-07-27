@@ -20,12 +20,12 @@ using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.GS.Housing;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Housing;
 using System.Text;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
     [PacketHandler(PacketHandlerType.TCP, 0x11, "Handles player market search")]
     public class PlayerMarketSearchRequestHandler : IPacketHandler

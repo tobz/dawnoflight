@@ -17,10 +17,10 @@
  *
  */
 using System.Reflection;
-using DOL.GS.Housing;
+using DawnOfLight.GameServer.Housing;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x06, "Handles housing Users permissions requests")]
 	public class HouseUsersPermissionsSetHandler : IPacketHandler

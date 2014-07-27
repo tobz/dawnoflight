@@ -20,13 +20,14 @@ using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.Language;
-using DOL.GS.PacketHandler;
-using DOL.Database;
-using DOL.GS.Spells;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class represents an inventory item

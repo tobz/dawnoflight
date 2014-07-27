@@ -17,15 +17,15 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Hero, "Hero", "Guardian", "Heroine")]
+	[CharacterClass((int)eCharacterClass.Hero, "Hero", "Guardian", "Heroine")]
 	public class ClassHero : ClassGuardian
 	{
 		public ClassHero() : base() 

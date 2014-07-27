@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.Events;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.World;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	/// <summary>
 	/// Mastery of Concentration RA

@@ -22,15 +22,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-using DOL.GS.Keeps;
-using DOL.GS.Utils;
-using DOL.GS.ServerProperties;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.Utils;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class represents a region in DAOC. A region is everything where you
@@ -307,7 +309,7 @@ namespace DOL.GS
 
             m_graveStones.Clear();
 
-            DOL.Events.GameEventMgr.RemoveAllHandlersForObject(this);
+            GameEventMgr.RemoveAllHandlersForObject(this);
         }
 
 

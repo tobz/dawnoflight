@@ -19,15 +19,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Collections;
-using DOL.GS.Spells;
+using DawnOfLight.GameServer.Spells;
 using log4net;
 using System.Reflection;
-using DOL.GS.PacketHandler;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Simple Teleporter.

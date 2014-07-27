@@ -18,14 +18,14 @@
  */
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.Language;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.GS.Spells;
-using DOL.GS.Keeps;
+using DawnOfLight.Database;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Keeps;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Represents an in-game housing hastener NPC

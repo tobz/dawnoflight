@@ -27,11 +27,11 @@
 ******************/
 
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&roll",
 		ePrivLevel.Player,
 		"simulates a dice roll.",

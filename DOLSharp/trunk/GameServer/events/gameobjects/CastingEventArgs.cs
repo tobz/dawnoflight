@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.GS.Spells;
-using DOL.GS;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// Holds the arguments for the CastSpell event of GameLivings

@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	[Cmd(
 		"]jump",

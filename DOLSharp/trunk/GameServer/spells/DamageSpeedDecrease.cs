@@ -19,17 +19,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.GS;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Damages target and decreases speed after
 	/// </summary>
-	[SpellHandlerAttribute("DamageSpeedDecrease")]
+	[SpellHandler("DamageSpeedDecrease")]
 	public class DamageSpeedDecreaseSpellHandler : SpeedDecreaseSpellHandler
 	{
 		/// <summary>

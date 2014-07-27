@@ -53,14 +53,15 @@
 
 using System;
 using System.Reflection;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.Language;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.Quests.Hibernia
+namespace DawnOfLight.GameServer.Quests.Hibernia
 {
 	/* The first thing we do, is to declare the class we create
 	 * as Quest. To do this, we derive from the abstract class

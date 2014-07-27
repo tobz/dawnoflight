@@ -19,7 +19,7 @@
 
 using System;
 
-namespace DOL.GS.Housing
+namespace DawnOfLight.GameServer.Housing
 {
 	public enum PermissionType
 	{

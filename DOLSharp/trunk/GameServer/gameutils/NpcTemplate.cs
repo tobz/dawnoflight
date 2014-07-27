@@ -18,14 +18,16 @@
  */
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.GS.Styles;
-using DOL.GS.Spells;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Styles;
+using DawnOfLight.GameServer.Spells;
 using log4net;
 using System.Collections;
 using System.Linq;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// A npc template
@@ -287,7 +289,7 @@ namespace DOL.GS
 				}
 			}
 
-			AI.Brain.StandardMobBrain brain = mob.Brain as AI.Brain.StandardMobBrain;
+			StandardMobBrain brain = mob.Brain as StandardMobBrain;
 			if (brain != null)
 			{
 				m_aggroLevel = (byte)brain.AggroLevel;

@@ -18,13 +18,13 @@
  */
 
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.Database;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 	"&team",
 	new string[] { "&te" },
    ePrivLevel.GM,

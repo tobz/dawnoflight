@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS.Spells;
-using DOL.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Spell Effect assists SpellHandler with duration spells with immunity

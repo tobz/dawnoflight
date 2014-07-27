@@ -17,13 +17,13 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Collections.Generic;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&cmdhelp", //command to handle
+	[Cmd("&cmdhelp", //command to handle
 		ePrivLevel.Player, //minimum privelege level
 		"Displays available commands", //command description
 		//usage

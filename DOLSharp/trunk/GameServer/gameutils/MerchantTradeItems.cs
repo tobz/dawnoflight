@@ -20,10 +20,11 @@ using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Reflection;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public enum eMerchantWindowSlot : int
 	{

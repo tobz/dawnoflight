@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.ServerRules
+namespace DawnOfLight.GameServer.ServerRules
 {
 	/// <summary>
 	/// Denotes a class as a jump point handler

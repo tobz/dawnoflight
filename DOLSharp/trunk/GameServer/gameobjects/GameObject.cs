@@ -21,18 +21,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-
-using DOL.Database;
-using DOL.Events;
-using DOL.Language;
-using DOL.GS.Quests;
-using DOL.GS.Housing;
-using DOL.GS.PacketHandler;
-using DOL.GS.Utils;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utils;
 
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class holds all information that

@@ -19,15 +19,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Events;
-using DOL.GS.Quests;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Quests;
 using System.Collections;
 using log4net;
 using System.Reflection;
 
-namespace DOL.GS.Quests.Atlantis.Artifacts
+namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 {
 	/// <summary>
 	/// Quest for the Ceremonial Bracers artifact.

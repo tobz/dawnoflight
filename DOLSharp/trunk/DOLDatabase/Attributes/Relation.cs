@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.Database.Attributes
+namespace DawnOfLight.Database.Attributes
 {
 	/// <summary>
 	/// Attribute to indicate an Relationship to another DatabaseObject.

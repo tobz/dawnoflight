@@ -18,12 +18,12 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("VampiirSkillBonusDeBuff")]
+	[SpellHandler("VampiirSkillBonusDeBuff")]
 	public class VampiirSkillBonusDeBuff : SpellHandler
 	{
 		public override void FinishSpellCast(GameLiving target)

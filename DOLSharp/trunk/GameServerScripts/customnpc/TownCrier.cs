@@ -16,12 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.Database;
-using DOL.Database.Attributes;
-using DOL.GS.PacketHandler;
+
+using DawnOfLight.Database;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+
 //This script demonstrates how to create a data aware custom NPC
 
-namespace DOL.GS.Scripts
+namespace DawnOfLight.GameServer.Scripts
 {
 	public class TownCrier : GameNPC
 	{

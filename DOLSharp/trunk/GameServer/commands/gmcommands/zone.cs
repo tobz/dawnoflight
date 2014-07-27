@@ -20,18 +20,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-
-using DOL.GS;
-using DOL.GS.ServerProperties;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-using DOL.GS.Utils;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utils;
 using log4net;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-    [CmdAttribute(
+    [Cmd(
         "&zone",
         ePrivLevel.GM,
 		"/zone info",

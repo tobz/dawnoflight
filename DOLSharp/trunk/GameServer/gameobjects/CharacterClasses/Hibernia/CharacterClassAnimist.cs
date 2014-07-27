@@ -20,17 +20,17 @@ using System;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS;
-using DOL.GS.Spells;
-using DOL.GS.PacketHandler;
-using DOL.Database;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Database;
 using log4net;
-using DOL.Events;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
 using System.Collections;
-using DOL.AI.Brain;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// The Animist character class.

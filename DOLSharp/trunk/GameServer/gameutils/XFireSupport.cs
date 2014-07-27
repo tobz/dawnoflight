@@ -1,10 +1,10 @@
 using System;
 using System.Reflection;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.GS.Commands;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Commands;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	public class XFirePlayerEnterExit
 	{
@@ -44,9 +44,9 @@ namespace DOL.GS.GameEvents
 		}
 	}
 }
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&xfire", ePrivLevel.Player, "Xfire support", "/xfire <on|off>")]
+	[Cmd("&xfire", ePrivLevel.Player, "Xfire support", "/xfire <on|off>")]
 	public class CheckXFireCommandHandler : AbstractCommandHandler, ICommandHandler
 	{
 		public void OnCommand(GameClient client, string[] args)

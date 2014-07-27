@@ -19,9 +19,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.Spells;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// The effect associated with the UniPortal teleport spell.

@@ -19,14 +19,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.Events;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("VampiirEffectivenessDeBuff")]
+	[SpellHandler("VampiirEffectivenessDeBuff")]
 	public class VampiirEffectivenessDeBuff : SpellHandler
 	{
 		public override void FinishSpellCast(GameLiving target)

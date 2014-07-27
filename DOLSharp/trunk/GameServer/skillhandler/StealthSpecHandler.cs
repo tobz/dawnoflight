@@ -18,18 +18,19 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using System.Collections;
-using DOL.AI.Brain;
-using DOL.Language;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Handler for Stealth Spec clicks
 	/// </summary>
-	[SkillHandlerAttribute(Specs.Stealth)]
+	[SkillHandler(Specs.Stealth)]
 	public class StealthSpecHandler : ISpecActionHandler
 	{
 		/// <summary>

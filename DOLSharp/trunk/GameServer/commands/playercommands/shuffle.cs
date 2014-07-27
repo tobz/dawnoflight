@@ -1,8 +1,8 @@
 using System;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&shuffle",
 		ePrivLevel.Player,
 		"Shuffle # of decks, minimum 1. Must be used before /deal.",

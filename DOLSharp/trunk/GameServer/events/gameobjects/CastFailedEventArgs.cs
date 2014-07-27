@@ -19,10 +19,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Events;
-using DOL.GS.Spells;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Events;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// Arguments for a cast failed event, stating the reason

@@ -1,9 +1,9 @@
-using DOL.Database;
 using System;
-using log4net;
 using System.Reflection;
+using DawnOfLight.Database;
+using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer.World
 {
 	public class AreaMgr
 	{

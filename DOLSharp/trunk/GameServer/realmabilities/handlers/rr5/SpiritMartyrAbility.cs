@@ -19,12 +19,12 @@
 using System;
 using System.Reflection;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	public class SpiritMartyrAbility : RR5RealmAbility
     {

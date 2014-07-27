@@ -22,16 +22,18 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.Utils;
+using DawnOfLight.Base.Config;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Utils;
+using DawnOfLight.GameServer.World.Instance;
 using log4net;
-using DOL.Config;
 using Timer=System.Threading.Timer;
 using System.Collections.Generic;
-using DOL.GS.Housing;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// The WorldMgr is used to retrieve information and objects from

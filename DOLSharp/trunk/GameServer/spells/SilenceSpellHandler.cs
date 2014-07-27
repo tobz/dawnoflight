@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Reduce range needed to cast the sepll

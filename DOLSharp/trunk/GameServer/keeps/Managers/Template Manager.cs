@@ -16,12 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.Language;
 
-namespace DOL.GS.Keeps
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+
+namespace DawnOfLight.GameServer.Keeps
 {
 	public class TemplateMgr
 	{
@@ -1030,14 +1032,14 @@ namespace DOL.GS.Keeps
 			{
 				guard.Strength = (short)(20 + (guard.Level * 8));
 				guard.Dexterity = (short)(guard.Level * 2);
-				guard.Constitution = (short)(DOL.GS.ServerProperties.Properties.GAMENPC_BASE_CON);
+				guard.Constitution = (short)(Properties.GAMENPC_BASE_CON);
 				guard.Quickness = 60;
 			}
 			else
 			{
 				guard.Strength = (short)(20 + (guard.Level * 7));
 				guard.Dexterity = (short)(guard.Level);
-				guard.Constitution = (short)(DOL.GS.ServerProperties.Properties.GAMENPC_BASE_CON);
+				guard.Constitution = (short)(Properties.GAMENPC_BASE_CON);
 				guard.Quickness = 40;
 			}
 		}

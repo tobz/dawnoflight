@@ -18,10 +18,10 @@
  */
 using System;
 using System.Collections;
-using DOL.GS;
-using DOL.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.Database;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Zusammenfassung für GameLoot.

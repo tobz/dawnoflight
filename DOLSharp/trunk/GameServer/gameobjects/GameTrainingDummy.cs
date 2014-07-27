@@ -18,11 +18,11 @@
  */
 using System;
 using System.Reflection;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
 using log4net;
-using DOL.Events;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Training Dummy: Can't move, fight back, or die

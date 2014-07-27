@@ -21,13 +21,12 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Reflection;
-
-using DOL.Language;
-using DOL.GS.Effects;
-using DOL.GS.Quests;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Quests;
 using log4net;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	[PacketLib(190, GameClient.eClientVersion.Version190)]
 	public class PacketLib190 : PacketLib189

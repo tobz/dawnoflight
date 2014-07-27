@@ -19,14 +19,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Represents a DOL Character class

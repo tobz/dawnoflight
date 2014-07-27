@@ -2,16 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
-using DOL;
-using DOL.GS;
-using DOL.GS.GameEvents;
-using DOL.GS.PacketHandler;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Housing;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.GameEvents;
+using DawnOfLight.Events;
 
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     public class MarketExplorer : GameNPC, IGameInventoryObject
     {

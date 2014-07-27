@@ -17,15 +17,14 @@
  *
  */
 using System;
-
-using DOL.Database;
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Database;
 using System.Collections.Generic;
 using log4net;
 using System.Reflection;
 using System.Timers;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// The InventoryItem table holds all values from the

@@ -19,14 +19,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("Conversion")]
+	[SpellHandler("Conversion")]
 	public class ConversionSpellHandler : SpellHandler
 	{
 		public const string ConvertDamage = "Conversion";
@@ -155,7 +155,7 @@ namespace DOL.GS.Spells
 		public ConversionSpellHandler(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
 	}
 	
-	[SpellHandlerAttribute("MagicConversion")]
+	[SpellHandler("MagicConversion")]
 	public class MagicConversionSpellHandler : ConversionSpellHandler
 	{
 		//public const string ConvertDamage = "Conversion";

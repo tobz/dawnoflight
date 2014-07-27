@@ -17,9 +17,9 @@
  *
  */
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&release", new string[] { "&rel" },
 		ePrivLevel.Player,
 		"When you are dead you can '/release'. This will bring you back to your bindpoint!",

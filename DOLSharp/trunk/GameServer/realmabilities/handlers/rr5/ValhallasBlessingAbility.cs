@@ -25,11 +25,11 @@
 
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.GS.Effects;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
 using System.Collections.Generic;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
     /// <summary>
     /// Valhalla's Blessing RA

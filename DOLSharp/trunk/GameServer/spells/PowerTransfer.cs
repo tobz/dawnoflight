@@ -19,16 +19,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.AI.Brain;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Spell handler for power trasnfer.
 	/// </summary>
 	/// <author>Aredhel</author>
-	[SpellHandlerAttribute("PowerTransfer")]
+	[SpellHandler("PowerTransfer")]
 	class PowerTransfer : SpellHandler
 	{
 		/// <summary>

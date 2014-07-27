@@ -18,11 +18,11 @@
  */
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class StealtherAbilities
 	{

@@ -19,14 +19,14 @@
 
 // By Daeli
 using System;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-using DOL.GS;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 	"&statsanon",
 	ePrivLevel.Player,
 	"Hides your statistics",

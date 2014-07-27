@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class TheurgistPet : GamePet
 	{

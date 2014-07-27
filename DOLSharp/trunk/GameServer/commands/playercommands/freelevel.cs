@@ -17,13 +17,14 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.Language;
 
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&freelevel", //command to handle
+	[Cmd("&freelevel", //command to handle
 	              ePrivLevel.Player, //minimum privelege level
 	              "Display state of FreeLevel", //command description
 	              "/freelevel")] //command usage
@@ -59,13 +60,13 @@ namespace DOL.GS.Commands
 			switch (client.Player.Realm)
 			{
 				case eRealm.Albion:
-					t = client.Player.DBCharacter.LastFreeLeveled.AddDays(DOL.GS.ServerProperties.Properties.FREELEVEL_DAYS_ALBION) - DateTime.Now;
+					t = client.Player.DBCharacter.LastFreeLeveled.AddDays(Properties.FREELEVEL_DAYS_ALBION) - DateTime.Now;
 					break;
 				case eRealm.Midgard:
-					t = client.Player.DBCharacter.LastFreeLeveled.AddDays(DOL.GS.ServerProperties.Properties.FREELEVEL_DAYS_MIDGARD) - DateTime.Now;
+					t = client.Player.DBCharacter.LastFreeLeveled.AddDays(Properties.FREELEVEL_DAYS_MIDGARD) - DateTime.Now;
 					break;
 				case eRealm.Hibernia:
-					t = client.Player.DBCharacter.LastFreeLeveled.AddDays(DOL.GS.ServerProperties.Properties.FREELEVEL_DAYS_HIBERNIA) - DateTime.Now;
+					t = client.Player.DBCharacter.LastFreeLeveled.AddDays(Properties.FREELEVEL_DAYS_HIBERNIA) - DateTime.Now;
 					Console.WriteLine("derp");
 					break;
 			}

@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.Database.Attributes
+namespace DawnOfLight.Database.Attributes
 {
 	/// <summary>
 	/// Attribute to indicate the column is read only once created

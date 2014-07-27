@@ -19,12 +19,12 @@
 using System;
 using System.Collections;
 using System.Collections.Specialized;
-using DOL.GS.Effects;
-using DOL.GS.PropertyCalc;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.PropertyCalc;
 using System.Reflection;
-using DOL.GS.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Health regeneration rate buff

@@ -18,11 +18,10 @@
  */
 using System;
 using System.Reflection;
-using DOL.Database.Attributes;
-
+using DawnOfLight.Database.Attributes;
 using log4net;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	[DataTable(TableName = "ItemTemplate", PreCache = true)]
 	public class ItemTemplate : DataObject

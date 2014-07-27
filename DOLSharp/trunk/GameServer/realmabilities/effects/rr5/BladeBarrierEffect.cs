@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using DOL.GS.PacketHandler;
-using DOL.GS.RealmAbilities;
-using DOL.Events;
-using DOL.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.Database;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Blade Barrier

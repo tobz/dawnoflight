@@ -19,10 +19,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Database;
-using DOL.Events;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
 
-namespace DOL.GS.Quests.Catacombs.Obelisks
+namespace DawnOfLight.GameServer.Quests.Catacombs.Obelisks
 {
 	/// <summary>
 	/// Base class for quests that serve as credit only.

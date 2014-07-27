@@ -28,16 +28,17 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.GS.Quests;
-using DOL.GS.Behaviour;
-using DOL.GS.Behaviour.Attributes;
-using DOL.AI.Brain;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Behaviour.Attributes;
 
-	namespace DOL.GS.Quests.Midgard {
+namespace DawnOfLight.GameServer.Quests.Midgard {
 	
      /* The first thing we do, is to declare the class we create
 	 * as Quest. To do this, we derive from the abstract class
@@ -115,7 +116,7 @@ using DOL.AI.Brain;
 			{
 				if (!WorldMgr.GetRegion(101).IsDisabled)
 				{
-				Audun = new DOL.GS.GameNPC();
+				Audun = new GameNPC();
 					Audun.Model = 232;
 				Audun.Name = "Audun";
 				if (log.IsWarnEnabled)
@@ -160,7 +161,7 @@ using DOL.AI.Brain;
 			{
 				if (!WorldMgr.GetRegion(229).IsDisabled)
 				{
-				GuardOlja = new DOL.GS.GameNPC();
+				GuardOlja = new GameNPC();
 					GuardOlja.Model = 180;
 				GuardOlja.Name = "Guard Olja";
 				if (log.IsWarnEnabled)
@@ -365,42 +366,42 @@ using DOL.AI.Brain;
 			QuestBehaviour a;
 			a = builder.CreateBehaviour(Audun,-1);
 				a.AddTrigger(eTriggerType.Interact,null,Audun);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.meadrun),Audun);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.meadrun),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(meadrun),Audun);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(meadrun),null,(eComparator)5);
 			a.AddAction(eActionType.Talk,"Greetings. You appear to be down on your luck. I have a [proposition] for you if you're interested.",null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Audun,-1);
 				a.AddTrigger(eTriggerType.Whisper,"proposition",Audun);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.meadrun),Audun);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.meadrun),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(meadrun),Audun);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(meadrun),null,(eComparator)5);
 			a.AddAction(eActionType.Talk,"I need to deliver some mead to the guards just inside the Burial Grounds. There is a bit of coin to be had if you would deliver the mead for me.",Audun);
-			a.AddAction(eActionType.OfferQuest,typeof(DOL.GS.Quests.Midgard.meadrun),"Will you deliver the mead for Audun? [Levels 1-4]");
+			a.AddAction(eActionType.OfferQuest,typeof(meadrun),"Will you deliver the mead for Audun? [Levels 1-4]");
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Audun,-1);
-				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(DOL.GS.Quests.Midgard.meadrun));
+				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(meadrun));
 			a.AddAction(eActionType.Talk,"No problem. See you",Audun);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Audun,-1);
-				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(DOL.GS.Quests.Midgard.meadrun));
+				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(meadrun));
 			a.AddAction(eActionType.Talk,"Here take the mead to Guard Olja inside the entrance of the Burial Grounds.",Audun);
 			a.AddAction(eActionType.GiveItem,bottleofmead,Audun);
-			a.AddAction(eActionType.GiveQuest,typeof(DOL.GS.Quests.Midgard.meadrun),Audun);
+			a.AddAction(eActionType.GiveQuest,typeof(meadrun),Audun);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(GuardOlja,-1);
 				a.AddTrigger(eTriggerType.GiveItem,GuardOlja,bottleofmead);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.meadrun),null);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(meadrun),null);
 			a.AddAction(eActionType.Talk,"Thanks. Here, take this empty bottle back to Auduan.",GuardOlja);
 			a.AddAction(eActionType.GiveItem,emptybottle,GuardOlja);
 			a.AddAction(eActionType.TakeItem,bottleofmead,null);
-			a.AddAction(eActionType.IncQuestStep,typeof(DOL.GS.Quests.Midgard.meadrun),null);
+			a.AddAction(eActionType.IncQuestStep,typeof(meadrun),null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Audun,-1);
 				a.AddTrigger(eTriggerType.GiveItem,Audun,emptybottle);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.meadrun),2,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(meadrun),2,(eComparator)3);
 			a.AddAction(eActionType.Talk,"Good work. Here is that bit of coin I was talking about. Check back with me later, and I may have more work for you.",Audun);
 			a.AddAction(eActionType.GiveXP,5,null);
 			a.AddAction(eActionType.GiveGold,27,null);
-			a.AddAction(eActionType.FinishQuest,typeof(DOL.GS.Quests.Midgard.meadrun),null);
+			a.AddAction(eActionType.FinishQuest,typeof(meadrun),null);
 			AddBehaviour(a);
 			
 			#endregion

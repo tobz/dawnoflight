@@ -18,13 +18,14 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&crafting",
 		ePrivLevel.GM,
 		"GMCommands.Crafting.Description",

@@ -28,16 +28,17 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.GS.Quests;
-using DOL.GS.Behaviour;
-using DOL.GS.Behaviour.Attributes;
-using DOL.AI.Brain;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Behaviour.Attributes;
 
-	namespace DOL.GS.Quests.Albion {
+namespace DawnOfLight.GameServer.Quests.Albion {
 	
      /* The first thing we do, is to declare the class we create
 	 * as Quest. To do this, we derive from the abstract class
@@ -113,7 +114,7 @@ using DOL.AI.Brain;
 			{
 				if (!WorldMgr.GetRegion(51).IsDisabled)
 				{
-				MistressLaws = new DOL.GS.GameNPC();
+				MistressLaws = new GameNPC();
 					MistressLaws.Model = 68;
 				MistressLaws.Name = "Mistress Laws";
 				if (log.IsWarnEnabled)
@@ -158,7 +159,7 @@ using DOL.AI.Brain;
 			{
 				if (!WorldMgr.GetRegion(51).IsDisabled)
 				{
-				YlaineBarrett = new DOL.GS.GameMerchant();
+				YlaineBarrett = new GameMerchant();
 					YlaineBarrett.Model = 87;
 				YlaineBarrett.Name = "Ylaine Barrett";
 				if (log.IsWarnEnabled)
@@ -290,62 +291,62 @@ using DOL.AI.Brain;
 			QuestBehaviour a;
 			a = builder.CreateBehaviour(MistressLaws,-1);
 				a.AddTrigger(eTriggerType.Interact,null,MistressLaws);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Albion.Cellarinfestation),MistressLaws);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Albion.Cellarinfestation),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(Cellarinfestation),MistressLaws);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(Cellarinfestation),null,(eComparator)5);
 			a.AddAction(eActionType.Talk,"You have barely begun training; yet already there is a need for you to lend your strength for the protection of this town. I know some of the locals are suspicious of the Inconnu, well, that is not to be helped. They are a mysterious people, and their sudden appearance one stormy night, well, that causes a large amount of [suspicion], as you can imagine, They are here to help us, I do believe that, and so must you. But some of the locals, they are not so sure.",MistressLaws);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(MistressLaws,-1);
 				a.AddTrigger(eTriggerType.Whisper,"suspicion",MistressLaws);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Albion.Cellarinfestation),MistressLaws);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Albion.Cellarinfestation),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(Cellarinfestation),MistressLaws);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(Cellarinfestation),null,(eComparator)5);
 			a.AddAction(eActionType.Talk,"They have seen the Drakoran ruin their lands, they have witnessed Morgana's terrible magic first hand, so they cannot be expected to trust these new, powerful allies. I expect you to treat the Inconnu as allies, and to try and avoid the idle gossip of the local townsfolk. Saying that, I must send you to one of the loudest of the rabble. Ylaine Barrett. The food cellar has been swarming with swamp goo, and she wants someone to go out and clear the immediate area of swamp goo. Don't worry, I don't expect you to kill them all, just do what you can.",MistressLaws);
-			a.AddAction(eActionType.OfferQuest,typeof(DOL.GS.Quests.Albion.Cellarinfestation),"Will you aid Ylaine Barrett in her attempt to rid the cellars of swamp goo?");
+			a.AddAction(eActionType.OfferQuest,typeof(Cellarinfestation),"Will you aid Ylaine Barrett in her attempt to rid the cellars of swamp goo?");
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(MistressLaws,-1);
-				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(DOL.GS.Quests.Albion.Cellarinfestation));
+				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(Cellarinfestation));
 			a.AddAction(eActionType.Talk,"No problem. See you.",MistressLaws);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(MistressLaws,-1);
-				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(DOL.GS.Quests.Albion.Cellarinfestation));
+				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(Cellarinfestation));
 			a.AddAction(eActionType.Talk,"Right, I expected you would do so. Now, go talk to Ylaine Barrett.",MistressLaws);
-			a.AddAction(eActionType.GiveQuest,typeof(DOL.GS.Quests.Albion.Cellarinfestation),MistressLaws);
+			a.AddAction(eActionType.GiveQuest,typeof(Cellarinfestation),MistressLaws);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(YlaineBarrett,-1);
 				a.AddTrigger(eTriggerType.Interact,null,YlaineBarrett);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Albion.Cellarinfestation),1,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(Cellarinfestation),1,(eComparator)3);
 			a.AddAction(eActionType.Talk,"Ah. G'day. And who might you be?",YlaineBarrett);
 			a.AddAction(eActionType.Message,"Tell Ylaine Barrett your name.",(eTextType)2);
 			a.AddAction(eActionType.Talk,"I see, you're a fighter. Has Mistress Laws, Master Reginald, or Delore sent you here to help me out? Why don't they just send you out after the goo? That's all I really want. You know, I don't remember that there were that many of these strange creatures crawling around the village [before].",YlaineBarrett);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(YlaineBarrett,-1);
 				a.AddTrigger(eTriggerType.Whisper,"before",YlaineBarrett);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Albion.Cellarinfestation),1,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(Cellarinfestation),1,(eComparator)3);
 			a.AddAction(eActionType.Talk,"Yes, well, before, well, before they came. Don't you remember? That night? All day long, everything's fine. Set itself uop for a fine next day, as well! The night, it was clear. Not a sign of a storm in sight! Why, no one prepared for it! Then, in the darkest part, suddenly, the storm starts! We were woken from the noise of it! It was awful, but we didn't dare go outside! Some of the men, they did, but they came back pale as a corpse! Were shaken to their core! And some of these being the fightin' men! Best of the town! Aye, but the [swamp goo].",YlaineBarrett);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(YlaineBarrett,-1);
 				a.AddTrigger(eTriggerType.Whisper,"swamp goo",YlaineBarrett);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Albion.Cellarinfestation),1,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(Cellarinfestation),1,(eComparator)3);
 			a.AddAction(eActionType.Talk,"They've gotten into the food cellar! The slimy things were creeping all over that place! I've gotten rid of most of the swamp goo, but I know there's more just outside town working their way to my food stores. I think you could do a small favor for us all and get rid of some. Oh and while you are at it, the skin of the swamp goo, I've some uses for it. I'll pay you for a swamp goo skin. Just go and get me one of their skins, and I'll be satisfied with ya.",YlaineBarrett);
-			a.AddAction(eActionType.IncQuestStep,typeof(DOL.GS.Quests.Albion.Cellarinfestation),null);
+			a.AddAction(eActionType.IncQuestStep,typeof(Cellarinfestation),null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(MistressLaws,-1);
 				a.AddTrigger(eTriggerType.EnemyKilled,"swamp goo",null);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Albion.Cellarinfestation),2,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(Cellarinfestation),2,(eComparator)3);
 			a.AddAction(eActionType.GiveItem,slimyswampgooskin,null);
-			a.AddAction(eActionType.IncQuestStep,typeof(DOL.GS.Quests.Albion.Cellarinfestation),null);
+			a.AddAction(eActionType.IncQuestStep,typeof(Cellarinfestation),null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(YlaineBarrett,-1);
 				a.AddTrigger(eTriggerType.Interact,null,YlaineBarrett);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Albion.Cellarinfestation),3,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(Cellarinfestation),3,(eComparator)3);
 			a.AddAction(eActionType.Talk,"Oh, you're back! Did you see how many there were? They are a nuisance, aren't they! Well, have you got me the skin?",YlaineBarrett);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(YlaineBarrett,-1);
 				a.AddTrigger(eTriggerType.GiveItem,YlaineBarrett,slimyswampgooskin);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Albion.Cellarinfestation),3,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(Cellarinfestation),3,(eComparator)3);
 			a.AddAction(eActionType.Talk,"Ah, a good and slimy one! It's odd, these creatures, they've got some strangeness about them, but they've got their uses, as well. Thank you, then. Here, I promised I'd pay ya, and I will!",YlaineBarrett);
 			a.AddAction(eActionType.GiveGold,330,null);
 			a.AddAction(eActionType.GiveXP,11,null);
-			a.AddAction(eActionType.FinishQuest,typeof(DOL.GS.Quests.Albion.Cellarinfestation),null);
+			a.AddAction(eActionType.FinishQuest,typeof(Cellarinfestation),null);
 			AddBehaviour(a);
 			
 			#endregion

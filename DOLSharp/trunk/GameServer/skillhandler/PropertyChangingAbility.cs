@@ -1,9 +1,8 @@
 using System.Collections;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
-using DOL.Database;
-using DOL.GS;
-
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	public class PropertyChangingAbility : Ability
 	{

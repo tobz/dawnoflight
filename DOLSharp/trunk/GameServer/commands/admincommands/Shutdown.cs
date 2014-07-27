@@ -18,13 +18,15 @@
  */
 using System;
 using System.Threading;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.GS.ServerProperties;
+using DawnOfLight.Base;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&shutdown",
 		ePrivLevel.Admin,
 		"Shutdown the server in next minute",

@@ -19,14 +19,16 @@
 
 using System;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.Housing;
-using DOL.GS.PacketHandler;
-using DOL.GS.Quests;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.World;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	[Cmd(
 		"&player",

@@ -17,10 +17,10 @@
  *
  */
 using System.Reflection;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PetWindow, ClientStatus.PlayerInGame)]
 	public class PetWindowHandler : IPacketHandler

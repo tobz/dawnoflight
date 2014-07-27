@@ -18,12 +18,12 @@
  */
 using System;
 using System.Reflection;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
 
-using DOL.GS;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Description of TeleportArea.

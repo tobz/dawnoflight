@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.GS.RealmAbilities;
+using DawnOfLight.GameServer.RealmAbilities;
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// The melee damage bonus percent calculator

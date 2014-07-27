@@ -3,14 +3,14 @@
 using System;
 using System.Reflection;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
 //using log4net;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	public class ResoluteMinionAbility : RR5RealmAbility
     {
@@ -33,7 +33,7 @@ namespace DOL.GS.RealmAbilities
     }
 }
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	public class ResoluteMinionEffect : TimedEffect
 	{

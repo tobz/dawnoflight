@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Mastery of Concentration

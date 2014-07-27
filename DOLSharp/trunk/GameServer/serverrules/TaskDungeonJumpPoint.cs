@@ -17,11 +17,11 @@
  *
  */
 
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.Quests;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Quests;
 
-namespace DOL.GS.ServerRules
+namespace DawnOfLight.GameServer.ServerRules
 {
 	/// <summary>
 	/// Handles task dungeon jump points

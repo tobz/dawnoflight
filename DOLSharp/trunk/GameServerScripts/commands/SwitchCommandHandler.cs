@@ -5,12 +5,12 @@ using System.Text;
 using System.Collections;
 using System.Reflection;
 using System.Threading;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.Database;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
     [Cmd("&switch", ePrivLevel.Player,
         "Equip Weapons from bag. (/switch 1h 1, will replace ur mainhand weapon with the first slot in ur backpack)",

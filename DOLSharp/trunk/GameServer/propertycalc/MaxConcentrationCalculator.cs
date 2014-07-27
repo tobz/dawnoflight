@@ -20,7 +20,7 @@ using System;
 using System.Reflection;
 using log4net;
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// The Concentration point calculator

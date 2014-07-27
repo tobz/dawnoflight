@@ -19,9 +19,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
     /// <summary>
     /// Holds parameters for InterruptedEvent.

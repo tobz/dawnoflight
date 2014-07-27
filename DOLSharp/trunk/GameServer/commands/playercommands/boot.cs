@@ -1,9 +1,9 @@
-using DOL.GS.Housing;
-using DOL.Language;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 	  "&boot",
 	  ePrivLevel.Player,
 	   "Kicks a player out of your house",

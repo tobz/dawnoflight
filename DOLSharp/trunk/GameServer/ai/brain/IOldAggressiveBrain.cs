@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	public interface IOldAggressiveBrain
 	{

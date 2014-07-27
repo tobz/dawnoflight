@@ -20,18 +20,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.Effects;
-using DOL.GS.Movement;
-using DOL.GS.PacketHandler;
-using DOL.GS.SkillHandler;
-using DOL.GS.Keeps;
-using DOL.Language;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Movement;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// Standard brain for standard mobs
@@ -128,7 +128,7 @@ namespace DOL.AI.Brain
 			}
 
 			//If this NPC can randomly walk around, we allow it to walk around
-			if (!Body.AttackState && CanRandomWalk && Util.Chance(DOL.GS.ServerProperties.Properties.GAMENPC_RANDOMWALK_CHANCE))
+			if (!Body.AttackState && CanRandomWalk && Util.Chance(Properties.GAMENPC_RANDOMWALK_CHANCE))
 			{
 				IPoint3D target = CalcRandomWalkTarget();
 				if (target != null)
@@ -238,7 +238,7 @@ namespace DOL.AI.Brain
 
 			foreach (GameNPC npc in Body.GetNPCsInRadius((ushort)AggroRange, Body.CurrentRegion.IsDungeon ? false : true))
 			{
-				if (!GameServer.ServerRules.IsAllowedToAttack(Body, npc, true)) continue;
+				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true)) continue;
 				if (m_aggroTable.ContainsKey(npc))
 					continue; // add only new NPCs
 				if (!npc.IsAlive || npc.ObjectState != GameObject.eObjectState.Active)
@@ -264,7 +264,7 @@ namespace DOL.AI.Brain
 
 			foreach (GamePlayer player in Body.GetPlayersInRadius((ushort)AggroRange, true))
 			{
-				if (!GameServer.ServerRules.IsAllowedToAttack(Body, player, true)) continue;
+				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true)) continue;
 				// Don't aggro on immune players.
 
 				if (player.EffectList.GetOfType<NecromancerShadeEffect>() != null)
@@ -446,7 +446,7 @@ namespace DOL.AI.Brain
 			
 			// Check LOS (walls, pits, etc...) before  attacking, player + pet
 			// Be sure the aggrocheck is triggered by the brain on Think() method
-			if (DOL.GS.ServerProperties.Properties.ALWAYS_CHECK_LOS && NaturalAggro)
+			if (Properties.ALWAYS_CHECK_LOS && NaturalAggro)
 			{
 				GamePlayer thisLiving = null;
 				if (living is GamePlayer)
@@ -647,7 +647,7 @@ namespace DOL.AI.Brain
 					    living.ObjectState != GameObject.eObjectState.Active ||
 					    living.IsStealthed ||
 					    Body.GetDistanceTo(living, 0) > MAX_AGGRO_LIST_DISTANCE ||
-					    GameServer.ServerRules.IsAllowedToAttack(Body, living, true) == false)
+					    GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, living, true) == false)
 					{
 						removable.Add(living);
 						continue;
@@ -701,7 +701,7 @@ namespace DOL.AI.Brain
 		/// <returns></returns>
 		public virtual int CalculateAggroLevelToTarget(GameLiving target)
 		{
-			if (GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false)
+			if (GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false)
 				return 0;
 
 			// related to the pet owner if applicable
@@ -1501,7 +1501,7 @@ namespace DOL.AI.Brain
 				   >0 means range of roaming
 				   defaut roaming range is defined in CanRandomWalk method
 				 */
-				if (!DOL.GS.ServerProperties.Properties.ALLOW_ROAM)
+				if (!Properties.ALLOW_ROAM)
 					return false;
 				if (Body.RoamingRange == 0)
 					return false;

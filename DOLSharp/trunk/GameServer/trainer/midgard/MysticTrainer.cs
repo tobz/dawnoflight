@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Trainer
+namespace DawnOfLight.GameServer.Trainer
 {
 	/// <summary>
 	/// Mystic Trainer

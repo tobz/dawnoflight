@@ -19,13 +19,12 @@
 using System;
 using System.Collections;
 using System.Reflection;
-
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
 
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/*
 	 * These boats are very fast, and can carry up to sixteen passengers.

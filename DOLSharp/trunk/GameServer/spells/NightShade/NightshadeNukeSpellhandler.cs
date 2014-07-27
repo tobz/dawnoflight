@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	[SpellHandler("NightshadeNuke")]
 	public class NightshadeNuke : DirectDamageSpellHandler

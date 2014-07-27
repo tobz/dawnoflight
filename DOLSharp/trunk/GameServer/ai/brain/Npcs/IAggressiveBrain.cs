@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
     public interface IAggressiveBrain
     {

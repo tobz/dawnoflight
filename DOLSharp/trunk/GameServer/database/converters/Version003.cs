@@ -18,10 +18,12 @@
  */
 using System;
 using System.Collections;
+using DawnOfLight.Database;
+using DawnOfLight.Database.Connection;
+using DawnOfLight.GameServer;
 using log4net;
-using DOL.Database;
 
-namespace DOL.GS.DatabaseConverters
+namespace DawnOfLight.GameServer.DatabaseConverters
 {
 	/// <summary>
 	/// Converts the database format to the version 3
@@ -41,7 +43,7 @@ namespace DOL.GS.DatabaseConverters
 		{
 			log.Info("Database Version 3 Convert Started");
 
-			if (GameServer.Instance.Configuration.DBType == DOL.Database.Connection.ConnectionType.DATABASE_XML)
+			if (GameServer.Instance.Configuration.DBType == ConnectionType.DATABASE_XML)
 			{
 				log.Info("You have an XML database loaded, this converter will only work with MySQL, skipping");
 				return;

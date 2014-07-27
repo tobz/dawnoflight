@@ -2,18 +2,18 @@
 
 using System;
 using System.Reflection;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
 using log4net;
 using System.Collections;
-using DOL.Database;
-using DOL.GS.Effects;
-using DOL.GS.Spells;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("DoomHammer")]
+	[SpellHandler("DoomHammer")]
 	public class DoomHammerSpellHandler : DirectDamageSpellHandler
 	{
 		public override bool CheckBeginCast(GameLiving selectedTarget)

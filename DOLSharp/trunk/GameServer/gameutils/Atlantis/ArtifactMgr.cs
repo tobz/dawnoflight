@@ -20,14 +20,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Quests;
 using System.Reflection;
 using log4net;
-using DOL.GS.PacketHandler;
-using DOL.GS.Quests;
-using DOL.Events;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// The artifact manager.

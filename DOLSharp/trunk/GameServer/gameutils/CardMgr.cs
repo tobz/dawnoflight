@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     /* Maintains decks and cards for all players */
     public class CardMgr

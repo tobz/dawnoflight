@@ -1,9 +1,9 @@
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&setwho",
 		ePrivLevel.Player,
 		"Set your class or trade for /who output",

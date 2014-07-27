@@ -22,7 +22,7 @@ using System.Reflection;
 
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Holds properties of different types

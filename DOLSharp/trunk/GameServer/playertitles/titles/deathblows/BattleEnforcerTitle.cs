@@ -24,10 +24,10 @@
  *   - Added missing (+language support)
  */
 using System;
-using DOL.Language;
-using DOL.Events;
+using DawnOfLight.Events;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles
 {
 	/// <summary>
 	/// "Battle Enforcer" title granted to everyone who killed 2000+ players with death blow.

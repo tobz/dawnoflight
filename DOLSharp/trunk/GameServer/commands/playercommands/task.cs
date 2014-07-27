@@ -27,13 +27,13 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using DOL.GS.PacketHandler;
-using DOL.GS.Quests;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Quests;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	//[CmdAttribute("&task", ePrivLevel.Player, "Ask for a Task from Guards or Merchants", "/task")]
-	[CmdAttribute("&task", ePrivLevel.Player, "Show the actual task", "/task")]
+	[Cmd("&task", ePrivLevel.Player, "Show the actual task", "/task")]
 	public class TaskCommandHandler : AbstractCommandHandler, ICommandHandler
 	{
 		public void OnCommand(GameClient client, string[] args)

@@ -19,10 +19,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     /// <summary>
     /// The Atlantis arbiter.

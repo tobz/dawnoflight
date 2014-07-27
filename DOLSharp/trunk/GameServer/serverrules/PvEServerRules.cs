@@ -17,11 +17,12 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
-using DOL.Database;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Base;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.ServerRules
+namespace DawnOfLight.GameServer.ServerRules
 {
 	/// <summary>
 	/// Set of rules for "PvE" server type.

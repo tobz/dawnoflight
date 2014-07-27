@@ -18,9 +18,11 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// GameMovingObject is a base class for boats and siege weapons.
@@ -107,7 +109,7 @@ namespace DOL.GS
 			}
 			return;
 		}
-		public override bool ReceiveItem(GameLiving source, DOL.Database.InventoryItem item)
+		public override bool ReceiveItem(GameLiving source, InventoryItem item)
 		{
 			//todo check if bullet
 			return base.ReceiveItem(source, item);

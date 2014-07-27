@@ -21,21 +21,20 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Linq;
-
-using DOL.Database;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.ServerProperties;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.ServerProperties;
 using log4net;
 
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	/// <summary>
 	/// Character Create and Customization handler.  Please maintain all commented debug statements
 	/// in order to support future debugging. - Tolakram
 	/// </summary>
-	[PacketHandlerAttribute(PacketHandlerType.TCP, 0x57 ^ 168, "Handles character creation requests")]
+	[PacketHandler(PacketHandlerType.TCP, 0x57 ^ 168, "Handles character creation requests")]
 	public class CharacterCreateRequestHandler : IPacketHandler
 	{
 		/// <summary>

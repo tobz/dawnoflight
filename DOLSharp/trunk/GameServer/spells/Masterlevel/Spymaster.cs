@@ -20,15 +20,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.GS;
-using DOL.Events;
-using DOL.GS.Spells;
-using DOL.Database;
-using DOL.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.AI.Brain;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     //http://www.camelotherald.com/masterlevels/ma.php?ml=Spymaster
     #region Spymaster-1
@@ -36,7 +36,7 @@ namespace DOL.GS.Spells
     #endregion
 
     #region Spymaster-2
-    [SpellHandlerAttribute("Decoy")]
+    [SpellHandler("Decoy")]
     public class DecoySpellHandler : SpellHandler
     {
         private GameDecoy decoy;
@@ -141,7 +141,7 @@ namespace DOL.GS.Spells
     #endregion
 
     #region Spymaster-4
-    [SpellHandlerAttribute("Sabotage")]
+    [SpellHandler("Sabotage")]
     public class SabotageSpellHandler : SpellHandler
     {
         public override void OnDirectEffect(GameLiving target, double effectiveness)
@@ -161,7 +161,7 @@ namespace DOL.GS.Spells
 
     //shared timer 1
     #region Spymaster-5
-    [SpellHandlerAttribute("TangleSnare")]
+    [SpellHandler("TangleSnare")]
     public class TangleSnareSpellHandler : MineSpellHandler
     {
         // constructor
@@ -211,7 +211,7 @@ namespace DOL.GS.Spells
 
     //shared timer 1
     #region Spymaster-6
-    [SpellHandlerAttribute("PoisonSpike")]
+    [SpellHandler("PoisonSpike")]
     public class PoisonSpikeSpellHandler : MineSpellHandler
     {
         // constructor
@@ -258,7 +258,7 @@ namespace DOL.GS.Spells
         }
     }
     #region Subspell
-    [SpellHandlerAttribute("PoisonspikeDot")]
+    [SpellHandler("PoisonspikeDot")]
     public class Spymaster6DotHandler : DoTSpellHandler
     {
         // constructor
@@ -273,7 +273,7 @@ namespace DOL.GS.Spells
     #endregion
 
     #region Spymaster-7
-    [SpellHandlerAttribute("Loockout")]
+    [SpellHandler("Loockout")]
     public class LoockoutSpellHandler : SpellHandler
     {
         private GameLiving m_target;
@@ -322,7 +322,7 @@ namespace DOL.GS.Spells
 
     //shared timer 1
     #region Spymaster-8
-    [SpellHandlerAttribute("SiegeWrecker")]
+    [SpellHandler("SiegeWrecker")]
     public class SiegeWreckerSpellHandler : MineSpellHandler
     {
         public override void OnEffectPulse(GameSpellEffect effect)
@@ -392,7 +392,7 @@ namespace DOL.GS.Spells
     #endregion
 
     #region Spymaster-9
-    [SpellHandlerAttribute("EssenceFlare")]
+    [SpellHandler("EssenceFlare")]
     public class EssenceFlareSpellHandler : SummonItemSpellHandler
     {
         public EssenceFlareSpellHandler(GameLiving caster, Spell spell, SpellLine line)
@@ -502,7 +502,7 @@ namespace DOL.GS.Spells
         #endregion
     }
     //to show an Icon & informations to the caster
-    namespace DOL.GS.Effects
+    namespace DawnOfLight.GameServer.Effects
     {
         public class LoockoutOwner : StaticEffect, IGameEffect
         {

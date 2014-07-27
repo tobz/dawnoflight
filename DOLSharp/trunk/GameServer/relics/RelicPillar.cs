@@ -19,9 +19,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Relics
+namespace DawnOfLight.GameServer.Relics
 {
 	/// <summary>
 	/// Class representing a relic pillar.

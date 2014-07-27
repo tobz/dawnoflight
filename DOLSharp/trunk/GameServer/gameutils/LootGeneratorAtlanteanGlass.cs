@@ -17,12 +17,11 @@
  *
  */
 using System;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
-using DOL.GS;
-using DOL.AI.Brain;
-using DOL.Database;
-
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 
 	/// <summary>

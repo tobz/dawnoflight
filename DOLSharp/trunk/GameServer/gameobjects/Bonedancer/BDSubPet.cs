@@ -20,18 +20,18 @@ using System;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS;
-using DOL.GS.Spells;
-using DOL.AI.Brain;
-using DOL.Events;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Events;
 using log4net;
-using DOL.GS.PacketHandler;
-using DOL.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Database;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.GS.Styles;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Styles;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class BDSubPet : BDPet
 	{

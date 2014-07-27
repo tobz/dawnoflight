@@ -19,12 +19,12 @@
 
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.GS.Effects;
-using DOL.GS.Spells;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Effects;
 using System.Collections.Generic;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
     /// <summary>
     /// Minion Rescue RA

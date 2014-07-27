@@ -18,9 +18,9 @@
  */
 using System;
 using System.Collections;
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Interface for loot generators

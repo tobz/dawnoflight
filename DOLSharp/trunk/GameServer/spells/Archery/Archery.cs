@@ -17,17 +17,16 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Events;
-using DOL.AI.Brain;
-
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	[SpellHandler("Archery")]
 	public class Archery : ArrowSpellHandler

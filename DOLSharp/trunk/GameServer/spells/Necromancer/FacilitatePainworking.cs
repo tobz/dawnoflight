@@ -19,15 +19,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Spell handler for Facilitate Painworking.
 	/// </summary>
 	/// <author>Aredhel</author>
-	[SpellHandlerAttribute("FacilitatePainworking")]
+	[SpellHandler("FacilitatePainworking")]
 	class FacilitatePainworking : SpellHandler
 	{
 		public FacilitatePainworking(GameLiving caster, Spell spell, SpellLine line) 

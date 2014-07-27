@@ -18,9 +18,9 @@
  */
 using System;
 
-namespace DOL
+namespace DawnOfLight
 {
-	namespace GS
+	namespace GameServer
 	{
 		/// <summary>
 		/// Marks a class as a command handler

@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&speed",
 		ePrivLevel.GM,
 		"Change base speed of target (no parameter to see current speed)",

@@ -19,7 +19,7 @@
 using System;
 using System.Collections;
 
-namespace DOL.Database.Cache
+namespace DawnOfLight.Database.Cache
 {
 	/// <summary>
 	/// A simple <c>Hashtable</c> based cache

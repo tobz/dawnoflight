@@ -18,17 +18,17 @@
  */
 using System;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Heal Over Time spell handler
 	/// </summary>
-	[SpellHandlerAttribute("HealOverTime")]
+	[SpellHandler("HealOverTime")]
 	public class HoTSpellHandler : SpellHandler
 	{
 		/// <summary>

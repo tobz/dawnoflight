@@ -19,10 +19,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// base for all effects that are timed and should stop on itself

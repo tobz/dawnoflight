@@ -1,5 +1,5 @@
 using System;
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	[PropertyCalculator(eProperty.WeaponSkill)]
 	public class WeaponSkillPercentCalculator : PropertyCalculator

@@ -18,11 +18,11 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.GS.Spells;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// Represents a keep hastener

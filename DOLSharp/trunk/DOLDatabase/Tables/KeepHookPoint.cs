@@ -17,10 +17,10 @@
  *
  */
 
-using DOL.Database;
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Database;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// keep hook point in DB

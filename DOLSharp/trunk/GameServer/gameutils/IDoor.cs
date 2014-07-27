@@ -17,9 +17,9 @@
  *
  */
 
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// The state a door can take

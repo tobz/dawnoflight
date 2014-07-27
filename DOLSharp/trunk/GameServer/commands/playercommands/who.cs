@@ -42,10 +42,12 @@ please note that /who CSR will not show hidden CSRs
 using System;
 using System.Collections;
 using System.Text;
+using DawnOfLight.Base;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&who",
 		ePrivLevel.Player,
 		"Shows who is online",

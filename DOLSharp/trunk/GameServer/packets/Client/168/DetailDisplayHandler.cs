@@ -22,21 +22,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using DOL.Database;
-using DOL.GS.Effects;
-using DOL.GS.Quests;
-using DOL.GS.RealmAbilities;
-using DOL.GS.Spells;
-using DOL.GS.Styles;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Styles;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	/// <summary>
 	/// delve button shift+i = detail of spell object...
 	/// </summary>
-	[PacketHandlerAttribute(PacketHandlerType.TCP, 0x70 ^ 168, "Handles detail display")]
+	[PacketHandler(PacketHandlerType.TCP, 0x70 ^ 168, "Handles detail display")]
 	public class DetailDisplayHandler : IPacketHandler
 	{
 		/// <summary>

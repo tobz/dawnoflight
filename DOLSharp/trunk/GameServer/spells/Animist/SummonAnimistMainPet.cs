@@ -21,11 +21,12 @@
  * - Useless using removed
  * - Get Main Pet tank or Main Pet caster by spell damage type
  */
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
-using DOL.Language;
 
-namespace DOL.GS.Spells
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+
+namespace DawnOfLight.GameServer.Spells
 {
   /// <summary>
   /// Spell handler to summon a animist pet.

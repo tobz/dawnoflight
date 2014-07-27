@@ -18,8 +18,9 @@
  */
 using System.Collections;
 using System.Collections.Specialized;
-using DOL.GS.PacketHandler;
-namespace DOL.GS
+using DawnOfLight.GameServer.PacketHandler;
+
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Description résumée de ChatGroup.

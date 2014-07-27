@@ -26,14 +26,16 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Timers;
-using DOL.Events;
-using DOL.GS.ServerProperties;
-using DOL.Network;
+using DawnOfLight.Base;
+using DawnOfLight.Base.Network;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.ServerProperties;
 using log4net;
 using Timer=System.Timers.Timer;
 using System.Collections.Generic;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	/// <summary>
 	/// This class handles the packets, receiving and sending

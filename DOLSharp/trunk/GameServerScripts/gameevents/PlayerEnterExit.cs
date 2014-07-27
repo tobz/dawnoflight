@@ -17,11 +17,13 @@
  *
  */
 using System;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Base;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	/// <summary>
 	/// Spams everyone online with player enter/exit messages

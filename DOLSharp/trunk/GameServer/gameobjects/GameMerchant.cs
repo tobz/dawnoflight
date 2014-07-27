@@ -20,14 +20,16 @@ using System;
 using System.Collections;
 using System.Reflection;
 using System.Threading;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Language;
-using DOL.GS.Movement;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Movement;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Represents an in-game merchant
@@ -244,7 +246,7 @@ namespace DOL.GS
 				return;
 			}
 
-			if (!this.IsWithinRadius(player, GS.ServerProperties.Properties.WORLD_PICKUP_DISTANCE)) // tested
+			if (!this.IsWithinRadius(player, Properties.WORLD_PICKUP_DISTANCE)) // tested
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerSell.TooFarAway", GetName(0, true)), eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
 				return;

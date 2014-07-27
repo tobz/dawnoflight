@@ -21,17 +21,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-
-using DOL.Language;
-using DOL.Database;
-using DOL.GS.Effects;
-using DOL.GS.Keeps;
-using DOL.GS.PlayerTitles;
-using DOL.GS.Spells;
-using DOL.GS.Styles;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PlayerTitles;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Styles;
 using log4net;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	[PacketLib(174, GameClient.eClientVersion.Version174)]
 	public class PacketLib174 : PacketLib173

@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// This attribute can be applied to static methods to automatically

@@ -1,3 +1,8 @@
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
 /*
  * DAWN OF LIGHT - The first free open source DAoC server emulator
  * 
@@ -17,14 +22,9 @@
  *
  */
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-using DOL.Events;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Damages the target and lowers their resistance to the spell's type.
@@ -50,12 +50,10 @@ namespace DOL.GS.Spells
 		{
 			if (target == null) return;
 
-			bool spellOK = true;
-			//cone spells
-			if (Spell.Target == "Frontal" || (Spell.Target == "Enemy" && Spell.Radius > 0 && Spell.Range == 0))
-				spellOK = false;
+		    bool spellOK = (Spell.Target != "Frontal") || (Spell.Target == "Enemy" && Spell.Radius > 0 && Spell.Range == 0);
+		    //cone spells
 
-			if (!spellOK || CheckLOS(Caster))
+		    if (!spellOK || CheckLOS(Caster))
 			{
 				GamePlayer player = null;
 				if (target is GamePlayer)
@@ -66,20 +64,20 @@ namespace DOL.GS.Spells
 				{
 					if (Caster is GamePlayer)
 						player = Caster as GamePlayer;
-					else if (Caster is GameNPC && (Caster as GameNPC).Brain is AI.Brain.IControlledBrain)
+					else if (Caster is GameNPC && (Caster as GameNPC).Brain is IControlledBrain)
 					{
-						AI.Brain.IControlledBrain brain = (Caster as GameNPC).Brain as AI.Brain.IControlledBrain;
+						IControlledBrain brain = (Caster as GameNPC).Brain as IControlledBrain;
 						//Ryan: edit for BD
 						if (brain.Owner is GamePlayer)
 							player = (GamePlayer)brain.Owner;
 						else
-							player = (GamePlayer)((AI.Brain.IControlledBrain)((GameNPC)brain.Owner).Brain).Owner;
+							player = (GamePlayer)((IControlledBrain)((GameNPC)brain.Owner).Brain).Owner;
 					}
 				}
 				if (player != null)
 				{
 					player.TempProperties.setProperty(LOSEFFECTIVENESS, effectiveness);
-					player.Out.SendCheckLOS(Caster, target, new CheckLOSResponse(DealDamageCheckLOS));
+					player.Out.SendCheckLOS(Caster, target, DealDamageCheckLOS);
 				}
 				else
 					DealDamage(target, effectiveness);

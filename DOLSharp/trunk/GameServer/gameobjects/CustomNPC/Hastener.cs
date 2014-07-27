@@ -19,13 +19,13 @@
 
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.Database.Attributes;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.Keeps;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.Database;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Events;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class GameHastener : GameNPC
 	{

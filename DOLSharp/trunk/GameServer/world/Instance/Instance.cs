@@ -19,16 +19,13 @@
 
 //Instance devised by Dinberg
 //     - there will probably be questions, direct them to dinberg_darktouch@hotmail.co.uk ;)
+
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using System.Reflection;
-using DOL.Database;
-using DOL.GS.Utils;
-using log4net;
+using DawnOfLight.Database;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer.World.Instance
 {
 	/// <summary>
 	/// The Instance is an implementation of BaseInstance that contains additional functionality to load

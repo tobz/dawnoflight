@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class helps sending messages to other players

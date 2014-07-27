@@ -18,19 +18,20 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Handler to make the frontal pulsing cone show the effect animation on every pulse
 	/// </summary>
-	[SpellHandlerAttribute("FrontalPulseConeDD")]
+	[SpellHandler("FrontalPulseConeDD")]
 	public class FrontalAOEConeHandler : DirectDamageSpellHandler
 	{
 		public FrontalAOEConeHandler(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
 
-		public override void OnSpellPulse(DOL.GS.Effects.PulsingSpellEffect effect)
+		public override void OnSpellPulse(PulsingSpellEffect effect)
 		{
 			SendCastAnimation();
 			base.OnSpellPulse(effect);

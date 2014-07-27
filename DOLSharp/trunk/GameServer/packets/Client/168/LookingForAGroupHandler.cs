@@ -18,8 +18,9 @@
  */
 using System;
 using System.Collections;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x2D ^ 168, "handle Looking for a group")]
 	public class LookingForAGroupHandler : IPacketHandler

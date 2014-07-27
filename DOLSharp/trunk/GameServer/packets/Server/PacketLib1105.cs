@@ -21,14 +21,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.GS.Commands;
-using DOL.GS.Effects;
-using DOL.Database;
-using DOL.GS.RealmAbilities;
-using DOL.GS.Styles;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.Styles;
+using DawnOfLight.GameServer.Commands;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.Database;
 using log4net;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	
 	[PacketLib(1105, GameClient.eClientVersion.Version1105)]

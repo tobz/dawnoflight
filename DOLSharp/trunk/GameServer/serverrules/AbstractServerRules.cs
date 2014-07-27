@@ -20,18 +20,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Housing;
-using DOL.GS.Keeps;
-using DOL.GS.PacketHandler;
-using DOL.GS.ServerProperties;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Base;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS.ServerRules
+namespace DawnOfLight.GameServer.ServerRules
 {
 	public abstract class AbstractServerRules : IServerRules
 	{
@@ -125,7 +127,7 @@ namespace DOL.GS.ServerRules
 			/* Example to limit the connections from a certain IP range!
 			if(client.Socket.RemoteEndPoint.ToString().StartsWith("192.168.0."))
 			{
-				client.Out.SendLoginDenied(eLoginError.AccountNoAccessAnyGame);
+				client.Out.SendLoginDenied(LoginError.AccountNoAccessAnyGame);
 				return false;
 			}
 			 */
@@ -134,7 +136,7 @@ namespace DOL.GS.ServerRules
 			/* Example to deny new connections on saturdays
 			if(DateTime.Now.DayOfWeek == DayOfWeek.Saturday)
 			{
-				client.Out.SendLoginDenied(eLoginError.GameCurrentlyClosed);
+				client.Out.SendLoginDenied(LoginError.GameCurrentlyClosed);
 				return false;
 			}
 			 */
@@ -142,7 +144,7 @@ namespace DOL.GS.ServerRules
 			/* Example to deny new connections between 10am and 12am
 			if(DateTime.Now.Hour >= 10 && DateTime.Now.Hour <= 12)
 			{
-				client.Out.SendLoginDenied(eLoginError.GameCurrentlyClosed);
+				client.Out.SendLoginDenied(LoginError.GameCurrentlyClosed);
 				return false;
 			}
 			 */
@@ -1585,7 +1587,7 @@ namespace DOL.GS.ServerRules
 						foreach (KeyValuePair<GamePlayer, int> pair in playerKillers)
 						{
 
-							DOL.Database.PvPKillsLog killLog = new DOL.Database.PvPKillsLog();
+							PvPKillsLog killLog = new PvPKillsLog();
 							killLog.KilledIP = killedPlayer.Client.TcpEndpointAddress;
 							killLog.KilledName = killedPlayer.Name;
 							killLog.KilledRealm = GlobalConstants.RealmToName(killedPlayer.Realm);
@@ -1951,7 +1953,7 @@ namespace DOL.GS.ServerRules
 		/// </summary>
 		/// <param name="player"></param>
 		/// <param name="merchantType"></param>
-		public virtual void SendHousingMerchantWindow(GamePlayer player, DOL.GS.PacketHandler.eMerchantWindowType merchantType)
+		public virtual void SendHousingMerchantWindow(GamePlayer player, eMerchantWindowType merchantType)
 		{
 			switch (merchantType)
 			{
@@ -1989,7 +1991,7 @@ namespace DOL.GS.ServerRules
 		/// <param name="slot"></param>
 		/// <param name="count"></param>
 		/// <param name="merchantType"></param>
-		public virtual void BuyHousingItem(GamePlayer player, ushort slot, byte count, DOL.GS.PacketHandler.eMerchantWindowType merchantType)
+		public virtual void BuyHousingItem(GamePlayer player, ushort slot, byte count, eMerchantWindowType merchantType)
 		{
 			MerchantTradeItems items = null;
 
@@ -2027,7 +2029,7 @@ namespace DOL.GS.ServerRules
 		/// <param name="heading"></param>
 		/// <param name="index"></param>
 		/// <returns></returns>
-		public virtual GameNPC PlaceHousingNPC(DOL.GS.Housing.House house, ItemTemplate item, IPoint3D location, ushort heading)
+		public virtual GameNPC PlaceHousingNPC(House house, ItemTemplate item, IPoint3D location, ushort heading)
 		{
 			NpcTemplate npcTemplate = NpcTemplateMgr.GetTemplate(item.Bonus);
 
@@ -2118,7 +2120,7 @@ namespace DOL.GS.ServerRules
 		}
 
 
-		public virtual GameStaticItem PlaceHousingInteriorItem(DOL.GS.Housing.House house, ItemTemplate item, IPoint3D location, ushort heading)
+		public virtual GameStaticItem PlaceHousingInteriorItem(House house, ItemTemplate item, IPoint3D location, ushort heading)
 		{
 			GameStaticItem hookpointObject = new GameStaticItem();
 			hookpointObject.CurrentHouse = house;

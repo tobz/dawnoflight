@@ -18,12 +18,12 @@
  */
 
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS.RealmAbilities;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.RealmAbilities;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&resetability",
 		ePrivLevel.GM,
 		"/resetability - <self|target|group|cg|bg>")]

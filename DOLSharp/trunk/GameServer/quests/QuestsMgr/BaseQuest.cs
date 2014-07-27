@@ -29,11 +29,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Behaviour;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using log4net;
 
 /* I suggest you declare yourself some namespaces for your quests
@@ -45,7 +45,7 @@ using log4net;
  * Database Code
  */
 
-namespace DOL.GS.Quests
+namespace DawnOfLight.GameServer.Quests
 {
 
 	/// <summary>

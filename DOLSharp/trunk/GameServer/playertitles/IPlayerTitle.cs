@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles
 {
 	/// <summary>
 	/// Denotes a class as a player title.

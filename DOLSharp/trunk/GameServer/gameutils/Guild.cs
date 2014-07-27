@@ -20,14 +20,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Language;
-using DOL.GS.Keeps;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using log4net;
-using DOL.GS.Housing;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Housing;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Guild inside the game.
@@ -526,7 +527,7 @@ namespace DOL.GS
 			{
 				if (player == member) continue;
 				if (player.ShowGuildLogins)
-					player.Out.SendMessage("Guild member " + member.Name + " has logged in!", DOL.GS.PacketHandler.eChatType.CT_System, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Guild member " + member.Name + " has logged in!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
 			}
 		}
 
@@ -652,7 +653,7 @@ namespace DOL.GS
 				member.Out.SendObjectGuildID(member, member.Guild);
 				// Send message to removerClient about successful removal
 				if (removername == member.Name)
-					member.Out.SendMessage("You leave the guild.", DOL.GS.PacketHandler.eChatType.CT_System, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+					member.Out.SendMessage("You leave the guild.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
 				else
 					member.Out.SendMessage(removername + " removed you from " + this.Name, PacketHandler.eChatType.CT_System, PacketHandler.eChatLoc.CL_SystemWindow);
 			}

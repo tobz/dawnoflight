@@ -18,10 +18,10 @@
  */
 using System;
 using System.ComponentModel;
-using DOL.Database.Attributes;
-using DOL.Database.UniqueID;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Database.UniqueID;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// Abstract Baseclass for all DataObject's. All Classes that are derived from this class

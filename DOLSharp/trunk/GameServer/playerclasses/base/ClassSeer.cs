@@ -17,16 +17,16 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Seer, "Seer", "Seer")]
-	public class ClassSeer : DOL.GS.CharacterClassBase
+	[CharacterClass((int)eCharacterClass.Seer, "Seer", "Seer")]
+	public class ClassSeer : CharacterClassBase
 	{
 		public ClassSeer() : base() {
 			m_specializationMultiplier = 10;

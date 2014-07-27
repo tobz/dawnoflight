@@ -17,11 +17,12 @@
  *
  */
 
-using DOL.Events;
-using DOL.GS.Housing;
-using DOL.GS.Keeps;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Keeps;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.DialogResponse, ClientStatus.PlayerInGame)]
 	public class DialogResponseHandler : IPacketHandler

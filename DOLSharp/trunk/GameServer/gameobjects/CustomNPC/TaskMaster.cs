@@ -1,9 +1,9 @@
 using System.Reflection;
-using DOL.GS;
-using DOL.GS.Quests;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class TaskMaster : GameNPC
 	{

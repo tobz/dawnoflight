@@ -19,9 +19,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Events;
+using DawnOfLight.Events;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     /// <summary>
     /// Ancient bound djinn (Atlantis teleporter).

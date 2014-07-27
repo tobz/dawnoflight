@@ -19,9 +19,9 @@
 
 using System.Collections;
 using System.Data;
-using DOL.Database.Cache;
+using DawnOfLight.Database.Cache;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// Zusammenfassung für DataTableHandler.

@@ -17,9 +17,9 @@
  *
  */
 
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// GameKeepTower is the tower in New frontiere link to keep

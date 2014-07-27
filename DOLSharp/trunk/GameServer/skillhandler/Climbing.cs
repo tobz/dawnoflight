@@ -17,16 +17,16 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Handler for Fury shout
 	/// </summary>
-	[SkillHandlerAttribute(Abilities.ClimbSpikes)]
+	[SkillHandler(Abilities.ClimbSpikes)]
 	public class ClimbingAbilityHandler : SpellCastingAbilityHandler
 	{
 		private static int spellid = -1;

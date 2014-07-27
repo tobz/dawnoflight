@@ -28,10 +28,10 @@
 using System;
 using System.Reflection;
 using System.Timers;
-using DOL.Events;
+using DawnOfLight.Events;
 using log4net;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	//Declare our event class
 	public class FightingNPCEvent

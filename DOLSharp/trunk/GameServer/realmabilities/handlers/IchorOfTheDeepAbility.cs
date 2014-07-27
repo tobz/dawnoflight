@@ -1,12 +1,13 @@
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.GS.Spells;
-using DOL.Events;
-using DOL.Database;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Language;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	public class IchorOfTheDeepAbility : TimedRealmAbility
 	{

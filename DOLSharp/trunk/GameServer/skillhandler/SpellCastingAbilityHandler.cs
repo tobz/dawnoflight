@@ -1,8 +1,8 @@
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	public class SpellCastingAbilityHandler : IAbilityActionHandler 
 	{

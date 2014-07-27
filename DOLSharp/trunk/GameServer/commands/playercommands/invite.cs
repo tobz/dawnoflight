@@ -16,11 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS.PacketHandler;
 
-namespace DOL.GS.Commands
+using DawnOfLight.Base;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&invite",
 		ePrivLevel.Player,
 		"Invite a specified or targeted player to join your group", "/invite <player>")]

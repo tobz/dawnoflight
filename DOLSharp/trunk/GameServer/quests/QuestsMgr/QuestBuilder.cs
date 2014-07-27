@@ -19,9 +19,9 @@
 using System;
 using System.Text;
 using System.Reflection;
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS.Quests
+namespace DawnOfLight.GameServer.Quests
 {
     public class QuestBuilder
     {

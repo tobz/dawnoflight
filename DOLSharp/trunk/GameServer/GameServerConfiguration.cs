@@ -16,15 +16,18 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
-using DOL.Config;
-using DOL.Database.Connection;
+using DawnOfLight.Base;
+using DawnOfLight.Base.Config;
+using DawnOfLight;
+using DawnOfLight.Database.Connection;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This is the game server configuration

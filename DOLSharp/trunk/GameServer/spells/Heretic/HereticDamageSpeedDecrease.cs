@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
-namespace DOL.GS.Spells
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
+
+namespace DawnOfLight.GameServer.Spells
 {
 
-	[SpellHandlerAttribute("HereticDamageSpeedDecrease")]
+	[SpellHandler("HereticDamageSpeedDecrease")]
 	public class HereticDamageSpeedDecrease : HereticSpeedDecreaseSpellHandler
 	{
         protected int m_lastdamage = 0;

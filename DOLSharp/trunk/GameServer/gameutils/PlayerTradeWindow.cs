@@ -19,12 +19,12 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.GS;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// TradeWindow is the object for tradewindow from the side of one trader 

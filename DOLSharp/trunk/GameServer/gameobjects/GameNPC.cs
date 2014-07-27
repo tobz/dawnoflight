@@ -21,23 +21,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using DawnOfLight.AI;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Base;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.AI;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Movement;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Styles;
+using DawnOfLight.GameServer.Utils;
+using DawnOfLight.Language;
 
-using DOL.AI;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.Housing;
-using DOL.GS.Movement;
-using DOL.GS.PacketHandler;
-using DOL.GS.Quests;
-using DOL.GS.Spells;
-using DOL.GS.Styles;
-using DOL.GS.Utils;
-using DOL.Language;
-using DOL.GS.ServerProperties;
-
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class is the baseclass for all Non Player Characters like
@@ -4437,9 +4440,9 @@ namespace DOL.GS
 							}
 						}
 
-						if (Keeps.KeepBonusMgr.RealmHasBonus(DOL.GS.Keeps.eKeepBonusType.Coin_Drop_5, (eRealm)killer.Realm))
+						if (Keeps.KeepBonusMgr.RealmHasBonus(eKeepBonusType.Coin_Drop_5, (eRealm)killer.Realm))
 							value += (value / 100) * 5;
-						else if (Keeps.KeepBonusMgr.RealmHasBonus(DOL.GS.Keeps.eKeepBonusType.Coin_Drop_3, (eRealm)killer.Realm))
+						else if (Keeps.KeepBonusMgr.RealmHasBonus(eKeepBonusType.Coin_Drop_3, (eRealm)killer.Realm))
 							value += (value / 100) * 3;
 
 						//this will need to be changed when the ML for increasing money is added
@@ -5265,7 +5268,7 @@ namespace DOL.GS
 			GuildName = "";
 
 			m_brainSync = m_brains.SyncRoot;
-			m_followTarget = new WeakRef(null);
+			m_followTarget = new WeakReference(null);
 
 			m_size = 50; //Default size
 			TargetPosition = new Point3D();

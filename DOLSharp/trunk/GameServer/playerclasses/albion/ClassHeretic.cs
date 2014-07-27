@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	///
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Heretic, "Heretic", "Acolyte")]
+	[CharacterClass((int)eCharacterClass.Heretic, "Heretic", "Acolyte")]
 	public class ClassHeretic : ClassAcolyte
 	{
 		public ClassHeretic() : base()

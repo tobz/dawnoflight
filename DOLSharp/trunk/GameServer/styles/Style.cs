@@ -18,11 +18,11 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.Database.Attributes;
-using DOL.GS;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Styles
+namespace DawnOfLight.GameServer.Styles
 {
 	/// <summary>
 	/// Holds all information needed for a Style in game.

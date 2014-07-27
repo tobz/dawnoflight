@@ -19,14 +19,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.GS.PacketHandler.Client.v168;
-using DOL.GS.Styles;
+using DawnOfLight.GameServer.PacketHandler.Client.v168;
+using DawnOfLight.GameServer.Styles;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("StyleHandler")]
+	[SpellHandler("StyleHandler")]
 	public class StyleHandler : SpellHandler
 	{
 		public StyleHandler(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }

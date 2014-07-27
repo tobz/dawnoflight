@@ -19,14 +19,15 @@
 using System;
 using System.Reflection;
 using System.IO;
-using DOL.Database;
-using DOL.Database.Attributes;
-using DOL.Database.Connection;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Database.Connection;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.Scripts
+namespace DawnOfLight.GameServer.Scripts
 {
 	/// <summary>
 	/// Generates an XML version of the web ui

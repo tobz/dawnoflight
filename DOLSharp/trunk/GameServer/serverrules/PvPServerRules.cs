@@ -18,17 +18,18 @@
  */
 using System;
 using System.Collections;
-using DOL;
-using DOL.Database;
-using DOL.Language;
-using DOL.AI.Brain;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.Keeps;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Base;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight;
 using System.Collections.Generic;
 
-namespace DOL.GS.ServerRules
+namespace DawnOfLight.GameServer.ServerRules
 {
 	/// <summary>
 	/// Set of rules for "PvP" server type.

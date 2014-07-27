@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.Database;
-using DOL.GS.PropertyCalc;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PropertyCalc;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	/// <summary>
 	/// 

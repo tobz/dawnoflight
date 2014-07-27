@@ -19,9 +19,10 @@
 using System.Collections;
 using System.Collections.Specialized;
 using System;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Alliance are the alliance between guild in game

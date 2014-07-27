@@ -22,14 +22,14 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-
-using DOL.Events;
-using DOL.Database;
-using DOL.GS.Spells;
-using DOL.GS.Effects;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Effects;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     public sealed class MinotaurRelicManager
     {

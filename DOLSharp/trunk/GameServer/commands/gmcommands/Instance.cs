@@ -17,13 +17,16 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Reflection;
 using System.Collections;
-using DOL.Database;
 
 //By dinberg - so its him who you blame ;)
-namespace DOL.GS.Commands
+using DawnOfLight.GameServer.World.Instance;
+
+namespace DawnOfLight.GameServer.Commands
 {
     [Cmd(
         "&instance",

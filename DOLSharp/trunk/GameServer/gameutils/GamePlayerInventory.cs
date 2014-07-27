@@ -19,12 +19,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class represents a full player inventory

@@ -18,9 +18,9 @@
  */
 
 using System;
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// Table that holds the different characters and guilds that have been given permissions to a house.

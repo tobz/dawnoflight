@@ -19,15 +19,15 @@
 
 using System.Collections;
 using System.Reflection;
-using DOL.Language;
-using DOL.GS;
-using DOL.GS.ServerProperties;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.ServerProperties;
 
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		 "&trade",
 		 ePrivLevel.Player,
 		 "Broadcast a trade message to other players in the same region",

@@ -17,9 +17,9 @@
  *
  */
 using System.Collections.Generic;
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	public class TurretBrain : ControlledNpcBrain
 	{
@@ -186,7 +186,7 @@ namespace DOL.AI.Brain
 		{
 			foreach (GamePlayer player in Body.GetPlayersInRadius((ushort)spell.Range, Body.CurrentRegion.IsDungeon ? false : true))
 			{
-				if(GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
+				if(GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
 					continue;
 
 				if(!player.IsAlive)
@@ -208,7 +208,7 @@ namespace DOL.AI.Brain
 			}
 			foreach (GameNPC npc in Body.GetNPCsInRadius((ushort)spell.Range, Body.CurrentRegion.IsDungeon ? false : true))
 			{
-				if(GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
+				if(GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
 					continue;
 
 				if(!npc.IsAlive)

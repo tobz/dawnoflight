@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.Spells;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	public class FocusShellEffect : GameSpellEffect
 	{

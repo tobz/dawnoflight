@@ -21,14 +21,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.Database;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-using DOL.GS.Spells;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.GameEvents;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class PlayerStatistics : IPlayerStatistics
 	{
@@ -159,7 +160,7 @@ namespace DOL.GS
 
 		public PlayerStatistics(GamePlayer player)
 		{
-            DOL.GS.GameEvents.PlayerStatisticsEvent.CheckHandlers();
+            PlayerStatisticsEvent.CheckHandlers();
 			m_player = player;
 			m_LoginTime = DateTime.Now;
 		}
@@ -380,7 +381,7 @@ namespace DOL.GS
 	}
 }
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	public class PlayerStatisticsEvent
 	{

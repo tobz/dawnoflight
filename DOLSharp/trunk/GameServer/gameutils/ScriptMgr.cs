@@ -24,18 +24,20 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using DOL.AI.Brain;
-using DOL.Config;
-using DOL.GS.PacketHandler;
-using DOL.GS.ServerRules;
-using DOL.GS.Spells;
-using DOL.GS.Commands;
-using DOL.Events;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Base;
+using DawnOfLight.Base.Config;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Commands;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerRules;
+using DawnOfLight.GameServer.Spells;
 using log4net;
 using Microsoft.CSharp;
 using Microsoft.VisualBasic;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class ScriptMgr
 	{
@@ -423,7 +425,7 @@ namespace DOL.GS
 			}
 			if (client.Player != null)
 			{
-				client.Player.Notify(DOL.Events.GamePlayerEvent.ExecuteCommand, new ExecuteCommandEventArgs(client.Player, myCommand, pars));
+				client.Player.Notify(GamePlayerEvent.ExecuteCommand, new ExecuteCommandEventArgs(client.Player, myCommand, pars));
 			}
 			myCommand.m_cmdHandler.OnCommand(client, pars);
 		}

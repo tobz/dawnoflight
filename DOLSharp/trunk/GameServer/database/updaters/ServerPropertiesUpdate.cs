@@ -17,10 +17,11 @@
  *
  */
 
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS.DatabaseUpdate
+namespace DawnOfLight.GameServer.DatabaseUpdate
 {
     /// <summary>
     /// Checks and updates the ServerProperty table.

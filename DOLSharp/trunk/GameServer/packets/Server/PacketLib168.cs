@@ -23,22 +23,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Reflection;
-
-using DOL.Database;
-using DOL.Language;
-using DOL.AI.Brain;
-using DOL.GS.Effects;
-using DOL.GS.Housing;
-using DOL.GS.Keeps;
-using DOL.GS.PlayerTitles;
-using DOL.GS.Quests;
-using DOL.GS.RealmAbilities;
-using DOL.GS.Spells;
-using DOL.GS.Styles;
-
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PlayerTitles;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Styles;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	[PacketLib(168, GameClient.eClientVersion.Version168)]
 	public class PacketLib168 : AbstractPacketLib, IPacketLib

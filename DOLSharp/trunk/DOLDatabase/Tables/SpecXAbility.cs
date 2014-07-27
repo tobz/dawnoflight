@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// defines what abilities are available at what speclevels

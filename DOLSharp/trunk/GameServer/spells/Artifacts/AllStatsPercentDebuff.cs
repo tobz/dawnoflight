@@ -17,17 +17,17 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// All stats debuff spell handler
 	/// </summary>
-	[SpellHandlerAttribute("AllStatsPercentDebuff")]
+	[SpellHandler("AllStatsPercentDebuff")]
 	public class AllStatsPercentDebuff : SpellHandler
 	{
         protected int StrDebuff = 0;

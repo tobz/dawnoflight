@@ -18,13 +18,13 @@
  */
 using System.Reflection;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Collections.Generic;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
     public class MarkOfPreyAbility : RR5RealmAbility
 	{

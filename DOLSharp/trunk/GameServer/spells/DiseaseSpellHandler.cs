@@ -17,14 +17,13 @@
  *
  */
 using System;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 
-using DOL.Database;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Disease always debuffs the target by 7.5% movement
@@ -33,7 +32,7 @@ namespace DOL.GS.Spells
 	/// Here they say hit points but spell description states that
 	/// it is strength, what should I use hmm...
 	/// </summary>
-	[SpellHandlerAttribute("Disease")]
+	[SpellHandler("Disease")]
 	public class DiseaseSpellHandler : SpellHandler
 	{
 		/// <summary>

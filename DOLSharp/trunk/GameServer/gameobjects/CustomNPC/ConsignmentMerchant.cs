@@ -20,13 +20,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using DOL.Database;
-using DOL.GS.Housing;
-using DOL.GS.PacketHandler;
-using DOL.GS.PacketHandler.Client.v168;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler.Client.v168;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     public class GameConsignmentMerchant : GameNPC, IGameInventoryObject
     {

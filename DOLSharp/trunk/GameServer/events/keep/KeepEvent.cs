@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.Keeps;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// This class holds all possible keep events.

@@ -17,14 +17,15 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.PacketHandler.Client.v168;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler.Client.v168;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&account",
 		ePrivLevel.Admin,
 		"AdminCommands.Account.Description",

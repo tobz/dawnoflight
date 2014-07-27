@@ -18,9 +18,9 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Player shade effect.

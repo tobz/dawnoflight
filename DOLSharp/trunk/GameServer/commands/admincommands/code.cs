@@ -22,11 +22,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using Microsoft.CSharp;
-using DOL.GS.PacketHandler;
-using DOL.Language;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	[Cmd(
 		"&code",

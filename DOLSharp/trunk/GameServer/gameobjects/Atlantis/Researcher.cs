@@ -20,10 +20,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-using DOL.AI.Brain;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     /// <summary>
     /// Base class for all Atlantis scholar type NPCs.

@@ -20,17 +20,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-using DOL.AI.Brain;
-using DOL.Language;
-using DOL.GS.PacketHandler;
-using DOL.Database;
-using DOL.GS.Housing;
-using DOL.GS.Keeps;
-using DOL.GS.Spells;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Language;
 using log4net;
 using System.Reflection;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Base class for all teleporter type NPCs.

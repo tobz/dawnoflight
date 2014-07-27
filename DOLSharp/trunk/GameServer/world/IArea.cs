@@ -18,11 +18,10 @@
  */
 
 using System;
+using DawnOfLight.Events;
+using DawnOfLight.Language;
 
-using DOL.Events;
-using DOL.Language;
-
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {	
 	/// <summary>
 	/// Interface for areas within game, extend this or AbstractArea if you need to define a new area shape that isn't already defined.

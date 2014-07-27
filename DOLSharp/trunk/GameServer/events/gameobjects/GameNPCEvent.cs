@@ -16,9 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS;
 
-namespace DOL.Events
+using DawnOfLight.GameServer;
+
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// This class holds all possible GameNPC events.
@@ -56,17 +57,17 @@ namespace DOL.Events
 		public static readonly GameNPCEvent TurnToHeading = new GameNPCEvent("GameNPC.TurnToHeading");
 		/// <summary>
 		/// The ArriveAtTarget event is fired whenever the npc arrives at its WalkTo target
-		/// <see cref="DOL.GS.GameNPC.WalkTo(int, int, int, int)"/>
+		/// <see cref="GameNPC.WalkTo(int, int, int, int)"/>
 		/// </summary>
 		public static readonly GameNPCEvent ArriveAtTarget = new GameNPCEvent("GameNPC.ArriveAtTarget");
         /// <summary>
         /// The ArriveAtSpawnPoint event is fired whenever the npc arrives at its spawn point
-        /// <see cref="DOL.GS.GameNPC.WalkTo(int, int, int, int)"/>
+        /// <see cref="GameNPC.WalkTo(int, int, int, int)"/>
         /// </summary>
         public static readonly GameNPCEvent ArriveAtSpawnPoint = new GameNPCEvent("GameNPC.ArriveAtSpawnPoint");
 		/// <summary>
 		/// The CloseToTarget event is fired whenever the npc is close to its WalkTo target
-		/// <see cref="DOL.GS.GameNPC.WalkTo(int, int, int, int)"/>
+		/// <see cref="GameNPC.WalkTo(int, int, int, int)"/>
 		/// </summary>
 		public static readonly GameNPCEvent CloseToTarget = new GameNPCEvent("GameNPC.CloseToTarget");
 		/// <summary>

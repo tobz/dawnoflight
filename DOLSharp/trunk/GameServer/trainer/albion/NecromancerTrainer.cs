@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Trainer
+namespace DawnOfLight.GameServer.Trainer
 {
 	/// <summary>
 	/// Necromancer trainer.

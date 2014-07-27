@@ -17,17 +17,17 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	///
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Reaver, "Reaver", "Fighter")]
+	[CharacterClass((int)eCharacterClass.Reaver, "Reaver", "Fighter")]
 	public class ClassReaver : ClassFighter
 	{
 		private static readonly string[] AutotrainableSkills = new[] { Specs.Slash, Specs.Flexible };

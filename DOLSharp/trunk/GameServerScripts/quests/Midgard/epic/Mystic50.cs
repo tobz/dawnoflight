@@ -42,12 +42,13 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.Quests.Midgard
+namespace DawnOfLight.GameServer.Quests.Midgard
 {
 	public class Mystic_50 : BaseQuest
 	{

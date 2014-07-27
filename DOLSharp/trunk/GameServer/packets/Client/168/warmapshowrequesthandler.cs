@@ -18,10 +18,10 @@
  */
 using System;
 using System.Collections;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
 
-using DOL.GS.Keeps;
-
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0xE0 ^ 168, "Show warmap")]
 	public class WarmapShowRequestHandler : IPacketHandler

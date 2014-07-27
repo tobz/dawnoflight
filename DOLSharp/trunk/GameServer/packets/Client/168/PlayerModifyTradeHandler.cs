@@ -17,12 +17,12 @@
  *
  */
 using System;
-using DOL.Database;
+using DawnOfLight.Database;
 using System.Collections;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP,0x43^168,"Player Accepts Trade")]
+	[PacketHandler(PacketHandlerType.TCP,0x43^168,"Player Accepts Trade")]
 	public class PlayerModifyTradeHandler : IPacketHandler
 	{
 		public void HandlePacket(GameClient client, GSPacketIn packet)

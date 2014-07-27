@@ -17,9 +17,9 @@
  *
  */
 
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	[NPCGuildScript("Siegecrafting Master")]
 	public class SiegecraftingMaster : CraftNPC

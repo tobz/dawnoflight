@@ -17,15 +17,15 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Bard, "Bard", "Naturalist")]
+	[CharacterClass((int)eCharacterClass.Bard, "Bard", "Naturalist")]
 	public class ClassBard : ClassNaturalist
 	{
 		public ClassBard() : base() 

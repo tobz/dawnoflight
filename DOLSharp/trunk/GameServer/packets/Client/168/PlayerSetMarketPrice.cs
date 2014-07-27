@@ -18,11 +18,11 @@
  */
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.GS.Housing;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Housing;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
     [PacketHandler(PacketHandlerType.TCP, 0x1A, "Set market price")]
     public class PlayerSetMarketPriceHandler : IPacketHandler

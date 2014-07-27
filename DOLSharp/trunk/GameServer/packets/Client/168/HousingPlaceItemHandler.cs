@@ -19,14 +19,15 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.Database;
-using DOL.GS.Housing;
-using DOL.GS.ServerProperties;
-using DOL.GS.Utils;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utils;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x0C, "Handles things like placing indoor/outdoor items")]
 	public class HousingPlaceItemHandler : IPacketHandler
@@ -123,7 +124,7 @@ namespace DOL.GS.PacketHandler.Client.v168
 						return;
 					}
 
-					client.Player.TempProperties.setProperty(DeedWeak, new WeakRef(orgitem));
+					client.Player.TempProperties.setProperty(DeedWeak, new WeakReference(orgitem));
 					client.Player.TempProperties.setProperty(TargetHouse, house);
 					client.Player.Out.SendCustomDialog(LanguageMgr.GetTranslation(client.Account.Language, "WARNING: You are about to delete this house and all indoor and outdoor items attached to it!"), HouseRemovalDialog);
 
@@ -143,7 +144,7 @@ namespace DOL.GS.PacketHandler.Client.v168
 						return;
 					}
 
-					client.Player.TempProperties.setProperty(DeedWeak, new WeakRef(orgitem));
+					client.Player.TempProperties.setProperty(DeedWeak, new WeakReference(orgitem));
 					client.Player.TempProperties.setProperty(TargetHouse, house);
 					client.Player.Out.SendMessage("Warning:\n This will remove *all* items from your current house!", eChatType.CT_System, eChatLoc.CL_PopupWindow);
 					client.Player.Out.SendCustomDialog("Are you sure you want to upgrade your House?", HouseUpgradeDialog);
@@ -922,7 +923,7 @@ namespace DOL.GS.PacketHandler.Client.v168
 			if (response != 0x01)
 				return;
 
-			var itemWeak = player.TempProperties.getProperty<WeakReference>(DeedWeak, new WeakRef(null));
+			var itemWeak = player.TempProperties.getProperty<WeakReference>(DeedWeak, new WeakReference(null));
 			player.TempProperties.removeProperty(DeedWeak);
 
 			var item = (InventoryItem)itemWeak.Target;
@@ -965,7 +966,7 @@ namespace DOL.GS.PacketHandler.Client.v168
 			if (response != 0x01)
 				return;
 
-			var itemWeak = player.TempProperties.getProperty<WeakReference>(DeedWeak, new WeakRef(null));
+			var itemWeak = player.TempProperties.getProperty<WeakReference>(DeedWeak, new WeakReference(null));
 			player.TempProperties.removeProperty(DeedWeak);
 
 			var item = (InventoryItem)itemWeak.Target;

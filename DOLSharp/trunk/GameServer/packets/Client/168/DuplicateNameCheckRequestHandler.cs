@@ -17,12 +17,13 @@
  *
  */
 using System;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP,0x63^168,"Checks if a character name already exists")]
+	[PacketHandler(PacketHandlerType.TCP,0x63^168,"Checks if a character name already exists")]
 	public class DupNameCheckRequestHandler : IPacketHandler
 	{
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

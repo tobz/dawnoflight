@@ -17,10 +17,11 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.Events;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// A keepComponent

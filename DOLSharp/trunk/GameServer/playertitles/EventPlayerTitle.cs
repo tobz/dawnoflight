@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.Events;
+using DawnOfLight.Events;
 
-namespace DOL.GS.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles
 {
 	/// <summary>
 	/// Base abstract class for typical player titles based on events.

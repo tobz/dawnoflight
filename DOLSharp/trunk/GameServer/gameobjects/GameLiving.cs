@@ -22,21 +22,23 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Base;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.PropertyCalc;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Styles;
+using DawnOfLight.Language;
 
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.Keeps;
-using DOL.GS.PacketHandler;
-using DOL.GS.PropertyCalc;
-using DOL.GS.SkillHandler;
-using DOL.GS.Spells;
-using DOL.GS.Styles;
-using DOL.Language;
-using DOL.GS.RealmAbilities;
-
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class holds all information that each
@@ -4393,7 +4395,7 @@ namespace DOL.GS
 				}
 			}
 
-			foreach (DOL.GS.Quests.DataQuest q in DataQuestList)
+			foreach (DataQuest q in DataQuestList)
 			{
 				q.Notify(GamePlayerEvent.Dying, this, new DyingEventArgs(killer, playerAttackers));
 			}
@@ -5939,7 +5941,7 @@ namespace DOL.GS
 				}
 				player.TempProperties.setProperty("WHISPERDELAY", CurrentRegion.Time);
 
-				foreach (DOL.GS.Quests.DataQuest q in DataQuestList)
+				foreach (DataQuest q in DataQuestList)
 				{
 					q.Notify(GamePlayerEvent.WhisperReceive, this, new WhisperReceiveEventArgs(player, this, str));
 				}
@@ -6730,7 +6732,7 @@ namespace DOL.GS
 			: base()
 		{
 			m_guildName = string.Empty;
-			m_targetObjectWeakReference = new WeakRef(null);
+			m_targetObjectWeakReference = new WeakReference(null);
 			m_groundTarget = new Point3D(0, 0, 0);
 
 			//Set all combat properties

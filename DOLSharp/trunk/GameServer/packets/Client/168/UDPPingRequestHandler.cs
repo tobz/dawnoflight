@@ -20,12 +20,12 @@ using System;
 using System.Reflection;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	/// <summary>
 	/// Handles the ping packet
 	/// </summary>
-	[PacketHandlerAttribute(PacketHandlerType.UDP, 0xF2,"Sends the UDP Init reply")]
+	[PacketHandler(PacketHandlerType.UDP, 0xF2,"Sends the UDP Init reply")]
 	public class UDPPingRequestHandler : IPacketHandler
 	{
 		/// <summary>

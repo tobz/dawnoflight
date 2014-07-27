@@ -17,13 +17,13 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&gmrelic",
 		ePrivLevel.GM,
 		"GMCommands.GMRelic.Description",

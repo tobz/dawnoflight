@@ -19,11 +19,12 @@
 
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Base;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	[NPCGuildScript("Smith")]
 	public class Blacksmith : GameNPC
@@ -115,11 +116,11 @@ namespace DOL.GS
 				}
 				else
 				{
-					player.TempProperties.setProperty(REPAIR_ITEM_WEAK, new WeakRef(item));
+					player.TempProperties.setProperty(REPAIR_ITEM_WEAK, new WeakReference(item));
 					player.Client.Out.SendCustomDialog(LanguageMgr.GetTranslation(player.Client.Account.Language,
 					                                                              "Scripts.Blacksmith.RepairCostAccept",
 					                                                              Money.GetString(item.RepairCost), item.Name),
-					                                   new CustomDialogResponse(BlacksmithDialogResponse));
+					                                   BlacksmithDialogResponse);
 				}
 			}
 			else
@@ -138,7 +139,7 @@ namespace DOL.GS
 			WeakReference itemWeak =
 				(WeakReference) player.TempProperties.getProperty<object>(
 					REPAIR_ITEM_WEAK,
-					new WeakRef(null)
+					new WeakReference(null)
 				);
 			player.TempProperties.removeProperty(REPAIR_ITEM_WEAK);
 			InventoryItem item = (InventoryItem)itemWeak.Target;

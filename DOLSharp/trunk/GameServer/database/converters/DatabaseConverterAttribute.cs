@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.DatabaseConverters
+namespace DawnOfLight.GameServer.DatabaseConverters
 {
 	/// <summary>
 	/// Attribute that denotes a class as a database converter

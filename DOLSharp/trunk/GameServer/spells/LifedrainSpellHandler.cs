@@ -18,11 +18,11 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-    [SpellHandlerAttribute("Lifedrain")]
+    [SpellHandler("Lifedrain")]
     public class LifedrainSpellHandler : DirectDamageSpellHandler
     {
 		protected override void DealDamage(GameLiving target, double effectiveness)

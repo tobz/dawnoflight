@@ -19,7 +19,7 @@
 using System;
 using System.Text;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     //Dinberg: Added this for instances as we dont want to have to parse XML every time we create an instance,
     //but we need to put zones into the instance.

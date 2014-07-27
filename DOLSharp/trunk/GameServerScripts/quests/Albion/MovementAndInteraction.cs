@@ -27,14 +27,15 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.GS.Behaviour;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS.Quests.Albion {
+namespace DawnOfLight.GameServer.Quests.Albion {
 	public class MovementAndInteraction : BaseQuest
 	{
 		protected static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

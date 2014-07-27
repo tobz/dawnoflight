@@ -20,9 +20,9 @@ using System;
 using System.Reflection;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.UDP,0xBC^168,"Handles UDP init")]
+	[PacketHandler(PacketHandlerType.UDP,0xBC^168,"Handles UDP init")]
 	public class UDPInitRequestHandler : IPacketHandler
 	{
 		/// <summary>

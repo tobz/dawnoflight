@@ -17,11 +17,11 @@
  *
  */
 using System.Collections;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-using DOL.Database;
-using DOL.GS.PacketHandler;
-
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	public class FrontiersPortalStone : GameStaticItem, IKeepItem
 	{

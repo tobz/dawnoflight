@@ -19,10 +19,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Events;
-using DOL.GS.Spells;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// Provides a list of item rewards that the player chose from the 

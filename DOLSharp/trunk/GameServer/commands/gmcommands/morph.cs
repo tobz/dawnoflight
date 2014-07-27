@@ -17,13 +17,13 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.Database;
-using DOL.GS.Spells;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&morph", //command to handle
 		ePrivLevel.GM, //minimum privelege level
 		"Temporarily changes the target player's model", //command description

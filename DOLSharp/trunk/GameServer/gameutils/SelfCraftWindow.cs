@@ -19,12 +19,12 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.GS;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// SelfCraftWindow is the object used to cambine item alone

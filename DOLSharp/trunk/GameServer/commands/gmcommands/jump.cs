@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.GS.Housing;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using System.Collections.Generic;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&jump",
+	[Cmd("&jump",
 		ePrivLevel.GM,
 		"GMCommands.Jump.Description",
 		"GMCommands.Jump.Information",

@@ -19,19 +19,18 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using log4net;
-using DOL.Language;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Handler for Sprint Ability clicks
 	/// </summary>
-	[SkillHandlerAttribute(Abilities.DirtyTricks)]
+	[SkillHandler(Abilities.DirtyTricks)]
 	public class DirtyTricksAbilityHandler : IAbilityActionHandler
 	{
 		/// <summary>
@@ -91,7 +90,7 @@ namespace DOL.GS.SkillHandler
 	}
 }
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// TripleWield
@@ -167,7 +166,7 @@ namespace DOL.GS.Effects
 	}
 }
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// The helper class for the berserk ability

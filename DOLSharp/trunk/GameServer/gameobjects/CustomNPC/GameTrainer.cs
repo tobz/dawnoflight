@@ -20,13 +20,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// The mother class for all class trainers

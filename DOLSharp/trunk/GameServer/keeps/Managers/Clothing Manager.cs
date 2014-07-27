@@ -1,10 +1,9 @@
 using System;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.Events;
 
-using DOL.Database;
-using DOL.Events;
-using DOL.GS;
-
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// This is a convieniance enum for for inventory item hand flag

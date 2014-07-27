@@ -2,13 +2,13 @@
 //
 //
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&kick",
 		new string[] { "&k" },
 		ePrivLevel.GM,

@@ -20,16 +20,16 @@ using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.Spells;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.GS.RealmAbilities;
-using DOL.GS.SkillHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.SkillHandler;
 using log4net;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// A brain that can be controlled

@@ -19,15 +19,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Database;
-using DOL.Events;
-using DOL.Language;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.Events;
 using log4net;
 using System.Reflection;
 using System.Collections;
 
-namespace DOL.GS.Quests.Atlantis
+namespace DawnOfLight.GameServer.Quests.Atlantis
 {
     /// <summary>
     /// Base class for all artifact quests.

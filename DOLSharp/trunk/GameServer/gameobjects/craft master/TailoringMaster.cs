@@ -16,9 +16,10 @@
 * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 *
 */
-using DOL.Language;
 
-namespace DOL.GS
+using DawnOfLight.Language;
+
+namespace DawnOfLight.GameServer
 
 {
 	/// <summary>

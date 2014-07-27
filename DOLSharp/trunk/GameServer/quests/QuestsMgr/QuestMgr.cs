@@ -21,16 +21,17 @@ using System.Collections;
 using System.Collections.Specialized;
 using System.Reflection;
 using System.Text;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Quests.Atlantis;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.GS.Behaviour.Attributes;
-using DOL.GS.Behaviour;
-using DOL.GS.Quests.Atlantis;
+using DawnOfLight.GameServer.Behaviour.Attributes;
+using DawnOfLight.GameServer.Behaviour;
 using System.Collections.Generic;
 
-namespace DOL.GS.Quests
+namespace DawnOfLight.GameServer.Quests
 {
 	/// <summary>
 	/// Declares the quest managed, all questDescriptor instances

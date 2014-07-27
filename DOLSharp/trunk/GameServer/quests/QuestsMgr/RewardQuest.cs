@@ -19,12 +19,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Database;
-using DOL.Events;
-using DOL.Language;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Quests
+namespace DawnOfLight.GameServer.Quests
 {
 	/// <summary>
 	/// A quest type with basic and optional item rewards using

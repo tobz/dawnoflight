@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.Database;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	// This class has to be completed and may be inherited for scripting purpose (like quests)
 	public class KingNPC : GameNPC

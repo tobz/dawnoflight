@@ -18,18 +18,18 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.GS;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.Events;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Increases the target's movement speed.
 	/// </summary>
-	[SpellHandlerAttribute("SpeedEnhancement")]
+	[SpellHandler("SpeedEnhancement")]
 	public class SpeedEnhancementSpellHandler : SpellHandler
 	{
 		/// <summary>

@@ -22,14 +22,14 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-
-using DOL.Database;
-using DOL.GS.RealmAbilities;
-using DOL.GS.Styles;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.Styles;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Skill Attribute

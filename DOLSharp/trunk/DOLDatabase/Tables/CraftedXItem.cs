@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Database;
 
-namespace DOL
+namespace DawnOfLight
 {
 	namespace Database
 	{

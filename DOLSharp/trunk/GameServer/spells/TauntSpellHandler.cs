@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Summary description for TauntSpellHandler.

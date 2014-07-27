@@ -20,11 +20,12 @@
  * Updates: Timx, Daeli
  */
 using System.Text;
-using DOL.Database;
-using DOL.GS.Commands;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Commands;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	[Cmd(
 		"&train",

@@ -17,15 +17,15 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Handler for Sprint Ability clicks
 	/// </summary>
-	[SkillHandlerAttribute(Abilities.Sprint)]
+	[SkillHandler(Abilities.Sprint)]
 	public class SprintAbilityHandler : IAbilityActionHandler
 	{
 		public void Execute(Ability ab, GamePlayer player)

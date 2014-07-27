@@ -18,11 +18,10 @@
  */
 using System;
 using System.Collections;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.RealmAbilities;
 
-using DOL.GS.RealmAbilities;
-
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// The helper class for sprint ability

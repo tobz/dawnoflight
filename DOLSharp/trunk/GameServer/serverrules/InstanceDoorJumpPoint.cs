@@ -17,11 +17,12 @@
  *
  */
 
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.Quests;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.World.Instance;
 
-namespace DOL.GS.ServerRules
+namespace DawnOfLight.GameServer.ServerRules
 {
     /// <summary>
     /// Handles doors inside of instances.

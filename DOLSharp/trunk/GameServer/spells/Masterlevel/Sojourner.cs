@@ -1,15 +1,15 @@
 using System.Reflection;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 using System;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.Events;
 using System.Collections.Specialized;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     //http://www.camelotherald.com/masterlevels/ma.php?ml=Sojourner
     //no shared timer
@@ -23,7 +23,7 @@ namespace DOL.GS.Spells
 
     //no shared timer
     #region Sojourner-4
-    [SpellHandlerAttribute("UnmakeCrystalseed")]
+    [SpellHandler("UnmakeCrystalseed")]
     public class UnmakeCrystalseedSpellHandler : SpellHandler
     {
         /// <summary>
@@ -62,7 +62,7 @@ namespace DOL.GS.Spells
 
     //no shared timer
     #region Sojourner-5
-    [SpellHandlerAttribute("AncientTransmuter")]
+    [SpellHandler("AncientTransmuter")]
     public class AncientTransmuterSpellHandler : SpellHandler
     {
         private GameMerchant merchant;
@@ -118,7 +118,7 @@ namespace DOL.GS.Spells
 
     //no shared timer
     #region Sojourner-6
-    [SpellHandlerAttribute("Port")]
+    [SpellHandler("Port")]
     public class Port : MasterlevelHandling
     {
         // constructor
@@ -150,7 +150,7 @@ namespace DOL.GS.Spells
 
     //no shared timer
 	#region Sojourner-7
-	[SpellHandlerAttribute("EssenceResist")]
+	[SpellHandler("EssenceResist")]
 	public class EssenceResistHandler : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -161,7 +161,7 @@ namespace DOL.GS.Spells
 
     //no shared timer
     #region Sojourner-8
-    [SpellHandlerAttribute("Zephyr")]
+    [SpellHandler("Zephyr")]
     public class FZSpellHandler : MasterlevelHandling
     {
         protected RegionTimer m_expireTimer;
@@ -337,7 +337,7 @@ namespace DOL.GS.Spells
 
     //no shared timer
     #region Sojourner-9
-    [SpellHandlerAttribute("Phaseshift")]
+    [SpellHandler("Phaseshift")]
     public class PhaseshiftHandler : MasterlevelHandling
     {
         private int endurance;
@@ -406,7 +406,7 @@ namespace DOL.GS.Spells
 
     //no shared timer
     #region Sojourner-10
-    [SpellHandlerAttribute("Groupport")]
+    [SpellHandler("Groupport")]
     public class Groupport : MasterlevelHandling
     {
         public Groupport(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }

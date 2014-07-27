@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.Events;
-using DOL.GS;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	public abstract class BDPetBrain : ControlledNpcBrain
 	{

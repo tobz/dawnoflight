@@ -17,10 +17,10 @@
  *
  */
 using System.Text;
-using DOL.GS.ServerProperties;
-using DOL.Language;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// capsulate money operations

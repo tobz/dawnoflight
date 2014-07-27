@@ -20,13 +20,13 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.AI.Brain;
-using DOL.GS.Effects;
-using DOL.GS.PlayerTitles;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PlayerTitles;
 using log4net;
 using System.Collections.Generic;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	[PacketLib(181, GameClient.eClientVersion.Version181)]
 	public class PacketLib181 : PacketLib180

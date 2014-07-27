@@ -18,9 +18,11 @@
  */
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.Events;
-namespace DOL.GS
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+
+namespace DawnOfLight.GameServer
 {
     public class ChampSpecMgr
     {

@@ -18,9 +18,9 @@
  */
 using System;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP,0x35^168,"Handles sending the region overview")]
+	[PacketHandler(PacketHandlerType.TCP,0x35^168,"Handles sending the region overview")]
 	public class RegionListRequestHandler : IPacketHandler
 	{
 		public void HandlePacket(GameClient client, GSPacketIn packet)

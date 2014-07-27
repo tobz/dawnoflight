@@ -16,11 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&Noqueue", //command to handle
+	[Cmd("&Noqueue", //command to handle
 	ePrivLevel.Player, //minimum privelege level
 	"Allows you to disable/enable queuing", "/Noqueue")] //usage
 	public class NoqueueCommandHandler : AbstractCommandHandler, ICommandHandler

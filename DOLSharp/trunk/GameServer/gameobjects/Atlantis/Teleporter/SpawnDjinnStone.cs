@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     /// <summary>
     /// Djinn stone (spawns ancient bound djinn).

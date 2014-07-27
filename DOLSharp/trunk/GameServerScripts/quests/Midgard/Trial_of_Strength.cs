@@ -28,16 +28,17 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.GS.Quests;
-using DOL.GS.Behaviour;
-using DOL.GS.Behaviour.Attributes;
-using DOL.AI.Brain;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Behaviour.Attributes;
 
-namespace DOL.GS.Quests.Midgard
+namespace DawnOfLight.GameServer.Quests.Midgard
 {
 
 	/* The first thing we do, is to declare the class we create
@@ -118,7 +119,7 @@ namespace DOL.GS.Quests.Midgard
 			{
 				if (!WorldMgr.GetRegion(151).IsDisabled)
 				{
-					ToroldSterkkriger = new DOL.GS.GameNPC();
+					ToroldSterkkriger = new GameNPC();
 					ToroldSterkkriger.Model = 522;
 					ToroldSterkkriger.Name = "Torold Sterkkriger";
 					if (log.IsWarnEnabled)
@@ -163,7 +164,7 @@ namespace DOL.GS.Quests.Midgard
 			{
 				if (!WorldMgr.GetRegion(151).IsDisabled)
 				{
-					JorundBruttstein = new DOL.GS.GameNPC();
+					JorundBruttstein = new GameNPC();
 					JorundBruttstein.Model = 513;
 					JorundBruttstein.Name = "Jorund Bruttstein";
 					if (log.IsWarnEnabled)
@@ -296,102 +297,102 @@ namespace DOL.GS.Quests.Midgard
 			a = builder.CreateBehaviour(ToroldSterkkriger, -1);
 			a.AddTrigger(eTriggerType.Interact, null, ToroldSterkkriger);
 			a.AddRequirement(eRequirementType.QuestGivable, typeof(trialofstrength), ToroldSterkkriger);
-			a.AddRequirement(eRequirementType.QuestPending, typeof(DOL.GS.Quests.Midgard.trialofstrength), null, (eComparator)5);
+			a.AddRequirement(eRequirementType.QuestPending, typeof(trialofstrength), null, (eComparator)5);
 			a.AddRequirement(eRequirementType.Class, 35, false);
 			a.AddAction(eActionType.Talk, "Hail. I am Torold, and I shall be your trainer in this wild land. King Goran Stonefist and his brother Stonelock have charged me with training all young Vikings to prepare them to join the ranks of King Goran's army to aid in the exploration of Aegir. Aegir is a wild, untamed place, and it's made even more dangerous for a your Viking like you by the presence of [Morvaltar].", ToroldSterkkriger);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(ToroldSterkkriger, -1);
 			a.AddTrigger(eTriggerType.Interact, null, ToroldSterkkriger);
-			a.AddRequirement(eRequirementType.QuestGivable, typeof(DOL.GS.Quests.Midgard.trialofstrength), ToroldSterkkriger);
-			a.AddRequirement(eRequirementType.QuestPending, typeof(DOL.GS.Quests.Midgard.trialofstrength), null, (eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable, typeof(trialofstrength), ToroldSterkkriger);
+			a.AddRequirement(eRequirementType.QuestPending, typeof(trialofstrength), null, (eComparator)5);
 			a.AddRequirement(eRequirementType.Class, 38, false);
 			a.AddAction(eActionType.Talk, "Hail. I am Torold, and I shall be your trainer in this wild land. King Goran Stonefist and his brother Stonelock have charged me with training all young Rogue to prepare them to join the ranks of King Goran's army to aid in the exploration of Aegir. Aegir is a wild, untamed place, and it's made even more dangerous for a your Rogue like you by the presence of [Morvaltar].", ToroldSterkkriger);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(ToroldSterkkriger, -1);
 			a.AddTrigger(eTriggerType.Whisper, "Morvaltar", ToroldSterkkriger);
-			a.AddRequirement(eRequirementType.QuestGivable, typeof(DOL.GS.Quests.Midgard.trialofstrength), ToroldSterkkriger);
-			a.AddRequirement(eRequirementType.QuestPending, typeof(DOL.GS.Quests.Midgard.trialofstrength), null, (eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable, typeof(trialofstrength), ToroldSterkkriger);
+			a.AddRequirement(eRequirementType.QuestPending, typeof(trialofstrength), null, (eComparator)5);
 			a.AddAction(eActionType.Talk, "As you may know, the Morvaltar are your wild cousins. We of Midgard do not fear Valkyn like you, for as a group you have more than proven your loyalty to King Goran. Many Valkyn have also proven that they are strong, intelligent, and brave. These are [the qualities] that all Vikings must possess before they can choose where their destiny lies.", ToroldSterkkriger);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(ToroldSterkkriger, -1);
 			a.AddTrigger(eTriggerType.Whisper, "the qualities", ToroldSterkkriger);
-			a.AddRequirement(eRequirementType.QuestGivable, typeof(DOL.GS.Quests.Midgard.trialofstrength), ToroldSterkkriger);
-			a.AddRequirement(eRequirementType.QuestPending, typeof(DOL.GS.Quests.Midgard.trialofstrength), null, (eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable, typeof(trialofstrength), ToroldSterkkriger);
+			a.AddRequirement(eRequirementType.QuestPending, typeof(trialofstrength), null, (eComparator)5);
 			a.AddRequirement(eRequirementType.Class, 35, false);
 			a.AddAction(eActionType.Talk, "Now, young one, prepare yourself. You have three trials to face before I can allow you to make your destiny. These trials are designed to separate the true Vikings from the everyday Valkyn. So, prepare yourself now, for you trial is waiting for you. It is a test to [prove your strength]. Only the strongest will survive in this land.", ToroldSterkkriger);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(ToroldSterkkriger, -1);
 			a.AddTrigger(eTriggerType.Whisper, "the qualities", ToroldSterkkriger);
-			a.AddRequirement(eRequirementType.QuestGivable, typeof(DOL.GS.Quests.Midgard.trialofstrength), ToroldSterkkriger);
-			a.AddRequirement(eRequirementType.QuestPending, typeof(DOL.GS.Quests.Midgard.trialofstrength), null, (eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable, typeof(trialofstrength), ToroldSterkkriger);
+			a.AddRequirement(eRequirementType.QuestPending, typeof(trialofstrength), null, (eComparator)5);
 			a.AddRequirement(eRequirementType.Class, 38, false);
 			a.AddAction(eActionType.Talk, "Now, young one, prepare yourself. You have three trials to face before I can allow you to make your destiny. These trials are designed to separate the true Rogues from the everyday Valkyn. So, prepare yourself now, for you trial is waiting for you. It is a test to [prove your strength]. Only the strongest will survive in this land.", ToroldSterkkriger);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(ToroldSterkkriger, -1);
 			a.AddTrigger(eTriggerType.Whisper, "prove your strength", ToroldSterkkriger);
-			a.AddRequirement(eRequirementType.QuestGivable, typeof(DOL.GS.Quests.Midgard.trialofstrength), ToroldSterkkriger);
-			a.AddRequirement(eRequirementType.QuestPending, typeof(DOL.GS.Quests.Midgard.trialofstrength), null, (eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable, typeof(trialofstrength), ToroldSterkkriger);
+			a.AddRequirement(eRequirementType.QuestPending, typeof(trialofstrength), null, (eComparator)5);
 			a.AddAction(eActionType.OfferQuest, typeof(trialofstrength), "Will you prove you have the strength to survive in the land of Aegir?");
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(ToroldSterkkriger, -1);
-			a.AddTrigger(eTriggerType.DeclineQuest, null, typeof(DOL.GS.Quests.Midgard.trialofstrength));
+			a.AddTrigger(eTriggerType.DeclineQuest, null, typeof(trialofstrength));
 			a.AddAction(eActionType.Talk, "No problem. See you", ToroldSterkkriger);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(ToroldSterkkriger, -1);
-			a.AddTrigger(eTriggerType.AcceptQuest, null, typeof(DOL.GS.Quests.Midgard.trialofstrength));
-			a.AddAction(eActionType.GiveQuest, typeof(DOL.GS.Quests.Midgard.trialofstrength), ToroldSterkkriger);
+			a.AddTrigger(eTriggerType.AcceptQuest, null, typeof(trialofstrength));
+			a.AddAction(eActionType.GiveQuest, typeof(trialofstrength), ToroldSterkkriger);
 			a.AddAction(eActionType.Talk, "Seek out Jorund Bruttstein in Aegirhamn. Tell him your name when he asks.", ToroldSterkkriger);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(JorundBruttstein, -1);
 			a.AddTrigger(eTriggerType.Interact, null, JorundBruttstein);
-			a.AddRequirement(eRequirementType.QuestStep, typeof(DOL.GS.Quests.Midgard.trialofstrength), 1, (eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep, typeof(trialofstrength), 1, (eComparator)3);
 			a.AddRequirement(eRequirementType.Class, 35, false);
 			a.AddAction(eActionType.Talk, "Lo, I see a young Viking before me. What is your name? Speak up!", JorundBruttstein);
 			a.AddAction(eActionType.Talk, "You are here to prove that you have the strength in you to endure in this land. The trial is simple in nature, but unless you are strong, may prove difficult to execute. You must venture out and face [one of the creatures] that roam this land.", JorundBruttstein);
-			a.AddAction(eActionType.IncQuestStep, typeof(DOL.GS.Quests.Midgard.trialofstrength), null);
+			a.AddAction(eActionType.IncQuestStep, typeof(trialofstrength), null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(JorundBruttstein, -1);
 			a.AddTrigger(eTriggerType.Interact, null, JorundBruttstein);
-			a.AddRequirement(eRequirementType.QuestStep, typeof(DOL.GS.Quests.Midgard.trialofstrength), 1, (eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep, typeof(trialofstrength), 1, (eComparator)3);
 			a.AddRequirement(eRequirementType.Class, 38, false);
 			a.AddAction(eActionType.Talk, "Lo, I see a young Rogue before me. What is your name? Speak up!", JorundBruttstein);
 			a.AddAction(eActionType.Talk, "You are here to prove that you have the strength in you to endure in this land. The trial is simple in nature, but unless you are strong, may prove difficult to execute. You must venture out and face [one of the creatures] that roam this land.", JorundBruttstein);
-			a.AddAction(eActionType.IncQuestStep, typeof(DOL.GS.Quests.Midgard.trialofstrength), null);
+			a.AddAction(eActionType.IncQuestStep, typeof(trialofstrength), null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(JorundBruttstein, -1);
 			a.AddTrigger(eTriggerType.Whisper, "one of the creatures", JorundBruttstein);
-			a.AddRequirement(eRequirementType.QuestStep, typeof(DOL.GS.Quests.Midgard.trialofstrength), 2, (eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep, typeof(trialofstrength), 2, (eComparator)3);
 			a.AddAction(eActionType.Talk, "You must seek out a marine fungus. They may be found in the waters south and southwest of here. Find one and defeat it. Once you have, obtain proof that you have accomplished this test. Return to me here.", JorundBruttstein);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(ToroldSterkkriger, -1);
 			a.AddTrigger(eTriggerType.EnemyKilled, "marine fungus", null);
-			a.AddRequirement(eRequirementType.QuestStep, typeof(DOL.GS.Quests.Midgard.trialofstrength), 2, (eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep, typeof(trialofstrength), 2, (eComparator)3);
 			a.AddAction(eActionType.GiveItem, marinefungusroot, null);
-			a.AddAction(eActionType.IncQuestStep, typeof(DOL.GS.Quests.Midgard.trialofstrength), null);
+			a.AddAction(eActionType.IncQuestStep, typeof(trialofstrength), null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(JorundBruttstein, -1);
 			a.AddTrigger(eTriggerType.Interact, null, JorundBruttstein);
-			a.AddRequirement(eRequirementType.QuestStep, typeof(DOL.GS.Quests.Midgard.trialofstrength), 3, (eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep, typeof(trialofstrength), 3, (eComparator)3);
 			a.AddAction(eActionType.Talk, "So, you managed to survive, but anyone can run away. Show me the proof you defeated the marine fungus.", JorundBruttstein);
-			a.AddAction(eActionType.IncQuestStep, typeof(DOL.GS.Quests.Midgard.trialofstrength), null);
+			a.AddAction(eActionType.IncQuestStep, typeof(trialofstrength), null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(JorundBruttstein, -1);
 			a.AddTrigger(eTriggerType.GiveItem, JorundBruttstein, marinefungusroot);
-			a.AddRequirement(eRequirementType.QuestStep, typeof(DOL.GS.Quests.Midgard.trialofstrength), 4, (eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep, typeof(trialofstrength), 4, (eComparator)3);
 			a.AddRequirement(eRequirementType.Class, 35, false);
 			a.AddAction(eActionType.Talk, "Well done. I do not like to be so rough with young Vikings, but I must be. I do not want to see anyone die because I failed to do my job. But you have proven that you have the potential for great strength. I shall let your trainer know of your success.", JorundBruttstein);
 			a.AddAction(eActionType.GiveXP, 20, null);
 			a.AddAction(eActionType.GiveGold, 230, null);
-			a.AddAction(eActionType.FinishQuest, typeof(DOL.GS.Quests.Midgard.trialofstrength), null);
+			a.AddAction(eActionType.FinishQuest, typeof(trialofstrength), null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(JorundBruttstein, -1);
 			a.AddTrigger(eTriggerType.GiveItem, JorundBruttstein, marinefungusroot);
-			a.AddRequirement(eRequirementType.QuestStep, typeof(DOL.GS.Quests.Midgard.trialofstrength), 4, (eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep, typeof(trialofstrength), 4, (eComparator)3);
 			a.AddRequirement(eRequirementType.Class, 38, false);
 			a.AddAction(eActionType.Talk, "\"Well done. I do not like to be so rough with young Rogues, but I must be. I do not want to see anyone die because I failed to do my job. But you have proven that you have the potential for great strength. I shall let your trainer know of your success.", JorundBruttstein);
 			a.AddAction(eActionType.GiveXP, 20, null);
 			a.AddAction(eActionType.GiveGold, 230, null);
-			a.AddAction(eActionType.FinishQuest, typeof(DOL.GS.Quests.Midgard.trialofstrength), null);
+			a.AddAction(eActionType.FinishQuest, typeof(trialofstrength), null);
 			AddBehaviour(a);
 
 			#endregion

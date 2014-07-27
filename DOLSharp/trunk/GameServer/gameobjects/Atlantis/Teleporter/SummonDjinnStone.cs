@@ -20,7 +20,7 @@ using System;
 using log4net;
 using System.Reflection;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Djinn stone (summons ancient bound djinn).

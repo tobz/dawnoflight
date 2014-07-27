@@ -20,10 +20,10 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
-using DOL.Database;
+using DawnOfLight.Database;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Description rsume de GameLivingInventory.

@@ -17,13 +17,16 @@
 *
 */
 
-namespace DOL.GS.Spells
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+
+namespace DawnOfLight.GameServer.Spells
 {
     using System;
     using Database;
     using Events;
-    using DOL.GS.PacketHandler;
-    using DOL.GS.Utils;
+    using DawnOfLight.GameServer.PacketHandler;
+    using DawnOfLight.GameServer.Utils;
     using System.Collections.Generic;
 
     [SpellHandler("BeltOfSun")]

@@ -17,17 +17,17 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS;
-using DOL.GS.Effects;
-using DOL.Language;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
     /// <summary>
     /// Handler for Sprint Ability clicks
     /// </summary>
-    [SkillHandlerAttribute(Abilities.BolsteringRoar)]
+    [SkillHandler(Abilities.BolsteringRoar)]
     public class BolsteringRoarAbilityHandler : SpellCastingAbilityHandler
     {
 		public override long Preconditions

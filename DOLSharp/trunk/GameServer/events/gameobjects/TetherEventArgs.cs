@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
     /// <summary>
     /// Event to signal time remaining until pet is lost.

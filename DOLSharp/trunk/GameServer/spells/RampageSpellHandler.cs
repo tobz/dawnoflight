@@ -17,12 +17,12 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-    [SpellHandlerAttribute("Rampage")]
+    [SpellHandler("Rampage")]
     public class RampageBuffHandler : SpellHandler
     {
         public RampageBuffHandler(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }

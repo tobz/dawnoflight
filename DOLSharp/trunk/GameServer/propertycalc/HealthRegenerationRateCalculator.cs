@@ -17,10 +17,9 @@
  *
  */
 using System;
+using DawnOfLight.GameServer.Keeps;
 
-using DOL.GS.Keeps;
-
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// The health regen rate calculator

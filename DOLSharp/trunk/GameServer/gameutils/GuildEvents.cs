@@ -20,12 +20,12 @@
 using System;
 using System.Collections;
 using System.Threading;
-using DOL.Events;
-using DOL.GS;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 using log4net;
-using DOL.GS.PacketHandler;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class GuildPlayerEvent : GamePlayerEvent
 	{

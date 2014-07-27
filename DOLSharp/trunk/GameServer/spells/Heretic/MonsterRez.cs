@@ -19,18 +19,18 @@
 
 using System;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.Events;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.AI.Brain;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Summary description for ReanimateCorpe.
 	/// </summary>
-	[SpellHandlerAttribute("ReanimateCorpse")]
+	[SpellHandler("ReanimateCorpse")]
 	public class MonsterRez : ResurrectSpellHandler
 	{
 		// Constructor
@@ -60,7 +60,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Summary description for ReanimateCorpe.
 	/// </summary>
-	[SpellHandlerAttribute("SummonMonster")]
+	[SpellHandler("SummonMonster")]
 	public class SummonMonster : SpellHandler
 	{
 		private ushort m_model = 0;
@@ -176,7 +176,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Summary description for MonsterDoT.
 	/// </summary>
-	[SpellHandlerAttribute("MonsterDoT")]
+	[SpellHandler("MonsterDoT")]
 	public class MonsterDoT : DirectDamageSpellHandler
 	{
 		public override IList SelectTargets(GameObject castTarget)
@@ -213,7 +213,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Summary description for MonsterDoT.
 	/// </summary>
-	[SpellHandlerAttribute("MonsterDisease")]
+	[SpellHandler("MonsterDisease")]
 	public class MonsterDisease : DiseaseSpellHandler
 	{
 		public override IList SelectTargets(GameObject castTarget)

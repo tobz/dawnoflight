@@ -17,10 +17,11 @@
  *
  */
 using System.Reflection;
-using DOL.Network;
+using DawnOfLight.Base;
+using DawnOfLight.Base.Network;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Game server specific packet

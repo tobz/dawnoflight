@@ -17,15 +17,15 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Bonedancer, "Bonedancer", "Mystic")]
+	[CharacterClass((int)eCharacterClass.Bonedancer, "Bonedancer", "Mystic")]
 	public class ClassBonedancer : CharacterClassBoneDancer
 	{
 		public ClassBonedancer() : base()

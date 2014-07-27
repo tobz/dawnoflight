@@ -17,19 +17,19 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.Events;
-using DOL.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.Events;
+using DawnOfLight.Database;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Increases the target's movement speed.
 	/// </summary>
-	[SpellHandlerAttribute("SpeedOfTheRealm")]
+	[SpellHandler("SpeedOfTheRealm")]
 	public class SpeedOfTheRealmHandler : SpeedEnhancementSpellHandler
 	{
 		private const ushort SECONDEFFECT = 2086;

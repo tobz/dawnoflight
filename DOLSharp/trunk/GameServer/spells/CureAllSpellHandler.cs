@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	///
 	/// </summary>
-	[SpellHandlerAttribute("CureAll")]
+	[SpellHandler("CureAll")]
 	public class CureAllSpellHandler : RemoveSpellEffectHandler
 	{
 		// constructor

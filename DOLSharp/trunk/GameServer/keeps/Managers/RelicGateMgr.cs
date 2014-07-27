@@ -17,7 +17,9 @@
  *
  */
 
-namespace DOL.GS.Keeps
+using DawnOfLight.GameServer;
+
+namespace DawnOfLight.GameServer.Keeps
 {
 	public class RelicGateMgr
 	{

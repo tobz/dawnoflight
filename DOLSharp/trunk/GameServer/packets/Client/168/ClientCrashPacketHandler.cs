@@ -17,13 +17,13 @@
  *
  */
 using System.Reflection;
-using DOL;
-using DOL.Network;
+using DawnOfLight.Base.Network;
+using DawnOfLight;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP, 0x9F ^ 168, "Handles client crash packets")]
+	[PacketHandler(PacketHandlerType.TCP, 0x9F ^ 168, "Handles client crash packets")]
 	public class ClientCrashPacketHandler : IPacketHandler
 	{
 		/// <summary>

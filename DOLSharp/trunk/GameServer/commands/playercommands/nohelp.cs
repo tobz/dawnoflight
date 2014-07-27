@@ -16,12 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS.PacketHandler;
-using DOL.Language;
 
-namespace DOL.GS.Commands
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&nohelp",
 		ePrivLevel.Player,
 		"Toggle nohelp on or off, to stop receiving help from  your realm", "/nohelp>")]

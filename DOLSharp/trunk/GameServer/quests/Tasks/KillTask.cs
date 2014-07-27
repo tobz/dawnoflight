@@ -19,11 +19,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Quests
+namespace DawnOfLight.GameServer.Quests
 {
 	/// <summary>
 	/// Declares a Kill Task

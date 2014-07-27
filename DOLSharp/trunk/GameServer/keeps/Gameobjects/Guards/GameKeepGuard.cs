@@ -18,17 +18,18 @@
  */
 using System;
 using System.Collections;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
 using System.Reflection;
 using log4net;
 
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// Keep guard is gamemob with just different brain and load from other DB table
@@ -708,7 +709,7 @@ namespace DOL.GS.Keeps
 				default:
 					{
 						// Subjective
-						if (Gender == GS.eGender.Male)
+						if (Gender == eGender.Male)
                             s = LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "GameKeepGuard.GetPronoun.He");
                         else s = LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "GameKeepGuard.GetPronoun.She");
 						if (!firstLetterUppercase)

@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
-using DOL.GS.Effects;
-using DOL.GS.ServerProperties;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Summon a fnf animist pet.

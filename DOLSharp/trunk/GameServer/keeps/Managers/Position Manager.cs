@@ -1,13 +1,12 @@
 using System;
 using System.Collections;
-
-using DOL.Database;
-using DOL.GS;
-using DOL.GS.Movement;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Movement;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Collections.Generic;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// Class to manage the guards Positions

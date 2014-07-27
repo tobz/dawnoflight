@@ -19,11 +19,12 @@
 
 // Original code from Dinberg
 
-using DOL.GS;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.AI;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
-	public class NoveltyPetBrain : DOL.AI.ABrain, IControlledBrain
+	public class NoveltyPetBrain : ABrain, IControlledBrain
 	{
 		public const string HAS_PET = "HasNoveltyPet";
 

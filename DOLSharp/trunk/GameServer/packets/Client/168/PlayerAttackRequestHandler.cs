@@ -17,7 +17,7 @@
  *
  */
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerAttackRequest, ClientStatus.PlayerInGame)]
 	public class PlayerAttackRequestHandler : IPacketHandler

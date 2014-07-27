@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Events;
-using DOL.GS.RealmAbilities;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Abstract CC spell handler
@@ -201,7 +201,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Mezz
 	/// </summary>
-	[SpellHandlerAttribute("Mesmerize")]
+	[SpellHandler("Mesmerize")]
 	public class MesmerizeSpellHandler : AbstractCCSpellHandler
 	{
 		public override void OnEffectPulse(GameSpellEffect effect)
@@ -371,7 +371,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Stun
 	/// </summary>
-	[SpellHandlerAttribute("Stun")]
+	[SpellHandler("Stun")]
 	public class StunSpellHandler : AbstractCCSpellHandler
 	{
 		protected override GameSpellEffect CreateSpellEffect(GameLiving target, double effectiveness)

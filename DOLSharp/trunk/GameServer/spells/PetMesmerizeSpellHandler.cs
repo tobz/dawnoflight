@@ -17,18 +17,18 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Events;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.Events;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     /// <summary>
     /// PetMezz 
     /// </summary>
-    [SpellHandlerAttribute("PetMesmerize")]
+    [SpellHandler("PetMesmerize")]
     public class PetMesmerizeSpellHandler : MesmerizeSpellHandler
     {
         public PetMesmerizeSpellHandler(GameLiving caster, Spell spell, SpellLine spellLine) : base(caster, spell, spellLine) { }

@@ -1,11 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
 
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
-
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 
 	public class ChargeEffect : StaticEffect, IGameEffect

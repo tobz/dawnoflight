@@ -18,9 +18,9 @@
  */
 
 using System.Collections;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// GameKeep is the keep in New Frontiere

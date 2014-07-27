@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// Holds the arguments for UseSlot event of GamePlayer.

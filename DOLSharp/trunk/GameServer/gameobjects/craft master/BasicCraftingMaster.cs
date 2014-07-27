@@ -17,9 +17,9 @@
 *
 */
 
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	[NPCGuildScript("Basic Crafters Master")]
 	public class BasicCraftingMaster: CraftNPC

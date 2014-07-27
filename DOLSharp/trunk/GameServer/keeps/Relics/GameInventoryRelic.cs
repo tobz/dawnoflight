@@ -20,13 +20,13 @@ using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.Language;
-using DOL.GS.PacketHandler;
-using DOL.Database;
-using DOL.GS.Spells;
+using DawnOfLight.Database;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class represents a relic in a players inventory

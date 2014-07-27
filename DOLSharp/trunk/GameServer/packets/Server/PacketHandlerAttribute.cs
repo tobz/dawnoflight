@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	/// <summary>
 	/// Type of packet handler

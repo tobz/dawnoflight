@@ -18,11 +18,11 @@
  */
 using System;
 using System.Linq;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.Styles;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Styles;
 
-namespace DOL.GS.Scripts
+namespace DawnOfLight.GameServer.Scripts
 {
     public class DesmonaHarpy : AtlantisVisualModelNPC
     {

@@ -18,17 +18,18 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.GS.SkillHandler;
-using DOL.Language;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[SpellHandlerAttribute("Chamber")]
+	[SpellHandler("Chamber")]
 	public class ChamberSpellHandler : SpellHandler
 	{
 		private Spell m_primaryspell = null;

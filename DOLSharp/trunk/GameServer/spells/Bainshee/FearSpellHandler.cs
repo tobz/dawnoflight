@@ -1,15 +1,15 @@
 using System;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.GS.SkillHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.SkillHandler;
 using System.Collections;
 using log4net;
 using System.Reflection;
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("Fear")]
+	[SpellHandler("Fear")]
 	public class FearSpellHandler : SpellHandler 
 	{
 		//VaNaTiC->

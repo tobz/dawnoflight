@@ -17,16 +17,16 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Fighter, "Fighter", "Fighter")]
-	public class ClassFighter : DOL.GS.CharacterClassBase
+	[CharacterClass((int)eCharacterClass.Fighter, "Fighter", "Fighter")]
+	public class ClassFighter : CharacterClassBase
 	{
 		public ClassFighter() : base() 
 		{

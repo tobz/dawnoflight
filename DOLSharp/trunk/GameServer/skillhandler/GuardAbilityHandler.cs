@@ -17,12 +17,13 @@
  *
  */
 using System.Reflection;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.GS;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 using log4net;
-using DOL.Language;
-namespace DOL.GS.SkillHandler
+
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Handler for Guard ability clicks

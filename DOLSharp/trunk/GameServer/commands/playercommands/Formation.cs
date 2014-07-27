@@ -16,11 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS.PacketHandler;
 
-namespace DOL.GS.Commands
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
+
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&formation",
 		ePrivLevel.Player,
 		"Change the formation of your pets!", "/formation <type>")]
@@ -57,7 +59,7 @@ namespace DOL.GS.Commands
 				return;
 			}
 			bool haveminion = false;
-			foreach (AI.Brain.IControlledBrain icb in player.ControlledBrain.Body.ControlledNpcList)
+			foreach (IControlledBrain icb in player.ControlledBrain.Body.ControlledNpcList)
 			{
 				if (icb != null)
 				{

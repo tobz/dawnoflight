@@ -20,10 +20,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.GS.PacketHandler;
-using DOL.Events;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 
     public class SoldiersCitadelEffect : TimedEffect

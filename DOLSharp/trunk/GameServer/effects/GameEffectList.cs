@@ -22,13 +22,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using DOL.Database;
-using DOL.AI.Brain;
-using DOL.GS.Spells;
-
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Spells;
 using log4net;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Holds &amp; manages multiple effects on livings

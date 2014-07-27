@@ -17,15 +17,15 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
     /// <summary>
     /// Handler for Rampage Shout
     /// </summary>
-    [SkillHandlerAttribute(Abilities.Rampage)]
+    [SkillHandler(Abilities.Rampage)]
     public class RampageAbilityHandler : SpellCastingAbilityHandler
     {
 		public override long Preconditions

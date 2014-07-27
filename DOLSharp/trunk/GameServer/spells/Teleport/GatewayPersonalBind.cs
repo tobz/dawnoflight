@@ -17,17 +17,18 @@
  *
  */
 using System.Collections.Generic;
-using DOL.GS.Effects;
-using DOL.Database;
-using DOL.Language;
-using DOL.GS.PacketHandler;
-namespace DOL.GS.Spells
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// The spell used for the Personal Bind Recall Stone.
 	/// </summary>
 	/// <author>Aredhel</author>
-	[SpellHandlerAttribute("GatewayPersonalBind")]
+	[SpellHandler("GatewayPersonalBind")]
 	public class GatewayPersonalBind : SpellHandler
 	{
 		public GatewayPersonalBind(GameLiving caster, Spell spell, SpellLine spellLine)
@@ -57,19 +58,19 @@ namespace DOL.GS.Spells
 			if (player.CurrentRegion.IsRvR || player.CurrentRegion.IsInstance)
 			{
 				// Actual live message is: You can't use that item!
-				player.Out.SendMessage("You can't use that here!", DOL.GS.PacketHandler.eChatType.CT_System, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You can't use that here!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
 				return false;
 			}
 
 			if (player.IsMoving)
 			{
-				player.Out.SendMessage("You must be standing still to use this item!", DOL.GS.PacketHandler.eChatType.CT_System, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You must be standing still to use this item!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
 				return false;
 			}
 
 			if (player.InCombat || GameRelic.IsPlayerCarryingRelic(player))
 			{
-				player.Out.SendMessage("You have been in combat recently and cannot use this item!", DOL.GS.PacketHandler.eChatType.CT_System, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You have been in combat recently and cannot use this item!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
 				return false;
 			}
 

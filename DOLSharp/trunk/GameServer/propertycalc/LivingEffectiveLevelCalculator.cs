@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.AI;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.AI;
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// The Living Effective Level calculator

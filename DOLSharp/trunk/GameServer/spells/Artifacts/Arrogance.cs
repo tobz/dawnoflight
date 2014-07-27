@@ -17,16 +17,16 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells.Atlantis
+namespace DawnOfLight.GameServer.Spells.Atlantis
 {
     /// <summary>
     /// Arrogance spell handler
     /// </summary>
-    [SpellHandlerAttribute("Arrogance")]
+    [SpellHandler("Arrogance")]
     public class Arrogance : SpellHandler
     {
     	GamePlayer playertarget = null;

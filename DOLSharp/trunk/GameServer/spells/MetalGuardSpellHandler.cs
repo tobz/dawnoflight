@@ -16,16 +16,17 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS;
-using DOL.GS.PacketHandler;
+
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using System;
 using System.Reflection;
 using System.Collections;
-using DOL.AI.Brain;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-    [SpellHandlerAttribute("MetalGuard")]
+    [SpellHandler("MetalGuard")]
     public class MetalGuardSpellHandler : ArmorAbsorptionBuff
     {
         public override System.Collections.IList SelectTargets(GameObject castTarget)

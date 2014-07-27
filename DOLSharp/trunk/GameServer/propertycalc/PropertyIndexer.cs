@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// helper class for memory efficient usage of property fields

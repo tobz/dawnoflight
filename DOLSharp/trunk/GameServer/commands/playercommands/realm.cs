@@ -16,16 +16,18 @@
 * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 *
 */
-using DOL.GS.PacketHandler;
+
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.ServerRules;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.Language;
-using DOL.GS.Keeps;
-using DOL.GS.ServerRules;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 	   "&realm",
 	   ePrivLevel.Player,
 		 "Displays the current realm status.", "/realm")]

@@ -26,11 +26,13 @@
  * You will receive some xp, copper and the armor of your choice.
  */
 using System;
-using DOL.Database;
-using DOL.Events;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Quests.Albion
+namespace DawnOfLight.GameServer.Quests.Albion
 {
 	public class ToReachTheBreach : RewardQuest
 	{

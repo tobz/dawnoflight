@@ -17,15 +17,15 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Eldritch, "Eldritch", "Magician")]
+	[CharacterClass((int)eCharacterClass.Eldritch, "Eldritch", "Magician")]
 	public class ClassEldritch : ClassMagician
 	{
 		public ClassEldritch() : base() 

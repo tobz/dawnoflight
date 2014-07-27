@@ -21,14 +21,13 @@ using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-
-using DOL.GS.Keeps;
-using DOL.GS.Quests;
-
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Quests;
 using log4net;
 
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	[PacketLib(170, GameClient.eClientVersion.Version170)]
 	public class PacketLib170 : PacketLib169

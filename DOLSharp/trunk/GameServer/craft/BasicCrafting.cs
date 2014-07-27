@@ -20,12 +20,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Reflection;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class BasicCrafting : AbstractCraftingSkill
 	{

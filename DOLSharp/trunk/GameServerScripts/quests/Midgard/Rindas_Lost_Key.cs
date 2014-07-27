@@ -28,16 +28,17 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.GS.Quests;
-using DOL.GS.Behaviour;
-using DOL.GS.Behaviour.Attributes;
-using DOL.AI.Brain;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Behaviour.Attributes;
 
-	namespace DOL.GS.Quests.Midgard {
+namespace DawnOfLight.GameServer.Quests.Midgard {
 	
      /* The first thing we do, is to declare the class we create
 	 * as Quest. To do this, we derive from the abstract class
@@ -117,7 +118,7 @@ using DOL.AI.Brain;
 			{
 				if (!WorldMgr.GetRegion(100).IsDisabled)
 				{
-				DwarvenGuardRinda = new DOL.GS.GameNPC();
+				DwarvenGuardRinda = new GameNPC();
 					DwarvenGuardRinda.Model = 238;
 				DwarvenGuardRinda.Name = "Dwarven Guard Rinda";
 				if (log.IsWarnEnabled)
@@ -162,7 +163,7 @@ using DOL.AI.Brain;
 			{
 				if (!WorldMgr.GetRegion(100).IsDisabled)
 				{
-				hobgoblinsnakefinder = new DOL.GS.GameNPC();
+				hobgoblinsnakefinder = new GameNPC();
 					hobgoblinsnakefinder.Model = 251;
 				hobgoblinsnakefinder.Name = "hobgoblin snake-finder";
 				if (log.IsWarnEnabled)
@@ -440,58 +441,58 @@ using DOL.AI.Brain;
 			QuestBehaviour a;
 			a = builder.CreateBehaviour(DwarvenGuardRinda,-1);
 				a.AddTrigger(eTriggerType.Interact,null,DwarvenGuardRinda);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.rindaslostkey),DwarvenGuardRinda);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.rindaslostkey),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(rindaslostkey),DwarvenGuardRinda);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(rindaslostkey),null,(eComparator)5);
 			a.AddAction(eActionType.Talk,"Greetings, and welcome to the dwarf town of Haggerfel. I wish I could stay and talk with you for a moment, but I am in a hurry to find my [lost keys].",DwarvenGuardRinda);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(DwarvenGuardRinda,-1);
 				a.AddTrigger(eTriggerType.Whisper,"lost keys",DwarvenGuardRinda);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.rindaslostkey),DwarvenGuardRinda);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.rindaslostkey),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(rindaslostkey),DwarvenGuardRinda);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(rindaslostkey),null,(eComparator)5);
 			a.AddAction(eActionType.Talk,"Oh yes. It is dreadful that I was so careless as to lost them like this! You see, I am responsible for helping to lock the money the merchants bring in during the day into a large chest. I am the only one with the keys, and I have [misplaced them].",DwarvenGuardRinda);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(DwarvenGuardRinda,-1);
 				a.AddTrigger(eTriggerType.Whisper,"misplaced them",DwarvenGuardRinda);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.rindaslostkey),DwarvenGuardRinda);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.rindaslostkey),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(rindaslostkey),DwarvenGuardRinda);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(rindaslostkey),null,(eComparator)5);
 			a.AddAction(eActionType.Talk,"Oh, this makes me so angry! I have searched all around Haggerfel for them, but they are no where to be found. I don't suppose you would have a [little time] to help me out, would you?",DwarvenGuardRinda);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(DwarvenGuardRinda,-1);
 				a.AddTrigger(eTriggerType.Whisper,"little time",DwarvenGuardRinda);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.rindaslostkey),DwarvenGuardRinda);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.rindaslostkey),null,(eComparator)5);
-			a.AddAction(eActionType.OfferQuest,typeof(DOL.GS.Quests.Midgard.rindaslostkey),"Will you help Rinda find her keys?");
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(rindaslostkey),DwarvenGuardRinda);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(rindaslostkey),null,(eComparator)5);
+			a.AddAction(eActionType.OfferQuest,typeof(rindaslostkey),"Will you help Rinda find her keys?");
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(DwarvenGuardRinda,-1);
-				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(DOL.GS.Quests.Midgard.rindaslostkey));
+				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(rindaslostkey));
 			a.AddAction(eActionType.Talk,"No problem. See you",DwarvenGuardRinda);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(DwarvenGuardRinda,-1);
-				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(DOL.GS.Quests.Midgard.rindaslostkey));
-			a.AddAction(eActionType.GiveQuest,typeof(DOL.GS.Quests.Midgard.rindaslostkey),DwarvenGuardRinda);
+				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(rindaslostkey));
+			a.AddAction(eActionType.GiveQuest,typeof(rindaslostkey),DwarvenGuardRinda);
 			a.AddAction(eActionType.Talk,"Thank you! Thank you! I know there are some hobgoblins around that like to play jokes on people, viscious and mean ones. Why don't you check there while I check the merchant huts again?",DwarvenGuardRinda);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(hobgoblinsnakefinder,-1);
 				a.AddTrigger(eTriggerType.Interact,null,hobgoblinsnakefinder);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.rindaslostkey),1,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(rindaslostkey),1,(eComparator)3);
 			a.AddAction(eActionType.Talk,"Ha ha! Me no have keys! Feed to hungry bear! haha! You no help Rinda...Gold be ours!",hobgoblinsnakefinder);
 			a.AddAction(eActionType.GiveItem,ironkeychain,hobgoblinsnakefinder);
-			a.AddAction(eActionType.IncQuestStep,typeof(DOL.GS.Quests.Midgard.rindaslostkey),null);
+			a.AddAction(eActionType.IncQuestStep,typeof(rindaslostkey),null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(DwarvenGuardRinda,-1);
 				a.AddTrigger(eTriggerType.EnemyKilled,"black mauler cub",null);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.rindaslostkey),2,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(rindaslostkey),2,(eComparator)3);
 			a.AddAction(eActionType.GiveItem,rindaskey,null);
 			a.AddAction(eActionType.IncQuestStep,typeof(rindaslostkey),null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(DwarvenGuardRinda,-1);
 				a.AddTrigger(eTriggerType.Interact,null,DwarvenGuardRinda);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.rindaslostkey),3,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(rindaslostkey),3,(eComparator)3);
 			a.AddAction(eActionType.Talk,"I couldn't find them again in the village. Did you have better luck?",DwarvenGuardRinda);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(DwarvenGuardRinda,-1);
 				a.AddTrigger(eTriggerType.GiveItem,DwarvenGuardRinda,ironkeychain);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.rindaslostkey),3,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(rindaslostkey),3,(eComparator)3);
 			a.AddAction(eActionType.Talk,"Oh my keychain. Well, this is a good start. But you didn't happen to find my key, did you?",DwarvenGuardRinda);
 			a.AddAction(eActionType.GiveXP,20,null);
 			a.AddAction(eActionType.GiveGold,225,null);
@@ -499,24 +500,24 @@ using DOL.AI.Brain;
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(DwarvenGuardRinda,-1);
 				a.AddTrigger(eTriggerType.GiveItem,DwarvenGuardRinda,rindaskey);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.rindaslostkey),3,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(rindaslostkey),3,(eComparator)3);
 			a.AddRequirement(eRequirementType.InventoryItem,ironkeychain,null,(eComparator)3);
 			a.AddAction(eActionType.Talk,"Ah! This is great! My key! You have done a fabulous job in helping me. Please accept this coin in return for your time and effort. Thank you so much! Now, I can safely lock up the town's money. Thank you!",DwarvenGuardRinda);
 			a.AddAction(eActionType.TakeItem,rindaskey,null);
 			a.AddAction(eActionType.TakeItem,ironkeychain,null);
 			a.AddAction(eActionType.GiveXP,40,null);
 			a.AddAction(eActionType.GiveGold,450,null);
-			a.AddAction(eActionType.FinishQuest,typeof(DOL.GS.Quests.Midgard.rindaslostkey),null);
+			a.AddAction(eActionType.FinishQuest,typeof(rindaslostkey),null);
 			a.AddAction(eActionType.GiveItem,silverringofhealth,DwarvenGuardRinda);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(DwarvenGuardRinda,-1);
 				a.AddTrigger(eTriggerType.GiveItem,DwarvenGuardRinda,rindaskey);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.rindaslostkey),3,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(rindaslostkey),3,(eComparator)3);
 			a.AddRequirement(eRequirementType.InventoryItem,ironkeychain,null,(eComparator)1);
 			a.AddAction(eActionType.Talk,"Ah! This is great! My key! You have done a fabulous job in helping me. Please accept this coin in return for your time and effort. Thank you so much! Now, I can safely lock up the town's money. Thank you!",DwarvenGuardRinda);
 			a.AddAction(eActionType.GiveXP,20,null);
 			a.AddAction(eActionType.GiveGold,225,null);
-			a.AddAction(eActionType.FinishQuest,typeof(DOL.GS.Quests.Midgard.rindaslostkey),null);
+			a.AddAction(eActionType.FinishQuest,typeof(rindaslostkey),null);
 			a.AddAction(eActionType.TakeItem,rindaskey,null);
 			a.AddAction(eActionType.GiveItem,silverringofhealth,DwarvenGuardRinda);
 			AddBehaviour(a);

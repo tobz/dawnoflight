@@ -20,11 +20,11 @@
 using System;
 using System.Globalization;
 using System.Reflection;
-
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS.ServerProperties
+namespace DawnOfLight.GameServer.ServerProperties
 {
 	/// <summary>
 	/// The abstract ServerProperty class that also defines the

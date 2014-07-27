@@ -19,7 +19,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class CryptLib168
 	{

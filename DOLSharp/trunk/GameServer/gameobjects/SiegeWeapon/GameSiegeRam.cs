@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// GameMovingObject is a base class for boats and siege weapons.

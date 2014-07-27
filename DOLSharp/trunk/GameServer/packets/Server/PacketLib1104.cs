@@ -21,13 +21,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-
-using DOL.Database;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
 using log4net;
 
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	[PacketLib(1104, GameClient.eClientVersion.Version1104)]
 	public class PacketLib1104 : PacketLib1103
@@ -309,12 +310,12 @@ namespace DOL.GS.PacketHandler
 						pak.WriteShortLowEndian((ushort)(twoHandWeapon != null ? twoHandWeapon.Model : 0));
 						pak.WriteShortLowEndian((ushort)(distanceWeapon != null ? distanceWeapon.Model : 0));
 
-						if (c.ActiveWeaponSlot == (byte)DOL.GS.GameLiving.eActiveWeaponSlot.TwoHanded)
+						if (c.ActiveWeaponSlot == (byte)GameLiving.eActiveWeaponSlot.TwoHanded)
 						{
 							pak.WriteByte(0x02);
 							pak.WriteByte(0x02);
 						}
-						else if (c.ActiveWeaponSlot == (byte)DOL.GS.GameLiving.eActiveWeaponSlot.Distance)
+						else if (c.ActiveWeaponSlot == (byte)GameLiving.eActiveWeaponSlot.Distance)
 						{
 							pak.WriteByte(0x03);
 							pak.WriteByte(0x03);

@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using DOL.GS.PacketHandler;
-using DOL.GS.SkillHandler;
-using DOL.GS.PropertyCalc;
-using DOL.Events;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.GameServer.PropertyCalc;
+using DawnOfLight.Events;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Effect handler for Juggernaut

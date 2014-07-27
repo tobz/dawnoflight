@@ -17,16 +17,16 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Language;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
     /// Handler for Quick Cast Ability clicks
 	/// </summary>
-	[SkillHandlerAttribute(Abilities.Quickcast)]
+	[SkillHandler(Abilities.Quickcast)]
 	public class QuickCastAbilityHandler : IAbilityActionHandler
 	{
 		/// <summary>

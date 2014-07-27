@@ -2,14 +2,14 @@
    Written by Gavinius */
 
 using System;
-using DOL.GS;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Database;
 
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		 "&lastname",
 		 ePrivLevel.Player,
 		 "Set/change your lastname.", "/lastname <name>")]

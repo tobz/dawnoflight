@@ -21,10 +21,11 @@
 
 using System;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.GS.ServerProperties;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.ServerProperties;
 
-namespace DOL.GS.Housing
+namespace DawnOfLight.GameServer.Housing
 {
 	public sealed class HouseTemplateMgr
 	{

@@ -17,9 +17,9 @@
  *
  */
 
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
     [DataTable(TableName = "LanguageZone")]
     public class DBLanguageZone : LanguageDataObject

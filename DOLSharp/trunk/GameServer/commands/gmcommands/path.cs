@@ -18,13 +18,13 @@
  */
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.GS.Movement;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Movement;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 	   "&path",
 	   ePrivLevel.GM,
 		"There are several path functions",

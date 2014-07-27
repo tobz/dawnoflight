@@ -32,17 +32,19 @@
 
 using System;
 using System.Reflection;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Behaviour;
-using DOL.GS.Behaviour.Attributes;
-using DOL.GS.PacketHandler;
-using DOL.GS.Quests;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.Behaviour.Attributes;
+using DawnOfLight.GameServer.Quests;
 using log4net;
 
-namespace DOL.GS.Quests.Albion
+namespace DawnOfLight.GameServer.Quests.Albion
 {
 	public class childsplay : BaseQuest
 	{
@@ -114,7 +116,7 @@ namespace DOL.GS.Quests.Albion
 			npcs = WorldMgr.GetNPCsByName("Charles", (eRealm)1);
 			if (npcs.Length == 0)
 			{
-				Charles = new DOL.GS.GameNPC();
+				Charles = new GameNPC();
 				Charles.Model = 92;
 				Charles.Name = "Charles";
 				if (log.IsWarnEnabled)

@@ -19,9 +19,9 @@
 
 using System;
 using System.Collections.Generic;
-using DOL.Events;
+using DawnOfLight.Events;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 
     public class SelectiveBlindnessEffect : TimedEffect

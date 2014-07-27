@@ -16,9 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.Database.Attributes;
 
-namespace DOL.Database
+using DawnOfLight.Database.Attributes;
+
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// DB relic is database of relic

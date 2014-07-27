@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using DOL.Database.Attributes;
-using DOL.Database.Connection;
-using DOL.Database.UniqueID;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Database.Connection;
+using DawnOfLight.Database.UniqueID;
 using MySql.Data.MySqlClient;
 using MySql.Data.Types;
 
-namespace DOL.Database.Handlers
+namespace DawnOfLight.Database.Handlers
 {
 	public class MySQLObjectDatabase : ObjectDatabase
 	{

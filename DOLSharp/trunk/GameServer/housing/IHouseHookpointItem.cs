@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS.Housing
+namespace DawnOfLight.GameServer.Housing
 {
 	/// <summary>
 	/// House item interface.

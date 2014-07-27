@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// This class holds all possible player group events.

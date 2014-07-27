@@ -17,13 +17,12 @@
  *
  */
 using System;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.Events;
 
-using DOL.Database;
-using DOL.GS.Keeps;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-
-namespace DOL.GS.ServerRules
+namespace DawnOfLight.GameServer.ServerRules
 {
 	public class NergalsBreachJumpPoint : IJumpPointHandler
 	{

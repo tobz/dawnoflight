@@ -18,10 +18,10 @@
  */
 
 using System;
-using DOL.Language;
-using DOL.Events;
+using DawnOfLight.Events;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles
 {
 	public class FrontierProtector : EventPlayerTitle
 	{

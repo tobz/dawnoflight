@@ -17,9 +17,9 @@
  *
  */
 
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
     // data table attribute not set until item translations are supported.
     class LanguageItem : LanguageDataObject

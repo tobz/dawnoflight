@@ -2,19 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
-using DOL.Events;
-using DOL.GS.Effects;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
 using log4net;
 using System.Reflection;
-using DOL.GS.Atlantis;
-using DOL.Database;
-using DOL.Language;
-using DOL.GS.Spells;
+using DawnOfLight.GameServer.Atlantis;
+using DawnOfLight.Database;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.GS.Atlantis
+namespace DawnOfLight.GameServer.Atlantis
 {
     /// <summary>
     /// Handles ArtifactEncounter functions like granting credit.

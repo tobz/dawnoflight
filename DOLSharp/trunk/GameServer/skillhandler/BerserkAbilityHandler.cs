@@ -17,17 +17,17 @@
  *
  */
 using System.Reflection;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using log4net;
-using DOL.Language;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Handler for Sprint Ability clicks
 	/// </summary>
-	[SkillHandlerAttribute(Abilities.Berserk)]
+	[SkillHandler(Abilities.Berserk)]
 	public class BerserkAbilityHandler : IAbilityActionHandler
 	{
 		/// <summary>

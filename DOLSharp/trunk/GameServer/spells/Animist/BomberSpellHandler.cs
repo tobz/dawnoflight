@@ -21,13 +21,13 @@
  * - Corrections for Bomber actions.
  */
 using System;
-using DOL.AI.Brain;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-    [SpellHandlerAttribute("Bomber")]
+    [SpellHandler("Bomber")]
     public class BomberSpellHandler : SummonSpellHandler
     {
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

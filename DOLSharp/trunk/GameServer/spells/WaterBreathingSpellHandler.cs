@@ -18,16 +18,16 @@
  *///made by DeMAN
 using System;
 using System.Reflection;
-using DOL.GS.PacketHandler;
-using DOL.Database;
-using DOL.GS.Effects;
-using DOL.Events;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
 using log4net;
 
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("WaterBreathing")]
+	[SpellHandler("WaterBreathing")]
 	public class WaterBreathingSpellHandler : SpellHandler
 	{
 		public WaterBreathingSpellHandler(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }

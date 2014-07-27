@@ -16,9 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS;
 
-namespace DOL.AI.Brain
+using DawnOfLight.GameServer;
+
+namespace DawnOfLight.AI.Brain
 {
 	public class GuardBrain : StandardMobBrain
 	{
@@ -52,7 +53,7 @@ namespace DOL.AI.Brain
 					continue;
 				if (player.Steed != null)
 					continue; //do not attack players on steed
-				if (!GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
+				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
 					continue;
 				if (!Body.IsWithinRadius(player, AggroRange))
 					continue;
@@ -74,7 +75,7 @@ namespace DOL.AI.Brain
 					continue; // add only new npcs
 				if ((npc.Flags & GameNPC.eFlags.FLYING) != 0)
 					continue; // let's not try to attack flying mobs
-				if (!GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
+				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
 					continue;
 				if (!npc.IsWithinRadius(Body, AggroRange))
 					continue;
@@ -91,7 +92,7 @@ namespace DOL.AI.Brain
 		/// <returns></returns>
 		public override int CalculateAggroLevelToTarget(GameLiving target)
 		{
-			if (GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false)
+			if (GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false)
 				return 0;
 
 			return AggroLevel;

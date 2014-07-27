@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// Any exception that occurs in the O-R persistence layer.

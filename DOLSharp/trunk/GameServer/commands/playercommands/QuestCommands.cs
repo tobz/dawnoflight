@@ -17,14 +17,16 @@
  *
  */
 
-using DOL.GS.Quests;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.World;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	// Command handler for the various /commands used in quests
 
 
-	[CmdAttribute(
+	[Cmd(
 		"&search",
 		ePrivLevel.Player,
 		"Search the current area.",
@@ -69,7 +71,7 @@ namespace DOL.GS.Commands
 
 			if (searched == false)
 			{
-				player.Out.SendMessage("You can't do that here!", DOL.GS.PacketHandler.eChatType.CT_Important, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You can't do that here!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
 			}
 		}
 	}

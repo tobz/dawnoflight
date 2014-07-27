@@ -21,14 +21,16 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.GS.ServerProperties;
-using DOL.Network;
+using DawnOfLight.Base;
+using DawnOfLight.Base.Network;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Represents a single connection to the game server

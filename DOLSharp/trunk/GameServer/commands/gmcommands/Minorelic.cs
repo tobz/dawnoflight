@@ -18,14 +18,14 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.GS.PacketHandler;
-using DOL.GS;
-using DOL.Database;
-using DOL.GS.Utils;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utils;
 using System.Collections;
-using DOL.Language;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
     [Cmd(
      "&minorelic",

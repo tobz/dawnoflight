@@ -17,10 +17,11 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	public class GameKeepBanner : GameStaticItem , IKeepItem
 	{

@@ -19,7 +19,7 @@
 
 using System;
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// Denotes a class as a property calculator. Must also implement IPropertyCalculator.

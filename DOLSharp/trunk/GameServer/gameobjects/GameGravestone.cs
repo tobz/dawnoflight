@@ -17,12 +17,11 @@
  *
  */
 using System;
+using DawnOfLight.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 
-using DOL.Database;
-using DOL.Language;
-using DOL.GS.PacketHandler;
-
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class holds all information that

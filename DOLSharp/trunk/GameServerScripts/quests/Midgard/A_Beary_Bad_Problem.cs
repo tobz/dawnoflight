@@ -28,17 +28,18 @@
 
 using System;
 using System.Reflection;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Behaviour;
-using DOL.GS.Behaviour.Attributes;
-using DOL.GS.PacketHandler;
-using DOL.GS.Quests;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Behaviour.Attributes;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Quests;
 using log4net;
 
-namespace DOL.GS.Quests.Midgard
+namespace DawnOfLight.GameServer.Quests.Midgard
 {
      /* The first thing we do, is to declare the class we create
 	 * as Quest. To do this, we derive from the abstract class
@@ -112,7 +113,7 @@ namespace DOL.GS.Quests.Midgard
             npcs = WorldMgr.GetNPCsByName(LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "Mid.ABearyBadProblem.NPCKreimhilde"),(eRealm) 2);
 			if (npcs.Length == 0)
 			{			
-				VikingKreimhilde = new DOL.GS.GameNPC();
+				VikingKreimhilde = new GameNPC();
 				VikingKreimhilde.Model = 218;
                 VikingKreimhilde.Name = LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "Mid.ABearyBadProblem.NPCKreimhilde");
 				if (log.IsWarnEnabled)
@@ -307,37 +308,37 @@ namespace DOL.GS.Quests.Midgard
 			QuestBehaviour a;
 			a = builder.CreateBehaviour(VikingKreimhilde,-1);
 			    a.AddTrigger(eTriggerType.Interact,null,VikingKreimhilde);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.Abearybadproblem),VikingKreimhilde);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.Abearybadproblem),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(Abearybadproblem),VikingKreimhilde);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(Abearybadproblem),null,(eComparator)5);
             a.AddAction(eActionType.Talk, LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "Mid.ABearyBadProblem.Talk1"), VikingKreimhilde);
             a.AddAction(eActionType.Talk, LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "Mid.ABearyBadProblem.Talk2"), VikingKreimhilde);
             a.AddAction(eActionType.Talk, LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "Mid.ABearyBadProblem.Talk3"), VikingKreimhilde);
             a.AddAction(eActionType.Talk, LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "Mid.ABearyBadProblem.Talk4"), VikingKreimhilde);
-            a.AddAction(eActionType.OfferQuest, typeof(DOL.GS.Quests.Midgard.Abearybadproblem), LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "Mid.ABearyBadProblem.OfferQuest"));
+            a.AddAction(eActionType.OfferQuest, typeof(Abearybadproblem), LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "Mid.ABearyBadProblem.OfferQuest"));
             AddBehaviour(a);
 			a = builder.CreateBehaviour(VikingKreimhilde,-1);
-			    a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(DOL.GS.Quests.Midgard.Abearybadproblem));
-			a.AddAction(eActionType.GiveQuest,typeof(DOL.GS.Quests.Midgard.Abearybadproblem),VikingKreimhilde);
-			a.AddAction(eActionType.SetQuestStep,typeof(DOL.GS.Quests.Midgard.Abearybadproblem),1);
+			    a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(Abearybadproblem));
+			a.AddAction(eActionType.GiveQuest,typeof(Abearybadproblem),VikingKreimhilde);
+			a.AddAction(eActionType.SetQuestStep,typeof(Abearybadproblem),1);
 		    AddBehaviour(a);
 			a = builder.CreateBehaviour(VikingKreimhilde,-1);
-			    a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(DOL.GS.Quests.Midgard.Abearybadproblem));
+			    a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(Abearybadproblem));
 		    AddBehaviour(a);
 			a = builder.CreateBehaviour(VikingKreimhilde,-1);
                 a.AddTrigger(eTriggerType.EnemyKilled, LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "Mid.ABearyBadProblem.EnemyKilled"), null);
-            a.AddRequirement(eRequirementType.QuestStep, typeof(DOL.GS.Quests.Midgard.Abearybadproblem), 1, (eComparator)3);
+            a.AddRequirement(eRequirementType.QuestStep, typeof(Abearybadproblem), 1, (eComparator)3);
 			a.AddAction(eActionType.GiveItem,blackmaulercubpelt,null);
-			a.AddAction(eActionType.SetQuestStep,typeof(DOL.GS.Quests.Midgard.Abearybadproblem),2);
+			a.AddAction(eActionType.SetQuestStep,typeof(Abearybadproblem),2);
 		    AddBehaviour(a);
 			a = builder.CreateBehaviour(VikingKreimhilde,-1);
 				a.AddTrigger(eTriggerType.Interact,null,VikingKreimhilde);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.Abearybadproblem),2,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(Abearybadproblem),2,(eComparator)3);
             a.AddAction(eActionType.Talk, LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "Mid.ABearyBadProblem.GoodJob"), VikingKreimhilde);
             a.AddAction(eActionType.GiveXP, 22, null);
 			a.AddAction(eActionType.GiveGold,23,null);
 			a.AddAction(eActionType.TakeItem,blackmaulercubpelt,null);
 			a.AddAction(eActionType.GiveItem,silverringofhealth,VikingKreimhilde);
-			a.AddAction(eActionType.FinishQuest,typeof(DOL.GS.Quests.Midgard.Abearybadproblem),null);
+			a.AddAction(eActionType.FinishQuest,typeof(Abearybadproblem),null);
 			AddBehaviour(a);
 			
 			#endregion

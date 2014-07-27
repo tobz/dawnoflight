@@ -21,12 +21,14 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// AbstractGameKeep is the keep or a tower in game in RVR

@@ -18,9 +18,9 @@
  */
 using System;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP,0x2C^168,"handle Change LFG flag")]
+	[PacketHandler(PacketHandlerType.TCP,0x2C^168,"handle Change LFG flag")]
 	public class LookingForAGroupFlagHandler : IPacketHandler
 	{
 		public void HandlePacket(GameClient client, GSPacketIn packet)

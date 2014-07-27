@@ -17,9 +17,9 @@
  *
  */
 
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// Table that holds the different configurations for the permission levels of different houses.

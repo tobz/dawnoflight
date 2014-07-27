@@ -1,12 +1,12 @@
 using System.Reflection;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Database;
-using DOL.GS.Spells;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	public class BedazzlingAuraAbility : TimedRealmAbility
 	{

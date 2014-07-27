@@ -21,16 +21,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
-
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
-using DOL.Events;
-using DOL.GS.Keeps;
-
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// LosCheckMgr is a class designed to handle LoS Checks and cache them.

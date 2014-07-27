@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.DatabaseConverters
+namespace DawnOfLight.GameServer.DatabaseConverters
 {
 	/// <summary>
 	/// Interface for all database format converters

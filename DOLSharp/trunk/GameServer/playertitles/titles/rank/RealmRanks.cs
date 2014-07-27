@@ -1,9 +1,9 @@
 using System;
-using DOL.Language;
-using DOL.Events;
-using DOL.GS.PlayerTitles;
+using DawnOfLight.GameServer.PlayerTitles;
+using DawnOfLight.Language;
+using DawnOfLight.Events;
 
-namespace DOL.GS.Scripts
+namespace DawnOfLight.GameServer.Scripts
 {
 	#region RealmRanks Titles
 	#region Albion

@@ -18,12 +18,12 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.GS.Housing;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&knock", //command to handle
+	[Cmd("&knock", //command to handle
 		ePrivLevel.Player, //minimum privelege level
 	   "Knock on a house", //command description
 		"/knock")] //command usage

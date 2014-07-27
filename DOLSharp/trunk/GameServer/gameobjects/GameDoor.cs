@@ -17,26 +17,27 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.GS.Utils;
-using DOL.GS.Quests;
+using DawnOfLight.GameServer.Utils;
+using DawnOfLight.GameServer.Quests;
 using System.Threading;
-using DOL.AI.Brain;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.Keeps;
-using DOL.GS.PropertyCalc;
-using DOL.GS.SkillHandler;
-using DOL.GS.Spells;
-using DOL.GS.Styles;
-using DOL.GS.PacketHandler.Client.v168;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PropertyCalc;
+using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Styles;
+using DawnOfLight.GameServer.PacketHandler.Client.v168;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// GameDoor is class for regular door

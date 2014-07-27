@@ -19,13 +19,14 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.Database;
-using DOL.GS.Keeps;
-using DOL.GS.Quests;
-using DOL.GS.ServerRules;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.ServerRules;
+using DawnOfLight.GameServer.Keeps;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerRegionChangeRequest, ClientStatus.PlayerInGame)]
 	public class PlayerRegionChangeRequestHandler : IPacketHandler

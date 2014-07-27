@@ -17,8 +17,8 @@
  *
  */
 
-using DOL.Database;
-using DOL.Database.Attributes;
+using DawnOfLight.Database;
+using DawnOfLight.Database.Attributes;
 
 /// <summary>
 /// Stores the triggers with corresponding text for a mob, for example if the mob should say something when it dies.

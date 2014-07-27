@@ -16,9 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS.Housing;
 
-namespace DOL.GS.PacketHandler.Client.v168
+using DawnOfLight.GameServer.Housing;
+
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x18, "Handles housing decoration request")]
 	public class HousingDecorationRotateRequestHandler : IPacketHandler

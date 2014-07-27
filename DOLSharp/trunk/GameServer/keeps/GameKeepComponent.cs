@@ -20,13 +20,16 @@ using System;
 using System.Reflection;
 using System.Collections;
 using System.Text;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.GS.ServerProperties;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.World.Instance;
 using log4net;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	//TODO : find all skin of keep door to load it from here
 	/// <summary>
@@ -595,9 +598,9 @@ namespace DOL.GS.Keeps
 					baseDamage = (baseDamage - (baseDamage * 5 * this.Keep.Level / 100)) * toughness / 100;
 					styleDamage = (styleDamage - (styleDamage * 5 * this.Keep.Level / 100)) * toughness / 100;
 
-					if (((GameNPC)source).Brain is DOL.AI.Brain.IControlledBrain)
+					if (((GameNPC)source).Brain is IControlledBrain)
 					{
-						GamePlayer player = (((DOL.AI.Brain.IControlledBrain)((GameNPC)source).Brain).Owner as GamePlayer);
+						GamePlayer player = (((IControlledBrain)((GameNPC)source).Brain).Owner as GamePlayer);
 						if (player != null)
 						{
 							// special considerations for pet spam classes

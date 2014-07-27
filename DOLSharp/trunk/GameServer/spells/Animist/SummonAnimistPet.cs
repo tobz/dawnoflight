@@ -22,11 +22,12 @@
  * - Get Spell
  * - Add GetGamePet override for use TurretPet class
  */
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
-using DOL.Language;
 
-namespace DOL.GS.Spells
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Summon an animist pet.

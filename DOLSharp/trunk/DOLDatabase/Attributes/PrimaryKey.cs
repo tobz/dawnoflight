@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.Database.Attributes
+namespace DawnOfLight.Database.Attributes
 {
 	/// <summary>
 	/// Attribute to indicate the PrimaryKey of an DatabaseObject.

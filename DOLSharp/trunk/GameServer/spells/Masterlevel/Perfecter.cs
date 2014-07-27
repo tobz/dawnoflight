@@ -17,13 +17,13 @@
  */
 
 using System;
-using DOL.GS;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 using System.Collections.Generic;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Database;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     //http://www.camelotherald.com/masterlevels/ma.php?ml=Perfector
     //the link isnt corrently working so correct me if you see any timers wrong.
@@ -35,7 +35,7 @@ namespace DOL.GS.Spells
 
     //shared timer 1
     #region Perfecter-3
-    [SpellHandlerAttribute("FOH")]
+    [SpellHandler("FOH")]
     public class FOHSpellHandler : FontSpellHandler
     {
         // constructor
@@ -91,7 +91,7 @@ namespace DOL.GS.Spells
 
     //shared timer 1
     #region Perfecter-5
-    [SpellHandlerAttribute("FOP")]
+    [SpellHandler("FOP")]
     public class FOPSpellHandler : FontSpellHandler
     {
         // constructor
@@ -145,7 +145,7 @@ namespace DOL.GS.Spells
 
     //shared timer 1
     #region Perfecter-6
-    [SpellHandlerAttribute("FOR")]
+    [SpellHandler("FOR")]
     public class FORSpellHandler : FontSpellHandler
     {
         // constructor
@@ -199,7 +199,7 @@ namespace DOL.GS.Spells
 
     //no shared timer
     #region Perfecter-8
-    [SpellHandlerAttribute("SickHeal")]
+    [SpellHandler("SickHeal")]
     public class SickHealSpellHandler : RemoveSpellEffectHandler
     {
         // constructor
@@ -215,7 +215,7 @@ namespace DOL.GS.Spells
 
     //shared timer 1
     #region Perfecter-9
-    [SpellHandlerAttribute("FOD")]
+    [SpellHandler("FOD")]
     public class FODSpellHandler : FontSpellHandler
     {
         // constructor
@@ -267,7 +267,7 @@ namespace DOL.GS.Spells
     //ML10 Rampant Healing - already handled in another area
 
     #region PoT
-    [SpellHandlerAttribute("PowerOverTime")]
+    [SpellHandler("PowerOverTime")]
     public class PoTSpellHandler : SpellHandler
     {
         /// <summary>

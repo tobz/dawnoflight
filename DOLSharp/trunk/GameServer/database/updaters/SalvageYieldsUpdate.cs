@@ -18,10 +18,11 @@
  */
 using System;
 using System.Collections;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 using log4net;
-using DOL.Database;
 
-namespace DOL.GS.DatabaseUpdate
+namespace DawnOfLight.GameServer.DatabaseUpdate
 {
 	/// <summary>
 	/// Checks and updates the new SalvageYields table

@@ -28,16 +28,17 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.GS.Quests;
-using DOL.GS.Behaviour;
-using DOL.GS.Behaviour.Attributes;
-using DOL.AI.Brain;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Behaviour.Attributes;
 
-	namespace DOL.GS.Quests.Examples {
+namespace DawnOfLight.GameServer.Quests.Examples {
 	
      /* The first thing we do, is to declare the class we create
 	 * as Quest. To do this, we derive from the abstract class
@@ -111,7 +112,7 @@ using DOL.AI.Brain;
 		npcs = WorldMgr.GetNPCsByName("Sir Quait",(eRealm) 1);
 		if (npcs.Length == 0)
 		{			
-			SirQuait = new DOL.GS.GameNPC();
+			SirQuait = new GameNPC();
 				SirQuait.Model = 40;
 			SirQuait.Name = "Sir Quait";
 			if (log.IsWarnEnabled)
@@ -153,7 +154,7 @@ using DOL.AI.Brain;
 		npcs = WorldMgr.GetNPCsByName("Evil Thief of the Shadowclan",(eRealm) 0);
 		if (npcs.Length == 0)
 		{			
-			EvilThiefoftheShadowclan = new DOL.GS.GameNPC();
+			EvilThiefoftheShadowclan = new GameNPC();
 				EvilThiefoftheShadowclan.Model = 55;
 			EvilThiefoftheShadowclan.Name = "Evil Thief of the Shadowclan";
 			if (log.IsWarnEnabled)

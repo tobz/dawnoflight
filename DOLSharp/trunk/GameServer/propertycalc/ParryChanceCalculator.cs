@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// The parry chance calculator. Returns 0 .. 1000 chance.

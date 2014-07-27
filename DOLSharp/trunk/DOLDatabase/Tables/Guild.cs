@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Database;
 
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// Guild table

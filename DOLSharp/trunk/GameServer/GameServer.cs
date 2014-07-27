@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,29 +25,30 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Threading;
-
-using DOL.Config;
-using DOL.Database;
-using DOL.Database.Attributes;
-using DOL.Database.Connection;
-using DOL.Events;
-using DOL.GS.Behaviour;
-using DOL.GS.DatabaseUpdate;
-using DOL.GS.Housing;
-using DOL.GS.Keeps;
-using DOL.GS.PacketHandler;
-using DOL.GS.PlayerTitles;
-using DOL.GS.Quests;
-using DOL.GS.ServerProperties;
-using DOL.GS.ServerRules;
-using DOL.Language;
-using DOL.Mail;
-using DOL.Network;
+using DawnOfLight.Base;
+using DawnOfLight.Base.Network;
+using DawnOfLight;
+using DawnOfLight.Database;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.DatabaseUpdate;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.PlayerTitles;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.ServerRules;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
+using DawnOfLight.Mail;
 using log4net;
 using log4net.Config;
 using log4net.Core;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Class encapsulates all game server functionality

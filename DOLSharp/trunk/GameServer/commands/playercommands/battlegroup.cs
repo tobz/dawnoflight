@@ -19,12 +19,13 @@
 using System;
 using System.Collections;
 using System.Text;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&battlechat",
 		new string[] { "&bc" },
 		ePrivLevel.Player,
@@ -94,7 +95,7 @@ namespace DOL.GS.Commands
 		}
 	}
 
-	[CmdAttribute(
+	[Cmd(
 		"&battlegroup",
 		new string[] { "&bg" },
 		ePrivLevel.Player,

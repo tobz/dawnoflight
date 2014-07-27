@@ -24,9 +24,9 @@
  *   - Added missing (+language support)
  */
 using System;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles
 {
 	/// <summary>
 	/// "Veteran" title granted to all chars that play for at least 180 days.

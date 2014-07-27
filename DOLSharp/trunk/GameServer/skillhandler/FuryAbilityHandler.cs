@@ -17,15 +17,15 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
     /// <summary>
     /// Handler for Fury shout
     /// </summary>
-    [SkillHandlerAttribute(Abilities.Fury)]
+    [SkillHandler(Abilities.Fury)]
     public class FuryAbilityHandler : SpellCastingAbilityHandler
     {
 		public override long Preconditions

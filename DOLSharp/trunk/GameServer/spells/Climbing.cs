@@ -19,13 +19,13 @@
 
 using System;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("Climbing")]
+	[SpellHandler("Climbing")]
 	public class ClimbingHandler : SpellHandler
 	{
 		private GamePlayer gp;

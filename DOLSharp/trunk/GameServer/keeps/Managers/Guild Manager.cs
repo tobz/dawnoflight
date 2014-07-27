@@ -1,10 +1,9 @@
 using System;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
-using DOL.Database;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// Class to manage all the dealings with Guilds

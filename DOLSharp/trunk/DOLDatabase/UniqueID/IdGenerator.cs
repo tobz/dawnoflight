@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.Database.UniqueID
+namespace DawnOfLight.Database.UniqueID
 {
 	/// <summary>
 	/// Generates an UniqeID for every Object.

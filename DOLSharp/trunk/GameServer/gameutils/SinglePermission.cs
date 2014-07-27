@@ -17,10 +17,11 @@
  *
  */
 using System.Collections;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// SinglePermission is special permission of command for player

@@ -1,6 +1,6 @@
-using DOL.GS.Keeps;
+using DawnOfLight.GameServer.Keeps;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// Caster Guards Brain

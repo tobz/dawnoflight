@@ -20,11 +20,12 @@
  * Last modified by Schaf on 10.12.2004 20:09
  */
 
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
 //yeah for the DBIndoorItem class!
 
-namespace DOL.GS.Housing
+namespace DawnOfLight.GameServer.Housing
 {
 	public class IndoorItem
 	{

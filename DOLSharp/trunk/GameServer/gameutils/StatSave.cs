@@ -22,14 +22,15 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-using DOL.Database;
-using DOL.Database.Attributes;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Base;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	class StatSave
 	{

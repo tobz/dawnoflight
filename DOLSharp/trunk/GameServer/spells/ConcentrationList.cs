@@ -19,10 +19,10 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
 using log4net;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Holds spells that use concentration points

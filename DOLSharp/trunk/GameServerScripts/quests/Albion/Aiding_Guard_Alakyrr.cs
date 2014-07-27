@@ -30,13 +30,14 @@
 
 using System;
 using System.Reflection;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.Quests.Albion
+namespace DawnOfLight.GameServer.Quests.Albion
 {
 
 	public class AidingGuardAlakyrr : BaseQuest
@@ -93,7 +94,7 @@ namespace DOL.GS.Quests.Albion
 
 			if (npcs.Length == 0)
 			{
-                GuardAlakyrr = new DOL.GS.GameNPC();
+                GuardAlakyrr = new GameNPC();
                 GuardAlakyrr.Model = 748;
                 GuardAlakyrr.Name = "Guard Alakyrr";
                 if (log.IsWarnEnabled)

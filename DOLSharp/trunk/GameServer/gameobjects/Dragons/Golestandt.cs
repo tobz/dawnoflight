@@ -19,14 +19,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Database;
-using DOL.Events;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
 using log4net;
 using System.Reflection;
 using System.Collections;
 
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// The Albion dragon.

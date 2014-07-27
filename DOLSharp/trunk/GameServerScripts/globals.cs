@@ -19,7 +19,7 @@
 using System.Collections;
 using System.IO;
 
-namespace DOL.GS.Scripts
+namespace DawnOfLight.GameServer.Scripts
 {
 	/// <summary>
 	/// The hand flag for an item

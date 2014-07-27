@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// The evade chance calculator. Returns 0 .. 1000 chance.

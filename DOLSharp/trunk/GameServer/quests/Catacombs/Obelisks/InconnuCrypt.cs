@@ -19,9 +19,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS.Quests.Catacombs.Obelisks
+namespace DawnOfLight.GameServer.Quests.Catacombs.Obelisks
 {
 	/// <summary>
 	/// Discovery credit for the Inconnu Crypt.

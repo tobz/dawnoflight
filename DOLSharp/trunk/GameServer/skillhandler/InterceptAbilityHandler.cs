@@ -17,16 +17,17 @@
  *
  */
 using System.Reflection;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using log4net;
-using DOL.Language;
-namespace DOL.GS.SkillHandler
+
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Handler for Intercept ability clicks
 	/// </summary>
-	[SkillHandlerAttribute(Abilities.Intercept)]
+	[SkillHandler(Abilities.Intercept)]
 	public class InterceptAbilityHandler : IAbilityActionHandler
 	{
 		/// <summary>

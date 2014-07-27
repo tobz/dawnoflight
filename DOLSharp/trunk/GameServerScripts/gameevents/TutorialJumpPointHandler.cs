@@ -17,12 +17,12 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-using DOL.GS.ServerRules;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.ServerRules;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	/// <summary>
 	/// Handles Tutorial Jump Point Exits

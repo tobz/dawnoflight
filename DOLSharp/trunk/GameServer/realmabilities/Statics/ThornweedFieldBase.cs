@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.GS;
-using DOL.GS.Spells;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.RealmAbilities.Statics 
+namespace DawnOfLight.GameServer.RealmAbilities.Statics 
 {
     public class ThornweedFieldBase : GenericBase 
     {

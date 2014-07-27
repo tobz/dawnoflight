@@ -32,13 +32,15 @@
 
 using System;
 using System.Reflection;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DOL.GS.Quests.Albion
+namespace DawnOfLight.GameServer.Quests.Albion
 {
 	public class Academy_50 : BaseQuest
 	{

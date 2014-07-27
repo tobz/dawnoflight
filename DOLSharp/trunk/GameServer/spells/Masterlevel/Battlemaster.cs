@@ -1,18 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-using DOL.Events;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     //http://www.camelotherald.com/masterlevels/ma.php?ml=Battlemaster
     #region Battlemaster-1
-    [SpellHandlerAttribute("MLEndudrain")]
+    [SpellHandler("MLEndudrain")]
     public class MLEndudrain : MasterlevelHandling
     {
         public MLEndudrain(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
@@ -43,7 +43,7 @@ namespace DOL.GS.Spells
     #endregion
 
     #region Battlemaster-2
-    [SpellHandlerAttribute("KeepDamageBuff")]
+    [SpellHandler("KeepDamageBuff")]
     public class KeepDamageBuff : MasterlevelBuffHandling
     {
         public override eProperty Property1 { get { return eProperty.KeepDamage; } }
@@ -53,7 +53,7 @@ namespace DOL.GS.Spells
     #endregion
 
     #region Battlemaster-3
-    [SpellHandlerAttribute("MLManadrain")]
+    [SpellHandler("MLManadrain")]
     public class MLManadrain : MasterlevelHandling
     {
         public MLManadrain(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
@@ -79,7 +79,7 @@ namespace DOL.GS.Spells
     #endregion
 
     #region Battlemaster-4
-    [SpellHandlerAttribute("Grapple")]
+    [SpellHandler("Grapple")]
     public class Grapple : MasterlevelHandling
     {
         private int check = 0;
@@ -597,7 +597,7 @@ namespace DOL.GS.Spells
                 ad.UncappedDamage = ad.Damage;
                 ad.Damage = Math.Min(ad.Damage, (int)(player.UnstyledDamageCap(weapon) * effectiveness));
                 ad.Damage = (int)((double)ad.Damage * ServerProperties.Properties.PVP_MELEE_DAMAGE);
-                if (ad.Damage == 0) ad.AttackResult = DOL.GS.GameLiving.eAttackResult.Missed;
+                if (ad.Damage == 0) ad.AttackResult = GameLiving.eAttackResult.Missed;
                 ad.CriticalDamage = player.GetMeleeCriticalDamage(ad, weapon);
             }
             else
@@ -615,7 +615,7 @@ namespace DOL.GS.Spells
 
     //essence debuff
     #region Battlemaster-7
-    [SpellHandlerAttribute("EssenceSearHandler")]
+    [SpellHandler("EssenceSearHandler")]
     public class EssenceSearHandler : SpellHandler
     {
         public override int CalculateSpellResistChance(GameLiving target) { return 0; }
@@ -676,7 +676,7 @@ namespace DOL.GS.Spells
     #endregion
 
     #region Battlemaster-8
-    [SpellHandlerAttribute("BodyguardHandler")]
+    [SpellHandler("BodyguardHandler")]
     public class BodyguardHandler : SpellHandler
     {
         public override bool CheckBeginCast(GameLiving selectedTarget)
@@ -704,7 +704,7 @@ namespace DOL.GS.Spells
 
     //for ML9 in the database u have to add  EssenceDampenHandler  in type (its a new method customly made) 
     #region Battlemaster-9
-    [SpellHandlerAttribute("EssenceDampenHandler")]
+    [SpellHandler("EssenceDampenHandler")]
     public class EssenceDampenHandler : SpellHandler
     {
         protected int DexDebuff = 0;
@@ -774,7 +774,7 @@ namespace DOL.GS.Spells
 
 #region KeepDamageCalc
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
     /// <summary>
     /// The melee damage bonus percent calculator

@@ -1,4 +1,4 @@
-    /*
+/*
     * DAWN OF LIGHT - The first free open source DAoC server emulator
     *
     * This program is free software; you can redistribute it and/or
@@ -16,62 +16,61 @@
     * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     *
     */
-    using System;
-    using DOL.GS.Effects;
 
-namespace DOL.GS.PropertyCalc
+using System;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.RealmAbilities;
+
+namespace DawnOfLight.GameServer.PropertyCalc
 {
-	/// <summary>
-	/// The critical hit chance calculator. Returns 0 .. 100 chance.
-	///
-	/// BuffBonusCategory1 unused
-	/// BuffBonusCategory2 unused
-	/// BuffBonusCategory3 unused
-	/// BuffBonusCategory4 for uncapped realm ability bonus
-	/// BuffBonusMultCategory1 unused
-	///
-	/// Crit propability is capped to 50% except for berserk
-	/// </summary>
-	[PropertyCalculator(eProperty.CriticalMeleeHitChance)]
-	public class CriticalMeleeHitChanceCalculator : PropertyCalculator
-	{
-		public CriticalMeleeHitChanceCalculator() { }
+    /// <summary>
+    ///     The critical hit chance calculator. Returns 0 .. 100 chance.
+    ///     BuffBonusCategory1 unused
+    ///     BuffBonusCategory2 unused
+    ///     BuffBonusCategory3 unused
+    ///     BuffBonusCategory4 for uncapped realm ability bonus
+    ///     BuffBonusMultCategory1 unused
+    ///     Crit propability is capped to 50% except for berserk
+    /// </summary>
+    [PropertyCalculator(eProperty.CriticalMeleeHitChance)]
+    public class CriticalMeleeHitChanceCalculator : PropertyCalculator
+    {
+        public override int CalcValue(GameLiving living, eProperty property)
+        {
+            // no berserk for ranged weapons
+            IGameEffect berserk = living.EffectList.GetOfType<BerserkEffect>();
+            if (berserk != null)
+            {
+                return 100;
+            }
 
-		public override int CalcValue(GameLiving living, eProperty property)
-		{
-			// no berserk for ranged weapons
-			IGameEffect berserk = living.EffectList.GetOfType<BerserkEffect>();
-			if (berserk != null)
-			{
-				return 100;
-			}
+            // base 10% chance of critical for all with melee weapons plus ra bonus
+            int chance = 10 + living.BuffBonusCategory4[(int) property] + living.AbilityBonus[(int) property];
 
-			// base 10% chance of critical for all with melee weapons plus ra bonus
-			int chance = 10 + living.BuffBonusCategory4[(int)property] + living.AbilityBonus[(int)property];
+            if (living is GameNPC && (living as GameNPC).Brain is IControlledBrain)
+            {
+                GamePlayer player = ((living as GameNPC).Brain as IControlledBrain).GetPlayerOwner();
+                if (player != null)
+                {
+                    var ab = player.GetAbility<WildMinionAbility>();
+                    if (ab != null)
+                    {
+                        chance += ab.Amount;
+                    }
+                    if (living is NecromancerPet)
+                    {
+                        var mop = player.GetAbility<MasteryOfPain>();
+                        if (mop != null)
+                        {
+                            chance += mop.Amount;
+                        }
+                    }
+                }
+            }
 
-			if (living is GameNPC && (living as GameNPC).Brain is AI.Brain.IControlledBrain)
-			{
-				GamePlayer player = ((living as GameNPC).Brain as AI.Brain.IControlledBrain).GetPlayerOwner();
-				if (player != null)
-				{
-					RealmAbilities.WildMinionAbility ab = player.GetAbility<RealmAbilities.WildMinionAbility>();
-					if (ab != null)
-					{
-						chance += ab.Amount;
-					}
-					if (living is NecromancerPet)
-					{
-						RealmAbilities.MasteryOfPain mop = player.GetAbility<RealmAbilities.MasteryOfPain>();
-						if (mop != null)
-						{
-							chance += mop.Amount;
-						}
-					}
-				}
-			}
-
-			//50% hardcap
-			return Math.Min(chance, 50);
-		}
-	}
+            //50% hardcap
+            return Math.Min(chance, 50);
+        }
+    }
 }

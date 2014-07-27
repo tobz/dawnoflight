@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 using System.Text;
-using DOL.Database.Attributes;
-using DOL.Database.Connection;
-using DOL.Database.UniqueID;
+using DawnOfLight.Database.Connection;
+using DawnOfLight.Database.UniqueID;
+using DawnOfLight.Database.Attributes;
 using DataTable=System.Data.DataTable;
 
-namespace DOL.Database.Handlers
+namespace DawnOfLight.Database.Handlers
 {
 	public class XMLObjectDatabase : ObjectDatabase
 	{

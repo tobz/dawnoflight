@@ -30,7 +30,7 @@ using System.Text;
 using log4net;
 using MySql.Data.MySqlClient;
 
-namespace DOL.Database.Connection
+namespace DawnOfLight.Database.Connection
 {
 	/// <summary>
 	/// Called after mysql query.

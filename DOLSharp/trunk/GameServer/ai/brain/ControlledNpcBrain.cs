@@ -20,16 +20,17 @@ using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.Spells;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.GS.RealmAbilities;
-using DOL.GS.SkillHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.SkillHandler;
 using log4net;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// A brain that can be controlled
@@ -119,7 +120,7 @@ namespace DOL.AI.Brain
 		/// </summary>
 		public override int ThinkInterval
 		{
-			get { return DOL.GS.ServerProperties.Properties.PET_THINK_INTERVAL; }
+			get { return Properties.PET_THINK_INTERVAL; }
 		}
 
 		#region Control
@@ -444,14 +445,14 @@ namespace DOL.AI.Brain
 				{
 					switch (ab.KeyName)
 					{
-						case GS.Abilities.Intercept:
+						case GameServer.Abilities.Intercept:
 							{
 								GamePlayer player = Owner as GamePlayer;
 								//the pet should intercept even if a player is till intercepting for the owner
 								new InterceptEffect().Start(Body, player);
 								break;
 							}
-						case GS.Abilities.Guard:
+						case GameServer.Abilities.Guard:
 							{
 								GamePlayer player = Owner as GamePlayer;
 								new GuardEffect().Start(Body, player);
@@ -795,7 +796,7 @@ namespace DOL.AI.Brain
 		public override int CalculateAggroLevelToTarget(GameLiving target)
 		{
 			// only attack if target is green+ to OWNER; always attack higher levels regardless of CON
-			if (GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false || Owner.IsObjectGreyCon(target))
+			if (GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false || Owner.IsObjectGreyCon(target))
 				return 0;
 
 			return AggroLevel > 100 ? 100 : AggroLevel;
@@ -814,7 +815,7 @@ namespace DOL.AI.Brain
 			{
 				if (m_orderAttackTarget.IsAlive &&
 				    m_orderAttackTarget.ObjectState == GameObject.eObjectState.Active &&
-				    GameServer.ServerRules.IsAllowedToAttack(this.Body, m_orderAttackTarget, true))
+				    GameServer.GameServer.ServerRules.IsAllowedToAttack(this.Body, m_orderAttackTarget, true))
 				{
 					return m_orderAttackTarget;
 				}
@@ -834,7 +835,7 @@ namespace DOL.AI.Brain
 					    living.IsAlive == false ||
 					    living.ObjectState != GameObject.eObjectState.Active ||
 					    Body.GetDistanceTo(living, 0) > MAX_AGGRO_LIST_DISTANCE ||
-					    GameServer.ServerRules.IsAllowedToAttack(this.Body, living, true) == false)
+					    GameServer.GameServer.ServerRules.IsAllowedToAttack(this.Body, living, true) == false)
 					{
 						removable.Add(living);
 					}
@@ -871,7 +872,7 @@ namespace DOL.AI.Brain
                 if ((owner_npc.IsCasting || owner_npc.IsAttacking) &&
                     owner_npc.TargetObject != null &&
                     owner_npc.TargetObject is GameLiving &&
-                    GameServer.ServerRules.IsAllowedToAttack(owner_npc, owner_npc.TargetObject as GameLiving, false))
+                    GameServer.GameServer.ServerRules.IsAllowedToAttack(owner_npc, owner_npc.TargetObject as GameLiving, false))
                 {
 
                     if (!CheckSpells(eCheckSpellType.Offensive))

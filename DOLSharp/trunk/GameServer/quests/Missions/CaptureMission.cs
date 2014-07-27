@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.World;
 
-using DOL.Events;
-using DOL.GS.Keeps;
-
-namespace DOL.GS.Quests
+namespace DawnOfLight.GameServer.Quests
 {
 	public class CaptureMission : AbstractMission
 	{

@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	/// <summary>
 	/// Handles spell cast requests from client

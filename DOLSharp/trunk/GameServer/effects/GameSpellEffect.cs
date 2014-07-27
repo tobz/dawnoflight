@@ -20,16 +20,14 @@ using System;
 using System.Collections;
 using System.Reflection;
 using System.Text;
-
-using DOL.Database;
-using DOL.GS.Spells;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Language;
 using log4net;
 using System.Collections.Generic;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Spell Effect assists SpellHandler with duration spells

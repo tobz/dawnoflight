@@ -20,10 +20,10 @@ using System;
 using System.Collections.Specialized;
 using System.Reflection;
 using System.Threading;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// The WeatherMgr takes care of rain/snow and other goodies inside
@@ -303,7 +303,7 @@ namespace DOL.GS
 			//FIXME: [WARN] ideally we'd want this read from the region table instead of hardcoding which regions should produce storms
 			lock (m_weathers)
 			{
-				foreach (RegionEntry region in DOL.GS.WorldMgr.GetRegionList())
+				foreach (RegionEntry region in WorldMgr.GetRegionList())
 				{
 					switch (region.id)
 					{

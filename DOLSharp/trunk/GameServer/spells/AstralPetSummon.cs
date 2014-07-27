@@ -20,16 +20,16 @@
 using System;
 
 using System.Collections.Generic;
-using DOL.AI.Brain;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-using DOL.Database;
-using DOL.GS.Styles;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Styles;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     
    [SpellHandler("AstralPetSummon")]
@@ -70,7 +70,7 @@ namespace DOL.GS.Spells
 
             GameEventMgr.RemoveHandler(pet, GameLivingEvent.PetReleased, new DOLEventHandler(OnNpcReleaseCommand));
 
-            DOL.GS.Effects.GameSpellEffect effect = FindEffectOnTarget(pet, this);
+            GameSpellEffect effect = FindEffectOnTarget(pet, this);
             if (effect != null)
                 effect.Cancel(false);
         }
@@ -86,7 +86,7 @@ namespace DOL.GS.Spells
     }
 }
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     public class AstralPet : GamePet
     {

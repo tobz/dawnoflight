@@ -19,13 +19,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.Spells;
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Handler for spells that are issued by the player, but cast

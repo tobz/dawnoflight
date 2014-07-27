@@ -17,20 +17,20 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.GS.Keeps;
-using DOL.GS.SkillHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.SkillHandler;
 
-using DOL.Events;
-using DOL.GS;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
 
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("StarsProc")]
+	[SpellHandler("StarsProc")]
 	public class StarsProc : SpellHandler
 	{		
 		public override bool CheckBeginCast(GameLiving selectedTarget)
@@ -114,7 +114,7 @@ namespace DOL.GS.Spells
 		public StarsProc(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) {}
 	}
 	
-	[SpellHandlerAttribute("StarsProc2")]
+	[SpellHandler("StarsProc2")]
     public class StarsProc2 : SpellHandler
     {
 		public override int CalculateSpellResistChance(GameLiving target)

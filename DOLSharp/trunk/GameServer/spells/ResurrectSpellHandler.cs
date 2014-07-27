@@ -20,16 +20,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[SpellHandlerAttribute("Resurrect")]
+	[SpellHandler("Resurrect")]
 	public class ResurrectSpellHandler : SpellHandler
 	{
 		private const string RESURRECT_CASTER_PROPERTY = "RESURRECT_CASTER";

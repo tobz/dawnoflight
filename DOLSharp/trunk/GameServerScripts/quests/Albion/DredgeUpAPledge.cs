@@ -24,11 +24,11 @@
  * Description: The "Dredge Up A Pledge" quest, mimics live US servers.
  */
 using System;
-using DOL.Database;
-using DOL.Events;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Quests.Albion
+namespace DawnOfLight.GameServer.Quests.Albion
 {
 	public class DredgeUpAPledge : RewardQuest
 	{

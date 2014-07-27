@@ -17,15 +17,15 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
 using System.Reflection;
 using log4net;
-using DOL.Language;
 using System.Collections.Generic;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerMoveItem, ClientStatus.PlayerInGame)]
 	public class PlayerMoveItemRequestHandler : IPacketHandler

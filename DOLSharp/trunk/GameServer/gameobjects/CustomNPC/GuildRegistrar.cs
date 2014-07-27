@@ -17,7 +17,7 @@
  *
  */
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Guild Registrar

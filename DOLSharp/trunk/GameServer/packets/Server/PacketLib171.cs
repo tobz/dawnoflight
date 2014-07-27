@@ -20,16 +20,15 @@
 
 using System;
 using System.Reflection;
-
-using DOL.Database;
-using DOL.Language;
-using DOL.AI.Brain;
-using DOL.GS.Keeps;
-using DOL.GS.Quests;
-
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	[PacketLib(171, GameClient.eClientVersion.Version171)]
 	public class PacketLib171 : PacketLib170

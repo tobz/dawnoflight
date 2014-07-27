@@ -17,9 +17,9 @@
  *
  */
 using System.Collections.Generic;
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// List containing all possible candidates for loot drop

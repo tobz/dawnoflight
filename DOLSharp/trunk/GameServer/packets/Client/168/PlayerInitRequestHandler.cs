@@ -20,14 +20,15 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.Events;
-using DOL.GS.Housing;
-using DOL.GS.Keeps;
-using DOL.GS.ServerProperties;
-using DOL.Language;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerInitRequest, ClientStatus.PlayerInGame)]
 	public class PlayerInitRequestHandler : IPacketHandler

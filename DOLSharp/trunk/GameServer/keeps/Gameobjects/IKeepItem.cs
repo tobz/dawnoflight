@@ -18,10 +18,10 @@
  */
 using System;
 using System.Collections;
-using DOL.Database;
+using DawnOfLight.Database;
 
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	public interface IKeepItem
 	{

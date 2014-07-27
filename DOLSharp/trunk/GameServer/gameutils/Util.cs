@@ -21,10 +21,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
-using DOL.GS.Utils;
+using DawnOfLight.GameServer.Utils;
 using System.Linq;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Generic purpose utility collection

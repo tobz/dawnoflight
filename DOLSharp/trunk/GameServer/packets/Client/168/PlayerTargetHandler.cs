@@ -17,9 +17,9 @@
  *
  */
 
-using DOL.Events;
+using DawnOfLight.Events;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	/// <summary>
 	/// Handles player target changes

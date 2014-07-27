@@ -28,16 +28,17 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.GS.Quests;
-using DOL.GS.Behaviour;
-using DOL.GS.Behaviour.Attributes;
-using DOL.AI.Brain;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Behaviour.Attributes;
 
-	namespace DOL.GS.Quests.Midgard {
+namespace DawnOfLight.GameServer.Quests.Midgard {
 	
      /* The first thing we do, is to declare the class we create
 	 * as Quest. To do this, we derive from the abstract class
@@ -113,7 +114,7 @@ using DOL.AI.Brain;
 			npcs = WorldMgr.GetNPCsByName("Ambient Rat Statua",(eRealm) 0);
 			if (npcs.Length == 0)
 			{			
-				AmbientRatStatua = new DOL.GS.GameNPC();
+				AmbientRatStatua = new GameNPC();
 					AmbientRatStatua.Model = 1673;
 				AmbientRatStatua.Name = "Ambient Rat Statua";
 				if (log.IsWarnEnabled)
@@ -154,7 +155,7 @@ using DOL.AI.Brain;
 			npcs = WorldMgr.GetNPCsByName("Ballach",(eRealm) 2);
 			if (npcs.Length == 0)
 			{			
-				Ballach = new DOL.GS.GameNPC();
+				Ballach = new GameNPC();
 					Ballach.Model = 225;
 				Ballach.Name = "Ballach";
 				if (log.IsWarnEnabled)
@@ -358,22 +359,22 @@ using DOL.AI.Brain;
 			QuestBehaviour a;
 			a = builder.CreateBehaviour(Ballach,-1);
 				a.AddTrigger(eTriggerType.Interact,null,Ballach);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.essenceoflife),Ballach);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(essenceoflife),Ballach);
 			a.AddAction(eActionType.Talk,"Greetings Guardian. I have some [business] that needs tended to. There is some coin involved in it for you.",Ballach);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Ballach,-1);
 				a.AddTrigger(eTriggerType.Whisper,"business",Ballach);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.essenceoflife),Ballach);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(essenceoflife),Ballach);
 			a.AddAction(eActionType.Talk,"I am running low on Essence of Life. Do you think you could retrieve some for me?",Ballach);
-			a.AddAction(eActionType.OfferQuest,typeof(DOL.GS.Quests.Midgard.essenceoflife),"Will you aid Ballach and retrieve some Essence of Life? [Levels 1-4]");
+			a.AddAction(eActionType.OfferQuest,typeof(essenceoflife),"Will you aid Ballach and retrieve some Essence of Life? [Levels 1-4]");
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Ballach,-1);
-				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(DOL.GS.Quests.Midgard.essenceoflife));
+				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(essenceoflife));
 			a.AddAction(eActionType.Talk,"No problem. See you.",Ballach);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Ballach,-1);
-				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(DOL.GS.Quests.Midgard.essenceoflife));
-			a.AddAction(eActionType.GiveQuest,typeof(DOL.GS.Quests.Midgard.essenceoflife),Ballach);
+				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(essenceoflife));
+			a.AddAction(eActionType.GiveQuest,typeof(essenceoflife),Ballach);
 			a.AddAction(eActionType.Talk,"Thank you very much for offering to help. Here, take this enchanted flask. You will need to find a grave in the Burial Grounds. When you find one, use the flask and capture the essence of life that rests in the buried persons remains.",Ballach);
 			a.AddAction(eActionType.GiveItem,enchantedflask,Ballach);
 			AddBehaviour(a);
@@ -386,11 +387,11 @@ using DOL.AI.Brain;
 			a = builder.CreateBehaviour(Ballach,-1);
 				a.AddTrigger(eTriggerType.Timer,"flask",null);
 			a.AddAction(eActionType.ReplaceItem,enchantedflask,Flaskofetherealessence);
-			a.AddAction(eActionType.IncQuestStep,typeof(DOL.GS.Quests.Midgard.essenceoflife),null);
+			a.AddAction(eActionType.IncQuestStep,typeof(essenceoflife),null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Ballach,-1);
 				a.AddTrigger(eTriggerType.Interact,null,Ballach);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.essenceoflife),2,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(essenceoflife),2,(eComparator)3);
 			a.AddAction(eActionType.Talk,"Did you collect the essence for me? If so, hand me the flask.",Ballach);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Ballach,-1);
@@ -398,7 +399,7 @@ using DOL.AI.Brain;
 			a.AddAction(eActionType.Talk,"Thank you for taking on this task for me. You have replenished my supply. Here, take this small monetary reward.",Ballach);
 			a.AddAction(eActionType.GiveXP,60,null);
 			a.AddAction(eActionType.GiveGold,18,null);
-			a.AddAction(eActionType.FinishQuest,typeof(DOL.GS.Quests.Midgard.essenceoflife),null);
+			a.AddAction(eActionType.FinishQuest,typeof(essenceoflife),null);
 			AddBehaviour(a);
 			
 			#endregion

@@ -18,18 +18,19 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.GS.RealmAbilities;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.RealmAbilities;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     using Effects;
 
     /// <summary>
     /// 
     /// </summary>
-    [SpellHandlerAttribute("Heal")]
+    [SpellHandler("Heal")]
     public class HealSpellHandler : SpellHandler
     {
         // constructor

@@ -19,18 +19,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.Effects;
-using DOL.Database;
-using DOL.Language;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// The spell used by classic teleporters.
 	/// </summary>
 	/// <author>Aredhel</author>
-	[SpellHandlerAttribute("UniPortal")]
+	[SpellHandler("UniPortal")]
 	public class UniPortal : SpellHandler
 	{
 		private Teleport m_destination;

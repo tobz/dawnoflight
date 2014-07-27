@@ -18,10 +18,10 @@
  */
 using System;
 using System.Text;
-using DOL.Database;
+using DawnOfLight.Database;
 using System.Collections.Generic;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// 

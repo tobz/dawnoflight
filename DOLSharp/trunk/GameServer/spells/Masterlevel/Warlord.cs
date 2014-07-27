@@ -18,17 +18,17 @@
  */
 using System.Collections.Generic;
 using System.Reflection;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 using System;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.Events;
+using DawnOfLight.Events;
 using System.Collections.Specialized;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {    
     //http://www.camelotherald.com/masterlevels/ma.php?ml=Warlord
     #region Warlord-1
@@ -37,7 +37,7 @@ namespace DOL.GS.Spells
 
     //shared timer 1 for 2 - shared timer 4 for 8
     #region Warlord-2/8
-    [SpellHandlerAttribute("PBAEHeal")]
+    [SpellHandler("PBAEHeal")]
     public class PBAEHealHandler : MasterlevelHandling
     {
         public override void FinishSpellCast(GameLiving target)
@@ -124,7 +124,7 @@ namespace DOL.GS.Spells
 
     //shared timer 2
     #region Warlord-3
-    [SpellHandlerAttribute("CoweringBellow")]
+    [SpellHandler("CoweringBellow")]
     public class CoweringBellowSpellHandler : FearSpellHandler
     {
         public override int CalculateSpellResistChance(GameLiving target)
@@ -151,7 +151,7 @@ namespace DOL.GS.Spells
 
     //shared timer 3
     #region Warlord-5
-    [SpellHandlerAttribute("Critical")]
+    [SpellHandler("Critical")]
     public class CriticalDamageBuff : MasterlevelDualBuffHandling
     {
         public override eProperty Property1 { get { return eProperty.CriticalSpellHitChance; } }
@@ -165,7 +165,7 @@ namespace DOL.GS.Spells
 
     //shared timer 3
     #region Warlord-7
-    [SpellHandlerAttribute("CleansingAura")]
+    [SpellHandler("CleansingAura")]
     public class CleansingAurauraSpellHandler : SpellHandler
     {
         public override bool IsOverwritable(GameSpellEffect compare)
@@ -179,7 +179,7 @@ namespace DOL.GS.Spells
 
     //shared timer 5
     #region Warlord-9
-    [SpellHandlerAttribute("EffectivenessBuff")]
+    [SpellHandler("EffectivenessBuff")]
     public class EffectivenessBuff : MasterlevelHandling
     {
         /// <summary>
@@ -237,7 +237,7 @@ namespace DOL.GS.Spells
 
     //shared timer 5
     #region Warlord-10
-    [SpellHandlerAttribute("MLABSBuff")]
+    [SpellHandler("MLABSBuff")]
     public class MLABSBuff : MasterlevelBuffHandling
     {
         public override eProperty Property1 { get { return eProperty.ArmorAbsorption; } }

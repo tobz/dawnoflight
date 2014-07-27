@@ -19,10 +19,10 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
 using log4net;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Sends updates only for changed effects

@@ -19,12 +19,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Events;
-using DOL.GS;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
 using log4net;
 using System.Reflection;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// A retriever type mob is an NPC that is spawned from a boss-like
@@ -71,7 +71,7 @@ namespace DOL.AI.Brain
         /// <param name="e">The event that occured.</param>
         /// <param name="sender">The source of the event.</param>
         /// <param name="args">The event details.</param>
-        public override void Notify(DOL.Events.DOLEvent e, object sender, EventArgs args)
+        public override void Notify(DOLEvent e, object sender, EventArgs args)
         {
             // When we get the WalkTo event we start running towards the target
             // location; once we've arrived we'll tell our master. If someone

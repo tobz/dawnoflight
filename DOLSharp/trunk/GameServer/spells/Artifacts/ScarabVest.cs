@@ -17,17 +17,17 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     /// <summary>
     /// Scarab proc spell handler
     /// Snare and morph target. Cecity is a subspell.
     /// </summary>
-    [SpellHandlerAttribute("ScarabProc")]
+    [SpellHandler("ScarabProc")]
     public class ScarabProc : UnbreakableSpeedDecreaseSpellHandler
     {
  		public override int CalculateSpellResistChance(GameLiving target)

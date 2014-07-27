@@ -18,9 +18,10 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.Events;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// The helper class for the guard ability
@@ -59,7 +60,7 @@ namespace DOL.GS.Effects
 			if (m_playerGroup != null)
 				GameEventMgr.AddHandler(m_playerGroup, GroupEvent.MemberDisbanded, new DOLEventHandler(GroupDisbandCallback));
 			GameEventMgr.AddHandler(EffectOwner, GamePlayerEvent.AttackFinished, new DOLEventHandler(AttackFinished));
-			EffectOwner.Out.SendMessage("Your weapon begins channeling the strength of the vampiir!", DOL.GS.PacketHandler.eChatType.CT_Spell, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+			EffectOwner.Out.SendMessage("Your weapon begins channeling the strength of the vampiir!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
 			base.Start(CasterTarget);
 		}
 
@@ -73,7 +74,7 @@ namespace DOL.GS.Effects
 				GameEventMgr.RemoveHandler(EffectOwner, GamePlayerEvent.Quit, new DOLEventHandler(PlayerLeftWorld));
 				m_playerGroup = null;
 			}
-			EffectOwner.Out.SendMessage("Your weapon returns to normal.", DOL.GS.PacketHandler.eChatType.CT_SpellExpires, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+			EffectOwner.Out.SendMessage("Your weapon returns to normal.", eChatType.CT_SpellExpires, eChatLoc.CL_SystemWindow);
 			base.Stop();
 		}
 
@@ -116,7 +117,7 @@ namespace DOL.GS.Effects
 			target.OnAttackedByEnemy(ad);
 			EffectCaster.ChangeMana(EffectOwner, GameLiving.eManaChangeType.Spell, (int)ad.Damage);
 			if (attacker is GamePlayer)
-				(attacker as GamePlayer).Out.SendMessage(string.Format("You hit {0} for {1} extra damage!", target.Name, ad.Damage), DOL.GS.PacketHandler.eChatType.CT_Spell, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+				(attacker as GamePlayer).Out.SendMessage(string.Format("You hit {0} for {1} extra damage!", target.Name, ad.Damage), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
 			attacker.DealDamage(ad);
 		}
 

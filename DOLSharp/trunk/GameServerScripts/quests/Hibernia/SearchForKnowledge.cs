@@ -24,11 +24,12 @@
  * Description: The "Search For Knowledge" quest, mimics live US servers.
  */
 using System;
-using DOL.Database;
-using DOL.Events;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Quests.Hibernia
+namespace DawnOfLight.GameServer.Quests.Hibernia
 {
 	public class SearchForKnowledge : RewardQuest
 	{

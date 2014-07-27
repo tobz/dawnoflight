@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.Events;
-using DOL.GS;
+using DawnOfLight.GameServer;
+using DawnOfLight.Events;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// This class holds all possible region events.

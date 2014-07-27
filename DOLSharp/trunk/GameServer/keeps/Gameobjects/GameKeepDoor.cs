@@ -19,16 +19,17 @@
 using System;
 using System.Collections;
 using System.Reflection;
-
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.GS.ServerProperties;
-
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.World;
 using log4net;
 
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// keep door in world
@@ -352,9 +353,9 @@ namespace DOL.GS.Keeps
 					baseDamage = (baseDamage - (baseDamage * 5 * this.Component.Keep.Level / 100)) * toughness / 100;
 					styleDamage = (styleDamage - (styleDamage * 5 * this.Component.Keep.Level / 100)) * toughness / 100;
 
-					if (((GameNPC)source).Brain is DOL.AI.Brain.IControlledBrain)
+					if (((GameNPC)source).Brain is IControlledBrain)
 					{
-						GamePlayer player = (((DOL.AI.Brain.IControlledBrain)((GameNPC)source).Brain).Owner as GamePlayer);
+						GamePlayer player = (((IControlledBrain)((GameNPC)source).Brain).Owner as GamePlayer);
 						if (player != null)
 						{
 							// special considerations for pet spam classes

@@ -23,17 +23,17 @@ using System.Data;
 using System.Globalization;
 using System.Reflection;
 using System.Text;
-using DOL.Database.Attributes;
-using DOL.Database.Cache;
-using DOL.Database.Connection;
-using DOL.Database.Handlers;
-using DOL.Database.UniqueID;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Database.Cache;
+using DawnOfLight.Database.Connection;
+using DawnOfLight.Database.Handlers;
+using DawnOfLight.Database.UniqueID;
 using log4net;
 using MySql.Data.MySqlClient;
 using MySql.Data.Types;
 using DataTable = System.Data.DataTable;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// Database to to full Dokumentation

@@ -20,14 +20,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
 
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.GS.Spells;
-
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class MinotaurRelic : GameStaticItem
 	{

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Timers;
-using DOL.Database;
+using DawnOfLight.Base.Threading;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public enum AuditType
 	{

@@ -18,16 +18,16 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Spell handler for power trasnfer.
 	/// </summary>
 	/// <author>Aredhel</author>
-	[SpellHandlerAttribute("PowerTransferPet")]
+	[SpellHandler("PowerTransferPet")]
 	class PowerTransferPet : PowerTransfer
 	{
 		public override void OnDirectEffect(GameLiving target, double effectiveness)

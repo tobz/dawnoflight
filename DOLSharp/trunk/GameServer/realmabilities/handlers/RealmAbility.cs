@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.PacketHandler.Client.v168;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler.Client.v168;
+using DawnOfLight.Language;
 using System.Collections.Generic;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	/// <summary>
 	/// Base for all Realm Abilities

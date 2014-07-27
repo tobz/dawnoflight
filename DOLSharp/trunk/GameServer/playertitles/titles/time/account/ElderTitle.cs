@@ -24,9 +24,9 @@
  *   - Added missing (+language support)
  */
 using System;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles
 {
 	/// <summary>
 	/// "Elder" title granted to all chars on all accounts that created for at least one year.

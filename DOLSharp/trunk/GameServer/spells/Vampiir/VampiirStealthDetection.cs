@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("VampiirStealthDetection")]
+	[SpellHandler("VampiirStealthDetection")]
 	public class VampiirStealthDetection : SpellHandler
 	{
 		public VampiirStealthDetection(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) {}

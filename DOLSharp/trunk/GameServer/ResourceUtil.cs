@@ -16,10 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System.Reflection;
-using System.IO;
 
-namespace DOL.Config
+using System.IO;
+using System.Reflection;
+
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Helps managing embedded resources

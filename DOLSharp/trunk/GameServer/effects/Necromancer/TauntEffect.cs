@@ -19,11 +19,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Pet taunt effect. While active, the pet will keep trying

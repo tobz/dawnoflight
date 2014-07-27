@@ -28,14 +28,14 @@
  */
 
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 	  "&anonymous",
 	  ePrivLevel.Player,
 	  "Toggle anonymous mode (name doesn't show up in /who)",

@@ -21,12 +21,13 @@ using System.Threading;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Collections;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using log4net;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-using DOL.Events;
 
-namespace DOL.GS.Appeal
+namespace DawnOfLight.GameServer.Appeal
 {
 	public static class AppealMgr
 	{

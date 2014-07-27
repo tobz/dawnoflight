@@ -20,10 +20,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.PacketHandler;
-using DOL.Events;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class represents a Group inside the game

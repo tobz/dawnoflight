@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&webdisplay",
 		ePrivLevel.Player,
 		"Set informations displayed on the herald",

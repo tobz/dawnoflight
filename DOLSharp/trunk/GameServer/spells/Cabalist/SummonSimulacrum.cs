@@ -19,15 +19,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.Effects;
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-using DOL.GS.PropertyCalc;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PropertyCalc;
 using System.Collections;
-using DOL.Language;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Spell handler to summon a bonedancer pet.

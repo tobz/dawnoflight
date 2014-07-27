@@ -17,12 +17,12 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS.Keeps;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Keeps;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&repair",
 		ePrivLevel.Player,
 		"You can repair an item when you are a crafter",

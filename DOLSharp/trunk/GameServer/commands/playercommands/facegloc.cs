@@ -24,11 +24,11 @@
  * 
  */
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&facegloc",
 		ePrivLevel.Player,
 		"Turns and faces your character into the direction of the x, y coordinates provided (using DOL region global coordinates).",

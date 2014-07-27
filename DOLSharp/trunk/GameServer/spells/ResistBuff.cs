@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Base class for all resist buffs, needed to set effectiveness
@@ -53,7 +53,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Body resistance buff
 	/// </summary>
-	[SpellHandlerAttribute("BodyResistBuff")]
+	[SpellHandler("BodyResistBuff")]
 	public class BodyResistBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -66,7 +66,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Cold resistance buff
 	/// </summary>
-	[SpellHandlerAttribute("ColdResistBuff")]
+	[SpellHandler("ColdResistBuff")]
 	public class ColdResistBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -79,7 +79,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Energy resistance buff
 	/// </summary>
-	[SpellHandlerAttribute("EnergyResistBuff")]
+	[SpellHandler("EnergyResistBuff")]
 	public class EnergyResistBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -92,7 +92,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Heat resistance buff
 	/// </summary>
-	[SpellHandlerAttribute("HeatResistBuff")]
+	[SpellHandler("HeatResistBuff")]
 	public class HeatResistBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -105,7 +105,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Matter resistance buff
 	/// </summary>
-	[SpellHandlerAttribute("MatterResistBuff")]
+	[SpellHandler("MatterResistBuff")]
 	public class MatterResistBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -118,7 +118,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Spirit resistance buff
 	/// </summary>
-	[SpellHandlerAttribute("SpiritResistBuff")]
+	[SpellHandler("SpiritResistBuff")]
 	public class SpiritResistBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -131,7 +131,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Body/Spirit/Energy resistance buff
 	/// </summary>
-	[SpellHandlerAttribute("BodySpiritEnergyBuff")]
+	[SpellHandler("BodySpiritEnergyBuff")]
 	public class BodySpiritEnergyBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -149,7 +149,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Heat/Cold/Matter resistance buff
 	/// </summary>
-	[SpellHandlerAttribute("HeatColdMatterBuff")]
+	[SpellHandler("HeatColdMatterBuff")]
 	public class HeatColdMatterBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -167,7 +167,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Body/Spirit/Energy/Heat/Cold/Matter resistance buff
 	/// </summary>
-	[SpellHandlerAttribute("AllMagicResistsBuff")]
+	[SpellHandler("AllMagicResistsBuff")]
 	public class AllMagicResistsBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -191,8 +191,8 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Crush/Slash/Thrust resistance buff
 	/// </summary>
-	[SpellHandlerAttribute("CrushSlashThrustBuff")]
-	[SpellHandlerAttribute("AllMeleeResistsBuff")]
+	[SpellHandler("CrushSlashThrustBuff")]
+	[SpellHandler("AllMeleeResistsBuff")]
 	public class CrushSlashThrustBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -207,7 +207,7 @@ namespace DOL.GS.Spells
 		public CrushSlashThrustBuff(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
 	}
 
-	[SpellHandlerAttribute("CrushResistBuff")]
+	[SpellHandler("CrushResistBuff")]
 	public class CrushResistBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -220,7 +220,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Slash buff
 	/// </summary>
-	[SpellHandlerAttribute("SlashResistBuff")]
+	[SpellHandler("SlashResistBuff")]
 	public class SlashResistBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -233,7 +233,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Thrust buff
 	/// </summary>
-	[SpellHandlerAttribute("ThrustResistBuff")]
+	[SpellHandler("ThrustResistBuff")]
 	public class ThrustResistBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }
@@ -246,7 +246,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Resist all 
 	/// </summary>
-	[SpellHandlerAttribute("AllResistsBuff")]
+	[SpellHandler("AllResistsBuff")]
 	public class AllResistsBuff : AbstractResistBuff
 	{
 		public override int BonusCategory1 { get { return 1; } }

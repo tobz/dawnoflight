@@ -22,7 +22,7 @@ using System.Reflection;
 using System.Threading;
 using log4net;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// Manages per-object and global event handlers.

@@ -17,7 +17,7 @@
  *
  */
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.CheckLOSRequest, ClientStatus.PlayerInGame)]
 	public class CheckLOSResponseHandler : IPacketHandler

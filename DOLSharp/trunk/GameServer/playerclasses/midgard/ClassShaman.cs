@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Shaman, "Shaman", "Seer")]
+	[CharacterClass((int)eCharacterClass.Shaman, "Shaman", "Seer")]
 	public class ClassShaman : ClassSeer
 	{
 		public ClassShaman() : base() 

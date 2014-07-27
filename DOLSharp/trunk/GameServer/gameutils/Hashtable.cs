@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.GS.Utils;
+using DawnOfLight.GameServer.Utils;
 using log4net;
-using Hashtable = DOL.GS.Collections.Hashtable;
-using DictionaryEntry = DOL.GS.Collections.DictionaryEntry;
+using Hashtable = DawnOfLight.GameServer.Collections.Hashtable;
+using DictionaryEntry = DawnOfLight.GameServer.Collections.DictionaryEntry;
 
-namespace DOL.GS.Collections {
+namespace DawnOfLight.GameServer.Collections {
 	class DictionaryEntry {
 		public object key = null;
 		public object value = null;

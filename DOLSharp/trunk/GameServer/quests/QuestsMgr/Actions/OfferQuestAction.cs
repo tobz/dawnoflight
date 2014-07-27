@@ -19,14 +19,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-using DOL.GS.Behaviour.Attributes;
-using DOL.GS.Behaviour;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.Behaviour.Attributes;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Quests.Actions
+namespace DawnOfLight.GameServer.Quests.Actions
 {
-    [ActionAttribute(ActionType = eActionType.OfferQuest)]
+    [Action(ActionType = eActionType.OfferQuest)]
     public class OfferQuestAction : AbstractAction<Type,String>
     {               
 

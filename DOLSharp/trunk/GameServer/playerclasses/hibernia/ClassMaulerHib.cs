@@ -18,15 +18,15 @@
  */
 using System;
 using System.Collections;
-using DOL.Language;
+using DawnOfLight.Language;
 using System.Collections.Generic;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.MaulerHib, "Mauler", "Guardian")]
+	[CharacterClass((int)eCharacterClass.MaulerHib, "Mauler", "Guardian")]
 	public class ClassMaulerHib : CharacterClassBase
 	{
 		public ClassMaulerHib()

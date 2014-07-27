@@ -20,10 +20,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Quests.Atlantis.Artifacts
+namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 {
     /// <summary>
     /// Quest for the Staff of the God artifact.

@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.Language;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Trainer
+namespace DawnOfLight.GameServer.Trainer
 {
 	/// <summary>
 	/// Enchanter Trainer

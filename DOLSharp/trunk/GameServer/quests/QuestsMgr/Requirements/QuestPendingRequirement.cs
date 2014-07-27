@@ -18,14 +18,14 @@
  */
 using System;
 using System.Text;
-using DOL.Events;
-using DOL.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.Behaviour.Attributes;
+using DawnOfLight.Database;
 using log4net;
 using System.Reflection;
-using DOL.GS.Behaviour.Attributes;
-using DOL.GS.Behaviour;
 
-namespace DOL.GS.Quests.Requirements
+namespace DawnOfLight.GameServer.Quests.Requirements
 {
 
 	/// <summary>
@@ -33,7 +33,7 @@ namespace DOL.GS.Quests.Requirements
 	/// Level of player, Step of Quest, Class of Player, etc... There are also some variables to add
 	/// additional parameters. To fire a QuestAction ALL requirements must be fulfilled.         
 	/// </summary>
-    [RequirementAttribute(RequirementType=eRequirementType.QuestPending)]
+    [Requirement(RequirementType=eRequirementType.QuestPending)]
 	public class QuestPendingRequirement : AbstractRequirement<Type,Unused>
 	{
 		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);

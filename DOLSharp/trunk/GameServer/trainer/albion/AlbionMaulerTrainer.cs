@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-using DOL.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.Database;
 
-namespace DOL.GS.Trainer
+namespace DawnOfLight.GameServer.Trainer
 {
 	/// <summary>
 	/// Mauler Trainer

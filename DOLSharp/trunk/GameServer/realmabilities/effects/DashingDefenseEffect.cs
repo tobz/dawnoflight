@@ -18,13 +18,13 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-using DOL.GS.SkillHandler;
-using DOL.GS.RealmAbilities;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.GameServer.RealmAbilities;
 using System.Collections.Generic;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
     // <summary>
     // The helper class for the guard ability

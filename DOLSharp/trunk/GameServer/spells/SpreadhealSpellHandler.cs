@@ -19,15 +19,15 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[SpellHandlerAttribute("SpreadHeal")]
+	[SpellHandler("SpreadHeal")]
 	public class SpreadhealSpellHandler : HealSpellHandler
 	{
 		// constructor

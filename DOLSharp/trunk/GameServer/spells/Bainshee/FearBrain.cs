@@ -1,8 +1,8 @@
-using DOL.GS;
-using DOL.GS.Spells;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	public class FearBrain : StandardMobBrain
 	{

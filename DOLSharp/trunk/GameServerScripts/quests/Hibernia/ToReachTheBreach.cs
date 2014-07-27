@@ -27,13 +27,15 @@
  */
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.Quests.Hibernia
+namespace DawnOfLight.GameServer.Quests.Hibernia
 {
 	public class ToReachTheBreach : RewardQuest
 	{

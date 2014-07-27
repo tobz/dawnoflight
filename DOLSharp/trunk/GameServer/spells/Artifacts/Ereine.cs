@@ -1,13 +1,13 @@
 using System;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Events;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-    [SpellHandlerAttribute("Ereine")]
+    [SpellHandler("Ereine")]
     public class Ereine : AllStatsBuff
     {
         public override void OnEffectStart(GameSpellEffect effect)
@@ -54,14 +54,14 @@ namespace DOL.GS.Spells
         }
         public Ereine(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
     }
-	[SpellHandlerAttribute("Ereine2")]
+	[SpellHandler("Ereine2")]
     public class Ereine2 : AllStatsDebuff
     {
 		public override bool HasPositiveEffect { get { return false; } }
         public override bool IsUnPurgeAble { get { return true; } }
 		public Ereine2(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
 	}
-	[SpellHandlerAttribute("EreineProc")]
+	[SpellHandler("EreineProc")]
     public class EreineProc : SpellHandler
     {
 		public override void OnEffectStart(GameSpellEffect effect)

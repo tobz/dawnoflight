@@ -17,14 +17,15 @@
  *
  */
 using System;
-using DOL.GS.Effects;
-using DOL.Database;
-using DOL.Events;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("TraitorsDaggerProc")]
+	[SpellHandler("TraitorsDaggerProc")]
 	public class TraitorsDaggerProc : OffensiveProcSpellHandler
 	{
 		public override void OnEffectStart(GameSpellEffect effect)
@@ -42,7 +43,7 @@ namespace DOL.GS.Spells
                         Effect.SpellHandler.Spell.SpellType.Equals("AtlantisTabletMorph") ||
                         Effect.SpellHandler.Spell.SpellType.Equals("AlvarusMorph"))
                     {
-                        player.Out.SendMessage("You already have an active morph!", DOL.GS.PacketHandler.eChatType.CT_SpellResisted, DOL.GS.PacketHandler.eChatLoc.CL_ChatWindow);
+                        player.Out.SendMessage("You already have an active morph!", eChatType.CT_SpellResisted, eChatLoc.CL_ChatWindow);
                         return;
                     }
                 }
@@ -141,7 +142,7 @@ namespace DOL.GS.Spells
     }
 }
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class TraitorDaggerPet : GamePet
 	{

@@ -16,12 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS;
-using DOL.Database;
 
-namespace DOL.GS.SkillHandler
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+
+namespace DawnOfLight.GameServer.SkillHandler
 {
-	[SkillHandlerAttribute(Abilities.ScarsOfBattle)]
+	[SkillHandler(Abilities.ScarsOfBattle)]
 	public class ScarsOfBattle : StatChangingAbility
 	{
 		public ScarsOfBattle(DBAbility dba, int level)

@@ -19,21 +19,20 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Events;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 using System.Collections;
-using DOL.GS;
-using DOL.AI.Brain;
-using DOL.GS.Keeps;
+using DawnOfLight.GameServer;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Keeps;
 
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("DmgReductionAndPowerReturn")]
+	[SpellHandler("DmgReductionAndPowerReturn")]
    public class DamageReductionAndPowerReturnSpellHandler : SpellHandler
    {
 		public const string Damage_Reduction = "damage reduction";

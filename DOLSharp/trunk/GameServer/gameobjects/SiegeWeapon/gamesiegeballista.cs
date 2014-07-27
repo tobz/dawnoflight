@@ -17,7 +17,8 @@
  *
  */
 using System;
-using DOL.GS.Spells;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Spells;
 using System.Collections;
 /*1,Ballista,1,ammo,0.46,1
 2,Catapult,2,ammo,0.39,1
@@ -36,7 +37,7 @@ using System.Collections;
 9,Ram High,0,12,13,80,
 10,Ram Mid,0,12,13,80,
 11,Ram Low,0,12,13,80,*/
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// GameMovingObject is a base class for boats and siege weapons.
@@ -82,7 +83,7 @@ namespace DOL.GS
 			//m_spellHandler.StartSpell(player);
 			base.DoDamage();//anim mut be called after damage
 		}
-		public override bool ReceiveItem(GameLiving source, DOL.Database.InventoryItem item)
+		public override bool ReceiveItem(GameLiving source, InventoryItem item)
 		{
 			//todo check if bullet
 			return base.ReceiveItem(source, item);

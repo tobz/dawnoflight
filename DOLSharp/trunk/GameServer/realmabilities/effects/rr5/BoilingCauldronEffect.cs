@@ -19,11 +19,12 @@
 
 using System;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Spells;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 
     public class BoilingCauldronEffect : TimedEffect

@@ -17,9 +17,10 @@
  *
  */
 
-using DOL.GS.Quests;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Quests;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// Represents a mission master

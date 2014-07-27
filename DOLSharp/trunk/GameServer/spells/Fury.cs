@@ -19,13 +19,13 @@
 
 using System;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-    [SpellHandlerAttribute("Fury")]
+    [SpellHandler("Fury")]
     public class FuryHandler : SpellHandler
     {
         public override void ApplyEffectOnTarget(GameLiving target, double effectiveness)

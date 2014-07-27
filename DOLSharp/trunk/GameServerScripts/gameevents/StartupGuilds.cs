@@ -19,12 +19,12 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
+using DawnOfLight.Events;
+using DawnOfLight.Language;
+using DawnOfLight.Database;
 using log4net;
-using DOL.Language;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	/// <summary>
 	/// This class makes sure that all the startup guilds are created in the database

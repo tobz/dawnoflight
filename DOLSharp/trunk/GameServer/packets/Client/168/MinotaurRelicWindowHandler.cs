@@ -18,12 +18,12 @@
  */
 using System;
 using System.Reflection;
-using DOL.GS;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-    [PacketHandlerAttribute(PacketHandlerType.TCP, 0x4C, "Handles Relic window commands")]
+    [PacketHandler(PacketHandlerType.TCP, 0x4C, "Handles Relic window commands")]
     public class MinotaurRelicWindowHandler : IPacketHandler
     {
         /// <summary>

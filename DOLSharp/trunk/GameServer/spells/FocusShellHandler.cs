@@ -20,18 +20,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-using DOL.GS.Effects;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.AI.Brain;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Base Handler for the focus shell
 	/// </summary>
-	[SpellHandlerAttribute("FocusShell")]
+	[SpellHandler("FocusShell")]
 	public class FocusShellHandler : SpellHandler
 	{
 		private GamePlayer FSTarget = null;

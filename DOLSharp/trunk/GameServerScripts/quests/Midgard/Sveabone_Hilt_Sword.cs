@@ -28,16 +28,17 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.GS.Quests;
-using DOL.GS.Behaviour;
-using DOL.GS.Behaviour.Attributes;
-using DOL.AI.Brain;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Behaviour.Attributes;
 
-	namespace DOL.GS.Quests.Midgard {
+namespace DawnOfLight.GameServer.Quests.Midgard {
 	
      /* The first thing we do, is to declare the class we create
 	 * as Quest. To do this, we derive from the abstract class
@@ -115,7 +116,7 @@ using DOL.AI.Brain;
 			{
 				if (!WorldMgr.GetRegion(100).IsDisabled)
 				{
-				Gridash = new DOL.GS.GameNPC();
+				Gridash = new GameNPC();
 					Gridash.Model = 137;
 				Gridash.Name = "Gridash";
 				if (log.IsWarnEnabled)
@@ -393,53 +394,53 @@ using DOL.AI.Brain;
 			QuestBehaviour a;
 			a = builder.CreateBehaviour(Gridash,-1);
 				a.AddTrigger(eTriggerType.Interact,null,Gridash);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),Gridash);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(sveabonehiltsword),Gridash);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(sveabonehiltsword),null,(eComparator)5);
 			a.AddAction(eActionType.Talk,"Hail young one! I have noticed that you do not carry one of my fine [bone hilt swords].",Gridash);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Gridash,-1);
 				a.AddTrigger(eTriggerType.Whisper,"bone hilt swords",Gridash);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),Gridash);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(sveabonehiltsword),Gridash);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(sveabonehiltsword),null,(eComparator)5);
 			a.AddAction(eActionType.Talk,"Aye! They are some of my finest works! I don't suppose you [would care for one] eh?",Gridash);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Gridash,-1);
 				a.AddTrigger(eTriggerType.Whisper,"would care for one",Gridash);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),Gridash);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),null,(eComparator)5);
-			a.AddAction(eActionType.OfferQuest,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),"Will you do what is asked so that Gridash can make a Sveabone hilt sword?");
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(sveabonehiltsword),Gridash);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(sveabonehiltsword),null,(eComparator)5);
+			a.AddAction(eActionType.OfferQuest,typeof(sveabonehiltsword),"Will you do what is asked so that Gridash can make a Sveabone hilt sword?");
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Gridash,-1);
-				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword));
+				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(sveabonehiltsword));
 			a.AddAction(eActionType.Talk,"No problem. See you",Gridash);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Gridash,-1);
-				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword));
+				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(sveabonehiltsword));
 			a.AddAction(eActionType.Talk,"Oh great then! Run along and buy me a bronze short sword. I should be ready once you return.",Gridash);
-			a.AddAction(eActionType.GiveQuest,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),Gridash);
+			a.AddAction(eActionType.GiveQuest,typeof(sveabonehiltsword),Gridash);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Gridash,-1);
 				a.AddTrigger(eTriggerType.GiveItem,Gridash,bronze_short_sword);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),null);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(sveabonehiltsword),null);
 			a.AddAction(eActionType.Talk,"Good work! I cannot seem to find anymore sveawolf teeth to fashion your weapon. Find one and return it to me.",Gridash);
 			a.AddAction(eActionType.TakeItem,bronze_short_sword,null);
 			a.AddAction(eActionType.IncQuestStep,typeof(sveabonehiltsword),null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Gridash,-1);
 				a.AddTrigger(eTriggerType.EnemyKilled,"young sveawof",null);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),2,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(sveabonehiltsword),2,(eComparator)3);
 			a.AddAction(eActionType.GiveItem,sveawolftooth,null);
-			a.AddAction(eActionType.IncQuestStep,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),null);
+			a.AddAction(eActionType.IncQuestStep,typeof(sveabonehiltsword),null);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Gridash,-1);
 				a.AddTrigger(eTriggerType.GiveItem,Gridash,sveawolftooth);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),3,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(sveabonehiltsword),3,(eComparator)3);
 			a.AddAction(eActionType.Talk,"Here is your completed work. I hope it serves you well!",Gridash);
 			a.AddAction(eActionType.TakeItem,sveawolftooth,null);
 			a.AddAction(eActionType.GiveItem,sveabone_hilt_sword,Gridash);
 			a.AddAction(eActionType.GiveXP,20,null);
 			a.AddAction(eActionType.GiveGold,450,null);
-			a.AddAction(eActionType.FinishQuest,typeof(DOL.GS.Quests.Midgard.sveabonehiltsword),null);
+			a.AddAction(eActionType.FinishQuest,typeof(sveabonehiltsword),null);
 			AddBehaviour(a);
 			
 			#endregion

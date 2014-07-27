@@ -18,9 +18,9 @@
  */
 using System;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP,0x16^168,"Handles requests for npcs(0x72) in game")]
+	[PacketHandler(PacketHandlerType.TCP,0x16^168,"Handles requests for npcs(0x72) in game")]
 	public class NPCCreationRequestHandler : IPacketHandler
 	{
 		public void HandlePacket(GameClient client, GSPacketIn packet)

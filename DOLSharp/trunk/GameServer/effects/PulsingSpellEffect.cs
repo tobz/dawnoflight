@@ -18,11 +18,11 @@
  */
 using System;
 using System.Text;
-using DOL.GS;
-using DOL.GS.Effects;
-using DOL.GS.Spells;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Assists SpellHandler with pulsing spells 

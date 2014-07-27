@@ -19,11 +19,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.GS.Styles;
-using DOL.GS.Keeps;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Styles;
 
-namespace DOL.GS.ServerRules
+namespace DawnOfLight.GameServer.ServerRules
 {
 	/// <summary>
 	/// Interface for custom server rules
@@ -410,7 +412,7 @@ namespace DOL.GS.ServerRules
 		/// </summary>
 		/// <param name="player"></param>
 		/// <param name="merchantType"></param>
-		void SendHousingMerchantWindow(GamePlayer player, DOL.GS.PacketHandler.eMerchantWindowType merchantType);
+		void SendHousingMerchantWindow(GamePlayer player, eMerchantWindowType merchantType);
 
 
 		/// <summary>
@@ -421,7 +423,7 @@ namespace DOL.GS.ServerRules
 		/// <param name="slot"></param>
 		/// <param name="count"></param>
 		/// <param name="merchantType"></param>
-		void BuyHousingItem(GamePlayer player, ushort slot, byte count, DOL.GS.PacketHandler.eMerchantWindowType merchantType);
+		void BuyHousingItem(GamePlayer player, ushort slot, byte count, eMerchantWindowType merchantType);
 
 		/// <summary>
 		/// Get a housing hookpoint NPC
@@ -431,7 +433,7 @@ namespace DOL.GS.ServerRules
 		/// <param name="heading"></param>
 		/// <param name="index"></param>
 		/// <returns></returns>
-		GameNPC PlaceHousingNPC(DOL.GS.Housing.House house, ItemTemplate item, IPoint3D location, ushort heading);
+		GameNPC PlaceHousingNPC(House house, ItemTemplate item, IPoint3D location, ushort heading);
 
 		/// <summary>
 		/// Get a static interior object for a house hookpoint
@@ -441,14 +443,14 @@ namespace DOL.GS.ServerRules
 		/// <param name="location"></param>
 		/// <param name="heading"></param>
 		/// <returns></returns>
-		GameStaticItem PlaceHousingInteriorItem(DOL.GS.Housing.House house, ItemTemplate item, IPoint3D location, ushort heading);
+		GameStaticItem PlaceHousingInteriorItem(House house, ItemTemplate item, IPoint3D location, ushort heading);
 
 		/// <summary>
 		/// Create a new consignment merchant for housing
 		/// </summary>
 		/// <param name="house"></param>
 		/// <returns></returns>
-		GameConsignmentMerchant CreateHousingConsignmentMerchant(GS.Housing.House house);
+		GameConsignmentMerchant CreateHousingConsignmentMerchant(House house);
 
 	}
 }

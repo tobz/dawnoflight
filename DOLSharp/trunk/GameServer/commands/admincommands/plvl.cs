@@ -17,12 +17,13 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&plvl",
 		ePrivLevel.Admin,
 		"AdminCommands.plvl.Description",

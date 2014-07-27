@@ -21,11 +21,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using DOL.Database;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS.Housing
+namespace DawnOfLight.GameServer.Housing
 {
 	public class House : Point3D, IGameLocation
 	{

@@ -16,19 +16,18 @@
 using System;
 using System.Reflection;
 using System.Collections;
-
-using DOL.Events;
-using DOL.Database;
-using DOL.AI.Brain;
-using DOL.Language;
-using DOL.GS;
-using DOL.GS.Spells;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
 
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class BuffMerchant : GameMerchant
 	{
@@ -1239,7 +1238,7 @@ namespace DOL.GS
 #endregion
 
 #region Tokens
-namespace DOL.GS.Items
+namespace DawnOfLight.GameServer.Items
 {
 	public class BuffTokens
 	{

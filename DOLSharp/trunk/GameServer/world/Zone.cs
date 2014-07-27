@@ -21,13 +21,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
-
-using DOL.Database;
-using DOL.Language;
-using DOL.GS.Utils;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Utils;
+using DawnOfLight.GameServer.Collections;
+using DawnOfLight.Language;
 using log4net;
+using DictionaryEntry = DawnOfLight.GameServer.Collections.DictionaryEntry;
+using Hashtable = DawnOfLight.GameServer.Collections.Hashtable;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class represents one Zone in DAOC. It holds all relevant information
@@ -267,7 +270,7 @@ namespace DOL.GS
 			m_subZoneElements = null;
 			m_subZoneTimestamps = null;
 			m_Region = null;
-			DOL.Events.GameEventMgr.RemoveAllHandlersForObject(this);
+			GameEventMgr.RemoveAllHandlersForObject(this);
 		}
 
 		private void InitializeZone()
@@ -629,8 +632,8 @@ namespace DOL.GS
 				maxLine = SUBZONE_NBR_ON_ZONE_SIDE - 1;
 			}
 
-			DOL.GS.Collections.Hashtable inZoneElements = new DOL.GS.Collections.Hashtable();
-			DOL.GS.Collections.Hashtable outOfZoneElements = new DOL.GS.Collections.Hashtable();
+			Collections.Hashtable inZoneElements = new Collections.Hashtable();
+			Collections.Hashtable outOfZoneElements = new Collections.Hashtable();
 
 			for (int currentLine = minLine; currentLine <= maxLine; ++currentLine)
 			{
@@ -726,7 +729,7 @@ namespace DOL.GS
 		}
 
 
-		private void UnsafeAddToListWithoutDistanceCheck(SubNodeElement startElement, int typeIndex, int subZoneIndex, ArrayList partialList, DOL.GS.Collections.Hashtable inZoneElements, DOL.GS.Collections.Hashtable outOfZoneElements)
+		private void UnsafeAddToListWithoutDistanceCheck(SubNodeElement startElement, int typeIndex, int subZoneIndex, ArrayList partialList, Collections.Hashtable inZoneElements, Collections.Hashtable outOfZoneElements)
 		{
 			SubNodeElement currentElement = startElement.next;
 			SubNodeElement elementToRemove = null;
@@ -771,8 +774,8 @@ namespace DOL.GS
 			int typeIndex,
 			int subZoneIndex,
 			ArrayList partialList,
-			DOL.GS.Collections.Hashtable inZoneElements,
-			DOL.GS.Collections.Hashtable outOfZoneElements,
+			Collections.Hashtable inZoneElements,
+			Collections.Hashtable outOfZoneElements,
 			bool ignoreZ)
 		{
 
@@ -826,8 +829,8 @@ namespace DOL.GS
 
 				SubNodeElement elementToRemove = null;
 
-				DOL.GS.Collections.Hashtable outOfZoneElements = new DOL.GS.Collections.Hashtable();
-				DOL.GS.Collections.Hashtable inZoneElements = new DOL.GS.Collections.Hashtable();
+				Collections.Hashtable outOfZoneElements = new Collections.Hashtable();
+				Collections.Hashtable inZoneElements = new Collections.Hashtable();
 
 				for (int subZoneIndex = 0; subZoneIndex < m_subZoneElements.Length; subZoneIndex++)
 				{
@@ -912,7 +915,7 @@ namespace DOL.GS
 		}
 
 
-		private bool ShouldElementMove(SubNodeElement currentElement, int typeIndex, int subZoneIndex, DOL.GS.Collections.Hashtable inZoneElements, DOL.GS.Collections.Hashtable outOfZoneElements)
+		private bool ShouldElementMove(SubNodeElement currentElement, int typeIndex, int subZoneIndex, Collections.Hashtable inZoneElements, Collections.Hashtable outOfZoneElements)
 		{
 
 			if (!m_initialized) InitializeZone();
@@ -976,9 +979,9 @@ namespace DOL.GS
 		}
 
 
-		private void PlaceElementsInZone(DOL.GS.Collections.Hashtable elements)
+		private void PlaceElementsInZone(Collections.Hashtable elements)
 		{
-			DOL.GS.Collections.DictionaryEntry currentEntry = null;
+			Collections.DictionaryEntry currentEntry = null;
 			ArrayList currentList = null;
 			SubNodeElement currentStartElement = null;
 			SubNodeElement currentElement = null;
@@ -987,7 +990,7 @@ namespace DOL.GS
 
 			while (entryEnumerator.MoveNext())
 			{
-				currentEntry = (DOL.GS.Collections.DictionaryEntry)entryEnumerator.Current;
+				currentEntry = (Collections.DictionaryEntry)entryEnumerator.Current;
 				currentStartElement = (SubNodeElement)currentEntry.key;
 
 				currentList = (ArrayList)currentEntry.value;
@@ -1004,9 +1007,9 @@ namespace DOL.GS
 		}
 
 
-		private void PlaceElementsInOtherZones(DOL.GS.Collections.Hashtable elements)
+		private void PlaceElementsInOtherZones(Collections.Hashtable elements)
 		{
-			DOL.GS.Collections.DictionaryEntry currentEntry = null;
+			Collections.DictionaryEntry currentEntry = null;
 
 			int currentType = 0;
 			ArrayList currentList = null;
@@ -1018,7 +1021,7 @@ namespace DOL.GS
 
 			while (entryEnumerator.MoveNext())
 			{
-				currentEntry = (DOL.GS.Collections.DictionaryEntry)entryEnumerator.Current;
+				currentEntry = (Collections.DictionaryEntry)entryEnumerator.Current;
 				currentType = (int)currentEntry.key;
 
 				currentList = (ArrayList)currentEntry.value;

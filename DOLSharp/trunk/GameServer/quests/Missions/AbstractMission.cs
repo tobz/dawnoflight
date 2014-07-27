@@ -21,13 +21,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Reflection;
-
-using DOL.Events;
-using DOL.GS.PacketHandler;
-
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.Quests
+namespace DawnOfLight.GameServer.Quests
 {
 	public class AbstractMission
 	{

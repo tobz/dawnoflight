@@ -19,11 +19,12 @@
 
 using System;
 using System.Linq;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.Language;
+using DawnOfLight.Database;
 
-using DOL.Database;
-using DOL.Language;
-
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
     [Cmd("&language", ePrivLevel.Player, "Change your language.",
         "Use '/language current' to see your current used language.",
@@ -37,7 +38,7 @@ namespace DOL.GS.Commands
             if (IsSpammingCommand(client.Player, "language"))
                 return;
 
-            if (client.Account.PrivLevel == (uint)ePrivLevel.Player && !DOL.GS.ServerProperties.Properties.ALLOW_CHANGE_LANGUAGE)
+            if (client.Account.PrivLevel == (uint)ePrivLevel.Player && !Properties.ALLOW_CHANGE_LANGUAGE)
             {
                 DisplayMessage(client, "This server does not support changing languages.");
                 return;

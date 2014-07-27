@@ -19,11 +19,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Events;
-using DOL.GS.Quests;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Quests;
 
-namespace DOL.GS.Quests.Atlantis.Encounters
+namespace DawnOfLight.GameServer.Quests.Atlantis.Encounters
 {
 	/// <summary>
     /// Encounter for the Scepter of the Meritorious artifact.

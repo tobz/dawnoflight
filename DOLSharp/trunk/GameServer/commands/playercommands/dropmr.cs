@@ -17,9 +17,9 @@
 *
 */
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-    [CmdAttribute("&dropmr", //command to handle
+    [Cmd("&dropmr", //command to handle
         ePrivLevel.Player, //minimum privelege level
         "Drops the Minotaurrelic.", //command description
         "/dropmr")] //usage

@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-    [SpellHandlerAttribute("AllStatsBuff")]
+    [SpellHandler("AllStatsBuff")]
     public class AllStatsBuff : SpellHandler
     {
 		public override int CalculateSpellResistChance(GameLiving target) { return 0; }

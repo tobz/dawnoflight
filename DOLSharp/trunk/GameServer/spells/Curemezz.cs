@@ -21,15 +21,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[SpellHandlerAttribute("CureMezz")]
+	[SpellHandler("CureMezz")]
 	public class CureMezzSpellHandler : RemoveSpellEffectHandler
 	{
 		// constructor

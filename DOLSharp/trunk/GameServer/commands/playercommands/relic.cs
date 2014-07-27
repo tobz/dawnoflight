@@ -17,15 +17,15 @@
 *
 */
 using System.Collections.Generic;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Collections;
-using DOL.Language;
-using DOL.GS.Keeps;
-using DOL.GS.ServerRules;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.ServerRules;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 	"&relics",
 	new string[] {"&relic"},
 	ePrivLevel.Player,

@@ -18,15 +18,15 @@
  */
 using System;
 using System.Collections;
-using DOL.Language;
+using DawnOfLight.Language;
 using System.Collections.Generic;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Armsman, "Armsman", "Fighter", "Armswoman")]
+	[CharacterClass((int)eCharacterClass.Armsman, "Armsman", "Fighter", "Armswoman")]
 	public class ClassArmsman : ClassFighter
 	{
 		private static readonly string[] AutotrainableSkills = new[] { Specs.Slash, Specs.Thrust };

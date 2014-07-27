@@ -19,13 +19,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
 using System.Collections;
-using DOL.Events;
 using log4net;
 using System.Reflection;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// Brain for scout mobs. Scout mobs are NPCs that will not aggro

@@ -20,22 +20,24 @@
 
 //Thanks to Eden (Vico) for creating this - Edited by IST
 using System;
-using DOL.GS;
-using DOL.Events;
+using DawnOfLight.AI;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.AI;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Movement;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Threading;
-using DOL.GS.Scripts;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Scripts;
 using log4net;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Diagnostics;
-using DOL.AI.Brain;
-using DOL.GS.Movement;
-using DOL.GS.Effects;
-using DOL.GS.Spells;
+using DawnOfLight.GameServer.Spells;
 
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	public static class RegionTimersResynch
 	{
@@ -178,7 +180,7 @@ namespace DOL.GS.GameEvents
 									else if(!(npc.Brain is BlankBrain))
 									{
                                         npc.Brain.Stop();
-										DOL.AI.ABrain brain = npc.Brain;
+										ABrain brain = npc.Brain;
                                         npc.RemoveBrain(npc.Brain);
                                         //npc.Brain.Stop();
 										if (npc.MaxSpeedBase > 0 && npc.PathID != null && npc.PathID != "" && npc.PathID != "NULL")

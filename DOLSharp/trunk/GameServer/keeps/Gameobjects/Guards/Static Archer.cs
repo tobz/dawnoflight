@@ -1,6 +1,6 @@
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	public class GuardStaticArcher : GuardArcher
 	{

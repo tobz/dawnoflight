@@ -18,11 +18,12 @@
  */
 using System;
 using System.Reflection;
-using DOL.GS.PacketHandler;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This class represents an inventory item when it is

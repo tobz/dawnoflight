@@ -16,9 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.Network;
 
-namespace DOL.GS.PacketHandler
+using DawnOfLight.Base.Network;
+
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	/// <summary>
 	/// An outgoing TCP packet

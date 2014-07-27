@@ -12,12 +12,12 @@ using System;
 using System.Net;
 using System.Text;
 using System.Threading;
-using DOL.Events;
-using DOL.GS.ServerProperties;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.ServerProperties;
 using log4net;
 using System.Reflection;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	public class ServerListUpdate
 	{

@@ -22,17 +22,16 @@ using System.Collections;
 using System.Net;
 using System.Reflection;
 using System.Text;
-
-using DOL.Database;
-using DOL.Events;
-using DOL.Language;
-using DOL.GS;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.Language;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP, 0x01 ^ 168, "Handles player position updates")]
+	[PacketHandler(PacketHandlerType.TCP, 0x01 ^ 168, "Handles player position updates")]
 	public class PlayerPositionUpdateHandler : IPacketHandler
 	{
 		/// <summary>

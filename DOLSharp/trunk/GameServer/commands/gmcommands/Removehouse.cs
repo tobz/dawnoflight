@@ -16,14 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS.PacketHandler;
 
-namespace DOL.GS.Commands
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.PacketHandler;
+
+namespace DawnOfLight.GameServer.Commands
 {
 	/// <summary>
 	/// Command handler to remove House player
 	/// </summary>
-	[CmdAttribute(
+	[Cmd(
 		"&removehouse",
 		ePrivLevel.GM,
 		"Remove House or you are", "/removehouse")]
@@ -37,7 +39,7 @@ namespace DOL.GS.Commands
 		/// <returns></returns>
 		public void OnCommand(GameClient client, string[] args)
 		{
-			DOL.GS.Housing.HouseMgr.RemoveHouse(client.Player.CurrentHouse);
+			HouseMgr.RemoveHouse(client.Player.CurrentHouse);
 		}
 	}
 }

@@ -19,11 +19,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.Spells;
-using DOL.GS.Styles;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Styles;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Holds all data for an Attack

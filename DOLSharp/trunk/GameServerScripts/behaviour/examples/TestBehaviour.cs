@@ -1,18 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.Behaviour;
-using DOL.GS.Behaviour.Actions;
-using DOL.GS.Behaviour.Triggers;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Behaviour.Actions;
+using DawnOfLight.GameServer.Behaviour.Triggers;
+using DawnOfLight.GameServer.Behaviour;
 using log4net;
 using System.Reflection;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.Quests;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Behaviour.Examples
+namespace DawnOfLight.GameServer.Behaviour.Examples
 {
     class TestBehaviour
     {
@@ -37,7 +37,7 @@ namespace DOL.GS.Behaviour.Examples
             GameNPC SirQuait = null;
             if (npcs.Length == 0)
             {
-                SirQuait = new DOL.GS.GameNPC();
+                SirQuait = new GameNPC();
                 SirQuait.Model = 40;
                 SirQuait.Name = "Sir Quait";
                 if (log.IsWarnEnabled)

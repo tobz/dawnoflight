@@ -17,9 +17,9 @@
  *
  */
 
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
     // data table attribute not set until door translations are supported.
     class LanguageDoor : LanguageDataObject

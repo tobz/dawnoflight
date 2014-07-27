@@ -17,12 +17,12 @@
 *
 */
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
     /// <summary>
     /// Command handler for the /filter command
     /// </summary>
-    [CmdAttribute(
+    [Cmd(
         "&filter",
         ePrivLevel.Player,
         "Turns off the bad word filter.",

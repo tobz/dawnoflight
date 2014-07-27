@@ -1,14 +1,15 @@
 using System;
 using System.Reflection;
 using System.Collections;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.Database;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.GS.Effects;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     public class GuildBanner
     {
@@ -181,9 +182,9 @@ namespace DOL.GS
 			{
 				playerKiller = killer as GamePlayer;
 			}
-			else if (killer is GameNPC && (killer as GameNPC).Brain != null && (killer as GameNPC).Brain is AI.Brain.IControlledBrain)
+			else if (killer is GameNPC && (killer as GameNPC).Brain != null && (killer as GameNPC).Brain is IControlledBrain)
 			{
-				playerKiller = ((killer as GameNPC).Brain as AI.Brain.IControlledBrain).Owner as GamePlayer;
+				playerKiller = ((killer as GameNPC).Brain as IControlledBrain).Owner as GamePlayer;
 			}
 
 			Stop();

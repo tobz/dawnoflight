@@ -18,18 +18,18 @@
  */
 
 using System;
-using DOL.GS.Effects;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     /// <summary>
     /// Shades of Mist spell handler: Shape change (shade) on self with
     /// a defensive proc (200 pt. melee health buffer).
     /// </summary>
     /// <author>Aredhel</author>
-    [SpellHandlerAttribute("ShadesOfMist")]
+    [SpellHandler("ShadesOfMist")]
     public class ShadeOfMistDefensiveProcSpellHandler : SpellHandler
     {
         private int ablativehp = 0;
@@ -49,7 +49,7 @@ namespace DOL.GS.Spells
                         Effect.SpellHandler.Spell.SpellType.Equals("AtlantisTabletMorph") ||
                         Effect.SpellHandler.Spell.SpellType.Equals("AlvarusMorph"))
                     {
-                        player.Out.SendMessage("You already have an active morph!", DOL.GS.PacketHandler.eChatType.CT_SpellResisted, DOL.GS.PacketHandler.eChatLoc.CL_ChatWindow);
+                        player.Out.SendMessage("You already have an active morph!", eChatType.CT_SpellResisted, eChatLoc.CL_ChatWindow);
                         return;
                     }
                 }

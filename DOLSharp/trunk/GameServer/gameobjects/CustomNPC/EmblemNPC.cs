@@ -17,10 +17,11 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Base;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	[NPCGuildScript("Guild Emblemeer")]
 	public class EmblemNPC : GameNPC
@@ -95,8 +96,8 @@ namespace DOL.GS
 					t.Out.SendMessage("You do not have enough privileges for that.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
 					return false;
 				}
-				t.TempProperties.setProperty(EMBLEMIZE_ITEM_WEAK, new WeakRef(item));
-				t.Out.SendCustomDialog("Do you agree to put an emblem on this object?", new CustomDialogResponse(EmblemerDialogResponse));
+				t.TempProperties.setProperty(EMBLEMIZE_ITEM_WEAK, new WeakReference(item));
+				t.Out.SendCustomDialog("Do you agree to put an emblem on this object?", EmblemerDialogResponse);
 			}
 			else
 				t.Out.SendMessage("I can not put an emblem on this item.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
@@ -109,7 +110,7 @@ namespace DOL.GS
 			WeakReference itemWeak =
 				(WeakReference) player.TempProperties.getProperty<object>(
 					EMBLEMIZE_ITEM_WEAK,
-					new WeakRef(null)
+					new WeakReference(null)
 					);
 			player.TempProperties.removeProperty(EMBLEMIZE_ITEM_WEAK);
 

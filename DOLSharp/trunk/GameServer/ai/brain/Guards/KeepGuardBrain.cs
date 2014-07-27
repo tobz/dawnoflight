@@ -1,11 +1,12 @@
 using System;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.ServerProperties;
 using log4net;
 using System.Reflection;
-using DOL.GS;
-using DOL.GS.Keeps;
-using DOL.GS.Movement;
+using DawnOfLight.GameServer.Movement;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// Brain Class for Area Capture Guards
@@ -115,18 +116,18 @@ namespace DOL.AI.Brain
 			foreach (GamePlayer player in Body.GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))
 			{
                 if (player == null) continue;
-                if (GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
+                if (GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
 				{
                     if ( !Body.IsWithinRadius( player, AggroRange ) )
                         continue;
-                    if ((Body as GameKeepGuard).Component != null && !GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, player, true))
+                    if ((Body as GameKeepGuard).Component != null && !GameServer.GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, player, true))
 						continue;
 					if (Body is GuardStealther == false && player.IsStealthed)
 						continue;
 
 					WarMapMgr.AddGroup((byte)player.CurrentZone.ID, player.X, player.Y, player.Name, (byte)player.Realm);
 
-					if (DOL.GS.ServerProperties.Properties.ENABLE_DEBUG)
+					if (Properties.ENABLE_DEBUG)
 					{
 						Body.Say("Want to attack player " + player.Name);
 					}
@@ -155,16 +156,16 @@ namespace DOL.AI.Brain
 				if (player == null)
 					continue;
 
-				if (GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
+				if (GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
 				{
-					if ((Body as GameKeepGuard).Component != null && !GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, player, true))
+					if ((Body as GameKeepGuard).Component != null && !GameServer.GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, player, true))
 					{
 						continue;
 					}
 
 					WarMapMgr.AddGroup((byte)player.CurrentZone.ID, player.X, player.Y, player.Name, (byte)player.Realm);
 
-					if (DOL.GS.ServerProperties.Properties.ENABLE_DEBUG)
+					if (Properties.ENABLE_DEBUG)
 					{
 						Body.Say("Want to attack player " + player.Name + " pet " + npc.Name);
 					}
@@ -184,7 +185,7 @@ namespace DOL.AI.Brain
 				checkPlayer = target as GamePlayer;
 			if (checkPlayer == null)
 				return 0;
-			if (GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, checkPlayer, true))
+			if (GameServer.GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, checkPlayer, true))
 				return AggroLevel;
 			return 0;
 		}

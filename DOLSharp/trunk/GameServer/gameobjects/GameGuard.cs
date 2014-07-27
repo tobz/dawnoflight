@@ -1,9 +1,9 @@
-using DOL.AI.Brain;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using System.Collections;
-using DOL.GS.PacketHandler;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     public class GameGuard : GameNPC
     {

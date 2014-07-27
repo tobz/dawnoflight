@@ -19,11 +19,12 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	[Cmd("&Reload",
 		ePrivLevel.Admin,
@@ -216,7 +217,7 @@ namespace DOL.GS.Commands
 		private void ReloadChampionLevels(GameClient client, string[] args)
 		{
 			int numSpells = SkillBase.ReloadSpellLine(GlobalSpellsLines.Champion_Spells);
-			DOL.GS.ChampSpecMgr.LoadChampionSpecs();
+			ChampSpecMgr.LoadChampionSpecs();
 
 			if (client.Player != null) client.Out.SendMessage(numSpells + " loaded in " + GlobalSpellsLines.Champion_Spells, eChatType.CT_Important, eChatLoc.CL_SystemWindow);
 			log.Info(numSpells + " loaded in " + GlobalSpellsLines.Champion_Spells);

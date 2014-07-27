@@ -19,15 +19,15 @@
 
 using System;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Database;
-using DOL.GS.Spells;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("Facilis")]
+	[SpellHandler("Facilis")]
 	public class FacilisSpellHandler : SpellHandler
 	{
 		public override bool IsOverwritable(GameSpellEffect compare)

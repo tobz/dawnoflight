@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Language;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	/// <summary>
 	/// Second Wind, restores 100% endu

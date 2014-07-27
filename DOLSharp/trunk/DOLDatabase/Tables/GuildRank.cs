@@ -17,11 +17,12 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Database;
+
 //using System.Collections;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// Rank rules in guild

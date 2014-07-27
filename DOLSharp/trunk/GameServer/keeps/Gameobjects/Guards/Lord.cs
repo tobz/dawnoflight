@@ -1,11 +1,12 @@
 using System;
-using DOL.Events;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
 using log4net;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// Class for the Lord Guard
@@ -144,7 +145,7 @@ namespace DOL.GS.Keeps
 				{
 					if (this.Component != null)
 					{
-						DOL.Database.KeepCaptureLog keeplog = new DOL.Database.KeepCaptureLog();
+						KeepCaptureLog keeplog = new KeepCaptureLog();
 						keeplog.KeepName = Component.Keep.Name;
 
 						if (Component.Keep is GameKeep)

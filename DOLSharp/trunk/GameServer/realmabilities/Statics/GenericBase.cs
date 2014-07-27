@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.Spells;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.RealmAbilities.Statics
+namespace DawnOfLight.GameServer.RealmAbilities.Statics
 {
 	public abstract class GenericBase : GameStaticItem 
     {

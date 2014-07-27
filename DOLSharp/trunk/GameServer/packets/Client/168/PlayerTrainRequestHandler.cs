@@ -19,17 +19,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.GS.Commands;
-using DOL.GS.RealmAbilities;
+using DawnOfLight.GameServer.Commands;
+using DawnOfLight.GameServer.RealmAbilities;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	/// <summary>
 	/// handles Train clicks from Trainer Window
 	/// D4 is up to 1.104
 	/// </summary>
-	[PacketHandlerAttribute(PacketHandlerType.TCP, 0xD4 ^ 168, "Handles Player Train Requests")]
+	[PacketHandler(PacketHandlerType.TCP, 0xD4 ^ 168, "Handles Player Train Requests")]
 	public class PlayerTrainRequestHandler : IPacketHandler
 	{
 		/// <summary>
@@ -39,7 +39,7 @@ namespace DOL.GS.PacketHandler.Client.v168
 
 		public void HandlePacket(GameClient client, GSPacketIn packet)
 		{
-			GameTrainer trainer = client.Player.TargetObject as DOL.GS.GameTrainer;
+			GameTrainer trainer = client.Player.TargetObject as GameTrainer;
 			if (trainer == null || (trainer.CanTrain(client.Player) == false && trainer.CanTrainChampionLevels(client.Player) == false))
 			{
 				client.Out.SendMessage("You must select a valid trainer for your class.", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
@@ -184,13 +184,13 @@ namespace DOL.GS.PacketHandler.Client.v168
 	/// <summary>
 	/// Handles Train clicks from Trainer Window
 	/// </summary>
-	[PacketHandlerAttribute(PacketHandlerType.TCP, 0xFB ^ 168, "Handles Player Train")]
+	[PacketHandler(PacketHandlerType.TCP, 0xFB ^ 168, "Handles Player Train")]
 	public class PlayerTrainHandler : IPacketHandler
 	{
 		public void HandlePacket(GameClient client, GSPacketIn packet)
 		{
 			// A trainer of the appropriate class must be around (or global trainer, with TrainedClass = eCharacterClass.Unknow
-			GameTrainer trainer = client.Player.TargetObject as DOL.GS.GameTrainer;
+			GameTrainer trainer = client.Player.TargetObject as GameTrainer;
 			if (trainer == null || (trainer.CanTrain(client.Player) == false && trainer.CanTrainChampionLevels(client.Player) == false))
 			{
 				client.Out.SendMessage("You must select a valid trainer for your class.", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
@@ -337,12 +337,12 @@ namespace DOL.GS.PacketHandler.Client.v168
 		/// <summary>
 		/// Summon trainer window
 		/// </summary>
-		[PacketHandlerAttribute(PacketHandlerType.TCP, 0xD3 ^ 168, "Call Player Train Window")]
+		[PacketHandler(PacketHandlerType.TCP, 0xD3 ^ 168, "Call Player Train Window")]
 		public class PlayerTrainWindowHandler : IPacketHandler
 		{
 			public void HandlePacket(GameClient client, GSPacketIn packet)
 			{
-				GameTrainer trainer = client.Player.TargetObject as DOL.GS.GameTrainer;
+				GameTrainer trainer = client.Player.TargetObject as GameTrainer;
 				if (trainer == null || (trainer.CanTrain(client.Player) == false && trainer.CanTrainChampionLevels(client.Player) == false))
 				{
 					client.Out.SendMessage("You must select a valid trainer for your class.", eChatType.CT_Important, eChatLoc.CL_ChatWindow);

@@ -24,10 +24,10 @@
  *   - Added missing (+language support)
  */
 using System;
-using DOL.Language;
-using DOL.Events;
+using DawnOfLight.Events;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles
 {
 	/// <summary>
 	/// "Stronghold Chief" title granted to everyone who captured 1000+ towers.

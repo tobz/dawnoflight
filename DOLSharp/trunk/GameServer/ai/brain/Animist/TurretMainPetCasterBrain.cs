@@ -16,11 +16,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS;
+
+using DawnOfLight.GameServer;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	public class TurretMainPetCasterBrain : TurretBrain
 	{
@@ -34,7 +35,7 @@ namespace DOL.AI.Brain
 				return;
 			}
 
-			if(!GameServer.ServerRules.IsAllowedToAttack(Body, defender, true))
+			if(!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, defender, true))
 			{
 				return;
 			}
@@ -84,7 +85,7 @@ namespace DOL.AI.Brain
 
 			foreach (GamePlayer living in Body.GetPlayersInRadius((ushort)((TurretPet)Body).TurretSpell.Range, Body.CurrentRegion.IsDungeon ? false : true))
 			{
-				if (!GameServer.ServerRules.IsAllowedToAttack(Body, living, true))
+				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, living, true))
 					continue;
 
 				if (living.IsInvulnerableToAttack)
@@ -108,7 +109,7 @@ namespace DOL.AI.Brain
 
 			foreach (GameNPC living in Body.GetNPCsInRadius((ushort)((TurretPet)Body).TurretSpell.Range, Body.CurrentRegion.IsDungeon ? false : true))
 			{
-				if (!GameServer.ServerRules.IsAllowedToAttack(Body, living, true))
+				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, living, true))
 					continue;
 
 				if (!living.IsAlive || living.CurrentRegion != Body.CurrentRegion || living.ObjectState != GameObject.eObjectState.Active)

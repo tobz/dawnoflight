@@ -17,8 +17,8 @@
  *
  */
 
-using DOL.Database;
-using DOL.Database.Attributes;
+using DawnOfLight.Database;
+using DawnOfLight.Database.Attributes;
 
 /// <summary>
 /// Saves an Appeal

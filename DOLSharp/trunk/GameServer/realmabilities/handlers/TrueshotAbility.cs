@@ -1,8 +1,8 @@
 using System;
-using DOL.Database;
-using DOL.GS.Effects;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	/// <summary>
 	/// Trueshot RA, grants 50% more range on next archery attack

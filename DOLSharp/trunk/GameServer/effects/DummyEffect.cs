@@ -19,7 +19,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
     /// <summary>
     /// Dummy effect for testing purposes (identifying buff icons and such).

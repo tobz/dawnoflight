@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DOL.GS.Quests
+namespace DawnOfLight.GameServer.Quests
 {
 	public enum eStepCheckType : int
 	{

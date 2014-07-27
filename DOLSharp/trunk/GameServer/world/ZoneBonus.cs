@@ -19,13 +19,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 using System.Reflection;
-using DOL.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     public class ZoneBonus
     {

@@ -17,12 +17,12 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS.Housing;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Housing;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP,0xD1^168,"Handles player selling")]
+	[PacketHandler(PacketHandlerType.TCP,0xD1^168,"Handles player selling")]
 	public class PlayerSellRequestHandler : IPacketHandler
 	{
 		public void HandlePacket(GameClient client, GSPacketIn packet)

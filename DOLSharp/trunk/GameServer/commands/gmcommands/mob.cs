@@ -21,18 +21,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using DawnOfLight.AI;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.AI;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Movement;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Utils;
 
-using DOL.AI;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.GS.Effects;
-using DOL.GS.Housing;
-using DOL.GS.Movement;
-using DOL.GS.PacketHandler;
-using DOL.GS.Quests;
-using DOL.GS.Utils;
-
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	[Cmd("&mob", //command to handle
 	     ePrivLevel.GM, //minimum privelege level
@@ -526,8 +527,8 @@ namespace DOL.GS.Commands
 				GameNPC mob = new GameNPC();
 
 				//Fill the object variables
-				int x = client.Player.X + DOL.GS.Util.Random(-radius, radius);
-				int y = client.Player.Y + DOL.GS.Util.Random(-radius, radius);
+				int x = client.Player.X + Util.Random(-radius, radius);
+				int y = client.Player.Y + Util.Random(-radius, radius);
 				mob.X = FastMath.Abs(x);
 				mob.Y = FastMath.Abs(y);
 				mob.Z = client.Player.Z;

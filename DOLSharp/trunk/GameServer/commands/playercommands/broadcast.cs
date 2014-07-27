@@ -19,14 +19,15 @@
 
 using System.Collections;
 using System.Reflection;
-using DOL.Language;
-using DOL.GS;
-using DOL.GS.ServerProperties;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.ServerProperties;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		 "&broadcast",
 		 new string[] { "&b" },
 		 ePrivLevel.Player,

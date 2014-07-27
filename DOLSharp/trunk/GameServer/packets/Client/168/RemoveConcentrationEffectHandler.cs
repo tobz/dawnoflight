@@ -16,9 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS.Effects;
 
-namespace DOL.GS.PacketHandler.Client.v168
+using DawnOfLight.GameServer.Effects;
+
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	/// <summary>
 	/// Called when player removes concentration spell in conc window

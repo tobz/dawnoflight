@@ -18,12 +18,12 @@
  */
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.GS.Housing;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.Database;
 using log4net;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
     [PacketHandler(PacketHandlerType.TCP, 0x1C, "Withdraw GameConsignmentMerchant Merchant Money")]
     public class PlayerWithdrawMerchantMoney : IPacketHandler

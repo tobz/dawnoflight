@@ -19,16 +19,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.PacketHandler;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Quests.Atlantis;
 using System.Collections;
-using DOL.GS.Quests;
 using log4net;
 using System.Reflection;
-using DOL.Events;
-using DOL.GS.Quests.Atlantis;
+using DawnOfLight.Events;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     /// <summary>
     /// The scholars handing out the artifacts.

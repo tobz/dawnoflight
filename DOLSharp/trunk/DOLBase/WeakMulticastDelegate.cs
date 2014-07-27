@@ -22,384 +22,386 @@ using System.Reflection;
 using System.Text;
 using log4net;
 
-namespace DOL
+namespace DawnOfLight.Base
 {
-	/// <summary>
-	/// Represents a weak-referenced multicast delegate.
-	/// </summary>
-	/// <remarks>This multicast delegate can be garbage collected.</remarks>
-	public class WeakMulticastDelegate
-	{
-		/// <summary>
-		/// Defines a logger for this class.
-		/// </summary>
-		private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+    /// <summary>
+    ///     Represents a weak-referenced multicast delegate.
+    /// </summary>
+    /// <remarks>This multicast delegate can be garbage collected.</remarks>
+    public class WeakMulticastDelegate
+    {
+        /// <summary>
+        ///     Defines a logger for this class.
+        /// </summary>
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		/// <summary>
-		/// The method info of the target
-		/// </summary>
-		private readonly MethodInfo _method;
+        /// <summary>
+        ///     The method info of the target
+        /// </summary>
+        private readonly MethodInfo _method;
 
-		/// <summary>
-		/// Method info of this delegate
-		/// </summary>
-		public MethodInfo Method
-		{
-			get { return _method; }
-		}
-
-		/// <summary>
-		/// A weak reference to the target for this delegate
-		/// </summary>
-		private readonly WeakReference _weakRef;
-
-		/// <summary>
-		/// A weak reference to the target for this delegate
-		/// </summary>
-		public WeakReference WeakRef
-		{
-			get { return _weakRef; }
-		}
+        /// <summary>
+        ///     A weak reference to the target for this delegate
+        /// </summary>
+        private readonly WeakReference _weakRef;
 
 
-		/// <summary>
-		/// The previous weak multicast delegate in the list
-		/// </summary>
-		private WeakMulticastDelegate _prev;
+        /// <summary>
+        ///     The previous weak multicast delegate in the list
+        /// </summary>
+        private WeakMulticastDelegate _prev;
 
-		/// <summary>
-		/// The previous multicast delegate in this list
-		/// </summary>
-		public WeakMulticastDelegate Previous
-		{
-			get { return _prev; }
-		}
+        /// <summary>
+        ///     Creates a new weak multicast delegate based on
+        ///     a normal delegate
+        /// </summary>
+        /// <param name="realDelegate">the normal delegate</param>
+        public WeakMulticastDelegate(Delegate realDelegate)
+        {
+            if (realDelegate == null)
+                throw new ArgumentNullException("realDelegate");
 
-		/// <summary>
-		/// Creates a new weak multicast delegate based on
-		/// a normal delegate
-		/// </summary>
-		/// <param name="realDelegate">the normal delegate</param>
-		public WeakMulticastDelegate(Delegate realDelegate)
-		{
-			if (realDelegate == null)
-				throw new ArgumentNullException("realDelegate");
+            //Is it a static?
+            if (realDelegate.Target != null)
+                _weakRef = new WeakReference(realDelegate.Target);
 
-			//Is it a static?
-			if (realDelegate.Target != null)
-				_weakRef = new WeakRef(realDelegate.Target);
+            _method = realDelegate.Method;
+        }
 
-			_method = realDelegate.Method;
-		}
+        /// <summary>
+        ///     Method info of this delegate
+        /// </summary>
+        public MethodInfo Method
+        {
+            get { return _method; }
+        }
 
-		/// <summary>
-		/// Combines a weak multicast delegate with a normal delegate
-		/// </summary>
-		/// <param name="weakDelegate">the weak multicast delegate</param>
-		/// <param name="realDelegate">the normal delegate</param>
-		/// <returns>the new combinded weak multicast delegate</returns>
-		public static WeakMulticastDelegate Combine(WeakMulticastDelegate weakDelegate, Delegate realDelegate)
-		{
-			if (realDelegate == null)
-				return null;
+        /// <summary>
+        ///     A weak reference to the target for this delegate
+        /// </summary>
+        public WeakReference WeakRef
+        {
+            get { return _weakRef; }
+        }
 
-			return (weakDelegate == null) ? new WeakMulticastDelegate(realDelegate) : weakDelegate.Combine(realDelegate);
-		}
+        /// <summary>
+        ///     The previous multicast delegate in this list
+        /// </summary>
+        public WeakMulticastDelegate Previous
+        {
+            get { return _prev; }
+        }
 
-		/// <summary>
-		/// Combines a weak multicast delegate with a normal delegate
-		/// and makes sure the normal delegate has not been added yet.
-		/// </summary>
-		/// <param name="weakDelegate">the weak multicast delegate</param>
-		/// <param name="realDelegate">the normal delegate</param>
-		/// <returns>the new combined weak multicast delegate</returns>
-		public static WeakMulticastDelegate CombineUnique(WeakMulticastDelegate weakDelegate, Delegate realDelegate)
-		{
-			if (realDelegate == null)
-				return null;
+        /// <summary>
+        ///     Combines a weak multicast delegate with a normal delegate
+        /// </summary>
+        /// <param name="weakDelegate">the weak multicast delegate</param>
+        /// <param name="realDelegate">the normal delegate</param>
+        /// <returns>the new combinded weak multicast delegate</returns>
+        public static WeakMulticastDelegate Combine(WeakMulticastDelegate weakDelegate, Delegate realDelegate)
+        {
+            if (realDelegate == null)
+                return null;
 
-			return (weakDelegate == null) ? new WeakMulticastDelegate(realDelegate) : weakDelegate.CombineUnique(realDelegate);
-		}
+            return (weakDelegate == null) ? new WeakMulticastDelegate(realDelegate) : weakDelegate.Combine(realDelegate);
+        }
 
-		/// <summary>
-		/// Combines this weak multicast delegate with a normal delegate
-		/// </summary>
-		/// <param name="realDelegate">the normal delegate</param>
-		/// <returns>this delegate</returns>
-		private WeakMulticastDelegate Combine(Delegate realDelegate)
-		{
-			var head = new WeakMulticastDelegate(realDelegate);
-			head._prev = _prev;
-			_prev = head;
+        /// <summary>
+        ///     Combines a weak multicast delegate with a normal delegate
+        ///     and makes sure the normal delegate has not been added yet.
+        /// </summary>
+        /// <param name="weakDelegate">the weak multicast delegate</param>
+        /// <param name="realDelegate">the normal delegate</param>
+        /// <returns>the new combined weak multicast delegate</returns>
+        public static WeakMulticastDelegate CombineUnique(WeakMulticastDelegate weakDelegate, Delegate realDelegate)
+        {
+            if (realDelegate == null)
+                return null;
 
-			return this;
-		}
+            return (weakDelegate == null)
+                ? new WeakMulticastDelegate(realDelegate)
+                : weakDelegate.CombineUnique(realDelegate);
+        }
 
-		/// <summary>
-		/// Compares this weak multicast delegate with a normal delegate
-		/// and returns wether their targets are equal
-		/// </summary>
-		/// <param name="realDelegate">the normal delegate</param>
-		/// <returns>true if equal, false if not equal</returns>
-		protected bool Equals(Delegate realDelegate)
-		{
-			if (realDelegate == null)
-				return false;
+        /// <summary>
+        ///     Combines this weak multicast delegate with a normal delegate
+        /// </summary>
+        /// <param name="realDelegate">the normal delegate</param>
+        /// <returns>this delegate</returns>
+        private WeakMulticastDelegate Combine(Delegate realDelegate)
+        {
+            var head = new WeakMulticastDelegate(realDelegate);
+            head._prev = _prev;
+            _prev = head;
 
-			if (_weakRef == null)
-			{
-				if (realDelegate.Target == null && _method == realDelegate.Method)
-					return true;
+            return this;
+        }
 
-				return false;
-			}
+        /// <summary>
+        ///     Compares this weak multicast delegate with a normal delegate
+        ///     and returns wether their targets are equal
+        /// </summary>
+        /// <param name="realDelegate">the normal delegate</param>
+        /// <returns>true if equal, false if not equal</returns>
+        protected bool Equals(Delegate realDelegate)
+        {
+            if (realDelegate == null)
+                return false;
 
-			if (_weakRef.Target == realDelegate.Target && _method == realDelegate.Method)
-				return true;
+            if (_weakRef == null)
+            {
+                if (realDelegate.Target == null && _method == realDelegate.Method)
+                    return true;
 
-			return false;
-		}
+                return false;
+            }
 
-		/// <summary>
-		/// Combines this weak multicast delegate with a normal delegate
-		/// Makes sure the delegate target has not been added yet
-		/// </summary>
-		/// <param name="realDelegate">the real delegate</param>
-		/// <returns>the new weak multicast delegate</returns>
-		private WeakMulticastDelegate CombineUnique(Delegate realDelegate)
-		{
-			bool found = Equals(realDelegate);
+            if (_weakRef.Target == realDelegate.Target && _method == realDelegate.Method)
+                return true;
 
-			if (!found && _prev != null)
-			{
-				WeakMulticastDelegate curNode = _prev;
+            return false;
+        }
 
-				while (!found && curNode != null)
-				{
-					if (curNode.Equals(realDelegate))
-						found = true;
+        /// <summary>
+        ///     Combines this weak multicast delegate with a normal delegate
+        ///     Makes sure the delegate target has not been added yet
+        /// </summary>
+        /// <param name="realDelegate">the real delegate</param>
+        /// <returns>the new weak multicast delegate</returns>
+        private WeakMulticastDelegate CombineUnique(Delegate realDelegate)
+        {
+            bool found = Equals(realDelegate);
 
-					curNode = curNode._prev;
-				}
-			}
+            if (!found && _prev != null)
+            {
+                WeakMulticastDelegate curNode = _prev;
 
-			return found ? this : Combine(realDelegate);
-		}
+                while (!found && curNode != null)
+                {
+                    if (curNode.Equals(realDelegate))
+                        found = true;
 
-		/// <summary>
-		/// Combines a weak multicast delegate with a normal delegate
-		/// </summary>
-		/// <param name="d">the weak multicast delegate</param>
-		/// <param name="realD">the real delegate</param>
-		/// <returns>the new weak multicast delegate</returns>
-		public static WeakMulticastDelegate operator +(WeakMulticastDelegate d, Delegate realD)
-		{
-			return Combine(d, realD);
-		}
+                    curNode = curNode._prev;
+                }
+            }
 
-		/// <summary>
-		/// Removes a normal delegate from a weak multicast delegate
-		/// </summary>
-		/// <param name="d">the weak multicast delegate</param>
-		/// <param name="realD">the real delegate</param>
-		/// <returns>the new weak multicast delegate</returns>
-		public static WeakMulticastDelegate operator -(WeakMulticastDelegate d, Delegate realD)
-		{
-			return Remove(d, realD);
-		}
+            return found ? this : Combine(realDelegate);
+        }
 
-		/// <summary>
-		/// Removes a normal delegate from a weak multicast delegate
-		/// </summary>
-		/// <param name="weakDelegate">the weak multicast delegate</param>
-		/// <param name="realDelegate">the normal delegate</param>
-		/// <returns>the new weak multicast delegate</returns>
-		public static WeakMulticastDelegate Remove(WeakMulticastDelegate weakDelegate, Delegate realDelegate)
-		{
-			if (realDelegate == null || weakDelegate == null)
-				return null;
+        /// <summary>
+        ///     Combines a weak multicast delegate with a normal delegate
+        /// </summary>
+        /// <param name="d">the weak multicast delegate</param>
+        /// <param name="realD">the real delegate</param>
+        /// <returns>the new weak multicast delegate</returns>
+        public static WeakMulticastDelegate operator +(WeakMulticastDelegate d, Delegate realD)
+        {
+            return Combine(d, realD);
+        }
 
-			return weakDelegate.Remove(realDelegate);
-		}
+        /// <summary>
+        ///     Removes a normal delegate from a weak multicast delegate
+        /// </summary>
+        /// <param name="d">the weak multicast delegate</param>
+        /// <param name="realD">the real delegate</param>
+        /// <returns>the new weak multicast delegate</returns>
+        public static WeakMulticastDelegate operator -(WeakMulticastDelegate d, Delegate realD)
+        {
+            return Remove(d, realD);
+        }
 
-		/// <summary>
-		/// Removes a normal delegate from this weak multicast delegate
-		/// </summary>
-		/// <param name="realDelegate">the normal delegate</param>
-		/// <returns>the new weak multicast delegate</returns>
-		private WeakMulticastDelegate Remove(Delegate realDelegate)
-		{
-			if (Equals(realDelegate))
-			{
-				return _prev;
-			}
+        /// <summary>
+        ///     Removes a normal delegate from a weak multicast delegate
+        /// </summary>
+        /// <param name="weakDelegate">the weak multicast delegate</param>
+        /// <param name="realDelegate">the normal delegate</param>
+        /// <returns>the new weak multicast delegate</returns>
+        public static WeakMulticastDelegate Remove(WeakMulticastDelegate weakDelegate, Delegate realDelegate)
+        {
+            if (realDelegate == null || weakDelegate == null)
+                return null;
 
-			WeakMulticastDelegate current = _prev;
-			WeakMulticastDelegate last = this;
+            return weakDelegate.Remove(realDelegate);
+        }
 
-			while (current != null)
-			{
-				if (current.Equals(realDelegate))
-				{
-					last._prev = current._prev;
-					current._prev = null;
-					break;
-				}
+        /// <summary>
+        ///     Removes a normal delegate from this weak multicast delegate
+        /// </summary>
+        /// <param name="realDelegate">the normal delegate</param>
+        /// <returns>the new weak multicast delegate</returns>
+        private WeakMulticastDelegate Remove(Delegate realDelegate)
+        {
+            if (Equals(realDelegate))
+            {
+                return _prev;
+            }
 
-				last = current;
-				current = current._prev;
-			}
+            WeakMulticastDelegate current = _prev;
+            WeakMulticastDelegate last = this;
 
-			return this;
-		}
+            while (current != null)
+            {
+                if (current.Equals(realDelegate))
+                {
+                    last._prev = current._prev;
+                    current._prev = null;
+                    break;
+                }
 
-		/// <summary>
-		/// Invokes the delegate with the given arguments
-		/// If one target throws an exception the other targets
-		/// won't be handled anymore.
-		/// </summary>
-		/// <param name="args">the argument array to pass to the target</param>
-		public void Invoke(object[] args)
-		{
-			WeakMulticastDelegate current = this;
+                last = current;
+                current = current._prev;
+            }
 
-			while (current != null)
-			{
-				int start = Environment.TickCount;
+            return this;
+        }
 
-				if (current._weakRef == null)
-				{
-					current._method.Invoke(null, args);
-				}
-				else if (current._weakRef.IsAlive)
-				{
-					current._method.Invoke(current._weakRef.Target, args);
-				}
+        /// <summary>
+        ///     Invokes the delegate with the given arguments
+        ///     If one target throws an exception the other targets
+        ///     won't be handled anymore.
+        /// </summary>
+        /// <param name="args">the argument array to pass to the target</param>
+        public void Invoke(object[] args)
+        {
+            WeakMulticastDelegate current = this;
 
-				if (Environment.TickCount - start > 500)
-				{
-					if (Log.IsWarnEnabled)
-						Log.Warn("Invoke took " + (Environment.TickCount - start) + "ms! " + current);
-				}
+            while (current != null)
+            {
+                int start = Environment.TickCount;
 
-				current = current._prev;
-			}
-		}
+                if (current._weakRef == null)
+                {
+                    current._method.Invoke(null, args);
+                }
+                else if (current._weakRef.IsAlive)
+                {
+                    current._method.Invoke(current._weakRef.Target, args);
+                }
 
-		/// <summary>
-		/// Invokes the delegate with the given arguments
-		/// If one target throws an exception the other targets
-		/// won't be affected.
-		/// </summary>
-		/// <param name="args">the argument array to pass to the target</param>
-		public void InvokeSafe(object[] args)
-		{
-			WeakMulticastDelegate current = this;
+                if (Environment.TickCount - start > 500)
+                {
+                    if (Log.IsWarnEnabled)
+                        Log.Warn("Invoke took " + (Environment.TickCount - start) + "ms! " + current);
+                }
 
-			while (current != null)
-			{
-				int start = Environment.TickCount;
+                current = current._prev;
+            }
+        }
 
-				try
-				{
-					if (current._weakRef == null)
-					{
-						current._method.Invoke(null, args);
-					}
-					else if (current._weakRef.IsAlive)
-					{
-						current._method.Invoke(current._weakRef.Target, args);
-					}
-				}
-				catch (Exception ex)
-				{
-					if (Log.IsErrorEnabled)
-						Log.Error("InvokeSafe", ex);
-				}
+        /// <summary>
+        ///     Invokes the delegate with the given arguments
+        ///     If one target throws an exception the other targets
+        ///     won't be affected.
+        /// </summary>
+        /// <param name="args">the argument array to pass to the target</param>
+        public void InvokeSafe(object[] args)
+        {
+            WeakMulticastDelegate current = this;
 
-				if (Environment.TickCount - start > 500)
-				{
-					if (Log.IsWarnEnabled)
-						Log.Warn("InvokeSafe took " + (Environment.TickCount - start) + "ms! " + current);
-				}
+            while (current != null)
+            {
+                int start = Environment.TickCount;
 
-				current = current._prev;
-			}
-		}
+                try
+                {
+                    if (current._weakRef == null)
+                    {
+                        current._method.Invoke(null, args);
+                    }
+                    else if (current._weakRef.IsAlive)
+                    {
+                        current._method.Invoke(current._weakRef.Target, args);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (Log.IsErrorEnabled)
+                        Log.Error("InvokeSafe", ex);
+                }
 
-		/// <summary>
-		/// Dumps the delegates in this multicast delegate to a string
-		/// </summary>
-		/// <returns>The string containing the formated dump</returns>
-		public string Dump()
-		{
-			var builder = new StringBuilder();
+                if (Environment.TickCount - start > 500)
+                {
+                    if (Log.IsWarnEnabled)
+                        Log.Warn("InvokeSafe took " + (Environment.TickCount - start) + "ms! " + current);
+                }
 
-			WeakMulticastDelegate current = this;
-			int count = 0;
+                current = current._prev;
+            }
+        }
 
-			while (current != null)
-			{
-				count++;
-				if (current._weakRef == null)
-				{
-					builder.Append("\t");
-					builder.Append(count);
-					builder.Append(") ");
-					builder.Append(current._method.Name);
-					builder.Append(Environment.NewLine);
-				}
-				else
-				{
-					if (current._weakRef.IsAlive)
-					{
-						builder.Append("\t");
-						builder.Append(count);
-						builder.Append(") ");
-						builder.Append(current._weakRef.Target);
-						builder.Append(".");
-						builder.Append(current._method.Name);
-						builder.Append(Environment.NewLine);
-					}
-					else
-					{
-						builder.Append("\t");
-						builder.Append(count);
-						builder.Append(") INVALID.");
-						builder.Append(current._method.Name);
-						builder.Append(Environment.NewLine);
-					}
-				}
+        /// <summary>
+        ///     Dumps the delegates in this multicast delegate to a string
+        /// </summary>
+        /// <returns>The string containing the formated dump</returns>
+        public string Dump()
+        {
+            var builder = new StringBuilder();
 
-				current = current._prev;
-			}
+            WeakMulticastDelegate current = this;
+            int count = 0;
 
-			return builder.ToString();
-		}
+            while (current != null)
+            {
+                count++;
+                if (current._weakRef == null)
+                {
+                    builder.Append("\t");
+                    builder.Append(count);
+                    builder.Append(") ");
+                    builder.Append(current._method.Name);
+                    builder.Append(Environment.NewLine);
+                }
+                else
+                {
+                    if (current._weakRef.IsAlive)
+                    {
+                        builder.Append("\t");
+                        builder.Append(count);
+                        builder.Append(") ");
+                        builder.Append(current._weakRef.Target);
+                        builder.Append(".");
+                        builder.Append(current._method.Name);
+                        builder.Append(Environment.NewLine);
+                    }
+                    else
+                    {
+                        builder.Append("\t");
+                        builder.Append(count);
+                        builder.Append(") INVALID.");
+                        builder.Append(current._method.Name);
+                        builder.Append(Environment.NewLine);
+                    }
+                }
 
-		/// <summary>
-		/// Gets string representation of delegate
-		/// </summary>
-		/// <returns></returns>
-		public override string ToString()
-		{
-			Type declaringType = null;
-			if (_method != null)
-			{
-				declaringType = _method.DeclaringType;
-			}
+                current = current._prev;
+            }
 
-			object target = null;
-			if (_weakRef != null && _weakRef.IsAlive)
-			{
-				target = _weakRef.Target;
-			}
+            return builder.ToString();
+        }
 
-			return new StringBuilder(64)
-				.Append("method: ").Append(declaringType == null ? "(null)" : declaringType.FullName)
-				.Append('.').Append(_method == null ? "(null)" : _method.Name)
-				.Append(" target: ").Append(target == null ? "null" : target.ToString())
-				.ToString();
-		}
-	}
+        /// <summary>
+        ///     Gets string representation of delegate
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            Type declaringType = null;
+            if (_method != null)
+            {
+                declaringType = _method.DeclaringType;
+            }
+
+            object target = null;
+            if (_weakRef != null && _weakRef.IsAlive)
+            {
+                target = _weakRef.Target;
+            }
+
+            return new StringBuilder(64)
+                .Append("method: ").Append(declaringType == null ? "(null)" : declaringType.FullName)
+                .Append('.').Append(_method == null ? "(null)" : _method.Name)
+                .Append(" target: ").Append(target == null ? "null" : target.ToString())
+                .ToString();
+        }
+    }
 }

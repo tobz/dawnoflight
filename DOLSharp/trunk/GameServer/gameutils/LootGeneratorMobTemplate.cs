@@ -19,10 +19,11 @@
 
 using System;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// LootGeneratorMobTemplate

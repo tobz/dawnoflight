@@ -19,14 +19,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
 
-using DOL.Database;
-using DOL.GS.Keeps;
-using DOL.GS.PacketHandler;
-using DOL.GS.ServerProperties;
-using DOL.Language;
-
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	/// <summary>
 	/// command handler for /gc command

@@ -17,12 +17,13 @@
  *
  */
 
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Collections;
 using System.Collections.Generic;
+using DawnOfLight.GameServer.World.Instance;
 
-namespace DOL.GS.ServerRules
+namespace DawnOfLight.GameServer.ServerRules
 {
 	/// <summary>
 	/// Handles Adventure Wings (Catacombs) Instance Jump Point.

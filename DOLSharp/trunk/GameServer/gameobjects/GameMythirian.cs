@@ -18,15 +18,15 @@ using System;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.Events;
-using DOL.Language;
-using DOL.GS.PacketHandler;
-using DOL.Database;
-using DOL.GS.Spells;
-using DOL.GS.Effects;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Events;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.Effects;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
         public class GameMythirian : GameInventoryItem
         {

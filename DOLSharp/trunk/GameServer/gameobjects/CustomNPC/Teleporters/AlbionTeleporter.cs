@@ -19,16 +19,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Quests.Catacombs.Obelisks;
+using DawnOfLight.GameServer;
 using System.Collections;
-using DOL.GS.Spells;
+using DawnOfLight.GameServer.Spells;
 using log4net;
 using System.Reflection;
-using DOL.GS.Quests.Catacombs.Obelisks;
-using DOL.GS.Housing;
+using DawnOfLight.GameServer.Housing;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Albion teleporter.

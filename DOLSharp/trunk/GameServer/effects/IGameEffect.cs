@@ -18,10 +18,10 @@
  */
 using System;
 using System.Collections;
-using DOL.Database;
+using DawnOfLight.Database;
 using System.Collections.Generic;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// 

@@ -19,12 +19,12 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Events;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	public class MasteryofConcentrationAbility : TimedRealmAbility
 	{

@@ -18,13 +18,13 @@
  */
 using System;
 using System.Reflection;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Movement;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Movement;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// A brain that make npc walk on rounds with way point

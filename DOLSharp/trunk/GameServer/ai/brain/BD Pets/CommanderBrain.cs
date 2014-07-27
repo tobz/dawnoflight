@@ -20,15 +20,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS;
+using DawnOfLight.GameServer;
 using System.Collections;
 using System.Reflection;
 using log4net;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// A brain for the commanders

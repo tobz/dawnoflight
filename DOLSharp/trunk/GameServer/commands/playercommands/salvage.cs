@@ -17,9 +17,9 @@
  *
  */
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&salvage",
 		ePrivLevel.Player,
 		"You can salvage an item when you are a crafter",

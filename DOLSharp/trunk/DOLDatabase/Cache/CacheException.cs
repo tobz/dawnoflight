@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.Database.Cache
+namespace DawnOfLight.Database.Cache
 {
 	/// <summary>
 	/// Represents any exception from an <c>ICache</c>

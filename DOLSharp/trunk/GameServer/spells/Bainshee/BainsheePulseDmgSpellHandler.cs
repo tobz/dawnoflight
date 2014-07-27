@@ -18,17 +18,19 @@
  */
 using System;
 using System.Collections;
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
-using DOL.GS.Keeps;
-using DOL.Events;
-using DOL.GS.Effects;
-namespace DOL.GS.Spells
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// 
 	/// </summary>
-    [SpellHandlerAttribute("BainsheePulseDmg")]
+    [SpellHandler("BainsheePulseDmg")]
 	public class BainsheePulseDmgSpellHandler : SpellHandler
 	{
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

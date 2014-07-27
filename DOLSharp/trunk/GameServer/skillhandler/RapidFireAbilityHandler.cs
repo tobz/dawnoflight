@@ -17,16 +17,16 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Language;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Handler for Rapid Fire ability
 	/// </summary>
-	[SkillHandlerAttribute(Abilities.RapidFire)]
+	[SkillHandler(Abilities.RapidFire)]
 	public class RapidFireAbilityHandler : IAbilityActionHandler
 	{
 		public void Execute(Ability ab, GamePlayer player)

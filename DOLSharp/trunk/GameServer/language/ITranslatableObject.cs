@@ -17,9 +17,9 @@
  *
  */
 
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.Language
+namespace DawnOfLight.Language
 {
     public interface ITranslatableObject
     {

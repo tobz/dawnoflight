@@ -18,10 +18,9 @@
 */
 using System;
 using System.Collections;
+using DawnOfLight.GameServer.Quests;
 
-using DOL.GS.Quests;
-
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x4F, "Quest remove request")]
 	public class QuestRemoveRequestHandler : IPacketHandler

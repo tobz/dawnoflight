@@ -18,12 +18,12 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("PowerDrainPet")]
+	[SpellHandler("PowerDrainPet")]
 	public class PowerDrainPet : PowerDrain
 	{
 		public override void DrainPower(AttackData ad)

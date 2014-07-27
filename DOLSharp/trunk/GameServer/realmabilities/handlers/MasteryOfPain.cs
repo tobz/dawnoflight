@@ -1,6 +1,6 @@
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	/// <summary>
 	/// Mastery of Pain ability

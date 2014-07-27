@@ -1,13 +1,13 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
-using DOL;
-using DOL.GS;
-using DOL.Events;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight;
+using DawnOfLight.GameServer;
+using DawnOfLight.Events;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Helper for charge realm ability

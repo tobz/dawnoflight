@@ -18,9 +18,10 @@
  */
 using System;
 using System.Collections;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Equips new created Characters with standard equipment

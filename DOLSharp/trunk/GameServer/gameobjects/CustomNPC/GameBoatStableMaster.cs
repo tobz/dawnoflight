@@ -19,14 +19,14 @@
  */
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.Language;
-using DOL.GS.Movement;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Movement;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Stable master that sells and takes horse route tickes

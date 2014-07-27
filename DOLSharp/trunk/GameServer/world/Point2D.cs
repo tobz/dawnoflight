@@ -17,8 +17,9 @@
  *
  */
 using System;
+using DawnOfLight.GameServer.World;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// represents a point in 2 dimensional space

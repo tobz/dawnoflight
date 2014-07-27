@@ -18,8 +18,9 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.GS;
-namespace DOL.Events
+using DawnOfLight.GameServer;
+
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// Holds the arguments for the Dying event of GameLivings

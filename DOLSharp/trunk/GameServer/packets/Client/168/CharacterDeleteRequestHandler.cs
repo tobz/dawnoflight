@@ -18,16 +18,17 @@
  */
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	/// <summary>
 	/// No longer used after version 1.104
 	/// </summary>
-	[PacketHandlerAttribute(PacketHandlerType.TCP, 0x68 ^ 168, "Handles character delete requests")]
+	[PacketHandler(PacketHandlerType.TCP, 0x68 ^ 168, "Handles character delete requests")]
 	public class CharacterDeleteRequestHandler : IPacketHandler
 	{
 		private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);

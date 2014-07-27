@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.GS.Effects;
+using DawnOfLight.Events;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.Events;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
     /// <summary>
     /// Adrenaline Rush

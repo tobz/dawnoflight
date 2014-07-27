@@ -18,7 +18,7 @@
  */
 using System.Collections;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Interface for all NPC templates

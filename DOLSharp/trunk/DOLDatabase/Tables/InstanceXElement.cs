@@ -18,9 +18,9 @@
  */
 //Author (aka who to blame): Dinberg if its good, Graveen if something goes wrong ^^
 using System;
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// This table represents instances, with an entry for each element (instance type, objects, mobs, entrances, etc) in an instance.

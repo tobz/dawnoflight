@@ -19,8 +19,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DawnOfLight.GameServer.World;
 
-namespace DOL.GS.Relics
+namespace DawnOfLight.GameServer.Relics
 {
 	/// <summary>
 	/// Class representing a relic pad.

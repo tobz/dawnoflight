@@ -17,15 +17,15 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Warlock, "Warlock", "Mystic")]
+	[CharacterClass((int)eCharacterClass.Warlock, "Warlock", "Mystic")]
 	public class ClassWarlock : ClassMystic
 	{
 		public ClassWarlock() : base()

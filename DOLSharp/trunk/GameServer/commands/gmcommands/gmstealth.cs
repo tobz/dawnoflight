@@ -18,14 +18,14 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.GS.Commands;
-using DOL.GS;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Commands;
+using DawnOfLight.GameServer;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-    [CmdAttribute(
+    [Cmd(
         "&gmstealth",
         ePrivLevel.GM,
         "Grants the ability to stealth to a gm/admin character",

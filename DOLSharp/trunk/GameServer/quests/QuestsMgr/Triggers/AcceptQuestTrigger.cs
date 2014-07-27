@@ -18,21 +18,21 @@
  */
 using System;
 using System.Text;
-using DOL.Events;
-using DOL.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.Behaviour.Attributes;
+using DawnOfLight.Database;
 using log4net;
 using System.Reflection;
-using DOL.GS.Behaviour.Attributes;
-using DOL.GS.Behaviour;
 
-namespace DOL.GS.Quests.Triggers
+namespace DawnOfLight.GameServer.Quests.Triggers
 {	
     /// <summary>
     /// A trigger defines the circumstances under which a certain QuestAction is fired.
     /// This can be eTriggerAction.Interact, eTriggerAction.GiveItem, eTriggerAction.Attack, etc...
     /// Additional there are two variables to add the needed parameters for the triggertype (Item to give for GiveItem, NPC to interact for Interact, etc...). To fire a QuestAction at least one of the added triggers must be fulfilled. 
     /// </summary>
-    [TriggerAttribute(TriggerType=eTriggerType.AcceptQuest)]
+    [Trigger(TriggerType=eTriggerType.AcceptQuest)]
     public class AcceptQuestTrigger : AbstractTrigger<Unused,Type>
     {
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);

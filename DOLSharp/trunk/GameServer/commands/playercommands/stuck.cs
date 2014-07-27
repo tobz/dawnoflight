@@ -17,9 +17,9 @@
  *
  */
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&stuck",
+	[Cmd("&stuck",
 		ePrivLevel.Player, //minimum privelege level
 		"Removes the player from the world and put it to a safe location", //command description
 		"/stuck")] //usage

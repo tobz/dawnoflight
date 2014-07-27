@@ -20,9 +20,9 @@ using System.Collections;
 using System.Collections.Specialized;
 using System;
 
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// The GroupMgr holds pointers to all groups and to players

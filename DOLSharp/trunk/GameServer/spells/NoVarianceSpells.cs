@@ -18,15 +18,15 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[SpellHandlerAttribute("DamageSpeedDecreaseNoVariance")]
+	[SpellHandler("DamageSpeedDecreaseNoVariance")]
     public class DamageSpeedDecreaseNoVarianceSpellHandler : DamageSpeedDecreaseSpellHandler
 	{
 		public override double CalculateDamageBase(GameLiving target)
@@ -42,12 +42,12 @@ namespace DOL.GS.Spells
 	}
 }
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     /// <summary>
     /// 
     /// </summary>
-    [SpellHandlerAttribute("DirectDamageNoVariance")]
+    [SpellHandler("DirectDamageNoVariance")]
     public class DirectDamageNoVarianceSpellHandler : DirectDamageSpellHandler
     {
 		public override double CalculateDamageBase(GameLiving target)
@@ -63,12 +63,12 @@ namespace DOL.GS.Spells
     }
 }
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// UnresistableStun 
 	/// </summary>
-	[SpellHandlerAttribute("UnresistableStun")]
+	[SpellHandler("UnresistableStun")]
 	public class UnresistableStunSpellHandler : StunSpellHandler
 	{
 

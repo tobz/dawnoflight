@@ -20,7 +20,7 @@ using System;
 using System.Reflection;
 using log4net;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	public abstract class AbstractPacketLib
 	{

@@ -18,10 +18,10 @@
  */
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Housing
+namespace DawnOfLight.GameServer.Housing
 {
 	public class GameLotMarker : GameStaticItem
 	{

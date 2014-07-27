@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// Holds the arguments for the TurnToHeading event of GameNPC

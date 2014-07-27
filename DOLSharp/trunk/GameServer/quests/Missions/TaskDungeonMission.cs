@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Reflection;
-
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.World.Instance;
 using log4net;
 
-namespace DOL.GS.Quests
+namespace DawnOfLight.GameServer.Quests
 {
 	public class TaskDungeonMission : AbstractMission
 	{

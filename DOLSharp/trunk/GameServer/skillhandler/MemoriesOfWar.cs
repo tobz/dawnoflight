@@ -16,15 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.GS;
-using DOL.Database;
 
-namespace DOL.GS.SkillHandler
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	//Memories of War: Upon reaching level 41, the Hero, Warrior and Armsman will begin to gain more magic resistance
 	//(spell damage reduction only) as they progress towards level 50. At each level beyond 41 they gain 2%-3% extra
 	//resistance per level. At level 50, they will have the full 15% benefit.
-	[SkillHandlerAttribute(Abilities.MemoriesOfWar)]
+	[SkillHandler(Abilities.MemoriesOfWar)]
 	public class MemoriesOfWar : StatChangingAbility
 	{
 		public MemoriesOfWar(DBAbility dba, int level)

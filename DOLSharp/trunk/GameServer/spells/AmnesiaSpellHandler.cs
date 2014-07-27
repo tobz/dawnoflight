@@ -18,17 +18,17 @@
  */
 using System;
 using System.Collections;
-using DOL.AI.Brain;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[SpellHandlerAttribute("Amnesia")]
+	[SpellHandler("Amnesia")]
 	public class AmnesiaSpellHandler : SpellHandler
 	{
 		/// <summary>

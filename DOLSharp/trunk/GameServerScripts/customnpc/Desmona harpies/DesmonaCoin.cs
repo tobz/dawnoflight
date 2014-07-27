@@ -18,9 +18,9 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS.Scripts
+namespace DawnOfLight.GameServer.Scripts
 {
     public class DesmonaCoin : GameInventoryItem
     {

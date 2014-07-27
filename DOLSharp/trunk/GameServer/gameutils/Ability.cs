@@ -20,11 +20,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-
-using DOL.Database;
+using DawnOfLight.Database;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// callback handler for an ability that is activated by clicking on an associated icon

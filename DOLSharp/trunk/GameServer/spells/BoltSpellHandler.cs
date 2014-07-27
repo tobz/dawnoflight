@@ -17,19 +17,20 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.GS.Keeps;
-using DOL.GS.SkillHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.World;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Spell Handler for firing bolts
 	/// </summary>
-	[SpellHandlerAttribute("Bolt")]
+	[SpellHandler("Bolt")]
 	public class BoltSpellHandler : SpellHandler
 	{
 		/// <summary>

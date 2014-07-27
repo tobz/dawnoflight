@@ -18,9 +18,9 @@
  */
 using System;
 using System.Collections;
-using DOL.GS;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Styles
+namespace DawnOfLight.GameServer.Styles
 {
 	/// <summary>
 	/// The style line containing all the styles able to execute

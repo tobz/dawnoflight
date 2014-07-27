@@ -19,12 +19,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.PlayerTitles;
-using DOL.GS.Commands;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.PlayerTitles;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Commands;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	[Cmd(
 		 "&titlegm",

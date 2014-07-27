@@ -1,7 +1,7 @@
-using DOL.Events;
-using DOL.GS.Keeps;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Keeps;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 	/// <summary>
 	/// Healer Guard Brain

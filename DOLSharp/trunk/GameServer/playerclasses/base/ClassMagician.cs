@@ -17,16 +17,16 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Magician, "Magician", "Magician")]
-	public class ClassMagician : DOL.GS.CharacterClassBase
+	[CharacterClass((int)eCharacterClass.Magician, "Magician", "Magician")]
+	public class ClassMagician : CharacterClassBase
 	{
 		public ClassMagician()
 		{

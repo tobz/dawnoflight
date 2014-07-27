@@ -19,9 +19,9 @@
 
 using System;
 using System.Collections.Generic;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// Base for all GuildBannerEffects. Use CreateEffectOfClass to get instances.

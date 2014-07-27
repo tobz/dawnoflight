@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.DatabaseUpdate
+namespace DawnOfLight.GameServer.DatabaseUpdate
 {
 	/// <summary>
 	/// Interface for all database updaters

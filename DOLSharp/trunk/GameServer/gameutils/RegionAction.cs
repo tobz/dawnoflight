@@ -19,7 +19,7 @@
 using System;
 using System.Text;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// The base class for all timed region actions

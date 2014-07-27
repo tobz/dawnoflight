@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClass
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[CharacterClassAttribute((int)eCharacterClass.Berserker, "Berserker", "Viking")]
+	[CharacterClass((int)eCharacterClass.Berserker, "Berserker", "Viking")]
 	public class ClassBerserker : ClassViking
 	{
 		public ClassBerserker() : base() 

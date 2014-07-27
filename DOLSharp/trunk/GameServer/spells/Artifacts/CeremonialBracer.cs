@@ -18,17 +18,17 @@
  */
 
 using System;
-using DOL.GS;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
-	[SpellHandlerAttribute("CeremonialBracerMezz")]
+	[SpellHandler("CeremonialBracerMezz")]
 	public class CeremonialBracerMezzSpellHandler : SpellHandler
 	{
 		public CeremonialBracerMezzSpellHandler(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) {}
 	}
-	[SpellHandlerAttribute("CeremonialBracerStun")]
+	[SpellHandler("CeremonialBracerStun")]
 	public class CeremonialBracerStunSpellHandler : SpellHandler
 	{
 		public CeremonialBracerStunSpellHandler(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) {}

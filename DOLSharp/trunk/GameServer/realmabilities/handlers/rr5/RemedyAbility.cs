@@ -19,18 +19,18 @@
  * Updated to be a skillhandler to match 1.108.
  */
 using System.Reflection;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.GS.Keeps;
-using DOL.GS.Spells;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Remedy Realm Ability
 	/// </summary>
-    [SkillHandlerAttribute(Abilities.Remedy)]
+    [SkillHandler(Abilities.Remedy)]
 	public class RemedyAbility : IAbilityActionHandler
 	{
 		/// <summary>

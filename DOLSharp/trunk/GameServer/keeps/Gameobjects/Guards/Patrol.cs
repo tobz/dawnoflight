@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
-using DOL.GS;
-using DOL.GS.Movement;
-using DOL.Events;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.Database.UniqueID;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Movement;
+using DawnOfLight.Events;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>
 	/// Class for a Guard Patrol
@@ -56,7 +57,7 @@ namespace DOL.GS.Keeps
 		/// <summary>
 		/// The Patrol ID, consider this a template ID
 		/// </summary>
-		public string PatrolID = DOL.Database.UniqueID.IDGenerator.GenerateID();
+		public string PatrolID = IDGenerator.GenerateID();
 		/// <summary>
 		/// The Guard Types that make up the Patrol
 		/// </summary>
@@ -134,7 +135,7 @@ namespace DOL.GS.Keeps
 				TemplateMgr.RefreshTemplate(guard);
 			}
 			PatrolGuards.Add(guard);
-			Component.Keep.Guards.Add(DOL.Database.UniqueID.IDGenerator.GenerateID(), guard);
+			Component.Keep.Guards.Add(IDGenerator.GenerateID(), guard);
 			guard.AddToWorld();
 
 			if (ServerProperties.Properties.ENABLE_DEBUG)

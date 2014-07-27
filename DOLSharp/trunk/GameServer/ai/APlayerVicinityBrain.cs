@@ -19,10 +19,11 @@
 using System.Reflection;
 using System.Text;
 using System.Threading;
-using DOL.GS;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.AI;
 using log4net;
 
-namespace DOL.AI
+namespace DawnOfLight.AI
 {
 	/// <summary>
 	/// <p>This class is the base brain of all npc's that only stay active when players are close</p>

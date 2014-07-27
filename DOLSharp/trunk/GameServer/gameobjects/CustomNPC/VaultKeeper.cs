@@ -18,10 +18,10 @@
  */
 //							Written by Doulbousiouf (01/11/2004)					//
 using System.Collections;
-using DOL.Language;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Represents an in-game VaultKeeper NPC

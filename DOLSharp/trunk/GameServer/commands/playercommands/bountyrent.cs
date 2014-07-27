@@ -17,13 +17,13 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS.Housing;
-using DOL.Language;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&bountyrent", //command to handle
+	[Cmd("&bountyrent", //command to handle
 		ePrivLevel.Player, //minimum privelege level
 		"Pay house rent with bountypoints", //command description
         "Use /bountyrent personal/guild <amount> to pay.")]

@@ -1,9 +1,9 @@
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&summon", ePrivLevel.Player,"Summon horse","/summon")]
+	[Cmd("&summon", ePrivLevel.Player,"Summon horse","/summon")]
 	public class SummonHorseCommandHandler : AbstractCommandHandler, ICommandHandler
 	{
 		public void OnCommand(GameClient client, string[] args)

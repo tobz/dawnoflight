@@ -17,24 +17,25 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.GS.Utils;
-using DOL.GS.Quests;
-using DOL.GS.PacketHandler.Client.v168;
+using DawnOfLight.GameServer.Utils;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.PacketHandler.Client.v168;
 using log4net;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
     /// <summary>
     /// A command to manage teleport destinations.
     /// </summary>
     /// <author>Aredhel</author>
-	[CmdAttribute(
+	[Cmd(
 		"&teleport",
 		ePrivLevel.GM,
         "Manage teleport destinations",

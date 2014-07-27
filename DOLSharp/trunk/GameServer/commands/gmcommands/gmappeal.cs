@@ -19,15 +19,15 @@
 
 using System.Reflection;
 using System.Collections.Generic;
+using DawnOfLight.GameServer.Appeal;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 using log4net;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-using DOL.GS.Appeal;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 
-    [CmdAttribute(
+    [Cmd(
         "&gmappeal",
         new string[] { "&gmhelp" },
         ePrivLevel.GM,

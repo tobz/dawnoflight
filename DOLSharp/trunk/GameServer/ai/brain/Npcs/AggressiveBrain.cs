@@ -18,17 +18,17 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.GS;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.GS.ServerProperties;
-using DOL.GS.Spells;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Database;
 using System.Collections;
 using log4net;
 using System.Reflection;
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
     /// <summary>
     /// A brain that can aggro on other GameLiving objects.

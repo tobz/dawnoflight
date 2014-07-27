@@ -17,12 +17,12 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.Events;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     [SpellHandler("IllusionBladeSummon")]
     public class IllusionBladeSummon : SummonSpellHandler
@@ -89,7 +89,7 @@ namespace DOL.GS.Spells
     }
 }
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     public class IllusionBladePet : GamePet
     {

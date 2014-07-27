@@ -17,13 +17,13 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.GS.RealmAbilities;
-using DOL.GS.Spells;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.Spells;
 
-namespace DOL.GS.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalc
 {
 	/// <summary>
 	/// The Max Speed calculator

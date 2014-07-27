@@ -17,8 +17,9 @@
  *
  */
 using System;
-using DOL.GS;
-namespace DOL.Events
+using DawnOfLight.GameServer;
+
+namespace DawnOfLight.Events
 {
     /// <summary>
     /// Holds the arguments for the RelicPad event

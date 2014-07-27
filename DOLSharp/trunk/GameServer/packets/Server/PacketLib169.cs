@@ -20,12 +20,12 @@
 
 using System;
 using System.Collections;
-using DOL.Database;
-using DOL.GS.Spells;
-using DOL.GS.Styles;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Styles;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	[PacketLib(169, GameClient.eClientVersion.Version169)]
 	public class PacketLib169 : PacketLib168

@@ -19,15 +19,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.ServerProperties;
 
-using DOL.GS;
-using DOL.GS.ServerProperties;
-using DOL.GS.PacketHandler;
-using DOL.Language;
-
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&announce",
 		ePrivLevel.GM,
 	    "GMCommands.Announce.Description",

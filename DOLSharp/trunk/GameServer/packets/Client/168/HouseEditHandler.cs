@@ -18,7 +18,7 @@
  */
 using System.Collections.Generic;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x01, "Change handler for outside/inside look (houses).")]
 	public class HouseEditHandler : IPacketHandler

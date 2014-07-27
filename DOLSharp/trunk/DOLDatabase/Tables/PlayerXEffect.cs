@@ -1,9 +1,8 @@
 using System;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Database;
 
-using DOL.Database;
-using DOL.Database.Attributes;
-
-namespace DOL
+namespace DawnOfLight
 {
 	namespace Database
 	{

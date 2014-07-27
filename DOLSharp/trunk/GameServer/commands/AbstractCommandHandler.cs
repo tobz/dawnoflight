@@ -19,7 +19,7 @@
 using System.Reflection;
 using log4net;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	/// <summary>
 	/// Providing some basic command handler functionality

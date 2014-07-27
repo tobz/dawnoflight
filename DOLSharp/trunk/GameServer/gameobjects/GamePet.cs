@@ -17,14 +17,15 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.ServerProperties;
-using DOL.GS.Spells;
-using DOL.GS.Styles;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Styles;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class GamePet : GameNPC
 	{

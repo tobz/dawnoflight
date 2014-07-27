@@ -17,8 +17,9 @@
  *
  */
 using System;
+using DawnOfLight.GameServer.World;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Defines a 3D point

@@ -20,9 +20,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     /// <summary>
     /// This is a preliminary loot generator for artifact scrolls.

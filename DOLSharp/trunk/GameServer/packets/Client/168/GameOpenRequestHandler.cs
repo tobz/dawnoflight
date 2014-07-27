@@ -18,9 +18,9 @@
  */
 using System;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP,0x17^168,"Checks if UDP is working for the client")]
+	[PacketHandler(PacketHandlerType.TCP,0x17^168,"Checks if UDP is working for the client")]
 	public class GameOpenRequestHandler : IPacketHandler
 	{
 		public void HandlePacket(GameClient client, GSPacketIn packet)

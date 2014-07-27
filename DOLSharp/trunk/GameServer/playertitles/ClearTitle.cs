@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles
 {
 	/// <summary>
 	/// Special "empty" player title, always first in the list.

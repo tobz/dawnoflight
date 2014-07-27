@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     public interface IPlayerStatistics
     {

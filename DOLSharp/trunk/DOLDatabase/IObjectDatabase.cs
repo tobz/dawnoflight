@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	public interface IObjectDatabase
 	{

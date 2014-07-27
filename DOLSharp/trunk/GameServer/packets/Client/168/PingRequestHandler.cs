@@ -19,12 +19,12 @@
 using System;
 using System.Text;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	/// <summary>
 	/// Handles the ping packet
 	/// </summary>
-	[PacketHandlerAttribute(PacketHandlerType.TCP,0x0B^168,"Sends the ping reply")]
+	[PacketHandler(PacketHandlerType.TCP,0x0B^168,"Sends the ping reply")]
 	public class PingRequestHandler : IPacketHandler
 	{
 		/// <summary>

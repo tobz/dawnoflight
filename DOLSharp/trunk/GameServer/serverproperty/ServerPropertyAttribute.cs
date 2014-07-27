@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.ServerProperties
+namespace DawnOfLight.GameServer.ServerProperties
 {
 	/// <summary>
 	/// The server property attribute

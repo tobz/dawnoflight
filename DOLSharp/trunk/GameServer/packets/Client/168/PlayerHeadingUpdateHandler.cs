@@ -19,12 +19,12 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.GS;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP, eClientPackets.PlayerHeadingUpdate, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerHeadingUpdate, ClientStatus.PlayerInGame)]
 	public class PlayerHeadingUpdateHandler : IPacketHandler
 	{
 		/// <summary>

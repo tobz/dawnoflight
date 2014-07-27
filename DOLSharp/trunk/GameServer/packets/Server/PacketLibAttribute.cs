@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	/// <summary>
 	/// Denotes a class as a packet lib.

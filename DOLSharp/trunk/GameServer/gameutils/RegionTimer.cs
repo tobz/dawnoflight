@@ -20,7 +20,7 @@ using System;
 using System.Text;
 using System.Threading;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// This delegate is the callback function for RegionTimers

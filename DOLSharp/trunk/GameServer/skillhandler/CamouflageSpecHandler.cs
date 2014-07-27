@@ -17,16 +17,16 @@
  *
  */
 using System;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Handler for Stealth Spec clicks
 	/// </summary>
-	[SkillHandlerAttribute(Abilities.Camouflage)]
+	[SkillHandler(Abilities.Camouflage)]
 	public class CamouflageSpecHandler : IAbilityActionHandler
 	{
 		public const int DISABLE_DURATION = 420000;

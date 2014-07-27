@@ -1,6 +1,7 @@
 using System;
+using DawnOfLight.GameServer.World.Instance;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class RegionTestNpc : GameNPC
 	{
@@ -84,9 +85,9 @@ namespace DOL.GS
 	}
 }
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&npcdebug", //command to handle
+	[Cmd("&npcdebug", //command to handle
 	              ePrivLevel.Admin, //minimum privelege level
 	              "Writes information of all npcs in a region to the console", //command description
 	              "/npcdebug")] //usage

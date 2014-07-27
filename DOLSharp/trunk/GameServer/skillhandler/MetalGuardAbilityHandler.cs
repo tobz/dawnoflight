@@ -17,15 +17,15 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
     /// <summary>
     /// Handler for Sprint Ability clicks
     /// </summary>
-    [SkillHandlerAttribute(Abilities.MetalGuard)]
+    [SkillHandler(Abilities.MetalGuard)]
     public class MetalGuardAbilityHandler : SpellCastingAbilityHandler
     {
 		public override long Preconditions

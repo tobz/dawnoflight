@@ -19,14 +19,14 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.GS;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&merchant",
+	[Cmd("&merchant",
 		 ePrivLevel.GM,
 		 "GMCommands.Merchant.Description",
 		 //Usage

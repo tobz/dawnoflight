@@ -22,11 +22,11 @@
 	  with thanks to Smallhorse for guidance.*/
 
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&played",
 		ePrivLevel.Player,
 		"Returns the age of the character",

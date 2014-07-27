@@ -17,8 +17,9 @@
  *
  */
 using System;
+using DawnOfLight.Base;
 
-namespace DOL.GS.ServerRules
+namespace DawnOfLight.GameServer.ServerRules
 {
 	/// <summary>
 	/// Denotes a class as a server rules handler for a given server type

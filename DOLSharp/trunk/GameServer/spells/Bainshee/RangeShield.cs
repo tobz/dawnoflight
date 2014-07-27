@@ -1,15 +1,15 @@
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Events;
- 
-namespace DOL.GS.Spells
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Summary description for RangeShield.
 	/// </summary>
-	[SpellHandlerAttribute("RangeShield")]
+	[SpellHandler("RangeShield")]
 	public class RangeShield : BladeturnSpellHandler 
 	{
         public override void OnEffectStart(GameSpellEffect effect)

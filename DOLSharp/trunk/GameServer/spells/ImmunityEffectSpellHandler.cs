@@ -18,11 +18,11 @@
  */
 using System;
 using System.Collections;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.GS.Effects;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.Database;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Base class for spells with immunity like mez/root/stun/nearsight

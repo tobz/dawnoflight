@@ -1,7 +1,7 @@
 using System;
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	/// <summary>
 	/// Serenity realm ability

@@ -17,12 +17,12 @@
  *
  */
 using System;
-using DOL.Language;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&advisor",
 		ePrivLevel.Player,
 		"Toggles Advisor status",

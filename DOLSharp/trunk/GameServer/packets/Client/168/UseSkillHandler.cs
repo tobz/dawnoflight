@@ -19,10 +19,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.GS.Styles;
+using DawnOfLight.GameServer.Styles;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.UseSkill, ClientStatus.PlayerInGame)]
 	public class UseSkillHandler : IPacketHandler

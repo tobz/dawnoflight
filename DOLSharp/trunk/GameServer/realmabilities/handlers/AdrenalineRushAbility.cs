@@ -1,13 +1,13 @@
 using System.Reflection;
 using System.Collections;
-using DOL.Database;
-using DOL.GS;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
 using System.Collections.Generic;
 
-namespace DOL.GS.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities
 {
     public class AdrenalineRushAbility : TimedRealmAbility
     {

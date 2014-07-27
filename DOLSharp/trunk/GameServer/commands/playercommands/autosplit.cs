@@ -16,12 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.Language;
-using DOL.GS.PacketHandler;
 
-namespace DOL.GS.Commands
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&autosplit",
+	[Cmd("&autosplit",
 		 ePrivLevel.Player,
 		 "Choose how the loot and money are split between members of group",
 		 "/autosplit on/off (Leader only: Toggles both coins and loot for entire group)",

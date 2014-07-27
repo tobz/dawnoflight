@@ -18,11 +18,11 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.Database;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Defines the realms for various packets and search functions etc.

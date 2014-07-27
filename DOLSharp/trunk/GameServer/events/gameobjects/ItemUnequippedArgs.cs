@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.GS;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// Holds the arguments for the ItemUnEquipped event of PlayerInventory

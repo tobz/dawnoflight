@@ -17,17 +17,17 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     /// <summary>
     /// All stats debuff spell handler
     /// </summary>
-    [SpellHandlerAttribute("AllStatsDebuff")]
+    [SpellHandler("AllStatsDebuff")]
     public class AllStatsDebuff : SpellHandler
     {
 		public override int CalculateSpellResistChance(GameLiving target)
@@ -114,7 +114,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Lore debuff spell handler (Magic resist debuff)
     /// </summary>
-    [SpellHandlerAttribute("LoreDebuff")]
+    [SpellHandler("LoreDebuff")]
     public class LoreDebuff : SpellHandler
     {
  		public override int CalculateSpellResistChance(GameLiving target)
@@ -187,7 +187,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Strength/Constitution drain spell handler
     /// </summary>
-    [SpellHandlerAttribute("StrengthConstitutionDrain")]
+    [SpellHandler("StrengthConstitutionDrain")]
     public class StrengthConstitutionDrain : StrengthConDebuff
     {  	
 		public override int CalculateSpellResistChance(GameLiving target)
@@ -230,7 +230,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// ABS Damage shield spell handler
     /// </summary>
-    [SpellHandlerAttribute("ABSDamageShield")]
+    [SpellHandler("ABSDamageShield")]
     public class ABSDamageShield : AblativeArmorSpellHandler
     {
         protected override void OnDamageAbsorbed(AttackData ad, int DamageAmount)
@@ -252,7 +252,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Morph spell handler
     /// </summary>
-    [SpellHandlerAttribute("Morph")]
+    [SpellHandler("Morph")]
     public class Morph : SpellHandler
     {
         public override void OnEffectStart(GameSpellEffect effect)
@@ -283,7 +283,7 @@ namespace DOL.GS.Spells
     /// <summary>
     /// Arcane leadership spell handler (range+resist pierce)
     /// </summary>
-    [SpellHandlerAttribute("ArcaneLeadership")]
+    [SpellHandler("ArcaneLeadership")]
     public class ArcaneLeadership : CloudsongAuraSpellHandler
     {
     	public ArcaneLeadership(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }

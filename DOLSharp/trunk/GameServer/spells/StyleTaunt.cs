@@ -17,11 +17,11 @@
  *
  */
 using System;
-using DOL.AI.Brain;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Style taunt effect spell handler

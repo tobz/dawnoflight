@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Reflection;
-using DOL.AI.Brain;
-using DOL.Events;
-using DOL.GS.ServerRules;
-using DOL.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.ServerRules;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
     #region MasterlevelBase
     /// <summary>
@@ -196,7 +197,7 @@ namespace DOL.GS.Spells
     #endregion
 
 	#region Stylhandler
-	[SpellHandlerAttribute("MLStyleHandler")]
+	[SpellHandler("MLStyleHandler")]
 	public class MLStyleHandler : MasterlevelHandling
 	{
 		public MLStyleHandler(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
@@ -1244,7 +1245,7 @@ namespace DOL.GS.Spells
     #endregion
 
     #region TargetModifier
-    [SpellHandlerAttribute("TargetModifier")]
+    [SpellHandler("TargetModifier")]
     public class TargetModifierSpellHandler : MasterlevelHandling
     {
         public override bool HasPositiveEffect
@@ -1256,7 +1257,7 @@ namespace DOL.GS.Spells
     #endregion
 
     #region Passive
-    [SpellHandlerAttribute("PassiveSpell")]
+    [SpellHandler("PassiveSpell")]
     public class PassiveSpellHandler : MasterlevelHandling
     {
         public override bool CheckBeginCast(GameLiving selectedTarget)
@@ -1269,7 +1270,7 @@ namespace DOL.GS.Spells
     #endregion
 }
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     #region Decoy
     public class GameDecoy : GameNPC

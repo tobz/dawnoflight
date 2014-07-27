@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// strong name constants for built in abilities

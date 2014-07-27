@@ -23,16 +23,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.AI.Brain;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Shears strength buff 
 	/// </summary>
-	[SpellHandlerAttribute("StrengthShear")]
+	[SpellHandler("StrengthShear")]
 	public class StrengthShear : AbstractBuffShear
 	{
 		public override string ShearSpellType { get	{ return "StrengthBuff"; } }
@@ -57,7 +57,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Shears dexterity buff
 	/// </summary>
-	[SpellHandlerAttribute("DexterityShear")]
+	[SpellHandler("DexterityShear")]
 	public class DexterityShear : AbstractBuffShear
 	{
 		public override string ShearSpellType { get	{ return "DexterityBuff"; } }
@@ -69,7 +69,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Shears constitution buff
 	/// </summary>
-	[SpellHandlerAttribute("ConstitutionShear")]
+	[SpellHandler("ConstitutionShear")]
 	public class ConstitutionShear : AbstractBuffShear
 	{
 		public override string ShearSpellType { get	{ return "ConstitutionBuff"; } }
@@ -81,7 +81,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Shears acuity buff
 	/// </summary>
-	[SpellHandlerAttribute("AcuityShear")]
+	[SpellHandler("AcuityShear")]
 	public class AcuityShear : AbstractBuffShear
 	{
 		public override string ShearSpellType { get	{ return "AcuityBuff"; } }
@@ -93,7 +93,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Shears str/con buff
 	/// </summary>
-	[SpellHandlerAttribute("StrengthConstitutionShear")]
+	[SpellHandler("StrengthConstitutionShear")]
 	public class StrengthConstitutionShear : AbstractBuffShear
 	{
 		public override string ShearSpellType { get	{ return "StrengthConstitutionBuff"; } }
@@ -105,7 +105,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Shears dex/qui buff
 	/// </summary>
-	[SpellHandlerAttribute("DexterityQuicknessShear")]
+	[SpellHandler("DexterityQuicknessShear")]
 	public class DexterityQuicknessShear : AbstractBuffShear
 	{
 		public override string ShearSpellType { get	{ return "DexterityQuicknessBuff"; } }
@@ -257,7 +257,7 @@ namespace DOL.GS.Spells
 		public AbstractBuffShear(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) {}
 	}
 
-	[SpellHandlerAttribute("RandomBuffShear")]
+	[SpellHandler("RandomBuffShear")]
 	public class RandomBuffShear : SpellHandler
 	{
 

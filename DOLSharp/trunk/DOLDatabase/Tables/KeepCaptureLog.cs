@@ -1,7 +1,7 @@
 using System;
-using DOL.Database.Attributes;
+using DawnOfLight.Database.Attributes;
 
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	[DataTable(TableName = "KeepCaptureLog")]
 	public class KeepCaptureLog : DataObject

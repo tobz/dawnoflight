@@ -3,14 +3,14 @@
 
 using System;
 using System.Collections;
-using DOL;
-using DOL.Database;
-using DOL.GS;
-using DOL.GS.Commands;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.Commands;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	[NPCGuildScript("Name Registrar")]
 	public class NameRegistrar : GameNPC

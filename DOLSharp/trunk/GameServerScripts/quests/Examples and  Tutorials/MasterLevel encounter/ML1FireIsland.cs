@@ -3,15 +3,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
-using DOL.Events;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Atlantis;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 using System.Reflection;
-using DOL.GS.Atlantis;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class Ianetor : GameNPC
 	{
@@ -746,7 +746,7 @@ namespace DOL.GS
 	}
 }
 
-namespace DOL.AI.Brain
+namespace DawnOfLight.AI.Brain
 {
 
 
@@ -770,7 +770,7 @@ namespace DOL.AI.Brain
 			{
 				if (aithosbody.IsObjectInFront(player, 180) && aithosbody.AttackState)
 				{
-					if (GameServer.ServerRules.IsAllowedToAttack(aithosbody, player, true))
+					if (GameServer.GameServer.ServerRules.IsAllowedToAttack(aithosbody, player, true))
 					{
 						//1 in 4 chance every think cycle if a player is in front of him and he is attacking to do a Direct Damage.
 						if (Util.Random(3) == 3)
@@ -824,7 +824,7 @@ namespace DOL.AI.Brain
 			//This should probably be redone as a spell.
 			foreach (GamePlayer player in fire.GetPlayersInRadius(attackrange)) //each player that is in attack distance of the mob
 			{
-				if (GameServer.ServerRules.IsAllowedToAttack(fire, player, true))
+				if (GameServer.GameServer.ServerRules.IsAllowedToAttack(fire, player, true))
 				{
 					player.Out.SendMessage("The Wall of Fire burns you for 10,000 damage!", eChatType.CT_Damaged, eChatLoc.CL_ChatWindow);
 					player.Out.SendSpellEffectAnimation(fire, player, 310, 0, false, 1);
@@ -893,7 +893,7 @@ namespace DOL.AI.Brain
 
 				if (sunbody.IsObjectInFront(player, 180) && sunbody.AttackState)
 				{
-					if (GameServer.ServerRules.IsAllowedToAttack(sunbody, player, true))
+					if (GameServer.GameServer.ServerRules.IsAllowedToAttack(sunbody, player, true))
 					{
 						//This should probably be redone as a spell
 						//1 in 4 chance every think cycle if a player is in front of him and he is attacking to do a Direct Damage.
@@ -983,7 +983,7 @@ namespace DOL.AI.Brain
 				ushort AOErange = 500;
 				foreach (GamePlayer player in pbody.GetPlayersInRadius(AOErange)) //each player that is in attack distance of the mob
 				{
-					if (GameServer.ServerRules.IsAllowedToAttack(pbody, player, true))
+					if (GameServer.GameServer.ServerRules.IsAllowedToAttack(pbody, player, true))
 					{
 						player.Out.SendMessage("The purros explodes in your face causing 300 damage!", eChatType.CT_Damaged, eChatLoc.CL_ChatWindow);
 						player.Out.SendSpellEffectAnimation(pbody, player, 310, 0, false, 1);

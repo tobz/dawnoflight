@@ -16,10 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.Events;
-using DOL.GS;
 
-namespace DOL.AI.Brain
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+
+namespace DawnOfLight.AI.Brain
 {
   public class TurretMainPetTankBrain : TurretMainPetCasterBrain
   {

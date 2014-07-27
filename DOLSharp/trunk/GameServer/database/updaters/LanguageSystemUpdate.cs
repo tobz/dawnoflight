@@ -18,12 +18,12 @@
  */
 
 using System.Collections.Generic;
-
-using DOL.Database;
-using DOL.Database.Attributes;
+using DawnOfLight.Database;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS.DatabaseUpdate
+namespace DawnOfLight.GameServer.DatabaseUpdate
 {
     [DatabaseUpdate]
     public class LanguageSystemUpdate : IDatabaseUpdater

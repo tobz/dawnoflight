@@ -19,8 +19,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using DawnOfLight.Base;
 
-namespace DOL.Events
+namespace DawnOfLight.Events
 {
 	/// <summary>
 	/// The callback method for DOLEvents

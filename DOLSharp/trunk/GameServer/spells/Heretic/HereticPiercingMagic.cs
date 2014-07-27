@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
-using DOL.Events;
-namespace DOL.GS.Spells
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+
+namespace DawnOfLight.GameServer.Spells
 {
 
-	[SpellHandlerAttribute("HereticPiercingMagic")]
+	[SpellHandler("HereticPiercingMagic")]
 	public class HereticPiercingMagic : SpellHandler
 	{
         protected GameLiving focustarget = null;

@@ -1,7 +1,7 @@
 ﻿using System;
-using DOL.Events;
+using DawnOfLight.Events;
 
-namespace DOL.GS.Scripts.Examples
+namespace DawnOfLight.GameServer.Scripts.Examples
 {
 	/// <summary>
 	/// This sample shows how you can override format of InventoryLogging without modifying the core of Dol.

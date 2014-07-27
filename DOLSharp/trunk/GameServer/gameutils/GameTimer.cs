@@ -25,10 +25,11 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using DawnOfLight.GameServer.GameEvents;
 using log4net;
 using ThreadState = System.Threading.ThreadState;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// The GameTimer class invokes OnTick() method after
@@ -778,8 +779,8 @@ namespace DOL.GS
 						// fire timers
 						lock (m_buckets)
 						{
-							if(DOL.GS.GameEvents.RegionTimersResynch.watch!=null)
-								m_time = DOL.GS.GameEvents.RegionTimersResynch.watch.ElapsedMilliseconds;
+							if(RegionTimersResynch.watch!=null)
+								m_time = RegionTimersResynch.watch.ElapsedMilliseconds;
 							else m_time++;
 							
 							int newTick = m_tick = (m_tick + 1) & TICK_MASK;

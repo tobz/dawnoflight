@@ -20,13 +20,13 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.GS;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.Scripts
+namespace DawnOfLight.GameServer.Scripts
 {
 	/// <summary>
 	/// Summary description for DefWebUIGenerator. This is a self contained script within the scripts assembly.

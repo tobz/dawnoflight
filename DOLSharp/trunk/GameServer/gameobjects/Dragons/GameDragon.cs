@@ -20,16 +20,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using DOL.GS.PacketHandler;
-using DOL.Database;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.World;
 using log4net;
 using System.Reflection;
-using DOL.Events;
-using DOL.GS.ServerProperties;
-using DOL.AI.Brain;
 
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Base class for all dragon type mobs. A dragon will use various abilities,
@@ -99,7 +101,7 @@ namespace DOL.GS
 
 		public override bool HasAbility(string keyName)
 		{
-			if (IsReturningHome && keyName == DOL.GS.Abilities.CCImmunity)
+			if (IsReturningHome && keyName == DawnOfLight.GameServer.Abilities.CCImmunity)
 				return true;
 
 			return base.HasAbility(keyName);

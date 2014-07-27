@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Holds a static item in the world that will disappear after some interval

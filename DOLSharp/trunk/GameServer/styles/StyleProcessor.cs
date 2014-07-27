@@ -20,18 +20,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-
-using DOL.Language;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.GS.Keeps;
-using DOL.GS.PacketHandler;
-using DOL.GS.Spells;
-using DOL.GS.Effects;
-
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Language;
 using log4net;
 
-namespace DOL.GS.Styles
+namespace DawnOfLight.GameServer.Styles
 {
 	/// <summary>
 	/// Processes styles and style related stuff.

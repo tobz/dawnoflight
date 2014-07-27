@@ -17,14 +17,14 @@
  *
  */
 using System;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 using System.Reflection;
-using DOL.Events;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.Housing;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.Housing;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
     /// <summary>
     /// Ancient bound djinn (Atlantis teleporter).

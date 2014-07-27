@@ -19,10 +19,10 @@
 
 using System;
 using System.Collections;
-using DOL.Database;
+using DawnOfLight.Database;
 using System.Collections.Generic;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Interface for a GameInventoryItem

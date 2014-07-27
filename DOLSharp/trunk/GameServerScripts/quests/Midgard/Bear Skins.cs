@@ -28,16 +28,17 @@
 
 using System;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Behaviour;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DOL.GS.Quests;
-using DOL.GS.Behaviour;
-using DOL.GS.Behaviour.Attributes;
-using DOL.AI.Brain;
+using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Behaviour.Attributes;
 
-	namespace DOL.GS.Quests.Midgard {
+namespace DawnOfLight.GameServer.Quests.Midgard {
 	
      /* The first thing we do, is to declare the class we create
 	 * as Quest. To do this, we derive from the abstract class
@@ -109,7 +110,7 @@ using DOL.AI.Brain;
 			npcs = WorldMgr.GetNPCsByName("Helen",(eRealm) 2);
 			if (npcs.Length == 0)
 			{			
-				Helen = new DOL.GS.GameNPC();
+				Helen = new GameNPC();
 					Helen.Model = 193;
 				Helen.Name = "Helen";
 				if (log.IsWarnEnabled)
@@ -240,48 +241,48 @@ using DOL.AI.Brain;
 			QuestBehaviour a;
 			a = builder.CreateBehaviour(Helen,-1);
 				a.AddTrigger(eTriggerType.Interact,null,Helen);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.Bearskins),Helen);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.Bearskins),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(Bearskins),Helen);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(Bearskins),null,(eComparator)5);
 			a.AddAction(eActionType.Talk,"I have lived in this village since I was a young girl. My father is a great bear hunter you know.",Helen);
 			a.AddAction(eActionType.Talk,"In my years I have learned to work with all kinds of materials, specially [the skin of bears].",Helen);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Helen,-1);
 				a.AddTrigger(eTriggerType.Whisper,"the skin of bears",Helen);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.Bearskins),Helen);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.Bearskins),null,(eComparator)5);
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(Bearskins),Helen);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(Bearskins),null,(eComparator)5);
 			a.AddAction(eActionType.Talk,"Hmm...A new person here to Haggerfel. Let me offer you some [advice].",Helen);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Helen,-1);
 				a.AddTrigger(eTriggerType.Whisper,"advice",Helen);
-			a.AddRequirement(eRequirementType.QuestGivable,typeof(DOL.GS.Quests.Midgard.Bearskins),Helen);
-			a.AddRequirement(eRequirementType.QuestPending,typeof(DOL.GS.Quests.Midgard.Bearskins),null,(eComparator)5);
-			a.AddAction(eActionType.OfferQuest,typeof(DOL.GS.Quests.Midgard.Bearskins),"Helen has offered you the Bear skins quest.?Do you accept?");
+			a.AddRequirement(eRequirementType.QuestGivable,typeof(Bearskins),Helen);
+			a.AddRequirement(eRequirementType.QuestPending,typeof(Bearskins),null,(eComparator)5);
+			a.AddAction(eActionType.OfferQuest,typeof(Bearskins),"Helen has offered you the Bear skins quest.?Do you accept?");
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Helen,-1);
-				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(DOL.GS.Quests.Midgard.Bearskins));
+				a.AddTrigger(eTriggerType.DeclineQuest,null,typeof(Bearskins));
 			a.AddAction(eActionType.Talk,"No problem. See you",Helen);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Helen,-1);
-				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(DOL.GS.Quests.Midgard.Bearskins));
+				a.AddTrigger(eTriggerType.AcceptQuest,null,typeof(Bearskins));
 			a.AddAction(eActionType.Talk,"If you bring me the hide of a mauler cub I shall pay you well!",Helen);
-			a.AddAction(eActionType.GiveQuest,typeof(DOL.GS.Quests.Midgard.Bearskins),Helen);
+			a.AddAction(eActionType.GiveQuest,typeof(Bearskins),Helen);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Helen,-1);
 				a.AddTrigger(eTriggerType.EnemyKilled,"black mauler cub",null);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.Bearskins),1,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(Bearskins),1,(eComparator)3);
 			a.AddAction(eActionType.GiveItem,smallmaulerskin,null);
-			a.AddAction(eActionType.SetQuestStep,typeof(DOL.GS.Quests.Midgard.Bearskins),2);
+			a.AddAction(eActionType.SetQuestStep,typeof(Bearskins),2);
 			AddBehaviour(a);
 			a = builder.CreateBehaviour(Helen,-1);
 				a.AddTrigger(eTriggerType.Interact,null,Helen);
-			a.AddRequirement(eRequirementType.QuestStep,typeof(DOL.GS.Quests.Midgard.Bearskins),2,(eComparator)3);
+			a.AddRequirement(eRequirementType.QuestStep,typeof(Bearskins),2,(eComparator)3);
 			a.AddAction(eActionType.Talk,"You have returned! Did you bring me the skin?",Helen);
 			a.AddAction(eActionType.TakeItem,smallmaulerskin,null);
 			a.AddAction(eActionType.Talk,"Wonderful, wonderful, you have done well, and brought a good hide.",Helen);
 			a.AddAction(eActionType.Talk,"The hide is small yet sturdy. Here is some coin for your efforts. Thank you.",Helen);
 			a.AddAction(eActionType.GiveXP,10,null);
 			a.AddAction(eActionType.GiveGold,105,null);
-			a.AddAction(eActionType.FinishQuest,typeof(DOL.GS.Quests.Midgard.Bearskins),null);
+			a.AddAction(eActionType.FinishQuest,typeof(Bearskins),null);
 			AddBehaviour(a);
 			
 			#endregion

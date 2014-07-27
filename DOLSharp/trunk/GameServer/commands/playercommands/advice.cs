@@ -16,12 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using DOL.Language;
-using DOL.GS.PacketHandler;
 
-namespace DOL.GS.Commands
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&advice",
 		ePrivLevel.Player,
 		"Ask for advice from an advisor",

@@ -21,11 +21,12 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Collections;
-using DOL.GS.PlayerTitles;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.PlayerTitles;
 using log4net;
-using DOL.GS.Housing;
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
 	[PacketLib(175, GameClient.eClientVersion.Version175)]
 	public class PacketLib175 : PacketLib174

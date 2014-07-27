@@ -1,14 +1,14 @@
 using System;
 using System.Reflection;
 using System.Collections;
-using DOL.Events;
-using DOL.GS;
-using DOL.GS.Keeps;
-using DOL.GS.PacketHandler;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public enum eRelicType : int
 	{

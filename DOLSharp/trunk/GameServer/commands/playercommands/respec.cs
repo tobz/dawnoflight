@@ -36,11 +36,11 @@
 
 
 using System.Collections;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&respec",
 		ePrivLevel.Player,
 		"Respecs the char",

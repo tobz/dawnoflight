@@ -22,11 +22,13 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Base;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	/// <summary>
 	/// 

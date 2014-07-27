@@ -17,10 +17,10 @@
  *
  */
 using System;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Buffs two stats at once, goes into specline bonus category
@@ -37,7 +37,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Str/Con stat specline buff
 	/// </summary>
-	[SpellHandlerAttribute("StrengthConstitutionBuff")]
+	[SpellHandler("StrengthConstitutionBuff")]
 	public class StrengthConBuff : DualStatBuff
 	{
         public override void ApplyEffectOnTarget(GameLiving target, double effectiveness)
@@ -60,7 +60,7 @@ namespace DOL.GS.Spells
 	/// <summary>
 	/// Dex/Qui stat specline buff
 	/// </summary>
-	[SpellHandlerAttribute("DexterityQuicknessBuff")]
+	[SpellHandler("DexterityQuicknessBuff")]
 	public class DexterityQuiBuff : DualStatBuff
 	{
         public override void ApplyEffectOnTarget(GameLiving target, double effectiveness)

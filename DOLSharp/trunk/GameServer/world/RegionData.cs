@@ -17,9 +17,9 @@
  *
  */
 using System;
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// Helper class for region registration

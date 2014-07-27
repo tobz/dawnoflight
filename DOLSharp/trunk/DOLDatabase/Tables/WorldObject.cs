@@ -17,11 +17,10 @@
  *
  */
 using System;
+using DawnOfLight.Database.Attributes;
+using DawnOfLight.Database;
 
-using DOL.Database;
-using DOL.Database.Attributes;
-
-namespace DOL.Database
+namespace DawnOfLight.Database
 {
 	/// <summary>
 	/// Objects as Tables, Lights, Bags non static in Game.

@@ -21,11 +21,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public static class ChatUtil
 	{

@@ -19,7 +19,7 @@
 using System;
 using System.Linq;
 
-namespace DOL.GS.Scripts
+namespace DawnOfLight.GameServer.Scripts
 {
     public class AtlantisVisualModelNPC : GameNPC
     {

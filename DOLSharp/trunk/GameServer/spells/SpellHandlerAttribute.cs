@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// denotes a class as a spelltype handler for given spell type

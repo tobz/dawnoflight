@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.GS;
-using DOL.Database;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.Database;
 using System.Collections;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&makeleader",
+	[Cmd("&makeleader",
 		 ePrivLevel.Player,
 		 "Set a new group leader (can be used by current leader).",
 		 "/makeleader <playerName>")]

@@ -19,20 +19,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DOL.AI.Brain;
-using DOL.Database;
-using DOL.Events;
-using DOL.GS.Keeps;
-using DOL.GS.PacketHandler;
-using DOL.GS.Movement;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.Database.UniqueID;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Movement;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
+using DawnOfLight.Language;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.Events;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	/// <summary>
 	/// Various keep guard commands
 	/// </summary>
-	[CmdAttribute(
+	[Cmd(
 		"&keepguard",
 		ePrivLevel.GM,
 		"GMCommands.KeepGuard.Description",
@@ -239,7 +241,7 @@ namespace DOL.GS.Commands
 							guard.AddToWorld();
 
 							if (guard.Component != null && guard.Component.Keep != null)
-								guard.Component.Keep.Guards.Add(DOL.Database.UniqueID.IDGenerator.GenerateID(), guard);
+								guard.Component.Keep.Guards.Add(IDGenerator.GenerateID(), guard);
 						}
 
 						PositionMgr.FillPositions();

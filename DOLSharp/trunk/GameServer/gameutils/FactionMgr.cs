@@ -20,10 +20,11 @@
 using System;
 using System.Reflection;
 using System.Collections;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// FactionMgr manage all the faction system

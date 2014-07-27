@@ -19,13 +19,14 @@
 using System;
 using System.Reflection;
 using System.Timers;
-using DOL.Events;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
 using log4net;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	public class ZonePointEffect
 	{

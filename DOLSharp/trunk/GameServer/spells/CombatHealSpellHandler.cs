@@ -17,14 +17,14 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Palading heal chant works only in combat
 	/// </summary>
-	[SpellHandlerAttribute("CombatHeal")]
+	[SpellHandler("CombatHeal")]
 	public class CombatHealSpellHandler : HealSpellHandler
 	{
 		/// <summary>

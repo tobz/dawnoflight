@@ -18,14 +18,14 @@
  */
 
 using System;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameEvents;
 
-using DOL.GS.PacketHandler;
-using DOL.GS.GameEvents;
-using DOL.Database;
-
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&report",
 		ePrivLevel.Player,
 		"'Reports a bug",

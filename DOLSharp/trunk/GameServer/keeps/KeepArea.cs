@@ -1,8 +1,9 @@
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.Database;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.World;
 
-namespace DOL.GS.Keeps
+namespace DawnOfLight.GameServer.Keeps
 {
 	public class KeepArea : Area.Circle
 	{

@@ -17,12 +17,13 @@
  */
 using System;
 using System.Collections.Generic;
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.PacketHandler.Client.v168;
-using DOL.Language;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.PacketHandler.Client.v168;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
 	[Cmd("&item",
 	     ePrivLevel.GM,
@@ -1942,7 +1943,7 @@ namespace DOL.GS.Commands
 						#region LoadArtifacts
 					case "loadartifacts":
 						{
-							DisplayMessage(client, "{0} Artifacts re-loaded.", DOL.GS.ArtifactMgr.LoadArtifacts());
+							DisplayMessage(client, "{0} Artifacts re-loaded.", ArtifactMgr.LoadArtifacts());
 						}
 						break;
 						#endregion LoadArtifacts

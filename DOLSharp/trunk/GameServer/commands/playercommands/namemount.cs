@@ -1,9 +1,9 @@
 using System;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute("&namemount", ePrivLevel.Player,"Name your hourse","/namemount")]
+	[Cmd("&namemount", ePrivLevel.Player,"Name your hourse","/namemount")]
 	public class NameHorseCommandHandler : AbstractCommandHandler, ICommandHandler
 	{
 		public void OnCommand(GameClient client, string[] args)

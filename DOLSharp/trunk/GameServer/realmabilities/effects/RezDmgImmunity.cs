@@ -18,11 +18,11 @@
  */
 
 using System.Collections.Generic;
-using DOL.Events;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
 using System;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
     public class RezDmgImmunityEffect : TimedEffect
     {

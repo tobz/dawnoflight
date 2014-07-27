@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// An effect that can be added to concentration list

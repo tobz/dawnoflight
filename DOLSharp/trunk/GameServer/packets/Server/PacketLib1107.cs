@@ -19,13 +19,13 @@
 #define NOENCRYPTION
 using System;
 using System.Reflection;
-using DOL.Database;
+using DawnOfLight.Database;
 using System.Collections;
 using System.Collections.Generic;
 using log4net;
 
 
-namespace DOL.GS.PacketHandler
+namespace DawnOfLight.GameServer.PacketHandler
 {
     [PacketLib(1107, GameClient.eClientVersion.Version1107)]
     public class PacketLib1107 : PacketLib1106

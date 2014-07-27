@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.GS.Spells;
-using DOL.Events;
-using DOL.Database;
-namespace DOL.GS.RealmAbilities
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Events;
+
+namespace DawnOfLight.GameServer.RealmAbilities
 {
 	public class VolcanicPillarAbility : TimedRealmAbility
 	{

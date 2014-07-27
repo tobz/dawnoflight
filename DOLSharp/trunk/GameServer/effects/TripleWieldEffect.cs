@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using DOL.Events;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Effects
+namespace DawnOfLight.GameServer.Effects
 {
 	/// <summary>
 	/// TripleWield

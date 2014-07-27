@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System.Reflection;
 
 [assembly: AssemblyTitle("Dawn of Light - DOLBase")]
@@ -26,5 +27,4 @@ using System.Reflection;
 [assembly: AssemblyCopyright("Dawn of Light Development Team")]
 [assembly: AssemblyTrademark("Dawn of Light Development Team")]
 [assembly: AssemblyCulture("")]
-
 [assembly: AssemblyVersion("1.9.7.*")]

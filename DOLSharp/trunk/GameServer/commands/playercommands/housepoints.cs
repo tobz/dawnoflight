@@ -1,10 +1,10 @@
-using DOL.GS;
-using DOL.GS.Housing;
-using DOL.GS.PacketHandler;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 	  "&housepoints",
 	  ePrivLevel.Player,
 	   "Toggles display of housepoints",

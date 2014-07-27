@@ -18,17 +18,17 @@
  */
 using System;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.GS.SkillHandler;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.SkillHandler;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Damage Over Time spell handler
 	/// </summary>
-	[SpellHandlerAttribute("HealthToEndurance")]
+	[SpellHandler("HealthToEndurance")]
 	public class HealthToEndurance : SpellHandler
 	{
 

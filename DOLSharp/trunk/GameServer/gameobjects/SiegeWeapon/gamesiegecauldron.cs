@@ -17,13 +17,12 @@
  *
  */
 using System.Collections;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
 
-using DOL.Database;
-using DOL.GS.PacketHandler;
-using DOL.GS.Spells;
-using DOL.GS.Keeps;
-
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// GameMovingObject is a base class for boats and siege weapons.
@@ -95,12 +94,12 @@ namespace DOL.GS
 	}
 }
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	[SpellHandlerAttribute("SiegeDirectDamage")]
+	[SpellHandler("SiegeDirectDamage")]
 	public class SiegeDirectDamageSpellHandler : DirectDamageSpellHandler
 	{
 

@@ -28,11 +28,12 @@ using System;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
-using DOL.Database;
-using DOL.Events;
+using DawnOfLight.Database;
+using DawnOfLight.Events;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS.GameEvents
+namespace DawnOfLight.GameServer.GameEvents
 {
 	/// <summary>
 	/// Moves new created Characters to the starting location based on region, class and race

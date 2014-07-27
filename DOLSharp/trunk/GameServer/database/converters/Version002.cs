@@ -17,10 +17,11 @@
  *
  */
 using System;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
 using log4net;
-using DOL.Database;
 
-namespace DOL.GS.DatabaseConverters
+namespace DawnOfLight.GameServer.DatabaseConverters
 {
 	/// <summary>
 	/// Converts the database format to the version 2

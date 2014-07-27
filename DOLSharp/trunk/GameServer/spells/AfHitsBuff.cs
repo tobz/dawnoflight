@@ -17,17 +17,17 @@
  *
  */
 using System;
-using DOL.Database;
-using DOL.AI.Brain;
-using DOL.GS;
-using DOL.GS.Effects;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
 using System.Collections.Generic;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 
-    [SpellHandlerAttribute("AfHitsBuff")]
+    [SpellHandler("AfHitsBuff")]
     public class AfHitsBuffSpellHandler : SpellHandler
     {
         public override void OnEffectStart(GameSpellEffect effect)

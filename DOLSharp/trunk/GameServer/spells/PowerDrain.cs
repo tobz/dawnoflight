@@ -18,17 +18,17 @@
  */
 using System;
 using System.Collections;
-using DOL.GS.PacketHandler;
-using DOL.AI.Brain;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.AI.Brain;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Handles power drain (conversion of target health to caster
 	/// power).
 	/// </summary>
 	/// <author>Aredhel</author>
-	[SpellHandlerAttribute("PowerDrain")]
+	[SpellHandler("PowerDrain")]
 	public class PowerDrain : DirectDamageSpellHandler
 	{
 		/// <summary>

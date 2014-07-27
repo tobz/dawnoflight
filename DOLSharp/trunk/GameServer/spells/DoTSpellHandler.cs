@@ -18,18 +18,18 @@
  */
 using System;
 using System.Collections;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Language;
-using DOL.AI.Brain;
+using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 
-namespace DOL.GS.Spells
+namespace DawnOfLight.GameServer.Spells
 {
 	/// <summary>
 	/// Damage Over Time spell handler
 	/// </summary>
-	[SpellHandlerAttribute("DamageOverTime")]
+	[SpellHandler("DamageOverTime")]
 	public class DoTSpellHandler : SpellHandler
 	{
 		/// <summary>

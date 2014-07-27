@@ -17,9 +17,9 @@
  *
  */
 
-using DOL.Language;
+using DawnOfLight.Language;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	[NPCGuildScript("Alchemists Master")]
 	public class AlchemistsMaster : CraftNPC

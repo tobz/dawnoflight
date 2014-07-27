@@ -22,16 +22,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
-using DOL.Database;
-using DOL.Database.Transaction;
-using DOL.GS;
-using DOL.GS.PacketHandler;
-using DOL.Events;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.Database.Transaction;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Events;
 
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	public class MarketCache
 	{

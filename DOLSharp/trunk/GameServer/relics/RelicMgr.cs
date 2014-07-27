@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DOL.GS.Relics
+namespace DawnOfLight.GameServer.Relics
 {
 	/// <summary>
 	/// The relic manager.

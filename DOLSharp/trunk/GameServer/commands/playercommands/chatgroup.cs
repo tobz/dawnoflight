@@ -18,12 +18,13 @@
  */
 using System;
 using System.Text;
-using DOL.GS.PacketHandler;
-using DOL.Language;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.Commands
+namespace DawnOfLight.GameServer.Commands
 {
-	[CmdAttribute(
+	[Cmd(
 		"&chat",
 		new string[] { "&c" },
 		ePrivLevel.Player,
@@ -72,7 +73,7 @@ namespace DOL.GS.Commands
 		}
 	}
 
-	[CmdAttribute(
+	[Cmd(
 		"&chatgroup",
 		new string[] { "&cg" },
 		ePrivLevel.Player,

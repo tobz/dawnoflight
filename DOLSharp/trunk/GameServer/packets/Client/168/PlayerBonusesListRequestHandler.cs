@@ -20,13 +20,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DOL.GS;
-using DOL.Language;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer;
 using log4net;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP, 0x62 ^ 168, "Handles player bonuses button clicks")]
+	[PacketHandler(PacketHandlerType.TCP, 0x62 ^ 168, "Handles player bonuses button clicks")]
 	public class PlayerBonusesListRequestHandler : IPacketHandler
 	{
 		/// <summary>

@@ -21,7 +21,7 @@ using System.Collections;
 using System.Reflection;
 using log4net;
 
-namespace DOL.GS.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles
 {
 	/// <summary>
 	/// Handles loading of player titles.

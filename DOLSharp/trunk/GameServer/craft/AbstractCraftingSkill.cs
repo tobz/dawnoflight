@@ -21,13 +21,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Reflection;
-using DOL.Database;
-using DOL.Language;
-using DOL.GS.ServerProperties;
-using DOL.GS.PacketHandler;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
+using DawnOfLight.GameServer.ServerProperties;
 using log4net;
 
-namespace DOL.GS
+namespace DawnOfLight.GameServer
 {
 	/// <summary>
 	/// AbstractCraftingSkill is the base class for all crafting skill
@@ -775,9 +777,9 @@ namespace DOL.GS
 			craftingTime = (int)(craftingTime / player.CraftingSpeed);
 
 			//keep bonuses reduction in crafting time
-			if (Keeps.KeepBonusMgr.RealmHasBonus(DOL.GS.Keeps.eKeepBonusType.Craft_Timers_5, (eRealm)player.Realm))
+			if (Keeps.KeepBonusMgr.RealmHasBonus(eKeepBonusType.Craft_Timers_5, (eRealm)player.Realm))
 				craftingTime = (int)(craftingTime / 1.05);
-			else if (Keeps.KeepBonusMgr.RealmHasBonus(DOL.GS.Keeps.eKeepBonusType.Craft_Timers_3, (eRealm)player.Realm))
+			else if (Keeps.KeepBonusMgr.RealmHasBonus(eKeepBonusType.Craft_Timers_3, (eRealm)player.Realm))
 				craftingTime = (int)(craftingTime / 1.03);
 
 			int con = GetItemCon(player.GetCraftingSkillValue(m_eskill), recipe.CraftingLevel);

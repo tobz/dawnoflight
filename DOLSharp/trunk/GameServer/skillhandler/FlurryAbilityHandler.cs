@@ -17,19 +17,20 @@
  *
  */
 using System.Reflection;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
+using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.Language;
 using log4net;
-using DOL.GS.Keeps;
-using DOL.GS.Spells;
-using DOL.Language;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Handler for Flurry Ability clicks
 	/// </summary>
-	[SkillHandlerAttribute(Abilities.Flurry)]
+	[SkillHandler(Abilities.Flurry)]
 	public class FlurryAbilityHandler : IAbilityActionHandler
 	{
 		/// <summary>

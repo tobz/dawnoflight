@@ -18,11 +18,11 @@
  */
 using System;
 using System.Collections;
-using DOL.Database;
+using DawnOfLight.Database;
 
-namespace DOL.GS.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
-	[PacketHandlerAttribute(PacketHandlerType.TCP, 0x28 ^ 168, "Handles destroy item requests from client")]
+	[PacketHandler(PacketHandlerType.TCP, 0x28 ^ 168, "Handles destroy item requests from client")]
 	public class DestroyItemRequestHandler : IPacketHandler
 	{
 		public void HandlePacket(GameClient client, GSPacketIn packet)

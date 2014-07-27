@@ -17,16 +17,16 @@
  *
  */
 using System;
-using DOL.GS.PacketHandler;
-using DOL.GS.Effects;
-using DOL.Language;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.Language;
 
-namespace DOL.GS.SkillHandler
+namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>
 	/// Handler for Sure Shot ability
 	/// </summary>
-	[SkillHandlerAttribute(Abilities.SureShot)]
+	[SkillHandler(Abilities.SureShot)]
 	public class SureShotAbilityHandler : IAbilityActionHandler
 	{
 		public void Execute(Ability ab, GamePlayer player)
