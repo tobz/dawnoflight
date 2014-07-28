@@ -23,8 +23,6 @@ using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.Spells;
-using DawnOfLight.Database;
-using System.Collections;
 using log4net;
 using System.Reflection;
 

@@ -19,8 +19,6 @@
 using System;
 using System.Text;
 using DawnOfLight.GameServer.Spells;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Effects;
 
 namespace DawnOfLight.GameServer.Effects
 {

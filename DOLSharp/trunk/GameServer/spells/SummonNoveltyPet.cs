@@ -19,13 +19,9 @@
 
 // Original code by Dinberg
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Spells;
 
 
 namespace DawnOfLight.GameServer.Spells

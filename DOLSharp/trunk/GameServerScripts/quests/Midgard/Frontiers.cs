@@ -37,7 +37,6 @@ using System.Reflection;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
 using log4net;

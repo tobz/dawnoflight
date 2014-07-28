@@ -18,10 +18,6 @@
  */
 
 using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.PacketHandler;
-using System;
-using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 

@@ -1,15 +1,12 @@
 ﻿//TODO: make sunkaio do a small AOE fire attack when he's hit by a player with melee damage.
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Atlantis;
 using DawnOfLight.GameServer.PacketHandler;
-using log4net;
-using System.Reflection;
 
 namespace DawnOfLight.GameServer
 {

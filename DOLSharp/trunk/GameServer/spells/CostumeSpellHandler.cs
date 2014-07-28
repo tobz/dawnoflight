@@ -20,7 +20,7 @@
 using System;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+
 namespace DawnOfLight.GameServer.Spells
 {
 	/// Costume spell handler: Shape change on self

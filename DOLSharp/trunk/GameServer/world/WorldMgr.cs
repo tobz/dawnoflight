@@ -24,7 +24,6 @@ using System.Reflection;
 using System.Threading;
 using DawnOfLight.Base.Config;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.Utils;

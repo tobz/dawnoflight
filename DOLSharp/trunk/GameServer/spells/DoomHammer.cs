@@ -1,15 +1,7 @@
 //Eden - Darwin
 
-using System;
-using System.Reflection;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer;
-using log4net;
-using System.Collections;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.Spells;
 
 namespace DawnOfLight.GameServer.Spells
 {

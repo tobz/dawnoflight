@@ -17,11 +17,7 @@
  *
  */
 
-using System;
-using System.Collections;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Spells
 {

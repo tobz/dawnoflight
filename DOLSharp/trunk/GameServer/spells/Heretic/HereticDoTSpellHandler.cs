@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer;
 
 namespace DawnOfLight.GameServer.Spells
 {

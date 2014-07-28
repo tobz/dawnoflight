@@ -20,10 +20,7 @@
 using System;
 using System.Collections;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.AI.Brain;
 
 namespace DawnOfLight.GameServer.Spells
 {

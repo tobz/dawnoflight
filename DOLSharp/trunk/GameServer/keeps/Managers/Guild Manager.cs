@@ -1,7 +1,5 @@
 using System;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 
 namespace DawnOfLight.GameServer.Keeps
 {

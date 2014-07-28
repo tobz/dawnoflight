@@ -17,12 +17,9 @@
 *
 */
 
-using DawnOfLight.GameServer;
-
 namespace DawnOfLight.GameServer.Spells
 {
     using System;
-    using System.Collections;
     using Database;
     using Events;
 

@@ -25,7 +25,6 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using DawnOfLight.Base;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.ServerProperties;
 using log4net;
 

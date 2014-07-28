@@ -22,7 +22,6 @@ using System.Text;
 using System.Threading;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.Spells;

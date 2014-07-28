@@ -31,12 +31,8 @@ using System.Reflection;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Behaviour;
-using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DawnOfLight.GameServer.Quests;
-using DawnOfLight.GameServer.Behaviour.Attributes;
 
 namespace DawnOfLight.GameServer.Quests.Midgard {
 	

@@ -20,10 +20,8 @@ using System;
 using System.Collections;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Quests;
 using DawnOfLight.GameServer.ServerRules;
-using DawnOfLight.GameServer.Keeps;
 using log4net;
 
 namespace DawnOfLight.GameServer.PacketHandler.Client.v168

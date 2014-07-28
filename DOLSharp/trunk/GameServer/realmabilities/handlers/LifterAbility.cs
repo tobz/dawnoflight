@@ -1,6 +1,4 @@
-using System;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PropertyCalc;
 
 namespace DawnOfLight.GameServer.RealmAbilities
 {

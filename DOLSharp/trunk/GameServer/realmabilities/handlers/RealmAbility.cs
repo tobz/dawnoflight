@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.PacketHandler.Client.v168;

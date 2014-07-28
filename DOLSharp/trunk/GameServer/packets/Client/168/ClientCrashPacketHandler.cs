@@ -18,7 +18,6 @@
  */
 using System.Reflection;
 using DawnOfLight.Base.Network;
-using DawnOfLight;
 using log4net;
 
 namespace DawnOfLight.GameServer.PacketHandler.Client.v168

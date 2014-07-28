@@ -19,10 +19,6 @@
 using System;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.PacketHandler;
-using log4net;
-using System.Reflection;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Housing;
 
 namespace DawnOfLight.GameServer
 {

@@ -18,7 +18,6 @@
  */
 
 using DawnOfLight.GameServer.Housing;
-using DawnOfLight.Database;
 
 namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {

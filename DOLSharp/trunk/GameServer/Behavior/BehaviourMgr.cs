@@ -20,13 +20,8 @@ using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Reflection;
-using System.Text;
 using DawnOfLight.GameServer.Behaviour.Attributes;
-using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DawnOfLight.GameServer.Behaviour;
 
 namespace DawnOfLight.GameServer.Behaviour
 {				

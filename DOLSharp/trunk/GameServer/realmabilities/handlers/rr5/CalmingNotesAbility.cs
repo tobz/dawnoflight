@@ -16,11 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
+
 using System.Collections.Generic;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.Spells;
 
 namespace DawnOfLight.GameServer.RealmAbilities
 {

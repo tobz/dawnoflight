@@ -23,11 +23,7 @@ using System.Text;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.World.Instance;
-using log4net;
 
 namespace DawnOfLight.GameServer.Keeps
 {

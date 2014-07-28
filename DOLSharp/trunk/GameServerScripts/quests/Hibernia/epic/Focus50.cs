@@ -34,7 +34,6 @@ using System;
 using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 

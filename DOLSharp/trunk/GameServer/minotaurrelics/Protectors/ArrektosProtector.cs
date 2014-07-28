@@ -36,12 +36,6 @@
  * Classes should inherit from "BaseProtector"
  * 
  */
-using System;
-using System.Collections.Generic;
-using System.Text;
-using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Spells;
 
 namespace DawnOfLight.GameServer
 {

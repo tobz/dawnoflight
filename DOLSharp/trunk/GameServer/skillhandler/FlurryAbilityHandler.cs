@@ -17,7 +17,6 @@
  *
  */
 using System.Reflection;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.PacketHandler;

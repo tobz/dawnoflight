@@ -19,7 +19,6 @@
 using System;
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer

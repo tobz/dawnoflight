@@ -1,17 +1,9 @@
 //Andraste v2.0 - Vico
 
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using System.Collections;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.RealmAbilities;
-using DawnOfLight;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Spells;
-using DawnOfLight.GameServer.Effects;
-using log4net;
 
 namespace DawnOfLight.GameServer.Spells
 {

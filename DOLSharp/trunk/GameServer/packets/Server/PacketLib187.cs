@@ -22,7 +22,6 @@ using DawnOfLight.Database;
 using DawnOfLight.GameServer.Quests;
 using log4net;
 using System.Reflection;
-using System.Collections.Generic;
 
 namespace DawnOfLight.GameServer.PacketHandler
 {

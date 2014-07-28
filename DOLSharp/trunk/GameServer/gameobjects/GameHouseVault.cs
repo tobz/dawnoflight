@@ -20,7 +20,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Housing;
 
 namespace DawnOfLight.GameServer

@@ -22,7 +22,6 @@ using System.Collections.Generic;
 using System.Linq;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
 

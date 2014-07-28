@@ -17,10 +17,7 @@
  *
  */
 #define NOENCRYPTION
-using System;
 using System.Reflection;
-using DawnOfLight.GameServer.Quests;
-using DawnOfLight.Database;
 using log4net;
 
 namespace DawnOfLight.GameServer.PacketHandler

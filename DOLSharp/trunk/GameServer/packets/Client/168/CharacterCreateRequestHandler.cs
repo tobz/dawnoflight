@@ -23,7 +23,6 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.ServerProperties;
 using log4net;
 

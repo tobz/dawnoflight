@@ -17,16 +17,9 @@
  *
  */
 using System;
-using System.Collections;
-using System.Reflection;
-using System.Text;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.SkillHandler;
-using log4net;
 
 namespace DawnOfLight.GameServer.Spells
 {

@@ -17,14 +17,9 @@
  *
  */
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Behaviour.Attributes;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Behaviour;
-using DawnOfLight.Database;
 using log4net;
 using System.Reflection;
 

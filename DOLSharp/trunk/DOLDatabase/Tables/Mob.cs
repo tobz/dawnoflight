@@ -16,10 +16,8 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
+
 using DawnOfLight.Database.Attributes;
-using DawnOfLight.Database;
-using System.Collections;
 
 namespace DawnOfLight.Database
 {

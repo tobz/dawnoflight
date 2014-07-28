@@ -23,9 +23,7 @@
  * - Roach's modifications to add loottemplate base mobdrops
  */
 
-using System;
 using DawnOfLight.Database.Attributes;
-using DawnOfLight.Database ;
 
 namespace DawnOfLight.Database
 {

@@ -25,7 +25,6 @@ using DawnOfLight.Base;
 using DawnOfLight.Base.Network;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.ServerProperties;
 using log4net;

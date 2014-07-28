@@ -17,8 +17,6 @@
 *
 */
 
-using DawnOfLight.GameServer;
-
 namespace DawnOfLight.GameServer.Spells
 {
 	using System;

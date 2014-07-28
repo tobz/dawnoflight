@@ -20,7 +20,6 @@ using System;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer;
 
 namespace DawnOfLight.GameServer.Spells
 {

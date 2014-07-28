@@ -20,7 +20,6 @@
  * 
  */
 
-using System;
 using System.Collections.Generic;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Effects;

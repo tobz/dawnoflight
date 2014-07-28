@@ -18,10 +18,8 @@
  */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Effects
 {

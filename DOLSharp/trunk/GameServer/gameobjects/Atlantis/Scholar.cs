@@ -17,16 +17,11 @@
  *
  */
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.Quests;
 using DawnOfLight.GameServer.Quests.Atlantis;
 using System.Collections;
-using log4net;
-using System.Reflection;
-using DawnOfLight.Events;
 
 namespace DawnOfLight.GameServer
 {

@@ -30,7 +30,6 @@ using System.Linq;
 using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using log4net;
 
 namespace DawnOfLight.GameServer.GameEvents

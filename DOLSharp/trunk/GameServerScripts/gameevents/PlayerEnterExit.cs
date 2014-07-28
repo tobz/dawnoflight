@@ -19,7 +19,6 @@
 using System;
 using DawnOfLight.Base;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
 

@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.RealmAbilities;
-using DawnOfLight.Database;
 
 namespace DawnOfLight.GameServer.Effects
 {

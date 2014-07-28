@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections;
-using System.Reflection;
-using System.Threading;
-using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
-using log4net;
+﻿using DawnOfLight.Database;
 
 namespace DawnOfLight.GameServer.Commands
 {
-    [Cmd("&switch", ePrivLevel.Player,
+    [Command("&switch", ePrivLevel.Player,
         "Equip Weapons from bag. (/switch 1h 1, will replace ur mainhand weapon with the first slot in ur backpack)",
         "/switch 1h <slot>",
         "/switch offhand <slot>",

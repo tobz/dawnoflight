@@ -17,13 +17,9 @@
  *
  */
 using System;
-using System.Collections;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.Language;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.PropertyCalc;
 using System.Collections.Generic;
 
 namespace DawnOfLight.GameServer.Spells

@@ -22,9 +22,6 @@ using DawnOfLight.Database;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.SkillHandler;
-using DawnOfLight.GameServer.Keeps;
-using System.Collections;
-using System.Collections.Generic;
 using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Spells

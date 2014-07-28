@@ -18,7 +18,6 @@
  */
 using System;
 using DawnOfLight.GameServer;
-using DawnOfLight.Database;
 
 namespace DawnOfLight.Events
 {

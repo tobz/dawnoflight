@@ -20,7 +20,6 @@
 using System.Collections.Generic;
 using DawnOfLight.Database;
 using DawnOfLight.Database.Attributes;
-using DawnOfLight.GameServer;
 using log4net;
 
 namespace DawnOfLight.GameServer.DatabaseUpdate

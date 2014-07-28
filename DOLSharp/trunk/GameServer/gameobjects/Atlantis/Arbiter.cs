@@ -17,8 +17,6 @@
  *
  */
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
 

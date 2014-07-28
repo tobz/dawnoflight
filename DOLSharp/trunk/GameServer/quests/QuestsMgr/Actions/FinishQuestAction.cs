@@ -17,12 +17,9 @@
  *
  */
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Behaviour;
 using DawnOfLight.GameServer.Behaviour.Attributes;
-using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Quests.Actions
 {

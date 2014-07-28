@@ -17,7 +17,6 @@
  *
  */
 using System;
-using DawnOfLight.Base;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.PacketHandler;
 

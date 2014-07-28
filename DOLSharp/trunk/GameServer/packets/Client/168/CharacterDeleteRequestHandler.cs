@@ -20,7 +20,6 @@ using System;
 using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using log4net;
 
 namespace DawnOfLight.GameServer.PacketHandler.Client.v168

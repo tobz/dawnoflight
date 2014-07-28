@@ -42,13 +42,11 @@
  */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 /* I suggest you declare yourself some namespaces for your quests

@@ -17,7 +17,6 @@
  *
  */
 using System;
-using System.Reflection;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
@@ -25,7 +24,6 @@ using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
-using log4net;
 
 namespace DawnOfLight.GameServer.Spells
 {

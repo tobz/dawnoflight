@@ -17,7 +17,6 @@
  *
  */
 
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Housing;
 
 namespace DawnOfLight.GameServer.PacketHandler.Client.v168

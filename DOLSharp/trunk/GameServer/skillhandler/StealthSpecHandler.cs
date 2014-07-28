@@ -19,11 +19,9 @@
 using System;
 using System.Collections.Generic;
 using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
-using System.Collections;
 
 namespace DawnOfLight.GameServer.SkillHandler
 {

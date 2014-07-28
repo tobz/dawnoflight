@@ -18,9 +18,7 @@
  */
 using System;
 using System.Collections;
-using System.Reflection;
 using DawnOfLight.GameServer.PacketHandler;
-using log4net;
 
 namespace DawnOfLight.GameServer.Spells
 {

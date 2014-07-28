@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Movement;
 using DawnOfLight.GameServer.PacketHandler;
 using System.Collections.Generic;

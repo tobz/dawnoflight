@@ -17,11 +17,8 @@
  *
  */
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Collections;
 using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer;
 using DawnOfLight.Language;
 
 namespace DawnOfLight.GameServer

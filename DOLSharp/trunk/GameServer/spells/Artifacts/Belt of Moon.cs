@@ -17,19 +17,14 @@
 *
 */
 
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.PacketHandler;
-
 namespace DawnOfLight.GameServer.Spells
 {
 	using System;
 	using Database;
 	using Events;
     using DawnOfLight.GameServer.PacketHandler;
-    using DawnOfLight.GameServer.Utils;
-    using System.Collections.Generic;
 
-	[SpellHandler("BeltOfMoon")]
+    [SpellHandler("BeltOfMoon")]
 	public class BeltOfMoon : SummonItemSpellHandler
 	{
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

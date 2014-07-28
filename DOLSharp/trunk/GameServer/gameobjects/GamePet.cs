@@ -20,7 +20,6 @@ using System;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Styles;

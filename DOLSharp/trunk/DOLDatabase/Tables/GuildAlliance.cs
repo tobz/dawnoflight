@@ -20,9 +20,7 @@
 // this code has been done by breeze and duff a long time ago
 //
 
-using System;
 using DawnOfLight.Database.Attributes;
-using DawnOfLight.Database;
 
 //using System.Collections;
 

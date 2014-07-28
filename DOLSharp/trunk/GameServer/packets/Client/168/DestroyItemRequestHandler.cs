@@ -17,7 +17,6 @@
  *
  */
 using System;
-using System.Collections;
 using DawnOfLight.Database;
 
 namespace DawnOfLight.GameServer.PacketHandler.Client.v168

@@ -1,7 +1,5 @@
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
-using DawnOfLight.Database;
 using log4net;
 
 namespace DawnOfLight.GameServer.Keeps

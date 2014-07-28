@@ -20,15 +20,9 @@ using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Reflection;
-using System.Text;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Quests.Atlantis;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
 using log4net;
-using DawnOfLight.GameServer.Behaviour.Attributes;
-using DawnOfLight.GameServer.Behaviour;
 using System.Collections.Generic;
 
 namespace DawnOfLight.GameServer.Quests

@@ -19,14 +19,10 @@
 //#define OUTPUT_DEBUG_INFO
 using System;
 using System.Collections;
-using System.Net;
 using System.Reflection;
 using System.Text;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.Language;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
 namespace DawnOfLight.GameServer.PacketHandler.Client.v168

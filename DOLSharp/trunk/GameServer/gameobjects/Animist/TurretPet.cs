@@ -22,7 +22,6 @@
  */
 
 using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer;
 
 namespace DawnOfLight.GameServer
 {

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace DawnOfLight.GameServer
 {
 	public class TheurgistPet : GamePet

@@ -17,8 +17,6 @@
  *
  */
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer;
 using System.Collections;

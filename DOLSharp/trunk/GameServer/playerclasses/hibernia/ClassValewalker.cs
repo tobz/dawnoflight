@@ -17,9 +17,8 @@
 USA.
 *
 */
-using System;
+
 using DawnOfLight.Language;
-using DawnOfLight.GameServer;
 
 namespace DawnOfLight.GameServer.PlayerClass
 {

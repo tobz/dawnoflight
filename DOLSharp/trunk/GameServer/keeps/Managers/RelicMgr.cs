@@ -21,8 +21,6 @@ using System.Collections;
 using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.PacketHandler;
 using System.Collections.Generic;
 
 using log4net;

@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Spells;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.RealmAbilities.Statics 
 {

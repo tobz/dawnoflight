@@ -1,4 +1,3 @@
-using System.Collections;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
 

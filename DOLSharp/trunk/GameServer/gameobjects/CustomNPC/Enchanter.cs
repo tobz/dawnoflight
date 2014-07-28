@@ -23,7 +23,6 @@
 
 using System;
 using System.Collections;
-using DawnOfLight.Base;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;

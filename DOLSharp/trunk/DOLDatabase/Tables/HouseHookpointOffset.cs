@@ -17,9 +17,7 @@
  *
  */
 
-using System;
 using DawnOfLight.Database.Attributes;
-using DawnOfLight.Database;
 
 namespace DawnOfLight.Database
 {

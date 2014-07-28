@@ -17,8 +17,6 @@
  *
  */
 
-using DawnOfLight.Database.Attributes;
-
 namespace DawnOfLight.Database
 {
     // data table attribute not set until item translations are supported.

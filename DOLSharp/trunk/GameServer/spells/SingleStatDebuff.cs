@@ -19,8 +19,6 @@
 using System;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Spells
 {

@@ -1,12 +1,7 @@
-using System;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.SkillHandler;
 using System.Collections;
-using log4net;
-using System.Reflection;
+
 namespace DawnOfLight.GameServer.Spells
 {
 	[SpellHandler("Fear")]

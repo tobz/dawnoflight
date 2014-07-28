@@ -17,9 +17,6 @@
  *
  */
 
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Keeps;
-
 namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0xE4, "ship hookpoint interact")]

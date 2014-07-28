@@ -35,13 +35,9 @@ using System.Reflection;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.World;
 using DawnOfLight.Language;
-using DawnOfLight.GameServer.Behaviour;
-using DawnOfLight.GameServer.Behaviour.Attributes;
-using DawnOfLight.GameServer.Quests;
 using log4net;
 
 namespace DawnOfLight.GameServer.Quests.Hibernia

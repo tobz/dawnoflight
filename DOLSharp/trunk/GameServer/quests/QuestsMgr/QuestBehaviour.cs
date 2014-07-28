@@ -19,10 +19,6 @@
 using System;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Behaviour;
-using DawnOfLight.GameServer.PacketHandler;
-using System.Collections;
-using DawnOfLight.Database;
-using DawnOfLight.AI.Brain;
 using log4net;
 using System.Reflection;
 

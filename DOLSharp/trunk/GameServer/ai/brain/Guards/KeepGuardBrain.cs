@@ -1,10 +1,9 @@
-using System;
 using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.ServerProperties;
 using log4net;
 using System.Reflection;
-using DawnOfLight.GameServer.Movement;
 
 namespace DawnOfLight.AI.Brain
 {

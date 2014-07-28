@@ -18,7 +18,7 @@
        SkillIndex 1:
            ect ect ect ect ect ect
  */
-using System;
+
 using DawnOfLight.Database.Attributes;
 
 namespace DawnOfLight.Database

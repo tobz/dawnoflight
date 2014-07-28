@@ -4,7 +4,6 @@ using DawnOfLight.AI.Brain;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer;
 using System.Text;
 
 namespace DawnOfLight.GameServer.Spells

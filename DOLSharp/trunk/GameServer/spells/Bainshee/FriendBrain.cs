@@ -1,6 +1,5 @@
 using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Spells;
-using DawnOfLight.GameServer.Effects;
 
 namespace DawnOfLight.AI.Brain
 {

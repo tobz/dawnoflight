@@ -20,9 +20,6 @@ using System;
 using DawnOfLight.Base;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.ServerRules
 {

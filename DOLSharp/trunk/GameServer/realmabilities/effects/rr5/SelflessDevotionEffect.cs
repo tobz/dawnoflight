@@ -18,11 +18,8 @@
  */
 //Eden - 1.94 RR5 Paladin
 
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.RealmAbilities;
 
 namespace DawnOfLight.GameServer.Effects
 {

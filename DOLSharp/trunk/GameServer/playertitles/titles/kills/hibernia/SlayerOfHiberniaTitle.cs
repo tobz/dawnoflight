@@ -17,9 +17,7 @@
  *
  */
 
-using System;
 using DawnOfLight.Events;
-using DawnOfLight.Language;
 
 namespace DawnOfLight.GameServer.PlayerTitles
 {

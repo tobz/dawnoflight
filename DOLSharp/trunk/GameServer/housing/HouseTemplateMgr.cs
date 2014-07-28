@@ -22,7 +22,6 @@
 using System;
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.ServerProperties;
 
 namespace DawnOfLight.GameServer.Housing

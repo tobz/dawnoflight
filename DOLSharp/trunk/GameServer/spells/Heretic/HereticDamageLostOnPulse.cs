@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer;
-using DawnOfLight.Events;
 
 namespace DawnOfLight.GameServer.Spells
 {

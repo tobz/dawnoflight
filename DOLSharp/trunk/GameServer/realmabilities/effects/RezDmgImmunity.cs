@@ -19,7 +19,6 @@
 
 using System.Collections.Generic;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
 using System;
 
 namespace DawnOfLight.GameServer.Effects

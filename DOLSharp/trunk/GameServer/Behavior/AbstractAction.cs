@@ -17,10 +17,8 @@
  *
  */
 using System;
-using System.Text;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Behaviour.Attributes;
-using DawnOfLight.GameServer.Behaviour;
 using System.Reflection;
 using log4net;
 

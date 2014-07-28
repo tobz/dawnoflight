@@ -18,7 +18,6 @@
  */
 
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;
 

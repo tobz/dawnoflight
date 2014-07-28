@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;

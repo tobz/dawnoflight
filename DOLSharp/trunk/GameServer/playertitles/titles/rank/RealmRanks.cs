@@ -1,7 +1,4 @@
-using System;
 using DawnOfLight.GameServer.PlayerTitles;
-using DawnOfLight.Language;
-using DawnOfLight.Events;
 
 namespace DawnOfLight.GameServer.Scripts
 {

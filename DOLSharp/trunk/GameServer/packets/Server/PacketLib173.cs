@@ -24,14 +24,12 @@ using System.IO;
 using System.Net;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.Quests;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.World;
 using DawnOfLight.Language;
-using DawnOfLight.GameServer.Styles;
 using log4net;
 
 namespace DawnOfLight.GameServer.PacketHandler

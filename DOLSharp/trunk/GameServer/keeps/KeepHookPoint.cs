@@ -19,7 +19,6 @@
 using System;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 
 namespace DawnOfLight.GameServer.Keeps
 {

@@ -92,7 +92,7 @@ namespace DawnOfLight.GameServer.Commands
 			if (client == null || !client.IsPlaying)
 				return;
 
-			var attrib = (CmdAttribute[]) GetType().GetCustomAttributes(typeof (CmdAttribute), false);
+			var attrib = (CommandAttribute[]) GetType().GetCustomAttributes(typeof (CommandAttribute), false);
 			if (attrib.Length == 0)
 				return;
 
@@ -111,7 +111,7 @@ namespace DawnOfLight.GameServer.Commands
 			if (client == null || !client.IsPlaying)
 				return;
 
-			var attrib = (CmdAttribute[]) GetType().GetCustomAttributes(typeof (CmdAttribute), false);
+			var attrib = (CommandAttribute[]) GetType().GetCustomAttributes(typeof (CommandAttribute), false);
 
 			if (attrib.Length == 0)
 				return;
@@ -134,7 +134,7 @@ namespace DawnOfLight.GameServer.Commands
 			if (client == null || !client.IsPlaying)
 				return;
 
-			var attrib = (CmdAttribute[]) GetType().GetCustomAttributes(typeof (CmdAttribute), false);
+			var attrib = (CommandAttribute[]) GetType().GetCustomAttributes(typeof (CommandAttribute), false);
 
 			if (attrib.Length == 0)
 				return;

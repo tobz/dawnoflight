@@ -21,7 +21,6 @@
  */
 
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 
 //yeah for the DBIndoorItem class!
 

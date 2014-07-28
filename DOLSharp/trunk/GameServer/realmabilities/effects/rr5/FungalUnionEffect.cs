@@ -1,11 +1,4 @@
-using System.Collections;
-using System;
 using System.Collections.Generic;
-using DawnOfLight;
-using DawnOfLight.GameServer;
-using DawnOfLight.Events;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Effects
 {

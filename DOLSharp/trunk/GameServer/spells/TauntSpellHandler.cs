@@ -18,8 +18,6 @@
  */
 using System;
 using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Spells
 {

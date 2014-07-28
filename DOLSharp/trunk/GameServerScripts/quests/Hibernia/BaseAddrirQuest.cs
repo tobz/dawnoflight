@@ -34,7 +34,6 @@ using System;
 using System.Reflection;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 /* I suggest you declare yourself some namespaces for your quests
  * Like: DOL.GS.Quests.Albion

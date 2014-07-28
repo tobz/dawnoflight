@@ -22,15 +22,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Reflection;
-using System.Text;
 using DawnOfLight.Database.Attributes;
 using DawnOfLight.Database.Cache;
 using DawnOfLight.Database.Connection;
 using DawnOfLight.Database.Handlers;
-using DawnOfLight.Database.UniqueID;
 using log4net;
-using MySql.Data.MySqlClient;
-using MySql.Data.Types;
 using DataTable = System.Data.DataTable;
 
 namespace DawnOfLight.Database

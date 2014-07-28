@@ -18,15 +18,8 @@
  */
 using System;
 using System.Reflection;
-using System.Collections;
-using System.Collections.Generic;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Spells;
-using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.RealmAbilities;
-using DawnOfLight.GameServer.SkillHandler;
 using log4net;
 
 namespace DawnOfLight.AI.Brain

@@ -17,11 +17,9 @@
  *
  */
 using System;
-using System.Collections;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Keeps;
 
 namespace DawnOfLight.GameServer.Spells
 {

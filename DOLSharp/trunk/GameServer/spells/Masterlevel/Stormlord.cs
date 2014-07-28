@@ -20,11 +20,9 @@
 using System;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace DawnOfLight.GameServer.Spells
 {

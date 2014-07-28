@@ -19,13 +19,10 @@
 //made by DeMAN
 using System;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Collections;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
-using log4net;
 
 
 namespace DawnOfLight.GameServer.Spells

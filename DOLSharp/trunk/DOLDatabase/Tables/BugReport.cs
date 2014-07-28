@@ -18,7 +18,6 @@
  */
 
 using System;
-using System.Text;
 using DawnOfLight.Database.Attributes;
 
 namespace DawnOfLight.Database

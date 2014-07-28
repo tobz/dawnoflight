@@ -18,12 +18,8 @@
  */
 #define NOENCRYPTION
 
-using System;
-using System.Collections;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.Spells;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.Styles;
 
 namespace DawnOfLight.GameServer.PacketHandler
 {

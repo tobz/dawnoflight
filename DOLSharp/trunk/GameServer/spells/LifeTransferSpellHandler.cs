@@ -19,7 +19,6 @@
 using System;
 using System.Collections;
 using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Spells

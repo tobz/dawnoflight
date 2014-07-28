@@ -17,8 +17,6 @@
  *
  */
 
-using DawnOfLight.GameServer;
-
 namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.InviteToGroup, ClientStatus.PlayerInGame)]

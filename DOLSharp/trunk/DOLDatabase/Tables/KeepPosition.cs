@@ -1,6 +1,4 @@
 using DawnOfLight.Database.Attributes;
-using DawnOfLight.Database;
-using System;
 
 namespace DawnOfLight.Database
 {

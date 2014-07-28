@@ -23,7 +23,6 @@ using System.Reflection;
 using System.Text;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 

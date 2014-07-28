@@ -24,11 +24,8 @@ using System.Threading;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Utils;
-using DawnOfLight.GameServer.Collections;
 using DawnOfLight.Language;
 using log4net;
-using DictionaryEntry = DawnOfLight.GameServer.Collections.DictionaryEntry;
-using Hashtable = DawnOfLight.GameServer.Collections.Hashtable;
 
 namespace DawnOfLight.GameServer
 {

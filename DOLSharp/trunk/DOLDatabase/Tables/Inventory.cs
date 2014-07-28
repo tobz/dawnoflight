@@ -18,11 +18,8 @@
  */
 using System;
 using DawnOfLight.Database.Attributes;
-using DawnOfLight.Database;
-using System.Collections.Generic;
 using log4net;
 using System.Reflection;
-using System.Timers;
 
 namespace DawnOfLight.Database
 {

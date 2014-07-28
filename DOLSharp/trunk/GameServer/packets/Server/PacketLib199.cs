@@ -22,7 +22,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.World;
 using DawnOfLight.Language;
 using log4net;

@@ -17,7 +17,6 @@
  *
  */
 
-using System;
 using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer

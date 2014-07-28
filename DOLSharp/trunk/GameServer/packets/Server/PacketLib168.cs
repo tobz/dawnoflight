@@ -25,7 +25,6 @@ using System.Net;
 using System.Reflection;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;

@@ -1,4 +1,3 @@
-using System;
 using DawnOfLight.GameServer.World.Instance;
 
 namespace DawnOfLight.GameServer
@@ -87,7 +86,7 @@ namespace DawnOfLight.GameServer
 
 namespace DawnOfLight.GameServer.Commands
 {
-	[Cmd("&npcdebug", //command to handle
+	[Command("&npcdebug", //command to handle
 	              ePrivLevel.Admin, //minimum privelege level
 	              "Writes information of all npcs in a region to the console", //command description
 	              "/npcdebug")] //usage

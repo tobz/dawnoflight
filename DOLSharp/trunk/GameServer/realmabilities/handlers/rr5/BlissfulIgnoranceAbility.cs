@@ -21,7 +21,6 @@ using System;
 using System.Collections;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Spells;
-using DawnOfLight.GameServer.Effects;
 using System.Collections.Generic;
 
 namespace DawnOfLight.GameServer.RealmAbilities

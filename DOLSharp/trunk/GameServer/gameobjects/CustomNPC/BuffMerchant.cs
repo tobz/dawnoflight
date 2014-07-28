@@ -22,9 +22,6 @@ using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.Language;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer.Effects;
-
 using log4net;
 
 namespace DawnOfLight.GameServer

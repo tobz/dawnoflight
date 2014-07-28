@@ -26,14 +26,10 @@
  * You will receive some xp, copper and the armor of your choice.
  */
 using System;
-using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.World;
 using DawnOfLight.Language;
-using DawnOfLight.GameServer.PacketHandler;
-using log4net;
 
 namespace DawnOfLight.GameServer.Quests.Hibernia
 {

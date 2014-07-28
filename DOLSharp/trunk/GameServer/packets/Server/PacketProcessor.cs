@@ -29,7 +29,6 @@ using System.Timers;
 using DawnOfLight.Base;
 using DawnOfLight.Base.Network;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.ServerProperties;
 using log4net;
 using Timer=System.Timers.Timer;

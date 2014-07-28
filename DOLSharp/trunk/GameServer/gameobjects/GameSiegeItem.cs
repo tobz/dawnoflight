@@ -14,16 +14,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
-using System;
+
 using System.Reflection;
-using System.Collections;
-using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.Language;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Spells;
-using DawnOfLight.GameServer.Effects;
 using log4net;
 
 namespace DawnOfLight.GameServer

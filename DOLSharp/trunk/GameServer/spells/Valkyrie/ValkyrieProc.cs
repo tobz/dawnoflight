@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;

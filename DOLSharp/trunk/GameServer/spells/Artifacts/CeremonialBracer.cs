@@ -17,10 +17,6 @@
  *
  */
 
-using System;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.PacketHandler;
-
 namespace DawnOfLight.GameServer.Spells
 {
 	[SpellHandler("CeremonialBracerMezz")]

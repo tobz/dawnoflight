@@ -21,7 +21,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.ServerProperties;

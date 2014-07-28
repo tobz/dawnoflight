@@ -17,14 +17,11 @@
  *
  */
 #define NOENCRYPTION
-using System;
 using System.Linq;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Housing;
 using log4net;
-using DawnOfLight.GameServer.Quests;
 using System.Reflection;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace DawnOfLight.GameServer.PacketHandler

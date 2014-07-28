@@ -19,7 +19,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Effects;

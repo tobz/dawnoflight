@@ -1,14 +1,10 @@
 /* 01/03/2005
    Written by Gavinius */
 
-using System;
 using System.Collections;
 using DawnOfLight.GameServer.Commands;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
-using DawnOfLight;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 
 namespace DawnOfLight.GameServer
 {

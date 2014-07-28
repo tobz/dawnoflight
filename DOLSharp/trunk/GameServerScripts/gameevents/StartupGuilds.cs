@@ -17,11 +17,9 @@
  *
  */
 using System;
-using System.Collections;
 using System.Reflection;
 using DawnOfLight.Events;
 using DawnOfLight.Language;
-using DawnOfLight.Database;
 using log4net;
 
 namespace DawnOfLight.GameServer.GameEvents

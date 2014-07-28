@@ -22,7 +22,6 @@ using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.RealmAbilities;
-using DawnOfLight.GameServer;
 
 namespace DawnOfLight.GameServer.Spells
 {

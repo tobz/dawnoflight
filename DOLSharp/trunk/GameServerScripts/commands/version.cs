@@ -17,12 +17,11 @@
  *
  */
 using System.Reflection;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Commands
 {
-	[Cmd(
+	[Command(
 		"&version",
 		ePrivLevel.Player,
 		"Get the version of the GameServer",

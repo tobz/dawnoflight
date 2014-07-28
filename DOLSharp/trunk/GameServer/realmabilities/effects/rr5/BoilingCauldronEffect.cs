@@ -20,9 +20,6 @@
 using System;
 using System.Collections.Generic;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.Spells;
 
 namespace DawnOfLight.GameServer.Effects
 {

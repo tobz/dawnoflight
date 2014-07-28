@@ -17,17 +17,7 @@
  *
  */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
-using DawnOfLight.Language;
-using DawnOfLight.GameServer.Movement;
-using DawnOfLight.GameServer.PacketHandler;
-using log4net;
-using DawnOfLight.AI.Brain;
 
 namespace DawnOfLight.GameServer
 {

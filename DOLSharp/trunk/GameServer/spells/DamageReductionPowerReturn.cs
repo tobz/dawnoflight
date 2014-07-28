@@ -18,16 +18,10 @@
 *///made by Yemla, based off Alblative
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
-using log4net;
-using System.Collections;
-using DawnOfLight.GameServer;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer.Keeps;
 
 
 namespace DawnOfLight.GameServer.Spells

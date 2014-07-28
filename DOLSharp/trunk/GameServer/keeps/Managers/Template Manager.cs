@@ -18,10 +18,9 @@
  */
 
 using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.Language;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Keeps
 {

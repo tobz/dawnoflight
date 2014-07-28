@@ -17,14 +17,12 @@
  *
  */
 using System;
-using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Movement;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
 using System.Collections;
-using log4net;
 
 namespace DawnOfLight.GameServer
 {

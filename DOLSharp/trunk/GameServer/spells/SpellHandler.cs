@@ -19,19 +19,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.RealmAbilities;
 using DawnOfLight.GameServer.SkillHandler;
 using DawnOfLight.GameServer.World;
 using DawnOfLight.Language;
-using log4net;
 
 namespace DawnOfLight.GameServer.Spells
 {

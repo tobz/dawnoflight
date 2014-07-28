@@ -23,8 +23,6 @@ using DawnOfLight.Database;
 using DawnOfLight.Database.Attributes;
 using DawnOfLight.Database.Connection;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.PacketHandler;
 using log4net;
 
 namespace DawnOfLight.GameServer.Scripts

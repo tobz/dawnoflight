@@ -17,7 +17,6 @@
  *
  */
 using System;
-using System.Text;
 using DawnOfLight.Events;
 
 namespace DawnOfLight.GameServer.Behaviour

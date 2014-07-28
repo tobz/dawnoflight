@@ -16,14 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
+
 using System.Reflection;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Commands
 {
-	[Cmd("&serverinfo", //command to handle
+	[Command("&serverinfo", //command to handle
 		ePrivLevel.Player, //minimum privelege level
 		"Shows information about the server", //command description
 		"/serverinfo")] //usage

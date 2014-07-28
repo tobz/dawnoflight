@@ -18,7 +18,6 @@
  */
 
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using log4net;
 
 namespace DawnOfLight.GameServer.DatabaseUpdate

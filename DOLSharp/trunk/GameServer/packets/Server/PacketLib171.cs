@@ -22,7 +22,6 @@ using System;
 using System.Reflection;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.Quests;
 using DawnOfLight.Language;

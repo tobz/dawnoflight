@@ -1,7 +1,5 @@
-using System;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
 
 namespace DawnOfLight.GameServer.Keeps
 {

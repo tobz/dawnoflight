@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Reflection;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Database;
 using DawnOfLight.GameServer.World.Instance;
 using log4net;
 

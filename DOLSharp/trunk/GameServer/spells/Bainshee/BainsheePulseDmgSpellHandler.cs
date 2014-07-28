@@ -17,12 +17,10 @@
  *
  */
 using System;
-using System.Collections;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Spells

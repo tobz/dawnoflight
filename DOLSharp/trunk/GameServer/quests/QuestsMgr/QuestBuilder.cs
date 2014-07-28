@@ -17,9 +17,7 @@
  *
  */
 using System;
-using System.Text;
 using System.Reflection;
-using DawnOfLight.Database;
 
 namespace DawnOfLight.GameServer.Quests
 {

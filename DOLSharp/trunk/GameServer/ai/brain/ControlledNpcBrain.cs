@@ -27,7 +27,6 @@ using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.RealmAbilities;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.Spells;
-using DawnOfLight.GameServer.SkillHandler;
 using log4net;
 
 namespace DawnOfLight.AI.Brain

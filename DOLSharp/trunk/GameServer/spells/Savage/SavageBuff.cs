@@ -21,9 +21,6 @@ using System;
 using System.Collections.Generic;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.Language;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.PacketHandler;
-using System.Collections;
 
 namespace DawnOfLight.GameServer.Spells
 {

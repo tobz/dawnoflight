@@ -19,7 +19,6 @@
 
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.PacketHandler;
-using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.GameServer.World.Instance;
 

@@ -1,4 +1,3 @@
-using System;
 using DawnOfLight.Database.Attributes;
 
 namespace DawnOfLight.Database

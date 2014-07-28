@@ -17,16 +17,10 @@
 *
 */
 #define NOENCRYPTION
-using System;
 using System.IO;
 using System.Reflection;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.Database;
 using System.Collections;
-using System.Collections.Generic;
-using DawnOfLight.GameServer.RealmAbilities;
-using DawnOfLight.GameServer.Styles;
-using DawnOfLight.Language;
 using log4net;
 
 

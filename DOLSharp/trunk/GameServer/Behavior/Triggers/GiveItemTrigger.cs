@@ -17,13 +17,11 @@
  *
  */
 using System;
-using System.Text;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Behaviour.Attributes;
 using log4net;
 using System.Reflection;
-using DawnOfLight.GameServer.Behaviour;
 
 namespace DawnOfLight.GameServer.Behaviour.Triggers
 {	

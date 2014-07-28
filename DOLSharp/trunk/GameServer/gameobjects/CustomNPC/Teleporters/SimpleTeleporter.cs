@@ -18,14 +18,8 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
-using System.Collections;
-using DawnOfLight.GameServer.Spells;
-using log4net;
-using System.Reflection;
 
 namespace DawnOfLight.GameServer
 {

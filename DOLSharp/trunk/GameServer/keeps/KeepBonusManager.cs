@@ -1,6 +1,3 @@
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.PacketHandler;
-
 namespace DawnOfLight.GameServer.Keeps
 {
 	/// <summary>

@@ -18,8 +18,6 @@
  */
 
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Quests;
 using DawnOfLight.GameServer.World.Instance;
 
 namespace DawnOfLight.GameServer.ServerRules

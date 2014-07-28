@@ -23,7 +23,7 @@
  *   - Sorted
  *   - Added missing (+language support)
  */
-using System;
+
 using DawnOfLight.Events;
 using DawnOfLight.Language;
 

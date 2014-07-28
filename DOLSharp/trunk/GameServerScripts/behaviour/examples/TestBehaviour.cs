@@ -1,16 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.Behaviour.Actions;
 using DawnOfLight.GameServer.Behaviour.Triggers;
-using DawnOfLight.GameServer.Behaviour;
 using log4net;
 using System.Reflection;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Quests;
-using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Behaviour.Examples
 {

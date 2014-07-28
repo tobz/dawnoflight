@@ -18,12 +18,8 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Quests;
-using System.Collections;
 using log4net;
 using System.Reflection;
 

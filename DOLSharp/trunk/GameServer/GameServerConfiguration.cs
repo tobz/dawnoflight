@@ -24,7 +24,6 @@ using System.Net.Sockets;
 using System.Reflection;
 using DawnOfLight.Base;
 using DawnOfLight.Base.Config;
-using DawnOfLight;
 using DawnOfLight.Database.Connection;
 
 namespace DawnOfLight.GameServer

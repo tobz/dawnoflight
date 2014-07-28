@@ -17,16 +17,9 @@
  *
  */
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Reflection;
-using System.Text;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Database;
-using DawnOfLight.Events;
 using DawnOfLight.GameServer.World;
-using DawnOfLight.Language;
 using log4net;
 
 namespace DawnOfLight.GameServer.Quests

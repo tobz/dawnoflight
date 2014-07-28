@@ -18,15 +18,11 @@
  */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
-using DawnOfLight.Events;
 using log4net;
 
 namespace DawnOfLight.GameServer.Quests.Atlantis

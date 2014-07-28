@@ -17,16 +17,13 @@
  *
  */
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Base;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.Language;
-using DawnOfLight.Database;
 
 namespace DawnOfLight.GameServer
 {

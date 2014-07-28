@@ -1,11 +1,7 @@
 //Andraste v2.0 -Vico
 
-using System;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Effects;
-using DawnOfLight.Events;
 
 namespace DawnOfLight.GameServer.Spells
 {

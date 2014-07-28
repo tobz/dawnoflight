@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Reflection;
-using System.Text;
 using DawnOfLight.Database.Connection;
 using DawnOfLight.Database.UniqueID;
-using DawnOfLight.Database.Attributes;
 using DataTable=System.Data.DataTable;
 
 namespace DawnOfLight.Database.Handlers

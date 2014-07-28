@@ -18,12 +18,9 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Text;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Quests;
-using System.Collections;
 
 namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 {

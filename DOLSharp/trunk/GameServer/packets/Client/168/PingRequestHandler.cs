@@ -17,7 +17,6 @@
  *
  */
 using System;
-using System.Text;
 
 namespace DawnOfLight.GameServer.PacketHandler.Client.v168
 {

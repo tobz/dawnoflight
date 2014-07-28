@@ -20,13 +20,11 @@
 // Tolakram, July 2010 - This represents a data driven quest that can be added and removed at runtime.  
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Behaviour;
 using DawnOfLight.GameServer.PacketHandler;
 using DawnOfLight.GameServer.World;

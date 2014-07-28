@@ -16,13 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  *///made by DeMAN
-using System;
-using System.Reflection;
+
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Events;
-using log4net;
 
 
 namespace DawnOfLight.GameServer.Spells

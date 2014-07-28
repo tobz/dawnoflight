@@ -17,7 +17,6 @@
  *
  */
 #define NOENCRYPTION
-using System;
 using System.Reflection;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.Spells;

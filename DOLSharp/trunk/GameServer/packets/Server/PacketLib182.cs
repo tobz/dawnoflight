@@ -17,10 +17,8 @@
  *
  */
 #define NOENCRYPTION
-using System;
 using DawnOfLight.Database;
 using log4net;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 

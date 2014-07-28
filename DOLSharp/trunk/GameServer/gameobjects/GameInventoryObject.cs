@@ -16,10 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-using System;
-using System.Collections;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using System.Collections.Generic;
 
 // Tolakram - January 7, 2012

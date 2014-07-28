@@ -20,9 +20,7 @@
  * Last modified by Schaf on 10.12.2004 20:09
  */
 
-using System;
 using DawnOfLight.Database.Attributes;
-using DawnOfLight.Database;
 
 namespace DawnOfLight
 {

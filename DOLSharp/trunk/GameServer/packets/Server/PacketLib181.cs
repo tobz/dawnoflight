@@ -17,7 +17,6 @@
  *
  */
 #define NOENCRYPTION
-using System;
 using System.Collections;
 using System.Reflection;
 using DawnOfLight.AI.Brain;

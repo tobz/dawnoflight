@@ -26,7 +26,6 @@
 using System;
 using DawnOfLight.Database;
 using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.World;
 using DawnOfLight.Language;
 

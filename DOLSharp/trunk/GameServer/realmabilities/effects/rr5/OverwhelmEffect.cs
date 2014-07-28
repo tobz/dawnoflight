@@ -22,7 +22,6 @@ using System;
 using System.Collections.Generic;
 using DawnOfLight.Events;
 using DawnOfLight.GameServer.RealmAbilities;
-using DawnOfLight.GameServer.PacketHandler;
 
 namespace DawnOfLight.GameServer.Effects
 {

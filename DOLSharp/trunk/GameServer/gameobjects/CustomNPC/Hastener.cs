@@ -17,13 +17,8 @@
  *
  */
 
-using System;
 using System.Collections;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.Database;
-using DawnOfLight.Database.Attributes;
-using DawnOfLight.Events;
 
 namespace DawnOfLight.GameServer
 {

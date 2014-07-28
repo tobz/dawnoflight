@@ -17,7 +17,6 @@
  *
  */
 using System;
-using System.Collections;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.GameServer.PacketHandler;
 

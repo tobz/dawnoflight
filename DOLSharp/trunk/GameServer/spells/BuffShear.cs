@@ -21,7 +21,6 @@
  * TODO: DD proc
  */
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.GameServer.Effects;
