@@ -951,7 +951,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 
 			if (response == 0x00)
 			{
-				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 			}
 			else
 			{
@@ -959,7 +959,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 				if (!Masrim.GiveQuest(typeof (Rogue_50), player, 1))
 					return;
 
-				player.Out.SendMessage("Kill Oona in Raumarik loc 20k,51k!", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Kill Oona in Raumarik loc 20k,51k!", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 			}
 		}
 
@@ -999,7 +999,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 				EnemyKilledEventArgs gArgs = (EnemyKilledEventArgs) args;
 				if (gArgs.Target.Name == Oona.Name)
 				{
-					m_questPlayer.Out.SendMessage("You collect Oona's Head", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					m_questPlayer.Out.SendMessage("You collect Oona's Head", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					GiveItem(m_questPlayer, oona_head);
 					Step = 2;
 					return;
@@ -1040,7 +1040,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 
 		public override void FinishQuest()
 		{
-			if (m_questPlayer.Inventory.IsSlotsFree(6, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+			if (m_questPlayer.Inventory.IsSlotsFree(6, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
 				RemoveItem(MorlinCaan, m_questPlayer, sealed_pouch);
 
@@ -1070,7 +1070,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 			}
 			else
 			{
-				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 

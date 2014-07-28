@@ -17,38 +17,39 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0xC7 ^ 168, "Keep component interact")]
+    [PacketHandler(PacketType.TCP, ClientPackets.KeepComponentInteract, ClientStatus.PlayerInGame)]
 	public class KeepComponentInteractHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			ushort keepId = packet.ReadShort();
 			ushort wallId = packet.ReadShort();
-			ushort responce = packet.ReadShort();
-			int HPindex = packet.ReadShort();
+			ushort response = packet.ReadShort();
+			int hpIndex = packet.ReadShort();
 
-			AbstractGameKeep keep = GameServer.KeepManager.GetKeepByID(keepId);
-
-			if (keep == null || !(GameServer.ServerRules.IsSameRealm(client.Player, (GameKeepComponent)keep.KeepComponents[wallId], true) || client.Account.PrivLevel > 1))
+			var keep = GameServer.KeepManager.GetKeepByID(keepId);
+			if (keep == null || !(GameServer.ServerRules.IsSameRealm(client.Player, keep.KeepComponents[wallId], true) || client.Account.PrivLevel > 1))
 				return;
 
-			if (responce == 0x00)//show info
-				client.Out.SendKeepComponentInteract(((GameKeepComponent)keep.KeepComponents[wallId]));
-			else if (responce == 0x01)// click on hookpoint button
-				client.Out.SendKeepComponentHookPoint(((GameKeepComponent)keep.KeepComponents[wallId]), HPindex);
-			else if (responce == 0x02)//select an hookpoint
+		    if (response == 0x00) //show info
+		    {
+		        client.Out.SendKeepComponentInteract(keep.KeepComponents[wallId]);
+		    }
+			else if (response == 0x01) // click on hookpoint button
 			{
-				if (client.Account.PrivLevel > 1)
-					client.Out.SendMessage("DEBUG : selected hookpoint id " + HPindex, eChatType.CT_Say, eChatLoc.CL_SystemWindow);
-
-				GameKeepComponent hp = keep.KeepComponents[wallId] as GameKeepComponent;
-				client.Out.SendClearKeepComponentHookPoint(hp, HPindex);
-				client.Out.SendHookPointStore(hp.HookPoints[HPindex] as GameKeepHookPoint);
+			    client.Out.SendKeepComponentHookPoint(keep.KeepComponents[wallId], hpIndex);
+			}
+			else if (response == 0x02)//select an hookpoint
+			{
+				var hp = keep.KeepComponents[wallId];
+				client.Out.SendClearKeepComponentHookPoint(hp, hpIndex);
+				client.Out.SendHookPointStore(hp.HookPoints[hpIndex] as GameKeepHookPoint);
 			}
 		}
 	}

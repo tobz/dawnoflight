@@ -178,7 +178,7 @@ namespace DawnOfLight.GameServer.Utilities
             if (DoesGuildExist(guildName))
             {
                 if (creator != null)
-                    creator.Out.SendMessage(guildName + " already exists!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    creator.Out.SendMessage(guildName + " already exists!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
                 return null;
             }
@@ -194,7 +194,7 @@ namespace DawnOfLight.GameServer.Utilities
                 {
                     if (creator != null)
                     {
-                        creator.Out.SendMessage("Database error, unable to add a new guild!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        creator.Out.SendMessage("Database error, unable to add a new guild!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     }
                     return null;
                 }

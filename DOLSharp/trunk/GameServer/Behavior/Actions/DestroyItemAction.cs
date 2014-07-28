@@ -53,7 +53,7 @@ namespace DawnOfLight.GameServer.Behavior.Actions
 			Dictionary<InventoryItem, int?> dataSlots = new Dictionary<InventoryItem, int?>(10);
             lock (player.Inventory)
             {
-                var allBackpackItems = player.Inventory.GetItemRange(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+                var allBackpackItems = player.Inventory.GetItemRange(InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 
                 bool result = false;
                 foreach (InventoryItem item in allBackpackItems)
@@ -123,7 +123,7 @@ namespace DawnOfLight.GameServer.Behavior.Actions
             playerInventory.CommitChanges();
 
 
-            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Behaviour.DestroyItemAction.Destroyed", itemToDestroy.Name), eChatType.CT_Loot, eChatLoc.CL_SystemWindow);
+            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Behaviour.DestroyItemAction.Destroyed", itemToDestroy.Name), ChatType.CT_Loot, ChatLocation.CL_SystemWindow);
         }
     }
 }

@@ -17,15 +17,16 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Network.Crypto;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0x5C^168,"Handles crypt key requests")]
+    [PacketHandler(PacketType.TCP, ClientPackets.CryptKeyRequest)]
 	public class CryptKeyRequestHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int rc4 = packet.ReadByte();
 			byte clientType = (byte)packet.ReadByte();
@@ -34,20 +35,19 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			byte major = (byte)packet.ReadByte();
 			byte minor = (byte)packet.ReadByte();
 			byte build = (byte)packet.ReadByte();
+
 			if(rc4==1)
 			{
-				//DOLConsole.Log("SBox=\n");
-				//DOLConsole.LogDump(client.PacketProcessor.Encoding.SBox);
-				packet.Read(((PacketEncoding168)client.PacketProcessor.Encoding).SBox,0,256);
-				((PacketEncoding168)client.PacketProcessor.Encoding).EncryptionState=PacketEncoding168.eEncryptionState.PseudoRC4Encrypted;
-				//DOLConsole.WriteLine(client.Socket.RemoteEndPoint.ToString()+": SBox set!");
-				//DOLConsole.Log("SBox=\n");
-				//DOLConsole.LogDump(((PacketEncoding168)client.PacketProcessor.Encoding).SBox);
+			    var encoding = client.PacketProcessor.Encoding as PacketEncoding168;
+			    if (encoding == null)
+			        return;
+
+				packet.Read(encoding.SBox, 0, 256);
+				encoding.EncryptionState = eEncryptionState.PseudoRC4Encrypted;
 			}
 			else
 			{
-			  //Send the crypt key to the client
-				client.Out.SendVersionAndCryptKey();
+                client.Out.SendVersionAndCryptKey();
 			}
 		}
 	}

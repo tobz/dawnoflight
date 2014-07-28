@@ -84,7 +84,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects
 			if (m_owner is GamePlayer)
 			{
 				(m_owner as GamePlayer).Out.SendCharResistsUpdate();
-				(m_owner as GamePlayer).Out.SendMessage("Your clearheaded state leaves you.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				(m_owner as GamePlayer).Out.SendMessage("Your clearheaded state leaves you.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 
 			base.Stop();

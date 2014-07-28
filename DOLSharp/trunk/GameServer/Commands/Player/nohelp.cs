@@ -36,11 +36,11 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (client.Player.NoHelp)
 			{
-				client.Out.SendMessage("You will no longer receive help from members of your realm, type /nohelp again to receive help again.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You will no longer receive help from members of your realm, type /nohelp again to receive help again.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
-				client.Out.SendMessage("You will once again receive help from members of your realm, type /nohelp again to stop receiving help.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You will once again receive help from members of your realm, type /nohelp again to stop receiving help.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 	}

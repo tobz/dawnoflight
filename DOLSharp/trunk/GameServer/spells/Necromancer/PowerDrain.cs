@@ -48,7 +48,7 @@ namespace DawnOfLight.GameServer.Spells.Necromancer
 		/// </summary>
 		/// <param name="message"></param>
 		/// <param name="chatType"></param>
-		protected override void MessageToOwner(String message, eChatType chatType)
+		protected override void MessageToOwner(String message, ChatType chatType)
 		{
 			GameNPC npc = Caster as GameNPC;
 			if (npc != null)
@@ -58,7 +58,7 @@ namespace DawnOfLight.GameServer.Spells.Necromancer
 				{
 					GamePlayer owner = brain.Owner as GamePlayer;
 					if (owner != null)
-						owner.Out.SendMessage(message, chatType, eChatLoc.CL_SystemWindow);
+						owner.Out.SendMessage(message, chatType, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}

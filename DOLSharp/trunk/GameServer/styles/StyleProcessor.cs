@@ -196,20 +196,20 @@ namespace DawnOfLight.GameServer.Styles
 				if (!living.IsAlive)
 				{
 					if (player != null)
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.CantCombatMode"), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.CantCombatMode"), ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 					
 					return;
 				}
 				if (living.IsDisarmed)
 				{
-					if(living is GamePlayer) (living as GamePlayer).Out.SendMessage("You are disarmed and cannot attack!", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+					if(living is GamePlayer) (living as GamePlayer).Out.SendMessage("You are disarmed and cannot attack!", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 					return;
 				}
 				//Can't use styles with range weapon
 				if (living.ActiveWeaponSlot == GameLiving.eActiveWeaponSlot.Distance)
 				{
 					if (player != null)
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.CantMeleeCombat"), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.CantMeleeCombat"), ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
@@ -223,20 +223,20 @@ namespace DawnOfLight.GameServer.Styles
 				if (living.TargetObject == null)
 				{
 					if (player != null)
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.MustHaveTarget"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.MustHaveTarget"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
-				InventoryItem weapon = (style.WeaponTypeRequirement == (int)eObjectType.Shield) ? living.Inventory.GetItem(eInventorySlot.LeftHandWeapon) : living.AttackWeapon;
+				InventoryItem weapon = (style.WeaponTypeRequirement == (int)eObjectType.Shield) ? living.Inventory.GetItem(InventorySlot.LeftHandWeapon) : living.AttackWeapon;
 				//				if (weapon == null) return;	// no weapon = no style
 				if (!CheckWeaponType(style, living, weapon))
 				{
 					if (player != null)
 					{
 						if (style.WeaponTypeRequirement == Style.SpecialWeaponType.DualWield)
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.DualWielding"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.DualWielding"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						else
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.StyleRequires", style.GetRequiredWeaponName()), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.StyleRequires", style.GetRequiredWeaponName()), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					return;
 				}
@@ -246,7 +246,7 @@ namespace DawnOfLight.GameServer.Styles
 					int fatCost = CalculateEnduranceCost(player, style, weapon.SPD_ABS);
 					if (player.Endurance < fatCost)
 					{
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.Fatigued"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.Fatigued"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						return;
 					}
 				}
@@ -268,14 +268,14 @@ namespace DawnOfLight.GameServer.Styles
 							|| lastAD.Style == null
 							|| lastAD.Style.ID != style.OpeningRequirementValue)
 							{
-								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.PerformStyleBefore", preRequireStyle.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.PerformStyleBefore", preRequireStyle.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								return;
 							}
 						}
 
 						player.NextCombatStyle = style;
 						player.NextCombatBackupStyle = null;
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.PreparePerform", style.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.PreparePerform", style.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 						if (living.IsEngaging)
 						{
@@ -296,7 +296,7 @@ namespace DawnOfLight.GameServer.Styles
 						if (player.NextCombatBackupStyle != null)
 						{
 							//All styles set, can't change anything now
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.AlreadySelectedStyles"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.AlreadySelectedStyles"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 						else
 						{
@@ -306,13 +306,13 @@ namespace DawnOfLight.GameServer.Styles
 								if (player.CancelStyle)
 								{
 									//If yes, we cancel the style
-									player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.NoLongerPreparing", player.NextCombatStyle.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.NoLongerPreparing", player.NextCombatStyle.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									player.NextCombatStyle = null;
 									player.NextCombatBackupStyle = null;
 								}
 								else
 								{
-									player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.AlreadyPreparing"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.AlreadyPreparing"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								}
 							}
 							else
@@ -325,13 +325,13 @@ namespace DawnOfLight.GameServer.Styles
 									|| lastAD.Style == null
 									|| lastAD.Style.ID != style.OpeningRequirementValue)
 									{
-										player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.PerformStyleBefore", preRequireStyle.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+										player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.PerformStyleBefore", preRequireStyle.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 										return;
 									}
 								}
 								//If no, set the secondary backup style
 								player.NextCombatBackupStyle = style;
-								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.BackupStyle", style.Name, player.NextCombatStyle.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.TryToUseStyle.BackupStyle", style.Name, player.NextCombatStyle.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							}
 						}
 					}
@@ -398,7 +398,7 @@ namespace DawnOfLight.GameServer.Styles
 
 						//"You must be hidden to perform this style!"
 						//Print a style-fail message
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.ExecuteStyle.ExecuteFail", attackData.Style.Name), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.ExecuteStyle.ExecuteFail", attackData.Style.Name), ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 					}
 					return false;
 				}
@@ -483,8 +483,8 @@ namespace DawnOfLight.GameServer.Styles
 
 						if(absorb > 0)
 						{
-							player.Out.SendMessage("A barrier absorbs " + absorb + " damage!", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
-							if(living is GamePlayer) (living as GamePlayer).Out.SendMessage("A barrier absorbs " + absorb + " damage!", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("A barrier absorbs " + absorb + " damage!", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
+							if(living is GamePlayer) (living as GamePlayer).Out.SendMessage("A barrier absorbs " + absorb + " damage!", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 						}
 					}
 
@@ -554,7 +554,7 @@ namespace DawnOfLight.GameServer.Styles
 					if (weapon != null)
 						attackData.AnimationId = (weapon.Hand != 1) ? attackData.Style.Icon : attackData.Style.TwoHandAnimation; // special animation for two-hand
 					else if (living.Inventory != null)
-						attackData.AnimationId = (living.Inventory.GetItem(eInventorySlot.RightHandWeapon) != null) ? attackData.Style.Icon : attackData.Style.TwoHandAnimation; // special animation for two-hand
+						attackData.AnimationId = (living.Inventory.GetItem(InventorySlot.RightHandWeapon) != null) ? attackData.Style.Icon : attackData.Style.TwoHandAnimation; // special animation for two-hand
 					else
 						attackData.AnimationId = attackData.Style.Icon;
 
@@ -614,7 +614,7 @@ namespace DawnOfLight.GameServer.Styles
 					// both weapons are needed to use style,
 					// shield is not a weapon here
 					InventoryItem rightHand = player.AttackWeapon;
-					InventoryItem leftHand = player.Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+					InventoryItem leftHand = player.Inventory.GetItem(InventorySlot.LeftHandWeapon);
 
 					if (rightHand == null || leftHand == null || (rightHand.Item_Type != Slot.RIGHTHAND && rightHand.Item_Type != Slot.LEFTHAND))
 						return false;
@@ -675,7 +675,7 @@ namespace DawnOfLight.GameServer.Styles
 			ISpellHandler spellHandler = ScriptMgr.CreateSpellHandler(caster, styleSpell, styleLine);
 			if (spellHandler == null && styleSpell != null && caster is GamePlayer)
 			{
-				((GamePlayer)caster).Out.SendMessage(styleSpell.Name + " not implemented yet (" + styleSpell.SpellType + ")", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				((GamePlayer)caster).Out.SendMessage(styleSpell.Name + " not implemented yet (" + styleSpell.SpellType + ")", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 
 			// No negative effects can be applied on a keep door or via attacking a keep door

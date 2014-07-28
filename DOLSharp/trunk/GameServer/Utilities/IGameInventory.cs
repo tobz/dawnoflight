@@ -22,7 +22,7 @@ using DawnOfLight.Database;
 
 namespace DawnOfLight.GameServer.Utilities
 {
-	public enum eInventorySlot : int
+	public enum InventorySlot : int
 	{
 		LastEmptyBagHorse	= -8,
 		FirstEmptyBagHorse	= -7,
@@ -135,16 +135,16 @@ namespace DawnOfLight.GameServer.Utilities
 		bool            LoadFromDatabase(string inventoryID);
 		bool            SaveIntoDatabase(string inventoryID);
 
-		bool			AddItem(eInventorySlot slot, InventoryItem item);
+		bool			AddItem(InventorySlot slot, InventoryItem item);
 						/// <summary>
 						/// Add an item to Inventory and save.  This assumes item is already in the database and is being transferred.
 						/// </summary>
 						/// <param name="slot"></param>
 						/// <param name="item"></param>
 						/// <returns></returns>
-		bool			AddTradeItem(eInventorySlot slot, InventoryItem item);
+		bool			AddTradeItem(InventorySlot slot, InventoryItem item);
 		bool			AddCountToStack(InventoryItem item, int count);
-		bool			AddTemplate(InventoryItem template, int count, eInventorySlot minSlot, eInventorySlot maxSlot);
+		bool			AddTemplate(InventoryItem template, int count, InventorySlot minSlot, InventorySlot maxSlot);
 		bool            RemoveItem(InventoryItem item);
 						/// <summary>
 						/// Remove an item from Inventory and update owner and position but do not remove from the database.
@@ -154,27 +154,27 @@ namespace DawnOfLight.GameServer.Utilities
 						/// <returns></returns>
 		bool            RemoveTradeItem(InventoryItem item);
 		bool			RemoveCountFromStack(InventoryItem item, int count);
-		bool			RemoveTemplate(string templateID, int count, eInventorySlot minSlot, eInventorySlot maxSlot);
-		bool            MoveItem(eInventorySlot fromSlot, eInventorySlot toSlot, int itemCount);
-		InventoryItem   GetItem(eInventorySlot slot);
-		ICollection<InventoryItem> GetItemRange(eInventorySlot minSlot, eInventorySlot maxSlot);
+		bool			RemoveTemplate(string templateID, int count, InventorySlot minSlot, InventorySlot maxSlot);
+		bool            MoveItem(InventorySlot fromSlot, InventorySlot toSlot, int itemCount);
+		InventoryItem   GetItem(InventorySlot slot);
+		ICollection<InventoryItem> GetItemRange(InventorySlot minSlot, InventorySlot maxSlot);
 
 		void            BeginChanges();
 		void            CommitChanges();
 		void			ClearInventory();
 
-		int				CountSlots(bool countUsed, eInventorySlot minSlot, eInventorySlot maxSlot);
-		int				CountItemTemplate(string itemtemplateID, eInventorySlot minSlot, eInventorySlot maxSlot);
-		bool			IsSlotsFree(int count, eInventorySlot minSlot, eInventorySlot maxSlot);
+		int				CountSlots(bool countUsed, InventorySlot minSlot, InventorySlot maxSlot);
+		int				CountItemTemplate(string itemtemplateID, InventorySlot minSlot, InventorySlot maxSlot);
+		bool			IsSlotsFree(int count, InventorySlot minSlot, InventorySlot maxSlot);
 		
-		eInventorySlot	FindFirstEmptySlot(eInventorySlot first, eInventorySlot last);
-		eInventorySlot	FindLastEmptySlot(eInventorySlot first, eInventorySlot last);
-		eInventorySlot	FindFirstFullSlot(eInventorySlot first, eInventorySlot last);
-		eInventorySlot	FindLastFullSlot(eInventorySlot first, eInventorySlot last);
+		InventorySlot	FindFirstEmptySlot(InventorySlot first, InventorySlot last);
+		InventorySlot	FindLastEmptySlot(InventorySlot first, InventorySlot last);
+		InventorySlot	FindFirstFullSlot(InventorySlot first, InventorySlot last);
+		InventorySlot	FindLastFullSlot(InventorySlot first, InventorySlot last);
 
-		InventoryItem	GetFirstItemByID(string uniqueID, eInventorySlot minSlot, eInventorySlot maxSlot);
-		InventoryItem	GetFirstItemByObjectType(int objectType, eInventorySlot minSlot, eInventorySlot maxSlot);
-		InventoryItem   GetFirstItemByName(string name ,eInventorySlot minSlot, eInventorySlot maxSlot);
+		InventoryItem	GetFirstItemByID(string uniqueID, InventorySlot minSlot, InventorySlot maxSlot);
+		InventoryItem	GetFirstItemByObjectType(int objectType, InventorySlot minSlot, InventorySlot maxSlot);
+		InventoryItem   GetFirstItemByName(string name ,InventorySlot minSlot, InventorySlot maxSlot);
 
 		ICollection<InventoryItem> VisibleItems		{ get; }
 		ICollection<InventoryItem> EquippedItems	{ get; }

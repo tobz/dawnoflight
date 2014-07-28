@@ -47,7 +47,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
                     if (Enum.IsDefined(typeof(ePanel), value))
                     {
 						// Give the user some information
-                        client.Out.SendMessage("Start blinking UI part: " + Enum.GetName(typeof(ePanel), value), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        client.Out.SendMessage("Start blinking UI part: " + Enum.GetName(typeof(ePanel), value), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 						// If we have a target, send the blink panel to him or make our own UI blink otherwise
                         if (player.TargetObject != null && player.TargetObject is GamePlayer && (player.TargetObject as GamePlayer).Client.IsPlaying)
@@ -89,7 +89,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			}
 
 			// Give the user some usefull output
-			client.Out.SendMessage(visualEffectList, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage(visualEffectList, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 	}
 }

@@ -62,19 +62,19 @@ namespace DawnOfLight.GameServer.Spells.Teleport
 			if (player.CurrentRegion.IsRvR || player.CurrentRegion.IsInstance)
 			{
 				// Actual live message is: You can't use that item!
-				player.Out.SendMessage("You can't use that here!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You can't use that here!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			if (player.IsMoving)
 			{
-				player.Out.SendMessage("You must be standing still to use this item!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You must be standing still to use this item!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			if (player.InCombat || GameRelic.IsPlayerCarryingRelic(player))
 			{
-				player.Out.SendMessage("You have been in combat recently and cannot use this item!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You have been in combat recently and cannot use this item!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
@@ -120,7 +120,7 @@ namespace DawnOfLight.GameServer.Spells.Teleport
 		{
 			InterruptCasting();
 			if (Caster is GamePlayer)
-                (Caster as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SpellHandler.CasterMove"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+                (Caster as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SpellHandler.CasterMove"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 		}
 
 

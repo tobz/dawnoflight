@@ -69,7 +69,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			// Make sure the player is at a trainer.
 			if (trainer == null || !trainer.CanTrain(client.Player))
 			{
-				client.Out.SendMessage("You have to be at your trainer to use this command.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You have to be at your trainer to use this command.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -108,7 +108,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (spec == null)
 			{
-				client.Out.SendMessage("The provided skill could not be found.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("The provided skill could not be found.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				return;
 			}
@@ -118,15 +118,15 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (currentSpecLevel >= client.Player.BaseLevel)
 			{
-				client.Out.SendMessage(CantTrainSpec, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(CantTrainSpec, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				return;
 			}
 
 			if (level <= currentSpecLevel)
 			{
-				client.Out.SendMessage("You have already trained the skill to this amount!", eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You have already trained the skill to this amount!", ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 
 				return;
 			}
@@ -143,7 +143,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			{
 				if (spec.Level + specLevel >= client.Player.BaseLevel)
 				{
-					client.Out.SendMessage(CantTrainSpec, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage(CantTrainSpec, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 					break;
 				}
@@ -167,7 +167,7 @@ namespace DawnOfLight.GameServer.commands.Player
 					sb.AppendLine("That specialization costs " + (spec.Level + 1) + " specialization points!");
 					sb.AppendLine(NotEnoughPointsLeft);
 
-					client.Out.SendMessage(sb.ToString(), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage(sb.ToString(), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					break;
 				}
 			}
@@ -185,7 +185,7 @@ namespace DawnOfLight.GameServer.commands.Player
 					client.Out.SendUpdatePoints();
 					client.Out.SendTrainerWindow();
 
-					client.Out.SendMessage("Training complete!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Training complete!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
@@ -193,7 +193,7 @@ namespace DawnOfLight.GameServer.commands.Player
 					sb.AppendLine("That specialization costs " + (spec.Level + 1) + " specialization points!");
 					sb.AppendLine(NotEnoughPointsLeft);
 
-					client.Out.SendMessage(sb.ToString(), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage(sb.ToString(), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}

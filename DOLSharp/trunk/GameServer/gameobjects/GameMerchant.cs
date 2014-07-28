@@ -144,13 +144,13 @@ namespace DawnOfLight.GameServer.GameObjects
 
 				if (player.GetCurrentMoney() < totalValue)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeed", Money.GetString(totalValue)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeed", Money.GetString(totalValue)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
-				if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+				if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 				InventoryLogging.LogInventoryAction(this, player, eInventoryActionType.Merchant, template, amountToBuy);
@@ -162,7 +162,7 @@ namespace DawnOfLight.GameServer.GameObjects
 					message = LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.Bought", template.GetName(1, false), Money.GetString(totalValue));
 
 				// Check if player has enough money and subtract the money
-				if (!player.RemoveMoney(totalValue, message, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow))
+				if (!player.RemoveMoney(totalValue, message, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow))
 				{
 					throw new Exception("Money amount changed while adding items.");
 				}
@@ -203,13 +203,13 @@ namespace DawnOfLight.GameServer.GameObjects
 
 				if (player.GetCurrentMoney() < totalValue)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeed", Money.GetString(totalValue)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeed", Money.GetString(totalValue)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
-				if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+				if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 				InventoryLogging.LogInventoryAction("(TRADEITEMS;" + TradeItems.ItemsListID + ")", player, eInventoryActionType.Merchant, template, amountToBuy);
@@ -221,7 +221,7 @@ namespace DawnOfLight.GameServer.GameObjects
 					message = LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.Bought", template.GetName(1, false), Money.GetString(totalValue));
 
 				// Check if player has enough money and subtract the money
-				if (!player.RemoveMoney(totalValue, message, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow))
+				if (!player.RemoveMoney(totalValue, message, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow))
 				{
 					throw new Exception("Money amount changed while adding items.");
 				}
@@ -240,13 +240,13 @@ namespace DawnOfLight.GameServer.GameObjects
 			if(item==null || player==null) return;
 			if (!item.IsDropable)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerSell.CantBeSold"), eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerSell.CantBeSold"), ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			if (!this.IsWithinRadius(player, Properties.WORLD_PICKUP_DISTANCE)) // tested
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerSell.TooFarAway", GetName(0, true)), eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerSell.TooFarAway", GetName(0, true)), ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -254,20 +254,20 @@ namespace DawnOfLight.GameServer.GameObjects
 
 			if (itemValue == 0)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerSell.IsntInterested", GetName(0, true), item.GetName(0, false)), eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerSell.IsntInterested", GetName(0, true), item.GetName(0, false)), ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			if (player.Inventory.RemoveItem(item))
 			{
 				string message = LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerSell.GivesYou", GetName(0, true), Money.GetString(itemValue), item.GetName(0, false));
-				player.AddMoney(itemValue, message, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+				player.AddMoney(itemValue, message, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 				InventoryLogging.LogInventoryAction(player, this, eInventoryActionType.Merchant, item.Template, item.Count);
 				InventoryLogging.LogInventoryAction(this, player, eInventoryActionType.Merchant, itemValue);
 				return;
 			}
 			else
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerSell.CantBeSold"), eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerSell.CantBeSold"), ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 		}
 
 		/// <summary>
@@ -303,7 +303,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				{
 					message = LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerAppraise.Offers", GetName(0, true), Money.GetString(val), item.GetName(0, false));
 				}
-				player.Out.SendMessage(message, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(message, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 			}
 			return val;
 		}
@@ -448,12 +448,12 @@ namespace DawnOfLight.GameServer.GameObjects
 			{
 				if (player.BountyPoints < totalValue)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeedBP", totalValue), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeedBP", totalValue), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
-				if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+				if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 				InventoryLogging.LogInventoryAction(this, player, eInventoryActionType.Merchant, template, amountToBuy);
@@ -465,7 +465,7 @@ namespace DawnOfLight.GameServer.GameObjects
 					message = LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.BoughtBP", template.GetName(1, false), totalValue);
 				player.BountyPoints -= totalValue;
 				player.Out.SendUpdatePoints();
-				player.Out.SendMessage(message, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(message, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 			}
 
 		}
@@ -481,7 +481,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				return base.OnPlayerBuy(player, item_slot, number);
 			else
 			{
-				player.Out.SendMessage("You must be Champion Level " + (page + 2) + " or higher to be able to buy this horse!", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("You must be Champion Level " + (page + 2) + " or higher to be able to buy this horse!", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				return false;
 			}
 			 */
@@ -541,7 +541,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				text = MoneyItemName + "s";
 			}
 
-			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.GetExamineMessages.BuyItemsFor", this.Name, text), eChatType.CT_Say, eChatLoc.CL_ChatWindow);
+			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.GetExamineMessages.BuyItemsFor", this.Name, text), ChatType.CT_Say, ChatLocation.CL_ChatWindow);
 		}
 
 		protected override void SendMerchantWindowCallback(object state)
@@ -572,14 +572,14 @@ namespace DawnOfLight.GameServer.GameObjects
 
 			lock (player.Inventory)
 			{
-				if (player.Inventory.CountItemTemplate(m_moneyItem.Item.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack) < totalValue)
+				if (player.Inventory.CountItemTemplate(m_moneyItem.Item.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack) < totalValue)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeed2", totalValue, MoneyItemName), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeed2", totalValue, MoneyItemName), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
-				if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+				if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 					return;
 				}
@@ -591,7 +591,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				else
 					message = LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.Bought2", template.GetName(1, false), totalValue, MoneyItemName);
 
-				var items = player.Inventory.GetItemRange(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+				var items = player.Inventory.GetItemRange(InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 				int removed = 0;
 
 				foreach (InventoryItem item in items)
@@ -607,7 +607,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				}
 
 				player.Out.SendInventoryItemsUpdate(items);
-				player.Out.SendMessage(message, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(message, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 			}
 		}
 	}

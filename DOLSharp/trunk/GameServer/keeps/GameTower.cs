@@ -71,13 +71,13 @@ namespace DawnOfLight.GameServer.Keeps
 
 			if (player.Group == null)
 			{
-				player.Out.SendMessage("You must be in a group to claim.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You must be in a group to claim.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			if (player.Group.MemberCount < ServerProperties.Properties.CLAIM_NUM / 2)
 			{
-				player.Out.SendMessage("You need " + ServerProperties.Properties.CLAIM_NUM / 2 + " players to claim.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You need " + ServerProperties.Properties.CLAIM_NUM / 2 + " players to claim.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 

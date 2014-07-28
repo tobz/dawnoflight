@@ -57,7 +57,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
             if (scroll == null || !ArtifactMgr.IsArtifactScroll(scroll))
                 return false;
 
-			var backpack = player.Inventory.GetItemRange(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+			var backpack = player.Inventory.GetItemRange(InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 
 			foreach (InventoryItem item in backpack)
 				if (item != null && item != scroll)
@@ -90,7 +90,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
 			combinedScroll.Name = useItem.Name;
 			combinedScroll.Item.Name = useItem.Name;
 
-			var backpack = player.Inventory.GetItemRange(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+			var backpack = player.Inventory.GetItemRange(InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 
             ArrayList removeItems = new ArrayList();
 			removeItems.Add(useItem);
@@ -121,7 +121,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
 					? artifact.MessageReceiveBook
 					: artifact.MessageReceiveScrolls;
 				player.Out.SendMessage(String.Format(receiveMessage, combinedScroll.Name, useItem.Name),
-					eChatType.CT_Skill, eChatLoc.CL_SystemWindow);
+					ChatType.CT_Skill, ChatLocation.CL_SystemWindow);
 			}
 
 			if (player.ReceiveItem(player, combinedScroll))

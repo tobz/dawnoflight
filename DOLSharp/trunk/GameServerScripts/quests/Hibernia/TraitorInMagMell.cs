@@ -442,7 +442,7 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 			{
 				UseSlotEventArgs uArgs = (UseSlotEventArgs) args;
 
-				InventoryItem item = player.Inventory.GetItem((eInventorySlot)uArgs.Slot);
+				InventoryItem item = player.Inventory.GetItem((InventorySlot)uArgs.Slot);
 				if (item != null && item.Id_nb == necklaceOfDoppelganger.Id_nb)
 				{
 					if (player.IsWithinRadius( legadaEnd, 2500 ))

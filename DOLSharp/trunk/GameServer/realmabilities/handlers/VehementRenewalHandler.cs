@@ -50,7 +50,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				if (player.Group == null)
 				{
-					player.Out.SendMessage("You are not in a group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You are not in a group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
@@ -65,10 +65,10 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 					if (healed > 0)
 						used = true;
 
-					if (healed > 0) p.Out.SendMessage(player.Name + " heals your for " + healed + " hit points.", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					if (healed > 0) p.Out.SendMessage(player.Name + " heals your for " + healed + " hit points.", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 					if (heal > healed)
 					{
-						p.Out.SendMessage("You are fully healed.", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+						p.Out.SendMessage("You are fully healed.", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}

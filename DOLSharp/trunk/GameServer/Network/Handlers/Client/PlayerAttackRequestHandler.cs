@@ -23,12 +23,12 @@ using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerAttackRequest, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.PlayerAttackRequest, ClientStatus.PlayerInGame)]
 	public class PlayerAttackRequestHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			var mode = (byte) packet.ReadByte();
 			bool userAction = packet.ReadByte() == 0;
@@ -78,8 +78,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				if (player.ActiveWeaponSlot == GameLiving.eActiveWeaponSlot.Distance)
 				{
 					if (m_userAction)
-						player.Out.SendMessage("You can't enter melee combat mode with a fired weapon!", eChatType.CT_YouHit,
-						                       eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("You can't enter melee combat mode with a fired weapon!", ChatType.CT_YouHit,
+						                       ChatLocation.CL_SystemWindow);
 					return;
 				}
 

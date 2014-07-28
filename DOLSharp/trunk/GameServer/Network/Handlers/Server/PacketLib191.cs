@@ -35,7 +35,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		/// </summary>
 		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		protected override void WriteGroupMemberUpdate(GSTCPPacketOut pak, bool updateIcons, GameLiving living)
+		protected override void WriteGroupMemberUpdate(GameTCPPacketOut pak, bool updateIcons, GameLiving living)
 		{
 			pak.WriteByte((byte)(living.GroupIndex + 1)); // From 1 to 8
 			bool sameRegion = living.CurrentRegion == m_gameClient.Player.CurrentRegion;
@@ -113,7 +113,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ConcentrationList));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ConcentrationList));
 			lock (m_gameClient.Player.ConcentrationEffects)
 			{
 				pak.WriteByte((byte)(m_gameClient.Player.ConcentrationEffects.Count));

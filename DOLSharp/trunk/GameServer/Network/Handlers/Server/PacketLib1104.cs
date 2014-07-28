@@ -22,6 +22,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Language;
 using DawnOfLight.GameServer.Network.Packets;
@@ -54,7 +55,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 			int firstSlot = (byte)realm * 100;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterOverview));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterOverview));
 			pak.FillString(m_gameClient.Account.Name, 28); //extra 4 in 1.104
 
 			if (m_gameClient.Account.Characters == null)
@@ -78,18 +79,18 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 					}
 				}
 				itemQuery = itemQuery.Substring(0, itemQuery.Length - 4); //remove last OR
-				itemQuery += ") AND SlotPosition >= " + ((int)eInventorySlot.MinEquipable) + " AND SlotPosition <= " + ((int)eInventorySlot.MaxEquipable);
+				itemQuery += ") AND SlotPosition >= " + ((int)InventorySlot.MinEquipable) + " AND SlotPosition <= " + ((int)InventorySlot.MaxEquipable);
 
-				var itemsByOwnerID = new Dictionary<string, Dictionary<eInventorySlot, InventoryItem>>();
+				var itemsByOwnerID = new Dictionary<string, Dictionary<InventorySlot, InventoryItem>>();
 				var allItems = (InventoryItem[])GameServer.Database.SelectObjects<InventoryItem>(itemQuery);
 				foreach (InventoryItem item in allItems)
 				{
                     try
                     {
                         if (!itemsByOwnerID.ContainsKey(item.OwnerID))
-                            itemsByOwnerID.Add(item.OwnerID, new Dictionary<eInventorySlot, InventoryItem>());
+                            itemsByOwnerID.Add(item.OwnerID, new Dictionary<InventorySlot, InventoryItem>());
 
-                        itemsByOwnerID[item.OwnerID].Add((eInventorySlot)item.SlotPosition, item);
+                        itemsByOwnerID[item.OwnerID].Add((InventorySlot)item.SlotPosition, item);
                     }
                     catch (Exception ex)
                     {
@@ -106,10 +107,10 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 					}
 					else
 					{
-						Dictionary<eInventorySlot, InventoryItem> charItems = null;
+						Dictionary<InventorySlot, InventoryItem> charItems = null;
 
 						if (!itemsByOwnerID.TryGetValue(c.ObjectId, out charItems))
-							charItems = new Dictionary<eInventorySlot, InventoryItem>();
+							charItems = new Dictionary<InventorySlot, InventoryItem>();
 
 						byte extensionTorso = 0;
 						byte extensionGloves = 0;
@@ -117,13 +118,13 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 						InventoryItem item = null;
 
-						if (charItems.TryGetValue(eInventorySlot.TorsoArmor, out item))
+						if (charItems.TryGetValue(InventorySlot.TorsoArmor, out item))
 							extensionTorso = item.Extension;
 
-						if (charItems.TryGetValue(eInventorySlot.HandsArmor, out item))
+						if (charItems.TryGetValue(InventorySlot.HandsArmor, out item))
 							extensionGloves = item.Extension;
 
-						if (charItems.TryGetValue(eInventorySlot.FeetArmor, out item))
+						if (charItems.TryGetValue(InventorySlot.FeetArmor, out item))
 							extensionBoots = item.Extension;
 
 						pak.FillString(c.Name, 24);
@@ -209,28 +210,28 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 						pak.WriteByte((byte)c.Charisma);
 
 						InventoryItem rightHandWeapon = null;
-						charItems.TryGetValue(eInventorySlot.RightHandWeapon, out rightHandWeapon);
+						charItems.TryGetValue(InventorySlot.RightHandWeapon, out rightHandWeapon);
 						InventoryItem leftHandWeapon = null;
-						charItems.TryGetValue(eInventorySlot.LeftHandWeapon, out leftHandWeapon);
+						charItems.TryGetValue(InventorySlot.LeftHandWeapon, out leftHandWeapon);
 						InventoryItem twoHandWeapon = null;
-						charItems.TryGetValue(eInventorySlot.TwoHandWeapon, out twoHandWeapon);
+						charItems.TryGetValue(InventorySlot.TwoHandWeapon, out twoHandWeapon);
 						InventoryItem distanceWeapon = null;
-						charItems.TryGetValue(eInventorySlot.DistanceWeapon, out distanceWeapon);
+						charItems.TryGetValue(InventorySlot.DistanceWeapon, out distanceWeapon);
 
 						InventoryItem helmet = null;
-						charItems.TryGetValue(eInventorySlot.HeadArmor, out helmet);
+						charItems.TryGetValue(InventorySlot.HeadArmor, out helmet);
 						InventoryItem gloves = null;
-						charItems.TryGetValue(eInventorySlot.HandsArmor, out gloves);
+						charItems.TryGetValue(InventorySlot.HandsArmor, out gloves);
 						InventoryItem boots = null;
-						charItems.TryGetValue(eInventorySlot.FeetArmor, out boots);
+						charItems.TryGetValue(InventorySlot.FeetArmor, out boots);
 						InventoryItem torso = null;
-						charItems.TryGetValue(eInventorySlot.TorsoArmor, out torso);
+						charItems.TryGetValue(InventorySlot.TorsoArmor, out torso);
 						InventoryItem cloak = null;
-						charItems.TryGetValue(eInventorySlot.Cloak, out cloak);
+						charItems.TryGetValue(InventorySlot.Cloak, out cloak);
 						InventoryItem legs = null;
-						charItems.TryGetValue(eInventorySlot.LegsArmor, out legs);
+						charItems.TryGetValue(InventorySlot.LegsArmor, out legs);
 						InventoryItem arms = null;
-						charItems.TryGetValue(eInventorySlot.ArmsArmor, out arms);
+						charItems.TryGetValue(InventorySlot.ArmsArmor, out arms);
 
 						pak.WriteShortLowEndian((ushort)(helmet != null ? helmet.Model : 0));
 						pak.WriteShortLowEndian((ushort)(gloves != null ? gloves.Model : 0));
@@ -357,7 +358,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 			// This presents the user with Name Not Allowed which may not be correct but at least it prevents duplicate char creation
 			// - tolakram
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DupNameCheckReply)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DupNameCheckReply)))
 			{
 				pak.FillString(name, 30);
 				pak.FillString(m_gameClient.Account.Name, 24);

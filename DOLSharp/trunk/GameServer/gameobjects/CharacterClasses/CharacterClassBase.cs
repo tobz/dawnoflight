@@ -328,8 +328,8 @@ namespace DawnOfLight.GameServer.GameObjects.CharacterClasses
 			if (controlledBrain == null)
 			{
 				Player.Out.SendPetWindow(null, ePetWindowAction.Close, 0, 0);
-				Player.Out.SendMessage(LanguageMgr.GetTranslation(Player.Client.Account.Language, "GamePlayer.SetControlledNpc.ReleaseTarget2", Player.ControlledBrain.Body.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
-				Player.Out.SendMessage(LanguageMgr.GetTranslation(Player.Client.Account.Language, "GamePlayer.SetControlledNpc.ReleaseTarget"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				Player.Out.SendMessage(LanguageMgr.GetTranslation(Player.Client.Account.Language, "GamePlayer.SetControlledNpc.ReleaseTarget2", Player.ControlledBrain.Body.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
+				Player.Out.SendMessage(LanguageMgr.GetTranslation(Player.Client.Account.Language, "GamePlayer.SetControlledNpc.ReleaseTarget"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
@@ -414,7 +414,7 @@ namespace DawnOfLight.GameServer.GameObjects.CharacterClasses
 			if (Player.IsShade == makeShade)
 			{
 				if (makeShade && (Player.ObjectState == GameObject.eObjectState.Active))
-					Player.Out.SendMessage(LanguageMgr.GetTranslation(Player.Client.Account.Language, "GamePlayer.Shade.AlreadyShade"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					Player.Out.SendMessage(LanguageMgr.GetTranslation(Player.Client.Account.Language, "GamePlayer.Shade.AlreadyShade"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -435,7 +435,7 @@ namespace DawnOfLight.GameServer.GameObjects.CharacterClasses
 				}
 				// Drop shade form.
 				Player.Model = Player.CreationModel;
-				Player.Out.SendMessage(LanguageMgr.GetTranslation(Player.Client.Account.Language, "GamePlayer.Shade.NoLongerShade"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				Player.Out.SendMessage(LanguageMgr.GetTranslation(Player.Client.Account.Language, "GamePlayer.Shade.NoLongerShade"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 

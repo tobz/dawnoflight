@@ -66,14 +66,14 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				if (client.Player.TempProperties.getProperty(DoorMgr.WANT_TO_ADD_DOORS, false))
 				{
 					client.Player.TempProperties.removeProperty(DoorMgr.WANT_TO_ADD_DOORS);
-					client.Out.SendMessage("You will no longer be shown the add door dialog.", eChatType.CT_System,
-					                       eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You will no longer be shown the add door dialog.", ChatType.CT_System,
+					                       ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
 					client.Player.TempProperties.setProperty(DoorMgr.WANT_TO_ADD_DOORS, true);
 					client.Out.SendMessage("You will now be shown the add door dialog if door is not found in the DB.",
-					                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 
 				return;
@@ -81,20 +81,20 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			if (client.Player.CurrentRegion.IsInstance)
 			{
-				client.Out.SendMessage("You can't add doors inside an instance.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You can't add doors inside an instance.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			if (client.Player.TargetObject == null)
 			{
-				client.Out.SendMessage("You must target a door", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You must target a door", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			if (client.Player.TargetObject != null &&
 			    (client.Player.TargetObject is GameNPC || client.Player.TargetObject is GamePlayer))
 			{
-				client.Out.SendMessage("You must target a door", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You must target a door", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -167,7 +167,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			if (DOOR != null)
 			{
-				client.Out.SendMessage("The door is already in the database", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("The door is already in the database", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			if (DOOR == null)
@@ -188,8 +188,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					door.Health = 2545;
 					GameServer.Database.AddObject(door);
 					(targetDoor).AddToWorld();
-					client.Player.Out.SendMessage("Added door ID:" + DoorID + "to the database", eChatType.CT_Important,
-					                              eChatLoc.CL_SystemWindow);
+					client.Player.Out.SendMessage("Added door ID:" + DoorID + "to the database", ChatType.CT_Important,
+					                              ChatLocation.CL_SystemWindow);
 					//DoorMgr.Init( );
 					return;
 				}
@@ -219,8 +219,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					door.Heading = client.Player.Heading;
 					GameServer.Database.AddObject(door);
 					(targetDoor).AddToWorld();
-					client.Player.Out.SendMessage("Added door " + DoorID + " to the database", eChatType.CT_Important,
-					                              eChatLoc.CL_SystemWindow);
+					client.Player.Out.SendMessage("Added door " + DoorID + " to the database", ChatType.CT_Important,
+					                              ChatLocation.CL_SystemWindow);
 					return;
 				}
 			}
@@ -233,12 +233,12 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			if (DOOR != null)
 			{
 				GameServer.Database.DeleteObject(DOOR);
-				client.Out.SendMessage("Door removed", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Door removed", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			if (DOOR == null)
 			{
-				client.Out.SendMessage("This door doesn't exist in the database", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("This door doesn't exist in the database", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 		}
@@ -255,8 +255,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				targetDoor.Name = CheckName(doorName, client);
 				targetDoor.SaveIntoDatabase();
-				client.Out.SendMessage("You changed the door name to " + targetDoor.Name, eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You changed the door name to " + targetDoor.Name, ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
@@ -275,7 +275,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					doorSound = Convert.ToUInt16(args[2]);
 					targetDoor.Flag = doorSound;
 					targetDoor.SaveIntoDatabase();
-					client.Out.SendMessage("You set the door sound to " + doorSound, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You set the door sound to " + doorSound, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
@@ -299,8 +299,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				targetDoor.GuildName = CheckGuildName(guildName, client);
 				targetDoor.SaveIntoDatabase();
-				client.Out.SendMessage("You changed the door guild to " + targetDoor.GuildName, eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You changed the door guild to " + targetDoor.GuildName, ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
@@ -308,7 +308,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				{
 					targetDoor.GuildName = "";
 					targetDoor.SaveIntoDatabase();
-					client.Out.SendMessage("Door guild removed", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Door guild removed", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 					DisplaySyntax(client, args[1]);
@@ -325,8 +325,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				targetDoor.Level = level;
 				targetDoor.Health = targetDoor.MaxHealth;
 				targetDoor.SaveIntoDatabase();
-				client.Out.SendMessage("You changed the door level to " + targetDoor.Level, eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You changed the door level to " + targetDoor.Level, ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -343,8 +343,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				realm = Convert.ToByte(args[2]);
 				targetDoor.Realm = (eRealm) realm;
 				targetDoor.SaveIntoDatabase();
-				client.Out.SendMessage("You changed the door realm to " + targetDoor.Realm, eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You changed the door realm to " + targetDoor.Realm, ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -401,22 +401,22 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		{
 			targetDoor.Health = targetDoor.MaxHealth;
 			targetDoor.SaveIntoDatabase();
-			client.Out.SendMessage("You change the door health to " + targetDoor.Health, eChatType.CT_System,
-			                       eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("You change the door health to " + targetDoor.Health, ChatType.CT_System,
+			                       ChatLocation.CL_SystemWindow);
 		}
 
 		private void locked(GameClient client, GameDoor targetDoor)
 		{
 			targetDoor.Locked = 1;
 			targetDoor.SaveIntoDatabase();
-			client.Out.SendMessage("Door " + targetDoor.Name + " is locked", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Door " + targetDoor.Name + " is locked", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void unlocked(GameClient client, GameDoor targetDoor)
 		{
 			targetDoor.Locked = 0;
 			targetDoor.SaveIntoDatabase();
-			client.Out.SendMessage("Door " + targetDoor.Name + " is unlocked", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Door " + targetDoor.Name + " is unlocked", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 
@@ -428,20 +428,20 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				targetDoor.AddXPGainer(client.Player, targetDoor.Health);
 				targetDoor.Die(client.Player);
 				targetDoor.XPGainers.Clear();
-				client.Out.SendMessage("Door " + targetDoor.Name + " health reaches 0", eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Door " + targetDoor.Name + " health reaches 0", ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception e)
 			{
-				client.Out.SendMessage(e.ToString(), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(e.ToString(), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 
 		private string CheckName(string name, GameClient client)
 		{
 			if (name.Length > 47)
-				client.Out.SendMessage("The door name must not be longer than 47 bytes", eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("The door name must not be longer than 47 bytes", ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 			return name;
 		}
 
@@ -449,7 +449,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		{
 			if (name.Length > 47)
 				client.Out.SendMessage("The guild name is " + name.Length + ", but only 47 bytes 'll be displayed",
-				                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			return name;
 		}
 	}

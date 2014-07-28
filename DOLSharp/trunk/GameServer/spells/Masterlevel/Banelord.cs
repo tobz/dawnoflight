@@ -235,7 +235,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
         {
             if (target.HasAbility(Abilities.CCImmunity)||target.HasAbility(Abilities.StunImmunity))
             {
-                MessageToCaster(target.Name + " is immune to this effect!", eChatType.CT_SpellResisted);
+                MessageToCaster(target.Name + " is immune to this effect!", ChatType.CT_SpellResisted);
                 return;
             }
 
@@ -251,9 +251,9 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
 
             SendEffectAnimation(effect.Owner, 0, false, 1);
 
-            MessageToLiving(effect.Owner, Spell.Message1, eChatType.CT_Spell);
-            MessageToCaster(Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), eChatType.CT_Spell);
-            Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), eChatType.CT_Spell, effect.Owner, m_caster);
+            MessageToLiving(effect.Owner, Spell.Message1, ChatType.CT_Spell);
+            MessageToCaster(Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), ChatType.CT_Spell);
+            Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), ChatType.CT_Spell, effect.Owner, m_caster);
 
             GamePlayer player = effect.Owner as GamePlayer;
             if (player != null)

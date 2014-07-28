@@ -61,7 +61,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
 		{
 			if (target is GameKeepDoor || target is Keeps.GameKeepComponent)
 			{
-				MessageToCaster("Your spell has no effect on the keep component!", eChatType.CT_SpellResisted);
+				MessageToCaster("Your spell has no effect on the keep component!", ChatType.CT_SpellResisted);
 				return;
 			}
 			base.FinishSpellCast(target);

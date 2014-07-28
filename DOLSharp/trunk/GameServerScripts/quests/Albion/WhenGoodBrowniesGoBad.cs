@@ -218,9 +218,9 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				MasterKless.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 1005);  //Slot 25
-				template.AddNPCEquipment(eInventorySlot.Cloak, 96);         //Slot 26
-				template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 1166);     //Slot 12
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 1005);  //Slot 25
+				template.AddNPCEquipment(InventorySlot.Cloak, 96);         //Slot 26
+				template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 1166);     //Slot 12
 				MasterKless.Inventory = template.CloseTemplate();
 				MasterKless.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

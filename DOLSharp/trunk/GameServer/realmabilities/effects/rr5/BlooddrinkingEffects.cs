@@ -118,7 +118,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
                 if (living.Health < living.MaxHealth)
                 {
                     //TODO correct messages
-                    MessageToLiving(living, string.Format("Blooddrinking ability is healing you for {0} health points!", healAbsorbed), eChatType.CT_Spell);
+                    MessageToLiving(living, string.Format("Blooddrinking ability is healing you for {0} health points!", healAbsorbed), ChatType.CT_Spell);
                     foreach (GamePlayer p in EffectOwner.GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))
                     {
                         //heal effect
@@ -127,7 +127,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
                     living.Health = living.Health + healAbsorbed;
                 }
                 else
-                    MessageToLiving(living, string.Format("You are already fully healed!"), eChatType.CT_Spell);
+                    MessageToLiving(living, string.Format("You are already fully healed!"), ChatType.CT_Spell);
             }
         }
 
@@ -149,7 +149,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
         /// <param name="living"></param>
         /// <param name="message"></param>
         /// <param name="type"></param>
-        public void MessageToLiving(GameLiving living, string message, eChatType type)
+        public void MessageToLiving(GameLiving living, string message, ChatType type)
         {
             if (living is GamePlayer && message != null && message.Length > 0)
             {

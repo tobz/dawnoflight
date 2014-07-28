@@ -1887,12 +1887,12 @@ namespace DawnOfLight.GameServer.GameObjects
 				{
 					//if the distance slot isnt empty we use that
 					//Seems to always
-					if (Inventory.GetItem(eInventorySlot.DistanceWeapon) != null)
+					if (Inventory.GetItem(InventorySlot.DistanceWeapon) != null)
 						SwitchWeapon(eActiveWeaponSlot.Distance);
 					else
 					{
-						InventoryItem twohand = Inventory.GetItem(eInventorySlot.TwoHandWeapon);
-						InventoryItem onehand = Inventory.GetItem(eInventorySlot.RightHandWeapon);
+						InventoryItem twohand = Inventory.GetItem(InventorySlot.TwoHandWeapon);
+						InventoryItem onehand = Inventory.GetItem(InventorySlot.RightHandWeapon);
 
 						if (twohand != null && onehand != null)
 							//Let's add some random chance
@@ -2345,7 +2345,7 @@ namespace DawnOfLight.GameServer.GameObjects
 
 								//If we found some models let's randomly pick one and add it the equipment
 								if (tempModels.Count > 0)
-									equipHasItems |= equip.AddNPCEquipment((eInventorySlot)slot, tempModels[Util.Random(tempModels.Count - 1)]);
+									equipHasItems |= equip.AddNPCEquipment((InventorySlot)slot, tempModels[Util.Random(tempModels.Count - 1)]);
 							}
 						}
 					}
@@ -2356,7 +2356,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				if (equipHasItems)
 				{
 					this.Inventory = new GameNPCInventory(equip);
-					if (this.Inventory.GetItem(eInventorySlot.DistanceWeapon) != null)
+					if (this.Inventory.GetItem(InventorySlot.DistanceWeapon) != null)
 						this.SwitchWeapon(eActiveWeaponSlot.Distance);
 				}
 				
@@ -3474,7 +3474,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			if (!GameServer.ServerRules.IsSameRealm(this, player, true))
 			{
                 player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameNPC.Interact.DirtyLook",
-                    GetName(0, true, player.Client.Account.Language, this)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    GetName(0, true, player.Client.Account.Language, this)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				Notify(GameObjectEvent.InteractFailed, this, new InteractEventArgs(player));
 				return false;
@@ -3489,13 +3489,13 @@ namespace DawnOfLight.GameServer.GameObjects
 
 				if (RiderSlot(player) != -1)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameNPC.Interact.AlreadyRiding", name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameNPC.Interact.AlreadyRiding", name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return false;
 				}
 
 				if (GetFreeArrayLocation() == -1)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameNPC.Interact.IsFull", name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameNPC.Interact.IsFull", name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return false;
 				}
 
@@ -3562,7 +3562,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// <param name="message"></param>
 		public virtual void SayTo(GamePlayer target, string message, bool announce = true)
 		{
-			SayTo(target, eChatLoc.CL_PopupWindow, message, announce);
+			SayTo(target, ChatLocation.CL_PopupWindow, message, announce);
 		}
 
 		/// <summary>
@@ -3571,7 +3571,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// <param name="target"></param>
 		/// <param name="loc">chat location of the message</param>
 		/// <param name="message"></param>
-		public virtual void SayTo(GamePlayer target, eChatLoc loc, string message, bool announce = true)
+		public virtual void SayTo(GamePlayer target, ChatLocation loc, string message, bool announce = true)
 		{
 			if (target == null)
 				return;
@@ -3580,18 +3580,18 @@ namespace DawnOfLight.GameServer.GameObjects
             string resultText = LanguageMgr.GetTranslation(target.Client.Account.Language, "GameNPC.SayTo.Says", GetName(0, true, target.Client.Account.Language, this), message);
 			switch (loc)
 			{
-				case eChatLoc.CL_PopupWindow:
-					target.Out.SendMessage(resultText, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				case ChatLocation.CL_PopupWindow:
+					target.Out.SendMessage(resultText, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					if (announce)
 					{
-                        Message.ChatToArea(this, LanguageMgr.GetTranslation(target.Client.Account.Language, "GameNPC.SayTo.SpeaksTo", GetName(0, true, target.Client.Account.Language, this), target.GetName(0, false)), eChatType.CT_System, WorldMgr.SAY_DISTANCE, target);
+                        Message.ChatToArea(this, LanguageMgr.GetTranslation(target.Client.Account.Language, "GameNPC.SayTo.SpeaksTo", GetName(0, true, target.Client.Account.Language, this), target.GetName(0, false)), ChatType.CT_System, WorldMgr.SAY_DISTANCE, target);
 					}
 					break;
-				case eChatLoc.CL_ChatWindow:
-					target.Out.SendMessage(resultText, eChatType.CT_Say, eChatLoc.CL_ChatWindow);
+				case ChatLocation.CL_ChatWindow:
+					target.Out.SendMessage(resultText, ChatType.CT_Say, ChatLocation.CL_ChatWindow);
 					break;
-				case eChatLoc.CL_SystemWindow:
-					target.Out.SendMessage(resultText, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				case ChatLocation.CL_SystemWindow:
+					target.Out.SendMessage(resultText, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					break;
 			}
 		}
@@ -3965,9 +3965,9 @@ namespace DawnOfLight.GameServer.GameObjects
 				if (IsWorthReward)
 					DropLoot(killer);
 
-				Message.SystemToArea(this, GetName(0, true) + " dies!", eChatType.CT_PlayerDied, killer);
+				Message.SystemToArea(this, GetName(0, true) + " dies!", ChatType.CT_PlayerDied, killer);
 				if (killer is GamePlayer)
-					((GamePlayer)killer).Out.SendMessage(GetName(0, true) + " dies!", eChatType.CT_PlayerDied, eChatLoc.CL_SystemWindow);
+					((GamePlayer)killer).Out.SendMessage(GetName(0, true) + " dies!", ChatType.CT_PlayerDied, ChatLocation.CL_SystemWindow);
 			}
 			StopFollowing();
 
@@ -4123,8 +4123,8 @@ namespace DawnOfLight.GameServer.GameObjects
 			StopFollowing();
 			StopAttack();
 
-			InventoryItem twohand = Inventory.GetItem(eInventorySlot.TwoHandWeapon);
-			InventoryItem righthand = Inventory.GetItem(eInventorySlot.RightHandWeapon);
+			InventoryItem twohand = Inventory.GetItem(InventorySlot.TwoHandWeapon);
+			InventoryItem righthand = Inventory.GetItem(InventorySlot.RightHandWeapon);
 
 			if (twohand != null && righthand == null)
 				SwitchWeapon(eActiveWeaponSlot.TwoHanded);
@@ -4178,7 +4178,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				}
 				else if (ActiveWeaponSlot != eActiveWeaponSlot.Distance &&
 				         Inventory != null &&
-				         Inventory.GetItem(eInventorySlot.DistanceWeapon) != null &&
+				         Inventory.GetItem(InventorySlot.DistanceWeapon) != null &&
 				         GetDistanceTo(attacker) > 500)
 				{
 					SwitchToRanged(attacker);
@@ -4393,7 +4393,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			StopFollowing();
 
 			// Tolakram: If npc has a distance weapon it needs to be made active after attack is stopped
-			if (Inventory != null && Inventory.GetItem(eInventorySlot.DistanceWeapon) != null && ActiveWeaponSlot != eActiveWeaponSlot.Distance)
+			if (Inventory != null && Inventory.GetItem(InventorySlot.DistanceWeapon) != null && ActiveWeaponSlot != eActiveWeaponSlot.Distance)
 				SwitchWeapon(eActiveWeaponSlot.Distance);
 		}
 
@@ -4440,7 +4440,7 @@ namespace DawnOfLight.GameServer.GameObjects
 								long amount = (long)(zoneBonus * ServerProperties.Properties.MONEY_DROP);
 								killerPlayer.AddMoney(amount,
 								                      ZoneBonus.GetBonusMessage(killerPlayer, (int)(zoneBonus * ServerProperties.Properties.MONEY_DROP), ZoneBonus.eZoneBonusType.COIN),
-								                      eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+								                      ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 								InventoryLogging.LogInventoryAction(this, killerPlayer, eInventoryActionType.Loot, amount);
 							}
 						}
@@ -4455,7 +4455,7 @@ namespace DawnOfLight.GameServer.GameObjects
 						{
 							GamePlayer killerPlayer = killer as GamePlayer;
 							if (killerPlayer != null)
-								killerPlayer.Out.SendMessage(LanguageMgr.GetTranslation(killerPlayer.Client, "GameNPC.DropLoot.AdditionalMoney", Money.GetString(value - lootTemplate.Price)), eChatType.CT_Loot, eChatLoc.CL_SystemWindow);
+								killerPlayer.Out.SendMessage(LanguageMgr.GetTranslation(killerPlayer.Client, "GameNPC.DropLoot.AdditionalMoney", Money.GetString(value - lootTemplate.Price)), ChatType.CT_Loot, ChatLocation.CL_SystemWindow);
 						}
 
 						//Mythical Coin bonus property (Can be used for any equipped item, bonus 235)
@@ -4466,7 +4466,7 @@ namespace DawnOfLight.GameServer.GameObjects
 							{
 								value += (value * killerPlayer.GetModified(eProperty.MythicalCoin)) / 100;
 								killerPlayer.Out.SendMessage(LanguageMgr.GetTranslation(killerPlayer.Client,
-								                                                        "GameNPC.DropLoot.ItemAdditionalMoney", Money.GetString(value - lootTemplate.Price)), eChatType.CT_Loot, eChatLoc.CL_SystemWindow);
+								                                                        "GameNPC.DropLoot.ItemAdditionalMoney", Money.GetString(value - lootTemplate.Price)), ChatType.CT_Loot, ChatLocation.CL_SystemWindow);
 							}
 						}
 						
@@ -4999,7 +4999,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			// for interact text we pop up a window
 			if (trigger == eAmbientTrigger.interact)
 			{
-				(living as GamePlayer).Out.SendMessage(text, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				(living as GamePlayer).Out.SendMessage(text, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				return;
 			}
 
@@ -5008,7 +5008,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			{
 				foreach (GamePlayer player in CurrentRegion.GetPlayersInRadius(X, Y, Z, 25000, false, false))
 				{
-					player.Out.SendMessage(text, eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage(text, ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow);
 				}
 				return;
 			}
@@ -5122,7 +5122,7 @@ namespace DawnOfLight.GameServer.GameObjects
 						if (str != lastloot)
 						{
 							player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameNPC.DropLoot.Drops", 
-                                GetName(0, true, player.Client.Account.Language, this), str)), eChatType.CT_Loot, eChatLoc.CL_SystemWindow);
+                                GetName(0, true, player.Client.Account.Language, this), str)), ChatType.CT_Loot, ChatLocation.CL_SystemWindow);
 							lastloot = str;
 						}
 					}

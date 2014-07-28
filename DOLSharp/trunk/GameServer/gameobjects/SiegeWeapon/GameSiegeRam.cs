@@ -86,23 +86,23 @@ namespace DawnOfLight.GameServer.GameObjects.SiegeWeapon
 			GameLiving target = (TargetObject as GameLiving);
 			if (target == null)
 			{
-				Owner.Out.SendMessage("Select a target first.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				Owner.Out.SendMessage("Select a target first.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			//todo good  distance check
 			if (!this.IsWithinRadius(target, AttackRange))
 			{
-				Owner.Out.SendMessage("You are too far away to attack " + target.Name, eChatType.CT_System,
-									  eChatLoc.CL_SystemWindow);
+				Owner.Out.SendMessage("You are too far away to attack " + target.Name, ChatType.CT_System,
+									  ChatLocation.CL_SystemWindow);
 				return;
 			}
 			int damageAmount = RamDamage;
 
 			//TODO: dps change by number
 			target.TakeDamage(this, eDamageType.Crush, damageAmount, 0);
-			Owner.Out.SendMessage("The Ram hits " + target.Name + " for " + damageAmount + " dmg!", eChatType.CT_YouHit,
-								  eChatLoc.CL_SystemWindow);
-			Message.SystemToArea(this, GetName(0, false) + " hits " + target.GetName(0, true), eChatType.CT_OthersCombat,
+			Owner.Out.SendMessage("The Ram hits " + target.Name + " for " + damageAmount + " dmg!", ChatType.CT_YouHit,
+								  ChatLocation.CL_SystemWindow);
+			Message.SystemToArea(this, GetName(0, false) + " hits " + target.GetName(0, true), ChatType.CT_OthersCombat,
 								 Owner);
 			base.DoDamage();
 		}

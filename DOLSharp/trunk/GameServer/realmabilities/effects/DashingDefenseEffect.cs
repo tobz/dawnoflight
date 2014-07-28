@@ -109,13 +109,13 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects
 
             if (!guardSource.IsWithinRadius(guardTarget, DashingDefenseEffect.GUARD_DISTANCE))
             {
-                guardSource.Out.SendMessage(string.Format("You are now guarding {0}, but you must stand closer.", guardTarget.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
-                guardTarget.Out.SendMessage(string.Format("{0} is now guarding you, but you must stand closer.", guardSource.GetName(0, true)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                guardSource.Out.SendMessage(string.Format("You are now guarding {0}, but you must stand closer.", guardTarget.GetName(0, false)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
+                guardTarget.Out.SendMessage(string.Format("{0} is now guarding you, but you must stand closer.", guardSource.GetName(0, true)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
             }
             else
             {
-                guardSource.Out.SendMessage(string.Format("You are now guarding {0}.", guardTarget.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
-                guardTarget.Out.SendMessage(string.Format("{0} is now guarding you.", guardSource.GetName(0, true)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                guardSource.Out.SendMessage(string.Format("You are now guarding {0}.", guardTarget.GetName(0, false)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
+                guardTarget.Out.SendMessage(string.Format("{0} is now guarding you.", guardSource.GetName(0, true)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
             }
             guardTarget.TempProperties.setProperty(DashingDefenseAbility.Dashing, true);
         }
@@ -132,8 +132,8 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects
 
             m_guardTarget.TempProperties.removeProperty(DashingDefenseAbility.Dashing);
 
-            m_guardSource.Out.SendMessage(string.Format("You are no longer guarding {0}.", m_guardTarget.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
-            m_guardTarget.Out.SendMessage(string.Format("{0} is no longer guarding you.", m_guardSource.GetName(0, true)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+            m_guardSource.Out.SendMessage(string.Format("You are no longer guarding {0}.", m_guardTarget.GetName(0, false)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
+            m_guardTarget.Out.SendMessage(string.Format("{0} is no longer guarding you.", m_guardSource.GetName(0, true)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
             m_playerGroup = null;
         }

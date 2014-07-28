@@ -17,35 +17,32 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0x16^168,"Handles requests for npcs(0x72) in game")]
+    [PacketHandler(PacketType.TCP, ClientPackets.NPCCreationRequest, ClientStatus.LoggedIn)]
 	public class NPCCreationRequestHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			ushort id = packet.ReadShort();
-//			GameNPC npc = (GameNPC)WorldMgr.GetObjectTypeByIDFromRegion(client.Player.CurrentRegionID, id, typeof(GameNPC));
-			if(client.Player==null) return;
-			Region region = client.Player.CurrentRegion;
-			if (region == null) return;
-			GameNPC npc = region.GetObject(id) as GameNPC;
 
+			var region = client.Player.CurrentRegion;
+			if (region == null)
+                return;
+
+			var npc = region.GetObject(id) as GameNPC;
 			if(npc != null)
 			{
 				client.Out.SendNPCCreate(npc);
-				if(npc.Inventory != null)
-					client.Out.SendLivingEquipmentUpdate(npc);
-				
-				//DO NOT SEND A NPC UPDATE, it is done in Create anyway
-				//Sending a Update causes a UDP packet to be sent and
-				//the client will get the UDP packet before the TCP Create packet
-				//Causing the client to issue another NPC CREATION REQUEST!
-				//client.Out.SendNPCUpdate(npc); <-- BIG NO NO
+			    if (npc.Inventory != null)
+			    {
+			        client.Out.SendLivingEquipmentUpdate(npc);
+			    }
 			}
 		}
 	}

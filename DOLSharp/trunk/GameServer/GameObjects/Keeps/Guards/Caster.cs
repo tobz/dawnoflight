@@ -51,7 +51,7 @@ namespace DawnOfLight.GameServer.GameObjects.Keeps.Guards
 				foreach (GamePlayer player in this.GetPlayersInRadius(WorldMgr.INFO_DISTANCE))
 				{
 
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GuardCaster.SkinsHardens", this.Name), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GuardCaster.SkinsHardens", this.Name), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 
 				}
 			}

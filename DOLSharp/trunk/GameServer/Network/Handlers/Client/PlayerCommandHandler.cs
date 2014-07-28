@@ -17,24 +17,27 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0x07^168,"Handles the players commands")]
+    [PacketHandler(PacketType.TCP, ClientPackets.PlayerCommand, ClientStatus.PlayerInGame)]
 	public class PlayerCommandHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			packet.Skip(8);
-			string cmdLine = packet.ReadString(255);
-			if(!ScriptMgr.HandleCommand(client, cmdLine))
+
+			var command = packet.ReadString(255);
+			if(!ScriptMgr.HandleCommand(client, command))
 			{
-				if (cmdLine[0] == '&')
+				if (command[0] == '&')
 				{
-					cmdLine = '/' + cmdLine.Remove(0, 1);
+					command = '/' + command.Remove(0, 1);
 				}
-				client.Out.SendMessage("No such command ("+cmdLine+")",eChatType.CT_System,eChatLoc.CL_SystemWindow);
+
+				client.Out.SendMessage("No such command ("+command+")",ChatType.CT_System,ChatLocation.CL_SystemWindow);
 			}
 		}
 	}

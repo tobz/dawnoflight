@@ -114,11 +114,11 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				sirDorian.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 49);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 50);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 46);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 47);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 48);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 49);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 50);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 46);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 47);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 48);
 				sirDorian.Inventory = template.CloseTemplate();
 				sirDorian.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

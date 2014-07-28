@@ -46,7 +46,7 @@ namespace DawnOfLight.GameServer.Spells.Theurgist
 		{
 			if (Caster.PetCount >= ServerProperties.Properties.THEURGIST_PET_CAP)
 			{
-				MessageToCaster("You have too many controlled creatures!", eChatType.CT_SpellResisted);
+				MessageToCaster("You have too many controlled creatures!", ChatType.CT_SpellResisted);
 				return false;
 			}
 

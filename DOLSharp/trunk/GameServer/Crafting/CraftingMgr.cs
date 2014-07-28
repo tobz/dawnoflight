@@ -176,19 +176,19 @@ namespace DawnOfLight.GameServer.Crafting
 						int baseLevel = 15 + item.Level * 20; // gloves
 						switch (item.Item_Type)
 						{
-							case (int)eInventorySlot.HeadArmor: // head
+							case (int)InventorySlot.HeadArmor: // head
 								return baseLevel + 15;
 
-							case (int)eInventorySlot.FeetArmor: // feet
+							case (int)InventorySlot.FeetArmor: // feet
 								return baseLevel + 30;
 
-							case (int)eInventorySlot.LegsArmor: // legs
+							case (int)InventorySlot.LegsArmor: // legs
 								return baseLevel + 50;
 
-							case (int)eInventorySlot.ArmsArmor: // arms
+							case (int)InventorySlot.ArmsArmor: // arms
 								return baseLevel + 65;
 
-							case (int)eInventorySlot.TorsoArmor: // torso
+							case (int)InventorySlot.TorsoArmor: // torso
 								return baseLevel + 80;
 
 							default:

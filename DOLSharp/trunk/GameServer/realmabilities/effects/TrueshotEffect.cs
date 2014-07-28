@@ -21,7 +21,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects
 			GamePlayer player = target as GamePlayer;
 			if (player != null)
 			{
-				player.Out.SendMessage("You prepare a Trueshot!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You prepare a Trueshot!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 

@@ -58,11 +58,11 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 			if (modheal > mana)
 				modheal = mana;
 			if (target is GamePlayer && target != owner)
-				((GamePlayer)target).Out.SendMessage(owner.Name + " restores you " + modheal + " points of mana, and 50% of your endurance.", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				((GamePlayer)target).Out.SendMessage(owner.Name + " restores you " + modheal + " points of mana, and 50% of your endurance.", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 			if (target != owner)
-				owner.Out.SendMessage("You restore" + target.Name + " " + modheal + " points of mana, and 50% of their endurance.", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				owner.Out.SendMessage("You restore" + target.Name + " " + modheal + " points of mana, and 50% of their endurance.", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 			if (target == owner)
-				owner.Out.SendMessage("You restore yourself " + modheal + " points of mana, and 50% of your endurance.", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				owner.Out.SendMessage("You restore yourself " + modheal + " points of mana, and 50% of your endurance.", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 			
             target.Mana += modheal;
 

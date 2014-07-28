@@ -153,7 +153,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				}
 				else
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameStableMaster.ReceiveItem.UnknownWay"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameStableMaster.ReceiveItem.UnknownWay"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 			return false;
@@ -183,7 +183,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		{
 			target.Out.SendMessage(
 				msg,
-				eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				ChatType.CT_System, ChatLocation.CL_PopupWindow);
 		}
 
 		/// <summary>

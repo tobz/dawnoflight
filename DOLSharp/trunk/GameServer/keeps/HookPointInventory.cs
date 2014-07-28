@@ -227,7 +227,7 @@ namespace DawnOfLight.GameServer.Keeps
 		{
 			if (!hookpoint.IsFree)
 			{
-				player.Out.SendMessage("The hookpoint is already used!", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("The hookpoint is already used!", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			//1=or 2=BP 3=GuildBP 4=contract
@@ -239,7 +239,7 @@ namespace DawnOfLight.GameServer.Keeps
 						if (!player.RemoveMoney(Gold * 100 * 100, "You buy " + this.GetName(1, false) + "."))
 						{
                             InventoryLogging.LogInventoryAction(player, "(keep)", eInventoryActionType.Merchant, Gold * 10000);
-							player.Out.SendMessage("You dont have enough money!", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("You dont have enough money!", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 							return;
 						}
 					} break;
@@ -247,7 +247,7 @@ namespace DawnOfLight.GameServer.Keeps
 					{
 						if (!player.RemoveBountyPoints(Gold, "You buy " + this.GetName(1, false) + "."))
 						{
-							player.Out.SendMessage("You dont have enough bounty point!", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("You dont have enough bounty point!", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 							return;
 						}
 					} break;
@@ -256,16 +256,16 @@ namespace DawnOfLight.GameServer.Keeps
 						if (player.Guild == null) return;
 						if (!player.Guild.RemoveBountyPoints(Gold))
 						{
-							player.Out.SendMessage("You dont have enough bounty point!", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("You dont have enough bounty point!", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						else
-							player.Out.SendMessage("You buy " + this.GetName(1, false) + ".", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("You buy " + this.GetName(1, false) + ".", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 
 					} break;
 				case 4:
 					{
-						player.Out.SendMessage("NOT IMPLEMENTED YET, SORRY", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("NOT IMPLEMENTED YET, SORRY", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 						return;
 					}
 

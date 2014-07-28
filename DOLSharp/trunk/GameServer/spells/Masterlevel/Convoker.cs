@@ -317,7 +317,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
                 }
                 else
                 {
-                    MessageToCaster("Your area target is out of range.  Set a closer ground position.", eChatType.CT_SpellResisted);
+                    MessageToCaster("Your area target is out of range.  Set a closer ground position.", ChatType.CT_SpellResisted);
                     effect.Cancel(false);
                 }
             }
@@ -349,7 +349,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             if (player == null) return;
             if (e == GamePlayerEvent.Moving)
             {
-                MessageToCaster("Your concentration fades", eChatType.CT_SpellExpires);
+                MessageToCaster("Your concentration fades", ChatType.CT_SpellExpires);
                 OnEffectExpires(m_effect, true);
                 return;
             }
@@ -362,7 +362,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             if (kWarder == null) return;
             if (e == GameLivingEvent.Dying)
             {
-                MessageToCaster("Your Battle Warder has fallen!", eChatType.CT_SpellExpires);
+                MessageToCaster("Your Battle Warder has fallen!", ChatType.CT_SpellExpires);
                 OnEffectExpires(m_effect, true);
                 return;
             }
@@ -372,7 +372,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             if (!base.CheckBeginCast(selectedTarget)) return false;
             if (!(m_caster.GroundTarget != null && m_caster.GroundTargetInView))
             {
-                MessageToCaster("Your area target is out of range.  Set a closer ground position.", eChatType.CT_SpellResisted);
+                MessageToCaster("Your area target is out of range.  Set a closer ground position.", ChatType.CT_SpellResisted);
                 return false;
             }
             return true;
@@ -487,7 +487,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             {
                 if (log.IsWarnEnabled)
                     log.WarnFormat("NPC template {0} not found! Spell: {1}", Spell.LifeDrainReturn, Spell.ToString());
-                MessageToCaster("NPC template " + Spell.LifeDrainReturn + " not found!", eChatType.CT_System);
+                MessageToCaster("NPC template " + Spell.LifeDrainReturn + " not found!", ChatType.CT_System);
                 return;
             }
 
@@ -560,7 +560,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             {
                 if (jg != null)
                 {
-                    MessageToCaster("Your Pet already has an ability of this type active", eChatType.CT_SpellResisted);
+                    MessageToCaster("Your Pet already has an ability of this type active", ChatType.CT_SpellResisted);
                     return;
                 }
             }
@@ -572,7 +572,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
                 NecromancerPet necroPet = target as NecromancerPet;
                 if (necroPet == null || necroPet.Owner == m_player)
                 { // Caster is a Nekro and his Target is his Own Pet
-                    MessageToCaster("You cant use this ability on your own Pet", eChatType.CT_SpellResisted);
+                    MessageToCaster("You cant use this ability on your own Pet", ChatType.CT_SpellResisted);
                     return;
                 }
             }
@@ -654,7 +654,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             {
                 if (log.IsWarnEnabled)
                     log.WarnFormat("NPC template {0} not found! Spell: {1}", Spell.LifeDrainReturn, Spell.ToString());
-                MessageToCaster("NPC template " + Spell.LifeDrainReturn + " not found!", eChatType.CT_System);
+                MessageToCaster("NPC template " + Spell.LifeDrainReturn + " not found!", ChatType.CT_System);
                 return;
             }
             GameSpellEffect effect = CreateSpellEffect(target, effectiveness);
@@ -717,12 +717,12 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
                 {
                     if (Caster.GroundTarget == null)
                     {
-                        MessageToCaster("You must set a groundtarget!", eChatType.CT_SpellResisted);
+                        MessageToCaster("You must set a groundtarget!", ChatType.CT_SpellResisted);
                         return false;
                     }
                     else
                     {
-                        MessageToCaster("Your area target is not in view.", eChatType.CT_SpellResisted);
+                        MessageToCaster("Your area target is not in view.", ChatType.CT_SpellResisted);
                         return false;
                     }
                 }
@@ -778,14 +778,14 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
 
         public virtual void SendCasterMessage(GameLiving target, int mana)
         {
-            MessageToCaster(string.Format("You steal {0} for {1} power!", target.Name, mana), eChatType.CT_YouHit);
+            MessageToCaster(string.Format("You steal {0} for {1} power!", target.Name, mana), ChatType.CT_YouHit);
             if (mana > 0)
             {
-                MessageToCaster("You steal " + mana + " power points" + (mana == 1 ? "." : "s."), eChatType.CT_Spell);
+                MessageToCaster("You steal " + mana + " power points" + (mana == 1 ? "." : "s."), ChatType.CT_Spell);
             }
             else
             {
-                MessageToCaster("You cannot absorb any more power.", eChatType.CT_SpellResisted);
+                MessageToCaster("You cannot absorb any more power.", ChatType.CT_SpellResisted);
             }
         }
     }

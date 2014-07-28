@@ -27,74 +27,74 @@ namespace DawnOfLight.GameServer.Utilities
 	{
 		public static void SendSystemMessage(GamePlayer target, string message)
 		{
-			target.Out.SendMessage(message, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(message, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendSystemMessage(GamePlayer target, string translationID, params object[] args)
 		{
 			var translatedMsg = LanguageMgr.GetTranslation(target.Client, translationID, args);
 
-			target.Out.SendMessage(translatedMsg, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(translatedMsg, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendSystemMessage(GameClient target, string message)
 		{
-			target.Out.SendMessage(message, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(message, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendSystemMessage(GameClient target, string translationID, params object[] args)
 		{
 			var translatedMsg = LanguageMgr.GetTranslation(target, translationID, args);
 
-			target.Out.SendMessage(translatedMsg, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(translatedMsg, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendMerchantMessage(GamePlayer target, string message)
 		{
-			target.Out.SendMessage(message, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(message, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendMerchantMessage(GamePlayer target, string translationID, params object[] args)
 		{
 			var translatedMsg = LanguageMgr.GetTranslation(target.Client, translationID, args);
 
-			target.Out.SendMessage(translatedMsg, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(translatedMsg, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendMerchantMessage(GameClient target, string message)
 		{
-			target.Out.SendMessage(message, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(message, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendMerchantMessage(GameClient target, string translationID, params object[] args)
 		{
 			var translatedMsg = LanguageMgr.GetTranslation(target, translationID, args);
 
-			target.Out.SendMessage(translatedMsg, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(translatedMsg, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendHelpMessage(GamePlayer target, string message)
 		{
-			target.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendHelpMessage(GamePlayer target, string translationID, params object[] args)
 		{
 			var translatedMsg = LanguageMgr.GetTranslation(target.Client, translationID, args);
 
-			target.Out.SendMessage(translatedMsg, eChatType.CT_Help, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(translatedMsg, ChatType.CT_Help, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendHelpMessage(GameClient target, string message)
 		{
-			target.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendHelpMessage(GameClient target, string translationID, params object[] args)
 		{
 			var translatedMsg = LanguageMgr.GetTranslation(target, translationID, args);
 
-			target.Out.SendMessage(translatedMsg, eChatType.CT_Help, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(translatedMsg, ChatType.CT_Help, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendErrorMessage(GamePlayer target, string message)
@@ -104,7 +104,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 		public static void SendErrorMessage(GameClient target, string message)
 		{
-			target.Out.SendMessage(message, eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+			target.Out.SendMessage(message, ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 		}
 
 		public static void SendDebugMessage(GamePlayer target, string message)
@@ -115,7 +115,7 @@ namespace DawnOfLight.GameServer.Utilities
 		public static void SendDebugMessage(GameClient target, string message)
 		{
 			if (target.Account.PrivLevel > (int)ePrivLevel.Player)
-				target.Out.SendMessage(message, eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+				target.Out.SendMessage(message, ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 		}
 	}
 }

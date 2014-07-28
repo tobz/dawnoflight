@@ -361,21 +361,21 @@ namespace DawnOfLight.GameServer.GameObjects.Atlantis.Teleporter
                 case "hesperos":
                     {
                         player.Out.SendMessage(String.Format(teleportInfo, Name, "Oceanus"),
-                            eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                            ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         base.OnTeleport(player, destination);
                         return;
                     }
                 case "delta":
                     {
                         player.Out.SendMessage(String.Format(teleportInfo, Name, "Stygia"),
-                            eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                            ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         base.OnTeleport(player, destination);
                         return;
                     }
                 case "green glades":
                     {
                         player.Out.SendMessage(String.Format(teleportInfo, Name, "Aerus"),
-                            eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                            ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         base.OnTeleport(player, destination);
                         return;
                     }
@@ -392,7 +392,7 @@ namespace DawnOfLight.GameServer.GameObjects.Atlantis.Teleporter
         protected override void OnTeleport(GamePlayer player, Teleport destination)
         {
             player.Out.SendMessage("There is an odd distortion in the air around you...", 
-                eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
             base.OnTeleport(player, destination);
         }
@@ -406,7 +406,7 @@ namespace DawnOfLight.GameServer.GameObjects.Atlantis.Teleporter
         {
 			foreach (GamePlayer player in GetPlayersInRadius(WorldMgr.SAY_DISTANCE))
 			{
-				player.Out.SendMessage(String.Format("The {0} says, \"{1}\"", this.Name, message), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(String.Format("The {0} says, \"{1}\"", this.Name, message), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 
             return true;

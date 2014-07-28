@@ -20,6 +20,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.Keeps.Managers;
 using DawnOfLight.GameServer.Keeps.Relics;
@@ -51,7 +52,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendKeepInfo(AbstractGameKeep keep)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepInfo));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepInfo));
 
 			pak.WriteShort((ushort)keep.KeepID);
 			pak.WriteShort(0);//zone id not sure
@@ -68,7 +69,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendKeepRealmUpdate(AbstractGameKeep keep)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepRealmUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepRealmUpdate));
 
 			pak.WriteShort((ushort)keep.KeepID);
 			pak.WriteByte((byte)keep.Realm);
@@ -78,7 +79,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendKeepRemove(AbstractGameKeep keep)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepRemove));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepRemove));
 
 			pak.WriteShort((ushort)keep.KeepID);
 			SendTCP(pak);
@@ -86,7 +87,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendKeepComponentInfo(GameKeepComponent keepComponent)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepComponentInfo));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepComponentInfo));
 
 			pak.WriteShort((ushort)keepComponent.Keep.KeepID);
 			pak.WriteShort((ushort)keepComponent.ID);
@@ -108,7 +109,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		}
 		public override void SendKeepComponentDetailUpdate(GameKeepComponent keepComponent)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepComponentDetailUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepComponentDetailUpdate));
 
 			pak.WriteShort((ushort)keepComponent.Keep.KeepID);
 			pak.WriteShort((ushort)keepComponent.ID);
@@ -125,7 +126,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		}
 		public override void SendKeepComponentUpdate(AbstractGameKeep keep, bool LevelUp)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepComponentUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepComponentUpdate));
 
 			pak.WriteShort((ushort)keep.KeepID);
 			pak.WriteByte((byte)keep.Realm);
@@ -151,7 +152,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public override void SendKeepClaim(AbstractGameKeep keep, byte flag)
 		{
 			if (m_gameClient.Player == null || keep == null) return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepClaim));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepClaim));
 
 			pak.WriteShort((ushort)keep.KeepID);
 			pak.WriteByte(flag);//0-Info,1-KeepTargetLevel,2-KeepLordType,4-Release
@@ -163,7 +164,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendKeepComponentInteract(GameKeepComponent component)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepComponentInteractResponse));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepComponentInteractResponse));
 
 			pak.WriteShort((ushort)component.Keep.KeepID);
 			pak.WriteByte((byte)component.Keep.Realm);
@@ -183,7 +184,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		}
 		public override void SendKeepComponentHookPoint(GameKeepComponent component, int selectedHookPointIndex)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepComponentHookpointUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepComponentHookpointUpdate));
 			pak.WriteShort((ushort)component.Keep.KeepID);
 			pak.WriteShort((ushort)component.ID);
 			ArrayList freeHookpoints = new ArrayList();
@@ -201,7 +202,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		}
 		public override void SendClearKeepComponentHookPoint(GameKeepComponent component, int selectedHookPointIndex)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepComponentHookpointUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepComponentHookpointUpdate));
 			pak.WriteShort((ushort)component.Keep.KeepID);
 			pak.WriteShort((ushort)component.ID);
 			pak.WriteByte((byte)0);
@@ -211,7 +212,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendHookPointStore(GameKeepHookPoint hookPoint)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepComponentHookpointStore));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepComponentHookpointStore));
 
 			pak.WriteShort((ushort)hookPoint.Component.Keep.KeepID);
 			pak.WriteShort((ushort)hookPoint.Component.ID);
@@ -249,7 +250,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		protected override void SendQuestPacket(AbstractQuest quest, int index)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.QuestEntry));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.QuestEntry));
 
 			pak.WriteByte((byte)index);
 			if (quest.Step <= 0)
@@ -281,11 +282,11 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			SendTCP(pak);
 		}
 
-		public override void SendWarmapUpdate(ICollection<AbstractGameKeep> list)
+		public override void SendWarMapUpdate(ICollection<AbstractGameKeep> list)
 		{
 			if (m_gameClient.Player == null) return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.WarMapClaimedKeeps));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.WarMapClaimedKeeps));
 			int KeepCount = 0;
 			int TowerCount = 0;
 			foreach (AbstractGameKeep keep in list)
@@ -402,7 +403,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 			SendTCP(pak);
 		}
-		public override void SendWarmapBonuses()
+		public override void SendWarMapBonuses()
 		{
 			if (m_gameClient.Player == null) return;
 			int AlbTowers = 0;
@@ -473,7 +474,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				default:
 					break;
 			}
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.WarmapBonuses));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.WarmapBonuses));
 
 			pak.WriteByte((byte)RealmKeeps);
 			int magic = RelicMgr.GetRelicCount(m_gameClient.Player.Realm, eRelicType.Magic);
@@ -486,7 +487,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendWarmapDetailUpdate(List<List<byte>> fights, List<List<byte>> groups)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.WarMapDetailUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.WarMapDetailUpdate));
 			pak.WriteByte((byte)fights.Count);// count - Fights (Byte)
 			pak.WriteByte((byte)groups.Count);// count - Groups (Byte)
 			// order first fights after than groups

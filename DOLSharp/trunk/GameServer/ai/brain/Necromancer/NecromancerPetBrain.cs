@@ -134,7 +134,7 @@ namespace DawnOfLight.GameServer.AI.Brain.Necromancer
 
 				if (SpellsQueued)
 				{
-					MessageToOwner(LanguageMgr.GetTranslation((Owner as GamePlayer).Client.Account.Language, "AI.Brain.Necromancer.CastSpellAfterAction", Body.Name), eChatType.CT_System);
+					MessageToOwner(LanguageMgr.GetTranslation((Owner as GamePlayer).Client.Account.Language, "AI.Brain.Necromancer.CastSpellAfterAction", Body.Name), ChatType.CT_System);
 					hadQueuedSpells = true;
 				}
 
@@ -190,20 +190,20 @@ namespace DawnOfLight.GameServer.AI.Brain.Necromancer
                     case CastFailedEventArgs.Reasons.TargetTooFarAway:
 
                         MessageToOwner(LanguageMgr.GetTranslation((Owner as GamePlayer).Client.Account.Language, 
-                            "AI.Brain.Necromancer.ServantFarAwayToCast"), eChatType.CT_SpellResisted);
+                            "AI.Brain.Necromancer.ServantFarAwayToCast"), ChatType.CT_SpellResisted);
                         break;
 
                     case CastFailedEventArgs.Reasons.TargetNotInView:
 
                         MessageToOwner(LanguageMgr.GetTranslation((Owner as GamePlayer).Client.Account.Language, 
-                            "AI.Brain.Necromancer.PetCantSeeTarget", Body.Name), eChatType.CT_SpellResisted);
+                            "AI.Brain.Necromancer.PetCantSeeTarget", Body.Name), ChatType.CT_SpellResisted);
                         break;
 
 					case CastFailedEventArgs.Reasons.NotEnoughPower:
 
 						RemoveSpellFromQueue();
 						MessageToOwner(LanguageMgr.GetTranslation((Owner as GamePlayer).Client.Account.Language,
-							"AI.Brain.Necromancer.NoPower", Body.Name), eChatType.CT_SpellResisted);
+							"AI.Brain.Necromancer.NoPower", Body.Name), ChatType.CT_SpellResisted);
 
 						break;
                 }
@@ -226,7 +226,7 @@ namespace DawnOfLight.GameServer.AI.Brain.Necromancer
                 if (spellLine.Name != (Body as NecromancerPet).PetInstaSpellLine)
                 {
                     Owner.Notify(GameLivingEvent.CastStarting, Body, new CastingEventArgs(Body.CurrentSpellHandler));
-                    MessageToOwner(LanguageMgr.GetTranslation((Owner as GamePlayer).Client.Account.Language, "AI.Brain.Necromancer.PetCastingSpell", Body.Name), eChatType.CT_System);
+                    MessageToOwner(LanguageMgr.GetTranslation((Owner as GamePlayer).Client.Account.Language, "AI.Brain.Necromancer.PetCastingSpell", Body.Name), ChatType.CT_System);
                 }
 
                 // If pet is casting an offensive spell and is not set to
@@ -268,17 +268,17 @@ namespace DawnOfLight.GameServer.AI.Brain.Necromancer
 
                 if (secondsRemaining == 10)
                     MessageToOwner(LanguageMgr.GetTranslation((Owner as GamePlayer).Client.Account.Language,
-                        "AI.Brain.Necromancer.PetTooFarBeLostSecIm", secondsRemaining), eChatType.CT_System);
+                        "AI.Brain.Necromancer.PetTooFarBeLostSecIm", secondsRemaining), ChatType.CT_System);
                 else if (secondsRemaining == 5)
                     MessageToOwner(LanguageMgr.GetTranslation((Owner as GamePlayer).Client.Account.Language,
-                        "AI.Brain.Necromancer.PetTooFarBeLostSec", secondsRemaining), eChatType.CT_System);
+                        "AI.Brain.Necromancer.PetTooFarBeLostSec", secondsRemaining), ChatType.CT_System);
             }
             else if (e == GameNPCEvent.PetLost)
             {
                 // Pet despawn is imminent, notify owner.
 
                 MessageToOwner(LanguageMgr.GetTranslation((Owner as GamePlayer).Client.Account.Language,
-                    "AI.Brain.Necromancer.HaveLostBondToPet"), eChatType.CT_System);
+                    "AI.Brain.Necromancer.HaveLostBondToPet"), ChatType.CT_System);
             }
 		}
 
@@ -446,7 +446,7 @@ namespace DawnOfLight.GameServer.AI.Brain.Necromancer
                     MessageToOwner(LanguageMgr.GetTranslation((Owner as GamePlayer).Client.Account.Language, 
                         "AI.Brain.Necromancer.SpellNoLongerInQueue", 
                         (m_spellQueue.Dequeue()).Spell.Name, Body.Name), 
-                        eChatType.CT_Spell);
+                        ChatType.CT_Spell);
 
                 DebugMessageToOwner(String.Format("Adding spell '{0}' to the end of the queue", spell.Name));
 				m_spellQueue.Enqueue(new SpellQueueEntry(spell, spellLine, target));
@@ -538,11 +538,11 @@ namespace DawnOfLight.GameServer.AI.Brain.Necromancer
 		/// </summary>
 		/// <param name="message"></param>
 		/// <param name="chatType"></param>
-		private void MessageToOwner(String message, eChatType chatType)
+		private void MessageToOwner(String message, ChatType chatType)
 		{
 			GamePlayer owner = Owner as GamePlayer;
 			if ((owner != null) && (message.Length > 0))
-				owner.Out.SendMessage(message, chatType, eChatLoc.CL_SystemWindow);
+				owner.Out.SendMessage(message, chatType, ChatLocation.CL_SystemWindow);
 		}
 
         /// <summary>
@@ -557,7 +557,7 @@ namespace DawnOfLight.GameServer.AI.Brain.Necromancer
 				int seconds = tick / 1000;
 				int minutes = seconds / 60;
 
-				MessageToOwner(String.Format("[{0:00}:{1:00}.{2:000}] {3}",	minutes % 60, seconds % 60, tick % 1000, message), eChatType.CT_Staff);
+				MessageToOwner(String.Format("[{0:00}:{1:00}.{2:000}] {3}",	minutes % 60, seconds % 60, tick % 1000, message), ChatType.CT_Staff);
 			}
         }
 

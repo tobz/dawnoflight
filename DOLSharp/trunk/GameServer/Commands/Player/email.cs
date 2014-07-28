@@ -27,8 +27,8 @@ namespace DawnOfLight.GameServer.commands.Player
 			if (args.Length == 1)
 			{
 				client.Out.SendMessage("Usage: /email <address>",
-				                       eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				                       ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 				return;
 			}
 			EmailSyntaxValidator emailsyntaxvalidator; // validate mail
@@ -37,8 +37,8 @@ namespace DawnOfLight.GameServer.commands.Player
 			if (!emailsyntaxvalidator.IsValid)
 			{
 				client.Out.SendMessage("Please enter a valid e-mail address.",
-				                       eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				                       ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -59,13 +59,13 @@ namespace DawnOfLight.GameServer.commands.Player
 
 					client.Out.SendMessage("Contact e-mail address set to " +
 					                       obj.Client.Account.Mail + ". Thanks!",
-					                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 			catch (Exception)
 			{
 				client.Out.SendMessage("Error - Usage: /email <address>",
-				                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 

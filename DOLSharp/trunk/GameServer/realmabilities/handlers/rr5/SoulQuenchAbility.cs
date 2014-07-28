@@ -60,9 +60,9 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 
 			GamePlayer player = caster as GamePlayer;
 			if (player != null)
-				player.Out.SendMessage("You hit " + target.Name + " for " + damage + "(" + resist + ") points of damage!", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You hit " + target.Name + " for " + damage + "(" + resist + ") points of damage!", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 			if (caster is GamePlayer && modheal > 0)
-				((GamePlayer)caster).Out.SendMessage("Your Soul Quench returns " + modheal + " lifepoints to you", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				((GamePlayer)caster).Out.SendMessage("Your Soul Quench returns " + modheal + " lifepoints to you", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 
 			GamePlayer targetPlayer = target as GamePlayer;
 			if (targetPlayer != null)

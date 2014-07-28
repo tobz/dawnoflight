@@ -73,7 +73,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (searched == false)
 			{
-				player.Out.SendMessage("You can't do that here!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You can't do that here!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 	}

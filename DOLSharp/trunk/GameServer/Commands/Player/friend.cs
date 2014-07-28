@@ -40,14 +40,14 @@ namespace DawnOfLight.GameServer.commands.Player
 			else if (args.Length == 2 && args[1] == "window")
 			{
 				// "TF" - clear friend list in social
-				client.Out.SendMessage("TF", eChatType.CT_SocialInterface, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("TF", ChatType.CT_SocialInterface, ChatLocation.CL_SystemWindow);
 				byte ind = 0;
 				foreach (string friendName in client.Player.Friends)
 				{
 					GameClient friendClient = WorldMgr.GetClientByPlayerName(friendName, true, true);
 					if (friendClient == null || friendClient.Player == null || friendClient.Player.IsAnonymous) continue;
 					client.Out.SendMessage(string.Format("F,{0},{1},{2},{3},\"{4}\"",
-						ind++, friendClient.Player.Name, friendClient.Player.Level, friendClient.Player.CharacterClass.ID, (friendClient.Player.CurrentZone == null ? "" : friendClient.Player.CurrentZone.Description)), eChatType.CT_SocialInterface, eChatLoc.CL_SystemWindow);
+						ind++, friendClient.Player.Name, friendClient.Player.Level, friendClient.Player.CharacterClass.ID, (friendClient.Player.CurrentZone == null ? "" : friendClient.Player.CurrentZone.Description)), ChatType.CT_SocialInterface, ChatLocation.CL_SystemWindow);
 				}
 				return;
 			}

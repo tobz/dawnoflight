@@ -269,7 +269,7 @@ namespace DawnOfLight.GameServer.World
 			{
 				cl.Out.SendWeather(0, 0, 0, 0, 0);
 				if (cl.Player.X > (currentLine - m_width) && cl.Player.X < (currentLine + m_width))
-					cl.Out.SendMessage("The sky clears up again as the storm clouds disperse!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					cl.Out.SendMessage("The sky clears up again as the storm clouds disperse!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 			m_weatherTimer.Change(ServerProperties.Properties.WEATHER_CHECK_INTERVAL, ServerProperties.Properties.WEATHER_CHECK_INTERVAL);
             if (log.IsInfoEnabled && ServerProperties.Properties.WEATHER_LOG_EVENTS)

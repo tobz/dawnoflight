@@ -28,7 +28,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// <summary>
 	/// Handles player target changes
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerTarget, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.PlayerTarget, ClientStatus.PlayerInGame)]
 	public class PlayerTargetHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
@@ -39,7 +39,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 		/// <param name="client">The client that sent the packet</param>
 		/// <param name="packet">The received packet data</param>
 		/// <returns></returns>
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			ushort targetID = packet.ReadShort();
 			ushort flags = packet.ReadShort();
@@ -111,14 +111,14 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					{
 						foreach (string message in myTarget.GetExamineMessages(player))
 						{
-							player.Out.SendMessage(message, eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(message, ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 						}
 					}
 					// Then no LOS message; not sure which bit to use so use both :)
 					// should be sent if targeted is using group panel to change the target
 					if (!m_targetInView)
 					{
-						player.Out.SendMessage("Target is not in view.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("Target is not in view.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 
 					player.Out.SendObjectUpdate(myTarget);
@@ -129,8 +129,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					var gravestone = myTarget as GameGravestone;
 					if (gravestone == null || !gravestone.InternalID.Equals(player.InternalID))
 					{
-						player.Out.SendMessage("You are no longer targetting your grave. Your prayers fail.", eChatType.CT_System,
-						                       eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("You are no longer targetting your grave. Your prayers fail.", ChatType.CT_System,
+						                       ChatLocation.CL_SystemWindow);
 						player.PrayTimerStop();
 					}
 				}

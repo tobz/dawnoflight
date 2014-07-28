@@ -53,7 +53,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
                         Effect.SpellHandler.Spell.SpellType.Equals("AtlantisTabletMorph") ||
                         Effect.SpellHandler.Spell.SpellType.Equals("AlvarusMorph"))
                     {
-                        player.Out.SendMessage("You already have an active morph!", eChatType.CT_SpellResisted, eChatLoc.CL_ChatWindow);
+                        player.Out.SendMessage("You already have an active morph!", ChatType.CT_SpellResisted, ChatLocation.CL_ChatWindow);
                         return;
                     }
                 }
@@ -116,8 +116,8 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
                 OnDamageAbsorbed(ad, damageAbsorbed);
 
                 //TODO correct messages
-                MessageToLiving(ad.Target, string.Format("Your ablative absorbs {0} damage!", damageAbsorbed), eChatType.CT_Spell);//since its not always Melee absorbing
-                MessageToLiving(ad.Attacker, string.Format("A barrier absorbs {0} damage of your attack!", damageAbsorbed), eChatType.CT_Spell);  
+                MessageToLiving(ad.Target, string.Format("Your ablative absorbs {0} damage!", damageAbsorbed), ChatType.CT_Spell);//since its not always Melee absorbing
+                MessageToLiving(ad.Attacker, string.Format("A barrier absorbs {0} damage of your attack!", damageAbsorbed), ChatType.CT_Spell);  
             }
             
         }

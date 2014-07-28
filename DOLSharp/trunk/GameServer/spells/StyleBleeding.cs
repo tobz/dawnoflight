@@ -73,8 +73,8 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			base.OnEffectPulse(effect);
 
-			MessageToLiving(effect.Owner, Spell.Message1, eChatType.CT_YouWereHit);
-			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), eChatType.CT_YouHit, effect.Owner);
+			MessageToLiving(effect.Owner, Spell.Message1, ChatType.CT_YouWereHit);
+			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), ChatType.CT_YouHit, effect.Owner);
 
 			int bleedValue = effect.Owner.TempProperties.getProperty<int>(BLEED_VALUE_PROPERTY);
 

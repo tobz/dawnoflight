@@ -97,102 +97,102 @@ namespace DawnOfLight.GameServer.Keeps.Managers
             #region Archer
             if (!Albion_Archer.LoadFromDatabase("albion_archer"))
             {
-                Albion_Archer.AddNPCEquipment(eInventorySlot.Cloak, 3800);
-                Albion_Archer.AddNPCEquipment(eInventorySlot.TorsoArmor, 728);
-                Albion_Archer.AddNPCEquipment(eInventorySlot.LegsArmor, 663);
-                Albion_Archer.AddNPCEquipment(eInventorySlot.ArmsArmor, 664);
-                Albion_Archer.AddNPCEquipment(eInventorySlot.HandsArmor, 665);
-                Albion_Archer.AddNPCEquipment(eInventorySlot.FeetArmor, 666);
-                Albion_Archer.AddNPCEquipment(eInventorySlot.DistanceWeapon, 849);
-                Albion_Archer.AddNPCEquipment(eInventorySlot.RightHandWeapon, 653);
-                Albion_Archer.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 59);
+                Albion_Archer.AddNPCEquipment(InventorySlot.Cloak, 3800);
+                Albion_Archer.AddNPCEquipment(InventorySlot.TorsoArmor, 728);
+                Albion_Archer.AddNPCEquipment(InventorySlot.LegsArmor, 663);
+                Albion_Archer.AddNPCEquipment(InventorySlot.ArmsArmor, 664);
+                Albion_Archer.AddNPCEquipment(InventorySlot.HandsArmor, 665);
+                Albion_Archer.AddNPCEquipment(InventorySlot.FeetArmor, 666);
+                Albion_Archer.AddNPCEquipment(InventorySlot.DistanceWeapon, 849);
+                Albion_Archer.AddNPCEquipment(InventorySlot.RightHandWeapon, 653);
+                Albion_Archer.AddNPCEquipment(InventorySlot.LeftHandWeapon, 59);
                 Albion_Archer = Albion_Archer.CloseTemplate();
-                Albion_Archer.GetItem(eInventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
-                Albion_Archer.GetItem(eInventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
+                Albion_Archer.GetItem(InventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
+                Albion_Archer.GetItem(InventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
             }
             #endregion
             #region Caster
             if (!Albion_Caster.LoadFromDatabase("albion_caster"))
             {
-                Albion_Caster.AddNPCEquipment(eInventorySlot.Cloak, 3800);
-                Albion_Caster.AddNPCEquipment(eInventorySlot.TorsoArmor, 58);
-                Albion_Caster.AddNPCEquipment(eInventorySlot.HandsArmor, 142);
-                Albion_Caster.AddNPCEquipment(eInventorySlot.FeetArmor, 143);
-                Albion_Caster.AddNPCEquipment(eInventorySlot.RightHandWeapon, 13);
-                Albion_Caster.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 1170);
+                Albion_Caster.AddNPCEquipment(InventorySlot.Cloak, 3800);
+                Albion_Caster.AddNPCEquipment(InventorySlot.TorsoArmor, 58);
+                Albion_Caster.AddNPCEquipment(InventorySlot.HandsArmor, 142);
+                Albion_Caster.AddNPCEquipment(InventorySlot.FeetArmor, 143);
+                Albion_Caster.AddNPCEquipment(InventorySlot.RightHandWeapon, 13);
+                Albion_Caster.AddNPCEquipment(InventorySlot.TwoHandWeapon, 1170);
                 Albion_Caster = Albion_Caster.CloseTemplate();
-                Albion_Caster.GetItem(eInventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
+                Albion_Caster.GetItem(InventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
             }
             #endregion
             #region Fighter
             if (!Albion_Fighter.LoadFromDatabase("albion_fighter"))
             {
-                Albion_Fighter.AddNPCEquipment(eInventorySlot.Cloak, 3800); 
-                Albion_Fighter.AddNPCEquipment(eInventorySlot.TorsoArmor, 662);
-                Albion_Fighter.AddNPCEquipment(eInventorySlot.LegsArmor, 663);
-                Albion_Fighter.AddNPCEquipment(eInventorySlot.ArmsArmor, 664);
-                Albion_Fighter.AddNPCEquipment(eInventorySlot.HandsArmor, 665);
-                Albion_Fighter.AddNPCEquipment(eInventorySlot.FeetArmor, 666);
-                Albion_Fighter.AddNPCEquipment(eInventorySlot.HeadArmor, 95);
-                Albion_Fighter.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 60);
-                Albion_Fighter.AddNPCEquipment(eInventorySlot.RightHandWeapon, 10);
-                Albion_Fighter.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 649);
+                Albion_Fighter.AddNPCEquipment(InventorySlot.Cloak, 3800); 
+                Albion_Fighter.AddNPCEquipment(InventorySlot.TorsoArmor, 662);
+                Albion_Fighter.AddNPCEquipment(InventorySlot.LegsArmor, 663);
+                Albion_Fighter.AddNPCEquipment(InventorySlot.ArmsArmor, 664);
+                Albion_Fighter.AddNPCEquipment(InventorySlot.HandsArmor, 665);
+                Albion_Fighter.AddNPCEquipment(InventorySlot.FeetArmor, 666);
+                Albion_Fighter.AddNPCEquipment(InventorySlot.HeadArmor, 95);
+                Albion_Fighter.AddNPCEquipment(InventorySlot.LeftHandWeapon, 60);
+                Albion_Fighter.AddNPCEquipment(InventorySlot.RightHandWeapon, 10);
+                Albion_Fighter.AddNPCEquipment(InventorySlot.TwoHandWeapon, 649);
                 Albion_Fighter = Albion_Fighter.CloseTemplate();
-                Albion_Fighter.GetItem(eInventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
-                Albion_Fighter.GetItem(eInventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
+                Albion_Fighter.GetItem(InventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
+                Albion_Fighter.GetItem(InventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
             }
             #endregion
             #region Lord
             if (!Albion_Lord.LoadFromDatabase("albion_lord"))
             {
-                Albion_Lord.AddNPCEquipment(eInventorySlot.Cloak, 3800); //676
-                Albion_Lord.AddNPCEquipment(eInventorySlot.TorsoArmor, 662);
-                Albion_Lord.AddNPCEquipment(eInventorySlot.LegsArmor, 663);
-                Albion_Lord.AddNPCEquipment(eInventorySlot.ArmsArmor, 664);
-                Albion_Lord.AddNPCEquipment(eInventorySlot.HandsArmor, 665);
-                Albion_Lord.AddNPCEquipment(eInventorySlot.FeetArmor, 666);
-                Albion_Lord.AddNPCEquipment(eInventorySlot.HeadArmor, 95);
-                Albion_Lord.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 60);
-                Albion_Lord.AddNPCEquipment(eInventorySlot.RightHandWeapon, 10);
-                Albion_Lord.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 649);
-                Albion_Lord.AddNPCEquipment(eInventorySlot.DistanceWeapon, 132);
+                Albion_Lord.AddNPCEquipment(InventorySlot.Cloak, 3800); //676
+                Albion_Lord.AddNPCEquipment(InventorySlot.TorsoArmor, 662);
+                Albion_Lord.AddNPCEquipment(InventorySlot.LegsArmor, 663);
+                Albion_Lord.AddNPCEquipment(InventorySlot.ArmsArmor, 664);
+                Albion_Lord.AddNPCEquipment(InventorySlot.HandsArmor, 665);
+                Albion_Lord.AddNPCEquipment(InventorySlot.FeetArmor, 666);
+                Albion_Lord.AddNPCEquipment(InventorySlot.HeadArmor, 95);
+                Albion_Lord.AddNPCEquipment(InventorySlot.LeftHandWeapon, 60);
+                Albion_Lord.AddNPCEquipment(InventorySlot.RightHandWeapon, 10);
+                Albion_Lord.AddNPCEquipment(InventorySlot.TwoHandWeapon, 649);
+                Albion_Lord.AddNPCEquipment(InventorySlot.DistanceWeapon, 132);
                 Albion_Lord = Albion_Lord.CloseTemplate();
-                Albion_Lord.GetItem(eInventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
-                Albion_Lord.GetItem(eInventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
-                Albion_Lord.GetItem(eInventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
+                Albion_Lord.GetItem(InventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
+                Albion_Lord.GetItem(InventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
+                Albion_Lord.GetItem(InventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
             }
             #endregion
             #region Healer
             if (!Albion_Healer.LoadFromDatabase("albion_healer"))
             {
-                Albion_Healer.AddNPCEquipment(eInventorySlot.Cloak, 3800);
-                Albion_Healer.AddNPCEquipment(eInventorySlot.TorsoArmor, 713);
-                Albion_Healer.AddNPCEquipment(eInventorySlot.LegsArmor, 663);
-                Albion_Healer.AddNPCEquipment(eInventorySlot.ArmsArmor, 664);
-                Albion_Healer.AddNPCEquipment(eInventorySlot.HandsArmor, 665);
-                Albion_Healer.AddNPCEquipment(eInventorySlot.FeetArmor, 666);
-                Albion_Healer.AddNPCEquipment(eInventorySlot.HeadArmor, 94);
-                Albion_Healer.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 61);
-                Albion_Healer.AddNPCEquipment(eInventorySlot.RightHandWeapon, 3282);
+                Albion_Healer.AddNPCEquipment(InventorySlot.Cloak, 3800);
+                Albion_Healer.AddNPCEquipment(InventorySlot.TorsoArmor, 713);
+                Albion_Healer.AddNPCEquipment(InventorySlot.LegsArmor, 663);
+                Albion_Healer.AddNPCEquipment(InventorySlot.ArmsArmor, 664);
+                Albion_Healer.AddNPCEquipment(InventorySlot.HandsArmor, 665);
+                Albion_Healer.AddNPCEquipment(InventorySlot.FeetArmor, 666);
+                Albion_Healer.AddNPCEquipment(InventorySlot.HeadArmor, 94);
+                Albion_Healer.AddNPCEquipment(InventorySlot.LeftHandWeapon, 61);
+                Albion_Healer.AddNPCEquipment(InventorySlot.RightHandWeapon, 3282);
                 Albion_Healer = Albion_Healer.CloseTemplate();
-                Albion_Fighter.GetItem(eInventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
+                Albion_Fighter.GetItem(InventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
             }
             #endregion
             #region Stealther
             if (!Albion_Stealther.LoadFromDatabase("albion_stealther"))
             {
-                Albion_Stealther.AddNPCEquipment(eInventorySlot.Cloak, 3800);
-                Albion_Stealther.AddNPCEquipment(eInventorySlot.TorsoArmor, 792);
-                Albion_Stealther.AddNPCEquipment(eInventorySlot.LegsArmor, 663);
-                Albion_Stealther.AddNPCEquipment(eInventorySlot.ArmsArmor, 664);
-                Albion_Stealther.AddNPCEquipment(eInventorySlot.HandsArmor, 665);
-                Albion_Stealther.AddNPCEquipment(eInventorySlot.FeetArmor, 666);
-                Albion_Stealther.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 653);
-                Albion_Stealther.AddNPCEquipment(eInventorySlot.RightHandWeapon, 653);
-                Albion_Stealther.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 653);
+                Albion_Stealther.AddNPCEquipment(InventorySlot.Cloak, 3800);
+                Albion_Stealther.AddNPCEquipment(InventorySlot.TorsoArmor, 792);
+                Albion_Stealther.AddNPCEquipment(InventorySlot.LegsArmor, 663);
+                Albion_Stealther.AddNPCEquipment(InventorySlot.ArmsArmor, 664);
+                Albion_Stealther.AddNPCEquipment(InventorySlot.HandsArmor, 665);
+                Albion_Stealther.AddNPCEquipment(InventorySlot.FeetArmor, 666);
+                Albion_Stealther.AddNPCEquipment(InventorySlot.LeftHandWeapon, 653);
+                Albion_Stealther.AddNPCEquipment(InventorySlot.RightHandWeapon, 653);
+                Albion_Stealther.AddNPCEquipment(InventorySlot.TwoHandWeapon, 653);
                 Albion_Stealther = Albion_Stealther.CloseTemplate();
-                Albion_Stealther.GetItem(eInventorySlot.LeftHandWeapon).Hand = (int)eHandFlag.Left;
-                Albion_Stealther.GetItem(eInventorySlot.LeftHandWeapon).SlotPosition = Slot.LEFTHAND;
+                Albion_Stealther.GetItem(InventorySlot.LeftHandWeapon).Hand = (int)eHandFlag.Left;
+                Albion_Stealther.GetItem(InventorySlot.LeftHandWeapon).SlotPosition = Slot.LEFTHAND;
             }
             #endregion
             #region PK
@@ -206,121 +206,121 @@ namespace DawnOfLight.GameServer.Keeps.Managers
             #region Archer
             if (!Midgard_Archer.LoadFromDatabase("midgard_archer"))
             {
-                Midgard_Archer.AddNPCEquipment(eInventorySlot.Cloak, 3801);
-                Midgard_Archer.AddNPCEquipment(eInventorySlot.TorsoArmor, 668);
-                Midgard_Archer.AddNPCEquipment(eInventorySlot.LegsArmor, 2943);
-                Midgard_Archer.AddNPCEquipment(eInventorySlot.ArmsArmor, 2944);
-                Midgard_Archer.AddNPCEquipment(eInventorySlot.HandsArmor, 2945);
-                Midgard_Archer.AddNPCEquipment(eInventorySlot.FeetArmor, 2946);
-                Midgard_Archer.AddNPCEquipment(eInventorySlot.HeadArmor, 2874);
-                Midgard_Archer.AddNPCEquipment(eInventorySlot.DistanceWeapon, 1037);
-                Midgard_Archer.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 328);
-                Midgard_Archer.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 59);
+                Midgard_Archer.AddNPCEquipment(InventorySlot.Cloak, 3801);
+                Midgard_Archer.AddNPCEquipment(InventorySlot.TorsoArmor, 668);
+                Midgard_Archer.AddNPCEquipment(InventorySlot.LegsArmor, 2943);
+                Midgard_Archer.AddNPCEquipment(InventorySlot.ArmsArmor, 2944);
+                Midgard_Archer.AddNPCEquipment(InventorySlot.HandsArmor, 2945);
+                Midgard_Archer.AddNPCEquipment(InventorySlot.FeetArmor, 2946);
+                Midgard_Archer.AddNPCEquipment(InventorySlot.HeadArmor, 2874);
+                Midgard_Archer.AddNPCEquipment(InventorySlot.DistanceWeapon, 1037);
+                Midgard_Archer.AddNPCEquipment(InventorySlot.TwoHandWeapon, 328);
+                Midgard_Archer.AddNPCEquipment(InventorySlot.LeftHandWeapon, 59);
                 Midgard_Archer = Midgard_Archer.CloseTemplate();
-                Midgard_Archer.GetItem(eInventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
-                Midgard_Archer.GetItem(eInventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
-                Midgard_Archer.GetItem(eInventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
+                Midgard_Archer.GetItem(InventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
+                Midgard_Archer.GetItem(InventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
+                Midgard_Archer.GetItem(InventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
             }
             #endregion
             #region Caster
             if (!Midgard_Caster.LoadFromDatabase("midgard_caster"))
             {
-                Midgard_Caster.AddNPCEquipment(eInventorySlot.Cloak, 3801); 
-                Midgard_Caster.AddNPCEquipment(eInventorySlot.TorsoArmor, 98);
-                Midgard_Caster.AddNPCEquipment(eInventorySlot.HandsArmor, 142);
-                Midgard_Caster.AddNPCEquipment(eInventorySlot.FeetArmor, 143);
-                Midgard_Caster.AddNPCEquipment(eInventorySlot.RightHandWeapon, 13);
-                Midgard_Caster.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 566);
+                Midgard_Caster.AddNPCEquipment(InventorySlot.Cloak, 3801); 
+                Midgard_Caster.AddNPCEquipment(InventorySlot.TorsoArmor, 98);
+                Midgard_Caster.AddNPCEquipment(InventorySlot.HandsArmor, 142);
+                Midgard_Caster.AddNPCEquipment(InventorySlot.FeetArmor, 143);
+                Midgard_Caster.AddNPCEquipment(InventorySlot.RightHandWeapon, 13);
+                Midgard_Caster.AddNPCEquipment(InventorySlot.TwoHandWeapon, 566);
                 Midgard_Caster = Midgard_Caster.CloseTemplate();
-                Midgard_Caster.GetItem(eInventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
+                Midgard_Caster.GetItem(InventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
             }
             #endregion
             #region Fighter
             if (!Midgard_Fighter.LoadFromDatabase("midgard_fighter"))
             {
-                Midgard_Fighter.AddNPCEquipment(eInventorySlot.Cloak, 3801); 
-                Midgard_Fighter.AddNPCEquipment(eInventorySlot.TorsoArmor, 668);
-                Midgard_Fighter.AddNPCEquipment(eInventorySlot.LegsArmor, 2943);
-                Midgard_Fighter.AddNPCEquipment(eInventorySlot.ArmsArmor, 2944);
-                Midgard_Fighter.AddNPCEquipment(eInventorySlot.HandsArmor, 2945);
-                Midgard_Fighter.AddNPCEquipment(eInventorySlot.FeetArmor, 2946);
-                Midgard_Fighter.AddNPCEquipment(eInventorySlot.HeadArmor, 2874);
-                Midgard_Fighter.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 60);
-                Midgard_Fighter.AddNPCEquipment(eInventorySlot.RightHandWeapon, 313);
-                Midgard_Fighter.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 572);
+                Midgard_Fighter.AddNPCEquipment(InventorySlot.Cloak, 3801); 
+                Midgard_Fighter.AddNPCEquipment(InventorySlot.TorsoArmor, 668);
+                Midgard_Fighter.AddNPCEquipment(InventorySlot.LegsArmor, 2943);
+                Midgard_Fighter.AddNPCEquipment(InventorySlot.ArmsArmor, 2944);
+                Midgard_Fighter.AddNPCEquipment(InventorySlot.HandsArmor, 2945);
+                Midgard_Fighter.AddNPCEquipment(InventorySlot.FeetArmor, 2946);
+                Midgard_Fighter.AddNPCEquipment(InventorySlot.HeadArmor, 2874);
+                Midgard_Fighter.AddNPCEquipment(InventorySlot.LeftHandWeapon, 60);
+                Midgard_Fighter.AddNPCEquipment(InventorySlot.RightHandWeapon, 313);
+                Midgard_Fighter.AddNPCEquipment(InventorySlot.TwoHandWeapon, 572);
                 Midgard_Fighter = Midgard_Fighter.CloseTemplate();
-                Midgard_Fighter.GetItem(eInventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
-                Midgard_Fighter.GetItem(eInventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
+                Midgard_Fighter.GetItem(InventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
+                Midgard_Fighter.GetItem(InventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
             }
             #endregion
             #region Lord
             if (!Midgard_Lord.LoadFromDatabase("midgard_lord"))
             {
-                Midgard_Lord.AddNPCEquipment(eInventorySlot.Cloak, 3801);
-                Midgard_Lord.AddNPCEquipment(eInventorySlot.TorsoArmor, 668);
-                Midgard_Lord.AddNPCEquipment(eInventorySlot.LegsArmor, 2943);
-                Midgard_Lord.AddNPCEquipment(eInventorySlot.ArmsArmor, 2944);
-                Midgard_Lord.AddNPCEquipment(eInventorySlot.HandsArmor, 2945);
-                Midgard_Lord.AddNPCEquipment(eInventorySlot.FeetArmor, 2946);
-                Midgard_Lord.AddNPCEquipment(eInventorySlot.HeadArmor, 2874);
-                Midgard_Lord.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 60);
-                Midgard_Lord.AddNPCEquipment(eInventorySlot.RightHandWeapon, 313);
-                Midgard_Lord.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 572);
-                Midgard_Lord.AddNPCEquipment(eInventorySlot.DistanceWeapon, 564);
+                Midgard_Lord.AddNPCEquipment(InventorySlot.Cloak, 3801);
+                Midgard_Lord.AddNPCEquipment(InventorySlot.TorsoArmor, 668);
+                Midgard_Lord.AddNPCEquipment(InventorySlot.LegsArmor, 2943);
+                Midgard_Lord.AddNPCEquipment(InventorySlot.ArmsArmor, 2944);
+                Midgard_Lord.AddNPCEquipment(InventorySlot.HandsArmor, 2945);
+                Midgard_Lord.AddNPCEquipment(InventorySlot.FeetArmor, 2946);
+                Midgard_Lord.AddNPCEquipment(InventorySlot.HeadArmor, 2874);
+                Midgard_Lord.AddNPCEquipment(InventorySlot.LeftHandWeapon, 60);
+                Midgard_Lord.AddNPCEquipment(InventorySlot.RightHandWeapon, 313);
+                Midgard_Lord.AddNPCEquipment(InventorySlot.TwoHandWeapon, 572);
+                Midgard_Lord.AddNPCEquipment(InventorySlot.DistanceWeapon, 564);
                 Midgard_Lord = Midgard_Lord.CloseTemplate();
-                Midgard_Lord.GetItem(eInventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
-                Midgard_Lord.GetItem(eInventorySlot.DistanceWeapon).Object_Type = (int)eObjectType.Longbow;
-                Midgard_Lord.GetItem(eInventorySlot.DistanceWeapon).SlotPosition = Slot.RANGED;
-                Midgard_Lord.GetItem(eInventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
-                Midgard_Lord.GetItem(eInventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
+                Midgard_Lord.GetItem(InventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
+                Midgard_Lord.GetItem(InventorySlot.DistanceWeapon).Object_Type = (int)eObjectType.Longbow;
+                Midgard_Lord.GetItem(InventorySlot.DistanceWeapon).SlotPosition = Slot.RANGED;
+                Midgard_Lord.GetItem(InventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
+                Midgard_Lord.GetItem(InventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
             }
             #endregion
             #region Healer
             if (!Midgard_Healer.LoadFromDatabase("midgard_healer"))
             {
-                Midgard_Healer.AddNPCEquipment(eInventorySlot.Cloak, 3801); 
-                Midgard_Healer.AddNPCEquipment(eInventorySlot.TorsoArmor, 668);
-                Midgard_Healer.AddNPCEquipment(eInventorySlot.LegsArmor, 2943);
-                Midgard_Healer.AddNPCEquipment(eInventorySlot.ArmsArmor, 2944);
-                Midgard_Healer.AddNPCEquipment(eInventorySlot.HandsArmor, 2945);
-                Midgard_Healer.AddNPCEquipment(eInventorySlot.FeetArmor, 2946);
-                Midgard_Healer.AddNPCEquipment(eInventorySlot.HeadArmor, 2874);
-                Midgard_Healer.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 59);
-                Midgard_Healer.AddNPCEquipment(eInventorySlot.RightHandWeapon, 3335);
-                Midgard_Healer.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 3336);
+                Midgard_Healer.AddNPCEquipment(InventorySlot.Cloak, 3801); 
+                Midgard_Healer.AddNPCEquipment(InventorySlot.TorsoArmor, 668);
+                Midgard_Healer.AddNPCEquipment(InventorySlot.LegsArmor, 2943);
+                Midgard_Healer.AddNPCEquipment(InventorySlot.ArmsArmor, 2944);
+                Midgard_Healer.AddNPCEquipment(InventorySlot.HandsArmor, 2945);
+                Midgard_Healer.AddNPCEquipment(InventorySlot.FeetArmor, 2946);
+                Midgard_Healer.AddNPCEquipment(InventorySlot.HeadArmor, 2874);
+                Midgard_Healer.AddNPCEquipment(InventorySlot.LeftHandWeapon, 59);
+                Midgard_Healer.AddNPCEquipment(InventorySlot.RightHandWeapon, 3335);
+                Midgard_Healer.AddNPCEquipment(InventorySlot.TwoHandWeapon, 3336);
                 Midgard_Healer = Midgard_Healer.CloseTemplate();
-                Midgard_Healer.GetItem(eInventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
+                Midgard_Healer.GetItem(InventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
             }
             #endregion
             #region Hastener
             if (!Midgard_Hastener.LoadFromDatabase("midgard_hastener"))
             {
-                Midgard_Hastener.AddNPCEquipment(eInventorySlot.Cloak, 443, 43);
-                Midgard_Hastener.AddNPCEquipment(eInventorySlot.TorsoArmor, 230);
-                Midgard_Hastener.AddNPCEquipment(eInventorySlot.HandsArmor, 233);
-                Midgard_Hastener.AddNPCEquipment(eInventorySlot.FeetArmor, 234);
-                Midgard_Hastener.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 228);
+                Midgard_Hastener.AddNPCEquipment(InventorySlot.Cloak, 443, 43);
+                Midgard_Hastener.AddNPCEquipment(InventorySlot.TorsoArmor, 230);
+                Midgard_Hastener.AddNPCEquipment(InventorySlot.HandsArmor, 233);
+                Midgard_Hastener.AddNPCEquipment(InventorySlot.FeetArmor, 234);
+                Midgard_Hastener.AddNPCEquipment(InventorySlot.LeftHandWeapon, 228);
                 Midgard_Hastener = Midgard_Hastener.CloseTemplate();
-                Midgard_Hastener.GetItem(eInventorySlot.LeftHandWeapon).Hand = (int)eHandFlag.Left;
-                Midgard_Hastener.GetItem(eInventorySlot.LeftHandWeapon).SlotPosition = Slot.LEFTHAND;
+                Midgard_Hastener.GetItem(InventorySlot.LeftHandWeapon).Hand = (int)eHandFlag.Left;
+                Midgard_Hastener.GetItem(InventorySlot.LeftHandWeapon).SlotPosition = Slot.LEFTHAND;
             }
             #endregion
             #region Stealther
             if (!Midgard_Stealther.LoadFromDatabase("midgard_stealther"))
             {
-                Midgard_Stealther.AddNPCEquipment(eInventorySlot.Cloak, 3801); 
-                Midgard_Stealther.AddNPCEquipment(eInventorySlot.TorsoArmor, 668);
-                Midgard_Stealther.AddNPCEquipment(eInventorySlot.LegsArmor, 2943);
-                Midgard_Stealther.AddNPCEquipment(eInventorySlot.ArmsArmor, 2944);
-                Midgard_Stealther.AddNPCEquipment(eInventorySlot.HandsArmor, 2945);
-                Midgard_Stealther.AddNPCEquipment(eInventorySlot.FeetArmor, 2946);
-                Midgard_Stealther.AddNPCEquipment(eInventorySlot.HeadArmor, 335);
-                Midgard_Stealther.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 573);
-                Midgard_Stealther.AddNPCEquipment(eInventorySlot.RightHandWeapon, 573);
-                Midgard_Stealther.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 577);
+                Midgard_Stealther.AddNPCEquipment(InventorySlot.Cloak, 3801); 
+                Midgard_Stealther.AddNPCEquipment(InventorySlot.TorsoArmor, 668);
+                Midgard_Stealther.AddNPCEquipment(InventorySlot.LegsArmor, 2943);
+                Midgard_Stealther.AddNPCEquipment(InventorySlot.ArmsArmor, 2944);
+                Midgard_Stealther.AddNPCEquipment(InventorySlot.HandsArmor, 2945);
+                Midgard_Stealther.AddNPCEquipment(InventorySlot.FeetArmor, 2946);
+                Midgard_Stealther.AddNPCEquipment(InventorySlot.HeadArmor, 335);
+                Midgard_Stealther.AddNPCEquipment(InventorySlot.LeftHandWeapon, 573);
+                Midgard_Stealther.AddNPCEquipment(InventorySlot.RightHandWeapon, 573);
+                Midgard_Stealther.AddNPCEquipment(InventorySlot.TwoHandWeapon, 577);
                 Midgard_Stealther = Midgard_Stealther.CloseTemplate();
-                Midgard_Stealther.GetItem(eInventorySlot.LeftHandWeapon).Hand = (int)eHandFlag.Left;
-                Albion_Stealther.GetItem(eInventorySlot.LeftHandWeapon).SlotPosition = Slot.LEFTHAND;
+                Midgard_Stealther.GetItem(InventorySlot.LeftHandWeapon).Hand = (int)eHandFlag.Left;
+                Albion_Stealther.GetItem(InventorySlot.LeftHandWeapon).SlotPosition = Slot.LEFTHAND;
             }
             #endregion
 			#region PK
@@ -333,106 +333,106 @@ namespace DawnOfLight.GameServer.Keeps.Managers
             #region Archer
             if (!Hibernia_Archer.LoadFromDatabase("hibernia_archer"))
             {
-                Hibernia_Archer.AddNPCEquipment(eInventorySlot.Cloak, 3802);
-                Hibernia_Archer.AddNPCEquipment(eInventorySlot.TorsoArmor, 667);
-                Hibernia_Archer.AddNPCEquipment(eInventorySlot.LegsArmor, 989);
-                Hibernia_Archer.AddNPCEquipment(eInventorySlot.ArmsArmor, 990);
-                Hibernia_Archer.AddNPCEquipment(eInventorySlot.HandsArmor, 991);
-                Hibernia_Archer.AddNPCEquipment(eInventorySlot.FeetArmor, 992);
-                Hibernia_Archer.AddNPCEquipment(eInventorySlot.HeadArmor, 1207);
-                Hibernia_Archer.AddNPCEquipment(eInventorySlot.DistanceWeapon, 919);
-                Hibernia_Archer.AddNPCEquipment(eInventorySlot.RightHandWeapon, 643);
-                Hibernia_Archer.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 643);
+                Hibernia_Archer.AddNPCEquipment(InventorySlot.Cloak, 3802);
+                Hibernia_Archer.AddNPCEquipment(InventorySlot.TorsoArmor, 667);
+                Hibernia_Archer.AddNPCEquipment(InventorySlot.LegsArmor, 989);
+                Hibernia_Archer.AddNPCEquipment(InventorySlot.ArmsArmor, 990);
+                Hibernia_Archer.AddNPCEquipment(InventorySlot.HandsArmor, 991);
+                Hibernia_Archer.AddNPCEquipment(InventorySlot.FeetArmor, 992);
+                Hibernia_Archer.AddNPCEquipment(InventorySlot.HeadArmor, 1207);
+                Hibernia_Archer.AddNPCEquipment(InventorySlot.DistanceWeapon, 919);
+                Hibernia_Archer.AddNPCEquipment(InventorySlot.RightHandWeapon, 643);
+                Hibernia_Archer.AddNPCEquipment(InventorySlot.LeftHandWeapon, 643);
                 Hibernia_Archer = Hibernia_Archer.CloseTemplate();
-                Hibernia_Archer.GetItem(eInventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
-                Hibernia_Archer.GetItem(eInventorySlot.DistanceWeapon).Object_Type = (int)eObjectType.RecurvedBow;
-                Hibernia_Archer.GetItem(eInventorySlot.DistanceWeapon).SlotPosition = Slot.RANGED;
-                Hibernia_Archer.GetItem(eInventorySlot.LeftHandWeapon).Hand = (int)eHandFlag.Left;
+                Hibernia_Archer.GetItem(InventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
+                Hibernia_Archer.GetItem(InventorySlot.DistanceWeapon).Object_Type = (int)eObjectType.RecurvedBow;
+                Hibernia_Archer.GetItem(InventorySlot.DistanceWeapon).SlotPosition = Slot.RANGED;
+                Hibernia_Archer.GetItem(InventorySlot.LeftHandWeapon).Hand = (int)eHandFlag.Left;
             }
             #endregion
             #region Caster
             if (!Hibernia_Caster.LoadFromDatabase("hibernia_caster"))
             {
-                Hibernia_Caster.AddNPCEquipment(eInventorySlot.Cloak, 3802);
-                Hibernia_Caster.AddNPCEquipment(eInventorySlot.TorsoArmor, 97);
-                Hibernia_Caster.AddNPCEquipment(eInventorySlot.HandsArmor, 142);
-                Hibernia_Caster.AddNPCEquipment(eInventorySlot.FeetArmor, 143);
-                Hibernia_Caster.AddNPCEquipment(eInventorySlot.RightHandWeapon, 13);
-                Hibernia_Caster.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 1176);
+                Hibernia_Caster.AddNPCEquipment(InventorySlot.Cloak, 3802);
+                Hibernia_Caster.AddNPCEquipment(InventorySlot.TorsoArmor, 97);
+                Hibernia_Caster.AddNPCEquipment(InventorySlot.HandsArmor, 142);
+                Hibernia_Caster.AddNPCEquipment(InventorySlot.FeetArmor, 143);
+                Hibernia_Caster.AddNPCEquipment(InventorySlot.RightHandWeapon, 13);
+                Hibernia_Caster.AddNPCEquipment(InventorySlot.TwoHandWeapon, 1176);
                 Hibernia_Caster = Hibernia_Caster.CloseTemplate();
-                Hibernia_Caster.GetItem(eInventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
+                Hibernia_Caster.GetItem(InventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
             }
             #endregion
             #region Fighter
             if (!Hibernia_Fighter.LoadFromDatabase("hibernia_fighter"))
             {
-                Hibernia_Fighter.AddNPCEquipment(eInventorySlot.Cloak, 3802);
-                Hibernia_Fighter.AddNPCEquipment(eInventorySlot.TorsoArmor, 667);
-                Hibernia_Fighter.AddNPCEquipment(eInventorySlot.LegsArmor, 989);
-                Hibernia_Fighter.AddNPCEquipment(eInventorySlot.ArmsArmor, 990);
-                Hibernia_Fighter.AddNPCEquipment(eInventorySlot.HandsArmor, 991);
-                Hibernia_Fighter.AddNPCEquipment(eInventorySlot.FeetArmor, 992);
-                Hibernia_Fighter.AddNPCEquipment(eInventorySlot.HeadArmor, 1207);
-                Hibernia_Fighter.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 79);
-                Hibernia_Fighter.AddNPCEquipment(eInventorySlot.RightHandWeapon, 897);
-                Hibernia_Fighter.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 476);
+                Hibernia_Fighter.AddNPCEquipment(InventorySlot.Cloak, 3802);
+                Hibernia_Fighter.AddNPCEquipment(InventorySlot.TorsoArmor, 667);
+                Hibernia_Fighter.AddNPCEquipment(InventorySlot.LegsArmor, 989);
+                Hibernia_Fighter.AddNPCEquipment(InventorySlot.ArmsArmor, 990);
+                Hibernia_Fighter.AddNPCEquipment(InventorySlot.HandsArmor, 991);
+                Hibernia_Fighter.AddNPCEquipment(InventorySlot.FeetArmor, 992);
+                Hibernia_Fighter.AddNPCEquipment(InventorySlot.HeadArmor, 1207);
+                Hibernia_Fighter.AddNPCEquipment(InventorySlot.LeftHandWeapon, 79);
+                Hibernia_Fighter.AddNPCEquipment(InventorySlot.RightHandWeapon, 897);
+                Hibernia_Fighter.AddNPCEquipment(InventorySlot.TwoHandWeapon, 476);
                 Hibernia_Fighter = Hibernia_Fighter.CloseTemplate();
-                Hibernia_Fighter.GetItem(eInventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
-                Hibernia_Fighter.GetItem(eInventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
+                Hibernia_Fighter.GetItem(InventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
+                Hibernia_Fighter.GetItem(InventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
             }
             #endregion
             #region Lord
             if (!Hibernia_Lord.LoadFromDatabase("hibernia_lord"))
             {
-                Hibernia_Lord.AddNPCEquipment(eInventorySlot.Cloak, 3802); 
-                Hibernia_Lord.AddNPCEquipment(eInventorySlot.TorsoArmor, 667);
-                Hibernia_Lord.AddNPCEquipment(eInventorySlot.LegsArmor, 989);
-                Hibernia_Lord.AddNPCEquipment(eInventorySlot.ArmsArmor, 990);
-                Hibernia_Lord.AddNPCEquipment(eInventorySlot.HandsArmor, 991);
-                Hibernia_Lord.AddNPCEquipment(eInventorySlot.FeetArmor, 992);
-                Hibernia_Lord.AddNPCEquipment(eInventorySlot.HeadArmor, 1207);
-                Hibernia_Lord.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 79);
-                Hibernia_Lord.AddNPCEquipment(eInventorySlot.RightHandWeapon, 897);
-                Hibernia_Lord.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 476);
-                Hibernia_Lord.AddNPCEquipment(eInventorySlot.DistanceWeapon, 471);
-                Hibernia_Lord.GetItem(eInventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
-                Hibernia_Lord.GetItem(eInventorySlot.DistanceWeapon).Object_Type = (int)eObjectType.CompositeBow;
-                Hibernia_Lord.GetItem(eInventorySlot.DistanceWeapon).SlotPosition = Slot.RANGED;
-                Hibernia_Lord.GetItem(eInventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
-                Hibernia_Lord.GetItem(eInventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
+                Hibernia_Lord.AddNPCEquipment(InventorySlot.Cloak, 3802); 
+                Hibernia_Lord.AddNPCEquipment(InventorySlot.TorsoArmor, 667);
+                Hibernia_Lord.AddNPCEquipment(InventorySlot.LegsArmor, 989);
+                Hibernia_Lord.AddNPCEquipment(InventorySlot.ArmsArmor, 990);
+                Hibernia_Lord.AddNPCEquipment(InventorySlot.HandsArmor, 991);
+                Hibernia_Lord.AddNPCEquipment(InventorySlot.FeetArmor, 992);
+                Hibernia_Lord.AddNPCEquipment(InventorySlot.HeadArmor, 1207);
+                Hibernia_Lord.AddNPCEquipment(InventorySlot.LeftHandWeapon, 79);
+                Hibernia_Lord.AddNPCEquipment(InventorySlot.RightHandWeapon, 897);
+                Hibernia_Lord.AddNPCEquipment(InventorySlot.TwoHandWeapon, 476);
+                Hibernia_Lord.AddNPCEquipment(InventorySlot.DistanceWeapon, 471);
+                Hibernia_Lord.GetItem(InventorySlot.DistanceWeapon).Hand = (int)eHandFlag.Two;
+                Hibernia_Lord.GetItem(InventorySlot.DistanceWeapon).Object_Type = (int)eObjectType.CompositeBow;
+                Hibernia_Lord.GetItem(InventorySlot.DistanceWeapon).SlotPosition = Slot.RANGED;
+                Hibernia_Lord.GetItem(InventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
+                Hibernia_Lord.GetItem(InventorySlot.TwoHandWeapon).Hand = (int)eHandFlag.Two;
             }
             #endregion
             #region Healer
             if (!Hibernia_Healer.LoadFromDatabase("hibernia_healer"))
             {
-                Hibernia_Healer.AddNPCEquipment(eInventorySlot.Cloak, 3802);
-                Hibernia_Healer.AddNPCEquipment(eInventorySlot.TorsoArmor, 667);
-                Hibernia_Healer.AddNPCEquipment(eInventorySlot.LegsArmor, 989);
-                Hibernia_Healer.AddNPCEquipment(eInventorySlot.ArmsArmor, 990);
-                Hibernia_Healer.AddNPCEquipment(eInventorySlot.HandsArmor, 991);
-                Hibernia_Healer.AddNPCEquipment(eInventorySlot.FeetArmor, 992);
-                Hibernia_Healer.AddNPCEquipment(eInventorySlot.HeadArmor, 1207);
-                Hibernia_Healer.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 59);
-                Hibernia_Healer.AddNPCEquipment(eInventorySlot.RightHandWeapon, 3247);
+                Hibernia_Healer.AddNPCEquipment(InventorySlot.Cloak, 3802);
+                Hibernia_Healer.AddNPCEquipment(InventorySlot.TorsoArmor, 667);
+                Hibernia_Healer.AddNPCEquipment(InventorySlot.LegsArmor, 989);
+                Hibernia_Healer.AddNPCEquipment(InventorySlot.ArmsArmor, 990);
+                Hibernia_Healer.AddNPCEquipment(InventorySlot.HandsArmor, 991);
+                Hibernia_Healer.AddNPCEquipment(InventorySlot.FeetArmor, 992);
+                Hibernia_Healer.AddNPCEquipment(InventorySlot.HeadArmor, 1207);
+                Hibernia_Healer.AddNPCEquipment(InventorySlot.LeftHandWeapon, 59);
+                Hibernia_Healer.AddNPCEquipment(InventorySlot.RightHandWeapon, 3247);
                 Hibernia_Healer = Hibernia_Healer.CloseTemplate();
-                Hibernia_Healer.GetItem(eInventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
+                Hibernia_Healer.GetItem(InventorySlot.LeftHandWeapon).Object_Type = (int)eObjectType.Shield;
             }
             #endregion
             #region Stealther
             if (!Hibernia_Stealther.LoadFromDatabase("hibernia_stealther"))
             {
-                Hibernia_Stealther.AddNPCEquipment(eInventorySlot.Cloak, 3802);
-                Hibernia_Stealther.AddNPCEquipment(eInventorySlot.TorsoArmor, 667);
-                Hibernia_Stealther.AddNPCEquipment(eInventorySlot.LegsArmor, 989);
-                Hibernia_Stealther.AddNPCEquipment(eInventorySlot.ArmsArmor, 990);
-                Hibernia_Stealther.AddNPCEquipment(eInventorySlot.HandsArmor, 991);
-                Hibernia_Stealther.AddNPCEquipment(eInventorySlot.FeetArmor, 992);
-                Hibernia_Stealther.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 2685);
-                Hibernia_Stealther.AddNPCEquipment(eInventorySlot.RightHandWeapon, 2685);
-                Hibernia_Stealther.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 2687);
+                Hibernia_Stealther.AddNPCEquipment(InventorySlot.Cloak, 3802);
+                Hibernia_Stealther.AddNPCEquipment(InventorySlot.TorsoArmor, 667);
+                Hibernia_Stealther.AddNPCEquipment(InventorySlot.LegsArmor, 989);
+                Hibernia_Stealther.AddNPCEquipment(InventorySlot.ArmsArmor, 990);
+                Hibernia_Stealther.AddNPCEquipment(InventorySlot.HandsArmor, 991);
+                Hibernia_Stealther.AddNPCEquipment(InventorySlot.FeetArmor, 992);
+                Hibernia_Stealther.AddNPCEquipment(InventorySlot.LeftHandWeapon, 2685);
+                Hibernia_Stealther.AddNPCEquipment(InventorySlot.RightHandWeapon, 2685);
+                Hibernia_Stealther.AddNPCEquipment(InventorySlot.TwoHandWeapon, 2687);
                 Hibernia_Stealther = Hibernia_Stealther.CloseTemplate();
-                Hibernia_Stealther.GetItem(eInventorySlot.LeftHandWeapon).Hand = (int)eHandFlag.Left;
-                Albion_Stealther.GetItem(eInventorySlot.LeftHandWeapon).SlotPosition = Slot.LEFTHAND;
+                Hibernia_Stealther.GetItem(InventorySlot.LeftHandWeapon).Hand = (int)eHandFlag.Left;
+                Albion_Stealther.GetItem(InventorySlot.LeftHandWeapon).SlotPosition = Slot.LEFTHAND;
             }
             #endregion
             #region PK
@@ -567,7 +567,7 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 			const int renegadeArmorColor = 19;
 
 			InventoryItem item = null;
-			item = guard.Inventory.GetItem(eInventorySlot.TorsoArmor);
+			item = guard.Inventory.GetItem(InventorySlot.TorsoArmor);
 			if (item != null)
 			{
 				if (guard.Realm != eRealm.None)
@@ -580,7 +580,7 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 					item.Color = renegadeArmorColor;
 				}
 			}
-			item = guard.Inventory.GetItem(eInventorySlot.HandsArmor);
+			item = guard.Inventory.GetItem(InventorySlot.HandsArmor);
 			if (item != null)
 			{
 				if (guard.Realm != eRealm.None)
@@ -593,7 +593,7 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 					item.Color = renegadeArmorColor;
 				}
 			}
-			item = guard.Inventory.GetItem(eInventorySlot.FeetArmor);
+			item = guard.Inventory.GetItem(InventorySlot.FeetArmor);
 			if (item != null)
 			{
 				if (guard.Realm != eRealm.None)
@@ -610,23 +610,23 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 
 			if (guard.Realm == eRealm.None)
 			{
-				item = guard.Inventory.GetItem(eInventorySlot.Cloak);
+				item = guard.Inventory.GetItem(InventorySlot.Cloak);
 				if (item != null)
 				{
 					item.Model = 3632;
 					item.Color = renegadeArmorColor;
 				}
-				item = guard.Inventory.GetItem(eInventorySlot.TorsoArmor);
+				item = guard.Inventory.GetItem(InventorySlot.TorsoArmor);
 				if (item != null)
 				{
 					item.Color = renegadeArmorColor;
 				}
-				item = guard.Inventory.GetItem(eInventorySlot.ArmsArmor);
+				item = guard.Inventory.GetItem(InventorySlot.ArmsArmor);
 				if (item != null)
 				{
 					item.Color = renegadeArmorColor;
 				}
-				item = guard.Inventory.GetItem(eInventorySlot.LegsArmor);
+				item = guard.Inventory.GetItem(InventorySlot.LegsArmor);
 				if (item != null)
 				{
 					item.Color = renegadeArmorColor;
@@ -660,7 +660,7 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 			{
 				emblem = guard.Component.Keep.Guild.Emblem;
 			}
-			InventoryItem cloak = guard.Inventory.GetItem(eInventorySlot.Cloak);
+			InventoryItem cloak = guard.Inventory.GetItem(InventorySlot.Cloak);
 			if (cloak != null)
 			{
 				cloak.Emblem = emblem;
@@ -668,7 +668,7 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 				if (cloak.Emblem != 0)
 					cloak.Model = 558; // change to a model that looks ok with an emblem
 			}
-			InventoryItem shield = guard.Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+			InventoryItem shield = guard.Inventory.GetItem(InventorySlot.LeftHandWeapon);
 			if (shield != null)
 			{
 				shield.Emblem = emblem;

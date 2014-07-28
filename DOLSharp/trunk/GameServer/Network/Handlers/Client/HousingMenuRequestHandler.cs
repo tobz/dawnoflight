@@ -17,34 +17,28 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x00, "Handles housing menu requests")]
+    [PacketHandler(PacketType.TCP, ClientPackets.HousingMenuRequest, ClientStatus.PlayerInGame)]
 	public class HousingMenuRequestHandler : IPacketHandler
 	{
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-		#region IPacketHandler Members
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
-			int housenumber = packet.ReadShort();
-			int menuid = packet.ReadByte();
+			int houseNumber = packet.ReadShort();
+			int menuId = packet.ReadByte();
 			int flag = packet.ReadByte();
 
-			var house = HouseMgr.GetHouse(client.Player.CurrentRegionID, housenumber);
+			var house = HouseMgr.GetHouse(client.Player.CurrentRegionID, houseNumber);
 			if (house == null)
-				return;
-
-			if (client.Player == null)
 				return;
 
 			client.Player.CurrentHouse = house;
 
-			switch (menuid)
+			switch (menuId)
 			{
 				case 0: // Exterior decoration (Garden)
 					{
@@ -114,12 +108,10 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					break;
 
 				default:
-					client.Out.SendMessage("Invalid menu id " + menuid + " (hookpoint?).", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Invalid menu id " + menuId + " (hookpoint?).", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					break;
 			}
 
 		}
-
-		#endregion
 	}
 }

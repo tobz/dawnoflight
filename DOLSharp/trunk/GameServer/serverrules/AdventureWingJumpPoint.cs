@@ -100,7 +100,7 @@ namespace DawnOfLight.GameServer.ServerRules
             		if(previousInstance.NumPlayers > 0) 
             		{
             			//We can't jump !
-            			player.Out.SendMessage("You have another instance (" + previousInstance.Description + ") running with people in it !", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+            			player.Out.SendMessage("You have another instance (" + previousInstance.Description + ") running with people in it !", ChatType.CT_System, ChatLocation.CL_SystemWindow);
             			return false;
             		}
             		else 
@@ -208,7 +208,7 @@ namespace DawnOfLight.GameServer.ServerRules
                 return false;
             }
 
-            player.Out.SendMessage("Something went Wrong when creating Instance !", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+            player.Out.SendMessage("Something went Wrong when creating Instance !", ChatType.CT_System, ChatLocation.CL_SystemWindow);
             return false;
         }
 	}

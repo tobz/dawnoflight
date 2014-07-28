@@ -67,7 +67,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 			if (m_playerGroup != null)
 				GameEventMgr.AddHandler(m_playerGroup, GroupEvent.MemberDisbanded, new DOLEventHandler(GroupDisbandCallback));
 			GameEventMgr.AddHandler(EffectOwner, GamePlayerEvent.AttackFinished, new DOLEventHandler(AttackFinished));
-			EffectOwner.Out.SendMessage("Your weapon begins channeling the strength of the vampiir!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+			EffectOwner.Out.SendMessage("Your weapon begins channeling the strength of the vampiir!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 			base.Start(CasterTarget);
 		}
 
@@ -81,7 +81,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 				GameEventMgr.RemoveHandler(EffectOwner, GamePlayerEvent.Quit, new DOLEventHandler(PlayerLeftWorld));
 				m_playerGroup = null;
 			}
-			EffectOwner.Out.SendMessage("Your weapon returns to normal.", eChatType.CT_SpellExpires, eChatLoc.CL_SystemWindow);
+			EffectOwner.Out.SendMessage("Your weapon returns to normal.", ChatType.CT_SpellExpires, ChatLocation.CL_SystemWindow);
 			base.Stop();
 		}
 
@@ -124,7 +124,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 			target.OnAttackedByEnemy(ad);
 			EffectCaster.ChangeMana(EffectOwner, GameLiving.eManaChangeType.Spell, (int)ad.Damage);
 			if (attacker is GamePlayer)
-				(attacker as GamePlayer).Out.SendMessage(string.Format("You hit {0} for {1} extra damage!", target.Name, ad.Damage), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				(attacker as GamePlayer).Out.SendMessage(string.Format("You hit {0} for {1} extra damage!", target.Name, ad.Damage), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 			attacker.DealDamage(ad);
 		}
 

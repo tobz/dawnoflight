@@ -156,8 +156,8 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				brotherLawrence.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 14, 20);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 98, 44);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 14, 20);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 98, 44);
 				brotherLawrence.Inventory = template.CloseTemplate();
 				brotherLawrence.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -540,7 +540,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 						if (Util.Chance(50))
 						{
 							player.Out.SendDialogBox(eDialogCode.SimpleWarning, 0x00, 0x00, 0x00, 0x00, eDialogType.Ok, true, "You gather oil from the spriteling in Brother \nLawrence's Flask. Your journal \nhas been updated.");
-							InventoryItem item = player.Inventory.GetFirstItemByID(lawrencesEmptyFlask.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+							InventoryItem item = player.Inventory.GetFirstItemByID(lawrencesEmptyFlask.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 							if (item != null)
 							{
 								item.Name = "Lawrence's Flask (Half Full)";

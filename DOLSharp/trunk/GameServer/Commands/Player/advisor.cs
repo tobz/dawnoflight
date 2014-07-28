@@ -33,7 +33,7 @@ namespace DawnOfLight.GameServer.commands.Player
 		{
 			if (client.Player.IsMuted)
 			{
-				client.Player.Out.SendMessage("You have been muted and are not allowed to speak in this channel.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage("You have been muted and are not allowed to speak in this channel.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 				return;
 			}
 

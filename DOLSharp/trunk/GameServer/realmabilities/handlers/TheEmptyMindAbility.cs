@@ -21,11 +21,11 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				if (t_player == living && living is GamePlayer)
 				{
-					(living as GamePlayer).Out.SendMessage("You clear your mind and become more resistant to magic damage!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					(living as GamePlayer).Out.SendMessage("You clear your mind and become more resistant to magic damage!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
-					t_player.Out.SendMessage(living.Name + " casts a spell!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					t_player.Out.SendMessage(living.Name + " casts a spell!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				}
 			}
 			

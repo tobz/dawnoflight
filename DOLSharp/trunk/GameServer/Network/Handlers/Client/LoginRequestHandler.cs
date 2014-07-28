@@ -26,6 +26,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using DawnOfLight.Base;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
@@ -33,40 +34,7 @@ using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	/// <summary>
-	/// Handles the login request packet.
-	/// </summary>
-	/// <remarks>
-	/// Included is a PHP snippet for generating passwords that will work with the system/hashing algorithm DOL uses:
-	/// 
-	/// PHP version of CryptPass(string password):
-	///
-	///	$pass = "abc";
-	///	cryptPassword($pass);
-	///
-	///	function cryptPassword($pass)
-	///	{
-	///		$len = strlen($pass);
-	///		$res = "";
-	///		for ($i = 0; $i < $len; $i++)
-	///		{
-	///			$res = $res . chr(ord(substr($pass, $i, 1)) >> 8);
-	///			$res = $res . chr(ord(substr($pass, $i, 1)));
-	///		}
-	///
-	///		$hash = strtoupper(md5($res));
-	///		$len = strlen($hash);
-	///		for ($i = ($len-1)&~1; $i >= 0; $i-=2)
-	///		{
-	///			if (substr($hash, $i, 1) == "0")
-	///				$hash = substr($hash, 0, $i) . substr($hash, $i+1, $len);
-	///		}
-	///
-	///		$crypted = "##" . $hash;
-	///		return $crypted;
-	///	}
-	/// </remarks>
-	[PacketHandler(PacketHandlerType.TCP, 0x0F ^ 168, "Handles the login")]
+    [PacketHandler(PacketType.TCP, ClientPackets.LoginRequest)]
 	public class LoginRequestHandler : IPacketHandler
 	{
 		/// <summary>
@@ -74,16 +42,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 		/// </summary>
 		private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		private static DateTime m_lastAccountCreateTime;
-		private readonly Dictionary<string, LockCount> m_locks = new Dictionary<string, LockCount>();
-
-		#region IPacketHandler Members
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
-			if (client == null)
-				return;
-
 			string ipAddress = client.TcpEndpointAddress;
 
 			packet.Skip(2); //Skip the client_type byte
@@ -145,50 +105,32 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
             {
                 client.IsConnected = false;
 				client.Out.SendLoginDenied(eLoginError.GameCurrentlyClosed);
-				Log.Info(ipAddress + " disconnected because game is closed!");
 				GameServer.Instance.Disconnect(client);
 
 				return;
 			}
 
-			// check connection allowed with serverrules
-			try
+			if (!GameServer.ServerRules.IsAllowedToConnect(client, userName))
 			{
-				if (!GameServer.ServerRules.IsAllowedToConnect(client, userName))
-				{
-					if (Log.IsInfoEnabled)
-						Log.Info(ipAddress + " disconnected because IsAllowedToConnect returned false!");
-
-					GameServer.Instance.Disconnect(client);
-
-					return;
-				}
-			}
-			catch (Exception e)
-			{
-				if (Log.IsErrorEnabled)
-					Log.Error("Error shutting down Client after IsAllowedToConnect failed!", e);
+				GameServer.Instance.Disconnect(client);
+				return;
 			}
 
-			// Handle connection
-			EnterLock(userName);
 
 			try
 			{
 				Account playerAccount;
+
 				// Make sure that client won't quit
 				lock (client)
 				{
 					GameClient.eClientState state = client.ClientState;
 					if (state != GameClient.eClientState.NotConnected)
 					{
-						Log.DebugFormat("wrong client state on connect {0} {1}", userName, state.ToString());
+						Log.DebugFormat("wrong client state on connect {0} {1}", userName, state);
 						return;
 					}
 
-					if (Log.IsInfoEnabled)
-						Log.Info(string.Format("({0})User {1} logging on! ({2} type:{3} add:{4})", ipAddress, userName, client.Version,
-											   (client.ClientType), client.ClientAddons.ToString("G")));
 					// check client already connected
 					GameClient findclient = WorldMgr.GetClientByAccountName(userName, true);
 					if (findclient != null)
@@ -197,28 +139,20 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						                            
 						if (findclient.ClientState == GameClient.eClientState.Connecting)
 						{
-							if (Log.IsInfoEnabled) Log.Info("User is already connecting, ignored.");
-
 							client.Out.SendLoginDenied(eLoginError.AccountAlreadyLoggedIn);
-
 							return;
-						} // in login
+						}
 
 						if (findclient.ClientState == GameClient.eClientState.Linkdead)
 						{
-							if (Log.IsInfoEnabled) Log.Info("User is still being logged out from linkdeath!");
-
 							client.Out.SendLoginDenied(eLoginError.AccountIsInLogoutProcedure);
 						}
 						else
 						{
-							if (Log.IsInfoEnabled) Log.Info("User already logged in!");
-
 							client.Out.SendLoginDenied(eLoginError.AccountAlreadyLoggedIn);
 						}
 
 						GameServer.Instance.Disconnect(client);
-
 						return;
 					}
 					
@@ -229,162 +163,135 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 							Log.Info("Invalid symbols in account name \"" + userName + "\" found!");
 
 						client.IsConnected = false;
-						if (client != null && client.Out != null)
-						{
-							client.Out.SendLoginDenied(eLoginError.AccountInvalid);
-						}
-						else
-						{
-							Log.Warn("Client or Client.Out null on invalid name failure.  Disconnecting.");
-						}
+						client.Out.SendLoginDenied(eLoginError.AccountInvalid);
 
 						GameServer.Instance.Disconnect(client);
-
 						return;
 					}
-					else
-					{
-						playerAccount = GameServer.Database.FindObjectByKey<Account>(userName);
 
-						client.PingTime = DateTime.Now.Ticks;
+				    playerAccount = GameServer.Database.FindObjectByKey<Account>(userName);
 
-						if (playerAccount == null)
-						{
-							//check autocreate ...
+				    client.PingTime = DateTime.Now.Ticks;
 
-							if (GameServer.Instance.Configuration.AutoAccountCreation && Properties.ALLOW_AUTO_ACCOUNT_CREATION)
-							{
-								// autocreate account
-								if (string.IsNullOrEmpty(password))
-                                {
-                                    client.IsConnected = false;
-									client.Out.SendLoginDenied(eLoginError.AccountInvalid);
-									GameServer.Instance.Disconnect(client);
+				    if (playerAccount == null)
+				    {
+				        //check autocreate ...
 
-									if (Log.IsInfoEnabled)
-										Log.Info("Account creation failed, no password set for Account: " + userName);
+				        if (GameServer.Instance.Configuration.AutoAccountCreation && Properties.ALLOW_AUTO_ACCOUNT_CREATION)
+				        {
+				            // autocreate account
+				            if (string.IsNullOrEmpty(password))
+				            {
+				                client.IsConnected = false;
+				                client.Out.SendLoginDenied(eLoginError.AccountInvalid);
+				                GameServer.Instance.Disconnect(client);
 
-									return;
-								}
+				                if (Log.IsInfoEnabled)
+				                    Log.Info("Account creation failed, no password set for Account: " + userName);
 
-								// check for account bombing
-								TimeSpan ts;
-								IList<Account> allAccByIp = GameServer.Database.SelectObjects<Account>("LastLoginIP = '" + ipAddress + "'");
-								int totalacc = 0;
-								foreach (Account ac in allAccByIp)
-								{
-									ts = DateTime.Now - ac.CreationDate;
-									if (ts.TotalMinutes < Properties.TIME_BETWEEN_ACCOUNT_CREATION_SAMEIP && totalacc > 1)
-									{
-										Log.Warn("Account creation: too many from same IP within set minutes - " + userName + " : " + ipAddress);
+				                return;
+				            }
 
-                                        client.IsConnected = false;
-										client.Out.SendLoginDenied(eLoginError.PersonalAccountIsOutOfTime);
-										GameServer.Instance.Disconnect(client);
+				            // check for account bombing
+				            TimeSpan ts;
+				            var allAccByIp = GameServer.Database.SelectObjects<Account>("LastLoginIP = '" + ipAddress + "'");
+				            int totalacc = 0;
+				            foreach (Account ac in allAccByIp)
+				            {
+				                ts = DateTime.Now - ac.CreationDate;
+				                if (ts.TotalMinutes < Properties.TIME_BETWEEN_ACCOUNT_CREATION_SAMEIP && totalacc > 1)
+				                {
+				                    Log.Warn("Account creation: too many from same IP within set minutes - " + userName + " : " + ipAddress);
 
-										return;
-									}
+				                    client.IsConnected = false;
+				                    client.Out.SendLoginDenied(eLoginError.PersonalAccountIsOutOfTime);
+				                    GameServer.Instance.Disconnect(client);
 
-									totalacc++;
-								}
-								if (totalacc >= Properties.TOTAL_ACCOUNTS_ALLOWED_SAMEIP)
-								{
-									Log.Warn("Account creation: too many accounts created from same ip - " + userName + " : " + ipAddress);
+				                    return;
+				                }
 
-                                    client.IsConnected = false;
-									client.Out.SendLoginDenied(eLoginError.AccountNoAccessThisGame);
-									GameServer.Instance.Disconnect(client);
+				                totalacc++;
+				            }
 
-									return;
-								}
+				            if (totalacc >= Properties.TOTAL_ACCOUNTS_ALLOWED_SAMEIP)
+				            {
+				                Log.Warn("Account creation: too many accounts created from same ip - " + userName + " : " + ipAddress);
 
-								// per timeslice - for preventing account bombing via different ip
-								if (Properties.TIME_BETWEEN_ACCOUNT_CREATION > 0)
-								{
-									ts = DateTime.Now - m_lastAccountCreateTime;
-									if (ts.TotalMinutes < Properties.TIME_BETWEEN_ACCOUNT_CREATION)
-									{
-										Log.Warn("Account creation: time between account creation too small - " + userName + " : " + ipAddress);
+				                client.IsConnected = false;
+				                client.Out.SendLoginDenied(eLoginError.AccountNoAccessThisGame);
+				                GameServer.Instance.Disconnect(client);
 
-                                        client.IsConnected = false;
-										client.Out.SendLoginDenied(eLoginError.PersonalAccountIsOutOfTime);
-										GameServer.Instance.Disconnect(client);
+				                return;
+				            }
 
-										return;
-									}
-								}
+				            playerAccount = new Account();
+				            playerAccount.Name = userName;
+				            playerAccount.Password = Password.HashPassword(password);
+				            playerAccount.Realm = 0;
+				            playerAccount.CreationDate = DateTime.Now;
+				            playerAccount.LastLogin = DateTime.Now;
+				            playerAccount.LastLoginIP = ipAddress;
+				            playerAccount.LastClientVersion = ((int)client.Version).ToString();
+				            playerAccount.Language = Properties.SERV_LANGUAGE;
+				            playerAccount.PrivLevel = 1;
 
-								m_lastAccountCreateTime = DateTime.Now;
+				            if (Log.IsInfoEnabled)
+				                Log.Info("New account created: " + userName);
 
-								playerAccount = new Account();
-								playerAccount.Name = userName;
-								playerAccount.Password = CryptPassword(password);
-								playerAccount.Realm = 0;
-								playerAccount.CreationDate = DateTime.Now;
-								playerAccount.LastLogin = DateTime.Now;
-								playerAccount.LastLoginIP = ipAddress;
-								playerAccount.LastClientVersion = ((int)client.Version).ToString();
-								playerAccount.Language = Properties.SERV_LANGUAGE;
-								playerAccount.PrivLevel = 1;
+				            GameServer.Database.AddObject(playerAccount);
 
-								if (Log.IsInfoEnabled)
-									Log.Info("New account created: " + userName);
+				            // Log account creation
+				            AuditMgr.AddAuditEntry(client, AuditType.Account, AuditSubtype.AccountCreate, "", userName);
+				        }
+				        else
+				        {
+				            if (Log.IsInfoEnabled)
+				                Log.Info("No such account found and autocreation deactivated!");
 
-								GameServer.Database.AddObject(playerAccount);
+				            client.IsConnected = false;
+				            client.Out.SendLoginDenied(eLoginError.AccountNotFound);
+				            GameServer.Instance.Disconnect(client);
 
-								// Log account creation
-								AuditMgr.AddAuditEntry(client, AuditType.Account, AuditSubtype.AccountCreate, "", userName);
-							}
-							else
-							{
-								if (Log.IsInfoEnabled)
-									Log.Info("No such account found and autocreation deactivated!");
+				            return;
+				        }
+				    }
+				    else
+				    {
+				        // check password
+				        if (!playerAccount.Password.StartsWith("##"))
+				        {
+				            playerAccount.Password = Password.HashPassword(playerAccount.Password);
+				        }
 
-                                client.IsConnected = false;
-								client.Out.SendLoginDenied(eLoginError.AccountNotFound);
-								GameServer.Instance.Disconnect(client);
+				        if (!Password.HashPassword(password).Equals(playerAccount.Password))
+				        {
+				            if (Log.IsInfoEnabled)
+				                Log.Info("(" + client.TcpEndpoint + ") Wrong password!");
 
-								return;
-							}
-						}
-						else
-						{
-							// check password
-							if (!playerAccount.Password.StartsWith("##"))
-							{
-								playerAccount.Password = CryptPassword(playerAccount.Password);
-							}
+				            client.IsConnected = false;
+				            client.Out.SendLoginDenied(eLoginError.WrongPassword);
 
-							if (!CryptPassword(password).Equals(playerAccount.Password))
-							{
-								if (Log.IsInfoEnabled)
-									Log.Info("(" + client.TcpEndpoint + ") Wrong password!");
+				            // Log failure
+				            AuditMgr.AddAuditEntry(client, AuditType.Account, AuditSubtype.AccountFailedLogin, "", userName);
 
-                                client.IsConnected = false;
-								client.Out.SendLoginDenied(eLoginError.WrongPassword);
+				            GameServer.Instance.Disconnect(client);
 
-								// Log failure
-								AuditMgr.AddAuditEntry(client, AuditType.Account, AuditSubtype.AccountFailedLogin, "", userName);
+				            return;
+				        }
 
-								GameServer.Instance.Disconnect(client);
+				        // save player infos
+				        playerAccount.LastLogin = DateTime.Now;
+				        playerAccount.LastLoginIP = ipAddress;
+				        playerAccount.LastClientVersion = ((int)client.Version).ToString();
+				        if (string.IsNullOrEmpty(playerAccount.Language))
+				        {
+				            playerAccount.Language = Properties.SERV_LANGUAGE;
+				        }
 
-								return;
-							}
+				        GameServer.Database.SaveObject(playerAccount);
+				    }
 
-							// save player infos
-							playerAccount.LastLogin = DateTime.Now;
-							playerAccount.LastLoginIP = ipAddress;
-							playerAccount.LastClientVersion = ((int)client.Version).ToString();
-							if (string.IsNullOrEmpty(playerAccount.Language))
-							{
-								playerAccount.Language = Properties.SERV_LANGUAGE;
-							}
-
-							GameServer.Database.SaveObject(playerAccount);
-						}
-					}
-
-					//Save the account table
+				    //Save the account table
 					client.Account = playerAccount;
 
 					// create session ID here to disable double login bug
@@ -422,127 +329,6 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				client.Out.SendLoginDenied(eLoginError.CannotAccessUserAccount);
 				GameServer.Instance.Disconnect(client);
 			}
-			finally
-			{
-				ExitLock(userName);
-			}
 		}
-
-		#endregion
-
-		public static string CryptPassword(string password)
-		{
-			MD5 md5 = new MD5CryptoServiceProvider();
-
-			char[] pw = password.ToCharArray();
-
-			var res = new byte[pw.Length * 2];
-			for (int i = 0; i < pw.Length; i++)
-			{
-				res[i * 2] = (byte)(pw[i] >> 8);
-				res[i * 2 + 1] = (byte)(pw[i]);
-			}
-
-			byte[] bytes = md5.ComputeHash(res);
-
-			var crypted = new StringBuilder();
-			crypted.Append("##");
-			for (int i = 0; i < bytes.Length; i++)
-			{
-				crypted.Append(bytes[i].ToString("X"));
-			}
-
-			return crypted.ToString();
-		}
-
-		/// <summary>
-		/// Acquires the lock on account.
-		/// </summary>
-		/// <param name="accountName">Name of the account.</param>
-		private void EnterLock(string accountName)
-		{
-			// Safety check
-			if (accountName == null)
-			{
-				accountName = string.Empty;
-				Log.Warn("(Enter) No account name");
-			}
-
-			LockCount lockObj = null;
-			lock (m_locks)
-			{
-				// Get/create lock object
-				if (!m_locks.TryGetValue(accountName, out lockObj))
-				{
-					lockObj = new LockCount();
-					m_locks.Add(accountName, lockObj);
-				}
-
-				if (lockObj == null)
-				{
-					Log.Error("(Enter) No lock object for account: '" + accountName + "'");
-				}
-				else
-				{
-					// Increase count of locks
-					lockObj.count++;
-				}
-			}
-
-			if (lockObj != null)
-			{
-				Monitor.Enter(lockObj);
-			}
-		}
-
-		/// <summary>
-		/// Releases the lock on account.
-		/// </summary>
-		/// <param name="accountName">Name of the account.</param>
-		private void ExitLock(string accountName)
-		{
-			// Safety check
-			if (accountName == null)
-			{
-				accountName = string.Empty;
-				Log.Warn("(Exit) No account name");
-			}
-
-			LockCount lockObj = null;
-			lock (m_locks)
-			{
-				// Get lock object
-				if (!m_locks.TryGetValue(accountName, out lockObj))
-				{
-					Log.Error("(Exit) No lock object for account: '" + accountName + "'");
-				}
-
-				// Remove lock object if no more locks on it
-				if (lockObj != null)
-				{
-					if (--lockObj.count <= 0)
-					{
-						m_locks.Remove(accountName);
-					}
-				}
-			}
-
-			Monitor.Exit(lockObj);
-		}
-
-		#region Nested type: LockCount
-
-		/// <summary>
-		/// This class is used as lock object. Contains the count of locks held.
-		/// </summary>
-		private class LockCount
-		{
-			/// <summary>
-			/// Count of locks held.
-			/// </summary>
-			public int count;
-		}
-
-		#endregion
 	}
 }

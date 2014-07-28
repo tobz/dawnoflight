@@ -18,46 +18,32 @@
  */
 
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x2D ^ 168, "handle Looking for a group")]
+    [PacketHandler(PacketType.TCP, ClientPackets.LookingForAGroup, ClientStatus.PlayerInGame)]
 	public class LookingForAGroupHandler : IPacketHandler
 	{
-		//rewritten by Corillian so if it doesn't work you know who to yell at ;)
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
+		    var playersSearching = new List<GamePlayer>();
+
 			byte grouped = (byte)packet.ReadByte();
-			ArrayList list = new ArrayList();
 			if (grouped != 0x00)
 			{
-				ArrayList groups = GroupMgr.ListGroupByStatus(0x00);
-				if (groups != null)
-				{
-					foreach (Group group in groups)
-						if (GameServer.ServerRules.IsAllowedToGroup(group.Leader, client.Player, true))
-						{
-							list.Add(group.Leader);
-						}
-				}
+			    var groups = GroupMgr.ListGroupByStatus(0x00);
+			    playersSearching.AddRange(groups.Where(x => GameServer.ServerRules.IsAllowedToGroup(x.Leader, client.Player, true)).Select(x => x.Leader));
 			}
 
-			ArrayList Lfg = GroupMgr.LookingForGroupPlayers();
+		    var lfgPlayers = GroupMgr.LookingForGroupPlayers();
+		    playersSearching.AddRange(lfgPlayers.Where(x => x != client.Player && GameServer.ServerRules.IsAllowedToGroup(client.Player, x, true)));
 
-			if (Lfg != null)
-			{
-				foreach (GamePlayer player in Lfg)
-				{
-					if (player != client.Player && GameServer.ServerRules.IsAllowedToGroup(client.Player, player, true))
-					{
-						list.Add(player);
-					}
-				}
-			}
-
-			client.Out.SendFindGroupWindowUpdate((GamePlayer[])list.ToArray(typeof(GamePlayer)));
+		    client.Out.SendFindGroupWindowUpdate(playersSearching);
 		}
 	}
 }

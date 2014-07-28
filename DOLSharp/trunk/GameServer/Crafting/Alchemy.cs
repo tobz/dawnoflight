@@ -95,8 +95,8 @@ namespace DawnOfLight.GameServer.Crafting
                 (int)eObjectType.AlchemyTincture)
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, 
-                    "Alchemy.IsAllowedToCombine.AlchemyTinctures"), eChatType.CT_System, 
-                    eChatLoc.CL_SystemWindow);
+                    "Alchemy.IsAllowedToCombine.AlchemyTinctures"), ChatType.CT_System, 
+                    ChatLocation.CL_SystemWindow);
 				
                 return false;
 			}
@@ -104,8 +104,8 @@ namespace DawnOfLight.GameServer.Crafting
 			if (player.TradeWindow.ItemsCount > 1)
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language,
-                    "Alchemy.IsAllowedToCombine.OneTincture"), eChatType.CT_System, 
-                    eChatLoc.CL_SystemWindow);
+                    "Alchemy.IsAllowedToCombine.OneTincture"), ChatType.CT_System, 
+                    ChatLocation.CL_SystemWindow);
 
 				return false;
 			}
@@ -114,7 +114,7 @@ namespace DawnOfLight.GameServer.Crafting
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, 
                     "Alchemy.IsAllowedToCombine.AlreadyImbued", item.Name), 
-                    eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				return false;
 			}

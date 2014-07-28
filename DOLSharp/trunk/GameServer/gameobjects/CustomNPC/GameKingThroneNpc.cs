@@ -42,7 +42,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			TurnTo(player, 5000);
 			if (!player.Champion && player.Level == 50)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "KingNPC.WhisperReceive.AskForChampion"), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "KingNPC.WhisperReceive.AskForChampion"), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 			}
 
 			if (player.Champion)
@@ -57,12 +57,12 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 				if ( cllevel )
 				{
-					player.Out.SendMessage( "You reached champion level " + player.ChampionLevel + "!", eChatType.CT_System, eChatLoc.CL_PopupWindow );
+					player.Out.SendMessage( "You reached champion level " + player.ChampionLevel + "!", ChatType.CT_System, ChatLocation.CL_PopupWindow );
 				}
 
 				if (player.ChampionLevel >= 5)
 				{
-					player.Out.SendMessage("I can [respecialize] your champion skills if you so desire.", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage("I can [respecialize] your champion skills if you so desire.", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 
 			}
@@ -82,7 +82,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			{
 				if (player.Champion == true)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "KingNPC.WhisperReceive.AlreadyChampion"), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "KingNPC.WhisperReceive.AlreadyChampion"), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					return false;
 				}
 
@@ -90,7 +90,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				player.Champion = true;
 				player.Out.SendUpdatePlayer();
 				player.SaveIntoDatabase();
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "KingNPC.WhisperReceive.IsNowChampion"), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "KingNPC.WhisperReceive.IsNowChampion"), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				return true;
 			}
 
@@ -98,7 +98,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			{
 				player.RespecChampionSkills();
 				player.SaveIntoDatabase();
-				player.Out.SendMessage("I have reset your champion skills!", eChatType.CT_Important, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("I have reset your champion skills!", ChatType.CT_Important, ChatLocation.CL_PopupWindow);
 			}
 
 			return true;
@@ -131,7 +131,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 					if (player.Champion && player.ChampionLevel >= 5)
 					{
 						player.RespecChampionSkills();
-						player.Out.SendMessage("I have reset your Champion skills!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("I have reset your Champion skills!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 					}
 					break;
@@ -162,7 +162,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 							player.Inventory.RemoveCountFromStack(item, 1);
                             InventoryLogging.LogInventoryAction(player, this, eInventoryActionType.Other, item.Template);
 							player.RespecAmountChampionSkill++;
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "CLWeaponNPC.ReceiveItem.RespecCL"), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "CLWeaponNPC.ReceiveItem.RespecCL"), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 							return true;
 						}
 				}

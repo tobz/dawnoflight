@@ -23,21 +23,15 @@ using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerSitRequest, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.PlayerSitRequest, ClientStatus.PlayerInGame)]
 	public class PlayerSitRequestHandler : IPacketHandler
 	{
-		#region IPacketHandler Members
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+        public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			var status = (byte) packet.ReadByte();
 
 			new SitRequestHandler(client.Player, status != 0x00).Start(1);
 		}
-
-		#endregion
-
-		#region Nested type: SitRequestHandler
 
 		/// <summary>
 		/// Handles player sit requests
@@ -69,7 +63,5 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				player.Sit(m_sit);
 			}
 		}
-
-		#endregion
 	}
 }

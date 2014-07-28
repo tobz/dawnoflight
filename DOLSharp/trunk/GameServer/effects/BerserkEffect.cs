@@ -49,7 +49,7 @@ namespace DawnOfLight.GameServer.Effects
 
 			if(living is GamePlayer)
 			{
-				(living as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((living as GamePlayer).Client, "Effects.BerserkEffect.GoBerserkerFrenzy"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				(living as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((living as GamePlayer).Client, "Effects.BerserkEffect.GoBerserkerFrenzy"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				living.Emote(eEmote.MidgardFrenzy);
 				if((living as GamePlayer).Race == (int)eRace.Dwarf)
 				{
@@ -69,7 +69,7 @@ namespace DawnOfLight.GameServer.Effects
 
 			// there is no animation on end of the effect
 			if(m_owner is GamePlayer)
-				(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.BerserkEffect.BerserkerFrenzyEnds"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.BerserkEffect.BerserkerFrenzyEnds"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		/// <summary>

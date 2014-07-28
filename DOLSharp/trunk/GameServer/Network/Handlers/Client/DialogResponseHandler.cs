@@ -28,12 +28,12 @@ using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.DialogResponse, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.DialogResponse, ClientStatus.PlayerInGame)]
 	public class DialogResponseHandler : IPacketHandler
 	{
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			ushort data1 = packet.ReadShort();
 			ushort data2 = packet.ReadShort();
@@ -133,13 +133,13 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 								if (guildLeader == null)
 								{
 									player.Out.SendMessage("You need to be in the same region as the guild leader to accept an invitation.",
-									                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									return;
 								}
 								if (player.Guild != null)
 								{
-									player.Out.SendMessage("You are still in a guild, you'll have to leave it first.", eChatType.CT_System,
-									                       eChatLoc.CL_SystemWindow);
+									player.Out.SendMessage("You are still in a guild, you'll have to leave it first.", ChatType.CT_System,
+									                       ChatLocation.CL_SystemWindow);
 									return;
 								}
 								if (guildLeader.Guild != null)
@@ -148,15 +148,15 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 									return;
 								}
 
-								player.Out.SendMessage("Player doing the invite is not in a guild!", eChatType.CT_System,
-								                       eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage("Player doing the invite is not in a guild!", ChatType.CT_System,
+								                       ChatLocation.CL_SystemWindow);
 								return;
 							}
 
 							if (guildLeader != null)
 							{
-								guildLeader.Out.SendMessage(player.Name + " declined your invite.", eChatType.CT_System,
-								                            eChatLoc.CL_SystemWindow);
+								guildLeader.Out.SendMessage(player.Name + " declined your invite.", ChatType.CT_System,
+								                            ChatLocation.CL_SystemWindow);
 							}
 							return;
 						}
@@ -166,7 +166,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 							{
 								if (player.Guild == null)
 								{
-									player.Out.SendMessage("You are not in a guild.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									player.Out.SendMessage("You are not in a guild.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									return;
 								}
 
@@ -174,7 +174,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 							}
 							else
 							{
-								player.Out.SendMessage("You decline to quit your guild.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage("You decline to quit your guild.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								return;
 							}
 							break;
@@ -221,7 +221,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 								if (player.Group != null)
 								{
-									player.Out.SendMessage("You are still in a group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									player.Out.SendMessage("You are still in a group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									return;
 								}
 								if (!GameServer.ServerRules.IsAllowedToGroup(groupLeader, player, false))
@@ -230,7 +230,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 								}
 								if (player.InCombatPvE)
 								{
-									player.Out.SendMessage("You can't join a group while in combat!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									player.Out.SendMessage("You can't join a group while in combat!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									return;
 								}
 								if (groupLeader.Group != null)
@@ -238,7 +238,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 									if (groupLeader.Group.Leader != groupLeader) return;
                                     if (groupLeader.Group.MemberCount >= ServerProperties.Properties.GROUP_MAX_MEMBER)
 									{
-										player.Out.SendMessage("The group is full.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+										player.Out.SendMessage("The group is full.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 										return;
 									}
 									groupLeader.Group.AddMember(player);
@@ -265,15 +265,15 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 								if (player.Guild == null)
 								{
 									player.Out.SendMessage("You have to be a member of a guild, before you can use any of the commands!",
-									                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									return;
 								}
 
 								AbstractGameKeep keep = GameServer.KeepManager.GetKeepCloseToSpot(player.CurrentRegionID, player, WorldMgr.VISIBILITY_DISTANCE);
 								if (keep == null)
 								{
-									player.Out.SendMessage("You have to be near the keep to claim it.", eChatType.CT_System,
-									                       eChatLoc.CL_SystemWindow);
+									player.Out.SendMessage("You have to be near the keep to claim it.", ChatType.CT_System,
+									                       ChatLocation.CL_SystemWindow);
 									return;
 								}
 
@@ -328,11 +328,11 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 								player.SaveIntoDatabase();
 
 								// notify the player of what we took and how long they are prepaid for
-								player.Out.SendMessage("You deposit " + Money.GetString(moneyToAdd) + " in the lockbox.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage("You deposit " + Money.GetString(moneyToAdd) + " in the lockbox.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								player.Out.SendMessage("The lockbox now has " + Money.GetString(house.KeptMoney) + " in it.  The weekly payment is " +
-									Money.GetString(HouseMgr.GetRentByModel(house.Model)) + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									Money.GetString(HouseMgr.GetRentByModel(house.Model)) + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								player.Out.SendMessage("The house is now prepaid for the next " + (house.KeptMoney/HouseMgr.GetRentByModel(house.Model)) +
-									" payments.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									" payments.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 								// clean up
 								player.TempProperties.removeProperty(HousingConstants.MoneyForHouseRent);
@@ -353,11 +353,11 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 								player.SaveIntoDatabase();
 
 								// notify the player of what we took and how long they are prepaid for
-								player.Out.SendMessage("You deposit " + Money.GetString(bpsToMoney) + " in the lockbox.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage("You deposit " + Money.GetString(bpsToMoney) + " in the lockbox.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								player.Out.SendMessage("The lockbox now has " + Money.GetString(house.KeptMoney) + " in it.  The weekly payment is " +
-									Money.GetString(HouseMgr.GetRentByModel(house.Model)) + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									Money.GetString(HouseMgr.GetRentByModel(house.Model)) + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								player.Out.SendMessage("The house is now prepaid for the next " + (house.KeptMoney/HouseMgr.GetRentByModel(house.Model)) +
-									" payments.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									" payments.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 								// clean up
 								player.TempProperties.removeProperty(HousingConstants.BPsForHouseRent);

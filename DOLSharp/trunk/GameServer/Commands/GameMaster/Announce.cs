@@ -50,7 +50,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						foreach (GameClient clients in WorldMgr.GetAllPlayingClients())
                             if(clients != null)
-							    clients.Out.SendMessage(LanguageMgr.GetTranslation(clients, "GMCommands.Announce.LogAnnounce", message), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+							    clients.Out.SendMessage(LanguageMgr.GetTranslation(clients, "GMCommands.Announce.LogAnnounce", message), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 						break;
 					}
 				#endregion Log
@@ -71,7 +71,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						foreach (GameClient clients in WorldMgr.GetAllPlayingClients())
                             if(clients != null)
-							    clients.Out.SendMessage(LanguageMgr.GetTranslation(clients, "GMCommands.Announce.SendAnnounce", message), eChatType.CT_Send, eChatLoc.CL_ChatWindow);
+							    clients.Out.SendMessage(LanguageMgr.GetTranslation(clients, "GMCommands.Announce.SendAnnounce", message), ChatType.CT_Send, ChatLocation.CL_ChatWindow);
 						break;
 					}
 				#endregion Send
@@ -80,7 +80,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
                         foreach (GameClient clients in WorldMgr.GetAllPlayingClients())
                             if (clients != null)
-							    clients.Out.SendMessage(message, eChatType.CT_ScreenCenter, eChatLoc.CL_SystemWindow);
+							    clients.Out.SendMessage(message, ChatType.CT_ScreenCenter, ChatLocation.CL_SystemWindow);
 						break;
 					}
 				#endregion Center

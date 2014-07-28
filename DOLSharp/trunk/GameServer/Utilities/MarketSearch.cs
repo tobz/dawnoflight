@@ -52,12 +52,12 @@ namespace DawnOfLight.GameServer.Utilities
 			public byte armorType;
 			public byte damageType;
 			public byte playerCrafted;
-			public string clientVersion;
+			public string ClientVersion;
 
 			public override string ToString()
 			{
-				return string.Format("name:'{0}', slot:{1,2}, skill:{2,2}, resist:{3,2}, bonus:{4,2}, hp:{5,2}, power:{6,2}, proc:{7}, qtyMin:{8,3}, qtyMax:{9,3}, levelMin:{10,2}, levelMax:{11,2}, priceMin:{12,2}, priceMax:{13,2}, visual:{14}, armorType:{15:2}, damageType:{16}, playerCrafted:{17}, clientVersion:{18}",
-					name, slot, skill, resist, bonus, hp, power, proc, qtyMin, qtyMax, levelMin, levelMax, priceMin, priceMax, visual, armorType, damageType, playerCrafted, clientVersion);
+				return string.Format("name:'{0}', slot:{1,2}, skill:{2,2}, resist:{3,2}, bonus:{4,2}, hp:{5,2}, power:{6,2}, proc:{7}, qtyMin:{8,3}, qtyMax:{9,3}, levelMin:{10,2}, levelMax:{11,2}, priceMin:{12,2}, priceMax:{13,2}, visual:{14}, armorType:{15:2}, damageType:{16}, playerCrafted:{17}, ClientVersion:{18}",
+					name, slot, skill, resist, bonus, hp, power, proc, qtyMin, qtyMax, levelMin, levelMax, priceMin, priceMax, visual, armorType, damageType, playerCrafted, ClientVersion);
 			}
 		}
 
@@ -168,24 +168,24 @@ namespace DawnOfLight.GameServer.Utilities
 			{
 				switch (slot)
 				{
-					case 0: return item.Item_Type == (int)eInventorySlot.HandsArmor;
-					case 1: return item.Item_Type == (int)eInventorySlot.FeetArmor;
-					case 2: return item.Item_Type == (int)eInventorySlot.HeadArmor;
-					case 3: return item.Item_Type == (int)eInventorySlot.ArmsArmor;
-					case 4: return item.Item_Type == (int)eInventorySlot.LegsArmor;
-					case 5: return item.Item_Type == (int)eInventorySlot.TorsoArmor;
-					case 6: return item.Object_Type == (int)eObjectType.Magical && (item.Item_Type == (int)eInventorySlot.RightRing || item.Item_Type == (int)eInventorySlot.LeftRing);
-					case 7: return item.Object_Type == (int)eObjectType.Magical && (item.Item_Type == (int)eInventorySlot.RightBracer || item.Item_Type == (int)eInventorySlot.LeftBracer);
-					case 8: return item.Object_Type == (int)eObjectType.Magical && item.Item_Type == (int)eInventorySlot.Waist;
-					case 9: return item.Object_Type == (int)eObjectType.Magical && item.Item_Type == (int)eInventorySlot.Neck;
-					case 10: return item.Object_Type == (int)eObjectType.Magical && item.Item_Type == (int)eInventorySlot.Cloak;
-					case 11: return item.Object_Type == (int)eObjectType.Magical && item.Item_Type == (int)eInventorySlot.Jewellery;
-					case 12: return item.Item_Type == (int)eInventorySlot.RightHandWeapon || item.Item_Type == (int)eInventorySlot.LeftHandWeapon || item.Item_Type == (int)eInventorySlot.TwoHandWeapon;
-					case 13: return item.Object_Type == (int)eObjectType.Shield && item.Item_Type == (int)eInventorySlot.LeftHandWeapon;
-					case 14: return item.Item_Type == (int)eInventorySlot.TwoHandWeapon;
-					case 15: return item.Item_Type == (int)eInventorySlot.DistanceWeapon;
-					case 16: return item.Item_Type == (int)eInventorySlot.LeftHandWeapon;
-					case 17: return item.Object_Type == (int)eObjectType.Instrument && item.Item_Type == (int)eInventorySlot.RightHandWeapon;
+					case 0: return item.Item_Type == (int)InventorySlot.HandsArmor;
+					case 1: return item.Item_Type == (int)InventorySlot.FeetArmor;
+					case 2: return item.Item_Type == (int)InventorySlot.HeadArmor;
+					case 3: return item.Item_Type == (int)InventorySlot.ArmsArmor;
+					case 4: return item.Item_Type == (int)InventorySlot.LegsArmor;
+					case 5: return item.Item_Type == (int)InventorySlot.TorsoArmor;
+					case 6: return item.Object_Type == (int)eObjectType.Magical && (item.Item_Type == (int)InventorySlot.RightRing || item.Item_Type == (int)InventorySlot.LeftRing);
+					case 7: return item.Object_Type == (int)eObjectType.Magical && (item.Item_Type == (int)InventorySlot.RightBracer || item.Item_Type == (int)InventorySlot.LeftBracer);
+					case 8: return item.Object_Type == (int)eObjectType.Magical && item.Item_Type == (int)InventorySlot.Waist;
+					case 9: return item.Object_Type == (int)eObjectType.Magical && item.Item_Type == (int)InventorySlot.Neck;
+					case 10: return item.Object_Type == (int)eObjectType.Magical && item.Item_Type == (int)InventorySlot.Cloak;
+					case 11: return item.Object_Type == (int)eObjectType.Magical && item.Item_Type == (int)InventorySlot.Jewellery;
+					case 12: return item.Item_Type == (int)InventorySlot.RightHandWeapon || item.Item_Type == (int)InventorySlot.LeftHandWeapon || item.Item_Type == (int)InventorySlot.TwoHandWeapon;
+					case 13: return item.Object_Type == (int)eObjectType.Shield && item.Item_Type == (int)InventorySlot.LeftHandWeapon;
+					case 14: return item.Item_Type == (int)InventorySlot.TwoHandWeapon;
+					case 15: return item.Item_Type == (int)InventorySlot.DistanceWeapon;
+					case 16: return item.Item_Type == (int)InventorySlot.LeftHandWeapon;
+					case 17: return item.Object_Type == (int)eObjectType.Instrument && item.Item_Type == (int)InventorySlot.RightHandWeapon;
 					case 18: return item.Object_Type == (int)eObjectType.GenericItem;
 
 					default:

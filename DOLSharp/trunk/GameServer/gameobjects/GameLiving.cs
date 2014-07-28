@@ -807,7 +807,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			InventoryItem weapon;
 			if (NextCombatStyle == null) return null;
 			if (NextCombatStyle.WeaponTypeRequirement == (int)eObjectType.Shield)
-				weapon = Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+				weapon = Inventory.GetItem(InventorySlot.LeftHandWeapon);
 			else weapon = AttackWeapon;
 
 			if (StyleProcessor.CanUseStyle(this, NextCombatStyle, weapon))
@@ -1057,9 +1057,9 @@ namespace DawnOfLight.GameServer.GameObjects
 				{
 					switch (ActiveWeaponSlot)
 					{
-							case eActiveWeaponSlot.Standard: return Inventory.GetItem(eInventorySlot.RightHandWeapon);
-							case eActiveWeaponSlot.TwoHanded: return Inventory.GetItem(eInventorySlot.TwoHandWeapon);
-							case eActiveWeaponSlot.Distance: return Inventory.GetItem(eInventorySlot.DistanceWeapon);
+							case eActiveWeaponSlot.Standard: return Inventory.GetItem(InventorySlot.RightHandWeapon);
+							case eActiveWeaponSlot.TwoHanded: return Inventory.GetItem(InventorySlot.TwoHandWeapon);
+							case eActiveWeaponSlot.Distance: return Inventory.GetItem(InventorySlot.DistanceWeapon);
 					}
 				}
 				return null;
@@ -1702,7 +1702,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				if (EffectOwner == ad.Target)
 				{
 					if (this is GamePlayer)
-						((GamePlayer)this).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)this).Client.Account.Language, "GameLiving.AttackData.InvisibleToYou"), ad.Target.GetName(0, true)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+						((GamePlayer)this).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)this).Client.Account.Language, "GameLiving.AttackData.InvisibleToYou"), ad.Target.GetName(0, true)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 					ad.AttackResult = eAttackResult.NoValidTarget;
 					return ad;
 				}
@@ -1711,7 +1711,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			// DamageImmunity Ability
 			if ((GameLiving)target != null && ((GameLiving)target).HasAbility("DamageImmunity"))
 			{
-				//if (ad.Attacker is GamePlayer) ((GamePlayer)ad.Attacker).Out.SendMessage(string.Format("{0} can't be attacked!", ad.Target.GetName(0, true)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+				//if (ad.Attacker is GamePlayer) ((GamePlayer)ad.Attacker).Out.SendMessage(string.Format("{0} can't be attacked!", ad.Target.GetName(0, true)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 				ad.AttackResult = eAttackResult.NoValidTarget;
 				return ad;
 			}
@@ -1738,7 +1738,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				InventoryItem armor = null;
 
 				if (ad.Target.Inventory != null)
-					armor = ad.Target.Inventory.GetItem((eInventorySlot)ad.ArmorHitLocation);
+					armor = ad.Target.Inventory.GetItem((InventorySlot)ad.ArmorHitLocation);
 
 				InventoryItem weaponTypeToUse = null;
 
@@ -1825,8 +1825,8 @@ namespace DawnOfLight.GameServer.GameObjects
 					if (ad.Target.Endurance + enduconversion > ad.Target.MaxEndurance) enduconversion = ad.Target.MaxEndurance - ad.Target.Endurance;
 					if (manaconversion < 1) manaconversion = 0;
 					if (enduconversion < 1) enduconversion = 0;
-					if (manaconversion >= 1) (ad.Target as GamePlayer).Out.SendMessage(string.Format(LanguageMgr.GetTranslation((ad.Target as GamePlayer).Client.Account.Language, "GameLiving.AttackData.GainPowerPoints"), manaconversion), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
-					if (enduconversion >= 1) (ad.Target as GamePlayer).Out.SendMessage(string.Format(LanguageMgr.GetTranslation((ad.Target as GamePlayer).Client.Account.Language, "GameLiving.AttackData.GainEndurancePoints"), enduconversion), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					if (manaconversion >= 1) (ad.Target as GamePlayer).Out.SendMessage(string.Format(LanguageMgr.GetTranslation((ad.Target as GamePlayer).Client.Account.Language, "GameLiving.AttackData.GainPowerPoints"), manaconversion), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
+					if (enduconversion >= 1) (ad.Target as GamePlayer).Out.SendMessage(string.Format(LanguageMgr.GetTranslation((ad.Target as GamePlayer).Client.Account.Language, "GameLiving.AttackData.GainEndurancePoints"), enduconversion), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 					ad.Target.Endurance += enduconversion; if (ad.Target.Endurance > ad.Target.MaxEndurance) ad.Target.Endurance = ad.Target.MaxEndurance;
 					ad.Target.Mana += manaconversion; if (ad.Target.Mana > ad.Target.MaxMana) ad.Target.Mana = ad.Target.MaxMana;
 				}
@@ -1867,7 +1867,7 @@ namespace DawnOfLight.GameServer.GameObjects
 					GamePlayer player = this as GamePlayer;
 
 					string damageAmount = (ad.StyleDamage > 0) ? " (+" + ad.StyleDamage + ")" : "";
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.ExecuteStyle.PerformPerfectly", ad.Style.Name, damageAmount), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "StyleProcessor.ExecuteStyle.PerformPerfectly", ad.Style.Name, damageAmount), ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 				}
 				else if (this is GameNPC)
 				{
@@ -1879,7 +1879,7 @@ namespace DawnOfLight.GameServer.GameObjects
 						if (owner != null)
 						{
 							string damageAmount = (ad.StyleDamage > 0) ? " (+" + ad.StyleDamage + ")" : "";
-							owner.Out.SendMessage(LanguageMgr.GetTranslation(owner.Client.Account.Language, "StyleProcessor.ExecuteStyle.PerformsPerfectly", Name, ad.Style.Name, damageAmount), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+							owner.Out.SendMessage(LanguageMgr.GetTranslation(owner.Client.Account.Language, "StyleProcessor.ExecuteStyle.PerformsPerfectly", Name, ad.Style.Name, damageAmount), ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 						}
 					}
 				}
@@ -1907,18 +1907,18 @@ namespace DawnOfLight.GameServer.GameObjects
 
 							// another player blocked for real target
 							if (target is GamePlayer)
-								((GamePlayer)target).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)target).Client.Account.Language, "GameLiving.AttackData.BlocksYou"), ad.Target.GetName(0, true), ad.Attacker.GetName(0, false)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+								((GamePlayer)target).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)target).Client.Account.Language, "GameLiving.AttackData.BlocksYou"), ad.Target.GetName(0, true), ad.Attacker.GetName(0, false)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 
 							// blocked for another player
 							if (ad.Target is GamePlayer)
 							{
-								((GamePlayer)ad.Target).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)ad.Target).Client.Account.Language, "GameLiving.AttackData.YouBlock"), ad.Attacker.GetName(0, false), target.GetName(0, false)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+								((GamePlayer)ad.Target).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)ad.Target).Client.Account.Language, "GameLiving.AttackData.YouBlock"), ad.Attacker.GetName(0, false), target.GetName(0, false)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 								((GamePlayer)ad.Target).Stealth(false);
 							}
 						}
 						else if (ad.Target is GamePlayer)
 						{
-							((GamePlayer)ad.Target).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)ad.Target).Client.Account.Language, "GameLiving.AttackData.AttacksYou"), ad.Attacker.GetName(0, true)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+							((GamePlayer)ad.Target).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)ad.Target).Client.Account.Language, "GameLiving.AttackData.AttacksYou"), ad.Attacker.GetName(0, true)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 						}
 						break;
 					}
@@ -1932,11 +1932,11 @@ namespace DawnOfLight.GameServer.GameObjects
 
 							// intercept for another player
 							if (target is GamePlayer)
-								((GamePlayer)target).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)target).Client.Account.Language, "GameLiving.AttackData.StepsInFront"), ad.Target.GetName(0, true)), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+								((GamePlayer)target).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)target).Client.Account.Language, "GameLiving.AttackData.StepsInFront"), ad.Target.GetName(0, true)), ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 
 							// intercept by player
 							if (ad.Target is GamePlayer)
-								((GamePlayer)ad.Target).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)ad.Target).Client.Account.Language, "GameLiving.AttackData.YouStepInFront"), target.GetName(0, false)), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+								((GamePlayer)ad.Target).Out.SendMessage(string.Format(LanguageMgr.GetTranslation(((GamePlayer)ad.Target).Client.Account.Language, "GameLiving.AttackData.YouStepInFront"), target.GetName(0, false)), ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 						}
 						else
 						{
@@ -2014,16 +2014,16 @@ namespace DawnOfLight.GameServer.GameObjects
 									{
 										attackTypeMsg = "shoots";
 									}
-									owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.YourHits"), ad.Attacker.Name, attackTypeMsg, ad.Target.GetName(0, false), ad.Damage, modmessage), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+									owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.YourHits"), ad.Attacker.Name, attackTypeMsg, ad.Target.GetName(0, false), ad.Damage, modmessage), ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 									if (ad.CriticalDamage > 0)
 									{
-										owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.YourCriticallyHits"), ad.Attacker.Name, ad.Target.GetName(0, false), ad.CriticalDamage), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+										owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.YourCriticallyHits"), ad.Attacker.Name, ad.Target.GetName(0, false), ad.CriticalDamage), ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 									}
 
 									break;
 								}
 							default:
-								owner.Out.SendMessage(message, eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+								owner.Out.SendMessage(message, ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 								break;
 						}
 					}
@@ -2043,20 +2043,20 @@ namespace DawnOfLight.GameServer.GameObjects
 						switch (ad.AttackResult)
 						{
 							case eAttackResult.Blocked:
-								owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.Blocked"), ad.Attacker.GetName(0, true), ad.Target.Name), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+								owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.Blocked"), ad.Attacker.GetName(0, true), ad.Target.Name), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 								break;
 							case eAttackResult.Parried:
-								owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.Parried"), ad.Attacker.GetName(0, true), ad.Target.Name), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+								owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.Parried"), ad.Attacker.GetName(0, true), ad.Target.Name), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 								break;
 							case eAttackResult.Evaded:
-								owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.Evaded"), ad.Attacker.GetName(0, true), ad.Target.Name), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+								owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.Evaded"), ad.Attacker.GetName(0, true), ad.Target.Name), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 								break;
 							case eAttackResult.Fumbled:
-								owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.Fumbled"), ad.Attacker.GetName(0, true)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+								owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.Fumbled"), ad.Attacker.GetName(0, true)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 								break;
 							case eAttackResult.Missed:
 								if (ad.AttackType != AttackData.eAttackType.Spell)
-									owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.Misses"), ad.Attacker.GetName(0, true), ad.Target.Name), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+									owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.Misses"), ad.Attacker.GetName(0, true), ad.Target.Name), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 								break;
 							case eAttackResult.HitStyle:
 							case eAttackResult.HitUnstyled:
@@ -2064,10 +2064,10 @@ namespace DawnOfLight.GameServer.GameObjects
 									string modmessage = "";
 									if (ad.Modifier > 0) modmessage = " (+" + ad.Modifier + ")";
 									if (ad.Modifier < 0) modmessage = " (" + ad.Modifier + ")";
-									owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.HitsForDamage"), ad.Attacker.GetName(0, true), ad.Target.Name, ad.Damage, modmessage), eChatType.CT_Damaged, eChatLoc.CL_SystemWindow);
+									owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.HitsForDamage"), ad.Attacker.GetName(0, true), ad.Target.Name, ad.Damage, modmessage), ChatType.CT_Damaged, ChatLocation.CL_SystemWindow);
 									if (ad.CriticalDamage > 0)
 									{
-										owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.CriticallyHitsForDamage"), ad.Attacker.GetName(0, true), ad.Target.Name, ad.CriticalDamage), eChatType.CT_Damaged, eChatLoc.CL_SystemWindow);
+										owner.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(owner.Client.Account.Language, "GameLiving.AttackData.CriticallyHitsForDamage"), ad.Attacker.GetName(0, true), ad.Target.Name, ad.CriticalDamage), ChatType.CT_Damaged, ChatLocation.CL_SystemWindow);
 									}
 									break;
 								}
@@ -2082,7 +2082,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			// broadcast messages
 			if (broadcast)
 			{
-				Message.SystemToArea(ad.Attacker, message, eChatType.CT_OthersCombat, (GameObject[])excludes.ToArray(typeof(GameObject)));
+				Message.SystemToArea(ad.Attacker, message, ChatType.CT_OthersCombat, (GameObject[])excludes.ToArray(typeof(GameObject)));
 			}
 
 			ad.Target.StartInterruptTimer(ad, interruptDuration);
@@ -2366,7 +2366,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				int leftHandSwingCount = 0;
 				Style combatStyle = null;
 				InventoryItem attackWeapon = owner.AttackWeapon;
-				InventoryItem leftWeapon = (owner.Inventory == null) ? null : owner.Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+				InventoryItem leftWeapon = (owner.Inventory == null) ? null : owner.Inventory.GetItem(InventorySlot.LeftHandWeapon);
 				GameObject attackTarget = null;
 
 				if (owner.ActiveWeaponSlot == eActiveWeaponSlot.Distance)
@@ -2703,7 +2703,7 @@ namespace DawnOfLight.GameServer.GameObjects
 					// target death caused this below, so I'm replicating it
 					if (npc.ActiveWeaponSlot != eActiveWeaponSlot.Distance &&
 					    npc.Inventory != null &&
-					    npc.Inventory.GetItem(eInventorySlot.DistanceWeapon) != null)
+					    npc.Inventory.GetItem(InventorySlot.DistanceWeapon) != null)
 						npc.SwitchWeapon(eActiveWeaponSlot.Distance);
 					return;
 				}
@@ -2964,7 +2964,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				if (ad.Target.EffectList.GetOfType<RemedyEffect>() != null)
 				{
 					if (this is GamePlayer)
-						(this as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((this as GamePlayer).Client.Account.Language, "GameLiving.CheckWeaponMagicalEffect.Protected"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+						(this as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((this as GamePlayer).Client.Account.Language, "GameLiving.CheckWeaponMagicalEffect.Protected"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
@@ -3015,7 +3015,7 @@ namespace DawnOfLight.GameServer.GameObjects
 							{
 								if (this is GamePlayer)
 								{
-									(this as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((this as GamePlayer).Client.Account.Language, "GameLiving.StartWeaponMagicalEffect.NotPowerful"), eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+									(this as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((this as GamePlayer).Client.Account.Language, "GameLiving.StartWeaponMagicalEffect.NotPowerful"), ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 								}
 								return;
 							}
@@ -3119,7 +3119,7 @@ namespace DawnOfLight.GameServer.GameObjects
 
 			if (this is GameNPC && ActiveWeaponSlot != eActiveWeaponSlot.Distance &&
 			    ((GameNPC)this).Inventory != null &&
-			    ((GameNPC)this).Inventory.GetItem(eInventorySlot.DistanceWeapon) != null)
+			    ((GameNPC)this).Inventory.GetItem(InventorySlot.DistanceWeapon) != null)
 			{
 				SwitchWeapon(eActiveWeaponSlot.Distance);
 			}
@@ -3339,14 +3339,14 @@ namespace DawnOfLight.GameServer.GameObjects
 						GamePlayer bodyguard = target.Bodyguard;
 						if (bodyguard != null)
 						{
-							target.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(target.Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.YouWereProtected"), bodyguard.Name, attacker.Name), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+							target.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(target.Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.YouWereProtected"), bodyguard.Name, attacker.Name), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 
-							bodyguard.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(bodyguard.Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.YouHaveProtected"), target.Name, attacker.Name), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+							bodyguard.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(bodyguard.Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.YouHaveProtected"), target.Name, attacker.Name), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 
 							if (attacker == playerAttacker)
-								playerAttacker.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(playerAttacker.Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.YouAttempt"), target.Name, target.Name, bodyguard.Name), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+								playerAttacker.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(playerAttacker.Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.YouAttempt"), target.Name, target.Name, bodyguard.Name), ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 							else
-								playerAttacker.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(playerAttacker.Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.YourPetAttempts"), target.Name, target.Name, bodyguard.Name), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+								playerAttacker.Out.SendMessage(string.Format(LanguageMgr.GetTranslation(playerAttacker.Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.YourPetAttempts"), target.Name, target.Name, bodyguard.Name), ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 							return eAttackResult.Bodyguarded;
 						}
 					}
@@ -3362,9 +3362,9 @@ namespace DawnOfLight.GameServer.GameObjects
 			if (brittleguard != null)
 			{
 				if (this is GamePlayer)
-					((GamePlayer)this).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)this).Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.BlowIntercepted"), eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+					((GamePlayer)this).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)this).Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.BlowIntercepted"), ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				if (ad.Attacker is GamePlayer)
-					((GamePlayer)ad.Attacker).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)ad.Attacker).Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.StrikeIntercepted"), eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+					((GamePlayer)ad.Attacker).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)ad.Attacker).Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.StrikeIntercepted"), ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				brittleguard.Cancel(false);
 				return eAttackResult.Missed;
 			}
@@ -3423,7 +3423,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				if (guard.GuardSource.IsWithinRadius(guard.GuardTarget, GuardAbilityHandler.GUARD_DISTANCE))
 				{
 					// check player is wearing shield and NO two handed weapon
-					InventoryItem leftHand = guard.GuardSource.Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+					InventoryItem leftHand = guard.GuardSource.Inventory.GetItem(InventorySlot.LeftHandWeapon);
 					InventoryItem rightHand = guard.GuardSource.AttackWeapon;
 					if (((rightHand == null || rightHand.Hand != 1) && leftHand != null && leftHand.Object_Type == (int)eObjectType.Shield) || guard.GuardSource is GameNPC)
 					{
@@ -3477,9 +3477,9 @@ namespace DawnOfLight.GameServer.GameObjects
 				if (dashing.GuardSource.IsWithinRadius(dashing.GuardTarget, DashingDefenseEffect.GUARD_DISTANCE))
 				{
 					// check player is wearing shield and NO two handed weapon
-					InventoryItem leftHand = dashing.GuardSource.Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+					InventoryItem leftHand = dashing.GuardSource.Inventory.GetItem(InventorySlot.LeftHandWeapon);
 					InventoryItem rightHand = dashing.GuardSource.AttackWeapon;
-					InventoryItem twoHand = dashing.GuardSource.Inventory.GetItem(eInventorySlot.TwoHandWeapon);
+					InventoryItem twoHand = dashing.GuardSource.Inventory.GetItem(InventorySlot.TwoHandWeapon);
 					if ((rightHand == null || rightHand.Hand != 1) && leftHand != null && leftHand.Object_Type == (int)eObjectType.Shield)
 					{
 						int guardLevel = dashing.GuardSource.GetAbilityLevel(Abilities.Guard); // multiply by 3 to be a bit qorse than block (block woudl be 5 since you get guard I with shield 5, guard II with shield 10 and guard III with shield 15)
@@ -3570,7 +3570,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				ad.ArmorHitLocation = ((GamePlayer)ad.Target).CalculateArmorHitLocation(ad);
 				InventoryItem armor = null;
 				if (ad.Target.Inventory != null)
-					armor = ad.Target.Inventory.GetItem((eInventorySlot)ad.ArmorHitLocation);
+					armor = ad.Target.Inventory.GetItem((InventorySlot)ad.ArmorHitLocation);
 				if (armor != null)
 					armorBonus = armor.Bonus;
 			}
@@ -3658,13 +3658,13 @@ namespace DawnOfLight.GameServer.GameObjects
 					penetrate = true;
 				if (penetrate)
 				{
-					if (ad.Target is GamePlayer) ((GamePlayer)ad.Target).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)ad.Target).Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.BlowPenetrated"), eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+					if (ad.Target is GamePlayer) ((GamePlayer)ad.Target).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)ad.Target).Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.BlowPenetrated"), ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 					bladeturn.Cancel(false);
 				}
 				else
 				{
-					if (this is GamePlayer) ((GamePlayer)this).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)this).Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.BlowAbsorbed"), eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
-					if (ad.Attacker is GamePlayer) ((GamePlayer)ad.Attacker).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)ad.Attacker).Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.StrikeAbsorbed"), eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+					if (this is GamePlayer) ((GamePlayer)this).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)this).Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.BlowAbsorbed"), ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
+					if (ad.Attacker is GamePlayer) ((GamePlayer)ad.Attacker).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)ad.Attacker).Client.Account.Language, "GameLiving.CalculateEnemyAttackResult.StrikeAbsorbed"), ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 					bladeturn.Cancel(false);
 					if (this is GamePlayer)
 						((GamePlayer)this).Stealth(false);
@@ -3860,7 +3860,7 @@ namespace DawnOfLight.GameServer.GameObjects
 
 			if( this is GamePlayer && player != null && IsObjectInFront( ad.Attacker, 120 ) && player.HasAbility( Abilities.Shield ) )
 			{
-				lefthand = Inventory.GetItem( eInventorySlot.LeftHandWeapon );
+				lefthand = Inventory.GetItem( InventorySlot.LeftHandWeapon );
 				if( lefthand != null && ( player.AttackWeapon == null || player.AttackWeapon.Item_Type == Slot.RIGHTHAND || player.AttackWeapon.Item_Type == Slot.LEFTHAND ) )
 				{
 					if( lefthand.Object_Type == (int)eObjectType.Shield && IsObjectInFront( ad.Attacker, 120 ) )
@@ -3907,14 +3907,14 @@ namespace DawnOfLight.GameServer.GameObjects
 
 					{
 						if( engage.Owner is GamePlayer )
-							(engage.Owner as GamePlayer).Out.SendMessage(string.Format(LanguageMgr.GetTranslation((engage.Owner as GamePlayer).Client.Account.Language, "GameLiving.TryBlock.Engage"), engage.EngageTarget.GetName(0, true)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							(engage.Owner as GamePlayer).Out.SendMessage(string.Format(LanguageMgr.GetTranslation((engage.Owner as GamePlayer).Client.Account.Language, "GameLiving.TryBlock.Engage"), engage.EngageTarget.GetName(0, true)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					// Check if player has enough endurance left to engage
 					else if( engage.Owner.Endurance >= EngageAbilityHandler.ENGAGE_DURATION_LOST )
 					{
 						engage.Owner.Endurance -= EngageAbilityHandler.ENGAGE_DURATION_LOST;
 						if( engage.Owner is GamePlayer )
-							(engage.Owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((engage.Owner as GamePlayer).Client.Account.Language, "GameLiving.TryBlock.Blocking"), eChatType.CT_Skill, eChatLoc.CL_SystemWindow);
+							(engage.Owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((engage.Owner as GamePlayer).Client.Account.Language, "GameLiving.TryBlock.Blocking"), ChatType.CT_Skill, ChatLocation.CL_SystemWindow);
 						if( blockChance < 0.85 )
 							blockChance = 0.85;
 					}
@@ -4150,7 +4150,7 @@ namespace DawnOfLight.GameServer.GameObjects
 						resultByte = 2;
 						if (ad.Target != null && ad.Target.Inventory != null)
 						{
-							InventoryItem lefthand = ad.Target.Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+							InventoryItem lefthand = ad.Target.Inventory.GetItem(InventorySlot.LeftHandWeapon);
 							if (lefthand != null && lefthand.Object_Type == (int)eObjectType.Shield)
 							{
 								defendersWeapon = lefthand.Model;
@@ -4598,10 +4598,10 @@ namespace DawnOfLight.GameServer.GameObjects
 			RangedAttackState = eRangedAttackState.None;
 			RangedAttackType = eRangedAttackType.Normal;
 
-			InventoryItem rightHandSlot = Inventory.GetItem(eInventorySlot.RightHandWeapon);
-			InventoryItem leftHandSlot = Inventory.GetItem(eInventorySlot.LeftHandWeapon);
-			InventoryItem twoHandSlot = Inventory.GetItem(eInventorySlot.TwoHandWeapon);
-			InventoryItem distanceSlot = Inventory.GetItem(eInventorySlot.DistanceWeapon);
+			InventoryItem rightHandSlot = Inventory.GetItem(InventorySlot.RightHandWeapon);
+			InventoryItem leftHandSlot = Inventory.GetItem(InventorySlot.LeftHandWeapon);
+			InventoryItem twoHandSlot = Inventory.GetItem(InventorySlot.TwoHandWeapon);
+			InventoryItem distanceSlot = Inventory.GetItem(InventorySlot.DistanceWeapon);
 
 			// simple active slot logic:
 			// 0=right hand, 1=left hand, 2=two-hand, 3=range, F=none
@@ -5943,7 +5943,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				long whisperdelay = player.TempProperties.getProperty<long>("WHISPERDELAY");
 				if (whisperdelay > 0 && (CurrentRegion.Time - 1500) < whisperdelay && player.Client.Account.PrivLevel == 1)
 				{
-					//player.Out.SendMessage("Speak slower!", eChatType.CT_ScreenCenter, eChatLoc.CL_SystemWindow);
+					//player.Out.SendMessage("Speak slower!", ChatType.CT_ScreenCenter, ChatLocation.CL_SystemWindow);
 					return false;
 				}
 				player.TempProperties.setProperty("WHISPERDELAY", CurrentRegion.Time);
@@ -5990,7 +5990,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// </summary>
 		/// <param name="message"></param>
 		/// <param name="type"></param>
-		public virtual void MessageToSelf(string message, eChatType chatType)
+		public virtual void MessageToSelf(string message, ChatType chatType)
 		{
 			// livings can't talk to themselves
 		}
@@ -6000,7 +6000,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// </summary>
 		/// <param name="message"></param>
 		/// <param name="chatType"></param>
-		public virtual void MessageFromControlled(string message, eChatType chatType)
+		public virtual void MessageFromControlled(string message, ChatType chatType)
 		{
 			// ignore for livings
 		}
@@ -6032,7 +6032,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			{
 				if (source is GamePlayer)
 				{
-					((GamePlayer)source).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)source).Client.Account.Language, "GameLiving.ReceiveItem", Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					((GamePlayer)source).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)source).Client.Account.Language, "GameLiving.ReceiveItem", Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 
 				return false;
@@ -6055,7 +6055,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			Notify(GameLivingEvent.ReceiveMoney, this, new ReceiveMoneyEventArgs(source, this, money));
 
 			if (source is GamePlayer)
-				((GamePlayer)source).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)source).Client.Account.Language, "GameLiving.ReceiveMoney", Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				((GamePlayer)source).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)source).Client.Account.Language, "GameLiving.ReceiveMoney", Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 			//call base
 			return base.ReceiveMoney(source, money);
@@ -6169,7 +6169,7 @@ namespace DawnOfLight.GameServer.GameObjects
 					}
 					if (isNewAbility && (this is GamePlayer))
 					{
-						(this as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((this as GamePlayer).Client.Account.Language, "GamePlayer.AddAbility.YouLearn", ability.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						(this as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((this as GamePlayer).Client.Account.Language, "GamePlayer.AddAbility.YouLearn", ability.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}
@@ -6195,7 +6195,7 @@ namespace DawnOfLight.GameServer.GameObjects
 					m_skillList.Remove(ability);
 				}
 			}
-			if (this is GamePlayer) (this as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((this as GamePlayer).Client.Account.Language, "GamePlayer.RemoveAbility.YouLose", ability.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			if (this is GamePlayer) (this as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((this as GamePlayer).Client.Account.Language, "GamePlayer.RemoveAbility.YouLose", ability.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			return true;
 		}
 

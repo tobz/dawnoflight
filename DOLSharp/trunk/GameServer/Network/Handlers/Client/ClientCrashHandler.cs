@@ -19,45 +19,43 @@
 
 using System.Reflection;
 using DawnOfLight.Base.Network;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Utilities;
 using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x9F ^ 168, "Handles client crash packets")]
-	public class ClientCrashPacketHandler : IPacketHandler
+    [PacketHandler(PacketType.TCP, ClientPackets.ClientCrash)]
+	public class ClientCrashHandler : IPacketHandler
 	{
 		/// <summary>
 		/// Defines a logger for this class.
 		/// </summary>
 		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			lock (this)
 			{
-				string dllName = packet.ReadString(16);
+				var dllName = packet.ReadString(16);
 				packet.Position = 0x50;
-				uint upTime = packet.ReadInt();
-				string text = string.Format("Client crash ({0}) dll:{1} clientUptime:{2}sec", client.ToString(), dllName, upTime);
+				var uptime = packet.ReadInt();
 				if (log.IsInfoEnabled)
-					log.Info(text);
+                    log.InfoFormat("Client crash ({0}) dll:{1} clientUptime:{2}sec", client, dllName, uptime);
 
 				if (log.IsDebugEnabled)
 				{
-					log.Debug("Last client sent/received packets (from older to newer):");
+					log.Debug("Last client sent/received packets (most recent last):");
 					
-					foreach (IPacket prevPak in client.PacketProcessor.GetLastPackets())
+					foreach (var previousPacket in client.PacketProcessor.GetLastPackets())
 					{
-						log.Info(prevPak.ToHumanReadable());
+						log.Info(previousPacket.ToHumanReadable());
 					}
 				}
 					
-				//Eden
-				if(client.Player!=null)
+				if(client.Player != null)
 				{
-					GamePlayer player = client.Player;
 					client.Out.SendPlayerQuit(true);
 					client.Player.SaveIntoDatabase();
 					client.Player.Quit(true);

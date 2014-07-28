@@ -67,9 +67,9 @@ namespace DawnOfLight.GameServer.Spells
 			powerGain = owner.ChangeMana(m_caster, GameLiving.eManaChangeType.Spell, powerGain);
 
 			if (powerGain > 0)
-				MessageToOwner(String.Format("Your summon channels {0} power to you!", powerGain), eChatType.CT_Spell);
+				MessageToOwner(String.Format("Your summon channels {0} power to you!", powerGain), ChatType.CT_Spell);
 			else
-				MessageToOwner("You cannot absorb any more power.", eChatType.CT_SpellResisted);
+				MessageToOwner("You cannot absorb any more power.", ChatType.CT_SpellResisted);
 		}
 		
 		/// <summary>
@@ -87,7 +87,7 @@ namespace DawnOfLight.GameServer.Spells
 		/// </summary>
 		/// <param name="message"></param>
 		/// <param name="chatType"></param>
-		protected virtual void MessageToOwner(String message, eChatType chatType)
+		protected virtual void MessageToOwner(String message, ChatType chatType)
 		{
 			base.MessageToCaster(message, chatType);
 		}

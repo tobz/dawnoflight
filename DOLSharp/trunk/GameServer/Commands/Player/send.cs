@@ -34,7 +34,7 @@ namespace DawnOfLight.GameServer.commands.Player
 		{
 			if (args.Length < 3)
 			{
-				client.Out.SendMessage("Use: SEND <TARGET> <TEXT TO SEND>", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Use: SEND <TARGET> <TEXT TO SEND>", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -57,7 +57,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			if (targetClient == null)
 			{
 				// nothing found
-				client.Out.SendMessage(targetName + " is not in the game, or in another realm.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(targetName + " is not in the game, or in another realm.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -66,8 +66,8 @@ namespace DawnOfLight.GameServer.commands.Player
             {
 				if (client.Account.PrivLevel == (uint)ePrivLevel.Player)
 				{
-					client.Out.SendMessage(targetName + " is not in the game, or in another realm.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-					targetClient.Player.Out.SendMessage(string.Format("You're anon but {0} tried to send: {1}", client.Player.Name, message), eChatType.CT_Send, eChatLoc.CL_ChatWindow);
+					client.Out.SendMessage(targetName + " is not in the game, or in another realm.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+					targetClient.Player.Out.SendMessage(string.Format("You're anon but {0} tried to send: {1}", client.Player.Name, message), ChatType.CT_Send, ChatLocation.CL_ChatWindow);
 				}
 				else
 				{
@@ -80,13 +80,13 @@ namespace DawnOfLight.GameServer.commands.Player
 			switch (result)
 			{
 				case 2: // name not unique
-					client.Out.SendMessage("Character name is not unique.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Character name is not unique.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				case 3: // exact match
 				case 4: // guessed name
 					if (targetClient == client)
 					{
-						client.Out.SendMessage("You can't /send to yourself!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("You can't /send to yourself!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					else
 					{

@@ -1519,13 +1519,13 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 				{
 					if (RewardXP > 0 && m_questPlayer.GainXP == false)
 					{
-						QuestPlayer.Out.SendMessage("Your XP is turned off, you must turn it on to complete this quest step!", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+						QuestPlayer.Out.SendMessage("Your XP is turned off, you must turn it on to complete this quest step!", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 						return false;
 					}
 
 					if (RewardRP > 0 && m_questPlayer.GainRP == false)
 					{
-						QuestPlayer.Out.SendMessage("Your RP is turned off, you must turn it on to complete this quest step!", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+						QuestPlayer.Out.SendMessage("Your RP is turned off, you must turn it on to complete this quest step!", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 						return false;
 					}
 
@@ -1587,7 +1587,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 
 						lock (QuestPlayer.Inventory)
 						{
-							if (QuestPlayer.Inventory.IsSlotsFree(stepTemplates.Count, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+							if (QuestPlayer.Inventory.IsSlotsFree(stepTemplates.Count, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 							{
 								foreach (string template in stepTemplates)
 								{
@@ -1595,7 +1595,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 									if (item == null)
 									{
 										string errorMsg = string.Format("StepItemTemplate {0} not found in DB!", template);
-										QuestPlayer.Out.SendMessage(errorMsg, eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+										QuestPlayer.Out.SendMessage(errorMsg, ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 										throw new Exception(errorMsg);
 									}
 
@@ -1611,7 +1611,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 							}
 							else
 							{
-								QuestPlayer.Out.SendMessage("You don't have enough inventory space to advance this quest.  You need " + stepTemplates.Count + " free slot(s)!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								QuestPlayer.Out.SendMessage("You don't have enough inventory space to advance this quest.  You need " + stepTemplates.Count + " free slot(s)!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								advance = false;
 							}
 						}
@@ -1663,11 +1663,11 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
                         {
                             if (obj.Realm == eRealm.None)
                             {
-                                SendMessage(m_questPlayer, SourceText, 0, eChatType.CT_Say, eChatLoc.CL_ChatWindow);
+                                SendMessage(m_questPlayer, SourceText, 0, ChatType.CT_Say, ChatLocation.CL_ChatWindow);
                             }
                             else
                             {
-                                SendMessage(m_questPlayer, SourceText, 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+                                SendMessage(m_questPlayer, SourceText, 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
                             }
                         }
 					}
@@ -1833,7 +1833,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 
 							if (NumOptionalRewardsChoice > 0 && rewardArgs.CountChosen <= 0)
 							{
-                                QuestPlayer.Out.SendMessage(LanguageMgr.GetTranslation(QuestPlayer.Client, "RewardQuest.Notify"), eChatType.CT_System, eChatLoc.CL_ChatWindow);
+                                QuestPlayer.Out.SendMessage(LanguageMgr.GetTranslation(QuestPlayer.Client, "RewardQuest.Notify"), ChatType.CT_System, ChatLocation.CL_ChatWindow);
 								return;
 							}
 						}
@@ -1913,14 +1913,14 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 						{
 							if (Description.Trim() != "")
 							{
-								SendMessage(player, Description, 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+								SendMessage(player, Description, 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 							}
 
 							if (m_finalRewards.Count > 0)
 							{
 								lock (player.Inventory)
 								{
-									if (player.Inventory.IsSlotsFree(m_finalRewards.Count, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+									if (player.Inventory.IsSlotsFree(m_finalRewards.Count, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 									{
 										foreach (ItemTemplate item in m_finalRewards)
 										{
@@ -1932,7 +1932,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 									}
 									else
 									{
-										SendMessage(player, "Your inventory does not have enough space to finish this quest!", 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+										SendMessage(player, "Your inventory does not have enough space to finish this quest!", 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 										return;
 									}
 								}
@@ -1987,8 +1987,8 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 
 							player.Out.SendQuestListUpdate();
 
-							player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractQuest.FinishQuest.Completed", Name)), eChatType.CT_ScreenCenter, eChatLoc.CL_SystemWindow);
-							player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractQuest.FinishQuest.Completed", Name)), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractQuest.FinishQuest.Completed", Name)), ChatType.CT_ScreenCenter, ChatLocation.CL_SystemWindow);
+							player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractQuest.FinishQuest.Completed", Name)), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 						}
 					}
 					return;
@@ -2005,7 +2005,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 						if (string.IsNullOrEmpty(m_sourceTexts[0]) == false)
 						{
 							TryTurnTo(obj, player);
-							SendMessage(player, m_sourceTexts[0], 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+							SendMessage(player, m_sourceTexts[0], 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 						}
 					}
 					else
@@ -2026,7 +2026,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
                     {
                         lock (player.Inventory)
                         {
-                            if (player.Inventory.IsSlotsFree(1, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+                            if (player.Inventory.IsSlotsFree(1, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
                             {
                                 ItemTemplate item = GameServer.Database.FindObjectByKey<ItemTemplate>(m_searchStartItemTemplate.Trim());
                                 if (item == null)
@@ -2041,7 +2041,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
                             }
                             else
                             {
-                                player.Out.SendMessage("Your backpack is full, you can't start this quest!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                player.Out.SendMessage("Your backpack is full, you can't start this quest!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                                 return;
                             }
                         }
@@ -2057,7 +2057,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
                         if (string.IsNullOrEmpty(m_sourceTexts[0]) == false)
                         {
                             TryTurnTo(obj, player);
-                            SendMessage(player, m_sourceTexts[0], 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+                            SendMessage(player, m_sourceTexts[0], 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
                         }
                     }
                     else
@@ -2092,7 +2092,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 				else if (string.IsNullOrEmpty(Description) == false)
 				{
 					TryTurnTo(obj, player);
-					SendMessage(player, Description, 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					SendMessage(player, Description, 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 			}
 		}
@@ -2143,7 +2143,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 						}
 						if (m_sourceTexts.Count > 0)
 						{
-							SendMessage(player, m_sourceTexts[0], 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+							SendMessage(player, m_sourceTexts[0], 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 						}
 						else
 						{
@@ -2152,7 +2152,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 					}
 					else
 					{
-						SendMessage(player, "You need to unstack these first.", 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						SendMessage(player, "You need to unstack these first.", 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 				}
 			}
@@ -2179,7 +2179,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 				player.AddQuest(dq);
 				if (m_sourceTexts.Count > 0)
 				{
-					SendMessage(player, m_sourceTexts[0], 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					SendMessage(player, m_sourceTexts[0], 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 				else
 				{
@@ -2211,7 +2211,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 
 							if (string.IsNullOrEmpty(TargetText) == false)
 							{
-								SendMessage(m_questPlayer, TargetText, 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+								SendMessage(m_questPlayer, TargetText, 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 							}
 
 							AdvanceQuestStep(obj);
@@ -2250,7 +2250,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 							if (string.IsNullOrEmpty(TargetText) == false)
 							{
 								TryTurnTo(obj, player);
-								SendMessage(m_questPlayer, TargetText, 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+								SendMessage(m_questPlayer, TargetText, 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 							}
 						}
 						break;
@@ -2289,11 +2289,11 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 									if (obj.Realm == eRealm.None)
 									{
 										// mobs and other non realm objects send chat text and not popup text.
-										SendMessage(m_questPlayer, TargetText, 0, eChatType.CT_Say, eChatLoc.CL_ChatWindow);
+										SendMessage(m_questPlayer, TargetText, 0, ChatType.CT_Say, ChatLocation.CL_ChatWindow);
 									}
 									else
 									{
-										SendMessage(m_questPlayer, TargetText, 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+										SendMessage(m_questPlayer, TargetText, 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 									}
 								}
 
@@ -2330,11 +2330,11 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 							if (obj.Realm == eRealm.None)
 							{
 								// mobs and other non realm objects send chat text and not popup text.
-								SendMessage(m_questPlayer, TargetText, 0, eChatType.CT_Say, eChatLoc.CL_ChatWindow);
+								SendMessage(m_questPlayer, TargetText, 0, ChatType.CT_Say, ChatLocation.CL_ChatWindow);
 							}
 							else
 							{
-								SendMessage(m_questPlayer, TargetText, 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+								SendMessage(m_questPlayer, TargetText, 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 							}
 						}
 
@@ -2479,14 +2479,14 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 							{
 								if (Description.Trim() != "")
 								{
-									SendMessage(player, Description, 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+									SendMessage(player, Description, 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 								}
 
 								if (m_finalRewards.Count > 0)
 								{
 									lock (player.Inventory)
 									{
-										if (player.Inventory.IsSlotsFree(m_finalRewards.Count, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+										if (player.Inventory.IsSlotsFree(m_finalRewards.Count, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 										{
 											foreach (ItemTemplate item in m_finalRewards)
 											{
@@ -2498,7 +2498,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 										}
 										else
 										{
-											SendMessage(player, "Your inventory does not have enough space to finish this quest!", 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+											SendMessage(player, "Your inventory does not have enough space to finish this quest!", 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 											return;
 										}
 									}
@@ -2553,8 +2553,8 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 
 								player.Out.SendQuestListUpdate();
 
-								player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractQuest.FinishQuest.Completed", Name)), eChatType.CT_ScreenCenter, eChatLoc.CL_SystemWindow);
-								player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractQuest.FinishQuest.Completed", Name)), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractQuest.FinishQuest.Completed", Name)), ChatType.CT_ScreenCenter, ChatLocation.CL_SystemWindow);
+								player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractQuest.FinishQuest.Completed", Name)), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 							}
 						}
 					}
@@ -2581,11 +2581,11 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 								if (living.Realm == eRealm.None)
 								{
 									// mobs and other non realm objects send chat text and not popup text.
-									SendMessage(m_questPlayer, TargetText, 0, eChatType.CT_Say, eChatLoc.CL_ChatWindow);
+									SendMessage(m_questPlayer, TargetText, 0, ChatType.CT_Say, ChatLocation.CL_ChatWindow);
 								}
 								else
 								{
-									SendMessage(m_questPlayer, TargetText, 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+									SendMessage(m_questPlayer, TargetText, 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 								}
 							}
 							AdvanceQuestStep(living);
@@ -2662,7 +2662,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
                 {
                     if (AdvanceQuestStep() == false)
                     {
-                        SendMessage(QuestPlayer, "You fail to find anything!", 0, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        SendMessage(QuestPlayer, "You fail to find anything!", 0, ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     }
                 }
                 else if (StepType == eStepType.SearchFinish)
@@ -2706,7 +2706,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 
 			lock (m_questPlayer.Inventory)
 			{
-				if (m_questPlayer.Inventory.IsSlotsFree(m_finalRewards.Count + m_optionalRewardChoice.Count, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+				if (m_questPlayer.Inventory.IsSlotsFree(m_finalRewards.Count + m_optionalRewardChoice.Count, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 				{
 					long rewardXP = 0;
 					long rewardRP = 0;
@@ -2728,12 +2728,12 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 					{
 						if (m_questPlayer.GainXP == false)
 						{
-							QuestPlayer.Out.SendMessage(xpError, eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+							QuestPlayer.Out.SendMessage(xpError, ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 							return false;
 						}
 						else if (rewardRP > 0 && m_questPlayer.GainRP == false)
 						{
-							QuestPlayer.Out.SendMessage(rpError, eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+							QuestPlayer.Out.SendMessage(rpError, ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 							return false;
 						}
 
@@ -2744,7 +2744,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 					{
 						if (m_questPlayer.GainRP == false)
 						{
-							QuestPlayer.Out.SendMessage(rpError, eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+							QuestPlayer.Out.SendMessage(rpError, ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 							return false;
 						}
 
@@ -2797,7 +2797,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 				}
 				else
 				{
-					SendMessage(m_questPlayer, "Your inventory does not have enough space to finish this quest!", 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					SendMessage(m_questPlayer, "Your inventory does not have enough space to finish this quest!", 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					return false;
 				}
 			}
@@ -2809,8 +2809,8 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 			// Now that quest is finished do any post finished custom steps
 			ExecuteCustomQuestStep(QuestPlayer, Step, eStepCheckType.PostFinish);
 
-			m_questPlayer.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(m_questPlayer.Client, "AbstractQuest.FinishQuest.Completed", Name)), eChatType.CT_ScreenCenter, eChatLoc.CL_SystemWindow);
-			m_questPlayer.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(m_questPlayer.Client, "AbstractQuest.FinishQuest.Completed", Name)), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+			m_questPlayer.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(m_questPlayer.Client, "AbstractQuest.FinishQuest.Completed", Name)), ChatType.CT_ScreenCenter, ChatLocation.CL_SystemWindow);
+			m_questPlayer.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(m_questPlayer.Client, "AbstractQuest.FinishQuest.Completed", Name)), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 			// Remove this quest from the players active quest list and either
 			// Add or update the quest in the players finished list
@@ -2848,11 +2848,11 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 				if (obj != null && obj.Realm == eRealm.None)
 				{
 					// mobs and other non realm objects send chat text and not popup text.
-					SendMessage(m_questPlayer, m_dataQuest.FinishText, 0, eChatType.CT_Say, eChatLoc.CL_ChatWindow);
+					SendMessage(m_questPlayer, m_dataQuest.FinishText, 0, ChatType.CT_Say, ChatLocation.CL_ChatWindow);
 				}
 				else
 				{
-					SendMessage(m_questPlayer, m_dataQuest.FinishText, 0, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					SendMessage(m_questPlayer, m_dataQuest.FinishText, 0, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 			}
 
@@ -2917,7 +2917,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 			}
 
 			m_questPlayer.Out.SendQuestListUpdate();
-			m_questPlayer.Out.SendMessage(LanguageMgr.GetTranslation(m_questPlayer.Client, "AbstractQuest.AbortQuest"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			m_questPlayer.Out.SendMessage(LanguageMgr.GetTranslation(m_questPlayer.Client, "AbstractQuest.AbortQuest"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 			if (m_startNPC != null)
 			{

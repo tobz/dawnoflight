@@ -17,16 +17,17 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0xCE^168,"Show warmap bonuses")]
-	public class WarmapBonusesRequestHandler : IPacketHandler
+    [PacketHandler(PacketType.TCP, ClientPackets.WarMapBonusesRequest, ClientStatus.PlayerInGame)]
+	public class WarMapBonusesRequestHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
-			client.Out.SendWarmapBonuses();
+			client.Out.SendWarMapBonuses();
 		}
 	}
 }

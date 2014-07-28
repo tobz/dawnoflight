@@ -52,7 +52,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			}
 
 			string message = "[Guild] " + client.Player.Name + ": \"" + string.Join(" ", args, 1, args.Length - 1) + "\"";
-			client.Player.Guild.SendMessageToGuildMembers(message, eChatType.CT_Guild, eChatLoc.CL_ChatWindow);
+			client.Player.Guild.SendMessageToGuildMembers(message, ChatType.CT_Guild, ChatLocation.CL_ChatWindow);
 		}
 	}
 
@@ -91,7 +91,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				{
 					continue;
 				}
-				ply.Out.SendMessage(message, eChatType.CT_Officer, eChatLoc.CL_ChatWindow);
+				ply.Out.SendMessage(message, ChatType.CT_Officer, ChatLocation.CL_ChatWindow);
 			}
 		}
 	}
@@ -126,7 +126,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (client.Player.IsMuted)
 			{
-				client.Player.Out.SendMessage("You have been muted and are not allowed to speak in this channel.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage("You have been muted and are not allowed to speak in this channel.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -139,7 +139,7 @@ namespace DawnOfLight.GameServer.commands.Player
 					{
 						continue;
 					}
-					ply.Out.SendMessage(message, eChatType.CT_Alliance, eChatLoc.CL_ChatWindow);
+					ply.Out.SendMessage(message, ChatType.CT_Alliance, ChatLocation.CL_ChatWindow);
 				}
 			}
 		}

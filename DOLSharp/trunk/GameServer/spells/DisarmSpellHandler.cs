@@ -60,8 +60,8 @@ namespace DawnOfLight.GameServer.Spells
 			}
             effect.Owner.DisarmedTime = effect.Owner.CurrentRegion.Time + CalculateEffectDuration(effect.Owner, Caster.Effectiveness);
 			effect.Owner.StopAttack();
-			MessageToLiving(effect.Owner, Spell.Message1, eChatType.CT_Spell);
-			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), eChatType.CT_Spell, effect.Owner);
+			MessageToLiving(effect.Owner, Spell.Message1, ChatType.CT_Spell);
+			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), ChatType.CT_Spell, effect.Owner);
 			effect.Owner.StartInterruptTimer(effect.Owner.SpellInterruptDuration, AttackData.eAttackType.Spell, Caster);
 			if (effect.Owner is GameNPC)
 			{
@@ -82,8 +82,8 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			//effect.Owner.IsDisarmed = false;
 			if (!noMessages) {
-				MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+				MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
 			}
 			return base.OnEffectExpires(effect,noMessages);
 		}

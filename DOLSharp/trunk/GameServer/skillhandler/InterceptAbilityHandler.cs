@@ -70,7 +70,7 @@ namespace DawnOfLight.GameServer.SkillHandler
 						continue;
 					intercept.Cancel(false);
 				}
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Intercept.CancelTargetNull"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Intercept.CancelTargetNull"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
 			}
 
@@ -80,7 +80,7 @@ namespace DawnOfLight.GameServer.SkillHandler
 			GamePlayer interceptTarget = targetObject as GamePlayer;
 			if (interceptTarget == null || group == null || !group.IsInTheGroup(interceptTarget) || interceptTarget == player)
 			{
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Intercept.CannotUse.NotInGroup"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Intercept.CannotUse.NotInGroup"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
 			}
 
@@ -91,7 +91,7 @@ namespace DawnOfLight.GameServer.SkillHandler
 					continue;
 				if (intercept.InterceptSource != player && !(intercept.InterceptSource is GameNPC))
 				{
-                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Intercept.CannotUse.InterceptTargetAlreadyInterceptedEffect", intercept.InterceptSource.GetName(0, true), intercept.InterceptTarget.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Intercept.CannotUse.InterceptTargetAlreadyInterceptedEffect", intercept.InterceptSource.GetName(0, true), intercept.InterceptTarget.GetName(0, false)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     return;
 				}
 			}

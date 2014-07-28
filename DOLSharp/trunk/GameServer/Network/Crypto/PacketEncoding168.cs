@@ -17,66 +17,41 @@
  *
  */
 
-using System.Reflection;
-using log4net;
+using DawnOfLight.GameServer.Constants;
 
 namespace DawnOfLight.GameServer.Network.Crypto
 {
+    /// <summary>
+    /// Handles the encoding and decoding of Mythic packets for 1.68
+    /// </summary>
+    public class PacketEncoding168 : IPacketEncoding
+    {
+        public PacketEncoding168()
+        {
+            EncryptionState = eEncryptionState.NotEncrypted;
+            SBox = new byte[256];
+        }
 
-	/// <summary>
-	/// Handles the encoding and decoding of Mythic packets for 1.68
-	/// </summary>
-	public class PacketEncoding168 : IPacketEncoding
-	{
-		/// <summary>
-		/// Defines a logger for this class.
-		/// </summary>
-		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        /// <summary>
+        /// Gets or sets the SBox for this encoding
+        /// </summary>
+        public byte[] SBox { get; set; }
 
-		public enum eEncryptionState
-		{
-			NotEncrypted = 0,
-			RSAEncrypted = 1,
-			PseudoRC4Encrypted = 2
-		}
+        /// <summary>
+        /// Gets or sets the Encryption State of this encoding
+        /// </summary>
+        public eEncryptionState EncryptionState { get; set; }
 
-		protected eEncryptionState	m_encryptionState;
-		protected byte[]						m_sbox = null;
-
-		public PacketEncoding168()
-		{
-			m_encryptionState = eEncryptionState.NotEncrypted;
-			m_sbox = new byte[256];
-		}
-
-		/// <summary>
-		/// Gets or sets the SBox for this encoding
-		/// </summary>
-		public byte[] SBox
-	  {
-	    get { return m_sbox; }
-			set { m_sbox = value; }
-	  }
-
-		/// <summary>
-		/// Gets or sets the Encryption State of this encoding
-		/// </summary>
-	  public eEncryptionState EncryptionState
-	  {
-	    get { return m_encryptionState; }
-	    set { m_encryptionState = value; }
-	  }
-
-	  /// <summary>
-		/// Decrypts a 1.68 packet
-		/// </summary>
-		/// <param name="content">the content to be decrypted</param>
-		/// <param name="udpPacket">true if the packet an udp packet</param>
-		/// <returns>the decrypted packet</returns>
-		public byte[] DecryptPacket(byte[] content, bool udpPacket)
-		{
-			/* No Cryptlib currently!
-			if(m_encryptionState == eEncryptionState.RSAEncrypted)
+        /// <summary>
+        /// Decrypts a 1.68 packet
+        /// </summary>
+        /// <param name="content">the content to be decrypted</param>
+        /// <param name="udpPacket">true if the packet an udp packet</param>
+        /// <returns>the decrypted packet</returns>
+        public byte[] DecryptPacket(byte[] content, bool udpPacket)
+        {
+            /* No Cryptlib currently!
+			if(encryptionState == eEncryptionState.RSAEncrypted)
 			{
 				byte[] output = new byte[content.Length];
 				UInt32 outLen = CryptLib168.DecodeMythicRSAPacket(content,(UInt32)content.Length,output,(UInt32)output.Length);
@@ -90,31 +65,31 @@ namespace DawnOfLight.GameServer.Network.Crypto
 				Array.Copy(output,0,newPacket,0,outLen);
 				return newPacket;
 			}
-			if(m_encryptionState == eEncryptionState.PseudoRC4Encrypted && m_sbox != null)			
+			if(encryptionState == eEncryptionState.PseudoRC4Encrypted && sbox != null)			
 			{
-			  CryptLib168.DecodeMythicRC4Packet(content,m_sbox);
+			  CryptLib168.DecodeMythicRC4Packet(content,sbox);
 				return content;
 			}
 			*/
-			return content;
-		}
-		
-		/// <summary>
-		/// Encrypts a 1.68 packet
-		/// </summary>
-		/// <param name="content">the content to encrypt</param>
-		/// <param name="udpPacket">true if the packet is an udp packet</param>
-		/// <returns>the encrypted packet</returns>
-		public byte[] EncryptPacket(byte[] content, bool udpPacket)
-		{
-			/* No Cryptlib currently!
-			if(m_encryptionState == eEncryptionState.PseudoRC4Encrypted && m_sbox != null)			
+            return content;
+        }
+
+        /// <summary>
+        /// Encrypts a 1.68 packet
+        /// </summary>
+        /// <param name="content">the content to encrypt</param>
+        /// <param name="udpPacket">true if the packet is an udp packet</param>
+        /// <returns>the encrypted packet</returns>
+        public byte[] EncryptPacket(byte[] content, bool udpPacket)
+        {
+            /* No Cryptlib currently!
+			if(encryptionState == eEncryptionState.PseudoRC4Encrypted && sbox != null)			
 			{
-			  CryptLib168.EncodeMythicRC4Packet(content,m_sbox,udpPacket);
+			  CryptLib168.EncodeMythicRC4Packet(content,sbox,udpPacket);
 				return content;
 			}
 			*/
-			return content;
-		}
-	}
+            return content;
+        }
+    }
 }

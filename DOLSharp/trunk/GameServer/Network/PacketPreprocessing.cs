@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network
 {
-	public enum ClientStatus
-	{
-		None = 0,
-		LoggedIn = 1,
-		PlayerInGame = 2
-	}
-
 	/// <summary>
 	/// Handles preprocessing for incoming game packets.
 	/// </summary>
@@ -19,22 +13,22 @@ namespace DawnOfLight.GameServer.Network
 	/// certain criteria before we actually handle it.
 	/// </para>
 	/// <para>
-	/// Any time that a packet comes thru with a preprocessor ID of 0, it means there is no preprocessor associated 
-	/// with it, and thus we pass it thru. (return true)
+	/// Any time that a packet comes through with a preprocessor ID of 0, it means there is no preprocessor associated 
+	/// with it, and thus we pass it through. (return true)
 	/// </para>
 	/// </remarks>
 	public static class PacketPreprocessing
 	{
-		private static readonly Dictionary<int, int> _packetIdToPreprocessMap;
-		private static readonly Dictionary<int, Func<GameClient, GSPacketIn, bool>> _preprocessors;
+		private static readonly Dictionary<ClientPackets, ClientStatus> packetIdToPreprocessorMap;
+		private static readonly Dictionary<ClientStatus, Func<GameClient, GamePacketIn, bool>> preprocessors;
 
 		static PacketPreprocessing()
 		{
-			_packetIdToPreprocessMap = new Dictionary<int, int>();
-			_preprocessors = new Dictionary<int, Func<GameClient, GSPacketIn, bool>>();
+			packetIdToPreprocessorMap = new Dictionary<ClientPackets, ClientStatus>();
+            preprocessors = new Dictionary<ClientStatus, Func<GameClient, GamePacketIn, bool>>();
 
-			RegisterPreprocessors((int)ClientStatus.LoggedIn, (client, packet) => client.Account != null);		// player must be logged into an account
-			RegisterPreprocessors((int)ClientStatus.PlayerInGame, (client, player) => client.Player != null);	// player must be logged into a character
+			RegisterPreprocessors(ClientStatus.LoggedIn, (c, p) => c.Account != null);		// player must be logged into an account
+			RegisterPreprocessors(ClientStatus.PlayerInGame, (c, p) => c.Player != null);	// player must be logged into a character
 		}
 
 		/// <summary>
@@ -42,16 +36,16 @@ namespace DawnOfLight.GameServer.Network
 		/// </summary>
 		/// <param name="packetId">the ID of the packet in question</param>
 		/// <param name="preprocessorId">the ID of the preprocessor for the given packet ID</param>
-		public static void RegisterPacketDefinition(int packetId, int preprocessorId)
+		public static void RegisterPacketDefinition(ClientPackets packetId, ClientStatus preprocessorId)
 		{
 			// if they key doesn't exist, add it, and if it does, replace it
-			if (!_packetIdToPreprocessMap.ContainsKey(packetId))
+			if (!packetIdToPreprocessorMap.ContainsKey(packetId))
 			{
-				_packetIdToPreprocessMap.Add(packetId, preprocessorId);
+				packetIdToPreprocessorMap.Add(packetId, preprocessorId);
 			}
 			else
 			{
-				_packetIdToPreprocessMap[packetId] = preprocessorId;
+				packetIdToPreprocessorMap[packetId] = preprocessorId;
 			}
 	}
 
@@ -60,9 +54,9 @@ namespace DawnOfLight.GameServer.Network
 		/// </summary>
 		/// <param name="preprocessorId">the ID for the preprocessor</param>
 		/// <param name="preprocessorFunc">the preprocessor delegate to use</param>
-		public static void RegisterPreprocessors(int preprocessorId, Func<GameClient, GSPacketIn, bool> preprocessorFunc)
+		public static void RegisterPreprocessors(ClientStatus preprocessorId, Func<GameClient, GamePacketIn, bool> preprocessorFunc)
 		{
-			_preprocessors.Add(preprocessorId, preprocessorFunc);
+			preprocessors.Add(preprocessorId, preprocessorFunc);
 		}
 
 		/// <summary>
@@ -71,10 +65,10 @@ namespace DawnOfLight.GameServer.Network
 		/// <param name="client">the client that sent the packet</param>
 		/// <param name="packet">the packet in question</param>
 		/// <returns>true if the packet passes all preprocessor checks; false otherwise</returns>
-		public static bool CanProcessPacket(GameClient client, GSPacketIn packet)
+		public static bool CanProcessPacket(GameClient client, GamePacketIn packet)
 		{
-			int preprocessorId;
-			if(!_packetIdToPreprocessMap.TryGetValue(packet.ID, out preprocessorId))
+			ClientStatus preprocessorId;
+			if(!packetIdToPreprocessorMap.TryGetValue((ClientPackets)packet.ID, out preprocessorId))
 				return false;
 
 			if(preprocessorId == 0)
@@ -83,11 +77,8 @@ namespace DawnOfLight.GameServer.Network
 				return true;
 			}
 
-			Func<GameClient, GSPacketIn, bool> preprocessor;
-			if(!_preprocessors.TryGetValue(preprocessorId, out preprocessor))
-				return false;
-
-			return preprocessor(client, packet);
+			Func<GameClient, GamePacketIn, bool> preprocessor;
+			return preprocessors.TryGetValue(preprocessorId, out preprocessor) && preprocessor(client, packet);
 		}
 	}
 }

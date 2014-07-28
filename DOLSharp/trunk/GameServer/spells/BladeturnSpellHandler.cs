@@ -43,8 +43,8 @@ namespace DawnOfLight.GameServer.Spells
 		public override void OnEffectStart(GameSpellEffect effect)
 		{
 			base.OnEffectStart(effect);
-			eChatType toLiving = (Spell.Pulse == 0) ? eChatType.CT_Spell : eChatType.CT_SpellPulse;
-			eChatType toOther = (Spell.Pulse == 0) ? eChatType.CT_System : eChatType.CT_SpellPulse;
+			ChatType toLiving = (Spell.Pulse == 0) ? ChatType.CT_Spell : ChatType.CT_SpellPulse;
+			ChatType toOther = (Spell.Pulse == 0) ? ChatType.CT_System : ChatType.CT_SpellPulse;
 			MessageToLiving(effect.Owner, Spell.Message1, toLiving);
 			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), toOther, effect.Owner);
 		}
@@ -60,8 +60,8 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if (!noMessages && Spell.Pulse == 0) 
 			{
-				MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+				MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
 			}
 			return 0;
 		}

@@ -35,11 +35,11 @@ namespace DawnOfLight.GameServer.GameObjects
 		{
 			if (Inventory != null)
 			{
-				if (Inventory.GetItem(eInventorySlot.DistanceWeapon) != null)
+				if (Inventory.GetItem(InventorySlot.DistanceWeapon) != null)
 					SwitchWeapon(GameLiving.eActiveWeaponSlot.Distance);
-				else if (Inventory.GetItem(eInventorySlot.RightHandWeapon) != null)
+				else if (Inventory.GetItem(InventorySlot.RightHandWeapon) != null)
 					SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
-				else if (Inventory.GetItem(eInventorySlot.TwoHandWeapon) != null)
+				else if (Inventory.GetItem(InventorySlot.TwoHandWeapon) != null)
 					SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
 			}
 			AddStatsToWeapon();
@@ -72,22 +72,22 @@ namespace DawnOfLight.GameServer.GameObjects
 			if (Inventory != null)
 			{
 				InventoryItem item;
-				if ((item = Inventory.GetItem(eInventorySlot.TwoHandWeapon)) != null)
+				if ((item = Inventory.GetItem(InventorySlot.TwoHandWeapon)) != null)
 				{
 					item.DPS_AF = (int)(Level * 3.3);
 					item.SPD_ABS = 50;
 				}
-				if ((item = Inventory.GetItem(eInventorySlot.RightHandWeapon)) != null)
+				if ((item = Inventory.GetItem(InventorySlot.RightHandWeapon)) != null)
 				{
 					item.DPS_AF = (int)(Level * 3.3);
 					item.SPD_ABS = 37;
 				}
-				if ((item = Inventory.GetItem(eInventorySlot.LeftHandWeapon)) != null)
+				if ((item = Inventory.GetItem(InventorySlot.LeftHandWeapon)) != null)
 				{
 					item.DPS_AF = (int)(Level * 3.3);
 					item.SPD_ABS = 50;
 				}
-				if ((item = Inventory.GetItem(eInventorySlot.DistanceWeapon)) != null)
+				if ((item = Inventory.GetItem(InventorySlot.DistanceWeapon)) != null)
 				{
 					item.DPS_AF = (int)(Level * 3.3);
 					item.SPD_ABS = 50;

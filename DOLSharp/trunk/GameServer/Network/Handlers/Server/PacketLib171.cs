@@ -19,9 +19,11 @@
 #define NOENCRYPTION
 
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.Keeps;
 using DawnOfLight.GameServer.Language;
@@ -55,7 +57,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient.Player == null) return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PositionAndObjectID));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PositionAndObjectID));
 			pak.WriteShort((ushort)m_gameClient.Player.ObjectID); //This is the player's objectid not Sessionid!!!
 			pak.WriteShort((ushort)m_gameClient.Player.Z);
 			pak.WriteInt((uint)m_gameClient.Player.X);
@@ -86,7 +88,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (obj.IsVisibleTo(m_gameClient.Player) == false)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ObjectCreate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ObjectCreate));
 			pak.WriteShort((ushort)obj.ObjectID);
 			if (obj is GameStaticItem)
 				pak.WriteShort((ushort)(obj as GameStaticItem).Emblem);
@@ -163,7 +165,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				return;
 			}
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.NPCCreate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.NPCCreate));
 			int speed = 0;
 			ushort speedZ = 0;
 			if (npc == null)
@@ -268,13 +270,13 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			SendTCP(pak);
 		}
 
-		public override void SendFindGroupWindowUpdate(GamePlayer[] list)
+		public override void SendFindGroupWindowUpdate(List<GamePlayer> list)
 		{
 			if (m_gameClient.Player == null) return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.FindGroupUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.FindGroupUpdate));
 			if (list != null)
 			{
-				pak.WriteByte((byte)list.Length);
+				pak.WriteByte((byte)list.Count);
 				byte nbleader = 0;
 				byte nbsolo = 0x1E;
 				foreach (GamePlayer player in list)
@@ -313,7 +315,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		protected override void SendQuestPacket(AbstractQuest quest, int index)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.QuestEntry));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.QuestEntry));
 
 			pak.WriteByte((byte)index);
 			if (quest.Step <= 0)
@@ -352,7 +354,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendLivingDataUpdate(GameLiving living, bool updateStrings)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ObjectDataUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ObjectDataUpdate));
 			pak.WriteShort((ushort)living.ObjectID);
 			pak.WriteByte(0);
 			pak.WriteByte(living.Level);
@@ -377,7 +379,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public override void SendPlayerFreeLevelUpdate()
 		{
 			GamePlayer player = m_gameClient.Player;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VisualEffect));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VisualEffect));
 
 			pak.WriteShort((ushort)player.ObjectID);
 			pak.WriteByte(0x09); // subcode
@@ -410,7 +412,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendRegionColorScheme(byte color)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VisualEffect));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VisualEffect));
 			pak.WriteShort(0); // not used
 			pak.WriteByte(0x05); // subcode
 			pak.WriteByte(color);

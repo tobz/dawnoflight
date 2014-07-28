@@ -92,7 +92,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 							}
 							catch (Exception e)
 							{
-								client.Out.SendMessage(e.ToString(), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+								client.Out.SendMessage(e.ToString(), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 							}
 						}
 						if (merchant == null)
@@ -418,7 +418,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 							}
 							catch (Exception e)
 							{
-								client.Out.SendMessage(e.ToString(), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+								client.Out.SendMessage(e.ToString(), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 							}
 						}
 						if (merchant == null)

@@ -219,7 +219,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
 			GamePlayer player = sender as GamePlayer;
 			lock (player.Inventory)
 			{
-				var items = player.Inventory.GetItemRange(eInventorySlot.MinEquipable, eInventorySlot.LastBackpack);
+				var items = player.Inventory.GetItemRange(InventorySlot.MinEquipable, InventorySlot.LastBackpack);
 				foreach (InventoryItem invItem in items)
 				{
 					if (invItem.Id_nb.Equals("Golden_Trident_of_Flame"))

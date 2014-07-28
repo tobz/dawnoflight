@@ -123,7 +123,7 @@ namespace DawnOfLight.GameServer.GameObjects
 					{
 						if (player.Client.Account.PrivLevel > (uint)ePrivLevel.Player)
 						{
-							player.Out.SendMessage("No portal keep found.", eChatType.CT_Skill, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("No portal keep found.", ChatType.CT_Skill, ChatLocation.CL_SystemWindow);
 						}
 						return true;
 					}
@@ -274,7 +274,7 @@ namespace DawnOfLight.GameServer.GameObjects
 
 			if (region == null || region.IsDisabled)
 			{
-				player.Out.SendMessage("This destination is not available.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("This destination is not available.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -316,7 +316,7 @@ namespace DawnOfLight.GameServer.GameObjects
 
 			if (player.Client.Account.PrivLevel > 1)
 				player.Out.SendMessage("Uni-Portal spell not found.",
-					eChatType.CT_Skill, eChatLoc.CL_SystemWindow);
+					ChatType.CT_Skill, ChatLocation.CL_SystemWindow);
 			
 			this.OnTeleport(player, destination);
 		}

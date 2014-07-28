@@ -16,14 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+using System;
+using System.Linq;
 using System.Reflection;
-using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0x54^168,"Handles account realm info and sending char overview")]
+    [PacketHandler(PacketType.TCP, ClientPackets.CharacterOverviewRequest, ClientStatus.LoggedIn)]
 	public class CharacterOverviewRequestHandler : IPacketHandler
 	{
 		/// <summary>
@@ -31,7 +33,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 		/// </summary>
 		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			client.ClientState = GameClient.eClientState.CharScreen;
 			if (client.Player != null)
@@ -39,22 +41,13 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				try
 				{
 					// find the cached character and force it to update with the latest saved character
-					DOLCharacters cachedCharacter = null;
-					foreach (DOLCharacters accountChar in client.Account.Characters)
-					{
-						if (accountChar.ObjectId == client.Player.InternalID)
-						{
-							cachedCharacter = accountChar;
-							break;
-						}
-					}
-
-					if (cachedCharacter != null)
+					var cachedCharacter = client.Account.Characters.FirstOrDefault(accountChar => accountChar.ObjectId == client.Player.InternalID);
+				    if (cachedCharacter != null)
 					{
 						cachedCharacter = client.Player.DBCharacter;
 					}
 				}
-				catch (System.Exception ex)
+				catch (Exception ex)
 				{
 					log.ErrorFormat("Error attempting to update cached player. {0}", ex.Message);
 				}
@@ -113,8 +106,6 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						// save the choice
 						client.Account.Realm = (int)chosenRealm;
 						GameServer.Database.SaveObject(client.Account);
-						// 2008-01-29 Kakuri - Obsolete
-						//GameServer.Database.WriteDatabaseTable( typeof( Account ) );
 					}
 				}
 				else

@@ -55,7 +55,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (text == null)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DetailWindow));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DetailWindow));
 
 			pak.WriteByte(0); // new in 1.75
 			if (caption == null)
@@ -74,7 +74,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public override void SendPlayerTitles()
 		{
 			IList titles = m_gameClient.Player.Titles;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DetailWindow));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DetailWindow));
 
 			pak.WriteByte(1); // new in 1.75
 			pak.WritePascalString("Player Statistics"); //window caption
@@ -109,7 +109,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendPlayerTitleUpdate(GamePlayer player)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VisualEffect));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VisualEffect));
 
 			pak.WriteShort((ushort)player.ObjectID);
 			pak.WriteByte(0x0B); // subcode
@@ -136,7 +136,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (player == null)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 			pak.WriteByte(0x03); //subcode
 			pak.WriteByte(0x0e); //number of entry
 			pak.WriteByte(0x00); //subtype
@@ -264,7 +264,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.StatsUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.StatsUpdate));
 
 			// base
 			for (int i = 0; i < updateStats.Length; i++)
@@ -391,7 +391,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.StatsUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.StatsUpdate));
 
 			// racial resists
 			for (int i = 0; i < updateResists.Length; i++)
@@ -455,7 +455,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null || playerToCreate.IsVisibleTo(m_gameClient.Player) == false)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PlayerCreate172));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PlayerCreate172));
 			pak.WriteShort((ushort)playerToCreate.Client.SessionID);
 			pak.WriteShort((ushort)playerToCreate.ObjectID);
 			pak.WriteShort(playerToCreate.Model);
@@ -499,7 +499,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendLoginGranted(byte color)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.LoginGranted));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.LoginGranted));
 			pak.WriteByte(0x01); //isSI
 			pak.WriteByte(ParseVersion((int)m_gameClient.Version, true));
 			pak.WriteByte(ParseVersion((int)m_gameClient.Version, false));

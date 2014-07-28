@@ -152,19 +152,19 @@ namespace DawnOfLight.GameServer.Keeps.Relics
 
 			if (!player.IsAlive)
 			{
-				player.Out.SendMessage("You cannot pickup " + GetName(0, false) + ". You are dead!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You cannot pickup " + GetName(0, false) + ". You are dead!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			if (IsMounted && player.Realm == Realm)
 			{
-				player.Out.SendMessage("You cannot pickup " + GetName(0, false) + ". It is owned by your realm.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You cannot pickup " + GetName(0, false) + ". It is owned by your realm.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			if (IsMounted && !RelicMgr.CanPickupRelicFromShrine(player, this))
 			{
-				player.Out.SendMessage("You cannot pickup " + GetName(0, false) + ". You need to capture your realms " + (Enum.GetName(typeof(eRelicType), RelicType)) + " relic first.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You cannot pickup " + GetName(0, false) + ". You need to capture your realms " + (Enum.GetName(typeof(eRelicType), RelicType)) + " relic first.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
@@ -211,18 +211,18 @@ namespace DawnOfLight.GameServer.Keeps.Relics
 		{
 			if (player.TempProperties.getProperty<object>(PLAYER_CARRY_RELIC_WEAK, null) != null)
 			{
-				player.Out.SendMessage("You are already carrying a relic.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You are already carrying a relic.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			if (player.IsStealthed)
 			{
-				player.Out.SendMessage("You cannot carry a relic while stealthed.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You cannot carry a relic while stealthed.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			if (!player.IsAlive)
 			{
-				player.Out.SendMessage("You are dead!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You are dead!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -234,12 +234,12 @@ namespace DawnOfLight.GameServer.Keeps.Relics
 
 				if (keep != null && keep.Realm != player.Realm)
 				{
-					player.Out.SendMessage("You must capture this keep before taking a relic.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You must capture this keep before taking a relic.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 			}
 
-			if (player.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, m_item))
+			if (player.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, m_item))
 			{
 				if (m_item == null)
 					log.Warn("GameRelic: Could not retrive " + Name + " as InventoryItem on player " + player.Name);
@@ -272,7 +272,7 @@ namespace DawnOfLight.GameServer.Keeps.Relics
 			}
 			else
 			{
-				player.Out.SendMessage("You dont have enough space in your backpack to carry this.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You dont have enough space in your backpack to carry this.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -412,7 +412,7 @@ namespace DawnOfLight.GameServer.Keeps.Relics
 				return 0;
 			}
 
-			if (CurrentCarrier != null && CurrentCarrier.Inventory.GetFirstItemByID(m_item.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack) == null)
+			if (CurrentCarrier != null && CurrentCarrier.Inventory.GetFirstItemByID(m_item.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack) == null)
 			{
 				log.DebugFormat("{0} not found in carriers backpack, relic returned to previous pad.", Name);
 				RelicPadTakesOver(ReturnRelicPad, true);

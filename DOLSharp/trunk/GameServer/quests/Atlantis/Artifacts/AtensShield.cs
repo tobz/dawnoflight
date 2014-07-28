@@ -99,7 +99,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 						"the letters. It's a great find. Thank you,",
 						player.Name);
 					scholar.TurnTo(player);
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					FinishQuest();
 					return true;
 				}
@@ -134,7 +134,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"I should be able to unlock the power of this shield. If you don't have the story, go seek",
 					"it out amongst the creatures of Oceanus.");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}

@@ -96,14 +96,14 @@ namespace DawnOfLight.GameServer
 		{
 			if (InProgress)
 			{
-				player.Out.SendMessage("Ianetor says \"I'm conducting a trail already in progress (possibly in another realm) at the moment.  Please try again in a little while.\"", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Ianetor says \"I'm conducting a trail already in progress (possibly in another realm) at the moment.  Please try again in a little while.\"", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				return;
 			}
 			else
 				SayTo(player, "Very well, proceed to the isle at the South end of this bridge.  Your fight shall begin in one minute.  Make sure that the area is clear!");
 			foreach (GamePlayer say in GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))
 			{
-				say.Out.SendMessage("Ianetor says, \"Anyone who doesn't wish to face my challenge of fire must leave Firestorm Island immediately or face death!  The game will begin in one minute!  Those who accepted my challenge must now move onto Firestorm Island!\"", eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow);
+				say.Out.SendMessage("Ianetor says, \"Anyone who doesn't wish to face my challenge of fire must leave Firestorm Island immediately or face death!  The game will begin in one minute!  Those who accepted my challenge must now move onto Firestorm Island!\"", ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow);
 			}
 			
 			InProgress = true;
@@ -786,7 +786,7 @@ namespace DawnOfLight.AI.Brain
 							else
 								damage = 500;
 							//This probably should be redone as a spell.
-							player.Out.SendMessage("Aithos sets you alight for " + damage + " damage!", eChatType.CT_Damaged, eChatLoc.CL_ChatWindow);
+							player.Out.SendMessage("Aithos sets you alight for " + damage + " damage!", ChatType.CT_Damaged, ChatLocation.CL_ChatWindow);
 							player.Out.SendSpellEffectAnimation(aithosbody, player, 310, 0, false, 1);
 							player.TakeDamage(aithosbody, eDamageType.Heat, damage, 0);
 							GamePlayer target = player;
@@ -795,7 +795,7 @@ namespace DawnOfLight.AI.Brain
 								if (onlookers != target) //dont send it to the person it happened to, only the other onlookers.
 								{
 									onlookers.Out.SendSpellEffectAnimation(aithosbody, target, 310, 0, false, 1);
-									onlookers.Out.SendMessage("Aithos burns " + target.Name + "!", eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow);
+									onlookers.Out.SendMessage("Aithos burns " + target.Name + "!", ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow);
 
 								}
 							}
@@ -829,7 +829,7 @@ namespace DawnOfLight.AI.Brain
 			{
 				if (GameServer.GameServer.ServerRules.IsAllowedToAttack(fire, player, true))
 				{
-					player.Out.SendMessage("The Wall of Fire burns you for 10,000 damage!", eChatType.CT_Damaged, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The Wall of Fire burns you for 10,000 damage!", ChatType.CT_Damaged, ChatLocation.CL_ChatWindow);
 					player.Out.SendSpellEffectAnimation(fire, player, 310, 0, false, 1);
 					player.TakeDamage(fire, eDamageType.Heat, 10000, 0);
 					GamePlayer target = player;
@@ -838,7 +838,7 @@ namespace DawnOfLight.AI.Brain
 						if (onlookers != target) //dont send it to the person it happened to, only the other onlookers.
 						{
 							onlookers.Out.SendSpellEffectAnimation(fire, target, 310, 0, false, 1);
-							onlookers.Out.SendMessage("The Wall of Fire burns " + target.Name + " to death!", eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow);
+							onlookers.Out.SendMessage("The Wall of Fire burns " + target.Name + " to death!", ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow);
 						}
 					}
 					
@@ -902,7 +902,7 @@ namespace DawnOfLight.AI.Brain
 						//1 in 4 chance every think cycle if a player is in front of him and he is attacking to do a Direct Damage.
 						if (Util.Random(3) == 3)
 						{
-							player.Out.SendMessage("Sunkaio sears your flesh for 400 damage!", eChatType.CT_Damaged, eChatLoc.CL_ChatWindow);
+							player.Out.SendMessage("Sunkaio sears your flesh for 400 damage!", ChatType.CT_Damaged, ChatLocation.CL_ChatWindow);
 							player.Out.SendSpellEffectAnimation(sunbody, player, 310, 0, false, 1);
 							player.TakeDamage(sunbody, eDamageType.Heat, 400, 0);
 							GamePlayer target = player;
@@ -911,7 +911,7 @@ namespace DawnOfLight.AI.Brain
 								if (onlookers != target) //dont send it to the person it happened to, only the other onlookers.
 								{
 									onlookers.Out.SendSpellEffectAnimation(sunbody, target, 310, 0, false, 1);
-									onlookers.Out.SendMessage("Sunkaio sears the flesh of " + target.Name + "!", eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow);
+									onlookers.Out.SendMessage("Sunkaio sears the flesh of " + target.Name + "!", ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow);
 
 								}
 							}
@@ -988,7 +988,7 @@ namespace DawnOfLight.AI.Brain
 				{
 					if (GameServer.GameServer.ServerRules.IsAllowedToAttack(pbody, player, true))
 					{
-						player.Out.SendMessage("The purros explodes in your face causing 300 damage!", eChatType.CT_Damaged, eChatLoc.CL_ChatWindow);
+						player.Out.SendMessage("The purros explodes in your face causing 300 damage!", ChatType.CT_Damaged, ChatLocation.CL_ChatWindow);
 						player.Out.SendSpellEffectAnimation(pbody, player, 310, 0, false, 1);
 						player.TakeDamage(pbody, eDamageType.Heat, 300, 0);
 						GamePlayer target = player;
@@ -997,7 +997,7 @@ namespace DawnOfLight.AI.Brain
 							if (onlookers != target) //dont send it to the person it happened to, only the other onlookers.
 							{
 								onlookers.Out.SendSpellEffectAnimation(pbody, target, 310, 0, false, 1);
-								onlookers.Out.SendMessage("The purros explodes in " + target.Name + " face!", eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow);
+								onlookers.Out.SendMessage("The purros explodes in " + target.Name + " face!", ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow);
 							}
 						}
 					}

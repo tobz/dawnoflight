@@ -144,8 +144,8 @@ namespace DawnOfLight.GameServer.Keeps.Relics
 				foreach (GameClient cl in WorldMgr.GetAllPlayingClients())
 				{
 					if (cl.Player.ObjectState != eObjectState.Active) continue;
-					cl.Out.SendMessage(LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "GameRelicPad.MountRelic.Captured", GlobalConstants.RealmToName((eRealm)relic.CurrentCarrier.Realm), relic.Name), eChatType.CT_ScreenCenterSmaller, eChatLoc.CL_SystemWindow);
-					cl.Out.SendMessage(message + "\n" + message + "\n" + message, eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					cl.Out.SendMessage(LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "GameRelicPad.MountRelic.Captured", GlobalConstants.RealmToName((eRealm)relic.CurrentCarrier.Realm), relic.Name), ChatType.CT_ScreenCenterSmaller, ChatLocation.CL_SystemWindow);
+					cl.Out.SendMessage(message + "\n" + message + "\n" + message, ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 				NewsMgr.CreateNews(message, relic.CurrentCarrier.Realm, eNewsType.RvRGlobal, false);
 
@@ -180,7 +180,7 @@ namespace DawnOfLight.GameServer.Keeps.Relics
 				foreach (GameClient cl in WorldMgr.GetAllPlayingClients())
 				{
 					if (cl.Player.ObjectState != eObjectState.Active) continue;
-					cl.Out.SendMessage(message + "\n" + message + "\n" + message, eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					cl.Out.SendMessage(message + "\n" + message + "\n" + message, ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 
 			}
@@ -196,7 +196,7 @@ namespace DawnOfLight.GameServer.Keeps.Relics
 				foreach (GameClient cl in WorldMgr.GetAllPlayingClients())
 				{
 					if (cl.Player.ObjectState != eObjectState.Active) continue;
-					cl.Out.SendMessage(message + "\n" + message + "\n" + message, eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					cl.Out.SendMessage(message + "\n" + message + "\n" + message, ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 				NewsMgr.CreateNews(message, relic.CurrentCarrier.Realm, eNewsType.RvRGlobal, false);
 
@@ -240,7 +240,7 @@ namespace DawnOfLight.GameServer.Keeps.Relics
 
 				if (relicOnPlayer.RelicType != m_parent.PadType || m_parent.MountedRelic != null)
 				{
-					player.Client.Out.SendMessage(string.Format("You need to find an empty {0} relic pad in order to place this relic.", relicOnPlayer.RelicType), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Client.Out.SendMessage(string.Format("You need to find an empty {0} relic pad in order to place this relic.", relicOnPlayer.RelicType), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					log.DebugFormat("Player {0} needs to find an empty {1} relic pad in order to place {2}.", player.Name, relicOnPlayer.RelicType, relicOnPlayer.Name);
 					return;
 				}

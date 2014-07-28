@@ -69,7 +69,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 			TurnTo(player, 1000);
 
-			SayTo(player, eChatLoc.CL_PopupWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Blacksmith.Say"));
+			SayTo(player, ChatLocation.CL_PopupWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Blacksmith.Say"));
 			return true;
 		}
 
@@ -87,7 +87,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language,
 				                                                  "Scripts.Blacksmith.StackedObjets", GetName(0, false)),
-				                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				return false;
 			}
@@ -109,8 +109,8 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				if (item.Durability <= 0)
 				{
 					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language,
-					                                                  "Scripts.Blacksmith.ObjectCantRepaired"), eChatType.CT_System,
-					                       eChatLoc.CL_SystemWindow);
+					                                                  "Scripts.Blacksmith.ObjectCantRepaired"), ChatType.CT_System,
+					                       ChatLocation.CL_SystemWindow);
 
 					return false;
 				}
@@ -126,8 +126,8 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			else
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language,
-				                                                  "Scripts.Blacksmith.NoNeedRepair"), eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				                                                  "Scripts.Blacksmith.NoNeedRepair"), ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 			}
 
 			return false;
@@ -147,19 +147,19 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			if (response != 0x01)
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language,
-				                                                  "Scripts.Blacksmith.AbortRepair", item.Name), eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				                                                  "Scripts.Blacksmith.AbortRepair", item.Name), ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 
 				return;
 			}
 
 
-			if (item == null || item.SlotPosition == (int)eInventorySlot.Ground
+			if (item == null || item.SlotPosition == (int)InventorySlot.Ground
 			    || item.OwnerID == null || item.OwnerID != player.InternalID)
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language,
-				                                                  "Scripts.Blacksmith.InvalidItem"), eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				                                                  "Scripts.Blacksmith.InvalidItem"), ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 
 				return;
 			}
@@ -170,15 +170,15 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			{
                 InventoryLogging.LogInventoryAction(player, this, eInventoryActionType.Merchant, item.RepairCost);
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language,
-				                                                  "Scripts.Blacksmith.NotEnoughMoney"), eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				                                                  "Scripts.Blacksmith.NotEnoughMoney"), ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 
 				return;
 			}
 
 			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Blacksmith.YouPay",
-			                                                  GetName(0, false), Money.GetString(item.RepairCost)), eChatType.CT_System,
-			                       eChatLoc.CL_SystemWindow);
+			                                                  GetName(0, false), Money.GetString(item.RepairCost)), ChatType.CT_System,
+			                       ChatLocation.CL_SystemWindow);
 
 			// Items with IsNotLosingDur are not....losing DUR.
 			if (ToRecoverCond + 1 >= item.Durability)
@@ -197,8 +197,8 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 			player.Out.SendInventoryItemsUpdate(new InventoryItem[] { item });
 			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language,
-			                                                  "Scripts.Blacksmith.ItsDone", item.Name), eChatType.CT_System,
-			                       eChatLoc.CL_SystemWindow);
+			                                                  "Scripts.Blacksmith.ItsDone", item.Name), ChatType.CT_System,
+			                       ChatLocation.CL_SystemWindow);
 
 			return;
 		}

@@ -79,7 +79,7 @@ namespace DawnOfLight.GameServer.Spells.Bainshee
             if (player == null) return;
             if (Spell.Pulse != 0 && CancelPulsingSpell(Caster, Spell.SpellType))
             {
-                MessageToCaster("You cancel your effect.", eChatType.CT_Spell);
+                MessageToCaster("You cancel your effect.", ChatType.CT_Spell);
                 return;
             }
         }

@@ -162,7 +162,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				eowylnAstos.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 58, 40);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 58, 40);
 				eowylnAstos.Inventory = template.CloseTemplate();
 				eowylnAstos.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -638,7 +638,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 		protected virtual int BuildNecklace(RegionTimer callingTimer)
 		{
 			m_questPlayer.Out.SendEmoteAnimation(eowylnAstos, eEmote.Yes);
-			SendMessage(m_questPlayer, "Eowyln carefully fashions a delicate necklace about the crystal and smiles.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+			SendMessage(m_questPlayer, "Eowyln carefully fashions a delicate necklace about the crystal and smiles.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 							
 			eowylnAstos.SayTo(m_questPlayer, "Here is your pendant. I thank you for allowing me the opportunity to create such a great item!");
 		

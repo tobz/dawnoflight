@@ -51,7 +51,7 @@ namespace DawnOfLight.GameServer.Behavior.Actions
 
             if (location.Name != null)
             {
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Behaviour.TeleportAction.TeleportedToLoc", player, location.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Behaviour.TeleportAction.TeleportedToLoc", player, location.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
             }
 
             location.X += Util.Random(-radius, radius);

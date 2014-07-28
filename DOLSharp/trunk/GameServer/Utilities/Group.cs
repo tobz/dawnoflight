@@ -67,7 +67,7 @@ namespace DawnOfLight.GameServer.Utilities
 						if (living is GamePlayer == false) continue;
 						GamePlayer player = living as GamePlayer;
 						player.Out.SendQuestListUpdate();
-						if (value != null) player.Out.SendMessage(m_mission.Description, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						if (value != null) player.Out.SendMessage(m_mission.Description, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}
@@ -135,7 +135,7 @@ namespace DawnOfLight.GameServer.Utilities
 			if (living is GamePlayer)
 				((GamePlayer)living).Out.SendGroupMembersUpdate(true);
 
-			SendMessageToGroupMembers(living.Name + " has joined the group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			SendMessageToGroupMembers(living.Name + " has joined the group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			GameEventMgr.Notify(GroupEvent.MemberJoined, this, new MemberJoinedEventArgs(living));
 			return true;
 		}
@@ -206,10 +206,10 @@ namespace DawnOfLight.GameServer.Utilities
             if (living is GamePlayer)
             {
                 GamePlayer player = (GamePlayer)living;
-                player.Out.SendMessage("You leave your group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You leave your group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 player.Notify(GamePlayerEvent.LeaveGroup, player);
             }
-            SendMessageToGroupMembers(living.Name + " has left the group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+            SendMessageToGroupMembers(living.Name + " has left the group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 			// only one player left?
 			if (MemberCount == 1)
@@ -227,7 +227,7 @@ namespace DawnOfLight.GameServer.Utilities
 					if (m_groupMembers[i] is GamePlayer)
 					{
 						Leader = m_groupMembers[i] as GamePlayer;
-						SendMessageToGroupMembers(Leader.Name + " is the new group leader.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						SendMessageToGroupMembers(Leader.Name + " is the new group leader.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						break;
 					}
 				}
@@ -275,7 +275,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="msg">message string</param>
 		/// <param name="type">message type</param>
 		/// <param name="loc">message location</param>
-		public virtual void SendMessageToGroupMembers(GameLiving from, string msg, eChatType type, eChatLoc loc)
+		public virtual void SendMessageToGroupMembers(GameLiving from, string msg, ChatType type, ChatLocation loc)
 		{
 			string message = msg;
 			if (from != null)
@@ -290,7 +290,7 @@ namespace DawnOfLight.GameServer.Utilities
 			SendMessageToGroupMembers(message, type, loc);
 		}
 
-		public virtual void SendMessageToGroupMembers(string msg, eChatType type, eChatLoc loc)
+		public virtual void SendMessageToGroupMembers(string msg, ChatType type, ChatLocation loc)
 		{
 			foreach (GamePlayer player in GetPlayersInTheGroup())
 			{

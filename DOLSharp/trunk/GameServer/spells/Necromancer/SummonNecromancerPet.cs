@@ -76,12 +76,12 @@ namespace DawnOfLight.GameServer.Spells.Necromancer
         {
             if (FindStaticEffectOnTarget(Caster, typeof(ShadeEffect)) != null)
             {
-                MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SummonNecromancerPet.CheckBeginCast.ShadeEffectIsNotNull"), eChatType.CT_System);
+                MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SummonNecromancerPet.CheckBeginCast.ShadeEffectIsNotNull"), ChatType.CT_System);
                 return false;
             }
 			if (Caster is GamePlayer && Caster.ControlledBrain != null)
 			{
-                MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "Summon.CheckBeginCast.AlreadyHaveaPet"), eChatType.CT_SpellResisted);
+                MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "Summon.CheckBeginCast.AlreadyHaveaPet"), ChatType.CT_SpellResisted);
                 return false;
 			}
             return base.CheckBeginCast(selectedTarget);

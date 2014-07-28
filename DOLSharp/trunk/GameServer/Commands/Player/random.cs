@@ -106,7 +106,7 @@ namespace DawnOfLight.GameServer.commands.Player
 		// these are to make code look better
 		private void SystemMessage(GameClient client, string str)
 		{
-			client.Out.SendMessage(str, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage(str, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void EmoteMessage(GamePlayer player, string str)
@@ -116,7 +116,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 		private void EmoteMessage(GameClient client, string str)
 		{
-			client.Out.SendMessage(str, eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage(str, ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
 		}
 	}
 }

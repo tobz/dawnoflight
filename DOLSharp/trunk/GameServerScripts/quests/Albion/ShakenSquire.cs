@@ -157,14 +157,14 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				sirJerem.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 68, 21);
-				template.AddNPCEquipment(eInventorySlot.HeadArmor, 64);
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 49);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 50);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 46);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 57, 27);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 47);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 158);
+				template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 68, 21);
+				template.AddNPCEquipment(InventorySlot.HeadArmor, 64);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 49);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 50);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 46);
+				template.AddNPCEquipment(InventorySlot.Cloak, 57, 27);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 47);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 158);
 				sirJerem.Inventory = template.CloseTemplate();
 				sirJerem.SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
 
@@ -200,11 +200,11 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				squireGalune.CurrentRegionID = 21;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 320);
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 137);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 138);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 134);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 135);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 320);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 137);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 138);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 134);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 135);
 				squireGalune.Inventory = template.CloseTemplate();
 				squireGalune.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -410,7 +410,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 						case "Galune":
 							if(quest.Step == 4)
 							{
-								SendMessage(player, "You tell Sir Jerem that you found Squire Galune in the Tomb, and that he is making his way back to the keep.  You decide not to mention the spider, but you get the sense that Sir Jerem will find out anyway.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "You tell Sir Jerem that you found Squire Galune in the Tomb, and that he is making his way back to the keep.  You decide not to mention the spider, but you get the sense that Sir Jerem will find out anyway.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								sirJerem.SayTo(player, "I'm glad to hear that you found the squire before he got himself into too much trouble. Most likely, he fainted at the sight of some rat or spider, and decided to wait for someone to [rescue him].");
 							}
 							break;

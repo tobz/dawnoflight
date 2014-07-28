@@ -154,7 +154,7 @@ namespace DawnOfLight.GameServer.commands.Player
         #region Messages
         private void EmptySlot(GameClient client, int slot)
         {
-            client.Out.SendMessage("The given source slot (" + slot + ") is empty.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+            client.Out.SendMessage("The given source slot (" + slot + ") is empty.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
         }
 
         private void InvalidSlot(GameClient client, int[] slots)
@@ -169,19 +169,19 @@ namespace DawnOfLight.GameServer.commands.Player
                     str += ", " + slot.ToString();
             }
 
-            client.Out.SendMessage("Invalid character slot" + (slots.Length > 1 ? "s" : "") + ": " + str, eChatType.CT_System, eChatLoc.CL_SystemWindow); 
+            client.Out.SendMessage("Invalid character slot" + (slots.Length > 1 ? "s" : "") + ": " + str, ChatType.CT_System, ChatLocation.CL_SystemWindow); 
         }
 
         private void NotSameRealm(GameClient client, int sourceSlot, int targetSlot)
         {
             client.Out.SendMessage("You cannot set a slot to a different realm! (source realm = " + GetRealmBySlotIndex(sourceSlot) +
-                                   ", target realm = " + GetRealmBySlotIndex(targetSlot) + ")", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                   ", target realm = " + GetRealmBySlotIndex(targetSlot) + ")", ChatType.CT_System, ChatLocation.CL_SystemWindow);
         }
 
         private void SlotChanged(GameClient client, string name, int oldSlot, int newSlot)
         {
             client.Out.SendMessage("The character slot for " + name + " has been successfully changed. (old slot = " + oldSlot +
-                                   ", new slot = " + newSlot + ")", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                   ", new slot = " + newSlot + ")", ChatType.CT_System, ChatLocation.CL_SystemWindow);
         }
         #endregion Messages
 

@@ -31,7 +31,7 @@ namespace DawnOfLight.GameServer.ServerRules
 			{
 				return true;
 			}
-			player.Client.Out.SendMessage("You do not meet the requirements to enter this region!", eChatType.CT_System, eChatLoc.CL_ChatWindow);
+			player.Client.Out.SendMessage("You do not meet the requirements to enter this region!", ChatType.CT_System, ChatLocation.CL_ChatWindow);
 			return false;
 		}
 		
@@ -45,7 +45,7 @@ namespace DawnOfLight.GameServer.ServerRules
 			{
 				return true;
 			}
-			player.Client.Out.SendMessage("You do not meet the requirements to enter this region!", eChatType.CT_System, eChatLoc.CL_ChatWindow);
+			player.Client.Out.SendMessage("You do not meet the requirements to enter this region!", ChatType.CT_System, ChatLocation.CL_ChatWindow);
 			return false;
 		}
 	}

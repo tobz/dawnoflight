@@ -59,11 +59,11 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 			if(player.DBCharacter.CustomisationStep == 2)
 			{
-				SayTo(player, eChatLoc.CL_PopupWindow, player.CharacterClass.Name +", I have discovered a secret spell that will allow you to change your appearance. I can cast this spell upon you if you wish. All you must do is say the word and I will [change your appearance].");
+				SayTo(player, ChatLocation.CL_PopupWindow, player.CharacterClass.Name +", I have discovered a secret spell that will allow you to change your appearance. I can cast this spell upon you if you wish. All you must do is say the word and I will [change your appearance].");
 			}
 			else if(player.DBCharacter.CustomisationStep == 3)
 			{
-				SayTo(player, eChatLoc.CL_PopupWindow, "You have already been granted the ability to change your appearance. You must leave this world to make the changes. (Log out to change your appearance.)");
+				SayTo(player, ChatLocation.CL_PopupWindow, "You have already been granted the ability to change your appearance. You must leave this world to make the changes. (Log out to change your appearance.)");
 			}
 
 			return true;
@@ -92,7 +92,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				}
 				new RegionTimer(player, new RegionTimerCallback(EndCastCallback), CAST_TIME);
 			
-				SayTo(player, eChatLoc.CL_PopupWindow, "There it is done! Now, you must leave this world for a short time for the magic to work. (You must log out to change your appearance.)");
+				SayTo(player, ChatLocation.CL_PopupWindow, "There it is done! Now, you must leave this world for a short time for the magic to work. (You must log out to change your appearance.)");
 				player.DBCharacter.CustomisationStep = 3;
 			}
 			return true;

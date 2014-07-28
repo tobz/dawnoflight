@@ -246,24 +246,24 @@ namespace DawnOfLight.GameServer.MinotaurRelics
             {
                 if (npc.Model == 1583)
                 {
-                    player.Out.SendMessage("You cannot pickup " + GetName(0, false) + ". It is locked!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage("You cannot pickup " + GetName(0, false) + ". It is locked!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     return false;
                 }
             }
 
 			if (!player.IsAlive)
 			{
-				player.Out.SendMessage("You cannot pickup " + GetName(0, false) + ". You are dead!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You cannot pickup " + GetName(0, false) + ". You are dead!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 			if (this.Owner != null)
 			{
-				player.Out.SendMessage("This Relic is owned by someone else!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("This Relic is owned by someone else!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 			if (player.MinotaurRelic != null)
 			{
-				player.Out.SendMessage("You already have a Relic!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You already have a Relic!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 			if (player.Group != null)
@@ -272,7 +272,7 @@ namespace DawnOfLight.GameServer.MinotaurRelics
 				{
 					if (pl.MinotaurRelic != null)
 					{
-						player.Out.SendMessage("Someone in your group already have a Relic!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("Someone in your group already have a Relic!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						return false;
 					}
 				}
@@ -624,7 +624,7 @@ namespace DawnOfLight.GameServer.MinotaurRelics
 				{
 					if (pl.MinotaurRelic != null)
 					{
-						player.Out.SendMessage("Someone in your group already has a Relic!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("Someone in your group already has a Relic!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						PlayerLoosesRelic(player, false);
 						return;
 					}

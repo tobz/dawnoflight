@@ -57,7 +57,7 @@ namespace DawnOfLight.GameServer.Spells.Warlock
 		public override int OnEffectExpires(GameSpellEffect effect, bool noMessages)
 		{
 			if(effect.Owner is GamePlayer && !noMessages)
-				((GamePlayer)effect.Owner).Out.SendMessage("You modification spell effect has expired.", eChatType.CT_SpellExpires, eChatLoc.CL_SystemWindow);
+				((GamePlayer)effect.Owner).Out.SendMessage("You modification spell effect has expired.", ChatType.CT_SpellExpires, ChatLocation.CL_SystemWindow);
 
 			GameEventMgr.RemoveHandler(effect.Owner, GamePlayerEvent.Moving, new DOLEventHandler(OnMove));
 
@@ -82,7 +82,7 @@ namespace DawnOfLight.GameServer.Spells.Warlock
 				if (effect != null)
 				{
 					effect.Cancel(false);
-					((GamePlayer)living).Out.SendMessage("You move and break your modification spell.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					((GamePlayer)living).Out.SendMessage("You move and break your modification spell.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}

@@ -17,22 +17,21 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x0E, "Handles housing decoration rotation")]
+    [PacketHandler(PacketType.TCP, ClientPackets.HousingDecorationRotate, ClientStatus.PlayerInGame)]
 	public class HousingDecorationRotateHandler : IPacketHandler
 	{
-		#region IPacketHandler Members
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int unk1 = packet.ReadByte();
 			int position = packet.ReadByte();
-			ushort housenumber = packet.ReadShort();
+			ushort houseNumber = packet.ReadShort();
 			ushort angle = packet.ReadShort();
 			ushort unk2 = packet.ReadShort();
 
@@ -41,12 +40,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				return;
 
 			// house is null, return
-			var house = HouseMgr.GetHouse(housenumber);
+			var house = HouseMgr.GetHouse(houseNumber);
 			if (house == null)
-				return;
-
-			// player is null, return
-			if (client.Player == null)
 				return;
 
 			// no permission to change the interior, return
@@ -57,10 +52,10 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				return;
 
 			// grab the item in question
-			IndoorItem iitem = house.IndoorItems[position];
+			var iitem = house.IndoorItems[position];
 			if (iitem == null)
 			{
-				client.Player.Out.SendMessage("error: id was null", eChatType.CT_Help, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage("error: id was null", ChatType.CT_Help, ChatLocation.CL_SystemWindow);
 				return;
 			} //should this ever happen?
 
@@ -78,8 +73,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			// save item
 			GameServer.Database.SaveObject(iitem.DatabaseItem);
 
-			ChatUtil.SendSystemMessage(client,
-			                           string.Format("Interior decoration rotated from {0} degrees to {1}", old, iitem.Rotation));
+			ChatUtil.SendSystemMessage(client, string.Format("Interior decoration rotated from {0} degrees to {1}", old, iitem.Rotation));
 
 			// update all players in the house.
 			foreach (GamePlayer plr in house.GetAllPlayersInHouse())
@@ -87,7 +81,5 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				plr.Client.Out.SendFurniture(house, position);
 			}
 		}
-
-		#endregion
 	}
 }

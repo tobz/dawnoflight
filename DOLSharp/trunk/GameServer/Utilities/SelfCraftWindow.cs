@@ -159,7 +159,7 @@ namespace DawnOfLight.GameServer.Utilities
 			get { return false; }
 			set 
 			{
-				m_owner.Out.SendMessage("You cannot repair while self-crafting!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				m_owner.Out.SendMessage("You cannot repair while self-crafting!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -171,7 +171,7 @@ namespace DawnOfLight.GameServer.Utilities
 			get { return true; }
 			set 
 			{
-				m_owner.Out.SendMessage("Combine flag is autoset while self-crafting!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				m_owner.Out.SendMessage("Combine flag is autoset while self-crafting!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -288,7 +288,7 @@ namespace DawnOfLight.GameServer.Utilities
 				}
 				else
 				{
-					m_owner.Out.SendMessage("You don't have enough skill to combine items.",eChatType.CT_System,eChatLoc.CL_SystemWindow);
+					m_owner.Out.SendMessage("You don't have enough skill to combine items.",ChatType.CT_System,ChatLocation.CL_SystemWindow);
 				}
 
 				m_owner.Out.SendTradeWindow();

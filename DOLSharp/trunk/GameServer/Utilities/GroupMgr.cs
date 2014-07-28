@@ -18,7 +18,9 @@
  */
 
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using DawnOfLight.GameServer.GameObjects;
 
 namespace DawnOfLight.GameServer.Utilities
@@ -27,16 +29,16 @@ namespace DawnOfLight.GameServer.Utilities
 	/// The GroupMgr holds pointers to all groups and to players
 	/// looking for a group
 	/// </summary>
-	public sealed class GroupMgr
+	public static class GroupMgr
 	{
 		/// <summary>
 		/// ArrayList of all groups in the game
 		/// </summary>
-		static readonly HybridDictionary m_groups = new HybridDictionary();
+		static readonly Dictionary<object, Group> m_groups = new Dictionary<object, Group>();
 		/// <summary>
 		/// ArrayList of all players looking for a group
 		/// </summary>
-		static readonly HybridDictionary m_lfgPlayers = new HybridDictionary();
+		static readonly Dictionary<GamePlayer, bool> m_lfgPlayers = new Dictionary<GamePlayer, bool>();
 
 		/// <summary>
 		/// Adds a group to the list of groups
@@ -48,7 +50,7 @@ namespace DawnOfLight.GameServer.Utilities
 		{
 			lock(m_groups)
 			{
-				if(!m_groups.Contains(key))
+				if(!m_groups.ContainsKey(key))
 				{
 					m_groups.Add(key, group);
 					return true;
@@ -68,15 +70,14 @@ namespace DawnOfLight.GameServer.Utilities
 			Group group = null;
 			lock (m_groups)
 			{
-				group = (Group)m_groups[key];
+				group = m_groups[key];
 				if (group == null)
-				{
-					return false;
-				}
+				    return false;
+
 				m_groups.Remove(key);
 			}
 
-			foreach (GameLiving living in group.GetMembersInTheGroup())
+			foreach (var living in group.GetMembersInTheGroup())
 			{
 				group.RemoveMember(living);
 			}
@@ -92,11 +93,11 @@ namespace DawnOfLight.GameServer.Utilities
 		{
 			lock(m_lfgPlayers)
 			{
-				if(!m_lfgPlayers.Contains(member) && member.LookingForGroup==false)
-				{
-					member.LookingForGroup=true;
-					m_lfgPlayers.Add(member, null);
-				}
+			    if (m_lfgPlayers.ContainsKey(member) || member.LookingForGroup)
+                    return;
+
+			    member.LookingForGroup = true;
+			    m_lfgPlayers.Add(member, true);
 			}
 		}
 
@@ -108,7 +109,7 @@ namespace DawnOfLight.GameServer.Utilities
 		{
 			lock(m_lfgPlayers)
 			{
-				member.LookingForGroup=false;
+				member.LookingForGroup = false;
 				m_lfgPlayers.Remove(member);
 			}
 		}
@@ -118,42 +119,24 @@ namespace DawnOfLight.GameServer.Utilities
 		/// </summary>
 		/// <param name="status">statusbyte</param>
 		/// <returns>ArrayList of groups</returns>
-		public static ArrayList ListGroupByStatus(byte status)
+		public static List<Group> ListGroupByStatus(byte status)
 		{
-			ArrayList groupList = new ArrayList();
-
 			lock(m_groups)
 			{
-				foreach (Group group in m_groups.Values)
-				{
-					if (group.Status == 10) continue; // not looking for members, ignore
-					if (group.Status == status || group.Status == 0x0B)
-					{
-						groupList.Add(group);
-					}
-				}
+				return m_groups.Where(x => x.Value.Status == status || x.Value.Status == 0x0B).Select(x => x.Value).ToList();
 			}
-			return groupList;
 		}
 
 		/// <summary>
 		/// Returns an Arraylist of all players looking for a group
 		/// </summary>
 		/// <returns>ArrayList of all players looking for a group</returns>
-		public static ArrayList LookingForGroupPlayers()
+		public static List<GamePlayer> LookingForGroupPlayers()
 		{
-			ArrayList lookingPlayers = new ArrayList();
-			lock(m_lfgPlayers)
-			{
-				foreach (GamePlayer player in m_lfgPlayers.Keys)
-				{
-					if(player.Group==null)
-					{
-						lookingPlayers.Add(player);
-					}
-				}
-			}
-			return lookingPlayers;
+		    lock (m_lfgPlayers)
+		    {
+		        return m_lfgPlayers.Keys.Where(player => player.Group == null).ToList();
+		    }
 		}
 	}
 }

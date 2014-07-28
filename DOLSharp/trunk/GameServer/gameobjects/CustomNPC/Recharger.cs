@@ -55,7 +55,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				return false;
 
 			TurnTo(player.X, player.Y);
-			SayTo(player, eChatLoc.CL_ChatWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Recharger.Interact"));
+			SayTo(player, ChatLocation.CL_ChatWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Recharger.Interact"));
 			return true;
 		}
 
@@ -72,7 +72,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			if (item.Count != 1)
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Recharger.ReceiveItem.StackedObjects",
-                    GetName(0, false, player.Client.Account.Language, this)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    GetName(0, false, player.Client.Account.Language, this)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
@@ -115,16 +115,16 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 			InventoryItem item = (InventoryItem) itemWeak.Target;
 
-			if (item == null || item.SlotPosition == (int) eInventorySlot.Ground
+			if (item == null || item.SlotPosition == (int) InventorySlot.Ground
 				|| item.OwnerID == null || item.OwnerID != player.InternalID)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Recharger.RechargerDialogResponse.InvalidItem"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Recharger.RechargerDialogResponse.InvalidItem"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			if (response != 0x01)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Recharger.RechargerDialogResponse.Decline", item.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Recharger.RechargerDialogResponse.Decline", item.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -141,13 +141,13 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 			if(!player.RemoveMoney(cost))
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Recharger.RechargerDialogResponse.NotMoney"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Recharger.RechargerDialogResponse.NotMoney"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
             InventoryLogging.LogInventoryAction(player, this, eInventoryActionType.Merchant, cost);
 
 			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Recharger.RechargerDialogResponse.GiveMoney",
-                                   GetName(0, false, player.Client.Account.Language, this), Money.GetString((long)cost)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                   GetName(0, false, player.Client.Account.Language, this), Money.GetString((long)cost)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			item.Charges = item.MaxCharges;
 			item.Charges1 = item.MaxCharges1;
 

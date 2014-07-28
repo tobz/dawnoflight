@@ -106,7 +106,7 @@ namespace DawnOfLight.GameServer.Spells
 			if (!target.IsAlive)
 			{
 				//"You cannot heal the dead!" sshot550.tga
-				MessageToCaster(target.GetName(0, true) + " is dead!", eChatType.CT_SpellResisted);
+				MessageToCaster(target.GetName(0, true) + " is dead!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -116,24 +116,24 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (Spell.Pulse == 0)
 				{
-					if (target == m_caster) MessageToCaster("Your power is full.", eChatType.CT_SpellResisted);
-					else MessageToCaster(target.GetName(0, true) + " power is full.", eChatType.CT_SpellResisted);
+					if (target == m_caster) MessageToCaster("Your power is full.", ChatType.CT_SpellResisted);
+					else MessageToCaster(target.GetName(0, true) + " power is full.", ChatType.CT_SpellResisted);
 				}
 				return false;
 			}
 
 			if (m_caster == target)
 			{
-				MessageToCaster("You restore " + heal + " power points.", eChatType.CT_Spell);
+				MessageToCaster("You restore " + heal + " power points.", ChatType.CT_Spell);
 				if (heal < amount)
-					MessageToCaster("Your power is full.", eChatType.CT_Spell);
+					MessageToCaster("Your power is full.", ChatType.CT_Spell);
 			}
 			else
 			{
-				MessageToCaster("You restore " + target.GetName(0, false) + " for " + heal + " power points!", eChatType.CT_Spell);
-				MessageToLiving(target, "Your power was restored by " + m_caster.GetName(0, false) + " for " + heal + " points.", eChatType.CT_Spell);
+				MessageToCaster("You restore " + target.GetName(0, false) + " for " + heal + " power points!", ChatType.CT_Spell);
+				MessageToLiving(target, "Your power was restored by " + m_caster.GetName(0, false) + " for " + heal + " points.", ChatType.CT_Spell);
 				if (heal < amount)
-					MessageToCaster(target.GetName(0, true) + " mana is full.", eChatType.CT_Spell);
+					MessageToCaster(target.GetName(0, true) + " mana is full.", ChatType.CT_Spell);
 			}
 			return true;
 		}

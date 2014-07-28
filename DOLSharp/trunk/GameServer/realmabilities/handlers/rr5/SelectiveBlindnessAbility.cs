@@ -52,25 +52,25 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
                 m_player = living as GamePlayer;
                 if (m_player.TargetObject == null)
                 {
-                    m_player.Out.SendMessage("You need a target for this ability!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    m_player.Out.SendMessage("You need a target for this ability!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     m_player.DisableSkill(this, 3 * 1000);
                     return;
                 }
                 if (!(m_player.TargetObject is GamePlayer))
                 {
-                    m_player.Out.SendMessage("This work only on players!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    m_player.Out.SendMessage("This work only on players!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     m_player.DisableSkill(this, 3 * 1000);
                     return;
                 }
                 if (!GameServer.ServerRules.IsAllowedToAttack(m_player, (GamePlayer)m_player.TargetObject, true))
                 {
-                    m_player.Out.SendMessage("This work only on enemies!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+                    m_player.Out.SendMessage("This work only on enemies!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
                     m_player.DisableSkill(this, 3 * 1000);
                     return;
                 }
                 if ( !m_player.IsWithinRadius( m_player.TargetObject, SpellRange ) )
                 {
-                    m_player.Out.SendMessage(m_player.TargetObject + " is too far away!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+                    m_player.Out.SendMessage(m_player.TargetObject + " is too far away!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
                     m_player.DisableSkill(this, 3 * 1000);
                     return;
                 }
@@ -78,11 +78,11 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
                 {
 					if (radiusPlayer == m_player)
 					{
-						radiusPlayer.MessageToSelf("You cast " + this.Name + "!", eChatType.CT_Spell);
+						radiusPlayer.MessageToSelf("You cast " + this.Name + "!", ChatType.CT_Spell);
 					}
 					else
 					{
-						radiusPlayer.MessageFromArea(m_player, m_player.Name + " casts a spell!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+						radiusPlayer.MessageFromArea(m_player, m_player.Name + " casts a spell!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 					}
 
                     radiusPlayer.Out.SendSpellCastAnimation(m_player, 7059, 0);
@@ -92,7 +92,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
                 {
                     m_player.RealmAbilityCastTimer.Stop();
                     m_player.RealmAbilityCastTimer = null;
-                    m_player.Out.SendMessage("You cancel your Spell!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+                    m_player.Out.SendMessage("You cancel your Spell!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
                 }
 
                 m_targetPlayer = m_player.TargetObject as GamePlayer;
@@ -110,13 +110,13 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 
             if (!GameServer.ServerRules.IsAllowedToAttack(m_player, m_targetPlayer, true))
             {
-                m_player.Out.SendMessage("This work only on enemies.", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+                m_player.Out.SendMessage("This work only on enemies.", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
                 m_player.DisableSkill(this, 3 * 1000);
                 return;
             }
             if ( !m_player.IsWithinRadius( m_targetPlayer, SpellRange ) )
             {
-                m_player.Out.SendMessage(m_targetPlayer + " is too far away.", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+                m_player.Out.SendMessage(m_targetPlayer + " is too far away.", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
                 m_player.DisableSkill(this, 3 * 1000);
                 return;
             }

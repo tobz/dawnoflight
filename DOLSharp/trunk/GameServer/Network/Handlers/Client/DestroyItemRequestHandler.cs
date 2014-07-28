@@ -18,46 +18,46 @@
  */
 
 using System;
-using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x28 ^ 168, "Handles destroy item requests from client")]
+    [PacketHandler(PacketType.TCP, ClientPackets.DestroyItemRequest)]
 	public class DestroyItemRequestHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			packet.Skip(4);
 			int slot = packet.ReadShort();
-			InventoryItem item = client.Player.Inventory.GetItem((eInventorySlot)slot);
-			if (item != null)
-			{
-				if (item.IsIndestructible)
-				{
-					client.Out.SendMessage(String.Format("You can't destroy {0}!",
-						item.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
-					return;
-				}
 
-				if (item.Id_nb == "ARelic")
-				{
-					client.Out.SendMessage("You cannot destroy a relic!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-					return;
-				}
+			var item = client.Player.Inventory.GetItem((InventorySlot)slot);
+		    if (item == null)
+                return;
 
-				if (client.Player.Inventory.EquippedItems.Contains(item))
-				{
-					client.Out.SendMessage("You cannot destroy an equipped item!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-					return;
-				}
+		    if (item.IsIndestructible)
+		    {
+		        client.Out.SendMessage(String.Format("You can't destroy {0}!", item.GetName(0, false)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
+		        return;
+		    }
 
-				if (client.Player.Inventory.RemoveItem(item))
-				{
-					client.Out.SendMessage("You destroy the " + item.Name + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-					InventoryLogging.LogInventoryAction(client.Player, "(destroy)", eInventoryActionType.Other, item.Template, item.Count);
-				}
-			}
+		    if (item.Id_nb == "ARelic")
+		    {
+		        client.Out.SendMessage("You cannot destroy a relic!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+		        return;
+		    }
+
+		    if (client.Player.Inventory.EquippedItems.Contains(item))
+		    {
+		        client.Out.SendMessage("You cannot destroy an equipped item!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+		        return;
+		    }
+
+		    if (client.Player.Inventory.RemoveItem(item))
+		    {
+		        client.Out.SendMessage("You destroy the " + item.Name + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+		        InventoryLogging.LogInventoryAction(client.Player, "(destroy)", eInventoryActionType.Other, item.Template, item.Count);
+		    }
 		}
 	}
 }

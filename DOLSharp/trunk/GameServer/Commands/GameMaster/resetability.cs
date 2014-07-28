@@ -56,13 +56,13 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 								{
 
 									groupedplayers.ResetDisabledSkills();
-									groupedplayers.Out.SendMessage(client.Player.Name +" has reset your ability and spell timers!", eChatType.CT_Spell, eChatLoc.CL_ChatWindow);
+									groupedplayers.Out.SendMessage(client.Player.Name +" has reset your ability and spell timers!", ChatType.CT_Spell, ChatLocation.CL_ChatWindow);
 								}
 							}
 						}
 						else
 							client.Player.ResetDisabledSkills();
-						client.Player.Out.SendMessage("Target does not have a group so, ability and spell timers have been reset for you!", eChatType.CT_Spell, eChatLoc.CL_ChatWindow);
+						client.Player.Out.SendMessage("Target does not have a group so, ability and spell timers have been reset for you!", ChatType.CT_Spell, ChatLocation.CL_ChatWindow);
 						break;
 					}
 					#endregion
@@ -75,12 +75,12 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 							foreach (GamePlayer cgplayers in cg.Members.Keys)
 							{
 								cgplayers.ResetDisabledSkills();
-								cgplayers.Out.SendMessage(client.Player.Name + " has reset your ability and spell timers!", eChatType.CT_Spell, eChatLoc.CL_ChatWindow);
+								cgplayers.Out.SendMessage(client.Player.Name + " has reset your ability and spell timers!", ChatType.CT_Spell, ChatLocation.CL_ChatWindow);
 							}
 						}
 						else
 							client.Player.ResetDisabledSkills();
-						client.Player.Out.SendMessage("Target does not have a chatgroup so, ability and spell timers have been reset for you!", eChatType.CT_Spell, eChatLoc.CL_ChatWindow);
+						client.Player.Out.SendMessage("Target does not have a chatgroup so, ability and spell timers have been reset for you!", ChatType.CT_Spell, ChatLocation.CL_ChatWindow);
 						break;
 					}
 					#endregion
@@ -91,7 +91,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						if (target == null)
 							target = (GamePlayer)client.Player;
 						target.ResetDisabledSkills();
-						target.Out.SendMessage("Your ability and spell timers have been reset!", eChatType.CT_Spell, eChatLoc.CL_ChatWindow);
+						target.Out.SendMessage("Your ability and spell timers have been reset!", ChatType.CT_Spell, ChatLocation.CL_ChatWindow);
 					}
 					break;
 					#endregion
@@ -100,7 +100,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				case "self":
 					{
 						client.Player.ResetDisabledSkills();
-						client.Player.Out.SendMessage("Your ability and spell timers have been reset!", eChatType.CT_Spell, eChatLoc.CL_ChatWindow);
+						client.Player.Out.SendMessage("Your ability and spell timers have been reset!", ChatType.CT_Spell, ChatLocation.CL_ChatWindow);
 					}
 					break;
 					#endregion
@@ -115,19 +115,19 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 								foreach (GamePlayer bgplayers in bg.Members.Keys)
 								{
 									bgplayers.ResetDisabledSkills();
-									bgplayers.Out.SendMessage(client.Player.Name + " has reset your ability and spell timers!", eChatType.CT_Spell, eChatLoc.CL_ChatWindow);
+									bgplayers.Out.SendMessage(client.Player.Name + " has reset your ability and spell timers!", ChatType.CT_Spell, ChatLocation.CL_ChatWindow);
 								}
 							}
 						}
 						else
 							client.Player.ResetDisabledSkills();
-						client.Player.Out.SendMessage("Target does not have a battlegroup so, ability and spell timers have been reset for you!", eChatType.CT_Spell, eChatLoc.CL_ChatWindow);
+						client.Player.Out.SendMessage("Target does not have a battlegroup so, ability and spell timers have been reset for you!", ChatType.CT_Spell, ChatLocation.CL_ChatWindow);
 						break;
 					}
 					#endregion
 				default:
 					{
-						client.Out.SendMessage("'" + args[1] + "' is not a valid arguement.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("'" + args[1] + "' is not a valid arguement.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					}
 					break;
 			}

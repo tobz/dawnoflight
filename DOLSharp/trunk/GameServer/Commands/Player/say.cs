@@ -35,7 +35,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (args.Length < 2)
 			{
-				client.Out.SendMessage("You must say something...", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You must say something...", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			string message = string.Join(" ", args, 1, args.Length - 1);
@@ -49,12 +49,12 @@ namespace DawnOfLight.GameServer.commands.Player
 			long changeTime = client.Player.CurrentRegion.Time - SayTick;
 			if (changeTime < 500 && SayTick > 0)
 			{
-				client.Player.Out.SendMessage("Slow down! Think before you say each word!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage("Slow down! Think before you say each word!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
             if (client.Player.IsMuted)
             {
-                client.Player.Out.SendMessage("You have been muted. You cannot talk.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+                client.Player.Out.SendMessage("You have been muted. You cannot talk.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
                 return;
             }
 

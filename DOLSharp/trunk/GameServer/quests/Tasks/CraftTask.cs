@@ -182,7 +182,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 			GameNPC NPC = GetRandomNPC(player);
 			if (NPC == null)
 			{
-				player.Out.SendMessage("I have no task for you, come back some time later.", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("I have no task for you, come back some time later.", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				return false;
 			}
 
@@ -190,7 +190,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 
 			if (taskItem == null)
 			{
-				player.Out.SendMessage("I can't think of anything for you to make, perhaps you should ask again.", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("I can't think of anything for you to make, perhaps you should ask again.", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				log.ErrorFormat("Craft task item is null for player {0} at level {1}.", player.Name, player.Level);
 				return false;
 			}
@@ -207,7 +207,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 
 			player.Task = craftTask;
 
-			player.Out.SendMessage("Craft " + taskItem.GetName(0, false) + " for " + NPC.Name + " in " + NPC.CurrentZone.Description, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+			player.Out.SendMessage("Craft " + taskItem.GetName(0, false) + " for " + NPC.Name + " in " + NPC.CurrentZone.Description, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 			return true;
 
 		}

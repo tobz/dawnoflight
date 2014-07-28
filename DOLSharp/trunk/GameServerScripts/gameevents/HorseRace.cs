@@ -158,8 +158,8 @@ namespace DawnOfLight.GameServer.GameEvents
 				if (!forced && IsRaceStarted())
 				{
 					rider.Out.SendMessage("Sorry, the race has started already! Wait until it is over!",
-					                      eChatType.CT_System,
-					                      eChatLoc.CL_SystemWindow);
+					                      ChatType.CT_System,
+					                      ChatLocation.CL_SystemWindow);
 					//Return false -> don't allow the mount
 					return false;
 				}
@@ -171,15 +171,15 @@ namespace DawnOfLight.GameServer.GameEvents
 					{
 						player.Out.SendMessage(
 							player.Name + " jumps onto " + Name + "'s back and get's ready for the race!",
-							eChatType.CT_System,
-							eChatLoc.CL_SystemWindow);
+							ChatType.CT_System,
+							ChatLocation.CL_SystemWindow);
 					}
 					else
 					{
 						player.Out.SendMessage(
 							"You jump onto " + Name + "'s back and get ready for the race!",
-							eChatType.CT_System,
-							eChatLoc.CL_SystemWindow);
+							ChatType.CT_System,
+							ChatLocation.CL_SystemWindow);
 					}
 
 				//We register this horse in our event and get back
@@ -209,8 +209,8 @@ namespace DawnOfLight.GameServer.GameEvents
 				{
 					player.Out.SendMessage(
 						"You can't dismount during the race! Do you want to break all your bones?",
-						eChatType.CT_System,
-						eChatLoc.CL_SystemWindow);
+						ChatType.CT_System,
+						ChatLocation.CL_SystemWindow);
 					//return false -> prevent dismounting
 					return false;
 				}
@@ -591,8 +591,8 @@ namespace DawnOfLight.GameServer.GameEvents
 						foreach (GamePlayer player in horse.GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))
 							player.Out.SendMessage(
 								ply.Name + " has finished the horse race and came in at " + m_currentRanking + ". position!",
-								eChatType.CT_Broadcast,
-								eChatLoc.CL_SystemWindow);
+								ChatType.CT_Broadcast,
+								ChatLocation.CL_SystemWindow);
 					}
 
 

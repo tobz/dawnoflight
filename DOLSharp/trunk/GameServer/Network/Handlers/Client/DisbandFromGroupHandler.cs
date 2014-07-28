@@ -26,12 +26,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// <summary>
 	/// Handles the disband group packet
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.DisbandFromGroup, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.DisbandFromGroup, ClientStatus.PlayerInGame)]
 	public class DisbandFromGroupHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			new PlayerDisbandAction(client.Player).Start(1);
 		}

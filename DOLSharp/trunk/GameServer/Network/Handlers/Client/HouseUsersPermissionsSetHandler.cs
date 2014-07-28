@@ -17,17 +17,16 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x06, "Handles housing Users permissions requests")]
+    [PacketHandler(PacketType.TCP, ClientPackets.HouseUsersPermissionsSet, ClientStatus.PlayerInGame)]
 	public class HouseUsersPermissionsSetHandler : IPacketHandler
 	{
-		#region IPacketHandler Members
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int permissionSlot = packet.ReadByte();
 			int newPermissionLevel = packet.ReadByte();
@@ -36,10 +35,6 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			// house is null, return
 			var house = HouseMgr.GetHouse(houseNumber);
 			if (house == null)
-				return;
-
-			// player is null, return
-			if (client.Player == null)
 				return;
 
 			// can't set permissions unless you're the owner.
@@ -56,7 +51,5 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				house.AdjustPermissionSlot(permissionSlot, newPermissionLevel);
 			}
 		}
-
-		#endregion
 	}
 }

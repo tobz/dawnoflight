@@ -109,7 +109,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					String reply = String.Format("Here, take these boots! I hope you find {0}",
 						"them useful. Don't lose them, I can only unlock their power for you once!");
 					scholar.TurnTo(player);
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					FinishQuest();
 					return true;
 				}
@@ -141,7 +141,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"If you do, hand it in to me, and I will unlock the power that these boots had",
 					"been vested with. If not, go get the story!");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}

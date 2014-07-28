@@ -64,7 +64,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				else
                     Material = LanguageMgr.GetTranslation(ServerProperties.Properties.DB_LANGUAGE, "Enchanter.Interact.Text2");
 
-                SayTo(player, eChatLoc.CL_ChatWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "Enchanter.Interact.Text3", Material));
+                SayTo(player, ChatLocation.CL_ChatWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "Enchanter.Interact.Text3", Material));
                 return true;
 			}
 			return false;
@@ -86,13 +86,13 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                         t.Client.Out.SendCustomDialog(LanguageMgr.GetTranslation(t.Client, "Enchanter.ReceiveItem.Text1", Money.GetString(CalculEnchantPrice(item))), new CustomDialogResponse(EnchanterDialogResponse));
                     }
 					else
-                        SayTo(t, eChatLoc.CL_SystemWindow, LanguageMgr.GetTranslation(t.Client, "Enchanter.ReceiveItem.Text2"));
+                        SayTo(t, ChatLocation.CL_SystemWindow, LanguageMgr.GetTranslation(t.Client, "Enchanter.ReceiveItem.Text2"));
                 }
 				else
-                    SayTo(t, eChatLoc.CL_SystemWindow, LanguageMgr.GetTranslation(t.Client, "Enchanter.ReceiveItem.Text3"));
+                    SayTo(t, ChatLocation.CL_SystemWindow, LanguageMgr.GetTranslation(t.Client, "Enchanter.ReceiveItem.Text3"));
             }
 			else
-                SayTo(t, eChatLoc.CL_SystemWindow, LanguageMgr.GetTranslation(t.Client, "Enchanter.ReceiveItem.Text4"));
+                SayTo(t, ChatLocation.CL_SystemWindow, LanguageMgr.GetTranslation(t.Client, "Enchanter.ReceiveItem.Text4"));
 
 			return false;
 		}
@@ -111,10 +111,10 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				return;
 
 			InventoryItem item = (InventoryItem) itemWeak.Target;
-			if (item == null || item.SlotPosition == (int) eInventorySlot.Ground
+			if (item == null || item.SlotPosition == (int) InventorySlot.Ground
 				|| item.OwnerID == null || item.OwnerID != player.InternalID)
 			{
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Enchanter.EnchanterDialogResponse.Text1"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Enchanter.EnchanterDialogResponse.Text1"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
 			}
 
@@ -122,7 +122,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 			if (player.GetCurrentMoney() < Fee)
 			{
-                SayTo(player, eChatLoc.CL_SystemWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "Enchanter.EnchanterDialogResponse.Text2", Money.GetString(Fee)));
+                SayTo(player, ChatLocation.CL_SystemWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "Enchanter.EnchanterDialogResponse.Text2", Money.GetString(Fee)));
                 return;
 			}
 			if (item.Level < 50)
@@ -133,10 +133,10 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
             item.Name = LanguageMgr.GetTranslation(player.Client.Account.Language, "Enchanter.EnchanterDialogResponse.Text3") + " " + item.Name;
             player.Out.SendInventoryItemsUpdate(new InventoryItem[] { item });
             player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Enchanter.EnchanterDialogResponse.Text4", 
-                                    GetName(0, false, player.Client.Account.Language, this), Money.GetString(Fee)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                    GetName(0, false, player.Client.Account.Language, this), Money.GetString(Fee)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
             player.RemoveMoney(Fee, null);
             InventoryLogging.LogInventoryAction(player, this, eInventoryActionType.Merchant, Fee);
-            SayTo(player, eChatLoc.CL_SystemWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "Enchanter.EnchanterDialogResponse.Text5", item.GetName(1, false)));
+            SayTo(player, ChatLocation.CL_SystemWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "Enchanter.EnchanterDialogResponse.Text5", item.GetName(1, false)));
             return;
 		}
 

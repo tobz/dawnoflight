@@ -172,12 +172,12 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				madissair.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon,8);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 133);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 31);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 96);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 32);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 33);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon,8);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 133);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 31);
+				template.AddNPCEquipment(InventorySlot.Cloak, 96);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 32);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 33);
 				madissair.Inventory = template.CloseTemplate();
 				madissair.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -213,11 +213,11 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				eileenMorton.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 227);
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 137);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 51);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 135);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 136);
+				template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 227);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 137);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 51);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 135);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 136);
 				eileenMorton.Inventory = template.CloseTemplate();
 				eileenMorton.SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
 
@@ -253,9 +253,9 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				scribeVeral.CurrentRegionID = 10;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 142, 43);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 143, 43);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 2230);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 142, 43);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 143, 43);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 2230);
 				scribeVeral.Inventory = template.CloseTemplate();
 				scribeVeral.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -291,7 +291,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				serawen.CurrentRegionID = 10;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 2160);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 2160);
 				serawen.Inventory = template.CloseTemplate();
 				serawen.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -542,7 +542,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				if (quest == null)
 				{
 					//Player is not doing the quest...
-					SendMessage(player, "You approach Madissair and inquire about his apparent interest in Serawen. Madissair appears to have trouble maintaining eye contact after your question and his cheeks slowly turn red.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					SendMessage(player, "You approach Madissair and inquire about his apparent interest in Serawen. Madissair appears to have trouble maintaining eye contact after your question and his cheeks slowly turn red.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 					madissair.SayTo(player, "H-how did you know? Someone told you, didn't they? Of course they did, or else you wouldn't be asking me about it. But, how did they know? I hope I'm not that transparent. If Arliss Eadig finds out, it'll be the [end of me]!");
 					return;
 				}
@@ -566,12 +566,12 @@ namespace DawnOfLight.GameServer.Quests.Albion
 					{
 						case "end of me":
 							madissair.SayTo(player, "You won't tell Arliss, will you? I was lucky enough to be chosen as one of his apprentice tailors and I'd hate to be sent away because I fell in love with his daughter, [Serawen].");
-							SendMessage(player, "Madissair sighs as he mentions Serawen's name.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+							SendMessage(player, "Madissair sighs as he mentions Serawen's name.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 							break;
 
 						case "Serawen":
 							madissair.SayTo(player, "Don't think that he wouldn't! Since his wife passed away, Serawen is everything to him. He makes her stay upstairs  when the apprentices are around, and with good reason. Imagine what it would be like if every apprentice lost his [heart] to her.");
-							SendMessage(player, "Madissair flashes an awkward smile.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+							SendMessage(player, "Madissair flashes an awkward smile.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 							break;
 
 						case "heart":
@@ -588,7 +588,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 
 						case "again":
 							madissair.SayTo(player, "I want to get to know her better, but I don't think she'd be interested in me. I'm only an apprentice tailor, after all, and a half ogre.  I've come up with an idea, but I don't think I can go [through with it].");
-							SendMessage(player, "Madissair grins.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+							SendMessage(player, "Madissair grins.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 							break;
 
 						case "through with it":
@@ -619,7 +619,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 							switch (wArgs.Text)
 							{
 								case "Serawen":
-									SendMessage(player, "You tell Madissair that Serawen loved his gift, and that she confessed she secretly had a crush on the half ogre. You deliver Serawen's invitation to help him sneak into her house, emphasizing the need for stealth.  Upon hearing the news, Madissair's eyes widen and he begins to smile, quickly agreeing to the meeting.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+									SendMessage(player, "You tell Madissair that Serawen loved his gift, and that she confessed she secretly had a crush on the half ogre. You deliver Serawen's invitation to help him sneak into her house, emphasizing the need for stealth.  Upon hearing the news, Madissair's eyes widen and he begins to smile, quickly agreeing to the meeting.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 									madissair.SayTo(player, "I can't believe she feels the same way! She must've thought I'm quite the poet. Perhaps I'll take up writing poetry on a more permanent basis when I'm not sewing.  Thank you for your help, Reawin. Without you, I'd be nothing more than a lovesick [half ogre].");
 									break;
 
@@ -637,7 +637,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 							switch (wArgs.Text)
 							{
 								case "Serawen":
-									SendMessage(player, "Madissair appears as though he might have had more to say, though he stops speaking abruptly. He takes a moment to compose himself and then continues.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+									SendMessage(player, "Madissair appears as though he might have had more to say, though he stops speaking abruptly. He takes a moment to compose himself and then continues.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 									madissair.SayTo(player, "So, she rejected me for Geroth? Can't she see that I'm not the sniveling coward Geroth calls me? I would treat her as a lady deserves to be treated. I'd make the finest dresses for her. She shouldn't be trapped in a [marriage] with that lying bully!");
 									player.Out.SendEmoteAnimation(madissair, eEmote.Cry);
 									break;
@@ -660,7 +660,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 							switch (wArgs.Text)
 							{
 								case "Serawen":
-									SendMessage(player, "You tell Madissair that Serawen appreciated receiving his poem, and is interested in getting to know him better. You tell Madissair that she would like to invite him to meet in the Garden of Artorus Rex, which will  provide an opportunity for a private conversation.  Upon hearing the news, Madissair's face brightens and he begins to smile.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+									SendMessage(player, "You tell Madissair that Serawen appreciated receiving his poem, and is interested in getting to know him better. You tell Madissair that she would like to invite him to meet in the Garden of Artorus Rex, which will  provide an opportunity for a private conversation.  Upon hearing the news, Madissair's face brightens and he begins to smile.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 									madissair.SayTo(player, "I can't believe it! She must've loved my poetry, after all. Perhaps I'll write another for her in time for the meeting. I bet she'll really enjoy that.  Thank you for your help, Gwonn. Without you, I'd still be nothing more than a lovesick [half ogre].");
 									break;
 
@@ -678,13 +678,13 @@ namespace DawnOfLight.GameServer.Quests.Albion
 							switch (wArgs.Text)
 							{
 								case "Serawen":
-									SendMessage(player, "Doing your best to spare Madissair's feelings, you tell him that Serawen appreciated his thoughtfulness, but that her family is negotiating a marriage contract with Geroth, and that she seems to look forward to marrying him.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+									SendMessage(player, "Doing your best to spare Madissair's feelings, you tell him that Serawen appreciated his thoughtfulness, but that her family is negotiating a marriage contract with Geroth, and that she seems to look forward to marrying him.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 									madissair.SayTo(player, "So, she rejected me for Geroth? Can't she see that I'm not the sniveling coward Geroth calls me? I would treat her as a lady deserves to be treated. I'd make the finest dresses for her. She shouldn't be trapped in a [marriage] with that lying bully!");
 									player.Out.SendEmoteAnimation(madissair, eEmote.Cry);
 									break;
 
 								case "marriage":
-									SendMessage(player, "Madissair appears as though he might have had more to say, though he stops speaking abruptly. He takes a moment to compose himself and then continues.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+									SendMessage(player, "Madissair appears as though he might have had more to say, though he stops speaking abruptly. He takes a moment to compose himself and then continues.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 									madissair.SayTo(player, "I-I'm sorry, "+player.Name+".  I let my feelings get the better of me.  I let myself believe for too long that it was going to be just like the story of Arthur and Guinevere. I know you did your best, and without your help, I'd still love a woman who didn't [love] me.");
 									break;
 
@@ -739,7 +739,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 					if(quest.Step == 2 || quest.Step == 4)
 					{
 						eileenMorton.SayTo(player, "Hello, "+player.Name+". What can I do for you today?");
-						SendMessage(player, "You tell Eileen Morton about Madissair's predicament and ask her for a rose from her flower garden.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+						SendMessage(player, "You tell Eileen Morton about Madissair's predicament and ask her for a rose from her flower garden.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 						eileenMorton.SayTo(player, "Madissair, eh? He seems like a good man, if a bit on the shy side. I can't say I blame him. I've seen the way the other apprentices make fun of him. No matter, I'll be happy to help him catch Serawen's eye.  He'll have his work cut out for him trying to convince Arliss Eadig to allow their courtship.  I think that Arliss has other hopes for Serawen and wants her to marry into one of the families of the other crafting Guildmasters in the [capital].");	
 					}
 				}
@@ -811,15 +811,15 @@ namespace DawnOfLight.GameServer.Quests.Albion
 						switch (wArgs.Text)
 						{
 							case "Arthur":
-								SendMessage(player, "You tell Scribe Veral about Madissair and the love poem, confessing that you opened and read it, and that you don't think it will capture Serawen's heart. Out of respect for Madissair, you omit the names.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "You tell Scribe Veral about Madissair and the love poem, confessing that you opened and read it, and that you don't think it will capture Serawen's heart. Out of respect for Madissair, you omit the names.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								scribeVeral.SayTo(player, "I can't believe you opened the poem. How intrusive! You've piqued my curiousity now, "+player.Name+". Not just anyone writes poetry these days. That's normally reserved for learned scholars. Your friend must be deeply in love. Since you have already broken the seal, I don't suppose you would hand it to me and allow me to read it, would you?");
 								break;
 
 							case "paper":
-								SendMessage(player, "Scribe Veral sits down at the table, taking out a piece of paper, an inkwell, and a gaudy quill.  With sweeping gestures, he begins composing the perfect love poem.  He seems oblivious to your presence as he pens each line, finishing it with a theatrical flourish. The Scribe continues writing until he nears the bottom of the sheet, then sets aside the quill, deftly folds the paper, and hands it to you.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "Scribe Veral sits down at the table, taking out a piece of paper, an inkwell, and a gaudy quill.  With sweeping gestures, he begins composing the perfect love poem.  He seems oblivious to your presence as he pens each line, finishing it with a theatrical flourish. The Scribe continues writing until he nears the bottom of the sheet, then sets aside the quill, deftly folds the paper, and hands it to you.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								scribeVeral.SayTo(player, "There we are! This is sure to make her fall madly in love with your gentleman friend.  No payment is necessary. Just knowing that I've been able to help a young man is reward enough!");
 
-								InventoryItem item = player.Inventory.GetFirstItemByID(sealedLovePoem.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+								InventoryItem item = player.Inventory.GetFirstItemByID(sealedLovePoem.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 								if (item != null)
 								{
 									item.Name = "Rewritten Love Poem";
@@ -874,7 +874,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 						{
 							case "Arliss":
 								serawen.SayTo(player, "You're not? Then what brings [you here]?");
-								SendMessage(player, "You tell Serawen that you have been sent to give her a gift from an anonymous admirer.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "You tell Serawen that you have been sent to give her a gift from an anonymous admirer.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								break;
 
 							case "you here":
@@ -908,9 +908,9 @@ namespace DawnOfLight.GameServer.Quests.Albion
 								break;
 
 							case "name":
-								SendMessage(player, "You tell Serawen that her father's apprentice, Madissair, wrote her the poem and asked you to deliver it to her.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "You tell Serawen that her father's apprentice, Madissair, wrote her the poem and asked you to deliver it to her.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								serawen.SayTo(player, "Madissair? I've no interest in that oafish Half Ogre. Who's ever heard of a Half Ogre tailor, anyway? Tell him that if he behaves like this again, I'll ask Father to send him away. Father has no need of apprentices with designs on his daughter.");
-								SendMessage(player, "Serawen shudders with disgust as she imagines life with Madissair and then snorts in disdain at the idea of a Half Ogre tailor.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "Serawen shudders with disgust as she imagines life with Madissair and then snorts in disdain at the idea of a Half Ogre tailor.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								
 								quest.Step = 19;
 								break;
@@ -938,12 +938,12 @@ namespace DawnOfLight.GameServer.Quests.Albion
 								break;
 
 							case "name":
-								SendMessage(player, "You tell Serawen that her father's apprentice, Madissair, is the one who sent the poem. After finding out the identity of her admirer, Serawen smiles warmly.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "You tell Serawen that her father's apprentice, Madissair, is the one who sent the poem. After finding out the identity of her admirer, Serawen smiles warmly.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								serawen.SayTo(player, "Madissair? I never knew he had his eye on me, or that he was such a romantic.  Well, perhaps I underestimated him. If I could do so without Father finding out, I'd like to meet with him in the Garden of Artorus Rex. Would you [ask] him for me?");
 								break;
 
 							case "ask":
-								SendMessage(player, "You agree to tell Madissair about Serawen's invitation.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "You agree to tell Madissair about Serawen's invitation.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								serawen.SayTo(player, "Thank you, "+player.Name+". Please give Madissair my thanks, as well.");
 								
 								quest.Step = 16; // rose + rewrited
@@ -973,7 +973,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 
 							case "know":
 								serawen.SayTo(player, "Madissair? I've no interest in that oafish Half Ogre. Who's ever heard of a Half Ogre tailor, anyway? Tell him that if he behaves like this again, I'll ask Father to send him away. Father has no need of apprentices with designs on his daughter.");
-								SendMessage(player, "Serawen shudders with disgust as she imagines life with Madissair and then snorts in disdain at the idea of a Half Ogre tailor.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "Serawen shudders with disgust as she imagines life with Madissair and then snorts in disdain at the idea of a Half Ogre tailor.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								
 								quest.Step = 19;
 								break;
@@ -1001,7 +1001,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 								break;
 
 							case "name":
-								SendMessage(player, "You tell Serawen that her father's apprentice, Madissair, is the one who sent the poem. After finding out the identity of her admirer, Serawen smiles warmly.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "You tell Serawen that her father's apprentice, Madissair, is the one who sent the poem. After finding out the identity of her admirer, Serawen smiles warmly.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								serawen.SayTo(player, "Ah, Madissair! You know, I bet he doesn't know that I've seen him watching me.  I've been watching him, too.  I've never really had the chance to get to know him very well. Father doesn't want me associating with the [apprentices].");
 								break;
 
@@ -1011,7 +1011,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 
 							case "discovered":
 								serawen.SayTo(player, "If we're careful, it won't happen.  When I was younger, I built a rope ladder so that I could sneak out of the house at night. I haven't had to use it in awhile, but it will serve just as well to help someone get in. I'll bring some food upstairs tonight, so we can have a private meeting. Father will never know! Will you deliver my [invitation] to Madissair?");
-								SendMessage(player, "You agree to deliver Serawen's invitation to Madissair.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "You agree to deliver Serawen's invitation to Madissair.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								
 								quest.Step = 13; // only rose
 								break;
@@ -1031,17 +1031,17 @@ namespace DawnOfLight.GameServer.Quests.Albion
 		
 			UseSlotEventArgs uArgs = (UseSlotEventArgs) args;
 
-			InventoryItem item = player.Inventory.GetItem((eInventorySlot)uArgs.Slot);
+			InventoryItem item = player.Inventory.GetItem((InventorySlot)uArgs.Slot);
 			if (item != null && item.Id_nb == sealedLovePoem.Id_nb)
 			{
 				if (quest.Step == 1)
 				{
-					SendMessage(player, "Using a small knife, you carefully separate the seal from one flap of the paper, allowing it to be resealed later with little evidence of tampering.  You unfold the paper, revealing a short poem in the apprentice's handwriting.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-					SendMessage(player, "Our homeland's banner is red,", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-					SendMessage(player, "Those little inconnu are blue,", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-					SendMessage(player, "I've never been quite so happy", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-					SendMessage(player, "as I feel when thinking of you.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-					SendMessage(player, "Chuckling as you read the poem, you realize that Madissair's words, while sincere, may not win Serawen's heart on their own.  You quickly think up a couple of ideas to help Madissair get Serawen's attention.  In Camelot City, Scribe Veral is renowned for his poems in praise of Arthur's deeds. He might be able to help you craft a more suitable poem.  You can also seek out Eileen Morton in the tavern in Cotswold, and ask her for a red rose from her garden, to accompany whichever poem you choose to deliver.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					SendMessage(player, "Using a small knife, you carefully separate the seal from one flap of the paper, allowing it to be resealed later with little evidence of tampering.  You unfold the paper, revealing a short poem in the apprentice's handwriting.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
+					SendMessage(player, "Our homeland's banner is red,", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
+					SendMessage(player, "Those little inconnu are blue,", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
+					SendMessage(player, "I've never been quite so happy", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
+					SendMessage(player, "as I feel when thinking of you.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
+					SendMessage(player, "Chuckling as you read the poem, you realize that Madissair's words, while sincere, may not win Serawen's heart on their own.  You quickly think up a couple of ideas to help Madissair get Serawen's attention.  In Camelot City, Scribe Veral is renowned for his poems in praise of Arthur's deeds. He might be able to help you craft a more suitable poem.  You can also seek out Eileen Morton in the tavern in Cotswold, and ask her for a red rose from her garden, to accompany whichever poem you choose to deliver.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				
 					item.Name = "Unsealed Love Poem";
 					player.Out.SendInventorySlotsUpdate(new int[] {item.SlotPosition});
@@ -1244,7 +1244,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 
 							serawen.TurnTo(m_questPlayer);
 							serawen.SayTo(m_questPlayer, "Oh, my! That's a gorgeous rose. Did the sender give you a note, or anything identifying himself?");
-							SendMessage(m_questPlayer, "Serawen accepts the flower from you, blushing.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);	
+							SendMessage(m_questPlayer, "Serawen accepts the flower from you, blushing.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);	
 							
 							if(Step == 6) Step = 8; // rose + rewrite poem
 							else if(Step == 10) Step = 11; // only rose
@@ -1257,7 +1257,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 							RemoveItem(serawen, m_questPlayer, sealedLovePoem);
 
 							serawen.TurnTo(m_questPlayer);
-							SendMessage(m_questPlayer, "You hand Serawen the poem and she glances at the seal, not recognizing it. She eagerly unfolds the poem, reading quickly.  As her eyes move down the page, she begins to smile.  When she reaches the end of the page, Serawen looks up at you, still smiling with appreciation.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);	
+							SendMessage(m_questPlayer, "You hand Serawen the poem and she glances at the seal, not recognizing it. She eagerly unfolds the poem, reading quickly.  As her eyes move down the page, she begins to smile.  When she reaches the end of the page, Serawen looks up at you, still smiling with appreciation.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);	
 							serawen.SayTo(m_questPlayer, "What a kind gesture! I've always hoped that I would be courted by a gallant man. Whoever sent this must have put a lot of effort into finding a talented scribe.  It really is a [beautiful] poem.");
 						
 							Step = 14;
@@ -1270,7 +1270,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 							RemoveItem(serawen, m_questPlayer, sealedLovePoem);
 
 							serawen.TurnTo(m_questPlayer);
-							SendMessage(m_questPlayer, "Serawen accepts the poem from you, inspecting the seal. She unfolds the paper eagerly, expecting it to be a note from the mysterious man who sent the rose.  When she realizes that the paper contains a poem, Serawen begins to smile.  She closes her eyes briefly and pauses to smell the rose.  After a moment, her eyes return to the paper as she reads the rest of the poem and nods approvingly.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);	
+							SendMessage(m_questPlayer, "Serawen accepts the poem from you, inspecting the seal. She unfolds the paper eagerly, expecting it to be a note from the mysterious man who sent the rose.  When she realizes that the paper contains a poem, Serawen begins to smile.  She closes her eyes briefly and pauses to smell the rose.  After a moment, her eyes return to the paper as she reads the rest of the poem and nods approvingly.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);	
 							serawen.SayTo(m_questPlayer, "This is a very beautiful poem, "+m_questPlayer.Name+".  Whoever sent it is a true gentleman. I must admit, the idea of being courted by a mystery man is exciting and sounds like something straight out of a minstrel's [tale].");
 						
 							Step = 15;
@@ -1283,7 +1283,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 							RemoveItem(serawen, m_questPlayer, sealedLovePoem);
 
 							serawen.TurnTo(m_questPlayer);
-							SendMessage(m_questPlayer, "You hand Serawen the poem and she glances at the seal, not recognizing it. She eagerly unfolds the poem, reading quickly.  As her eyes move down the page, the corners of her mouth begin to fall. She does not quite frown, but it is clear that she had different expectations. Serawen chuckles nervously when she reads the last of the text.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+							SendMessage(m_questPlayer, "You hand Serawen the poem and she glances at the seal, not recognizing it. She eagerly unfolds the poem, reading quickly.  As her eyes move down the page, the corners of her mouth begin to fall. She does not quite frown, but it is clear that she had different expectations. Serawen chuckles nervously when she reads the last of the text.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 							serawen.SayTo(m_questPlayer, "Thank you...I think. I appreciate the sentiment, but the poem is simply horrible. I don't mean to offend your employer, but I hope he didn't think he'd win my affection with this. He seems to be quite a desperate [man], or did [Geroth] put you up to this?");
 							m_questPlayer.Out.SendEmoteAnimation(serawen, eEmote.Laugh);
 
@@ -1297,7 +1297,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 							RemoveItem(serawen, m_questPlayer, sealedLovePoem);
 
 							serawen.TurnTo(m_questPlayer);
-							SendMessage(m_questPlayer, "Serawen accepts the poem from you, inspecting the seal. She unfolds the paper eagerly, expecting it to be a note from the mysterious man who sent the rose.  When she realizes that the paper contains a poem, Serawen begins to smile.  She closes her eyes briefly and pauses to smell the rose.  After a moment, her eyes return to the paper as she reads the rest of the poem and nods approvingly.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);	
+							SendMessage(m_questPlayer, "Serawen accepts the poem from you, inspecting the seal. She unfolds the paper eagerly, expecting it to be a note from the mysterious man who sent the rose.  When she realizes that the paper contains a poem, Serawen begins to smile.  She closes her eyes briefly and pauses to smell the rose.  After a moment, her eyes return to the paper as she reads the rest of the poem and nods approvingly.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);	
 							serawen.SayTo(m_questPlayer, "This is a very sweet gesture.  Whoever sent it might not be the best of poets, but his sincerity shines through. There aren't many who would take this risk. I think most would hire someone to write a poem instead, but then it would lack his [voice].");
 
 							Step = 12;

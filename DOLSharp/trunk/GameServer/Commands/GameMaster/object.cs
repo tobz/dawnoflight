@@ -66,7 +66,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			if (targetObject == null && args[1] != "create" && args[1] != "fastcreate" && args[1] != "target" && args[1] != "quests")
 			{
-				client.Out.SendMessage("Type /object for command overview", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Type /object for command overview", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -349,7 +349,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 								}
 							}
 
-							client.Out.SendMessage(targetObject.DataQuestList.Count + " Data Quests loaded for this object.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(targetObject.DataQuestList.Count + " Data Quests loaded for this object.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 						catch (Exception)
 						{
@@ -397,7 +397,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			if (obj == null)
 			{
-				client.Out.SendMessage( "There was an error creating an instance of " + itemClassName + "!", eChatType.CT_System, eChatLoc.CL_SystemWindow );
+				client.Out.SendMessage( "There was an error creating an instance of " + itemClassName + "!", ChatType.CT_System, ChatLocation.CL_SystemWindow );
 				return null;
 			}
 

@@ -156,11 +156,11 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				hughGallen.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 39);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 40);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 36);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 37);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 38);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 39);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 40);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 36);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 37);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 38);
 				hughGallen.Inventory = template.CloseTemplate();
 				hughGallen.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

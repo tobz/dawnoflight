@@ -58,7 +58,7 @@ namespace DawnOfLight.GameServer.SkillHandler
                         {            
                         	GamePlayer player = living as GamePlayer;
                             if (player != null)
-                                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseSnared"), eChatType.CT_System, eChatLoc.CL_SystemWindow);      
+                                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseSnared"), ChatType.CT_System, ChatLocation.CL_SystemWindow);      
                             return true;
                         }
                     }

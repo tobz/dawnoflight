@@ -158,10 +158,10 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				farmerAsma.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 31);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 57);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 32);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 33);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 31);
+				template.AddNPCEquipment(InventorySlot.Cloak, 57);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 32);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 33);
 				farmerAsma.Inventory = template.CloseTemplate();
 				farmerAsma.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -356,9 +356,9 @@ namespace DawnOfLight.GameServer.Quests.Albion
 					if (quest.Step == 4)
 					{
 						farmerAsma.SayTo(player, "Ah, you've returned. I hope you were able to find the fields without too much difficulty. I'm still learning my way around the area.  Which field would you recommend renting?");
-						SendMessage(player, "[I'd recommend the first field.]", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-						SendMessage(player, "[The second field is best.]", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-						SendMessage(player, "[You should rent the third one.]", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+						SendMessage(player, "[I'd recommend the first field.]", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
+						SendMessage(player, "[The second field is best.]", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
+						SendMessage(player, "[You should rent the third one.]", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 					}
 					return;
 				}
@@ -435,21 +435,21 @@ namespace DawnOfLight.GameServer.Quests.Albion
 		
 			UseSlotEventArgs uArgs = (UseSlotEventArgs) args;
 
-			InventoryItem item = player.Inventory.GetItem((eInventorySlot)uArgs.Slot);
+			InventoryItem item = player.Inventory.GetItem((InventorySlot)uArgs.Slot);
 			if (item != null && item.Id_nb == farmerAsmasMap.Id_nb)
 			{
 				switch (quest.Step)
 				{
 					case 1:
-						SendMessage(player, "To find the first vacant field, travel a short distance north from the Shrouded Isles portal.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+						SendMessage(player, "To find the first vacant field, travel a short distance north from the Shrouded Isles portal.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 						break;
 
 					case 2:
-						SendMessage(player, "Farmer Asma's map shows that the second field located across the road to the east southeast of the first vacant field.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+						SendMessage(player, "Farmer Asma's map shows that the second field located across the road to the east southeast of the first vacant field.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 						break;
 
 					case 3:
-						SendMessage(player, "You open Farmer Asma's Map and discover that the last field is a short trip to the southeast from the second field.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+						SendMessage(player, "You open Farmer Asma's Map and discover that the last field is a short trip to the southeast from the second field.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 						break;
 				}
 			}

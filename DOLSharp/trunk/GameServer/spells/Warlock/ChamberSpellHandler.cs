@@ -124,70 +124,70 @@ namespace DawnOfLight.GameServer.Spells.Warlock
 				int duration = caster.GetSkillDisabledDuration(m_spell);
 				if (duration > 0)
 				{
-					MessageToCaster("You must wait " + (duration / 1000 + 1) + " seconds to use this spell!", eChatType.CT_System);
+					MessageToCaster("You must wait " + (duration / 1000 + 1) + " seconds to use this spell!", ChatType.CT_System);
 					return false;
 				}
 				if (caster.IsMoving || caster.IsStrafing)
 				{
-					MessageToCaster("You must be standing still to cast this spell!", eChatType.CT_System);
+					MessageToCaster("You must be standing still to cast this spell!", ChatType.CT_System);
 					return false;
 				}
 				if (caster.IsSitting)
 				{
-					MessageToCaster("You can't cast this spell while sitting!", eChatType.CT_System);
+					MessageToCaster("You can't cast this spell while sitting!", ChatType.CT_System);
 					return false;
 				}
 				if (m_spellTarget == null)
 				{
-					MessageToCaster("You must have a target!", eChatType.CT_SpellResisted);
+					MessageToCaster("You must have a target!", ChatType.CT_SpellResisted);
 					return false;
 				}
 				if (!caster.IsAlive)
 				{
-					MessageToCaster("You cannot cast this dead!", eChatType.CT_SpellResisted);
+					MessageToCaster("You cannot cast this dead!", ChatType.CT_SpellResisted);
 					return false;
 				}
 				if (!m_spellTarget.IsAlive)
 				{
-					MessageToCaster("You cannot cast this on the dead!", eChatType.CT_SpellResisted);
+					MessageToCaster("You cannot cast this on the dead!", ChatType.CT_SpellResisted);
 					return false;
 				}
 				if (caster.IsMezzed || caster.IsStunned || caster.IsSilenced)
 				{
-					MessageToCaster("You can't use that in your state.", eChatType.CT_System);
+					MessageToCaster("You can't use that in your state.", ChatType.CT_System);
 					return false;
 				}
 				if (!caster.TargetInView)
 				{
-					MessageToCaster("Your target is not visible!", eChatType.CT_SpellResisted);
+					MessageToCaster("Your target is not visible!", ChatType.CT_SpellResisted);
 					return false;
 				}
 				if (caster.IsObjectInFront(m_spellTarget, 180) == false)
 				{
-					MessageToCaster("Your target is not in view!", eChatType.CT_SpellResisted);
+					MessageToCaster("Your target is not in view!", ChatType.CT_SpellResisted);
 					return false;
 				}
 				if (caster.IsInvulnerableToAttack)
 				{
-					MessageToCaster("Your invunerable at the momment and cannot use that spell!", eChatType.CT_System);
+					MessageToCaster("Your invunerable at the momment and cannot use that spell!", ChatType.CT_System);
 					return false;
 				}
 				if (m_spellTarget is GamePlayer)
 				{
 					if ((m_spellTarget as GamePlayer).IsInvulnerableToAttack)
 					{
-						MessageToCaster("Your target is invunerable at the momment and cannot be attacked!", eChatType.CT_System);
+						MessageToCaster("Your target is invunerable at the momment and cannot be attacked!", ChatType.CT_System);
 						return false;
 					}
 				}
 				if (!caster.IsWithinRadius(m_spellTarget, ((SpellHandler)spellhandler).CalculateSpellRange()))
 				{
-					MessageToCaster("That target is too far away!", eChatType.CT_SpellResisted);
+					MessageToCaster("That target is too far away!", ChatType.CT_SpellResisted);
 					return false;
 				}
 				if (PhaseShift != null)
 				{
-					MessageToCaster(m_spellTarget.Name + " is Phaseshifted and can't be attacked!", eChatType.CT_System); return false;
+					MessageToCaster(m_spellTarget.Name + " is Phaseshifted and can't be attacked!", ChatType.CT_System); return false;
 				}
 				if (SelectiveBlindness != null)
 				{
@@ -195,24 +195,24 @@ namespace DawnOfLight.GameServer.Spells.Warlock
 					if (EffectOwner == m_spellTarget)
 					{
 						if (m_caster is GamePlayer)
-							((GamePlayer)m_caster).Out.SendMessage(string.Format("{0} is invisible to you!", m_spellTarget.GetName(0, true)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+							((GamePlayer)m_caster).Out.SendMessage(string.Format("{0} is invisible to you!", m_spellTarget.GetName(0, true)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 
 						return false;
 					}
 				}
 				if (m_spellTarget.HasAbility(Abilities.DamageImmunity))
 				{
-					MessageToCaster(m_spellTarget.Name + " is immune to this effect!", eChatType.CT_SpellResisted);
+					MessageToCaster(m_spellTarget.Name + " is immune to this effect!", ChatType.CT_SpellResisted);
 					return false;
 				}
 				if (GameServer.ServerRules.IsAllowedToAttack(Caster, m_spellTarget, true) && chamber.PrimarySpell.Target.ToLower() == "realm")
 				{
-					MessageToCaster("This spell only works on friendly targets!", eChatType.CT_System);
+					MessageToCaster("This spell only works on friendly targets!", ChatType.CT_System);
 					return false;
 				}
 				if (!GameServer.ServerRules.IsAllowedToAttack(Caster, m_spellTarget, true) && chamber.PrimarySpell.Target.ToLower() != "realm")
 				{
-					MessageToCaster("That target isn't attackable at this time!", eChatType.CT_System);
+					MessageToCaster("That target isn't attackable at this time!", ChatType.CT_System);
 					return false;
 				}
 				spellhandler.CastSpell();
@@ -241,7 +241,7 @@ namespace DawnOfLight.GameServer.Spells.Warlock
 				base.CastSpell ();
 				int duration = caster.GetSkillDisabledDuration(m_spell);
 				if(Caster is GamePlayer && duration == 0)
-					((GamePlayer)Caster).Out.SendMessage("Select the first spell for your " + Spell.Name + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					((GamePlayer)Caster).Out.SendMessage("Select the first spell for your " + Spell.Name + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			return true;
 		}
@@ -263,11 +263,11 @@ namespace DawnOfLight.GameServer.Spells.Warlock
 			{
 				if(SecondarySpell == null && PrimarySpell == null)
 				{
-					MessageToCaster("No spells were loaded into " + m_spell.Name + ".", eChatType.CT_Spell);
+					MessageToCaster("No spells were loaded into " + m_spell.Name + ".", ChatType.CT_Spell);
 				}
 				else
 				{
-					MessageToCaster("Your " + m_spell.Name + " is ready for use.", eChatType.CT_Spell);
+					MessageToCaster("Your " + m_spell.Name + " is ready for use.", ChatType.CT_Spell);
 					//StartSpell(target); // and action
 					GameSpellEffect neweffect = CreateSpellEffect(target, 1);
 					neweffect.Start(m_caster);
@@ -278,7 +278,7 @@ namespace DawnOfLight.GameServer.Spells.Warlock
 				foreach (GamePlayer player in m_caster.GetPlayersInRadius(WorldMgr.INFO_DISTANCE))
 				{
 					if (player != m_caster)
-						player.MessageFromArea(m_caster, m_caster.GetName(0, true) + " casts a spell!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+						player.MessageFromArea(m_caster, m_caster.GetName(0, true) + " casts a spell!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				}
 			}
 

@@ -183,7 +183,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
         {
             if (target == null)
             {
-                MessageToCaster("You must select a target for this spell!", eChatType.CT_SpellResisted);
+                MessageToCaster("You must select a target for this spell!", ChatType.CT_SpellResisted);
                 return false;
             }
 
@@ -275,8 +275,8 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             ad.Damage -= damageAbsorbed;
             ad.Damage -= spellAbsorbed;
 
-            MessageToLiving(ad.Target, string.Format("You're in a Zephyr and can't be attacked!"), eChatType.CT_Spell);
-            MessageToLiving(ad.Attacker, string.Format("Your target is in a Zephyr and can't be attacked!"), eChatType.CT_Spell);
+            MessageToLiving(ad.Target, string.Format("You're in a Zephyr and can't be attacked!"), ChatType.CT_Spell);
+            MessageToLiving(ad.Attacker, string.Format("Your target is in a Zephyr and can't be attacked!"), ChatType.CT_Spell);
         }
 
         private void ArriveAtTarget(DOLEvent e, object obj, EventArgs args)
@@ -302,7 +302,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             player.MountSteed(npc, true);
             GameEventMgr.AddHandler(player, GamePlayerEvent.AttackedByEnemy, new DOLEventHandler(OnAttack));
 
-            player.Out.SendMessage("You are picked up by a forceful zephyr!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+            player.Out.SendMessage("You are picked up by a forceful zephyr!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
             npc.StopFollowing();
 
             if (Caster is GamePlayer)
@@ -348,7 +348,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
 
             if (Caster.Endurance < endurance)
             {
-                MessageToCaster("You need 50% endurance for this spell!!", eChatType.CT_System);
+                MessageToCaster("You need 50% endurance for this spell!!", ChatType.CT_System);
                 return false;
             }
 
@@ -376,7 +376,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
                 ad.Damage = 0;
                 ad.CriticalDamage = 0;
                 GamePlayer player = ad.Attacker as GamePlayer;
-                player.Out.SendMessage(living.Name + " is Phaseshifted and can't be attacked!", eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(living.Name + " is Phaseshifted and can't be attacked!", ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
             }
         }
 
@@ -417,12 +417,12 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             {
                 if (Caster.CurrentRegionID == 51)
                 {
-                    MessageToCaster("You can't use this Ability here", eChatType.CT_SpellResisted);
+                    MessageToCaster("You can't use this Ability here", ChatType.CT_SpellResisted);
                     return false;
                 }
                 else
                 {
-                    MessageToCaster("Bind in another Region to use this Ability", eChatType.CT_SpellResisted);
+                    MessageToCaster("Bind in another Region to use this Ability", ChatType.CT_SpellResisted);
                     return false;
                 }
             }
@@ -444,7 +444,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             {
                 if (player.Group.IsGroupInCombat())
                 {
-                    player.Out.SendMessage("You can't teleport a group that is in combat!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage("You can't teleport a group that is in combat!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     return;
                 }
                 else
@@ -461,7 +461,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             }
             else
             {
-                player.Out.SendMessage("You are not a part of a group!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You are not a part of a group!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
             }
         }
     }

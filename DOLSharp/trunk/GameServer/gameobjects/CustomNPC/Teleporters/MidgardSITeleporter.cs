@@ -55,7 +55,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC.Teleporters
 			foreach (String destination in m_destination)
 				if (!playerAreaList.Contains(destination))
 					player.Out.SendMessage(String.Format("[{0}]", destination),
-						eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+						ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 
 			return true;
 		}

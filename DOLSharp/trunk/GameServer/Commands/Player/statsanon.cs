@@ -46,7 +46,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			else
 				msg = "Your stats are now visible to other players.";
 
-			client.Player.Out.SendMessage(msg, eChatType.CT_System, eChatLoc.CL_ChatWindow);
+			client.Player.Out.SendMessage(msg, ChatType.CT_System, ChatLocation.CL_ChatWindow);
 		}
 	}
 }

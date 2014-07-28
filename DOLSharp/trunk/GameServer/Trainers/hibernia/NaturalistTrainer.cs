@@ -57,7 +57,7 @@ namespace DawnOfLight.GameServer.Trainers.hibernia
 				// player can be promoted
 				if (player.Level>=5)
 				{
-					player.Out.SendMessage(this.Name + " says, \"You must now seek your training elsewhere. Which path would you like to follow? [Bard], [Druid] or [Warden]?\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"You must now seek your training elsewhere. Which path would you like to follow? [Bard], [Druid] or [Warden]?\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 				else
 				{
@@ -65,13 +65,13 @@ namespace DawnOfLight.GameServer.Trainers.hibernia
 				}
 
 				// ask for basic equipment if player doesnt own it
-				if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, eInventorySlot.MinEquipable, eInventorySlot.LastBackpack) == null)
+				if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, InventorySlot.MinEquipable, InventorySlot.LastBackpack) == null)
 				{
-					player.Out.SendMessage(this.Name + " says, \"Do you require a [practice weapon]?\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"Do you require a [practice weapon]?\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
-				if (player.Inventory.GetFirstItemByID(PRACTICE_SHIELD_ID, eInventorySlot.MinEquipable, eInventorySlot.LastBackpack) == null)
+				if (player.Inventory.GetFirstItemByID(PRACTICE_SHIELD_ID, InventorySlot.MinEquipable, InventorySlot.LastBackpack) == null)
 				{
-					player.Out.SendMessage(this.Name + " says, \"Do you require a [training shield]?\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"Do you require a [training shield]?\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 			}
 			else
@@ -95,39 +95,39 @@ namespace DawnOfLight.GameServer.Trainers.hibernia
 			switch (text) {
 				case "Bard":
 					if(player.Race == (int) eRace.Celt || player.Race == (int) eRace.Firbolg){
-						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					else{
-						player.Out.SendMessage(this.Name + " says, \"The path of a Bard is not available to your race. Please choose another.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"The path of a Bard is not available to your race. Please choose another.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					return true;
 				case "Druid":
 					if(player.Race == (int)eRace.Celt || player.Race == (int)eRace.Firbolg || player.Race == (int)eRace.Sylvan || player.Race == (int)eRace.HiberniaMinotaur)
 					{
-						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					else{
-						player.Out.SendMessage(this.Name + " says, \"The path of a Druid is not available to your race. Please choose another.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"The path of a Druid is not available to your race. Please choose another.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					return true;
 				case "Warden":
 					if(player.Race == (int) eRace.Celt || player.Race == (int) eRace.Firbolg || player.Race == (int) eRace.Sylvan)
 					{
-						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					else
 					{
-						player.Out.SendMessage(this.Name + " says, \"The path of a Warden is not available to your race. Please choose another.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"The path of a Warden is not available to your race. Please choose another.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					return true;
 				case "practice weapon":
-					if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == null)
+					if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, InventorySlot.Min_Inv, InventorySlot.Max_Inv) == null)
 					{
 						player.ReceiveItem(this,PRACTICE_WEAPON_ID);
 					}
 					return true;
 				case "training shield":
-					if (player.Inventory.GetFirstItemByID(PRACTICE_SHIELD_ID, eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == null)
+					if (player.Inventory.GetFirstItemByID(PRACTICE_SHIELD_ID, InventorySlot.Min_Inv, InventorySlot.Max_Inv) == null)
 					{
 						player.ReceiveItem(this,PRACTICE_SHIELD_ID);
 					}

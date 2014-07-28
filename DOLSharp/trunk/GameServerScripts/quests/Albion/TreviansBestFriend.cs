@@ -180,9 +180,9 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				trevian.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 798, 36);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 326, 44);
-				template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 19);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 798, 36);
+				template.AddNPCEquipment(InventorySlot.Cloak, 326, 44);
+				template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 19);
 				trevian.Inventory = template.CloseTemplate();
 				trevian.SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
 
@@ -250,8 +250,8 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				guardBrydus.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 6);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 91);
+				template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 6);
+				template.AddNPCEquipment(InventorySlot.Cloak, 91);
 				guardBrydus.Inventory = template.CloseTemplate();
 				guardBrydus.SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
 
@@ -291,8 +291,8 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				banditAbductorLeader.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 4);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 57);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 4);
+				template.AddNPCEquipment(InventorySlot.Cloak, 57);
 				banditAbductorLeader.Inventory = template.CloseTemplate();
 				banditAbductorLeader.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -331,7 +331,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				banditAbductor1.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 4);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 4);
 				banditAbductor1.Inventory = template.CloseTemplate();
 				banditAbductor1.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -362,7 +362,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				banditAbductor2.CurrentRegionID = 1;
 
 				template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 4);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 4);
 				banditAbductor2.Inventory = template.CloseTemplate();
 				banditAbductor2.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -992,7 +992,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 					quest.AddLilybet();
 					quest.lilybet.MoveTo(player.CurrentRegionID, player.X + 100, player.Y, player.Z, player.Heading);
 
-					InventoryItem cloak = player.Inventory.GetItem(eInventorySlot.Cloak);
+					InventoryItem cloak = player.Inventory.GetItem(InventorySlot.Cloak);
 					if (cloak != null && cloak.Id_nb == treviansHoodedCloak.Id_nb)
 					{
 						quest.lilybet.Follow(player, 100, 5000);
@@ -1111,7 +1111,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 							// add trevians cloak to inventory
 							if (quest.Step == 2)
 							{
-								if (player.Inventory.GetFirstItemByID(treviansHoodedCloak.Id_nb, eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == null)
+								if (player.Inventory.GetFirstItemByID(treviansHoodedCloak.Id_nb, InventorySlot.Min_Inv, InventorySlot.Max_Inv) == null)
 								{
 									GiveItem(trevian, player, treviansHoodedCloak);
 								}
@@ -1281,7 +1281,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				{
 					quest.lilybet.TurnTo(player);
 					//If the player is already doing the quest, we ask if he found the sword!
-					InventoryItem cloak = player.Inventory.GetItem(eInventorySlot.Cloak);
+					InventoryItem cloak = player.Inventory.GetItem(InventorySlot.Cloak);
 					if (cloak != null && cloak.Id_nb == treviansHoodedCloak.Id_nb)
 					{
 						SendSystemMessage(player, "Mistrust turning to caution, she looks at you anxiously, waiting for you to take her home to Trevian.");

@@ -83,7 +83,7 @@ namespace DawnOfLight.GameServer.GameEvents
 				//windows and will generate a &whis text command!
 				player.Out.SendMessage(
 					"Hello " + player.Name + " do you want to have a little [chat]?",
-					eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				return true;
 			}
 
@@ -152,7 +152,7 @@ namespace DawnOfLight.GameServer.GameEvents
 			{
 				target.Out.SendMessage(
 					msg,
-					eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					ChatType.CT_System, ChatLocation.CL_PopupWindow);
 			}
 		}
 

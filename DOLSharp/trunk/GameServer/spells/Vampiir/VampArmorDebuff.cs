@@ -55,11 +55,11 @@ namespace DawnOfLight.GameServer.Spells.Vampiir
 			int slot=Util.Random(0, 2);
 			m_slot = slots[slot];
 			string msg = GlobalConstants.SlotToName((int)m_slot);
-			MessageToCaster("You debuff " + effect.Owner.Name + "'s " + msg+"", eChatType.CT_Spell);
+			MessageToCaster("You debuff " + effect.Owner.Name + "'s " + msg+"", ChatType.CT_Spell);
 			foreach (GamePlayer visPlayer in player.GetPlayersInRadius((ushort)WorldMgr.VISIBILITY_DISTANCE))
 				visPlayer.Out.SendSpellEffectAnimation(player, player, (ushort)(13180+slot), 0, false, 0x01);
 
-			item = player.Inventory.GetItem((eInventorySlot)m_slot);
+			item = player.Inventory.GetItem((InventorySlot)m_slot);
 			
 			if(item!=null)
 			{

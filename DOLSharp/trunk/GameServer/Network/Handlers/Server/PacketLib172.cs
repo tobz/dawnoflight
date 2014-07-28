@@ -69,7 +69,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null || playerToCreate.IsVisibleTo(m_gameClient.Player) == false)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PlayerCreate172));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PlayerCreate172));
 			pak.WriteShort((ushort)playerToCreate.Client.SessionID);
 			pak.WriteShort((ushort)playerToCreate.ObjectID);
 			pak.WriteShort(playerToCreate.Model);
@@ -111,7 +111,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		protected override void SendInventorySlotsUpdateRange(ICollection<int> slots, eInventoryWindowType windowType)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.InventoryUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.InventoryUpdate));
 			pak.WriteByte((byte)(slots == null ? 0 : slots.Count));
 			pak.WriteByte((byte)((m_gameClient.Player.IsCloakHoodUp ? 0x01 : 0x00) | (int)m_gameClient.Player.ActiveQuiverSlot)); //bit0 is hood up bit4 to 7 is active quiver
 			pak.WriteByte((byte)m_gameClient.Player.VisibleActiveWeaponSlots);
@@ -120,12 +120,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			{
 				foreach (int updatedSlot in slots)
 				{
-					if (updatedSlot >= (int)eInventorySlot.Consignment_First && updatedSlot <= (int)eInventorySlot.Consignment_Last)
-						pak.WriteByte((byte)(updatedSlot - (int)eInventorySlot.Consignment_First + (int)eInventorySlot.HousingInventory_First));
+					if (updatedSlot >= (int)InventorySlot.Consignment_First && updatedSlot <= (int)InventorySlot.Consignment_Last)
+						pak.WriteByte((byte)(updatedSlot - (int)InventorySlot.Consignment_First + (int)InventorySlot.HousingInventory_First));
 					else
 						pak.WriteByte((byte)(updatedSlot));
 					InventoryItem item = null;
-					item = m_gameClient.Player.Inventory.GetItem((eInventorySlot)updatedSlot);
+					item = m_gameClient.Player.Inventory.GetItem((InventorySlot)updatedSlot);
 
 					if (item == null)
 					{
@@ -223,7 +223,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null || living.IsVisibleTo(m_gameClient.Player) == false)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.EquipmentUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.EquipmentUpdate));
 
 			ICollection<InventoryItem> items = null;
 			if (living.Inventory != null)
@@ -279,7 +279,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				return;
 			if (m_gameClient.Player.TradeWindow == null)
 				return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TradeWindow));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TradeWindow));
 			lock (m_gameClient.Player.TradeWindow.Sync)
 			{
 				foreach (InventoryItem item in m_gameClient.Player.TradeWindow.TradeItems)

@@ -70,11 +70,11 @@ namespace DawnOfLight.GameServer.commands.Player
 				}
 				else if (task != null && task.TasksDone >= AbstractTask.MaxTasksDone(player.Level))
 				{
-					player.Out.SendMessage("You can do no more tasks at your current level", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You can do no more tasks at your current level", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
-					player.Out.SendMessage("You have currently no pending task", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You have currently no pending task", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}
@@ -107,11 +107,11 @@ namespace DawnOfLight.GameServer.commands.Player
 				}
 				else if (task != null && task.TasksDone >= AbstractTask.MaxTasksDone(player.Level))
 				{
-					player.Out.SendMessage("You can do no more tasks at your current level", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You can do no more tasks at your current level", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
-					player.Out.SendMessage("You have currently no pending task", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You have currently no pending task", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				return true;
 			}
@@ -143,7 +143,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				}
 				else
 				{
-					player.Out.SendMessage(player.TargetObject.GetName(0, true) + " is too far away to interact", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(player.TargetObject.GetName(0, true) + " is too far away to interact", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return false;
 				}
 			}

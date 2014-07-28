@@ -66,7 +66,7 @@ namespace DawnOfLight.GameServer.Network
 	/// <summary>
 	/// Chat locations on the client window
 	/// </summary>
-	public enum eChatLoc : byte
+	public enum ChatLocation : byte
 	{
 		CL_ChatWindow = 0x0,
 		CL_PopupWindow = 0x1,
@@ -76,7 +76,7 @@ namespace DawnOfLight.GameServer.Network
 	/// <summary>
 	/// Types of chat messages
 	/// </summary>
-	public enum eChatType : byte
+	public enum ChatType : byte
 	{
 		CT_System = 0x00,
 		CT_Say = 0x01,
@@ -409,13 +409,13 @@ namespace DawnOfLight.GameServer.Network
 		/// </summary>
 		int BothDualWeaponHit { get; }
 
-		byte GetPacketCode(eServerPackets packetCode);
-		void SendTCP(GSTCPPacketOut packet);
+		byte GetPacketCode(ServerPackets packetCode);
+		void SendTCP(GameTCPPacketOut packet);
 		void SendTCP(byte[] buf);
-		void SendTCPRaw(GSTCPPacketOut packet);
-		void SendUDP(GSUDPPacketOut packet);
+		void SendTCPRaw(GameTCPPacketOut packet);
+		void SendUDP(GameUDPPacketOut packet);
 		void SendUDP(byte[] buf);
-		void SendUDPRaw(GSUDPPacketOut packet);
+		void SendUDPRaw(GameUDPPacketOut packet);
 		// warlock
 		void SendWarlockChamberEffect(GamePlayer player);
 		void SendVersionAndCryptKey();
@@ -439,7 +439,7 @@ namespace DawnOfLight.GameServer.Network
 		void SendPlayerInitFinished(byte mobs);
 		void SendUDPInitReply();
 		void SendTime();
-		void SendMessage(string msg, eChatType type, eChatLoc loc);
+		void SendMessage(string msg, ChatType type, ChatLocation loc);
 		void SendPlayerCreate(GamePlayer playerToCreate);
 		void SendObjectGuildID(GameObject obj, Guild guild);
 		void SendPlayerQuit(bool totalOut);
@@ -469,7 +469,7 @@ namespace DawnOfLight.GameServer.Network
 		                              bool noSound, byte success);
 
 		void SendRiding(GameObject rider, GameObject steed, bool dismount);
-		void SendFindGroupWindowUpdate(GamePlayer[] list);
+		void SendFindGroupWindowUpdate(List<GamePlayer> list);
 		void SendGroupInviteCommand(GamePlayer invitingPlayer, string inviteMessage);
 
 		void SendDialogBox(eDialogCode code, ushort data1, ushort data2, ushort data3, ushort data4, eDialogType type,
@@ -554,9 +554,9 @@ namespace DawnOfLight.GameServer.Network
 		void SendKeepComponentHookPoint(GameKeepComponent component, int selectedHookPointIndex);
 		void SendClearKeepComponentHookPoint(GameKeepComponent component, int selectedHookPointIndex);
 		void SendHookPointStore(GameKeepHookPoint hookPoint);
-		void SendWarmapUpdate(ICollection<AbstractGameKeep> list);
+		void SendWarMapUpdate(ICollection<AbstractGameKeep> list);
 		void SendWarmapDetailUpdate(List<List<byte>> fights, List<List<byte>> groups);
-		void SendWarmapBonuses();
+		void SendWarMapBonuses();
 
 		//housing
 		void SendHouse(House house);
@@ -582,7 +582,7 @@ namespace DawnOfLight.GameServer.Network
 		void SendMovingObjectCreate(GameMovingObject obj);
 		void SendSetControlledHorse(GamePlayer player);
 		void SendControlledHorse(GamePlayer player, bool flag);
-		void CheckLengthHybridSkillsPacket(ref GSTCPPacketOut pak, ref int maxSkills, ref int first);
+		void CheckLengthHybridSkillsPacket(ref GameTCPPacketOut pak, ref int maxSkills, ref int first);
 		void SendNonHybridSpellLines();
 		void SendCrash(string str);
 		void SendRegionColorScheme();

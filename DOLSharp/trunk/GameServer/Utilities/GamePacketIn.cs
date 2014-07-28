@@ -27,7 +27,7 @@ namespace DawnOfLight.GameServer.Utilities
 	/// <summary>
 	/// Game server specific packet
 	/// </summary>
-	public class GSPacketIn : PacketIn
+	public class GamePacketIn : PacketIn
 	{
 		/// <summary>
 		/// Header size including checksum at the end of the packet
@@ -68,7 +68,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// Constructor
 		/// </summary>
 		/// <param name="size">Size of the internal buffer</param>
-		public GSPacketIn(int size)
+		public GamePacketIn(int size)
 			: base(size)
 		{
 		}
@@ -138,7 +138,7 @@ namespace DawnOfLight.GameServer.Utilities
 		public override string ToString()
 		{
 			return
-				string.Format("GSPacketIn: Size={0} Sequence=0x{1:X4} Session={2} Parameter={3} ID=0x{4:X2}",
+				string.Format("GamePacketIn: Size={0} Sequence=0x{1:X4} Session={2} Parameter={3} ID=0x{4:X2}",
 							  m_psize, m_sequence, m_sessionID, m_parameter, m_id);
 		}
 	}

@@ -52,7 +52,7 @@ namespace DawnOfLight.GameServer.Utilities
 			try
 			{
 				m_itemCache = new Dictionary<string, InventoryItem>();
-				string query = "(`SlotPosition` >= " + (int)eInventorySlot.Consignment_First + " AND `SlotPosition` <= " + (int)eInventorySlot.Consignment_Last + " AND OwnerLot > 0)";
+				string query = "(`SlotPosition` >= " + (int)InventorySlot.Consignment_First + " AND `SlotPosition` <= " + (int)InventorySlot.Consignment_Last + " AND OwnerLot > 0)";
 
 				IList<InventoryItem> list = GameServer.Database.SelectObjects<InventoryItem>(query);
 

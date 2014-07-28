@@ -46,12 +46,12 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if (target.HasAbility(Abilities.CCImmunity))
 			{
-				MessageToCaster(target.Name + " is immune to this effect!", eChatType.CT_SpellResisted);
+				MessageToCaster(target.Name + " is immune to this effect!", ChatType.CT_SpellResisted);
 				return;
 			}
 			if (target.EffectList.GetOfType<ChargeEffect>() != null || target.TempProperties.getProperty("Charging", false))
 			{
-				MessageToCaster(target.Name + " is moving too fast for this spell to have any effect!", eChatType.CT_SpellResisted);
+				MessageToCaster(target.Name + " is moving too fast for this spell to have any effect!", ChatType.CT_SpellResisted);
 				return;
 			}
 
@@ -67,9 +67,9 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			base.OnEffectStart(effect);
 
-			MessageToLiving(effect.Owner, Spell.Message1, eChatType.CT_Spell);
-			MessageToCaster(Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), eChatType.CT_Spell);
-			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), eChatType.CT_Spell, effect.Owner, m_caster);
+			MessageToLiving(effect.Owner, Spell.Message1, ChatType.CT_Spell);
+			MessageToCaster(Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), ChatType.CT_Spell);
+			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), ChatType.CT_Spell, effect.Owner, m_caster);
 
 			GamePlayer player = effect.Owner as GamePlayer;
 			if(player != null)
@@ -250,7 +250,7 @@ namespace DawnOfLight.GameServer.Spells
 		protected override void OnSpellResisted(GameLiving target)
 		{
 			SendEffectAnimation(target, 0, false, 0);
-			MessageToCaster(target.GetName(0, true) + " resists the effect!", eChatType.CT_SpellResisted);
+			MessageToCaster(target.GetName(0, true) + " resists the effect!", ChatType.CT_SpellResisted);
 			target.StartInterruptTimer(target.SpellInterruptDuration, AttackData.eAttackType.Spell, Caster);
 		}
 
@@ -273,14 +273,14 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if (target.HasAbility(Abilities.MezzImmunity))
 			{
-				MessageToCaster(target.Name + " is immune to this effect!", eChatType.CT_SpellResisted);
+				MessageToCaster(target.Name + " is immune to this effect!", ChatType.CT_SpellResisted);
 				SendEffectAnimation(target, 0, false, 0);
 				target.StartInterruptTimer(target.SpellInterruptDuration, AttackData.eAttackType.Spell, Caster);
 				return;
 			}
 			if (FindStaticEffectOnTarget(target, typeof(MezzRootImmunityEffect)) != null)
 			{
-				MessageToCaster("Your target is immune!", eChatType.CT_System);
+				MessageToCaster("Your target is immune!", ChatType.CT_System);
 				SendEffectAnimation(target, 0, false, 0);
 				target.StartInterruptTimer(target.SpellInterruptDuration, AttackData.eAttackType.Spell, Caster);
 				return;
@@ -289,7 +289,7 @@ namespace DawnOfLight.GameServer.Spells
 			GameSpellEffect mezz = SpellHandler.FindEffectOnTarget(target, "Mesmerize");
 			if(mezz != null)
 			{
-				MessageToCaster("Your target is already mezzed!", eChatType.CT_SpellResisted);
+				MessageToCaster("Your target is already mezzed!", ChatType.CT_SpellResisted);
 				SendEffectAnimation(target, 0, false, 0);
 				return;
 			}
@@ -298,9 +298,9 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				mezblock.Cancel(false);
 				if (target is GamePlayer)
-					(target as GamePlayer).Out.SendMessage("Your item effect intercepts the mesmerization spell and fades!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+					(target as GamePlayer).Out.SendMessage("Your item effect intercepts the mesmerization spell and fades!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				//inform caster
-				MessageToCaster("Ceremonial Bracer intercept your mez!", eChatType.CT_SpellResisted);
+				MessageToCaster("Ceremonial Bracer intercept your mez!", ChatType.CT_SpellResisted);
 				SendEffectAnimation(target, 0, false, 0);
 				target.StartInterruptTimer(target.SpellInterruptDuration, AttackData.eAttackType.Spell, Caster);
 				return;
@@ -442,7 +442,7 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if (target.HasAbility(Abilities.StunImmunity))
 			{
-				MessageToCaster(target.Name + " is immune to this effect!", eChatType.CT_SpellResisted);
+				MessageToCaster(target.Name + " is immune to this effect!", ChatType.CT_SpellResisted);
 				base.OnSpellResisted(target);
 				return;
 			}
@@ -454,7 +454,7 @@ namespace DawnOfLight.GameServer.Spells
 				{
 					stunblock.Cancel(false);
 					if (target is GamePlayer)
-						(target as GamePlayer).Out.SendMessage("Your item effect intercepts the stun spell and fades!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+						(target as GamePlayer).Out.SendMessage("Your item effect intercepts the stun spell and fades!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 					base.OnSpellResisted(target);
 					return;
 				}

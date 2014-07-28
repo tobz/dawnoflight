@@ -66,7 +66,7 @@ namespace DawnOfLight.GameServer.commands.Admin
 			text.Append("public static GameClient Client = null;\n");
 			text.Append("public static void print(object obj) {\n");
 			text.Append("	string str = (obj==null)?\"(null)\":obj.ToString();\n");
-			text.Append("	if (Client==null || Client.Player==null) Log.Debug(str);\n	else Client.Out.SendMessage(str, eChatType.CT_System, eChatLoc.CL_SystemWindow);\n}\n");
+			text.Append("	if (Client==null || Client.Player==null) Log.Debug(str);\n	else Client.Out.SendMessage(str, ChatType.CT_System, ChatLocation.CL_SystemWindow);\n}\n");
 			text.Append("public static void DynMethod(GameObject target, GamePlayer player) {\nif (player!=null) Client = player.Client;\n");
 			text.Append("GameNPC targetNpc = target as GameNPC;");
 			text.Append(code);
@@ -84,10 +84,10 @@ namespace DawnOfLight.GameServer.commands.Admin
 			{
 				if (client.Player != null)
 				{
-					client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "AdminCommands.Code.ErrorCompiling"), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "AdminCommands.Code.ErrorCompiling"), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 
 					foreach (CompilerError err in cr.Errors)
-						client.Out.SendMessage(err.ErrorText, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						client.Out.SendMessage(err.ErrorText, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 				else
 				{
@@ -107,7 +107,7 @@ namespace DawnOfLight.GameServer.commands.Admin
 
 				if (client.Player != null)
 				{
-					client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "AdminCommands.Code.CodeExecuted"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "AdminCommands.Code.CodeExecuted"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
@@ -121,7 +121,7 @@ namespace DawnOfLight.GameServer.commands.Admin
 				{
 					string[] errors = ex.ToString().Split('\n');
 					foreach (string error in errors)
-						client.Out.SendMessage(error, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						client.Out.SendMessage(error, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 				else
 				{

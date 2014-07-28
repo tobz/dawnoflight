@@ -98,7 +98,7 @@ namespace DawnOfLight.GameServer.GameObjects.CharacterClasses.Albion
 			}
 			else
 			{
-				Player.Out.SendMessage("You cannot enter combat while in shade form!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				Player.Out.SendMessage("You cannot enter combat while in shade form!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 		}

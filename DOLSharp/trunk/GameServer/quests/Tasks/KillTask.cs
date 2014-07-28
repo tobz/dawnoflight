@@ -178,7 +178,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 					if (((KillTask)player.Task).MobName == target.Name)
 					{
 						((KillTask)player.Task).MobKilled = true;
-						player.Out.SendMessage("You must now return to " + target.Name + " to recieve your reward!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("You must now return to " + target.Name + " to recieve your reward!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 					}
 				}
@@ -265,7 +265,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 								{
 									foreach (string str in dropMessages)
 									{
-										visiblePlayer.Out.SendMessage(str, eChatType.CT_Loot, eChatLoc.CL_SystemWindow);
+										visiblePlayer.Out.SendMessage(str, ChatType.CT_Loot, ChatLocation.CL_SystemWindow);
 									}
 								}
 							}
@@ -281,7 +281,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 					InteractWithEventArgs myargs = (InteractWithEventArgs)args;
 					if (myargs.Target.Name == ((KillTask)player.Task).RecieverName)
 					{
-						player.Out.SendMessage(myargs.Target.Name + " says, *Good work " + player.Name + ". Here is your reward as promised.*", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(myargs.Target.Name + " says, *Good work " + player.Name + ". Here is your reward as promised.*", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						FinishTask();
 					}
 				}
@@ -296,7 +296,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 				{
 					player.Inventory.RemoveItem(item);
                     InventoryLogging.LogInventoryAction(player, target, eInventoryActionType.Quest, item.Template, item.Count);
-					player.Out.SendMessage(target.Name + " says, *Good work " + player.Name + ". Here is your reward as promised.*", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(target.Name + " says, *Good work " + player.Name + ". Here is your reward as promised.*", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					FinishTask();
 				}
 			}
@@ -321,7 +321,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 			GameNPC Mob = GetRandomMob(player);
 			if(Mob == null)
 			{
-				player.Out.SendMessage("I have no task for you, come back later",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("I have no task for you, come back later",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 				return false;
 			}
 			else
@@ -332,7 +332,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 				((KillTask)player.Task).ItemIndex = Util.Random(0, TaskObjects.Length - 1);
 				((KillTask)player.Task).MobName = Mob.Name;
 				player.Task.RecieverName = source.Name;
-				player.Out.SendMessage(source.Name + " says, *Very well " + player.Name + ", it's good to see adventurers willing to help out the realm in such times. Search to the " + GetDirectionFromHeading(Mob.Heading) + " and kill a " + Mob.Name + " and return to me for your reward. Good luck!*", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(source.Name + " says, *Very well " + player.Name + ", it's good to see adventurers willing to help out the realm in such times. Search to the " + GetDirectionFromHeading(Mob.Heading) + " and kill a " + Mob.Name + " and return to me for your reward. Good luck!*", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				player.Out.SendDialogBox(eDialogCode.SimpleWarning, 1, 1, 1, 1, eDialogType.Ok, false, "You have been given a task!");
 				return true;
 			}

@@ -17,32 +17,21 @@
  *
  */
 
-using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Utilities;
-using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-    [PacketHandler(PacketHandlerType.TCP, 0x1A, "Set market price")]
+    [PacketHandler(PacketType.TCP, ClientPackets.PlayerSetMarketPrice, ClientStatus.PlayerInGame)]
     public class PlayerSetMarketPriceHandler : IPacketHandler
     {
-        /// <summary>
-        /// Defines a logger for this class.
-        /// </summary>
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        public void HandlePacket(GameClient client, GSPacketIn packet)
+        public void HandlePacket(GameClient client, GamePacketIn packet)
         {
-            if (client == null || client.Player == null)
-                return;
-
 			int slot = packet.ReadByte();
 			int unk1 = packet.ReadByte();
 			ushort unk2 = packet.ReadShort();
 			uint price = packet.ReadInt();
-
-			// ChatUtil.SendDebugMessage(client.Player, "PlayerSetMarketPriceHandler");
 
 			// only IGameInventoryObjects can handle set price commands
 			if (client.Player.TargetObject == null || (client.Player.TargetObject is IGameInventoryObject) == false)

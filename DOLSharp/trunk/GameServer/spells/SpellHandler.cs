@@ -228,7 +228,7 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if (Caster.IsMoving && Spell.IsFocus)
 			{
-				MessageToCaster("Your spell was cancelled.", eChatType.CT_SpellExpires);
+				MessageToCaster("Your spell was cancelled.", ChatType.CT_SpellExpires);
 				effect.Cancel(false);
 				return;
 			}
@@ -245,7 +245,7 @@ namespace DawnOfLight.GameServer.Spells
 			// no instrument anymore = stop the song
 			if (m_spell.InstrumentRequirement != 0 && !CheckInstrument())
 			{
-				MessageToCaster("You stop playing your song.", eChatType.CT_Spell);
+				MessageToCaster("You stop playing your song.", ChatType.CT_Spell);
 				effect.Cancel(false);
 				return;
 			}
@@ -274,7 +274,7 @@ namespace DawnOfLight.GameServer.Spells
 			}
 			else
 			{
-				MessageToCaster("You do not have enough mana and your spell was cancelled.", eChatType.CT_SpellExpires);
+				MessageToCaster("You do not have enough mana and your spell was cancelled.", ChatType.CT_SpellExpires);
 				effect.Cancel(false);
 			}
 		}
@@ -445,9 +445,9 @@ namespace DawnOfLight.GameServer.Spells
 			if (Spell.Pulse != 0 && CancelPulsingSpell(Caster, Spell.SpellType))
 			{
 				if (Spell.InstrumentRequirement == 0)
-					MessageToCaster("You cancel your effect.", eChatType.CT_Spell);
+					MessageToCaster("You cancel your effect.", ChatType.CT_Spell);
 				else
-					MessageToCaster("You stop playing your song.", eChatType.CT_Spell);
+					MessageToCaster("You stop playing your song.", ChatType.CT_Spell);
 			}
 			else if (GameServer.ServerRules.IsAllowedToCastSpell(Caster, m_spellTarget, Spell, m_spellLine))
 			{
@@ -514,7 +514,7 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (Caster is GamePlayer && ServerProperties.Properties.ENABLE_DEBUG)
 			{
-				(Caster as GamePlayer).Out.SendMessage("[DEBUG] spell time = " + time + ", step1 = " + step1 + ", step2 = " + step2 + ", step3 = " + step3, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				(Caster as GamePlayer).Out.SendMessage("[DEBUG] spell time = " + time + ", step1 = " + step1 + ", step2 = " + step2 + ", step3 = " + step3, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 
 			m_castTimer = new DelayedCastTimer(Caster, this, target, step2, step3);
@@ -541,7 +541,7 @@ namespace DawnOfLight.GameServer.Spells
 
 			InterruptCasting();
             if (Caster is GamePlayer)
-                (Caster as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SpellHandler.CasterMove"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+                (Caster as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SpellHandler.CasterMove"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 		}
 
 		/// <summary>
@@ -550,9 +550,9 @@ namespace DawnOfLight.GameServer.Spells
 		public virtual void SendSpellMessages()
 		{
 			if (Spell.InstrumentRequirement == 0)
-				MessageToCaster("You begin casting a " + Spell.Name + " spell!", eChatType.CT_Spell);
+				MessageToCaster("You begin casting a " + Spell.Name + " spell!", ChatType.CT_Spell);
 			else
-				MessageToCaster("You begin playing " + Spell.Name + "!", eChatType.CT_Spell);
+				MessageToCaster("You begin playing " + Spell.Name + "!", ChatType.CT_Spell);
 		}
 
 		/// <summary>
@@ -581,7 +581,7 @@ namespace DawnOfLight.GameServer.Spells
 				if (Caster.ChanceSpellInterrupt(attacker))
 				{
 					Caster.LastInterruptMessage = attacker.GetName(0, true) + " attacks you and your spell is interrupted!";
-					MessageToLiving(Caster, Caster.LastInterruptMessage, eChatType.CT_SpellResisted);
+					MessageToLiving(Caster, Caster.LastInterruptMessage, ChatType.CT_SpellResisted);
 					InterruptCasting(); // always interrupt at the moment
 					return true;
 				}
@@ -610,7 +610,7 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (!m_caster.IsAlive)
 			{
-				if(!quiet) MessageToCaster("You are dead and can't cast!", eChatType.CT_System);
+				if(!quiet) MessageToCaster("You are dead and can't cast!", ChatType.CT_System);
 				return false;
 			}
 
@@ -621,12 +621,12 @@ namespace DawnOfLight.GameServer.Spells
 
 				if (nextSpellAvailTime > m_caster.CurrentRegion.Time)
 				{
-					((GamePlayer)m_caster).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)m_caster).Client, "GamePlayer.CastSpell.MustWaitBeforeCast", (nextSpellAvailTime - m_caster.CurrentRegion.Time) / 1000), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					((GamePlayer)m_caster).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)m_caster).Client, "GamePlayer.CastSpell.MustWaitBeforeCast", (nextSpellAvailTime - m_caster.CurrentRegion.Time) / 1000), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return false;
 				}
 				if (((GamePlayer)m_caster).Steed != null && ((GamePlayer)m_caster).Steed is GameSiegeRam)
 				{
-					if (!quiet) MessageToCaster("You can't cast in a siegeram!.", eChatType.CT_System);
+					if (!quiet) MessageToCaster("You can't cast in a siegeram!.", ChatType.CT_System);
 					return false;
 				}
 				GameSpellEffect naturesWomb = FindEffectOnTarget(Caster, typeof(NaturesWombEffect));
@@ -634,7 +634,7 @@ namespace DawnOfLight.GameServer.Spells
 				{
 					//[StephenxPimentel]
 					//Get Correct Message for 1.108 update.
-					MessageToCaster("You are silenced and cannot cast a spell right now.", eChatType.CT_SpellResisted);
+					MessageToCaster("You are silenced and cannot cast a spell right now.", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -642,7 +642,7 @@ namespace DawnOfLight.GameServer.Spells
 			GameSpellEffect Phaseshift = FindEffectOnTarget(Caster, "Phaseshift");
 			if (Phaseshift != null && (Spell.InstrumentRequirement == 0 || Spell.SpellType == "Mesmerize"))
 			{
-				if (!quiet) MessageToCaster("You're phaseshifted and can't cast a spell", eChatType.CT_System);
+				if (!quiet) MessageToCaster("You're phaseshifted and can't cast a spell", ChatType.CT_System);
 				return false;
 			}
 
@@ -656,7 +656,7 @@ namespace DawnOfLight.GameServer.Spells
 					if(EffectOwner==selectedTarget)
 					{
 						if (m_caster is GamePlayer && !quiet)
-							((GamePlayer)m_caster).Out.SendMessage(string.Format("{0} is invisible to you!", selectedTarget.GetName(0, true)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+							((GamePlayer)m_caster).Out.SendMessage(string.Format("{0} is invisible to you!", selectedTarget.GetName(0, true)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 
 						return false;
 					}
@@ -665,7 +665,7 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (selectedTarget!=null && selectedTarget.HasAbility("DamageImmunity") && Spell.SpellType == "DirectDamage" && Spell.Radius == 0)
 			{
-				if (!quiet) MessageToCaster(selectedTarget.Name + " is immune to this effect!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster(selectedTarget.Name + " is immune to this effect!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -674,7 +674,7 @@ namespace DawnOfLight.GameServer.Spells
 				if (!CheckInstrument())
 				{
 					if (!quiet) MessageToCaster("You are not wielding the right type of instrument!",
-					                            eChatType.CT_SpellResisted);
+					                            ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -682,7 +682,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				//Purge can be cast while sitting but only if player has negative effect that
 				//don't allow standing up (like stun or mez)
-				if (!quiet) MessageToCaster("You can't cast while sitting!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("You can't cast while sitting!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -700,7 +700,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (Caster.InterruptAction > 0 && Caster.InterruptAction + Caster.SpellInterruptRecastTime > Caster.CurrentRegion.Time)
 				{
-					if (!quiet) MessageToCaster("You must wait " + (((Caster.InterruptAction + Caster.SpellInterruptRecastTime) - Caster.CurrentRegion.Time) / 1000 + 1).ToString() + " seconds to cast a spell!", eChatType.CT_SpellResisted);
+					if (!quiet) MessageToCaster("You must wait " + (((Caster.InterruptAction + Caster.SpellInterruptRecastTime) - Caster.CurrentRegion.Time) / 1000 + 1).ToString() + " seconds to cast a spell!", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -716,7 +716,7 @@ namespace DawnOfLight.GameServer.Spells
 					}
 					else
 					{
-						if (!quiet) MessageToCaster("You must wait " + (left / 1000 + 1).ToString() + " seconds to use this spell!", eChatType.CT_System);
+						if (!quiet) MessageToCaster("You must wait " + (left / 1000 + 1).ToString() + " seconds to use this spell!", ChatType.CT_System);
 						return false;
 					}
 				}
@@ -736,7 +736,7 @@ namespace DawnOfLight.GameServer.Spells
 					else
 					{
 						if (!quiet) MessageToCaster("You must cast this spell on a creature you are controlling.",
-						                            eChatType.CT_System);
+						                            ChatType.CT_System);
 						return false;
 					}
 				}
@@ -745,12 +745,12 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (!m_caster.IsWithinRadius(m_caster.GroundTarget, CalculateSpellRange()))
 				{
-					if (!quiet) MessageToCaster("Your area target is out of range.  Select a closer target.", eChatType.CT_SpellResisted);
+					if (!quiet) MessageToCaster("Your area target is out of range.  Select a closer target.", ChatType.CT_SpellResisted);
 					return false;
 				}
 				if (!Caster.GroundTargetInView)
 				{
-					MessageToCaster("Your ground target is not in view!", eChatType.CT_SpellResisted);
+					MessageToCaster("Your ground target is not in view!", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -762,14 +762,14 @@ namespace DawnOfLight.GameServer.Spells
 				if (selectedTarget == null || selectedTarget.ObjectState != GameLiving.eObjectState.Active)
 				{
 					if (!quiet) MessageToCaster("You must select a target for this spell!",
-					                            eChatType.CT_SpellResisted);
+					                            ChatType.CT_SpellResisted);
 					return false;
 				}
 
 				if (!m_caster.IsWithinRadius(selectedTarget, CalculateSpellRange()))
 				{
 					if(Caster is GamePlayer && !quiet) MessageToCaster("That target is too far away!",
-					                                                   eChatType.CT_SpellResisted);
+					                                                   ChatType.CT_SpellResisted);
 					Caster.Notify(GameLivingEvent.CastFailed,
 					              new CastFailedEventArgs(this, CastFailedEventArgs.Reasons.TargetTooFarAway));
 					return false;
@@ -780,13 +780,13 @@ namespace DawnOfLight.GameServer.Spells
 					case "enemy":
 						if (selectedTarget == m_caster)
 						{
-							if (!quiet) MessageToCaster("You can't attack yourself! ", eChatType.CT_System);
+							if (!quiet) MessageToCaster("You can't attack yourself! ", ChatType.CT_System);
 							return false;
 						}
 
 						if (FindStaticEffectOnTarget(selectedTarget, typeof(NecromancerShadeEffect)) != null)
 						{
-							if (!quiet) MessageToCaster("Invalid target.", eChatType.CT_System);
+							if (!quiet) MessageToCaster("Invalid target.", ChatType.CT_System);
 							return false;
 						}
 
@@ -795,14 +795,14 @@ namespace DawnOfLight.GameServer.Spells
 
 						if (m_caster.IsObjectInFront(selectedTarget, 180) == false)
 						{
-							if (!quiet) MessageToCaster("Your target is not in view!", eChatType.CT_SpellResisted);
+							if (!quiet) MessageToCaster("Your target is not in view!", ChatType.CT_SpellResisted);
 							Caster.Notify(GameLivingEvent.CastFailed, new CastFailedEventArgs(this, CastFailedEventArgs.Reasons.TargetNotInView));
 							return false;
 						}
 
 						if (m_caster.TargetInView == false)
 						{
-							if (!quiet) MessageToCaster("Your target is not visible!", eChatType.CT_SpellResisted);
+							if (!quiet) MessageToCaster("Your target is not visible!", ChatType.CT_SpellResisted);
 							Caster.Notify(GameLivingEvent.CastFailed, new CastFailedEventArgs(this, CastFailedEventArgs.Reasons.TargetNotInView));
 							return false;
 						}
@@ -816,7 +816,7 @@ namespace DawnOfLight.GameServer.Spells
 					case "corpse":
 						if (selectedTarget.IsAlive || !GameServer.ServerRules.IsSameRealm(Caster, selectedTarget, true))
 						{
-							if (!quiet) MessageToCaster("This spell only works on dead members of your realm!", eChatType.CT_SpellResisted);
+							if (!quiet) MessageToCaster("This spell only works on dead members of your realm!", ChatType.CT_SpellResisted);
 							return false;
 						}
 						break;
@@ -832,14 +832,14 @@ namespace DawnOfLight.GameServer.Spells
 				//heals/buffs/rez need LOS only to start casting
 				if (!m_caster.TargetInView && m_spell.Target.ToLower() != "pet")
 				{
-					if (!quiet) MessageToCaster("Your target is not in visible!", eChatType.CT_SpellResisted);
+					if (!quiet) MessageToCaster("Your target is not in visible!", ChatType.CT_SpellResisted);
 					Caster.Notify(GameLivingEvent.CastFailed, new CastFailedEventArgs(this, CastFailedEventArgs.Reasons.TargetNotInView));
 					return false;
 				}
 
 				if (m_spell.Target.ToLower() != "corpse" && !selectedTarget.IsAlive)
 				{
-					if (!quiet) MessageToCaster(selectedTarget.GetName(0, true) + " is dead!", eChatType.CT_SpellResisted);
+					if (!quiet) MessageToCaster(selectedTarget.GetName(0, true) + " is dead!", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -847,7 +847,7 @@ namespace DawnOfLight.GameServer.Spells
 			//Ryan: don't want mobs to have reductions in mana
 			if (Spell.Power != 0 && m_caster is GamePlayer && (m_caster as GamePlayer).CharacterClass.ID != (int)eCharacterClass.Savage && m_caster.Mana < PowerCost(selectedTarget) && Spell.SpellType != "Archery")
 			{
-				if (!quiet) MessageToCaster("You don't have enough power to cast that!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("You don't have enough power to cast that!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -855,13 +855,13 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (m_caster.Concentration < m_spell.Concentration)
 				{
-					if (!quiet) MessageToCaster("This spell requires " + m_spell.Concentration + " concentration points to cast!", eChatType.CT_SpellResisted);
+					if (!quiet) MessageToCaster("This spell requires " + m_spell.Concentration + " concentration points to cast!", ChatType.CT_SpellResisted);
 					return false;
 				}
 
 				if (m_caster.ConcentrationEffects.ConcSpellsCount >= 50)
 				{
-					if (!quiet) MessageToCaster("You can only cast up to 50 simultaneous concentration spells!", eChatType.CT_SpellResisted);
+					if (!quiet) MessageToCaster("You can only cast up to 50 simultaneous concentration spells!", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -915,7 +915,7 @@ namespace DawnOfLight.GameServer.Spells
 				return;
 			if ((response & 0x100) == 0x100) // In view ?
 				return;
-			MessageToLiving(player, "Your pet not in view.", eChatType.CT_SpellResisted);
+			MessageToLiving(player, "Your pet not in view.", ChatType.CT_SpellResisted);
 			InterruptCasting(); // break;
 		}
 
@@ -935,13 +935,13 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (ServerProperties.Properties.ENABLE_DEBUG)
 			{
-				MessageToCaster("LoS Interrupt in CheckLOSPlayerToTarget", eChatType.CT_System);
+				MessageToCaster("LoS Interrupt in CheckLOSPlayerToTarget", ChatType.CT_System);
 				log.Debug("LoS Interrupt in CheckLOSPlayerToTarget");
 			}
 
 			if (Caster is GamePlayer)
 			{
-				MessageToCaster("You can't see your target from here!", eChatType.CT_SpellResisted);
+				MessageToCaster("You can't see your target from here!", ChatType.CT_SpellResisted);
 			}
 
 			InterruptCasting();
@@ -963,7 +963,7 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (ServerProperties.Properties.ENABLE_DEBUG)
 			{
-				MessageToCaster("LoS Interrupt in CheckLOSNPCToTarget", eChatType.CT_System);
+				MessageToCaster("LoS Interrupt in CheckLOSNPCToTarget", ChatType.CT_System);
 				log.Debug("LoS Interrupt in CheckLOSNPCToTarget");
 			}
 
@@ -983,7 +983,7 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (!m_caster.IsAlive)
 			{
-				MessageToCaster("You are dead and can't cast!", eChatType.CT_System);
+				MessageToCaster("You are dead and can't cast!", ChatType.CT_System);
 				return false;
 			}
 
@@ -991,7 +991,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (!CheckInstrument())
 				{
-					MessageToCaster("You are not wielding the right type of instrument!", eChatType.CT_SpellResisted);
+					MessageToCaster("You are not wielding the right type of instrument!", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -999,7 +999,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				//Purge can be cast while sitting but only if player has negative effect that
 				//don't allow standing up (like stun or mez)
-				MessageToCaster("You can't cast while sitting!", eChatType.CT_SpellResisted);
+				MessageToCaster("You can't cast while sitting!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -1007,7 +1007,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (!m_caster.IsWithinRadius(m_caster.GroundTarget, CalculateSpellRange()))
 				{
-					MessageToCaster("Your area target is out of range.  Select a closer target.", eChatType.CT_SpellResisted);
+					MessageToCaster("Your area target is out of range.  Select a closer target.", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -1019,14 +1019,14 @@ namespace DawnOfLight.GameServer.Spells
 					if (target == null || target.ObjectState != GameObject.eObjectState.Active)
 					{
 						if (Caster is GamePlayer)
-							MessageToCaster("You must select a target for this spell!", eChatType.CT_SpellResisted);
+							MessageToCaster("You must select a target for this spell!", ChatType.CT_SpellResisted);
 						return false;
 					}
 
 					if (!m_caster.IsWithinRadius(target, CalculateSpellRange()))
 					{
 						if (Caster is GamePlayer)
-							MessageToCaster("That target is too far away!", eChatType.CT_SpellResisted);
+							MessageToCaster("That target is too far away!", ChatType.CT_SpellResisted);
 						return false;
 					}
 				}
@@ -1037,7 +1037,7 @@ namespace DawnOfLight.GameServer.Spells
 						//enemys have to be in front and in view for targeted spells
 						if (!m_caster.IsObjectInFront(target, 180))
 						{
-							MessageToCaster("Your target is not in view. The spell fails.", eChatType.CT_SpellResisted);
+							MessageToCaster("Your target is not in view. The spell fails.", ChatType.CT_SpellResisted);
 							return false;
 						}
 
@@ -1051,7 +1051,7 @@ namespace DawnOfLight.GameServer.Spells
 						if (target.IsAlive || !GameServer.ServerRules.IsSameRealm(Caster, target, true))
 						{
 							MessageToCaster("This spell only works on dead members of your realm!",
-							                eChatType.CT_SpellResisted);
+							                ChatType.CT_SpellResisted);
 							return false;
 						}
 						break;
@@ -1080,14 +1080,14 @@ namespace DawnOfLight.GameServer.Spells
 							}
 							else
 							{
-								MessageToCaster("You must cast this spell on a creature you are controlling.", eChatType.CT_System);
+								MessageToCaster("You must cast this spell on a creature you are controlling.", ChatType.CT_System);
 								return false;
 							}
 						}
 						//Now check distance for own pet
 						if (!m_caster.IsWithinRadius(target, CalculateSpellRange()))
 						{
-							MessageToCaster("That target is too far away!", eChatType.CT_SpellResisted);
+							MessageToCaster("That target is too far away!", ChatType.CT_SpellResisted);
 							return false;
 						}
 						break;
@@ -1096,24 +1096,24 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (m_caster.Mana <= 0 && Spell.Power != 0 && Spell.SpellType != "Archery")
 			{
-				MessageToCaster("You have exhausted all of your power and cannot cast spells!", eChatType.CT_SpellResisted);
+				MessageToCaster("You have exhausted all of your power and cannot cast spells!", ChatType.CT_SpellResisted);
 				return false;
 			}
 			if (Spell.Power != 0 && m_caster.Mana < PowerCost(target) && Spell.SpellType != "Archery")
 			{
-				MessageToCaster("You don't have enough power to cast that!", eChatType.CT_SpellResisted);
+				MessageToCaster("You don't have enough power to cast that!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
 			if (m_caster is GamePlayer && m_spell.Concentration > 0 && m_caster.Concentration < m_spell.Concentration)
 			{
-				MessageToCaster("This spell requires " + m_spell.Concentration + " concentration points to cast!", eChatType.CT_SpellResisted);
+				MessageToCaster("This spell requires " + m_spell.Concentration + " concentration points to cast!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
 			if (m_caster is GamePlayer && m_spell.Concentration > 0 && m_caster.ConcentrationEffects.ConcSpellsCount >= 50)
 			{
-				MessageToCaster("You can only cast up to 50 simultaneous concentration spells!", eChatType.CT_SpellResisted);
+				MessageToCaster("You can only cast up to 50 simultaneous concentration spells!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -1139,8 +1139,8 @@ namespace DawnOfLight.GameServer.Spells
 				{
 					if (!quiet)
 					{
-						if (Caster.LastInterruptMessage != "") MessageToCaster(Caster.LastInterruptMessage, eChatType.CT_SpellResisted);
-						else MessageToCaster("You are interrupted and must wait " + ((Caster.InterruptTime - m_started) / 1000 + 1).ToString() + " seconds to cast a spell!", eChatType.CT_SpellResisted);
+						if (Caster.LastInterruptMessage != "") MessageToCaster(Caster.LastInterruptMessage, ChatType.CT_SpellResisted);
+						else MessageToCaster("You are interrupted and must wait " + ((Caster.InterruptTime - m_started) / 1000 + 1).ToString() + " seconds to cast a spell!", ChatType.CT_SpellResisted);
 					}
 					return false;
 				}
@@ -1153,7 +1153,7 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (!m_caster.IsAlive)
 			{
-				if(!quiet) MessageToCaster("You are dead and can't cast!", eChatType.CT_System);
+				if(!quiet) MessageToCaster("You are dead and can't cast!", ChatType.CT_System);
 				return false;
 			}
 
@@ -1161,7 +1161,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (!CheckInstrument())
 				{
-					if (!quiet) MessageToCaster("You are not wielding the right type of instrument!", eChatType.CT_SpellResisted);
+					if (!quiet) MessageToCaster("You are not wielding the right type of instrument!", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -1169,7 +1169,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				//Purge can be cast while sitting but only if player has negative effect that
 				//don't allow standing up (like stun or mez)
-				if (!quiet) MessageToCaster("You can't cast while sitting!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("You can't cast while sitting!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -1177,7 +1177,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (!m_caster.IsWithinRadius(m_caster.GroundTarget, CalculateSpellRange()))
 				{
-					if (!quiet) MessageToCaster("Your area target is out of range.  Select a closer target.", eChatType.CT_SpellResisted);
+					if (!quiet) MessageToCaster("Your area target is out of range.  Select a closer target.", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -1189,13 +1189,13 @@ namespace DawnOfLight.GameServer.Spells
 					if (target == null || target.ObjectState != GameObject.eObjectState.Active)
 					{
 						if (Caster is GamePlayer && !quiet)
-							MessageToCaster("You must select a target for this spell!", eChatType.CT_SpellResisted);
+							MessageToCaster("You must select a target for this spell!", ChatType.CT_SpellResisted);
 						return false;
 					}
 
 					if (Caster is GamePlayer && !m_caster.IsWithinRadius(target, CalculateSpellRange()))
 					{
-						if (!quiet) MessageToCaster("That target is too far away!", eChatType.CT_SpellResisted);
+						if (!quiet) MessageToCaster("That target is too far away!", ChatType.CT_SpellResisted);
 						return false;
 					}
 				}
@@ -1206,7 +1206,7 @@ namespace DawnOfLight.GameServer.Spells
 						//enemys have to be in front and in view for targeted spells
 						if (Caster is GamePlayer && !m_caster.IsObjectInFront(target, 180) && !Caster.IsWithinRadius(target, 50))
 						{
-							if (!quiet) MessageToCaster("Your target is not in view. The spell fails.", eChatType.CT_SpellResisted);
+							if (!quiet) MessageToCaster("Your target is not in view. The spell fails.", ChatType.CT_SpellResisted);
 							return false;
 						}
 
@@ -1254,7 +1254,7 @@ namespace DawnOfLight.GameServer.Spells
 						if (target.IsAlive || !GameServer.ServerRules.IsSameRealm(Caster, target, quiet))
 						{
 							if (!quiet) MessageToCaster("This spell only works on dead members of your realm!",
-							                            eChatType.CT_SpellResisted);
+							                            ChatType.CT_SpellResisted);
 							return false;
 						}
 						break;
@@ -1283,14 +1283,14 @@ namespace DawnOfLight.GameServer.Spells
 							}
 							else
 							{
-								if (!quiet) MessageToCaster("You must cast this spell on a creature you are controlling.", eChatType.CT_System);
+								if (!quiet) MessageToCaster("You must cast this spell on a creature you are controlling.", ChatType.CT_System);
 								return false;
 							}
 						}
 						//Now check distance for own pet
 						if (!m_caster.IsWithinRadius(target, CalculateSpellRange()))
 						{
-							if (!quiet) MessageToCaster("That target is too far away!", eChatType.CT_SpellResisted);
+							if (!quiet) MessageToCaster("That target is too far away!", ChatType.CT_SpellResisted);
 							return false;
 						}
 						break;
@@ -1299,24 +1299,24 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (m_caster.Mana <= 0 && Spell.Power != 0 && Spell.SpellType != "Archery")
 			{
-				if (!quiet) MessageToCaster("You have exhausted all of your power and cannot cast spells!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("You have exhausted all of your power and cannot cast spells!", ChatType.CT_SpellResisted);
 				return false;
 			}
 			if (Spell.Power != 0 && m_caster.Mana < PowerCost(target) && Spell.SpellType != "Archery")
 			{
-				if (!quiet) MessageToCaster("You don't have enough power to cast that!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("You don't have enough power to cast that!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
 			if (m_caster is GamePlayer && m_spell.Concentration > 0 && m_caster.Concentration < m_spell.Concentration)
 			{
-				if (!quiet) MessageToCaster("This spell requires " + m_spell.Concentration + " concentration points to cast!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("This spell requires " + m_spell.Concentration + " concentration points to cast!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
 			if (m_caster is GamePlayer && m_spell.Concentration > 0 && m_caster.ConcentrationEffects.ConcSpellsCount >= 50)
 			{
-				if (!quiet) MessageToCaster("You can only cast up to 50 simultaneous concentration spells!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("You can only cast up to 50 simultaneous concentration spells!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -1343,8 +1343,8 @@ namespace DawnOfLight.GameServer.Spells
 				{
 					if (!quiet)
 					{
-						if(Caster.LastInterruptMessage != "") MessageToCaster(Caster.LastInterruptMessage, eChatType.CT_SpellResisted);
-						else MessageToCaster("You are interrupted and must wait " + ((Caster.InterruptTime - m_started) / 1000 + 1).ToString() + " seconds to cast a spell!", eChatType.CT_SpellResisted);
+						if(Caster.LastInterruptMessage != "") MessageToCaster(Caster.LastInterruptMessage, ChatType.CT_SpellResisted);
+						else MessageToCaster("You are interrupted and must wait " + ((Caster.InterruptTime - m_started) / 1000 + 1).ToString() + " seconds to cast a spell!", ChatType.CT_SpellResisted);
 					}
 					Caster.InterruptAction = Caster.CurrentRegion.Time - Caster.SpellInterruptRecastAgain;
 					return false;
@@ -1358,7 +1358,7 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (!m_caster.IsAlive)
 			{
-				if (!quiet) MessageToCaster("You are dead and can't cast!", eChatType.CT_System);
+				if (!quiet) MessageToCaster("You are dead and can't cast!", ChatType.CT_System);
 				return false;
 			}
 
@@ -1366,7 +1366,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (!CheckInstrument())
 				{
-					if (!quiet) MessageToCaster("You are not wielding the right type of instrument!", eChatType.CT_SpellResisted);
+					if (!quiet) MessageToCaster("You are not wielding the right type of instrument!", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -1374,7 +1374,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				//Purge can be cast while sitting but only if player has negative effect that
 				//don't allow standing up (like stun or mez)
-				if (!quiet) MessageToCaster("You can't cast while sitting!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("You can't cast while sitting!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -1382,12 +1382,12 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (!m_caster.IsWithinRadius(m_caster.GroundTarget, CalculateSpellRange()))
 				{
-					if (!quiet) MessageToCaster("Your area target is out of range.  Select a closer target.", eChatType.CT_SpellResisted);
+					if (!quiet) MessageToCaster("Your area target is out of range.  Select a closer target.", ChatType.CT_SpellResisted);
 					return false;
 				}
 				if (!Caster.GroundTargetInView)
 				{
-					MessageToCaster("Your ground target is not in view!", eChatType.CT_SpellResisted);
+					MessageToCaster("Your ground target is not in view!", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -1399,13 +1399,13 @@ namespace DawnOfLight.GameServer.Spells
 					if (target == null || target.ObjectState != GameObject.eObjectState.Active)
 					{
 						if (Caster is GamePlayer && !quiet)
-							MessageToCaster("You must select a target for this spell!", eChatType.CT_SpellResisted);
+							MessageToCaster("You must select a target for this spell!", ChatType.CT_SpellResisted);
 						return false;
 					}
 
 					if (Caster is GamePlayer && !m_caster.IsWithinRadius(target, CalculateSpellRange()))
 					{
-						if (!quiet) MessageToCaster("That target is too far away!", eChatType.CT_SpellResisted);
+						if (!quiet) MessageToCaster("That target is too far away!", ChatType.CT_SpellResisted);
 						return false;
 					}
 				}
@@ -1416,7 +1416,7 @@ namespace DawnOfLight.GameServer.Spells
 						//enemys have to be in front and in view for targeted spells
 						if (Caster is GamePlayer && !m_caster.IsObjectInFront(target, 180) && !Caster.IsWithinRadius(target, 50))
 						{
-							if (!quiet) MessageToCaster("Your target is not in view. The spell fails.", eChatType.CT_SpellResisted);
+							if (!quiet) MessageToCaster("Your target is not in view. The spell fails.", ChatType.CT_SpellResisted);
 							return false;
 						}
 
@@ -1429,7 +1429,7 @@ namespace DawnOfLight.GameServer.Spells
 					case "Corpse":
 						if (target.IsAlive || !GameServer.ServerRules.IsSameRealm(Caster, target, quiet))
 						{
-							if (!quiet) MessageToCaster("This spell only works on dead members of your realm!", eChatType.CT_SpellResisted);
+							if (!quiet) MessageToCaster("This spell only works on dead members of your realm!", ChatType.CT_SpellResisted);
 							return false;
 						}
 						break;
@@ -1458,14 +1458,14 @@ namespace DawnOfLight.GameServer.Spells
 							}
 							else
 							{
-								if (!quiet) MessageToCaster("You must cast this spell on a creature you are controlling.", eChatType.CT_System);
+								if (!quiet) MessageToCaster("You must cast this spell on a creature you are controlling.", ChatType.CT_System);
 								return false;
 							}
 						}
 						//Now check distance for own pet
 						if (!m_caster.IsWithinRadius(target, CalculateSpellRange()))
 						{
-							if (!quiet) MessageToCaster("That target is too far away!", eChatType.CT_SpellResisted);
+							if (!quiet) MessageToCaster("That target is too far away!", ChatType.CT_SpellResisted);
 							return false;
 						}
 						break;
@@ -1474,24 +1474,24 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (m_caster.Mana <= 0 && Spell.Power != 0 && Spell.SpellType != "Archery")
 			{
-				if (!quiet) MessageToCaster("You have exhausted all of your power and cannot cast spells!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("You have exhausted all of your power and cannot cast spells!", ChatType.CT_SpellResisted);
 				return false;
 			}
 			if (Spell.Power != 0 && m_caster.Mana < PowerCost(target) && Spell.SpellType != "Archery")
 			{
-				if (!quiet) MessageToCaster("You don't have enough power to cast that!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("You don't have enough power to cast that!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
 			if (m_caster is GamePlayer && m_spell.Concentration > 0 && m_caster.Concentration < m_spell.Concentration)
 			{
-				if (!quiet) MessageToCaster("This spell requires " + m_spell.Concentration + " concentration points to cast!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("This spell requires " + m_spell.Concentration + " concentration points to cast!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
 			if (m_caster is GamePlayer && m_spell.Concentration > 0 && m_caster.ConcentrationEffects.ConcSpellsCount >= 50)
 			{
-				if (!quiet) MessageToCaster("You can only cast up to 50 simultaneous concentration spells!", eChatType.CT_SpellResisted);
+				if (!quiet) MessageToCaster("You can only cast up to 50 simultaneous concentration spells!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -1730,7 +1730,7 @@ namespace DawnOfLight.GameServer.Spells
 
 					if (m_caster is GamePlayer && ServerProperties.Properties.ENABLE_DEBUG && m_stage < 3)
 					{
-						(m_caster as GamePlayer).Out.SendMessage("[DEBUG] step = " + (m_handler.Stage + 1), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						(m_caster as GamePlayer).Out.SendMessage("[DEBUG] step = " + (m_handler.Stage + 1), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 
 					return;
@@ -1864,11 +1864,11 @@ namespace DawnOfLight.GameServer.Spells
 			// messages
 			if (Spell.InstrumentRequirement == 0 && Spell.ClientEffect != 0 && Spell.CastTime > 0)
 			{
-				MessageToCaster("You cast a " + m_spell.Name + " spell!", eChatType.CT_Spell);
+				MessageToCaster("You cast a " + m_spell.Name + " spell!", ChatType.CT_Spell);
 				foreach (GamePlayer player in m_caster.GetPlayersInRadius(WorldMgr.INFO_DISTANCE))
 				{
 					if (player != m_caster)
-						player.MessageFromArea(m_caster, m_caster.GetName(0, true) + " casts a spell!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+						player.MessageFromArea(m_caster, m_caster.GetName(0, true) + " casts a spell!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				}
 			}
 
@@ -2051,7 +2051,7 @@ namespace DawnOfLight.GameServer.Spells
 									GameLiving EffectOwner = SelectiveBlindness.EffectSource;
 									if (EffectOwner == player)
 									{
-										if (Caster is GamePlayer) ((GamePlayer)Caster).Out.SendMessage(string.Format("{0} is invisible to you!", player.GetName(0, true)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+										if (Caster is GamePlayer) ((GamePlayer)Caster).Out.SendMessage(string.Format("{0} is invisible to you!", player.GetName(0, true)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 									}
 									else list.Add(player);
 								}
@@ -2155,7 +2155,7 @@ namespace DawnOfLight.GameServer.Spells
 									GameLiving EffectOwner = SelectiveBlindness.EffectSource;
 									if (EffectOwner == player)
 									{
-										if (Caster is GamePlayer) ((GamePlayer)Caster).Out.SendMessage(string.Format("{0} is invisible to you!", player.GetName(0, true)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+										if (Caster is GamePlayer) ((GamePlayer)Caster).Out.SendMessage(string.Format("{0} is invisible to you!", player.GetName(0, true)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 									}
 									else list.Add(player);
 								}
@@ -2183,7 +2183,7 @@ namespace DawnOfLight.GameServer.Spells
 									GameLiving EffectOwner = SelectiveBlindness.EffectSource;
 									if (EffectOwner == target)
 									{
-										if (Caster is GamePlayer) ((GamePlayer)Caster).Out.SendMessage(string.Format("{0} is invisible to you!", target.GetName(0, true)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+										if (Caster is GamePlayer) ((GamePlayer)Caster).Out.SendMessage(string.Format("{0} is invisible to you!", target.GetName(0, true)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 									}
 									else if (!target.HasAbility("DamageImmunity")) list.Add(target);
 								}
@@ -2572,7 +2572,7 @@ namespace DawnOfLight.GameServer.Spells
 				effect1 = SpellHandler.FindEffectOnTarget(target, "Phaseshift");
 				if ((effect1 != null && (Spell.SpellType != "SpreadHeal" || Spell.SpellType != "Heal" || Spell.SpellType != "SpeedEnhancement")))
 				{
-					MessageToCaster(target.Name + " is Phaseshifted and can't be effected by this Spell!", eChatType.CT_SpellResisted);
+					MessageToCaster(target.Name + " is Phaseshifted and can't be effected by this Spell!", ChatType.CT_SpellResisted);
 					return;
 				}
 			}
@@ -2613,7 +2613,7 @@ namespace DawnOfLight.GameServer.Spells
 				{
 					if (!isSilent)
 					{
-						MessageToCaster(String.Format("Your spell has no effect on the {0}!", target.Name), eChatType.CT_SpellResisted);
+						MessageToCaster(String.Format("Your spell has no effect on the {0}!", target.Name), ChatType.CT_SpellResisted);
 					}
 
 					return;
@@ -2628,7 +2628,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (!target.IsAlive)
 					return;
-				eChatType noOverwrite = (Spell.Pulse == 0) ? eChatType.CT_SpellResisted : eChatType.CT_SpellPulse;
+				ChatType noOverwrite = (Spell.Pulse == 0) ? ChatType.CT_SpellResisted : ChatType.CT_SpellPulse;
 				GameSpellEffect neweffect = CreateSpellEffect(target, effectiveness);
 				GameSpellEffect overwriteEffect = null;
 				bool foundInList = false;
@@ -2861,18 +2861,18 @@ namespace DawnOfLight.GameServer.Spells
 					GamePlayer owner = brain.GetPlayerOwner();
 					if (owner != null)
 					{
-						MessageToLiving(owner, "Your " + target.Name + " resists the effect!", eChatType.CT_SpellResisted);
+						MessageToLiving(owner, "Your " + target.Name + " resists the effect!", ChatType.CT_SpellResisted);
 					}
 				}
 			}
 			else
 			{
-				MessageToLiving(target, "You resist the effect!", eChatType.CT_SpellResisted);
+				MessageToLiving(target, "You resist the effect!", ChatType.CT_SpellResisted);
 			}
 
 			// Deliver message to the caster as well.
 
-			MessageToCaster(target.GetName(0, true) + " resists the effect!", eChatType.CT_SpellResisted);
+			MessageToCaster(target.GetName(0, true) + " resists the effect!", ChatType.CT_SpellResisted);
 
 			// Report resisted spell attack data to any type of living object, no need
 			// to decide here what to do. For example, NPCs will use their brain.
@@ -2920,14 +2920,14 @@ target.StartInterruptTimer(target.SpellInterruptDuration, ad.AttackType, Caster)
 		/// </summary>
 		/// <param name="message"></param>
 		/// <param name="type"></param>
-		public void MessageToCaster(string message, eChatType type)
+		public void MessageToCaster(string message, ChatType type)
 		{
 			if (Caster is GamePlayer)
 			{
 				(Caster as GamePlayer).MessageToSelf(message, type);
 			}
 			else if (Caster is GameNPC && (Caster as GameNPC).Brain is IControlledBrain
-			         && (type == eChatType.CT_YouHit || type == eChatType.CT_SpellResisted))
+			         && (type == ChatType.CT_YouHit || type == ChatType.CT_SpellResisted))
 			{
 				GamePlayer owner = ((Caster as GameNPC).Brain as IControlledBrain).GetPlayerOwner();
 				if (owner != null)
@@ -2943,7 +2943,7 @@ target.StartInterruptTimer(target.SpellInterruptDuration, ad.AttackType, Caster)
 		/// <param name="living"></param>
 		/// <param name="message"></param>
 		/// <param name="type"></param>
-		public void MessageToLiving(GameLiving living, string message, eChatType type)
+		public void MessageToLiving(GameLiving living, string message, ChatType type)
 		{
 			if (message != null && message.Length > 0)
 			{
@@ -2986,10 +2986,10 @@ target.StartInterruptTimer(target.SpellInterruptDuration, ad.AttackType, Caster)
 			else
 				currentEffect.Cancel(false);
 
-			MessageToCaster(String.Format("You lose your focus on your {0} spell.", currentEffect.Spell.Name), eChatType.CT_SpellExpires);
+			MessageToCaster(String.Format("You lose your focus on your {0} spell.", currentEffect.Spell.Name), ChatType.CT_SpellExpires);
 
 			if (e == GameLivingEvent.Moving)
-				MessageToCaster("You move and interrupt your focus!", eChatType.CT_Important);
+				MessageToCaster("You move and interrupt your focus!", ChatType.CT_Important);
 		}
 		#endregion
 
@@ -3735,8 +3735,8 @@ target.StartInterruptTimer(target.SpellInterruptDuration, ad.AttackType, Caster)
 				if(ad.Target.Endurance+enduconversion>ad.Target.MaxEndurance) enduconversion=ad.Target.MaxEndurance-ad.Target.Endurance;
 				if(manaconversion<1) manaconversion=0;
 				if(enduconversion<1) enduconversion=0;
-				if(manaconversion>=1) (ad.Target as GamePlayer).Out.SendMessage("You gain "+manaconversion+" power points", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
-				if(enduconversion>=1) (ad.Target as GamePlayer).Out.SendMessage("You gain "+enduconversion+" endurance points", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				if(manaconversion>=1) (ad.Target as GamePlayer).Out.SendMessage("You gain "+manaconversion+" power points", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
+				if(enduconversion>=1) (ad.Target as GamePlayer).Out.SendMessage("You gain "+enduconversion+" endurance points", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				ad.Target.Endurance+=enduconversion; if(ad.Target.Endurance>ad.Target.MaxEndurance) ad.Target.Endurance=ad.Target.MaxEndurance;
 				ad.Target.Mana+=manaconversion; if(ad.Target.Mana>ad.Target.MaxMana) ad.Target.Mana=ad.Target.MaxMana;
 			}
@@ -3779,12 +3779,12 @@ target.StartInterruptTimer(target.SpellInterruptDuration, ad.AttackType, Caster)
 			if (ad.Modifier < 0)
 				modmessage = " (" + ad.Modifier + ")";
 			if (Caster is GamePlayer || Caster is NecromancerPet)
-				MessageToCaster(string.Format("You hit {0} for {1}{2} damage!", ad.Target.GetName(0, false), ad.Damage, modmessage), eChatType.CT_YouHit);
+				MessageToCaster(string.Format("You hit {0} for {1}{2} damage!", ad.Target.GetName(0, false), ad.Damage, modmessage), ChatType.CT_YouHit);
 			else if (Caster is GameNPC)
 				MessageToCaster(string.Format("Your " + Caster.Name + " hits {0} for {1}{2} damage!",
-				                              ad.Target.GetName(0, false), ad.Damage, modmessage), eChatType.CT_YouHit);
+				                              ad.Target.GetName(0, false), ad.Damage, modmessage), ChatType.CT_YouHit);
 			if (ad.CriticalDamage > 0)
-				MessageToCaster("You critically hit for an additional " + ad.CriticalDamage + " damage!", eChatType.CT_YouHit);
+				MessageToCaster("You critically hit for an additional " + ad.CriticalDamage + " damage!", ChatType.CT_YouHit);
 		}
 
 		/// <summary>

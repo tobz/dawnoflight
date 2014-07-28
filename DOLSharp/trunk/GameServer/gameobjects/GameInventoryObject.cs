@@ -44,7 +44,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		bool OnAddItem(GamePlayer player, InventoryItem item);
 		bool OnRemoveItem(GamePlayer player, InventoryItem item);
 		bool SetSellPrice(GamePlayer player, ushort clientSlot, uint sellPrice);
-		bool SearchInventory(GamePlayer player, MarketSearch.SearchData searchData);
+		bool SearchInventory(GamePlayer player, MarketSearch.SearchData marketSearchQuery);
 		void AddObserver(GamePlayer player);
 		void RemoveObserver(GamePlayer player);
 	}
@@ -99,11 +99,11 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// <summary>
 		/// Move an item from the inventory object to a player's backpack (uses client slots)
 		/// </summary>
-		public static IDictionary<int, InventoryItem> MoveItemFromObject(this IGameInventoryObject thisObject, GamePlayer player, eInventorySlot fromClientSlot, eInventorySlot toClientSlot)
+		public static IDictionary<int, InventoryItem> MoveItemFromObject(this IGameInventoryObject thisObject, GamePlayer player, InventorySlot fromClientSlot, InventorySlot toClientSlot)
 		{
 			// We will only allow moving to the backpack.
 
-			if (toClientSlot < eInventorySlot.FirstBackpack || toClientSlot > eInventorySlot.LastBackpack)
+			if (toClientSlot < InventorySlot.FirstBackpack || toClientSlot > InventorySlot.LastBackpack)
 				return null;
 
 			lock (thisObject.LockObject())
@@ -147,11 +147,11 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// <summary>
 		/// Move an item from a player's backpack to this inventory object (uses client slots)
 		/// </summary>
-		public static IDictionary<int, InventoryItem> MoveItemToObject(this IGameInventoryObject thisObject, GamePlayer player, eInventorySlot fromClientSlot, eInventorySlot toClientSlot)
+		public static IDictionary<int, InventoryItem> MoveItemToObject(this IGameInventoryObject thisObject, GamePlayer player, InventorySlot fromClientSlot, InventorySlot toClientSlot)
 		{
 			// We will only allow moving from the backpack.
 
-			if (fromClientSlot < eInventorySlot.FirstBackpack || fromClientSlot > eInventorySlot.LastBackpack)
+			if (fromClientSlot < InventorySlot.FirstBackpack || fromClientSlot > InventorySlot.LastBackpack)
 				return null;
 
 			InventoryItem fromItem = player.Inventory.GetItem(fromClientSlot);
@@ -191,7 +191,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// <summary>
 		/// Move an item around inside this object (uses client slots)
 		/// </summary>
-		public static IDictionary<int, InventoryItem> MoveItemInsideObject(this IGameInventoryObject thisObject, GamePlayer player, eInventorySlot fromSlot, eInventorySlot toSlot)
+		public static IDictionary<int, InventoryItem> MoveItemInsideObject(this IGameInventoryObject thisObject, GamePlayer player, InventorySlot fromSlot, InventorySlot toSlot)
 		{
 			lock (thisObject.LockObject())
 			{

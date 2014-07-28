@@ -79,7 +79,7 @@ namespace DawnOfLight.GameServer.Utilities
                     }
                     else
                     {
-                        m_player.Out.SendMessage("Someone in your group already has a guild banner active!", eChatType.CT_Loot, eChatLoc.CL_SystemWindow);
+                        m_player.Out.SendMessage("Someone in your group already has a guild banner active!", ChatType.CT_Loot, ChatLocation.CL_SystemWindow);
                     }
                 }
                 else
@@ -93,7 +93,7 @@ namespace DawnOfLight.GameServer.Utilities
             }
             else if (m_player.Client.Account.PrivLevel == (int)ePrivLevel.Player)
             {
-                m_player.Out.SendMessage("You have left the group and your guild banner disappears!", eChatType.CT_Loot, eChatLoc.CL_SystemWindow);
+                m_player.Out.SendMessage("You have left the group and your guild banner disappears!", ChatType.CT_Loot, ChatLocation.CL_SystemWindow);
                 m_player.GuildBanner = null;
                 if (m_timer != null)
                 {
@@ -167,7 +167,7 @@ namespace DawnOfLight.GameServer.Utilities
         {
 			Stop();
 			m_player.GuildBanner = null;
-			m_player.Guild.SendMessageToGuildMembers(string.Format("{0} has put away the guild banner!", m_player.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+			m_player.Guild.SendMessageToGuildMembers(string.Format("{0} has put away the guild banner!", m_player.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 			m_player = null;
         }
 
@@ -188,7 +188,7 @@ namespace DawnOfLight.GameServer.Utilities
 			}
 
 			Stop();
-			m_player.Guild.SendMessageToGuildMembers(m_player.Name + " has dropped the guild banner!", eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+			m_player.Guild.SendMessageToGuildMembers(m_player.Name + " has dropped the guild banner!", ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 
 			gameItem = new WorldInventoryItem(m_item);
 			Point2D point = m_player.GetPointFromHeading(m_player.Heading, 30);

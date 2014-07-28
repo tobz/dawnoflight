@@ -41,7 +41,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				myclient = WorldMgr.GetClientByPlayerName(args[1], true, true);
 				if (myclient == null)
 				{
-					client.Player.Out.SendMessage("No player with this name in game.", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+					client.Player.Out.SendMessage("No player with this name in game.", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 					return;
 				}
 				target = myclient.Player;
@@ -49,7 +49,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (target == client.Player)
 			{
-				client.Out.SendMessage("You can't groundassist yourself.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You can't groundassist yourself.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -62,13 +62,13 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (!client.Player.IsWithinRadius( target, 2048 ))
 			{
-				client.Out.SendMessage("You don't see " + args[1] + " around here!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You don't see " + args[1] + " around here!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			if (target.GroundTarget == null || (target.GroundTarget.X == 0 && target.GroundTarget.Y == 0 && target.GroundTarget.Z == 0))
 			{
-				client.Out.SendMessage(target.Name + " doesn't currently have a ground target.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(target.Name + " doesn't currently have a ground target.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			client.Player.Out.SendChangeGroundTarget(target.GroundTarget);

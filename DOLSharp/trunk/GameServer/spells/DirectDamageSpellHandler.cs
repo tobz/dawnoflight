@@ -177,7 +177,7 @@ namespace DawnOfLight.GameServer.Spells
 				if (Spell.Target.ToLower() == "enemy" && Spell.Radius == 0 && Spell.Range != 0)
 				{
 					m_castFailed = true;
-					MessageToCaster("You can't see your target!", eChatType.CT_SpellResisted);
+					MessageToCaster("You can't see your target!", ChatType.CT_SpellResisted);
 				}
 			}
 		}

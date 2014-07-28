@@ -219,7 +219,7 @@ namespace DawnOfLight.GameServer.Quests.Missions
 			    if (RewardRealmPoints > 0)
 					player.GainRealmPoints(RewardRealmPoints);
 
-				player.Out.SendMessage("You finish the " + Name + "!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You finish the " + Name + "!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 
 			switch (MissionType)
@@ -264,7 +264,7 @@ namespace DawnOfLight.GameServer.Quests.Missions
 		{
 			foreach (GamePlayer player in Targets)
 			{
-				player.Out.SendMessage("Your " + Name + " has expired!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Your " + Name + " has expired!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 
 			switch (MissionType)

@@ -161,9 +161,9 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 				addrir.CurrentRegionID = 200;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 58, 35);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 57, 32);
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 1173);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 58, 35);
+				template.AddNPCEquipment(InventorySlot.Cloak, 57, 32);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 1173);
 				addrir.Inventory = template.CloseTemplate();
 				addrir.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

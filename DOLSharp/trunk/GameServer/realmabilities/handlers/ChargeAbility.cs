@@ -26,7 +26,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 						if (oEffect.Spell.SpellType.ToLower().IndexOf("speeddecrease") != -1 && oEffect.Spell.Value != 99)
 						{
 							GamePlayer player = living as GamePlayer;
-							if (player != null) player.Out.SendMessage("You may not use this ability while snared!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							if (player != null) player.Out.SendMessage("You may not use this ability while snared!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return true;
 						}
 					}
@@ -44,7 +44,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 				|| living.EffectList.CountOfType(typeof(SpeedOfSoundEffect), typeof(ArmsLengthEffect), typeof(ChargeEffect)) > 0)
 			{
 				if (living is GamePlayer)
-					((GamePlayer)living).Out.SendMessage("You already an effect of that type!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+					((GamePlayer)living).Out.SendMessage("You already an effect of that type!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return;
 			}
 

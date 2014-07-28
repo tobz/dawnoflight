@@ -73,7 +73,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				player.RealmAbilityCastTimer.Stop();
 				player.RealmAbilityCastTimer = null;
-				player.Out.SendMessage("You cancel your Spell!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You cancel your Spell!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 			}
 
 			foreach (GamePlayer p in living.GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))
@@ -178,7 +178,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			GamePlayer player = owner as GamePlayer;
 			if (player != null)
 			{
-				player.Out.SendMessage("You hit " + target.Name + " for " + damage + "(" + resist + ") points of damage!", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You hit " + target.Name + " for " + damage + "(" + resist + ") points of damage!", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 			}
 
 			GamePlayer targetPlayer = target as GamePlayer;

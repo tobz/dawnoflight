@@ -32,50 +32,50 @@ namespace DawnOfLight.GameServer.Utilities
 	{
 		private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-		public static readonly eInventorySlot[] EQUIP_SLOTS =
+		public static readonly InventorySlot[] EQUIP_SLOTS =
 		{
-			eInventorySlot.Horse,
-			eInventorySlot.HorseArmor,
-			eInventorySlot.HorseBarding,
-			eInventorySlot.RightHandWeapon,
-			eInventorySlot.LeftHandWeapon,
-			eInventorySlot.TwoHandWeapon,
-			eInventorySlot.DistanceWeapon,
-			eInventorySlot.FirstQuiver,
-			eInventorySlot.SecondQuiver,
-			eInventorySlot.ThirdQuiver,
-			eInventorySlot.FourthQuiver,
-			eInventorySlot.HeadArmor,
-			eInventorySlot.HandsArmor,
-			eInventorySlot.FeetArmor,
-			eInventorySlot.Jewellery,
-			eInventorySlot.TorsoArmor,
-			eInventorySlot.Cloak,
-			eInventorySlot.LegsArmor,
-			eInventorySlot.ArmsArmor,
-			eInventorySlot.Neck,
-			eInventorySlot.Waist,
-			eInventorySlot.LeftBracer,
-			eInventorySlot.RightBracer,
-			eInventorySlot.LeftRing,
-			eInventorySlot.RightRing,
-			eInventorySlot.Mythical,
+			InventorySlot.Horse,
+			InventorySlot.HorseArmor,
+			InventorySlot.HorseBarding,
+			InventorySlot.RightHandWeapon,
+			InventorySlot.LeftHandWeapon,
+			InventorySlot.TwoHandWeapon,
+			InventorySlot.DistanceWeapon,
+			InventorySlot.FirstQuiver,
+			InventorySlot.SecondQuiver,
+			InventorySlot.ThirdQuiver,
+			InventorySlot.FourthQuiver,
+			InventorySlot.HeadArmor,
+			InventorySlot.HandsArmor,
+			InventorySlot.FeetArmor,
+			InventorySlot.Jewellery,
+			InventorySlot.TorsoArmor,
+			InventorySlot.Cloak,
+			InventorySlot.LegsArmor,
+			InventorySlot.ArmsArmor,
+			InventorySlot.Neck,
+			InventorySlot.Waist,
+			InventorySlot.LeftBracer,
+			InventorySlot.RightBracer,
+			InventorySlot.LeftRing,
+			InventorySlot.RightRing,
+			InventorySlot.Mythical,
 		};
 
 		//Defines the visible slots that will be displayed to players
-		protected static readonly eInventorySlot[] VISIBLE_SLOTS =
+		protected static readonly InventorySlot[] VISIBLE_SLOTS =
 		{
-			eInventorySlot.RightHandWeapon,
-			eInventorySlot.LeftHandWeapon,
-			eInventorySlot.TwoHandWeapon,
-			eInventorySlot.DistanceWeapon,
-			eInventorySlot.HeadArmor,
-			eInventorySlot.HandsArmor,
-			eInventorySlot.FeetArmor,
-			eInventorySlot.TorsoArmor,
-			eInventorySlot.Cloak,
-			eInventorySlot.LegsArmor,
-			eInventorySlot.ArmsArmor
+			InventorySlot.RightHandWeapon,
+			InventorySlot.LeftHandWeapon,
+			InventorySlot.TwoHandWeapon,
+			InventorySlot.DistanceWeapon,
+			InventorySlot.HeadArmor,
+			InventorySlot.HandsArmor,
+			InventorySlot.FeetArmor,
+			InventorySlot.TorsoArmor,
+			InventorySlot.Cloak,
+			InventorySlot.LegsArmor,
+			InventorySlot.ArmsArmor
 		};
 
 		#region Constructor/Declaration/LoadDatabase/SaveDatabase
@@ -85,12 +85,12 @@ namespace DawnOfLight.GameServer.Utilities
 		/// for players the vault, the equipped items and the backpack
 		/// and for mob the quest drops ect ...
 		/// </summary>
-		protected readonly Dictionary<eInventorySlot, InventoryItem> m_items;
+		protected readonly Dictionary<InventorySlot, InventoryItem> m_items;
 
 		/// <summary>
 		/// Holds all changed slots
 		/// </summary>
-		protected List<eInventorySlot> m_changedSlots;
+		protected List<InventorySlot> m_changedSlots;
 
 		/// <summary>
 		/// Holds the begin changes counter for slot updates
@@ -102,8 +102,8 @@ namespace DawnOfLight.GameServer.Utilities
 		/// </summary>
 		protected GameLivingInventory()
 		{
-			m_items = new Dictionary<eInventorySlot, InventoryItem>();
-			m_changedSlots = new List<eInventorySlot>();
+			m_items = new Dictionary<InventorySlot, InventoryItem>();
+			m_changedSlots = new List<InventorySlot>();
 		}
 
 		/// <summary>
@@ -136,12 +136,12 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="minSlot"></param>
 		/// <param name="maxSlot"></param>
 		/// <returns></returns>
-		public int CountSlots(bool countUsed, eInventorySlot minSlot, eInventorySlot maxSlot)
+		public int CountSlots(bool countUsed, InventorySlot minSlot, InventorySlot maxSlot)
 		{
 			// If lower slot is greater than upper slot, flip the values.
 			if (minSlot > maxSlot)
 			{
-				eInventorySlot tmp = minSlot;
+				InventorySlot tmp = minSlot;
 				minSlot = maxSlot;
 				maxSlot = tmp;
 			}
@@ -150,7 +150,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 			lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 			{
-				for (eInventorySlot i = minSlot; i <= maxSlot; i++)
+				for (InventorySlot i = minSlot; i <= maxSlot; i++)
 				{
 					if (m_items.ContainsKey(i))
 					{
@@ -175,7 +175,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="minSlot">first slot</param>
 		/// <param name="maxSlot">last slot</param>
 		/// <returns>number of matched items found</returns>
-		public int CountItemTemplate(string itemtemplateID, eInventorySlot minSlot, eInventorySlot maxSlot)
+		public int CountItemTemplate(string itemtemplateID, InventorySlot minSlot, InventorySlot maxSlot)
 		{
 			lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 			{
@@ -184,14 +184,14 @@ namespace DawnOfLight.GameServer.Utilities
 				// If lower slot is greater than upper slot, flip the values.
 				if (minSlot > maxSlot)
 				{
-					eInventorySlot tmp = minSlot;
+					InventorySlot tmp = minSlot;
 					minSlot = maxSlot;
 					maxSlot = tmp;
 				}
 
 				InventoryItem item;
 
-				for (eInventorySlot i = minSlot; i <= maxSlot; i++)
+				for (InventorySlot i = minSlot; i <= maxSlot; i++)
 				{
 					if (m_items.TryGetValue(i, out item) && item.Id_nb == itemtemplateID)
 					{
@@ -210,7 +210,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="minSlot"></param>
 		/// <param name="maxSlot"></param>
 		/// <returns></returns>
-		public bool IsSlotsFree(int count, eInventorySlot minSlot, eInventorySlot maxSlot)
+		public bool IsSlotsFree(int count, InventorySlot minSlot, InventorySlot maxSlot)
 		{
 			if (count < 1)
 				return true;
@@ -218,14 +218,14 @@ namespace DawnOfLight.GameServer.Utilities
 			// If lower slot is greater than upper slot, flip the values.
 			if (minSlot > maxSlot)
 			{
-				eInventorySlot tmp = minSlot;
+				InventorySlot tmp = minSlot;
 				minSlot = maxSlot;
 				maxSlot = tmp;
 			}
 
 			lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 			{
-				for (eInventorySlot i = minSlot; i <= maxSlot; i++)
+				for (InventorySlot i = minSlot; i <= maxSlot; i++)
 				{
 					if (m_items.ContainsKey(i))
 						continue;
@@ -245,8 +245,8 @@ namespace DawnOfLight.GameServer.Utilities
 		/// </summary>
 		/// <param name="first">SlotPosition to start the search</param>
 		/// <param name="last">SlotPosition to stop the search</param>
-		/// <returns>the empty inventory slot or eInventorySlot.Invalid if they are all full</returns>
-		public virtual eInventorySlot FindFirstEmptySlot(eInventorySlot first, eInventorySlot last)
+		/// <returns>the empty inventory slot or InventorySlot.Invalid if they are all full</returns>
+		public virtual InventorySlot FindFirstEmptySlot(InventorySlot first, InventorySlot last)
 		{
 			return FindSlot(first, last, true, true);
 		}
@@ -256,8 +256,8 @@ namespace DawnOfLight.GameServer.Utilities
 		/// </summary>
 		/// <param name="first">SlotPosition to start the search</param>
 		/// <param name="last">SlotPosition to stop the search</param>
-		/// <returns>the empty inventory slot or eInventorySlot.Invalid</returns>
-		public virtual eInventorySlot FindLastEmptySlot(eInventorySlot first, eInventorySlot last)
+		/// <returns>the empty inventory slot or InventorySlot.Invalid</returns>
+		public virtual InventorySlot FindLastEmptySlot(InventorySlot first, InventorySlot last)
 		{
 			return FindSlot(first, last, false, true);
 		}
@@ -267,8 +267,8 @@ namespace DawnOfLight.GameServer.Utilities
 		/// </summary>
 		/// <param name="first">SlotPosition to start the search</param>
 		/// <param name="last">SlotPosition to stop the search</param>
-		/// <returns>the empty inventory slot or eInventorySlot.Invalid</returns>
-		public virtual eInventorySlot FindFirstFullSlot(eInventorySlot first, eInventorySlot last)
+		/// <returns>the empty inventory slot or InventorySlot.Invalid</returns>
+		public virtual InventorySlot FindFirstFullSlot(InventorySlot first, InventorySlot last)
 		{
 			return FindSlot(first, last, true, false);
 		}
@@ -278,8 +278,8 @@ namespace DawnOfLight.GameServer.Utilities
 		/// </summary>
 		/// <param name="first">SlotPosition to start the search</param>
 		/// <param name="last">SlotPosition to stop the search</param>
-		/// <returns>the empty inventory slot or eInventorySlot.Invalid</returns>
-		public virtual eInventorySlot FindLastFullSlot(eInventorySlot first, eInventorySlot last)
+		/// <returns>the empty inventory slot or InventorySlot.Invalid</returns>
+		public virtual InventorySlot FindLastFullSlot(InventorySlot first, InventorySlot last)
 		{
 			return FindSlot(first, last, false, false);
 		}
@@ -288,19 +288,19 @@ namespace DawnOfLight.GameServer.Utilities
 		/// Check if the slot is valid in the inventory
 		/// </summary>
 		/// <param name="slot">SlotPosition to check</param>
-		/// <returns>the slot if it's valid or eInventorySlot.Invalid if not</returns>
-		protected virtual eInventorySlot GetValidInventorySlot(eInventorySlot slot)
+		/// <returns>the slot if it's valid or InventorySlot.Invalid if not</returns>
+		protected virtual InventorySlot GetValidInventorySlot(InventorySlot slot)
 		{
-			if ((slot >= eInventorySlot.RightHandWeapon && slot <= eInventorySlot.FourthQuiver)
-			    || (slot >= eInventorySlot.HeadArmor && slot <= eInventorySlot.Neck)
-			    || (slot >= eInventorySlot.HorseArmor && slot <= eInventorySlot.Horse)
-			    || (slot >= eInventorySlot.Waist && slot <= eInventorySlot.Mythical)
-			    || (slot == eInventorySlot.Ground)
+			if ((slot >= InventorySlot.RightHandWeapon && slot <= InventorySlot.FourthQuiver)
+			    || (slot >= InventorySlot.HeadArmor && slot <= InventorySlot.Neck)
+			    || (slot >= InventorySlot.HorseArmor && slot <= InventorySlot.Horse)
+			    || (slot >= InventorySlot.Waist && slot <= InventorySlot.Mythical)
+			    || (slot == InventorySlot.Ground)
 			    // INVENTAIRE DES CHEVAUX
-			    || (slot >= eInventorySlot.FirstBagHorse && slot <= eInventorySlot.LastBagHorse))
+			    || (slot >= InventorySlot.FirstBagHorse && slot <= InventorySlot.LastBagHorse))
 				return slot;
 
-			return eInventorySlot.Invalid;
+			return InventorySlot.Invalid;
 		}
 
 		/// <summary>
@@ -311,15 +311,15 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="searchFirst"></param>
 		/// <param name="searchNull"></param>
 		/// <returns></returns>
-		protected virtual eInventorySlot FindSlot(eInventorySlot first, eInventorySlot last, bool searchFirst, bool searchNull)
+		protected virtual InventorySlot FindSlot(InventorySlot first, InventorySlot last, bool searchFirst, bool searchNull)
 		{
 			lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 			{
 				first = GetValidInventorySlot(first);
 				last = GetValidInventorySlot(last);
 
-				if (first == eInventorySlot.Invalid || last == eInventorySlot.Invalid)
-					return eInventorySlot.Invalid;
+				if (first == InventorySlot.Invalid || last == InventorySlot.Invalid)
+					return InventorySlot.Invalid;
 
 				// If first/last slots are identical, check to see if the slot is full/empty and return based on
 				// whether we instructed to find an empty or a full slot.
@@ -327,13 +327,13 @@ namespace DawnOfLight.GameServer.Utilities
 				{
 					// If slot is empty, and we wanted an empty slot, or if slot is full, and we wanted
 					// a full slot, return the given slot, otherwise return invalid.
-					return !m_items.ContainsKey(first) == searchNull ? first : eInventorySlot.Invalid;
+					return !m_items.ContainsKey(first) == searchNull ? first : InventorySlot.Invalid;
 				}
 
 				// If lower slot is greater than upper slot, flip the values.
 				if (first > last)
 				{
-					eInventorySlot tmp = first;
+					InventorySlot tmp = first;
 					first = last;
 					last = tmp;
 				}
@@ -342,11 +342,11 @@ namespace DawnOfLight.GameServer.Utilities
 				{
 					var testSlot = (int) (searchFirst ? (first + i) : (last - i));
 
-					if (!m_items.ContainsKey((eInventorySlot) testSlot) == searchNull)
-						return (eInventorySlot) testSlot;
+					if (!m_items.ContainsKey((InventorySlot) testSlot) == searchNull)
+						return (InventorySlot) testSlot;
 				}
 
-				return eInventorySlot.Invalid;
+				return InventorySlot.Invalid;
 			}
 		}
 
@@ -360,17 +360,17 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="minSlot">Slot Position where begin the search</param>
 		/// <param name="maxSlot">Slot Position where stop the search</param>
 		/// <returns>all items found</returns>
-		public virtual ICollection<InventoryItem> GetItemRange(eInventorySlot minSlot, eInventorySlot maxSlot)
+		public virtual ICollection<InventoryItem> GetItemRange(InventorySlot minSlot, InventorySlot maxSlot)
 		{
 			minSlot = GetValidInventorySlot(minSlot);
 			maxSlot = GetValidInventorySlot(maxSlot);
-			if (minSlot == eInventorySlot.Invalid || maxSlot == eInventorySlot.Invalid)
+			if (minSlot == InventorySlot.Invalid || maxSlot == InventorySlot.Invalid)
 				return null;
 
 			// If lower slot is greater than upper slot, flip the values.
 			if (minSlot > maxSlot)
 			{
-				eInventorySlot tmp = minSlot;
+				InventorySlot tmp = minSlot;
 				minSlot = maxSlot;
 				maxSlot = tmp;
 			}
@@ -381,7 +381,7 @@ namespace DawnOfLight.GameServer.Utilities
 			{
 				InventoryItem item;
 
-				for (eInventorySlot i = minSlot; i <= maxSlot; i++)
+				for (InventorySlot i = minSlot; i <= maxSlot; i++)
 				{
 					if (m_items.TryGetValue(i, out item))
 					{
@@ -401,17 +401,17 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="minSlot">fist slot for search</param>
 		/// <param name="maxSlot">last slot for search</param>
 		/// <returns>found item or null</returns>
-		public InventoryItem GetFirstItemByID(string uniqueID, eInventorySlot minSlot, eInventorySlot maxSlot)
+		public InventoryItem GetFirstItemByID(string uniqueID, InventorySlot minSlot, InventorySlot maxSlot)
 		{
 			minSlot = GetValidInventorySlot(minSlot);
 			maxSlot = GetValidInventorySlot(maxSlot);
-			if (minSlot == eInventorySlot.Invalid || maxSlot == eInventorySlot.Invalid)
+			if (minSlot == InventorySlot.Invalid || maxSlot == InventorySlot.Invalid)
 				return null;
 
 			// If lower slot is greater than upper slot, flip the values.
 			if (minSlot > maxSlot)
 			{
-				eInventorySlot tmp = minSlot;
+				InventorySlot tmp = minSlot;
 				minSlot = maxSlot;
 				maxSlot = tmp;
 			}
@@ -420,7 +420,7 @@ namespace DawnOfLight.GameServer.Utilities
 			{
 				InventoryItem item;
 
-				for (eInventorySlot i = minSlot; i <= maxSlot; i++)
+				for (InventorySlot i = minSlot; i <= maxSlot; i++)
 				{
 					if (m_items.TryGetValue(i, out item))
 					{
@@ -441,17 +441,17 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="minSlot">fist slot for search</param>
 		/// <param name="maxSlot">last slot for search</param>
 		/// <returns>found item or null</returns>
-		public InventoryItem GetFirstItemByObjectType(int objectType, eInventorySlot minSlot, eInventorySlot maxSlot)
+		public InventoryItem GetFirstItemByObjectType(int objectType, InventorySlot minSlot, InventorySlot maxSlot)
 		{
 			minSlot = GetValidInventorySlot(minSlot);
 			maxSlot = GetValidInventorySlot(maxSlot);
-			if (minSlot == eInventorySlot.Invalid || maxSlot == eInventorySlot.Invalid)
+			if (minSlot == InventorySlot.Invalid || maxSlot == InventorySlot.Invalid)
 				return null;
 
 			// If lower slot is greater than upper slot, flip the values.
 			if (minSlot > maxSlot)
 			{
-				eInventorySlot tmp = minSlot;
+				InventorySlot tmp = minSlot;
 				minSlot = maxSlot;
 				maxSlot = tmp;
 			}
@@ -460,7 +460,7 @@ namespace DawnOfLight.GameServer.Utilities
 			{
 				InventoryItem item;
 
-				for (eInventorySlot i = minSlot; i <= maxSlot; i++)
+				for (InventorySlot i = minSlot; i <= maxSlot; i++)
 				{
 					if (m_items.TryGetValue(i, out item))
 					{
@@ -481,17 +481,17 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="minSlot">fist slot for search</param>
 		/// <param name="maxSlot">last slot for search</param>
 		/// <returns>found item or null</returns>
-		public InventoryItem GetFirstItemByName(string name, eInventorySlot minSlot, eInventorySlot maxSlot)
+		public InventoryItem GetFirstItemByName(string name, InventorySlot minSlot, InventorySlot maxSlot)
 		{
 			minSlot = GetValidInventorySlot(minSlot);
 			maxSlot = GetValidInventorySlot(maxSlot);
-			if (minSlot == eInventorySlot.Invalid || maxSlot == eInventorySlot.Invalid)
+			if (minSlot == InventorySlot.Invalid || maxSlot == InventorySlot.Invalid)
 				return null;
 
 			// If lower slot is greater than upper slot, flip the values.
 			if (minSlot > maxSlot)
 			{
-				eInventorySlot tmp = minSlot;
+				InventorySlot tmp = minSlot;
 				minSlot = maxSlot;
 				maxSlot = tmp;
 			}
@@ -500,7 +500,7 @@ namespace DawnOfLight.GameServer.Utilities
 			{
 				InventoryItem item;
 
-				for (eInventorySlot i = minSlot; i <= maxSlot; i++)
+				for (InventorySlot i = minSlot; i <= maxSlot; i++)
 				{
 					if (m_items.TryGetValue(i, out item))
 					{
@@ -522,8 +522,8 @@ namespace DawnOfLight.GameServer.Utilities
 		/// </summary>
 		/// <param name="slot"></param>
 		/// <param name="item"></param>
-		/// <returns>The eInventorySlot where the item has been added</returns>
-		public virtual bool AddItem(eInventorySlot slot, InventoryItem item)
+		/// <returns>The InventorySlot where the item has been added</returns>
+		public virtual bool AddItem(InventorySlot slot, InventoryItem item)
 		{
 			if (item == null)
 				return false;
@@ -531,7 +531,7 @@ namespace DawnOfLight.GameServer.Utilities
 			lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 			{
 				slot = GetValidInventorySlot(slot);
-				if (slot == eInventorySlot.Invalid) return false;
+				if (slot == InventorySlot.Invalid) return false;
 
 				if (m_items.ContainsKey(slot))
 				{
@@ -560,7 +560,7 @@ namespace DawnOfLight.GameServer.Utilities
 			}
 		}
 
-		public virtual bool AddTradeItem(eInventorySlot slot, InventoryItem item)
+		public virtual bool AddTradeItem(InventorySlot slot, InventoryItem item)
 		{
 			return false;
 		}
@@ -595,7 +595,7 @@ namespace DawnOfLight.GameServer.Utilities
 				if (item == null)
 					return false;
 
-				var slot = (eInventorySlot) item.SlotPosition;
+				var slot = (InventorySlot) item.SlotPosition;
 
 				if (m_items.ContainsKey(slot))
 				{
@@ -605,7 +605,7 @@ namespace DawnOfLight.GameServer.Utilities
 						m_changedSlots.Add(slot);
 
 					item.OwnerID = null;
-					item.SlotPosition = (int) eInventorySlot.Invalid;
+					item.SlotPosition = (int) InventorySlot.Invalid;
 
 					if (m_changesCounter <= 0)
 						UpdateChangedSlots();
@@ -639,7 +639,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 			lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 			{
-				var slot = (eInventorySlot) item.SlotPosition;
+				var slot = (InventorySlot) item.SlotPosition;
 
 				if (m_items.ContainsKey(slot))
 				{
@@ -676,7 +676,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 			lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 			{
-				var slot = (eInventorySlot) item.SlotPosition;
+				var slot = (InventorySlot) item.SlotPosition;
 
 				if (m_items.ContainsKey(slot))
 				{
@@ -709,10 +709,10 @@ namespace DawnOfLight.GameServer.Utilities
 		/// </summary>
 		/// <param name="slot">SlotPosition</param>
 		/// <returns>the item in the specified slot if the slot is valid and null if not</returns>
-		public virtual InventoryItem GetItem(eInventorySlot slot)
+		public virtual InventoryItem GetItem(InventorySlot slot)
 		{
 			slot = GetValidInventorySlot(slot);
-			if (slot == eInventorySlot.Invalid)
+			if (slot == InventorySlot.Invalid)
 				return null;
 
 			lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
@@ -732,13 +732,13 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="toSlot">Destination slot</param>
 		/// <param name="itemCount"></param>
 		/// <returns>true if successfull false if not</returns>
-		public virtual bool MoveItem(eInventorySlot fromSlot, eInventorySlot toSlot, int itemCount)
+		public virtual bool MoveItem(InventorySlot fromSlot, InventorySlot toSlot, int itemCount)
 		{
 			lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 			{
 				fromSlot = GetValidInventorySlot(fromSlot);
 				toSlot = GetValidInventorySlot(toSlot);
-				if (fromSlot == eInventorySlot.Invalid || toSlot == eInventorySlot.Invalid)
+				if (fromSlot == InventorySlot.Invalid || toSlot == InventorySlot.Invalid)
 					return false;
 
 				InventoryItem fromItem;
@@ -776,7 +776,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 				lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 				{
-					foreach (eInventorySlot slot in VISIBLE_SLOTS)
+					foreach (InventorySlot slot in VISIBLE_SLOTS)
 					{
 						InventoryItem item;
 
@@ -802,7 +802,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 				lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 				{
-					foreach (eInventorySlot slot in EQUIP_SLOTS)
+					foreach (InventorySlot slot in EQUIP_SLOTS)
 					{
 						InventoryItem item;
 
@@ -838,7 +838,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="minSlot">The first slot</param>
 		/// <param name="maxSlot">The last slot</param>
 		/// <returns>True if all items were added</returns>
-		public virtual bool AddTemplate(InventoryItem sourceItem, int count, eInventorySlot minSlot, eInventorySlot maxSlot)
+		public virtual bool AddTemplate(InventoryItem sourceItem, int count, InventorySlot minSlot, InventorySlot maxSlot)
 		{
 			// Make sure template isn't null.
 			if (sourceItem == null)
@@ -851,32 +851,32 @@ namespace DawnOfLight.GameServer.Utilities
 			// If lower slot is greater than upper slot, flip the values.
 			if (minSlot > maxSlot)
 			{
-				eInventorySlot tmp = minSlot;
+				InventorySlot tmp = minSlot;
 				minSlot = maxSlot;
 				maxSlot = tmp;
 			}
 
 			// Make sure lower slot is within inventory bounds.
-			if (minSlot < eInventorySlot.Min_Inv)
+			if (minSlot < InventorySlot.Min_Inv)
 				return false;
 
 			// Make sure upper slot is within inventory bounds.
-			if (maxSlot > eInventorySlot.Max_Inv)
+			if (maxSlot > InventorySlot.Max_Inv)
 				return false;
 
 			lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 			{
-				var changedSlots = new Dictionary<eInventorySlot, int>(); // value: <0 = new item count; >0 = add to old
+				var changedSlots = new Dictionary<InventorySlot, int>(); // value: <0 = new item count; >0 = add to old
 				bool fits = false;
 				int itemcount = count;
-				eInventorySlot i = minSlot;
+				InventorySlot i = minSlot;
 
 				// Find open slots/existing stacks to fit in these items.
 				do
 				{
 					// Get the current slot, make sure it's valid.
-					eInventorySlot curSlot = GetValidInventorySlot(i);
-					if (curSlot == eInventorySlot.Invalid)
+					InventorySlot curSlot = GetValidInventorySlot(i);
+					if (curSlot == InventorySlot.Invalid)
 						continue;
 
 					InventoryItem curItem;
@@ -928,8 +928,8 @@ namespace DawnOfLight.GameServer.Utilities
 					for (i = minSlot; i <= maxSlot; i++)
 					{
 						// Get the current slot, make sure it's valid.
-						eInventorySlot curSlot = GetValidInventorySlot(i);
-						if (curSlot == eInventorySlot.Invalid)
+						InventorySlot curSlot = GetValidInventorySlot(i);
+						if (curSlot == InventorySlot.Invalid)
 							continue;
 
 						// Skip any slots we already found as being occupied.
@@ -979,7 +979,7 @@ namespace DawnOfLight.GameServer.Utilities
 					foreach (var slot in changedSlots)
 					{
 						InventoryItem item;
-						eInventorySlot itemSlot = slot.Key;
+						InventorySlot itemSlot = slot.Key;
 						int itemCount = slot.Value;
 
 						if (itemCount > 0) // existing item should be changed
@@ -1023,7 +1023,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="minSlot">The first slot</param>
 		/// <param name="maxSlot">The last slot</param>
 		/// <returns>True if all items were added</returns>
-		public virtual bool RemoveTemplate(string templateID, int count, eInventorySlot minSlot, eInventorySlot maxSlot)
+		public virtual bool RemoveTemplate(string templateID, int count, InventorySlot minSlot, InventorySlot maxSlot)
 		{
 			if (templateID == null)
 				return false;
@@ -1033,13 +1033,13 @@ namespace DawnOfLight.GameServer.Utilities
 
 			if (minSlot > maxSlot)
 			{
-				eInventorySlot tmp = minSlot;
+				InventorySlot tmp = minSlot;
 				minSlot = maxSlot;
 				maxSlot = tmp;
 			}
 
-			if (minSlot < eInventorySlot.Min_Inv) return false;
-			if (maxSlot > eInventorySlot.Max_Inv) return false;
+			if (minSlot < InventorySlot.Min_Inv) return false;
+			if (maxSlot > InventorySlot.Max_Inv) return false;
 
 			lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 			{
@@ -1047,7 +1047,7 @@ namespace DawnOfLight.GameServer.Utilities
 				// value: null = remove item completely; >0 = remove count from stack
 				bool remove = false;
 
-				for (eInventorySlot slot = minSlot; slot <= maxSlot; slot++)
+				for (InventorySlot slot = minSlot; slot <= maxSlot; slot++)
 				{
 					InventoryItem item;
 
@@ -1137,7 +1137,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="toSlot">Second SlotPosition</param>
 		/// <param name="itemCount">How many items to move</param>
 		/// <returns>true if items stacked successfully</returns>
-		protected virtual bool StackItems(eInventorySlot fromSlot, eInventorySlot toSlot, int itemCount)
+		protected virtual bool StackItems(InventorySlot fromSlot, InventorySlot toSlot, int itemCount)
 		{
 			return false;
 		}
@@ -1148,7 +1148,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="fromSlot">First SlotPosition</param>
 		/// <param name="toSlot">Second SlotPosition</param>
 		/// <returns>true if items exchanged successfully</returns>
-		protected virtual bool ExchangeItems(eInventorySlot fromSlot, eInventorySlot toSlot)
+		protected virtual bool ExchangeItems(InventorySlot fromSlot, InventorySlot toSlot)
 		{
 			InventoryItem newFromItem;
 			InventoryItem newToItem;
@@ -1203,7 +1203,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 				lock (m_items) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
 				{
-					foreach (eInventorySlot slot in EQUIP_SLOTS)
+					foreach (InventorySlot slot in EQUIP_SLOTS)
 					{
 						if (m_items.TryGetValue(slot, out item))
 						{

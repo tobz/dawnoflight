@@ -182,15 +182,15 @@ namespace DawnOfLight.GameServer.Utilities
             {
                 if (m_hand.Count == 0)
                 {
-                    source.Out.SendMessage((source == m_owner ? "You have " : m_owner.Player.Name + " has ") + "no cards.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    source.Out.SendMessage((source == m_owner ? "You have " : m_owner.Player.Name + " has ") + "no cards.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     return;
                 }
                 string cards = "";
                 foreach (Card c in m_hand)
                     if(source == m_owner || c.Up) 
                         cards += c.Id + " - " + c.Name + "\n";
-                source.Out.SendMessage((source == m_owner ? "You are holding " : m_owner.Player.Name + " is holding ") + m_hand.Count + (m_hand.Count > 1 ? " cards." : " card."), eChatType.CT_System, eChatLoc.CL_SystemWindow);
-                source.Out.SendMessage(cards, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                source.Out.SendMessage((source == m_owner ? "You are holding " : m_owner.Player.Name + " is holding ") + m_hand.Count + (m_hand.Count > 1 ? " cards." : " card."), ChatType.CT_System, ChatLocation.CL_SystemWindow);
+                source.Out.SendMessage(cards, ChatType.CT_System, ChatLocation.CL_SystemWindow);
             }
 
             public Card Discard(uint selection)
@@ -204,20 +204,20 @@ namespace DawnOfLight.GameServer.Utilities
                         {
                             foreach (GamePlayer Groupee in m_owner.Player.Group.GetPlayersInTheGroup())
                             {
-                                if(Groupee == m_owner.Player) m_owner.Out.SendMessage("You discard the " + c.Name + " from your hand.", eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
-                                else Groupee.Client.Out.SendMessage(m_owner.Player.Name + " discards " + (c.Up ? "the " + c.Name : "a card") + " from their hand.", eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+                                if(Groupee == m_owner.Player) m_owner.Out.SendMessage("You discard the " + c.Name + " from your hand.", ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
+                                else Groupee.Client.Out.SendMessage(m_owner.Player.Name + " discards " + (c.Up ? "the " + c.Name : "a card") + " from their hand.", ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
                             }
                         }
                         else
                         {
-                            m_owner.Out.SendMessage("You cannot play cards without a group!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                            m_owner.Out.SendMessage("You cannot play cards without a group!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                             DiscardAll();
                             return null;
                         }
                         return c;
                     }
                 }
-                m_owner.Out.SendMessage("No card with ID " + selection + " exists in your hand!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                m_owner.Out.SendMessage("No card with ID " + selection + " exists in your hand!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return null;
             }
 
@@ -226,10 +226,10 @@ namespace DawnOfLight.GameServer.Utilities
                 ArrayList cards = (ArrayList)m_hand.Clone();
                 m_hand.Clear();
                 if(m_owner.Player.Group == null)
-                    m_owner.Out.SendMessage("You discard all your cards.", eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+                    m_owner.Out.SendMessage("You discard all your cards.", ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
                 else
                     foreach(GamePlayer Groupee in m_owner.Player.Group.GetPlayersInTheGroup())
-                        Groupee.Client.Out.SendMessage((Groupee.Client == m_owner ? "You discard all your cards." : m_owner.Player + " discards all their cards."), eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+                        Groupee.Client.Out.SendMessage((Groupee.Client == m_owner ? "You discard all your cards." : m_owner.Player + " discards all their cards."), ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
                 return cards;
             }
         };
@@ -280,7 +280,7 @@ namespace DawnOfLight.GameServer.Utilities
         {
             if (player.Player.Group == null)
             {
-                player.Out.SendMessage("You must have a group to play cards!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You must have a group to play cards!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
 
@@ -302,8 +302,8 @@ namespace DawnOfLight.GameServer.Utilities
                 foreach (GamePlayer Groupee in player.Player.Group.GetPlayersInTheGroup())
                 {
                     DiscardAll(Groupee.Client);
-                    if (Groupee == player.Player) player.Out.SendMessage("You shuffle " + numDecks + (numDecks > 1 ? " decks " : " deck ") + "of cards.", eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
-                    else Groupee.Client.Out.SendMessage(player.Player.Name + " shuffles " + numDecks + (numDecks > 1 ? " decks " : " deck ") + "of cards.", eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+                    if (Groupee == player.Player) player.Out.SendMessage("You shuffle " + numDecks + (numDecks > 1 ? " decks " : " deck ") + "of cards.", ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
+                    else Groupee.Client.Out.SendMessage(player.Player.Name + " shuffles " + numDecks + (numDecks > 1 ? " decks " : " deck ") + "of cards.", ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
                 }
             }
             catch(Exception)
@@ -320,9 +320,9 @@ namespace DawnOfLight.GameServer.Utilities
             Card c;
 
             if (!dealer.Player.Group.IsInTheGroup(player.Player))
-            { dealer.Out.SendMessage(player.Player.Name + " must be in your group to play cards!", eChatType.CT_System, eChatLoc.CL_SystemWindow); return; }
+            { dealer.Out.SendMessage(player.Player.Name + " must be in your group to play cards!", ChatType.CT_System, ChatLocation.CL_SystemWindow); return; }
             if(!IsDealer(dealer))
-            { dealer.Out.SendMessage("You must use /shuffle to prepare cards before dealing!", eChatType.CT_System, eChatLoc.CL_SystemWindow); return; }
+            { dealer.Out.SendMessage("You must use /shuffle to prepare cards before dealing!", ChatType.CT_System, ChatLocation.CL_SystemWindow); return; }
             if(!IsPlayer(player))
             {
                 hand = new PlayerHand(player);
@@ -337,18 +337,18 @@ namespace DawnOfLight.GameServer.Utilities
             c = deck.GetCard();
             if (c == null)
             {
-                dealer.Out.SendMessage("There are no cards left in the deck. Use /shuffle to prepare a new deck.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                dealer.Out.SendMessage("There are no cards left in the deck. Use /shuffle to prepare a new deck.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
             hand.AddCard(c, up);
             foreach (GamePlayer Groupee in dealer.Player.Group.GetPlayersInTheGroup())
             {
                 if (Groupee == dealer.Player)
-                    dealer.Out.SendMessage("You deal " + (player == dealer ? "yourself" : player.Player.Name) + (up ? " the " + c.Name : " a card face down") + ".", eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+                    dealer.Out.SendMessage("You deal " + (player == dealer ? "yourself" : player.Player.Name) + (up ? " the " + c.Name : " a card face down") + ".", ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
                 else if (Groupee == player.Player)
-                    player.Out.SendMessage(dealer.Player.Name + " deals you the " + c.Name + ".", eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage(dealer.Player.Name + " deals you the " + c.Name + ".", ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
                 else
-                    Groupee.Client.Out.SendMessage(dealer.Player.Name + " deals " + (player == dealer ? "themself" : player.Player.Name) + (up ? " the " + c.Name : " a card face down") + ".", eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+                    Groupee.Client.Out.SendMessage(dealer.Player.Name + " deals " + (player == dealer ? "themself" : player.Player.Name) + (up ? " the " + c.Name : " a card face down") + ".", ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
             }
             return;
         }
@@ -358,7 +358,7 @@ namespace DawnOfLight.GameServer.Utilities
         { 
             if(!IsPlayer(target)) 
             {
-                source.Player.Out.SendMessage((source == target ? "You have" : target.Player.Name + " has") + " no cards.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                source.Player.Out.SendMessage((source == target ? "You have" : target.Player.Name + " has") + " no cards.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
             (m_playerHands[target.Player.DBCharacter.ObjectId] as PlayerHand).Held(source);
@@ -369,14 +369,14 @@ namespace DawnOfLight.GameServer.Utilities
         public static void Show(GameClient player)
         {
             if (player.Player.Group == null) return;
-            if (!IsPlayer(player)) { player.Out.SendMessage("You have no cards.", eChatType.CT_System, eChatLoc.CL_SystemWindow); return; }
+            if (!IsPlayer(player)) { player.Out.SendMessage("You have no cards.", ChatType.CT_System, ChatLocation.CL_SystemWindow); return; }
 
             foreach (GamePlayer Groupee in player.Player.Group.GetPlayersInTheGroup())
             {
                 if (Groupee == player.Player)
-                    player.Out.SendMessage("You show your hand.", eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage("You show your hand.", ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
                 else
-                    Groupee.Client.Out.SendMessage(player.Player.Name + " shows their hand.", eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+                    Groupee.Client.Out.SendMessage(player.Player.Name + " shows their hand.", ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
             } 
         }
 
@@ -385,7 +385,7 @@ namespace DawnOfLight.GameServer.Utilities
         {
             Card c = null;
             if (!IsPlayer(player))
-            { player.Out.SendMessage("You have no cards to discard.", eChatType.CT_System, eChatLoc.CL_SystemWindow); return; }
+            { player.Out.SendMessage("You have no cards to discard.", ChatType.CT_System, ChatLocation.CL_SystemWindow); return; }
             c = (m_playerHands[player.Player.DBCharacter.ObjectId] as PlayerHand).Discard(selection);
             if (c != null)
             {

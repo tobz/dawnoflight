@@ -18,29 +18,22 @@
  */
 
 using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Utilities;
 using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-    [PacketHandler(PacketHandlerType.TCP, 0x11, "Handles player market search")]
+    [PacketHandler(PacketType.TCP, ClientPackets.PlayerMarketSearchRequest, ClientStatus.PlayerInGame)]
     public class PlayerMarketSearchRequestHandler : IPacketHandler
     {
-        /// <summary>
-        /// Defines a logger for this class.
-        /// </summary>
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+        public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
-			if (client == null || client.Player == null)
-				return;
-
 			if ((client.Player.TargetObject is IGameInventoryObject) == false)
 				return;
 
-			MarketSearch.SearchData search = new MarketSearch.SearchData();
+			var search = new MarketSearch.SearchData();
 
 			search.name = packet.ReadString(64);
 			search.slot = (int)packet.ReadInt();
@@ -85,7 +78,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				unk8 = (byte)packet.ReadByte();
 			}
 
-			search.clientVersion = client.Version.ToString();
+			search.ClientVersion = client.Version.ToString();
 
 			(client.Player.TargetObject as IGameInventoryObject).SearchInventory(client.Player, search);
 		}

@@ -46,19 +46,19 @@ namespace DawnOfLight.GameServer.commands.Player
 			// no emotes if dead
 			if (!client.Player.IsAlive)
 			{
-				client.Out.SendMessage("You can't emote while dead!", eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You can't emote while dead!", ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			if (args.Length < 2)
 			{
-				client.Out.SendMessage("You need something to emote.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You need something to emote.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			if (client.Player.IsMuted)
 			{
-				client.Player.Out.SendMessage("You have been muted and cannot emote!", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage("You have been muted and cannot emote!", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -71,12 +71,12 @@ namespace DawnOfLight.GameServer.commands.Player
 			{
 				if (GameServer.ServerRules.IsAllowedToUnderstand(client.Player, player))
 				{
-					player.Out.SendMessage(ownRealm, eChatType.CT_Emote, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage(ownRealm, ChatType.CT_Emote, ChatLocation.CL_ChatWindow);
 				}
 				else
 				{
                     if (!player.IsIgnoring(client.Player as GameLiving))
-					player.Out.SendMessage(diffRealm, eChatType.CT_Emote, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage(diffRealm, ChatType.CT_Emote, ChatLocation.CL_ChatWindow);
 				}
 			}
 		}

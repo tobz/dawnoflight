@@ -20,7 +20,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 
 			if (playerGroup == null)
 			{
-				player.Out.SendMessage("You must be in a group to use this ability!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You must be in a group to use this ability!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -53,7 +53,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 				DivineInterventionEffect DIEffect = groupMember.EffectList.GetOfType<DivineInterventionEffect>();
 				if (DIEffect != null)
 				{
-					player.Out.SendMessage("You are already protected by a pool of healing", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You are already protected by a pool of healing", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 					return;
 				}
 			}

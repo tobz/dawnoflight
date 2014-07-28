@@ -277,7 +277,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 		public virtual void FinishQuest()
 		{
 			Step = -1; // -1 indicates finished or aborted quests etc, they won't show up in the list
-			m_questPlayer.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(m_questPlayer.Client, "AbstractQuest.FinishQuest.Completed", Name)), eChatType.CT_ScreenCenter, eChatLoc.CL_SystemWindow);
+			m_questPlayer.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(m_questPlayer.Client, "AbstractQuest.FinishQuest.Completed", Name)), ChatType.CT_ScreenCenter, ChatLocation.CL_SystemWindow);
 
 			// move quest from active list to finished list...
 			m_questPlayer.QuestList.Remove(this);
@@ -297,7 +297,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 			m_questPlayer.QuestList.Remove(this);
 			DeleteFromDatabase();
 			m_questPlayer.Out.SendQuestListUpdate();
-            m_questPlayer.Out.SendMessage(LanguageMgr.GetTranslation(m_questPlayer.Client, "AbstractQuest.AbortQuest"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+            m_questPlayer.Out.SendMessage(LanguageMgr.GetTranslation(m_questPlayer.Client, "AbstractQuest.AbortQuest"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
             //Todo: quest giver should again "SendNPCsQuestEffect"
         }
 
@@ -318,7 +318,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 		/// <param name="player"></param>
 		public virtual void OnQuestAssigned(GamePlayer player)
 		{
-			player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractQuest.OnQuestAssigned.GetQuest", Name)), eChatType.CT_System, eChatLoc.CL_ChatWindow);
+			player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractQuest.OnQuestAssigned.GetQuest", Name)), ChatType.CT_System, ChatLocation.CL_ChatWindow);
 
 		}
 
@@ -456,7 +456,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
                         commandName = Enum.GetName(typeof(eQuestCommand), eQuestCommand.Search).ToLower();
                     }
 
-					player.Out.SendMessage("Your " + commandName + " is interrupted!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Your " + commandName + " is interrupted!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 
 				RemoveActionHandlers(player);
@@ -476,7 +476,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 			// override this to do whatever needs to be done when the command is completed
 			// Typically this would be: give player an item and advance the step
 
-			QuestPlayer.Out.SendMessage("Error, command completed handler not overriden for quest!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+			QuestPlayer.Out.SendMessage("Error, command completed handler not overriden for quest!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 		}
 
 
@@ -516,19 +516,19 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 			}
 			lock (player.Inventory)
 			{
-				InventoryItem item = player.Inventory.GetFirstItemByID(itemTemplate.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+				InventoryItem item = player.Inventory.GetFirstItemByID(itemTemplate.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 				if (item != null)
 				{
 					player.Inventory.RemoveItem(item);
                     InventoryLogging.LogInventoryAction(player, target, eInventoryActionType.Quest, item.Template, item.Count);
 					if (target != null)
 					{
-						player.Out.SendMessage("You give the " + itemTemplate.Name + " to " + target.GetName(0, false), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("You give the " + itemTemplate.Name + " to " + target.GetName(0, false), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 				}
 				else if (notify)
 				{
-					player.Out.SendMessage("You cannot remove the \"" + itemTemplate.Name + "\" because you don't have it.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You cannot remove the \"" + itemTemplate.Name + "\" because you don't have it.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}
@@ -548,12 +548,12 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
                     InventoryLogging.LogInventoryAction(player, target, eInventoryActionType.Quest, item.Template, item.Count);
 					if (target != null)
 					{
-						player.Out.SendMessage("You give the " + item.Name + " to " + target.GetName(0, false), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("You give the " + item.Name + " to " + target.GetName(0, false), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 				}
 				else if (notify)
 				{
-					player.Out.SendMessage("You cannot remove the \"" + item.Name + "\" because you don't have it.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You cannot remove the \"" + item.Name + "\" because you don't have it.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}
@@ -569,31 +569,31 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 			}
 			lock (player.Inventory)
 			{
-				InventoryItem item = player.Inventory.GetFirstItemByID(itemTemplate.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+				InventoryItem item = player.Inventory.GetFirstItemByID(itemTemplate.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 
 				while (item != null)
 				{
 					player.Inventory.RemoveItem(item);
                     InventoryLogging.LogInventoryAction(player, target, eInventoryActionType.Quest, item.Template, item.Count);
 					itemsRemoved++;
-					item = player.Inventory.GetFirstItemByID(itemTemplate.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+					item = player.Inventory.GetFirstItemByID(itemTemplate.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 				}
 
 				if (notify)
 				{
 					if (itemsRemoved == 0)
 					{
-						player.Out.SendMessage("You cannot remove the \"" + itemTemplate.Name + "\" because you don't have it.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("You cannot remove the \"" + itemTemplate.Name + "\" because you don't have it.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					else if (target != null)
 					{
 						if (itemTemplate.Name.EndsWith("s"))
 						{
-							player.Out.SendMessage("You give the " + itemTemplate.Name + " to " + target.Name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("You give the " + itemTemplate.Name + " to " + target.Name, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 						else
 						{
-							player.Out.SendMessage("You give the " + itemTemplate.Name + "'s to " + target.Name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("You give the " + itemTemplate.Name + "'s to " + target.Name, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 					}
 				}
@@ -614,8 +614,8 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 			m_sayTimerQueue.Dequeue();
 			GamePlayer player = (GamePlayer)m_sayObjectQueue.Dequeue();
 			String message = (String)m_sayMessageQueue.Dequeue();
-			eChatType chatType = (eChatType)m_sayChatTypeQueue.Dequeue();
-			eChatLoc chatLoc = (eChatLoc)m_sayChatLocQueue.Dequeue();
+			ChatType chatType = (ChatType)m_sayChatTypeQueue.Dequeue();
+			ChatLocation chatLoc = (ChatLocation)m_sayChatLocQueue.Dequeue();
 
 			player.Out.SendMessage(message, chatType, chatLoc);
 
@@ -640,7 +640,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 
 		protected static void SendSystemMessage(GamePlayer player, String msg, uint delay)
 		{
-			SendMessage(player, msg, delay, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			SendMessage(player, msg, delay, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		protected static void SendEmoteMessage(GamePlayer player, String msg)
@@ -650,12 +650,12 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 
 		protected static void SendEmoteMessage(GamePlayer player, String msg, uint delay)
 		{
-			SendMessage(player, msg, delay, eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+			SendMessage(player, msg, delay, ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
 		}
 
 		protected static void SendReply(GamePlayer player, String msg)
 		{
-			SendMessage(player, msg, 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+			SendMessage(player, msg, 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 		}
 
         /// <summary>
@@ -666,7 +666,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
         /// <param name="delay"></param>
         /// <param name="chatType"></param>
         /// <param name="chatLoc"></param>
-		protected static void SendMessage(GamePlayer player, string msg, uint delay, eChatType chatType, eChatLoc chatLoc)
+		protected static void SendMessage(GamePlayer player, string msg, uint delay, ChatType chatType, ChatLocation chatLoc)
 		{
             msg = BehaviourUtils.GetPersonalizedMessage(msg, player);
 
@@ -728,11 +728,11 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 				if (canDrop)
 				{
 					player.CreateItemOnTheGround(item);
-					player.Out.SendMessage(String.Format("Your backpack is full, {0} is dropped on the ground.", itemTemplate.Name), eChatType.CT_Important, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(String.Format("Your backpack is full, {0} is dropped on the ground.", itemTemplate.Name), ChatType.CT_Important, ChatLocation.CL_PopupWindow);
 				}
 				else
 				{
-					player.Out.SendMessage("Your backpack is full!", eChatType.CT_Important, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage("Your backpack is full!", ChatType.CT_Important, ChatLocation.CL_PopupWindow);
 					return false;
 				}
 			}

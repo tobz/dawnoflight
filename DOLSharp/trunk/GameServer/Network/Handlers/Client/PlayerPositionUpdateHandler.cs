@@ -34,7 +34,7 @@ using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x01 ^ 168, "Handles player position updates")]
+    [PacketHandler(PacketType.TCP, ClientPackets.PlayerPositionUpdate, ClientStatus.PlayerInGame)]
 	public class PlayerPositionUpdateHandler : IPacketHandler
 	{
 		/// <summary>
@@ -53,7 +53,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 		public const string SHSPEEDCOUNTER = "MYSPEEDHACKCOUNTER";
 
 		//static int lastZ=int.MinValue;
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			//Tiv: in very rare cases client send 0xA9 packet before sending S<=C 0xE8 player world initialize
 			if ((client.Player.ObjectState != GameObject.eObjectState.Active) ||
@@ -131,7 +131,6 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			Zone newZone = WorldMgr.GetZone(currentZoneID);
 			if (newZone == null)
 			{
-				if(client.Player==null) return;
 				if(!client.Player.TempProperties.getProperty("isbeingbanned",false))
 				{
 					if (log.IsErrorEnabled)
@@ -192,8 +191,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
                 }
 
                 client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "PlayerPositionUpdateHandler.Entered", description),
-				                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
-                client.Out.SendMessage(screenDescription, eChatType.CT_ScreenCenterSmaller, eChatLoc.CL_SystemWindow);
+				                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
+                client.Out.SendMessage(screenDescription, ChatType.CT_ScreenCenterSmaller, ChatLocation.CL_SystemWindow);
 
 				client.Player.LastPositionUpdateZone = newZone;
 			}
@@ -304,8 +303,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 								message = "You have been auto kicked and banned due to movement hack detection!";
 								for (int i = 0; i < 8; i++)
 								{
-									client.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_SystemWindow);
-									client.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_ChatWindow);
+									client.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_SystemWindow);
+									client.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_ChatWindow);
 								}
 
 								client.Out.SendPlayerQuit(true);
@@ -319,8 +318,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 								message = "You have been auto kicked due to movement hack detection!";
 								for (int i = 0; i < 8; i++)
 								{
-									client.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_SystemWindow);
-									client.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_ChatWindow);
+									client.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_SystemWindow);
+									client.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_ChatWindow);
 								}
 
 								client.Out.SendPlayerQuit(true);
@@ -427,7 +426,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						if (SHcount > 1 && client.Account.PrivLevel > 1)
 						{
 							//Apo: ?? no idea how to name the first parameter for language translation: 1: ??, 2: {detected} ?, 3: {count} ?
-							client.Out.SendMessage(string.Format("SH: ({0}) detected: {1}, count {2}", 500 / (environmentTick - SHlastTick), environmentTick - SHlastTick, SHcount), eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(string.Format("SH: ({0}) detected: {1}, count {2}", 500 / (environmentTick - SHlastTick), environmentTick - SHlastTick, SHcount), ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 						}
 
 						if (SHcount % 5 == 0)
@@ -447,10 +446,10 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 							if (client.Account.PrivLevel > 1)
 							{
-								client.Out.SendMessage("SH: Logging SH cheat.", eChatType.CT_Damaged, eChatLoc.CL_SystemWindow);
+								client.Out.SendMessage("SH: Logging SH cheat.", ChatType.CT_Damaged, ChatLocation.CL_SystemWindow);
 
 								if (SHcount >= ServerProperties.Properties.SPEEDHACK_TOLERANCE)
-									client.Out.SendMessage("SH: Player would have been banned!", eChatType.CT_Damaged, eChatLoc.CL_SystemWindow);
+									client.Out.SendMessage("SH: Player would have been banned!", ChatType.CT_Damaged, ChatLocation.CL_SystemWindow);
 							}
 
 							if ((client.Account.PrivLevel == 1) && SHcount >= ServerProperties.Properties.SPEEDHACK_TOLERANCE)
@@ -472,8 +471,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 									message = "You have been auto kicked and banned for speed hacking!";
 									for (int i = 0; i < 8; i++)
 									{
-										client.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_SystemWindow);
-										client.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_ChatWindow);
+										client.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_SystemWindow);
+										client.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_ChatWindow);
 									}
 
 									client.Out.SendPlayerQuit(true);
@@ -487,8 +486,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 									message = "You have been auto kicked for speed hacking!";
 									for (int i = 0; i < 8; i++)
 									{
-										client.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_SystemWindow);
-										client.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_ChatWindow);
+										client.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_SystemWindow);
+										client.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_ChatWindow);
 									}
 
 									client.Out.SendPlayerQuit(true);
@@ -545,8 +544,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					message = "Client Hack Detected!";
 					for (int i = 0; i < 6; i++)
 					{
-						client.Out.SendMessage(message, eChatType.CT_System, eChatLoc.CL_SystemWindow);
-						client.Out.SendMessage(message, eChatType.CT_System, eChatLoc.CL_ChatWindow);
+						client.Out.SendMessage(message, ChatType.CT_System, ChatLocation.CL_SystemWindow);
+						client.Out.SendMessage(message, ChatType.CT_System, ChatLocation.CL_ChatWindow);
 					}
 					client.Out.SendPlayerQuit(true);
 					client.Disconnect();
@@ -601,7 +600,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
                     if (fallSpeed > fallMinSpeed)
                     {
                         client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "PlayerPositionUpdateHandler.FallingDamage"),
-                        eChatType.CT_Damaged, eChatLoc.CL_SystemWindow);
+                        ChatType.CT_Damaged, ChatLocation.CL_SystemWindow);
                         client.Player.CalcFallDamage(fallPercent);
                     }
 
@@ -675,12 +674,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				con168[11] = 0;
 			}
 
-			GSUDPPacketOut outpak168 = new GSUDPPacketOut(client.Out.GetPacketCode(eServerPackets.PlayerPosition));
+			GameUDPPacketOut outpak168 = new GameUDPPacketOut(client.Out.GetPacketCode(ServerPackets.PlayerPosition));
 			//Now copy the whole content of the packet
 			outpak168.Write(con168, 0, 18/*con168.Length*/);
 			outpak168.WritePacketLength();
 
-			GSUDPPacketOut outpak172 = new GSUDPPacketOut(client.Out.GetPacketCode(eServerPackets.PlayerPosition));
+			GameUDPPacketOut outpak172 = new GameUDPPacketOut(client.Out.GetPacketCode(ServerPackets.PlayerPosition));
 			//Now copy the whole content of the packet
 			outpak172.Write(con172, 0, 18/*con172.Length*/);
 			outpak172.WritePacketLength();
@@ -689,7 +688,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			//			byte[] pak172 = outpak172.GetBuffer();
 			//			outpak168 = null;
 			//			outpak172 = null;
-			GSUDPPacketOut outpak190 = null;
+			GameUDPPacketOut outpak190 = null;
 
 			foreach (GamePlayer player in client.Player.GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))
 			{
@@ -719,7 +718,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					{
 						if (outpak190 == null)
 						{
-							outpak190 = new GSUDPPacketOut(client.Out.GetPacketCode(eServerPackets.PlayerPosition));
+							outpak190 = new GameUDPPacketOut(client.Out.GetPacketCode(ServerPackets.PlayerPosition));
 							outpak190.Write(con172, 0, 18/*con172.Length*/);
 							outpak190.WriteByte(client.Player.ManaPercent);
 							outpak190.WriteByte(client.Player.EndurancePercent);

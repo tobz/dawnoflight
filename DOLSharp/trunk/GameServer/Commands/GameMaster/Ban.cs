@@ -70,7 +70,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			Account acc = gc != null ? gc.Account : GameServer.Database.SelectObject<Account>("Name LIKE '" + GameServer.Database.Escape(args[2]) + "'");
 			if (acc == null)
 			{
-				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.UnableToFindPlayer"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.UnableToFindPlayer"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -108,12 +108,12 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						var acctBans = GameServer.Database.SelectObjects<DBBannedAccount>("((Type='A' OR Type='B') AND Account ='" + GameServer.Database.Escape(acc.Name) + "')");
 						if (acctBans.Count > 0)
 						{
-							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.AAlreadyBanned"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.AAlreadyBanned"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
 						b.Type = "A";
-						client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.ABanned", acc.Name), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.ABanned", acc.Name), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 						break;
 						#endregion Account
 						#region IP
@@ -121,12 +121,12 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						var ipBans = GameServer.Database.SelectObjects<DBBannedAccount>("((Type='I' OR Type='B') AND Ip ='" + GameServer.Database.Escape(acc.LastLoginIP) + "')");
 						if (ipBans.Count > 0)
 						{
-							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.IAlreadyBanned"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.IAlreadyBanned"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
 						b.Type = "I";
-						client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.IBanned", acc.LastLoginIP), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.IBanned", acc.LastLoginIP), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 						break;
 						#endregion IP
 						#region Both
@@ -134,12 +134,12 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						var acctIpBans = GameServer.Database.SelectObjects<DBBannedAccount>("Type='B' AND Account ='" + GameServer.Database.Escape(acc.Name) + "' AND Ip ='" + GameServer.Database.Escape(acc.LastLoginIP) + "'");
 						if (acctIpBans.Count > 0)
 						{
-							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.BAlreadyBanned"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.BAlreadyBanned"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
 						b.Type = "B";
-						client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.BBanned", acc.Name, acc.LastLoginIP), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Ban.BBanned", acc.Name, acc.LastLoginIP), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 						break;
 						#endregion Both
 						#region Default

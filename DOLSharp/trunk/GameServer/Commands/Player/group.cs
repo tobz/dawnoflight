@@ -51,7 +51,7 @@ namespace DawnOfLight.GameServer.commands.Player
 					msg += args[i] + " ";
 				}
 
-				client.Player.Group.SendMessageToGroupMembers(client.Player, msg, eChatType.CT_Group, eChatLoc.CL_ChatWindow);
+				client.Player.Group.SendMessageToGroupMembers(client.Player, msg, ChatType.CT_Group, ChatLocation.CL_ChatWindow);
 			}
 			else
 			{

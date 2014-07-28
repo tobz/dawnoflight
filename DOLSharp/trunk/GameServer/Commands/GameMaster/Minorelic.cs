@@ -320,17 +320,17 @@ namespace DawnOfLight.GameServer.commands.GameMaster
                                             //there is a match!
                                             //remove it from the world
                                             relic.RemoveFromWorld();
-                                            client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the world", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                            client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the world", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                                             
                                             //remove it from the hashtable
                                             MinotaurRelicManager.RemoveRelic(relic);
-                                            client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the Minorelic Hash Table", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                            client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the Minorelic Hash Table", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                                             
                                             DataObject obj = GameServer.Database.SelectObject<DBMinotaurRelic>("RelicID = '" + relic.RelicID + "'");
                                             if (obj != null)
                                             {
                                                 GameServer.Database.DeleteObject(obj);
-                                                client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the database!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                                client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the database!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                                             
                                             }
                                             
@@ -354,18 +354,18 @@ namespace DawnOfLight.GameServer.commands.GameMaster
                             MinotaurRelic relic = client.Player.TargetObject as MinotaurRelic;
 
                             relic.RemoveFromWorld();
-                            client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the world", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                            client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the world", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                                             
                             //remove it from the hashtable
                             MinotaurRelicManager.RemoveRelic(relic);
-                            client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the Minorelic Hash Table", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                            client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the Minorelic Hash Table", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                                             
 
                             DataObject obj = GameServer.Database.SelectObject<DBMinotaurRelic>("RelicID = '" + relic.RelicID + "'");
                             if (obj != null)
                             {
                                 GameServer.Database.DeleteObject(obj);
-                                client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the database!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                client.Player.Out.SendMessage("Relic " + relic.RelicID + " has been removed from the database!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                                             
                             }
                         }

@@ -37,7 +37,7 @@ namespace DawnOfLight.GameServer.Effects
 		{
 			base.Start(living);
 			if (m_owner is GamePlayer)
-				(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.QuickCastEffect.YouActivatedQC"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.QuickCastEffect.YouActivatedQC"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			m_owner.TempProperties.removeProperty(SpellHandler.INTERRUPT_TIMEOUT_PROPERTY);
 		}
 
@@ -48,7 +48,7 @@ namespace DawnOfLight.GameServer.Effects
 		{
 			base.Cancel(playerCancel);
 			if (m_owner is GamePlayer)
-				(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.QuickCastEffect.YourNextSpellNoQCed"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.QuickCastEffect.YourNextSpellNoQCed"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		/// <summary>

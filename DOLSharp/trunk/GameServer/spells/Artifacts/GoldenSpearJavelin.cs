@@ -88,7 +88,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
             GamePlayer player = sender as GamePlayer;
             lock(player.Inventory)
             {
-                var items = player.Inventory.GetItemRange(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+                var items = player.Inventory.GetItemRange(InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
                 foreach(InventoryItem invItem in items)
                 {
                     if(invItem.Id_nb.Equals("Artef_Javelin"))

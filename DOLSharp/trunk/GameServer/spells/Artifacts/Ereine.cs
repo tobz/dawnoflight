@@ -49,8 +49,8 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
 				int critical=(int)Math.Round((double)ad.CriticalDamage*(double)Spell.Value/100);
 				ad.Damage-=absorb;
 				ad.CriticalDamage-=critical;
-				if(ad.Attacker is GamePlayer) (ad.Attacker as GamePlayer).Out.SendMessage("Your target's Ereine charge absorb "+(absorb+critical)+" damages", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
-				if(ad.Target is GamePlayer) (ad.Target as GamePlayer).Out.SendMessage("Your Ereine charge absorb "+(absorb+critical)+" damages", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				if(ad.Attacker is GamePlayer) (ad.Attacker as GamePlayer).Out.SendMessage("Your target's Ereine charge absorb "+(absorb+critical)+" damages", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
+				if(ad.Target is GamePlayer) (ad.Target as GamePlayer).Out.SendMessage("Your Ereine charge absorb "+(absorb+critical)+" damages", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 			}
         }
         public Ereine(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
@@ -92,8 +92,8 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
             if (attackedByEnemy != null) ad = attackedByEnemy.AttackData;
             if((int)ad.DamageType>=10&&(int)ad.DamageType<=15)
 			{
-				if(ad.Attacker is GamePlayer) (ad.Attacker as GamePlayer).Out.SendMessage("Your target' Ereine Proc absorb "+(ad.Damage+ad.CriticalDamage)+" damages", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
-				if(ad.Target is GamePlayer) (ad.Target as GamePlayer).Out.SendMessage("Your Ereine Proc absorb "+(ad.Damage+ad.CriticalDamage)+" damages", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				if(ad.Attacker is GamePlayer) (ad.Attacker as GamePlayer).Out.SendMessage("Your target' Ereine Proc absorb "+(ad.Damage+ad.CriticalDamage)+" damages", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
+				if(ad.Target is GamePlayer) (ad.Target as GamePlayer).Out.SendMessage("Your Ereine Proc absorb "+(ad.Damage+ad.CriticalDamage)+" damages", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				ad.Damage=0; ad.CriticalDamage=0;
 				GameSpellEffect effect = SpellHandler.FindEffectOnTarget(living, this);
 				if(effect != null) effect.Cancel(false);

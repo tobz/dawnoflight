@@ -117,7 +117,7 @@ namespace DawnOfLight.GameServer.Spells
             {
                 if (log.IsWarnEnabled)
                     log.WarnFormat("NPC template {0} not found! Spell: {1}", Spell.LifeDrainReturn, Spell.ToString());
-                MessageToCaster("NPC template " + Spell.LifeDrainReturn + " not found!", eChatType.CT_System);
+                MessageToCaster("NPC template " + Spell.LifeDrainReturn + " not found!", ChatType.CT_System);
                 return;
             }
 

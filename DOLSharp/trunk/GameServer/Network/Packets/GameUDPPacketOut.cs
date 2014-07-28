@@ -24,13 +24,13 @@ namespace DawnOfLight.GameServer.Network.Packets
 	/// <summary>
 	/// Outgoing game server UDP packet
 	/// </summary>
-	public class GSUDPPacketOut : PacketOut
+	public class GameUDPPacketOut : PacketOut
 	{
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		/// <param name="packetCode">ID of the packet</param>
-		public GSUDPPacketOut(byte packetCode) : base()
+		public GameUDPPacketOut(byte packetCode) : base()
 		{
 			base.WriteShort(0x00); //reserved for size
 			base.WriteShort(0x00); //reserved for UDP counter

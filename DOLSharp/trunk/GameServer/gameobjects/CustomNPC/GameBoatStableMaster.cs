@@ -54,7 +54,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 					{
 						if (npc is GameTaxiBoat)
 						{
-                            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameBoatStableMaster.ReceiveItem.Departed", this.Name), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+                            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameBoatStableMaster.ReceiveItem.Departed", this.Name), ChatType.CT_System, ChatLocation.CL_PopupWindow);
                             return false;
 						}
 					}
@@ -81,12 +81,12 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 						//new MountHorseAction(player, boat).Start(400);
 						new HorseRideAction(boat).Start(30 * 1000);
 
-                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameBoatStableMaster.ReceiveItem.SummonedBoat", this.Name, destination), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameBoatStableMaster.ReceiveItem.SummonedBoat", this.Name, destination), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         return true;
 					}
 					else
 					{
-                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameBoatStableMaster.ReceiveItem.UnknownWay", this.Name, destination), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameBoatStableMaster.ReceiveItem.UnknownWay", this.Name, destination), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}

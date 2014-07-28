@@ -464,7 +464,7 @@ namespace DawnOfLight.GameServer.AI.Brain.Npcs
             {
                 foreach (GamePlayer player in Body.GetPlayersInRadius(500))
                     player.Out.SendMessage(String.Format("{0} is low on health!",
-                        Body.Name), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+                        Body.Name), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
             }
         }
 
@@ -618,7 +618,7 @@ namespace DawnOfLight.GameServer.AI.Brain.Npcs
                     if (living is GamePlayer)
                     {
                         (living as GamePlayer).Out.SendMessage(String.Format("Aggression = {0}", m_aggression[living]),
-                            eChatType.CT_Alliance, eChatLoc.CL_SystemWindow);
+                            ChatType.CT_Alliance, ChatLocation.CL_SystemWindow);
                     }
                 }
             }

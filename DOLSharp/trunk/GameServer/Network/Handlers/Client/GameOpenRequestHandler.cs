@@ -18,14 +18,15 @@
  */
 
 using System;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0x17^168,"Checks if UDP is working for the client")]
+    [PacketHandler(PacketType.TCP, ClientPackets.GameOpenRequest)]
 	public class GameOpenRequestHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int flag = packet.ReadByte();
 			client.UdpPingTime = DateTime.Now.Ticks;
@@ -34,7 +35,9 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			client.Out.SendStatusUpdate(); // based on 1.74 logs
 			client.Out.SendUpdatePoints(); // based on 1.74 logs
 			if (client.Player != null)
-				client.Player.UpdateDisabledSkills(); // based on 1.74 logs
+            {
+                client.Player.UpdateDisabledSkills(); // based on 1.74 logs
+            }       
 		}
 	}
 }

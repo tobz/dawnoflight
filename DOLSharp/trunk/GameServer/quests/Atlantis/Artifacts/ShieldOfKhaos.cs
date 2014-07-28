@@ -97,7 +97,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 						"our studies. We've found several other references to this shield. Don't know how",
 						"much this book will help, but it certainly can't hurt!");
 					scholar.TurnTo(player);
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					FinishQuest();
 					return true;
 				}
@@ -129,7 +129,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"it? Probably as much as we do! Well, do you have the book on it? Come on then, hand it",
 					"over. I'll unlock this shield's abilities for you once you hand me the book.");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}

@@ -39,24 +39,24 @@ namespace DawnOfLight.GameServer.commands.Player
 			//No one else needs to use this spell
 			if (player.CharacterClass.ID != (int)eCharacterClass.Bonedancer)
 			{
-				client.Out.SendMessage("Only Bonedancers can use this command!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Only Bonedancers can use this command!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			//Help display
 			if (args.Length == 1)
 			{
-				client.Out.SendMessage("Formation commands:", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-				client.Out.SendMessage("'/formation triangle' Place the pets in a triangle formation.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-				client.Out.SendMessage("'/formation line' Place the pets in a line formation.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-				client.Out.SendMessage("'/formation protect' Place the pets in a protect formation that surrounds the commander.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Formation commands:", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+				client.Out.SendMessage("'/formation triangle' Place the pets in a triangle formation.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+				client.Out.SendMessage("'/formation line' Place the pets in a line formation.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+				client.Out.SendMessage("'/formation protect' Place the pets in a protect formation that surrounds the commander.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			//Check to see if the BD has a commander and minions
 			if (player.ControlledBrain == null)
 			{
-				client.Out.SendMessage("You don't have a commander!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You don't have a commander!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			bool haveminion = false;
@@ -70,7 +70,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			}
 			if (!haveminion)
 			{
-				client.Out.SendMessage("You don't have any minions!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You don't have any minions!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -89,7 +89,7 @@ namespace DawnOfLight.GameServer.commands.Player
 					player.ControlledBrain.Body.Formation = GameNPC.eFormationType.Protect;
 					break;
 				default:
-					client.Out.SendMessage("Unrecognized argument: " + args[1], eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Unrecognized argument: " + args[1], ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					break;
 			}
 		}

@@ -62,7 +62,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
             }
             else
             {
-                player.Out.SendMessage("You need a group for this Ability!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You need a group for this Ability!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
                 return;
             }
 			DisableSkill(living);

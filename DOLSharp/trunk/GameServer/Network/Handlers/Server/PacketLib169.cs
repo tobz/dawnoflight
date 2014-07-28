@@ -42,7 +42,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient.Player == null) return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 			pak.WriteByte(0x06);
 
 			Group group = m_gameClient.Player.Group;
@@ -103,7 +103,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			SendTCP(pak);
 		}
 
-		protected override void WriteGroupMemberUpdate(GSTCPPacketOut pak, bool updateIcons, GameLiving living)
+		protected override void WriteGroupMemberUpdate(GameTCPPacketOut pak, bool updateIcons, GameLiving living)
 		{
 			pak.WriteByte((byte)(living.GroupIndex+1)); // From 1 to 8
 			bool sameRegion = living.CurrentRegion == m_gameClient.Player.CurrentRegion;

@@ -55,9 +55,9 @@ namespace DawnOfLight.GameServer.Spells
 			if (m_caster is GamePlayer)
 			{
 				if (absorb > 0)
-					MessageToCaster("You absorb " + absorb + " power points.", eChatType.CT_Spell);
+					MessageToCaster("You absorb " + absorb + " power points.", ChatType.CT_Spell);
 				else
-					MessageToCaster("Your mana is already full!", eChatType.CT_SpellResisted);
+					MessageToCaster("Your mana is already full!", ChatType.CT_SpellResisted);
 				((GamePlayer)m_caster).CommandNpcRelease();
 			}
 

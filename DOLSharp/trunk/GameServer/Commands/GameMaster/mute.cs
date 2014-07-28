@@ -111,23 +111,23 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			if (playerClient.Player.IsMuted)
 			{
-				playerClient.Player.Out.SendMessage("You have been muted from public channels by staff member " + client.Player.Name + "!", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
-				client.Player.Out.SendMessage("You have muted player " + playerClient.Player.Name + " from public channels!", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+				playerClient.Player.Out.SendMessage("You have been muted from public channels by staff member " + client.Player.Name + "!", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
+				client.Player.Out.SendMessage("You have muted player " + playerClient.Player.Name + " from public channels!", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 				if (mutedAccount)
 				{
-					playerClient.Player.Out.SendMessage("This mute has been placed on all characters for this account.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
-					client.Player.Out.SendMessage("This action was done to the players account.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+					playerClient.Player.Out.SendMessage("This mute has been placed on all characters for this account.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
+					client.Player.Out.SendMessage("This action was done to the players account.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 				}
 
 				log.Warn(client.Player.Name + " muted " + playerClient.Player.Name);
 			}
 			else
 			{
-				playerClient.Player.Out.SendMessage("You have been unmuted from public channels by staff member " + client.Player.Name + "!", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
-				client.Player.Out.SendMessage("You have unmuted player " + playerClient.Player.Name + " from public channels!", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+				playerClient.Player.Out.SendMessage("You have been unmuted from public channels by staff member " + client.Player.Name + "!", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
+				client.Player.Out.SendMessage("You have unmuted player " + playerClient.Player.Name + " from public channels!", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 				if (mutedAccount)
 				{
-					client.Player.Out.SendMessage("This action was done to the players account.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+					client.Player.Out.SendMessage("This action was done to the players account.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 				}
 
 				log.Warn(client.Player.Name + " un-muted " + playerClient.Player.Name);

@@ -85,7 +85,7 @@ namespace DawnOfLight.GameServer.Atlantis
             {
                 foreach (GamePlayer creditplayer in creditPlayerList)
                 {
-                    creditplayer.Out.SendMessage("The " + artifactid + " encounter has been completed, you should have received credit, if you were eligible.", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+                    creditplayer.Out.SendMessage("The " + artifactid + " encounter has been completed, you should have received credit, if you were eligible.", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
                     ArtifactMgr.GrantArtifactCredit(creditplayer, artifactid);
                 }
             }
@@ -104,8 +104,8 @@ namespace DawnOfLight.GameServer.Atlantis
         {
             foreach (GamePlayer bPlayer in obj.GetPlayersInRadius((ushort)WorldMgr.SAY_DISTANCE))
             {
-                if (IsSaying) { bPlayer.Out.SendMessage(obj.Name + " says \"" + msg + "\"", eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow); }
-                else { bPlayer.Out.SendMessage(msg, eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow); }
+                if (IsSaying) { bPlayer.Out.SendMessage(obj.Name + " says \"" + msg + "\"", ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow); }
+                else { bPlayer.Out.SendMessage(msg, ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow); }
             }
             return;
         }
@@ -117,12 +117,12 @@ namespace DawnOfLight.GameServer.Atlantis
         /// <param name="msg">The message that the object says</param>
         /// <param name="chattype">The chattype of the message</param>
         /// <param name="IsSaying">Is this object saying the message if false the message will drop the 'objname says' part</param>
-        public static void BroadcastMsg(GameObject obj, string msg, eChatType chattype, bool IsSaying)
+        public static void BroadcastMsg(GameObject obj, string msg, ChatType chattype, bool IsSaying)
         {
             foreach (GamePlayer bPlayer in obj.GetPlayersInRadius((ushort)WorldMgr.SAY_DISTANCE))
             {
-                if (IsSaying) { bPlayer.Out.SendMessage(obj.Name + " says \"" + msg + "\"", chattype, eChatLoc.CL_ChatWindow); }
-                else { bPlayer.Out.SendMessage(msg, chattype, eChatLoc.CL_ChatWindow); }
+                if (IsSaying) { bPlayer.Out.SendMessage(obj.Name + " says \"" + msg + "\"", chattype, ChatLocation.CL_ChatWindow); }
+                else { bPlayer.Out.SendMessage(msg, chattype, ChatLocation.CL_ChatWindow); }
             }
             return;
         }
@@ -138,8 +138,8 @@ namespace DawnOfLight.GameServer.Atlantis
         {
             foreach (GamePlayer bPlayer in obj.GetPlayersInRadius((ushort)distance))
             {
-                if (IsSaying) { bPlayer.Out.SendMessage(obj.Name + " says \"" + msg + "\"", eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow); }
-                else { bPlayer.Out.SendMessage(msg, eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow); }
+                if (IsSaying) { bPlayer.Out.SendMessage(obj.Name + " says \"" + msg + "\"", ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow); }
+                else { bPlayer.Out.SendMessage(msg, ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow); }
             }
             return;
         }
@@ -152,12 +152,12 @@ namespace DawnOfLight.GameServer.Atlantis
         /// <param name="distance">The distance which the message is heard</param>
         /// <param name="chattype">The chattype of the message</param>
         /// <param name="IsSaying">Is this object saying the message if false the message will drop the 'objname says' part</param>
-        public static void BroadcastMsg(GameObject obj, string msg, int distance, eChatType chattype, bool IsSaying)
+        public static void BroadcastMsg(GameObject obj, string msg, int distance, ChatType chattype, bool IsSaying)
         {
             foreach (GamePlayer bPlayer in obj.GetPlayersInRadius((ushort)distance))
             {
-                if (IsSaying) { bPlayer.Out.SendMessage(obj.Name + " says \"" + msg + "\"", chattype, eChatLoc.CL_ChatWindow); }
-                else { bPlayer.Out.SendMessage(msg, chattype, eChatLoc.CL_ChatWindow); }
+                if (IsSaying) { bPlayer.Out.SendMessage(obj.Name + " says \"" + msg + "\"", chattype, ChatLocation.CL_ChatWindow); }
+                else { bPlayer.Out.SendMessage(msg, chattype, ChatLocation.CL_ChatWindow); }
             }
             return;
         }

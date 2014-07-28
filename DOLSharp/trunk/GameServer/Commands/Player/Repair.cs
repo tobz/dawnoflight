@@ -270,7 +270,7 @@ namespace DawnOfLight.GameServer.commands.Player
 		public static int CalculatePlayersWood(GamePlayer player, int removeamount)
 		{
 			int amount = 0;
-			foreach (InventoryItem item in player.Inventory.GetItemRange(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+			foreach (InventoryItem item in player.Inventory.GetItemRange(InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
 				foreach (string name in WoodNames)
 				{

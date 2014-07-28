@@ -41,8 +41,8 @@ namespace DawnOfLight.GameServer.Spells
 			effect.Owner.TempProperties.setProperty(ABLATIVE_HP, (int)Spell.Value);
 			GameEventMgr.AddHandler(effect.Owner, GameLivingEvent.AttackedByEnemy, new DOLEventHandler(OnAttack));
 
-			eChatType toLiving = (Spell.Pulse == 0) ? eChatType.CT_Spell : eChatType.CT_SpellPulse;
-			eChatType toOther = (Spell.Pulse == 0) ? eChatType.CT_System : eChatType.CT_SpellPulse;
+			ChatType toLiving = (Spell.Pulse == 0) ? ChatType.CT_Spell : ChatType.CT_SpellPulse;
+			ChatType toOther = (Spell.Pulse == 0) ? ChatType.CT_System : ChatType.CT_SpellPulse;
 			MessageToLiving(effect.Owner, Spell.Message1, toLiving);
 			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), toOther, effect.Owner);
 		}
@@ -60,8 +60,8 @@ namespace DawnOfLight.GameServer.Spells
 			effect.Owner.TempProperties.removeProperty(ABLATIVE_HP);
 			if (!noMessages && Spell.Pulse == 0)
 			{
-				MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+				MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
 			}
 			return 0;
 		}
@@ -101,10 +101,10 @@ namespace DawnOfLight.GameServer.Spells
 			OnDamageAbsorbed(ad, damageAbsorbed);
 
             if (ad.Target is GamePlayer)
-                (ad.Target as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((ad.Target as GamePlayer).Client, "AblativeArmor.Target", damageAbsorbed), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+                (ad.Target as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((ad.Target as GamePlayer).Client, "AblativeArmor.Target", damageAbsorbed), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 
             if (ad.Attacker is GamePlayer)
-                (ad.Attacker as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((ad.Attacker as GamePlayer).Client, "AblativeArmor.Attacker", damageAbsorbed), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+                (ad.Attacker as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((ad.Attacker as GamePlayer).Client, "AblativeArmor.Attacker", damageAbsorbed), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 
 			if(ablativehp <= 0)
 			{
@@ -162,8 +162,8 @@ namespace DawnOfLight.GameServer.Spells
 			effect.Owner.TempProperties.removeProperty(ABLATIVE_HP);
 			if (!noMessages && Spell.Pulse == 0)
 			{
-				MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+				MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
 			}
 			return 0;
 		}

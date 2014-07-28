@@ -55,7 +55,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				daysPlayed -= monthsPlayed*30;
 			}
 
-			client.Out.SendMessage("You have played for " + yearsPlayed + " Years, " + monthsPlayed + " Months, " + daysPlayed + " Days, " + showPlayed.Hours + " Hours and " + showPlayed.Minutes + " Minutes.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("You have played for " + yearsPlayed + " Years, " + monthsPlayed + " Months, " + daysPlayed + " Days, " + showPlayed.Hours + " Hours and " + showPlayed.Minutes + " Minutes.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 	}
 }

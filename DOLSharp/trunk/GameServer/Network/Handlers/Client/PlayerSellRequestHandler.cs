@@ -19,47 +19,53 @@
 
 using System;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0xD1^168,"Handles player selling")]
+    [PacketHandler(PacketType.TCP, ClientPackets.PlayerSellRequest, ClientStatus.PlayerInGame)]
 	public class PlayerSellRequestHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			uint x = packet.ReadInt();
 			uint y = packet.ReadInt();
 			ushort id = packet.ReadShort();
-			ushort item_slot = packet.ReadShort();
+			ushort itemSlot = packet.ReadShort();
 
 			if (client.Player.TargetObject == null)
 			{
-				client.Out.SendMessage("You must select an NPC to sell to.", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You must select an NPC to sell to.", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			lock (client.Player.Inventory)
 			{
-				InventoryItem item = client.Player.Inventory.GetItem((eInventorySlot)item_slot);
+				InventoryItem item = client.Player.Inventory.GetItem((InventorySlot)itemSlot);
 				if (item == null)
 					return;
 
 				int itemCount = Math.Max(1, item.Count);
 				int packSize = Math.Max(1, item.PackSize);
 
-				if (client.Player.TargetObject is GameMerchant)
+			    var merchant = client.Player.TargetObject as GameMerchant;
+			    if (merchant != null)
 				{
 					//Let the merchant choos how to handle the trade.
-					((GameMerchant)client.Player.TargetObject).OnPlayerSell(client.Player, item);
+					merchant.OnPlayerSell(client.Player, item);
 
 				}
-				else if (client.Player.TargetObject is GameLotMarker)
-				{
-					((GameLotMarker)client.Player.TargetObject).OnPlayerSell(client.Player, item);
-				}
+				else
+			    {
+			        var lotMarker = client.Player.TargetObject as GameLotMarker;
+			        if (lotMarker != null)
+			        {
+			            lotMarker.OnPlayerSell(client.Player, item);
+			        }
+			    }
 			}
 		}
 	}

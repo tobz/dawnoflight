@@ -69,15 +69,15 @@ namespace DawnOfLight.GameServer.Utilities
 				inventoryItem.Realm = c.Realm;
 
 				//if equipable item, equip
-				foreach (eInventorySlot slot in GameLivingInventory.EQUIP_SLOTS)
+				foreach (InventorySlot slot in GameLivingInventory.EQUIP_SLOTS)
 				{
-					if (slot == (eInventorySlot)inventoryItem.Item_Type)
+					if (slot == (InventorySlot)inventoryItem.Item_Type)
 					{
-						eInventorySlot chosenSlot = eInventorySlot.FirstEmptyBackpack;
+						InventorySlot chosenSlot = InventorySlot.FirstEmptyBackpack;
 
-						if (slot == eInventorySlot.LeftHandWeapon && (eObjectType)inventoryItem.Object_Type != eObjectType.Shield && usedSlots.ContainsKey(eInventorySlot.RightHandWeapon) == false)
+						if (slot == InventorySlot.LeftHandWeapon && (eObjectType)inventoryItem.Object_Type != eObjectType.Shield && usedSlots.ContainsKey(InventorySlot.RightHandWeapon) == false)
 						{
-							chosenSlot = eInventorySlot.RightHandWeapon;
+							chosenSlot = InventorySlot.RightHandWeapon;
 						}
 						else
 						{
@@ -112,7 +112,7 @@ namespace DawnOfLight.GameServer.Utilities
 				if (inventoryItem.SlotPosition == 0)
 				{
 					//otherwise stick the item in the backpack
-					for (int i = (int)eInventorySlot.FirstBackpack; i < (int)eInventorySlot.LastBackpack; i++)
+					for (int i = (int)InventorySlot.FirstBackpack; i < (int)InventorySlot.LastBackpack; i++)
 					{
 						if (usedSlots[i] == null)
 						{

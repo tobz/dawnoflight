@@ -29,7 +29,7 @@ using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.UseSkill, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.UseSkill, ClientStatus.PlayerInGame)]
 	public class UseSkillHandler : IPacketHandler
 	{
 		/// <summary>
@@ -39,7 +39,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int flagSpeedData = packet.ReadShort();
 			int index = packet.ReadByte();
@@ -186,20 +186,20 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						player.ExecuteWeaponStyle((Style)sk);
 						return;
 					}
-					//player.Out.SendMessage("you triggered skill "+sk.Name, eChatType.CT_Advise, eChatLoc.CL_SystemWindow);
+					//player.Out.SendMessage("you triggered skill "+sk.Name, ChatType.CT_Advise, ChatLocation.CL_SystemWindow);
 
 					int reuseTime = player.GetSkillDisabledDuration(sk);
 					if (reuseTime > 60000)
 					{
 						player.Out.SendMessage(
 							string.Format("You must wait {0} minutes {1} seconds to use this ability!", reuseTime/60000, reuseTime%60000/1000),
-							eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						if (player.Client.Account.PrivLevel < 2) return;
 					}
 					else if (reuseTime > 0)
 					{
 						player.Out.SendMessage(string.Format("You must wait {0} seconds to use this ability!", reuseTime/1000 + 1),
-						                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						
 						if (player.Client.Account.PrivLevel < 2) 
 							return;
@@ -236,7 +236,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 				if (sk == null)
 				{
-					player.Out.SendMessage("Skill is not implemented.", eChatType.CT_Advise, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Skill is not implemented.", ChatType.CT_Advise, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}

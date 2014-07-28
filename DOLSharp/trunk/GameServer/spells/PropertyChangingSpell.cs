@@ -69,16 +69,16 @@ namespace DawnOfLight.GameServer.Spells
 						GamePlayer caster = m_caster as GamePlayer;
 						if (caster != null)
 						{
-							caster.Out.SendMessage("Your buff has no effect on the Vampiir!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							caster.Out.SendMessage("Your buff has no effect on the Vampiir!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
-						player.Out.SendMessage("This buff has no effect on you!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("This buff has no effect on you!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						return;
 					}
 					if (this is ArmorFactorBuff)
 					{
 						if (SpellHandler.FindEffectOnTarget(target, "ArmorFactorBuff") != null && m_spellLine.IsBaseLine != true)
 						{
-							MessageToLiving(target, "You already have this effect!", eChatType.CT_SpellResisted);
+							MessageToLiving(target, "You already have this effect!", ChatType.CT_SpellResisted);
 							return;
 						}
 					}
@@ -93,7 +93,7 @@ namespace DawnOfLight.GameServer.Spells
 						GameSpellEffect Heat = FindEffectOnTarget(player, "HeatResistBuff");
 						if (Matter != null || Cold != null || Heat != null)
 						{
-							MessageToCaster(target.Name + " already has this effect", eChatType.CT_SpellResisted);
+							MessageToCaster(target.Name + " already has this effect", ChatType.CT_SpellResisted);
 							return;
 						}
 					}
@@ -108,7 +108,7 @@ namespace DawnOfLight.GameServer.Spells
 						GameSpellEffect Energy = FindEffectOnTarget(player, "EnergyResistBuff");
 						if (Body != null || Spirit != null || Energy != null)
 						{
-							MessageToCaster(target.Name + " already has this effect", eChatType.CT_SpellResisted);
+							MessageToCaster(target.Name + " already has this effect", ChatType.CT_SpellResisted);
 							return;
 						}
 					}
@@ -231,12 +231,12 @@ namespace DawnOfLight.GameServer.Spells
 			
 			SendUpdates(effect.Owner);
 
-			eChatType toLiving = eChatType.CT_SpellPulse;
-			eChatType toOther = eChatType.CT_SpellPulse;
+			ChatType toLiving = ChatType.CT_SpellPulse;
+			ChatType toOther = ChatType.CT_SpellPulse;
 			if (Spell.Pulse == 0 || !HasPositiveEffect)
 			{
-				toLiving = eChatType.CT_Spell;
-				toOther = eChatType.CT_System;
+				toLiving = ChatType.CT_Spell;
+				toOther = ChatType.CT_System;
 				SendEffectAnimation(effect.Owner, 0, false, 1);
 			}
 
@@ -287,8 +287,8 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if (!noMessages && Spell.Pulse == 0)
 			{
-				MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+				MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
 			}
 			
 			ApplyBonus(effect.Owner , BonusCategory1, Property1, (int) (Spell.Value*effect.Effectiveness), true);
@@ -518,8 +518,8 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if (!noMessages && Spell.Pulse == 0)
 			{
-				MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+				MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
 			}
 
 			ApplyBonus (effect.Owner, BonusCategory1,Property1, vars[1], true);

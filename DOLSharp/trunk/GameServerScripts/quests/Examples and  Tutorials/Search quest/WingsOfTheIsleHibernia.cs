@@ -389,7 +389,7 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 				reedFlute.Model = 325;
 				
 				reedFlute.Object_Type = (int)eObjectType.Magical;
-				reedFlute.Item_Type = (int)eInventorySlot.FirstBackpack;
+				reedFlute.Item_Type = (int)InventorySlot.FirstBackpack;
 				reedFlute.Id_nb = "quest_reed_flute";
 				reedFlute.Price = 0;
 				reedFlute.IsPickable = false;

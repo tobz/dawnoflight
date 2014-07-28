@@ -269,14 +269,14 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				CemmethBudgwold.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 49);    //Slot 22
-				template.AddNPCEquipment(eInventorySlot.HeadArmor, 93);     //Slot 21
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 50);     //Slot 23
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 46);    //Slot 25
-				template.AddNPCEquipment(eInventorySlot.Cloak, 91);         //Slot 26
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 47);     //Slot 27
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 48);     //Slot 28
-				template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 68); //Slot 12
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 49);    //Slot 22
+				template.AddNPCEquipment(InventorySlot.HeadArmor, 93);     //Slot 21
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 50);     //Slot 23
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 46);    //Slot 25
+				template.AddNPCEquipment(InventorySlot.Cloak, 91);         //Slot 26
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 47);     //Slot 27
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 48);     //Slot 28
+				template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 68); //Slot 12
 				CemmethBudgwold.Inventory = template.CloseTemplate();
 				CemmethBudgwold.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

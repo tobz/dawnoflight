@@ -101,7 +101,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 						"the trials",
 						player.CharacterClass.Name);
 					scholar.TurnTo(player);
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					FinishQuest();
 					return true;
 				}
@@ -134,7 +134,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"her Medical Log. Please give me Vara's Medical Log now so that I may awaken the",
 					"magic within the Cloak for you.");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}

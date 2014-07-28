@@ -375,7 +375,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			{
 				if( !m_openDead && this.Realm != eRealm.Door )
 				{
-                    attackerPlayer.Out.SendMessage(LanguageMgr.GetTranslation(attackerPlayer.Client.Account.Language, "GameDoor.NowOpen", Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    attackerPlayer.Out.SendMessage(LanguageMgr.GetTranslation(attackerPlayer.Client.Account.Language, "GameDoor.NowOpen", Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				}
 				if( !m_openDead && this.Realm != eRealm.Door )
@@ -384,7 +384,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			
 					if( !IsAlive )
 					{
-                        attackerPlayer.Out.SendMessage(LanguageMgr.GetTranslation(attackerPlayer.Client.Account.Language, "GameDoor.NowOpen", Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        attackerPlayer.Out.SendMessage(LanguageMgr.GetTranslation(attackerPlayer.Client.Account.Language, "GameDoor.NowOpen", Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						Die(source);
 						m_openDead = true;
 						RegenDoorHealth();
@@ -396,7 +396,7 @@ namespace DawnOfLight.GameServer.GameObjects
 						{
 							foreach( GameLiving living in attackerGroup.GetMembersInTheGroup( ) )
 							{
-                                ((GamePlayer)living).Out.SendMessage(LanguageMgr.GetTranslation(attackerPlayer.Client.Account.Language, "GameDoor.NowOpen", Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                ((GamePlayer)living).Out.SendMessage(LanguageMgr.GetTranslation(attackerPlayer.Client.Account.Language, "GameDoor.NowOpen", Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							}
 						}
 					}

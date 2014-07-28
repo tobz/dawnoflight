@@ -63,7 +63,7 @@ namespace DawnOfLight.GameServer.Spells
 			int heal = (ad.Damage + ad.CriticalDamage)* Spell.LifeDrainReturn / 100; // % factor on all drains
 			if (m_caster.IsDiseased)
 			{
-				MessageToCaster("You are diseased!", eChatType.CT_SpellResisted);
+				MessageToCaster("You are diseased!", ChatType.CT_SpellResisted);
 				heal >>= 1;
 			}
 
@@ -71,7 +71,7 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (heal > 0)
 			{
-				MessageToCaster("You steal " + heal + " hit point" + (heal == 1 ? "." : "s."), eChatType.CT_Spell);
+				MessageToCaster("You steal " + heal + " hit point" + (heal == 1 ? "." : "s."), ChatType.CT_Spell);
 
 
                 #region PVP DAMAGE
@@ -87,7 +87,7 @@ namespace DawnOfLight.GameServer.Spells
 			}
 			else
 			{
-				MessageToCaster("You cannot absorb any more life.", eChatType.CT_SpellResisted);
+				MessageToCaster("You cannot absorb any more life.", ChatType.CT_SpellResisted);
 
                 #region PVP DAMAGE
 
@@ -111,11 +111,11 @@ namespace DawnOfLight.GameServer.Spells
             renew = m_caster.ChangeEndurance(m_caster, GameLiving.eEnduranceChangeType.Spell, renew);
 			if (renew > 0)
 			{
-				MessageToCaster("You steal " + renew + " endurance.", eChatType.CT_Spell);
+				MessageToCaster("You steal " + renew + " endurance.", ChatType.CT_Spell);
 			}
 			else
 			{
-				MessageToCaster("You cannot steal any more endurance.", eChatType.CT_SpellResisted);
+				MessageToCaster("You cannot steal any more endurance.", ChatType.CT_SpellResisted);
 			}
 		}
 		/// <summary>
@@ -130,11 +130,11 @@ namespace DawnOfLight.GameServer.Spells
             replenish = m_caster.ChangeMana(m_caster, GameLiving.eManaChangeType.Spell, replenish);
 			if (replenish > 0)
 			{
-				MessageToCaster("You steal " + replenish + " power.", eChatType.CT_Spell);
+				MessageToCaster("You steal " + replenish + " power.", ChatType.CT_Spell);
 			}
 			else
 			{
-				MessageToCaster("Your power is already full.", eChatType.CT_SpellResisted);
+				MessageToCaster("Your power is already full.", ChatType.CT_SpellResisted);
 			}
 		}
 

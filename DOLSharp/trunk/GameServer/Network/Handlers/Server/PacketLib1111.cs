@@ -18,6 +18,7 @@
 */
 #define NOENCRYPTION
 using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Network.Packets;
 using log4net;
 
@@ -40,7 +41,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendLoginGranted(byte color)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.LoginGranted));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.LoginGranted));
 			pak.WritePascalString(m_gameClient.Account.Name);
 			pak.WritePascalString(GameServer.Instance.Configuration.ServerNameShort); //server name
 			pak.WriteByte(0x0C); //Server ID

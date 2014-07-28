@@ -89,7 +89,7 @@ namespace DawnOfLight.GameServer.Spells.Necromancer
 
 			if (Caster.ControlledBrain == null)
 			{
-				MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "PetSpellHandler.CheckBeginCast.NoControlledBrainForCast"), eChatType.CT_SpellResisted);
+				MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "PetSpellHandler.CheckBeginCast.NoControlledBrainForCast"), ChatType.CT_SpellResisted);
 				return false;
 			}
 			return true;

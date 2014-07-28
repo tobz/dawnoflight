@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Network.Packets;
@@ -56,7 +57,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient.Player == null)
 				return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterPointsUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterPointsUpdate));
 			pak.WriteInt((uint)m_gameClient.Player.RealmPoints);
 			pak.WriteShort(m_gameClient.Player.LevelPermill);
 			pak.WriteShort((ushort)m_gameClient.Player.SkillSpecialtyPoints);
@@ -74,7 +75,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient.Player == null)
 				return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterStatusUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterStatusUpdate));
 			pak.WriteByte(m_gameClient.Player.HealthPercent);
 			pak.WriteByte(m_gameClient.Player.ManaPercent);
 			pak.WriteByte(sittingFlag);
@@ -96,7 +97,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public override void SendUpdateIcons(IList changedEffects, ref int lastUpdateEffectsCount)
 		{
 			if (m_gameClient.Player == null) return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.UpdateIcons));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.UpdateIcons));
 			long initPos = pak.Position;
 
 			int fxcount = 0;
@@ -197,7 +198,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				mlXPPercent = 100.0; // ML10 has no MLXP, so always 100%
 			}
 
-			GSTCPPacketOut pak = new GSTCPPacketOut((byte)eServerPackets.MasterLevelWindow);
+			GameTCPPacketOut pak = new GameTCPPacketOut((byte)ServerPackets.MasterLevelWindow);
 			pak.WriteByte((byte)mlXPPercent); // MLXP (blue bar)
 			pak.WriteByte((byte)Math.Min(mlStepPercent, 100)); // Step percent (red bar)
 			pak.WriteByte((byte)(m_gameClient.Player.MLLevel + 1)); // ML level + 1

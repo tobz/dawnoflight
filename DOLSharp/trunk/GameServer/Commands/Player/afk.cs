@@ -34,7 +34,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			if (client.Player.TempProperties.getProperty<string>(GamePlayer.AFK_MESSAGE) != null && args.Length == 1)
 			{
 				client.Player.TempProperties.removeProperty(GamePlayer.AFK_MESSAGE);
-				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Afk.Off"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Afk.Off"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
@@ -47,7 +47,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				{
 					client.Player.TempProperties.setProperty(GamePlayer.AFK_MESSAGE, "");
 				}
-				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Afk.On"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Afk.On"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 	}

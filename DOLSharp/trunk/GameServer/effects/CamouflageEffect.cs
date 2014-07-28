@@ -33,14 +33,14 @@ namespace DawnOfLight.GameServer.Effects
 		{
 			base.Start(target);
 			if (target is GamePlayer)
-				(target as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((target as GamePlayer).Client, "Effects.CamouflageEffect.YouAreCamouflaged"), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				(target as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((target as GamePlayer).Client, "Effects.CamouflageEffect.YouAreCamouflaged"), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 		}
 
 		public override void Stop()
 		{
 			base.Stop();
 			if (m_owner is GamePlayer)
-				(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.CamouflageEffect.YourCFIsGone"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.CamouflageEffect.YourCFIsGone"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 		
 		public override string Name

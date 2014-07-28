@@ -67,7 +67,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						}
 						catch
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.Create.BAMustBeNumber"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.Create.BAMustBeNumber"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -95,7 +95,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						myfaction.LoadFromDatabase(dbfaction);
 						FactionMgr.Factions.Add(dbfaction.ID, myfaction);
 						client.Player.TempProperties.setProperty(TEMP_FACTION_LAST, myfaction);
-						client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.Create.NewCreated"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+						client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.Create.NewCreated"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 					}
 					break;
 				#endregion Create
@@ -104,18 +104,18 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (myfaction == null)
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.MustSelectFaction"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.MustSelectFaction"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
 						GameNPC npc = client.Player.TargetObject as GameNPC;
 						if (npc == null)
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.Assign.MustSelectMob"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.Assign.MustSelectMob"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						npc.Faction = myfaction;
-						client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.Assign.MobHasJoinedFact", npc.Name, myfaction.Name), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+						client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.Assign.MobHasJoinedFact", npc.Name, myfaction.Name), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 					}
 					break;
 				#endregion Assign
@@ -124,7 +124,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (myfaction == null)
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.MustSelectFaction"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.MustSelectFaction"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						if (args.Length < 3)
@@ -139,13 +139,13 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						}
 						catch
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.IndexMustBeNumber"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.IndexMustBeNumber"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						Faction linkedfaction = FactionMgr.GetFactionByID(id);
 						if (linkedfaction == null)
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.FactionNotLoaded"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.FactionNotLoaded"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						DBLinkedFaction dblinkedfaction = new DBLinkedFaction();
@@ -162,7 +162,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (myfaction == null)
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.MustSelectFaction"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.MustSelectFaction"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						if (args.Length < 3)
@@ -177,13 +177,13 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						}
 						catch
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.IndexMustBeNumber"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.IndexMustBeNumber"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						Faction linkedfaction = FactionMgr.GetFactionByID(id);
 						if (linkedfaction == null)
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.FactionNotLoaded"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.FactionNotLoaded"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						DBLinkedFaction dblinkedfaction = new DBLinkedFaction();
@@ -199,7 +199,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				case "list":
 					{
 						foreach (Faction faction in FactionMgr.Factions.Values)
-							client.Player.Out.SendMessage("#" + faction.ID.ToString() + ": " + faction.Name + " (" + faction.BaseAggroLevel + ")", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("#" + faction.ID.ToString() + ": " + faction.Name + " (" + faction.BaseAggroLevel + ")", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 						return;
 					}
 				#endregion List
@@ -218,13 +218,13 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						}
 						catch
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.IndexMustBeNumber"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.IndexMustBeNumber"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						Faction tempfaction = FactionMgr.GetFactionByID(id);
 						if (tempfaction == null)
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.FactionNotLoaded"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.Faction.FactionNotLoaded"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						client.Player.TempProperties.setProperty(TEMP_FACTION_LAST, tempfaction);

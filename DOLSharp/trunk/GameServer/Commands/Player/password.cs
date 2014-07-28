@@ -33,7 +33,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (args.Length < 3)
 			{
-				client.Out.SendMessage(usage, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(usage, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			try
@@ -41,7 +41,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				string oldPassword = args[1];
 				string newPassword = args[2];
 
-				if ((client.Account != null) && (LoginRequestHandler.CryptPassword(oldPassword) == client.Account.Password))
+				if ((client.Account != null) && (Password.HashPassword(oldPassword) == client.Account.Password))
 				{
 					// TODO: Add confirmation dialog
 					// TODO: If user has set their email address, mail them the change notification
@@ -50,7 +50,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				}
 				else
 				{
-					client.Out.SendMessage("Your current password was incorrect.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Your current password was incorrect.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 					if (log.IsInfoEnabled)
 						log.Info(client.Player.Name + " (" + client.Account.Name + ") attempted to change password but failed!");
@@ -60,7 +60,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			}
 			catch (Exception)
 			{
-				client.Out.SendMessage(usage, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(usage, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -76,8 +76,8 @@ namespace DawnOfLight.GameServer.commands.Player
 				return;
 
 			player.TempProperties.removeProperty(this);
-			player.Out.SendMessage("Your password has been changed.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
-			player.Client.Account.Password = LoginRequestHandler.CryptPassword(newPassword);
+			player.Out.SendMessage("Your password has been changed.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
+			player.Client.Account.Password = Password.HashPassword(newPassword);
 
 			GameServer.Database.SaveObject(player.Client.Account);
 

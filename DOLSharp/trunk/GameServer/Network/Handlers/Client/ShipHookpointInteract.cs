@@ -17,15 +17,16 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0xE4, "ship hookpoint interact")]
+    [PacketHandler(PacketType.TCP, ClientPackets.ShipHookpointInteract, ClientStatus.PlayerInGame)]
 	public class ShipHookpointInteractHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			ushort unk1 = packet.ReadShort();
 			ushort objectOid = packet.ReadShort();
@@ -59,7 +60,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						}
 						else
 						{
-							client.Player.Out.SendMessage("That seat isn't empty!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("That seat isn't empty!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 						break;
 					}

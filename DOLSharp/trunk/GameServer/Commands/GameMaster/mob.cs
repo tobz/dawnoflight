@@ -164,7 +164,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					// it is not a mob
 					if (client.Player.TargetObject != null)
 					{
-						client.Out.SendMessage("Cannot use " + client.Player.TargetObject + " for /mob command.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("Cannot use " + client.Player.TargetObject + " for /mob command.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						return;
 					}
 
@@ -272,7 +272,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			}
 			catch (Exception ex)
 			{
-				client.Out.SendMessage(ex.ToString(), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				client.Out.SendMessage(ex.ToString(), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				DisplaySyntax(client);
 			}
 		}
@@ -312,13 +312,13 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				}
 				catch (Exception e)
 				{
-					client.Out.SendMessage(e.ToString(), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					client.Out.SendMessage(e.ToString(), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 			}
 
 			if (mob == null)
 			{
-				client.Out.SendMessage("There was an error creating an instance of " + theType + "!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("There was an error creating an instance of " + theType + "!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -342,8 +342,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			mob.AddToWorld();
 			mob.LoadedFromScript = false; // allow saving
 			mob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob created: OID=" + mob.ObjectID, eChatType.CT_System, eChatLoc.CL_SystemWindow);
-			client.Out.SendMessage("The mob has been created with the peace flag, so it can't be attacked, to remove type /mob peace", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob created: OID=" + mob.ObjectID, ChatType.CT_System, ChatLocation.CL_SystemWindow);
+			client.Out.SendMessage("The mob has been created with the peace flag, so it can't be attacked, to remove type /mob peace", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 		}
 
 		private void fastcreate(GameClient client, string[] args)
@@ -419,7 +419,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				mob.SaveIntoDatabase();
 			}
 
-			client.Out.SendMessage("Mob created: OID=" + mob.ObjectID, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob created: OID=" + mob.ObjectID, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void nfastcreate(GameClient client, string[] args)
@@ -492,7 +492,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				mob.GuildName = "";
 				mob.Size = 50;
 				mob.AddToWorld();
-				client.Out.SendMessage("Mob created: OID=" + mob.ObjectID, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob created: OID=" + mob.ObjectID, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -554,7 +554,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				mob.AddToWorld();
 			}
 
-			client.Out.SendMessage("Created " + number + " mobs", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Created " + number + " mobs", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 		
 		#region auto increment/decrement model display
@@ -586,7 +586,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			
 			if (targetMob.Model >= 2363)
 			{
-				client.Out.SendMessage("Highest mob model reached!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Highest mob model reached!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			
@@ -601,7 +601,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				targetMob.Model = model;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob model changed to: " + targetMob.Model, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob model changed to: " + targetMob.Model, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -620,7 +620,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			
 			if (targetMob.Model == 1)
 			{
-				client.Out.SendMessage("Mob model cannot be 0!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob model cannot be 0!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			
@@ -635,7 +635,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				targetMob.Model = model;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob model changed to: " + targetMob.Model, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob model changed to: " + targetMob.Model, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -663,7 +663,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				model = Convert.ToUInt16(args[2]);
 				targetMob.Model = model;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob model changed to: " + targetMob.Model, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob model changed to: " + targetMob.Model, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -680,7 +680,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				GameObject obj = client.Player.CurrentRegion.GetObject(mobOID);
 				if (obj == null)
 				{
-					client.Out.SendMessage("No object with OID: " + args[1] + " in current Region.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("No object with OID: " + args[1] + " in current Region.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return null;
 				}
 				else
@@ -691,7 +691,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					}
 					else
 					{
-						client.Out.SendMessage("Object " + mobOID + " is a " + obj.GetType().ToString() + ", not a GameNPC.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("Object " + mobOID + " is a " + obj.GetType().ToString() + ", not a GameNPC.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						return null;
 					}
 				}
@@ -718,7 +718,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 				targetMob.Size = (byte)mobSize;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob size changed to: " + targetMob.Size, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob size changed to: " + targetMob.Size, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -734,7 +734,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		//        // Can be funny when we remove (e.g.) a ram or a boat (why are we dropped on the sea???) from the world. ;-)
 		//        client.Out.SendMessage("The selected object is type of GameMovingObject and it's translation id cannot be changed " +
 		//                               "via command. Please change the translation id in your code / database.",
-		//                               eChatType.CT_System, eChatLoc.CL_SystemWindow);
+		//                               ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		//        return;
 		//    }
 
@@ -752,7 +752,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		//        GameNPC.RefreshTranslation(null, id);
 		//        targetMob.AddToWorld();
 
-		//        client.Out.SendMessage("Mob translation id changed to: " + id, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+		//        client.Out.SendMessage("Mob translation id changed to: " + id, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		//    }
 		//    else
 		//        DisplaySyntax(client, args[1]);
@@ -769,7 +769,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				targetMob.Name = CheckName(mobName, client);
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob name changed to: " + targetMob.Name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob name changed to: " + targetMob.Name, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
@@ -781,7 +781,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		{
 			if (targetMob.GetType().IsSubclassOf(typeof(GameMovingObject)))
 			{
-				client.Out.SendMessage("You cannot set a suffix for GameMovingObjects.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You cannot set a suffix for GameMovingObjects.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -794,7 +794,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				targetMob.Suffix = suf;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob suffix changed to: " + suf, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob suffix changed to: " + suf, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 				DisplaySyntax(client, args[1]);
@@ -811,7 +811,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				targetMob.GuildName = CheckGuildName(guildName, client);
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob guild changed to: " + targetMob.GuildName, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob guild changed to: " + targetMob.GuildName, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
@@ -819,7 +819,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				{
 					targetMob.GuildName = "";
 					targetMob.SaveIntoDatabase();
-					client.Out.SendMessage("Mob guild removed.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Mob guild removed.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 					DisplaySyntax(client, args[1]);
@@ -832,7 +832,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				client.Out.SendMessage("Please change the default language examine article for GameMovingObjects in your code / database. If you want to set a " +
 				                       "examine article for other languages, please use '/translate examinearticle <language> <examine article>'.",
-				                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -845,7 +845,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				targetMob.ExamineArticle = exa;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob examine article changed to: " + exa, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob examine article changed to: " + exa, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 				DisplaySyntax(client, args[1]);
@@ -857,7 +857,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				client.Out.SendMessage("Please change the default language message article for GameMovingObjects in your code / database. If you want to set a " +
 				                       "message article for other languages, please use '/translate messagearticle <language> <message article>'.",
-				                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -870,7 +870,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				targetMob.Suffix = msg;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob message article changed to: " + msg, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob message article changed to: " + msg, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 				DisplaySyntax(client, args[1]);
@@ -880,7 +880,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		{
 			targetMob.Flags ^= GameNPC.eFlags.PEACE;
 			targetMob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob PEACE flag is set to " + ((targetMob.Flags & GameNPC.eFlags.PEACE) != 0), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob PEACE flag is set to " + ((targetMob.Flags & GameNPC.eFlags.PEACE) != 0), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void aggro(GameClient client, GameNPC targetMob, string[] args)
@@ -984,7 +984,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				int distance = Convert.ToInt32(args[2]);
 				targetMob.MaxDistance = distance;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob max distance changed to: " + targetMob.MaxDistance, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob max distance changed to: " + targetMob.MaxDistance, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -1002,7 +1002,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				maxRoamingRange = Convert.ToInt32(args[2]);
 				targetMob.RoamingRange = maxRoamingRange;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob Roaming Range changed to: " + targetMob.RoamingRange, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob Roaming Range changed to: " + targetMob.RoamingRange, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -1030,7 +1030,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		{
 			targetMob.MoveTo(client.Player.CurrentRegionID, client.Player.X, client.Player.Y, client.Player.Z, client.Player.Heading);
 			targetMob.SaveIntoDatabase();
-			client.Out.SendMessage("Target Mob '" + targetMob.Name + "' moved to your location!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Target Mob '" + targetMob.Name + "' moved to your location!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void location(GameClient client, GameNPC targetMob, string[] args)
@@ -1041,7 +1041,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			                       targetMob.Y + ", " +
 			                       targetMob.Z + ", " +
 			                       targetMob.Heading,
-			                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void remove(GameClient client, GameNPC targetMob, string[] args)
@@ -1073,7 +1073,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				}
 			}
 
-			client.Out.SendMessage("Target Mob removed from DB.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Target Mob removed from DB.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void flags(GameClient client, GameNPC targetMob, string[] args)
@@ -1092,28 +1092,28 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			targetMob.Flags = (GameNPC.eFlags)flag;
 			targetMob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob flags are set to " + targetMob.Flags.ToString(), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob flags are set to " + targetMob.Flags.ToString(), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void ghost(GameClient client, GameNPC targetMob, string[] args)
 		{
 			targetMob.Flags ^= GameNPC.eFlags.GHOST;
 			targetMob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob GHOST flag is set to " + ((targetMob.Flags & GameNPC.eFlags.GHOST) != 0), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob GHOST flag is set to " + ((targetMob.Flags & GameNPC.eFlags.GHOST) != 0), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void stealth(GameClient client, GameNPC targetMob, string[] args)
 		{
 			targetMob.Flags ^= GameNPC.eFlags.STEALTH;
 			targetMob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob STEALTH flag is set to " + ((targetMob.Flags & GameNPC.eFlags.STEALTH) != 0), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob STEALTH flag is set to " + ((targetMob.Flags & GameNPC.eFlags.STEALTH) != 0), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void torch(GameClient client, GameNPC targetMob, string[] args)
 		{
 			targetMob.Flags ^= GameNPC.eFlags.TORCH;
 			targetMob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob TORCH flag is set to " + ((targetMob.Flags & GameNPC.eFlags.TORCH) != 0), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob TORCH flag is set to " + ((targetMob.Flags & GameNPC.eFlags.TORCH) != 0), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void statue(GameClient client, GameNPC targetMob, string[] args)
@@ -1122,9 +1122,9 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			targetMob.SaveIntoDatabase();
 
 			if ((targetMob.Flags & GameNPC.eFlags.STATUE) > 0)
-				client.Out.SendMessage("You have set the STATUE flag - you will need to use \"/debug on\" to target this NPC.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You have set the STATUE flag - you will need to use \"/debug on\" to target this NPC.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
-			client.Out.SendMessage(targetMob.Name + "'s STATUE flag is set to " + ((targetMob.Flags & GameNPC.eFlags.STATUE) != 0), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage(targetMob.Name + "'s STATUE flag is set to " + ((targetMob.Flags & GameNPC.eFlags.STATUE) != 0), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void fly(GameClient client, GameNPC targetMob, string[] args)
@@ -1148,28 +1148,28 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			targetMob.SaveIntoDatabase();
 
-			client.Out.SendMessage(targetMob.Name + "'s FLYING flag is set to " + ((targetMob.Flags & GameNPC.eFlags.FLYING) != 0), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage(targetMob.Name + "'s FLYING flag is set to " + ((targetMob.Flags & GameNPC.eFlags.FLYING) != 0), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void swimming(GameClient client, GameNPC targetMob, string[] args)
 		{
 			targetMob.Flags ^= GameNPC.eFlags.SWIMMING;
 			targetMob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob SWIMMING flag is set to " + ((targetMob.Flags & GameNPC.eFlags.SWIMMING) != 0), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob SWIMMING flag is set to " + ((targetMob.Flags & GameNPC.eFlags.SWIMMING) != 0), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void noname(GameClient client, GameNPC targetMob, string[] args)
 		{
 			targetMob.Flags ^= GameNPC.eFlags.DONTSHOWNAME;
 			targetMob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob DONTSHOWNAME flag is set to " + ((targetMob.Flags & GameNPC.eFlags.DONTSHOWNAME) != 0), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob DONTSHOWNAME flag is set to " + ((targetMob.Flags & GameNPC.eFlags.DONTSHOWNAME) != 0), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void notarget(GameClient client, GameNPC targetMob, string[] args)
 		{
 			targetMob.Flags ^= GameNPC.eFlags.CANTTARGET;
 			targetMob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob CANTTARGET flag is set to " + ((targetMob.Flags & GameNPC.eFlags.CANTTARGET) != 0), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob CANTTARGET flag is set to " + ((targetMob.Flags & GameNPC.eFlags.CANTTARGET) != 0), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void kill(GameClient client, GameNPC targetMob, string[] args)
@@ -1180,11 +1180,11 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				targetMob.AddXPGainer(client.Player, targetMob.Health);
 				targetMob.Die(client.Player);
 				targetMob.XPGainers.Clear();
-				client.Out.SendMessage("Mob '" + targetMob.Name + "' killed", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob '" + targetMob.Name + "' killed", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception e)
 			{
-				client.Out.SendMessage(e.ToString(), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(e.ToString(), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -1195,11 +1195,11 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				targetMob.Health = targetMob.MaxHealth;
 				targetMob.SaveIntoDatabase();
 				client.Out.SendObjectUpdate(targetMob);
-				client.Out.SendMessage("Mob '" + targetMob.Name + "' healed (" + targetMob.Health + "/" + targetMob.MaxHealth + ")", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob '" + targetMob.Name + "' healed (" + targetMob.Health + "/" + targetMob.MaxHealth + ")", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception e)
 			{
-				client.Out.SendMessage(e.ToString(), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(e.ToString(), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -1420,7 +1420,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		{
 			if (targetMob == null)
 			{
-				client.Out.SendMessage("No target selected.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("No target selected.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			var info = new List<string>();
@@ -1456,7 +1456,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				realm = Convert.ToByte(args[2]);
 				targetMob.Realm = (eRealm)realm;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob realm changed to: " + GlobalConstants.RealmToName(targetMob.Realm), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob realm changed to: " + GlobalConstants.RealmToName(targetMob.Realm), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -1473,7 +1473,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				maxSpeed = Convert.ToInt16(args[2]);
 				targetMob.MaxSpeedBase = maxSpeed;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob MaxSpeed changed to: " + targetMob.MaxSpeedBase, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob MaxSpeed changed to: " + targetMob.MaxSpeedBase, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -1489,7 +1489,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				targetMob.Level = level;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob level changed to: " + targetMob.Level, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob level changed to: " + targetMob.Level, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
@@ -1507,7 +1507,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				targetMob.Level = level;
 				targetMob.AutoSetStats();
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob level changed to: " + targetMob.Level + " and stats adjusted", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob level changed to: " + targetMob.Level + " and stats adjusted", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -1529,7 +1529,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				}
 				catch (Exception e)
 				{
-					client.Out.SendMessage(e.ToString(), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					client.Out.SendMessage(e.ToString(), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 
 				if (brain == null)
@@ -1541,19 +1541,19 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					}
 					catch (Exception e)
 					{
-						client.Out.SendMessage(e.ToString(), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						client.Out.SendMessage(e.ToString(), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 				}
 
 				if (brain == null)
 				{
-					client.Out.SendMessage("There was an error creating an instance of " + brainType + "!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("There was an error creating an instance of " + brainType + "!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
 					targetMob.SetOwnBrain(brain);
 					targetMob.SaveIntoDatabase();
-					client.Out.SendMessage(targetMob.Name + "'s brain set to " + targetMob.Brain.ToString(), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage(targetMob.Name + "'s brain set to " + targetMob.Brain.ToString(), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 			catch (Exception)
@@ -1571,7 +1571,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				interval = Convert.ToInt32(args[2]);
 				targetMob.RespawnInterval = interval;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob respawn interval changed to: " + interval, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob respawn interval changed to: " + interval, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -1583,19 +1583,19 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		{
 			if (targetMob.QuestListToGive.Count == 0 && targetMob.DataQuestList.Count == 0)
 			{
-				client.Out.SendMessage("Mob does not have any quests.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob does not have any quests.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
-				client.Out.SendMessage("Scripted Quests: ------------------------", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				client.Out.SendMessage("Scripted Quests: ------------------------", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 
 				foreach (AbstractQuest quest in targetMob.QuestListToGive)
-					client.Out.SendMessage("Quest Name: [" + quest.Name + "]", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					client.Out.SendMessage("Quest Name: [" + quest.Name + "]", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 
-				client.Out.SendMessage("Data Quests: ----------------------------", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				client.Out.SendMessage("Data Quests: ----------------------------", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 
 				foreach (DataQuest dq in targetMob.DataQuestList)
-					client.Out.SendMessage("Quest Name: [" + dq.Name + "] : " + (DataQuest.eStartType)dq.DBDataQuest.StartType, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					client.Out.SendMessage("Quest Name: [" + dq.Name + "] : " + (DataQuest.eStartType)dq.DBDataQuest.StartType, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 
 			}
 		}
@@ -1610,7 +1610,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				{
 					player.Out.SendNPCsQuestEffect(targetMob, targetMob.GetQuestIndicator(player));
 				}
-				client.Out.SendMessage(targetMob.DataQuestList.Count + " Data Quests loaded for this mob.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(targetMob.DataQuestList.Count + " Data Quests loaded for this mob.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception ex)
 			{
@@ -1623,11 +1623,11 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		{
 			if (targetMob.Inventory == null)
 			{
-				client.Out.SendMessage("Mob inventory not found.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob inventory not found.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
-			client.Out.SendMessage("-------------------------------", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+			client.Out.SendMessage("-------------------------------", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 			string closed = "";
 
 			if (targetMob.Inventory is GameNpcInventoryTemplate)
@@ -1637,20 +1637,20 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			}
 
 			string message = string.Format("			         Inventory: {0}{1}, equip template ID: {2}", targetMob.Inventory.GetType().ToString(), closed, targetMob.EquipmentTemplateID);
-			client.Out.SendMessage(message, eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("-------------------------------", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+			client.Out.SendMessage(message, ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("-------------------------------", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 
 			foreach (InventoryItem item in targetMob.Inventory.AllItems)
 			{
-				client.Out.SendMessage("Slot Description : [" + GlobalConstants.SlotToName(item.SlotPosition) + "]", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-				client.Out.SendMessage("------------", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-				client.Out.SendMessage("         Slot: " + GlobalConstants.SlotToName(item.Item_Type), eChatType.CT_System, eChatLoc.CL_PopupWindow);
-				client.Out.SendMessage("        Model: " + item.Model, eChatType.CT_System, eChatLoc.CL_PopupWindow);
-				client.Out.SendMessage("        Color: " + item.Color, eChatType.CT_System, eChatLoc.CL_PopupWindow);
-				client.Out.SendMessage("       Effect: " + item.Effect, eChatType.CT_System, eChatLoc.CL_PopupWindow);
-				client.Out.SendMessage("------------", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-				client.Out.SendMessage("", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				client.Out.SendMessage("Slot Description : [" + GlobalConstants.SlotToName(item.SlotPosition) + "]", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+				client.Out.SendMessage("------------", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+				client.Out.SendMessage("         Slot: " + GlobalConstants.SlotToName(item.Item_Type), ChatType.CT_System, ChatLocation.CL_PopupWindow);
+				client.Out.SendMessage("        Model: " + item.Model, ChatType.CT_System, ChatLocation.CL_PopupWindow);
+				client.Out.SendMessage("        Color: " + item.Color, ChatType.CT_System, ChatLocation.CL_PopupWindow);
+				client.Out.SendMessage("       Effect: " + item.Effect, ChatType.CT_System, ChatLocation.CL_PopupWindow);
+				client.Out.SendMessage("------------", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+				client.Out.SendMessage("", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 			}
 		}
 
@@ -1667,7 +1667,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				targetMob.Inventory = null;
 				targetMob.EquipmentTemplateID = null;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob equipment cleared.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob equipment cleared.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				targetMob.UpdateNPCEquipmentAppearance();
 				return;
 			}
@@ -1677,13 +1677,13 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				{
 					if (targetMob.Inventory != null)
 					{
-						client.Out.SendMessage("Target mob inventory is set to " + targetMob.Inventory.GetType() + ", remove it first.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("Target mob inventory is set to " + targetMob.Inventory.GetType() + ", remove it first.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						return;
 					}
 
 					targetMob.Inventory = new GameNpcInventoryTemplate();
 
-					client.Out.SendMessage("Inventory template created.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Inventory template created.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				catch
 				{
@@ -1699,7 +1699,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				{
 					if (targetMob.Inventory != null && !(targetMob.Inventory is GameNpcInventoryTemplate))
 					{
-						client.Out.SendMessage("Target mob is not using GameNpcInventoryTemplate.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("Target mob is not using GameNpcInventoryTemplate.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						return;
 					}
 					try
@@ -1708,7 +1708,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 						if (!load.LoadFromDatabase(args[3]))
 						{
-							client.Out.SendMessage("Error loading equipment template \"" + args[3] + "\"", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("Error loading equipment template \"" + args[3] + "\"", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -1716,7 +1716,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						targetMob.Inventory = load;
 						targetMob.SaveIntoDatabase();
 						targetMob.UpdateNPCEquipmentAppearance();
-						client.Out.SendMessage("Mob equipment loaded!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("Mob equipment loaded!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					catch
 					{
@@ -1734,7 +1734,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			GameNpcInventoryTemplate template = targetMob.Inventory as GameNpcInventoryTemplate;
 			if (template == null)
 			{
-				client.Out.SendMessage("Target mob is not using GameNpcInventoryTemplate.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Target mob is not using GameNpcInventoryTemplate.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -1750,7 +1750,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 								if (slot == 0)
 								{
-									client.Out.SendMessage("No such slot available, remember to use slot name (distance, torso, cloak, etc.)!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									client.Out.SendMessage("No such slot available, remember to use slot name (distance, torso, cloak, etc.)!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									return;
 								}
 
@@ -1766,13 +1766,13 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 								if (args.Length >= 8)
 									extension = Convert.ToInt32(args[7]);
 
-								if (!template.AddNPCEquipment((eInventorySlot)slot, model, color, effect, extension))
+								if (!template.AddNPCEquipment((InventorySlot)slot, model, color, effect, extension))
 								{
-									client.Out.SendMessage("Couldn't add new item to slot " + slot + ". Template could be closed.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									client.Out.SendMessage("Couldn't add new item to slot " + slot + ". Template could be closed.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									return;
 								}
 
-								client.Out.SendMessage("Item added to the mob's inventory template.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Out.SendMessage("Item added to the mob's inventory template.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							}
 							catch
 							{
@@ -1798,16 +1798,16 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 								if (slot == 0)
 								{
-									client.Out.SendMessage("No such slot available!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									client.Out.SendMessage("No such slot available!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									return;
 								}
 
-								if (!template.RemoveNPCEquipment((eInventorySlot)slot))
+								if (!template.RemoveNPCEquipment((InventorySlot)slot))
 								{
-									client.Out.SendMessage("Couldn't remove item from slot " + slot + ". Template could be closed.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									client.Out.SendMessage("Couldn't remove item from slot " + slot + ". Template could be closed.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									return;
 								}
-								client.Out.SendMessage("Mob inventory template slot " + slot + " cleaned!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Out.SendMessage("Mob inventory template slot " + slot + " cleaned!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							}
 							catch
 							{
@@ -1827,12 +1827,12 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (template.IsClosed)
 						{
-							client.Out.SendMessage("Template is already closed.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("Template is already closed.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
 						targetMob.Inventory = template.CloseTemplate();
-						client.Out.SendMessage("Inventory template closed succesfully.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("Inventory template closed succesfully.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					break;
 
@@ -1853,21 +1853,21 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 								}
 								else
 								{
-									client.Out.SendMessage("Template with name '" + args[3] + "' already exists. Use the 'replace' parameter if you want to overwrite it.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									client.Out.SendMessage("Template with name '" + args[3] + "' already exists. Use the 'replace' parameter if you want to overwrite it.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									return;
 								}
 							}
 
 							if (!targetMob.Inventory.SaveIntoDatabase(args[3]))
 							{
-								client.Out.SendMessage("Error saving template with name " + args[3], eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Out.SendMessage("Error saving template with name " + args[3], ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								return;
 							}
 
 							targetMob.EquipmentTemplateID = args[3];
 							targetMob.SaveIntoDatabase();
 							GameNpcInventoryTemplate.Init();
-							client.Out.SendMessage("Target mob equipment template is saved as '" + args[3] + "'", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("Target mob equipment template is saved as '" + args[3] + "'", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						else
@@ -1893,7 +1893,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 				if (slot == 0)
 				{
-					client.Out.SendMessage("Bad slot.  Use names like right, left, two, distance.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Bad slot.  Use names like right, left, two, distance.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
@@ -1913,12 +1913,12 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						break;
 
 					default:
-						client.Out.SendMessage("Invalid slot, must be a weapon slot (right, left, two, distance)!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("Invalid slot, must be a weapon slot (right, left, two, distance)!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						return;
 				}
 
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Visible weapon slot set to " + slotname, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Visible weapon slot set to " + slotname, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch
 			{
@@ -2031,13 +2031,13 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				{
 					client.Out.SendMessage(
 						item.Name + " was succesfully added to the loot list for  " + name + " with a " + chance + "% chance to drop!",
-						eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
 					client.Out.SendMessage(
 						item.Name + " was succesfully added to the loot list for " + name + " with a drop count of " + numDrops + "!",
-						eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 
 				MobXLootType mxlt =
@@ -2097,7 +2097,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					loot.MinLevel = minlevel;
 					GameServer.Database.AddObject(loot);
 					refreshloot(client, targetMob, null);
-					client.Out.SendMessage(itemTemplateID + " was succesfully added to " + mobName + "'s one time drop list.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage(itemTemplateID + " was succesfully added to " + mobName + "'s one time drop list.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 
 			}
@@ -2238,11 +2238,11 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					}
 
 					refreshloot(client, targetMob, null);
-					client.Out.SendMessage("Removed all items from " + targetMob.Name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Removed all items from " + targetMob.Name, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
-					client.Out.SendMessage("No items found on " + targetMob.Name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("No items found on " + targetMob.Name, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 			else
@@ -2257,11 +2257,11 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					}
 
 					refreshloot(client, targetMob, null);
-					client.Out.SendMessage(lootTemplateID + " removed from " + targetMob.Name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage(lootTemplateID + " removed from " + targetMob.Name, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
-					client.Out.SendMessage(lootTemplateID + " does not exist on " + name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage(lootTemplateID + " does not exist on " + name, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}
@@ -2282,11 +2282,11 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 				refreshloot(client, targetMob, null);
 
-				client.Out.SendMessage(itemTemplateID + " OTD removed from " + targetMob.Name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(itemTemplateID + " OTD removed from " + targetMob.Name, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
-				client.Out.SendMessage(itemTemplateID + " OTD does not exist on " + name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(itemTemplateID + " OTD does not exist on " + name, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -2340,7 +2340,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			if (mob == null)
 			{
-				client.Out.SendMessage("There was an error creating an instance of " + args[2] + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("There was an error creating an instance of " + args[2] + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -2413,7 +2413,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			if (brain == null)
 			{
-				client.Out.SendMessage("Cannot create brain, standard brain being applied", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Cannot create brain, standard brain being applied", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				mob.SetOwnBrain(new StandardMobBrain());
 			}
 			else
@@ -2433,7 +2433,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			targetMob.DeleteFromDatabase();
 			targetMob.Delete();
 
-			client.Out.SendMessage("Mob class changed: OID=" + mob.ObjectID, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob class changed: OID=" + mob.ObjectID, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void copy(GameClient client, GameNPC targetMob, string[] args)
@@ -2471,7 +2471,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 							}
 							catch (Exception e)
 							{
-								client.Out.SendMessage(e.ToString(), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+								client.Out.SendMessage(e.ToString(), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 							}
 						}
 					}
@@ -2484,7 +2484,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 				if (mob == null || targetMob == null)
 				{
-					client.Out.SendMessage("Unable to find mob named:  " + mobName, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Unable to find mob named:  " + mobName, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 			}
@@ -2492,7 +2492,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				if (targetMob == null)
 				{
-					client.Out.SendMessage("You must have a mob targeted to copy.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You must have a mob targeted to copy.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
@@ -2505,7 +2505,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 				if (mob == null)
 				{
-					client.Out.SendMessage("There was an error creating an instance of " + targetMob.GetType().FullName + "!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("There was an error creating an instance of " + targetMob.GetType().FullName + "!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 			}
@@ -2569,7 +2569,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			if (brain == null)
 			{
-				client.Out.SendMessage("Cannot create brain, standard brain being applied", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Cannot create brain, standard brain being applied", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				mob.SetOwnBrain(new StandardMobBrain());
 			}
 			else if (brain is StandardMobBrain)
@@ -2587,11 +2587,11 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			mob.AddToWorld();
 			mob.LoadedFromScript = false;
 			mob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob created: OID=" + mob.ObjectID, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob created: OID=" + mob.ObjectID, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			if ((mob.Flags & GameNPC.eFlags.PEACE) != 0)
 			{
 				// because copying 100 mobs with their peace flag set is not fun
-				client.Out.SendMessage("This mobs PEACE flag is set!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("This mobs PEACE flag is set!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -2707,7 +2707,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 				if (pathname != "" && MovementMgr.LoadPath(pathname) == null)
 				{
-					client.Out.SendMessage("The specified path does not exist", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("The specified path does not exist", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
@@ -2717,7 +2717,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					if (targetMob.Brain.Stop())
 						targetMob.Brain.Start();
 
-					client.Out.SendMessage("The path has been assigned to this mob", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("The path has been assigned to this mob", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 			catch
@@ -2741,10 +2741,10 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					targetMob.HouseNumber = house;
 					targetMob.CurrentHouse = H;
 					targetMob.SaveIntoDatabase();
-					client.Out.SendMessage("Mob house changed to: " + house, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Mob house changed to: " + house, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
-					client.Out.SendMessage("House number " + house + " doesn't exist.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("House number " + house + " doesn't exist.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -2777,13 +2777,13 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				}
 
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob " + statType + " changed to: " + statval, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob " + statType + " changed to: " + statval, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				if (targetMob.LoadedFromScript == true)
 				{
 					// Maybe stat changes work on the current script-loaded mob, but are lost on repop or reboot?
 					// Send user a warning message, but don't cancel the function altogether
-					client.Out.SendMessage("This mob is loaded from a script - stat changes cannot be saved.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("This mob is loaded from a script - stat changes cannot be saved.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 			catch (Exception)
@@ -2799,8 +2799,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				int tether = Convert.ToInt32(args[2]);
 				targetMob.TetherRange = tether;
-				client.Out.SendMessage("Mob tether range changed to: " + tether, eChatType.CT_System, eChatLoc.CL_SystemWindow);
-				client.Out.SendMessage("Keep in mind that this setting is volatile, it needs to be set in this NPC's template to become permanent.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob tether range changed to: " + tether, ChatType.CT_System, ChatLocation.CL_SystemWindow);
+				client.Out.SendMessage("Keep in mind that this setting is volatile, it needs to be set in this NPC's template to become permanent.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -2813,7 +2813,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			targetMob.IsCloakHoodUp ^= true;
 			targetMob.UpdateNPCEquipmentAppearance();
 			targetMob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob IsCloakHoodUp flag is set to " + targetMob.IsCloakHoodUp, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob IsCloakHoodUp flag is set to " + targetMob.IsCloakHoodUp, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void cloak(GameClient client, GameNPC targetMob, string[] args)
@@ -2821,7 +2821,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			targetMob.IsCloakInvisible ^= true;
 			targetMob.UpdateNPCEquipmentAppearance();
 			targetMob.SaveIntoDatabase();
-			client.Out.SendMessage("Mob IsCloakInvisible flag is set to " + targetMob.IsCloakHoodUp, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("Mob IsCloakInvisible flag is set to " + targetMob.IsCloakHoodUp, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		private void bodytype(GameClient client, GameNPC targetMob, string[] args)
@@ -2832,7 +2832,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				targetMob.BodyType = type;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("Mob BodyType changed to " + targetMob.BodyType, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Mob BodyType changed to " + targetMob.BodyType, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
@@ -2857,7 +2857,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				targetMob.SaveIntoDatabase();
 				client.Out.SendMessage(String.Format("Mob gender changed to {0}.",
 				                                     targetMob.Gender.ToString().ToLower()),
-				                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -2880,7 +2880,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 				targetMob.PackageID = packageID;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("PackageID set to " + packageID, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("PackageID set to " + packageID, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -2903,7 +2903,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 				targetMob.OwnerID = ownerID;
 				targetMob.SaveIntoDatabase();
-				client.Out.SendMessage("OwnerID set to " + ownerID, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("OwnerID set to " + ownerID, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception)
 			{
@@ -2914,14 +2914,14 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		private string CheckName(string name, GameClient client)
 		{
 			if (name.Length > 47)
-				client.Out.SendMessage("WARNING: name length=" + name.Length + " but only first 47 chars will be shown.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("WARNING: name length=" + name.Length + " but only first 47 chars will be shown.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			return name;
 		}
 
 		private string CheckGuildName(string name, GameClient client)
 		{
 			if (name.Length > 47)
-				client.Out.SendMessage("WARNING: guild name length=" + name.Length + " but only first 47 chars will be shown.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("WARNING: guild name length=" + name.Length + " but only first 47 chars will be shown.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			return name;
 		}
 
@@ -2932,11 +2932,11 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				if (wantedMob == null)
 				{
-					client.Out.SendMessage("Unable to autoselect an NPC - nothing in range", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Unable to autoselect an NPC - nothing in range", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
-					client.Out.SendMessage("You have autoselected the mob with OID " + wantedMob.ObjectID.ToString(), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You have autoselected the mob with OID " + wantedMob.ObjectID.ToString(), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					client.Out.SendChangeTarget((GameObject)wantedMob);
 				}
 				return wantedMob;
@@ -2964,7 +2964,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 							n.RemoveFromWorld();
 							n.LoadFromDatabase(GameServer.Database.FindObjectByKey<Mob>(n.InternalID));
 							n.AddToWorld();
-							client.Player.Out.SendMessage(n.Name + " reloaded!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(n.Name + " reloaded!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 					}
 				}
@@ -2977,11 +2977,11 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					targetMob.RemoveFromWorld();
 					targetMob.LoadFromDatabase(GameServer.Database.FindObjectByKey<Mob>(targetMob.InternalID));
 					targetMob.AddToWorld();
-					client.Player.Out.SendMessage(targetMob.Name + " reloaded!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Player.Out.SendMessage(targetMob.Name + " reloaded!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{
-					client.Player.Out.SendMessage(targetMob.Name + " is loaded from a script and can't be reloaded!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Player.Out.SendMessage(targetMob.Name + " is loaded from a script and can't be reloaded!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}
@@ -3039,11 +3039,11 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				{
 					mnames = mnames + mobs[i].Name + "\n";
 				}
-				client.Player.Out.SendMessage(mnames, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage(mnames, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
-				client.Player.Out.SendMessage("No matches found.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage("No matches found.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -3052,7 +3052,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			if (targetMob == null)
 			{
-				client.Out.SendMessage("You need a valid target!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You need a valid target!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -3163,8 +3163,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				}
 				catch
 				{
-					client.Out.SendMessage("You must specify a proper type for the trigger <spawning, aggroing, dieing, fighting, moving, roaming, seeing, interact>.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-					client.Out.SendMessage("example: dieing none This is what I will say when I die!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You must specify a proper type for the trigger <spawning, aggroing, dieing, fighting, moving, roaming, seeing, interact>.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+					client.Out.SendMessage("example: dieing none This is what I will say when I die!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
@@ -3175,7 +3175,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				}
 				catch
 				{
-					client.Out.SendMessage("You must specify a valid chance percent/emote number", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You must specify a valid chance percent/emote number", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				if (args.Length > 4)
 				{
@@ -3184,7 +3184,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 				if (text == "")
 				{
-					client.Out.SendMessage("You must specify some text for the trigger.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You must specify some text for the trigger.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
@@ -3195,7 +3195,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					voice = "y";
 				text = text.Replace("{b}", string.Empty).Replace("{y}", string.Empty);
 				GameServer.Database.AddObject(new MobXAmbientBehaviour(targetMob.Name, trig.ToString(), emote, text, chance, voice) {Dirty = true, AllowAdd = true});
-				client.Out.SendMessage(" Trigger added to mobs with name " + targetMob.Name + " when they " + type + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(" Trigger added to mobs with name " + targetMob.Name + " when they " + type + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			catch (Exception)
@@ -3235,17 +3235,17 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 		private void trigger_help(GameClient client)
 		{
-			client.Out.SendMessage("The trigger command lets you add sentences for the mob to say when he spawns, aggros, fights or dies.", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("Triggers apply to all mobs with the same mob name.  Each mob name can have multiple triggers and trigger types.", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("The aggro and die trigger types allow for keywords of {targetname} (gets replaced with the target name), {class} {race} (gets replaced with the players class/race) and {sourcename} gets replaced with the source name and {controller}, the pet's controller.", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("Ex: /mob trigger aggro 50 10 This is what I'll say 50% time when I aggro!", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("Ex: /mob trigger die 100 5 This is what I'll say when I die!", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("Ex: /mob trigger aggro 100 0 {y}I really hate {class}'s like you!", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("Ex: /mob trigger roam 5 12 Prepare to die {targetname}!", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("Ex: /mob trigger aggro 5 0 {b}I've been waiting for this moment ever since I was a young {sourcename}!", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("Usage: '/mob trigger <type(die,aggro,spawn,fight,kill,roam)> <chance in percent> <emote (0 for no emote)> <sentence(can include {targetname},{sourcename},{class},{race}, {controller})(can also be formatted with {y} for yelled and {b} for broadcasted sentence)>'", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("Usage: '/mob trigger info' Give trigger informations", eChatType.CT_System, eChatLoc.CL_PopupWindow);
-			client.Out.SendMessage("Usage: '/mob trigger remove <id>' Remove a trigger", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+			client.Out.SendMessage("The trigger command lets you add sentences for the mob to say when he spawns, aggros, fights or dies.", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("Triggers apply to all mobs with the same mob name.  Each mob name can have multiple triggers and trigger types.", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("The aggro and die trigger types allow for keywords of {targetname} (gets replaced with the target name), {class} {race} (gets replaced with the players class/race) and {sourcename} gets replaced with the source name and {controller}, the pet's controller.", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("Ex: /mob trigger aggro 50 10 This is what I'll say 50% time when I aggro!", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("Ex: /mob trigger die 100 5 This is what I'll say when I die!", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("Ex: /mob trigger aggro 100 0 {y}I really hate {class}'s like you!", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("Ex: /mob trigger roam 5 12 Prepare to die {targetname}!", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("Ex: /mob trigger aggro 5 0 {b}I've been waiting for this moment ever since I was a young {sourcename}!", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("Usage: '/mob trigger <type(die,aggro,spawn,fight,kill,roam)> <chance in percent> <emote (0 for no emote)> <sentence(can include {targetname},{sourcename},{class},{race}, {controller})(can also be formatted with {y} for yelled and {b} for broadcasted sentence)>'", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("Usage: '/mob trigger info' Give trigger informations", ChatType.CT_System, ChatLocation.CL_PopupWindow);
+			client.Out.SendMessage("Usage: '/mob trigger remove <id>' Remove a trigger", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 		}
 	}
 }

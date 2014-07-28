@@ -24,6 +24,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.CustomNPC;
@@ -41,7 +42,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// <summary>
 	/// delve button shift+i = detail of spell object...
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP, 0x70 ^ 168, "Handles detail display")]
+    [PacketHandler(PacketType.TCP, ClientPackets.DetailDisplay, ClientStatus.PlayerInGame)]
 	public class DetailDisplayHandler : IPacketHandler
 	{
 		/// <summary>
@@ -49,11 +50,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 		/// </summary>
 		protected static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
-			if (client == null || client.Player == null) 
-				return;
-
 			ushort objectType = packet.ReadShort();
 
 			uint extraID = 0;
@@ -114,7 +112,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 							// finally try direct inventory access
 							if (invItem == null)
 							{
-								invItem = client.Player.Inventory.GetItem((eInventorySlot)objectID);
+								invItem = client.Player.Inventory.GetItem((InventorySlot)objectID);
 							}
 
 							// Failed to get any inventory
@@ -224,7 +222,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 							WritePoisonInfo(objectInfo, invItem, client);
 						}
 
-						if (invItem.Object_Type == (int)eObjectType.Magical && invItem.Item_Type == (int)eInventorySlot.FirstBackpack) // potion
+						if (invItem.Object_Type == (int)eObjectType.Magical && invItem.Item_Type == (int)InventorySlot.FirstBackpack) // potion
 						{
 							WritePotionInfo(objectInfo, invItem, client);
 						}
@@ -480,12 +478,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 						// fallback to old delve
 
-						if (item.Item_Type == (int)eInventorySlot.Horse)
+						if (item.Item_Type == (int)InventorySlot.Horse)
 						{
 							WriteHorseInfo(objectInfo, item, client, "");
 						}
 
-						if ((item.Item_Type == (int)eInventorySlot.HorseBarding || item.Item_Type == (int)eInventorySlot.HorseArmor) && item.Level > 0)
+						if ((item.Item_Type == (int)InventorySlot.HorseBarding || item.Item_Type == (int)InventorySlot.HorseArmor) && item.Level > 0)
 						{
 							objectInfo.Add(" ");//empty line
 							objectInfo.Add(" ");//empty line
@@ -514,7 +512,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 							WriteClassicShieldInfos(objectInfo, item, client);
 						}
 
-						if ((item.Item_Type != (int)eInventorySlot.Horse && item.Object_Type == (int)eObjectType.Magical) || item.Object_Type == (int)eObjectType.AlchemyTincture || item.Object_Type == (int)eObjectType.SpellcraftGem)
+						if ((item.Item_Type != (int)InventorySlot.Horse && item.Object_Type == (int)eObjectType.Magical) || item.Object_Type == (int)eObjectType.AlchemyTincture || item.Object_Type == (int)eObjectType.SpellcraftGem)
 						{
 							WriteMagicalBonuses(objectInfo, item, client, false);
 						}
@@ -622,12 +620,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						#region Old Delve
 						// fallback to old delve
 
-						if (invItem.Item_Type == (int)eInventorySlot.Horse)
+						if (invItem.Item_Type == (int)InventorySlot.Horse)
 						{
 							WriteHorseInfo(objectInfo, invItem, client, "");
 						}
 
-						if ((invItem.Item_Type == (int)eInventorySlot.HorseBarding || invItem.Item_Type == (int)eInventorySlot.HorseArmor) && invItem.Level > 0)
+						if ((invItem.Item_Type == (int)InventorySlot.HorseBarding || invItem.Item_Type == (int)InventorySlot.HorseArmor) && invItem.Level > 0)
 						{
 							objectInfo.Add(" ");//empty line
 							objectInfo.Add(" ");//empty line
@@ -655,7 +653,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 							WriteClassicShieldInfos(objectInfo, invItem, client);
 						}
 
-						if ((invItem.Item_Type != (int)eInventorySlot.Horse && invItem.Object_Type == (int)eObjectType.Magical) || invItem.Object_Type == (int)eObjectType.AlchemyTincture || invItem.Object_Type == (int)eObjectType.SpellcraftGem)
+						if ((invItem.Item_Type != (int)InventorySlot.Horse && invItem.Object_Type == (int)eObjectType.Magical) || invItem.Object_Type == (int)eObjectType.AlchemyTincture || invItem.Object_Type == (int)eObjectType.SpellcraftGem)
 						{
 							WriteMagicalBonuses(objectInfo, invItem, client, false);
 						}
@@ -792,38 +790,38 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					#region Group
 				case 12: // Item info to Group Chat
 					{
-						invItem = client.Player.Inventory.GetItem((eInventorySlot)objectID);
+						invItem = client.Player.Inventory.GetItem((InventorySlot)objectID);
 						if (invItem == null) return;
 						string str = LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.Item", client.Player.Name, GetShortItemInfo(invItem, client));
 						if (client.Player.Group == null)
 						{
-							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.NoGroup"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.NoGroup"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
-						client.Player.Group.SendMessageToGroupMembers(str, eChatType.CT_Group, eChatLoc.CL_ChatWindow);
+						client.Player.Group.SendMessageToGroupMembers(str, ChatType.CT_Group, ChatLocation.CL_ChatWindow);
 						return;
 					}
 					#endregion
 					#region Guild
 				case 13: // Item info to Guild Chat
 					{
-						invItem = client.Player.Inventory.GetItem((eInventorySlot)objectID);
+						invItem = client.Player.Inventory.GetItem((InventorySlot)objectID);
 						if (invItem == null) return;
 						string str = LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.GuildItem", client.Player.Name, GetShortItemInfo(invItem, client));
 						if (client.Player.Guild == null)
 						{
-							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.DontBelongGuild"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.DontBelongGuild"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						if (!client.Player.Guild.HasRank(client.Player, Guild.eRank.GcSpeak))
 						{
-							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.NoPermissionToSpeak"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.NoPermissionToSpeak"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						foreach (GamePlayer ply in client.Player.Guild.GetListOfOnlineMembers())
 						{
 							if (!client.Player.Guild.HasRank(ply, Guild.eRank.GcHear)) continue;
-							ply.Out.SendMessage(str, eChatType.CT_Guild, eChatLoc.CL_ChatWindow);
+							ply.Out.SendMessage(str, ChatType.CT_Guild, ChatLocation.CL_ChatWindow);
 						}
 						return;
 					}
@@ -831,24 +829,24 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					#region ChatGroup
 				case 15: // Item info to Chat group
 					{
-						invItem = client.Player.Inventory.GetItem((eInventorySlot)objectID);
+						invItem = client.Player.Inventory.GetItem((InventorySlot)objectID);
 						if (invItem == null) return;
 
 						ChatGroup mychatgroup = (ChatGroup)client.Player.TempProperties.getProperty<object>(ChatGroup.CHATGROUP_PROPERTY, null);
 						if (mychatgroup == null)
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.MustBeInChatGroup"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.MustBeInChatGroup"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						if (mychatgroup.Listen == true && (((bool)mychatgroup.Members[client.Player]) == false))
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.OnlyModerator"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.OnlyModerator"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						string str = LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.ChatItem", client.Player.Name, GetShortItemInfo(invItem, client));
 						foreach (GamePlayer ply in mychatgroup.Members.Keys)
 						{
-							ply.Out.SendMessage(str, eChatType.CT_Chat, eChatLoc.CL_ChatWindow);
+							ply.Out.SendMessage(str, ChatType.CT_Chat, ChatLocation.CL_ChatWindow);
 						}
 						return;
 					}
@@ -879,14 +877,14 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					#region Repair
 				case 100://repair
 					{
-						invItem = client.Player.Inventory.GetItem((eInventorySlot)objectID);
+						invItem = client.Player.Inventory.GetItem((InventorySlot)objectID);
 						if (invItem != null)
 						{
 							client.Player.RepairItem(invItem);
 						}
 						else
 						{
-							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.VeryStrange"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.VeryStrange"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 						return;
 					}
@@ -894,14 +892,14 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					#region Self Craft
 				case 101://selfcraft
 					{
-						invItem = client.Player.Inventory.GetItem((eInventorySlot)objectID);
+						invItem = client.Player.Inventory.GetItem((InventorySlot)objectID);
 						if (invItem != null)
 						{
 							client.Player.OpenSelfCraft(invItem);
 						}
 						else
 						{
-							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.VeryStrange"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.VeryStrange"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 						return;
 					}
@@ -909,14 +907,14 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					#region Salvage
 				case 102://salvage
 					{
-						invItem = client.Player.Inventory.GetItem((eInventorySlot)objectID);
+						invItem = client.Player.Inventory.GetItem((InventorySlot)objectID);
 						if (invItem != null)
 						{
 							client.Player.SalvageItem(invItem);
 						}
 						else
 						{
-							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.VeryStrange"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.VeryStrange"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 						return;
 					}
@@ -924,24 +922,24 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					#region BattleGroup
 				case 103: // Item info to battle group
 					{
-						invItem = client.Player.Inventory.GetItem((eInventorySlot)objectID);
+						invItem = client.Player.Inventory.GetItem((InventorySlot)objectID);
 						if (invItem == null) return;
 
 						BattleGroup mybattlegroup = (BattleGroup)client.Player.TempProperties.getProperty<object>(BattleGroup.BATTLEGROUP_PROPERTY, null);
 						if (mybattlegroup == null)
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.MustBeInBattleGroup"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.MustBeInBattleGroup"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						if (mybattlegroup.Listen == true && (((bool)mybattlegroup.Members[client.Player]) == false))
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.OnlyModerator"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.OnlyModerator"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						string str = LanguageMgr.GetTranslation(client.Account.Language, "DetailDisplayHandler.HandlePacket.ChatItem", client.Player.Name, GetShortItemInfo(invItem, client));
 						foreach (GamePlayer ply in mybattlegroup.Members.Keys)
 						{
-							ply.Out.SendMessage(str, eChatType.CT_Chat, eChatLoc.CL_ChatWindow);
+							ply.Out.SendMessage(str, ChatType.CT_Chat, ChatLocation.CL_ChatWindow);
 						}
 						return;
 					}
@@ -1436,7 +1434,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					output.Add(" ");
 				}
 
-				if (item.Object_Type == (int)eObjectType.Magical && item.Item_Type == (int)eInventorySlot.FirstBackpack) // potion
+				if (item.Object_Type == (int)eObjectType.Magical && item.Item_Type == (int)InventorySlot.FirstBackpack) // potion
 				{
 					// let WritePotion handle the rest of the display
 					return;

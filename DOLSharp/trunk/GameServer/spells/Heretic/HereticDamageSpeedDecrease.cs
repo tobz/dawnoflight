@@ -125,9 +125,9 @@ namespace DawnOfLight.GameServer.Spells.Heretic
 
             SendEffectAnimation(effect.Owner, 0, false, 1);
 
-            MessageToLiving(effect.Owner, Spell.Message1, eChatType.CT_Spell);
+            MessageToLiving(effect.Owner, Spell.Message1, ChatType.CT_Spell);
 
-            Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), eChatType.CT_YouHit, effect.Owner);
+            Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), ChatType.CT_YouHit, effect.Owner);
 
             OnDirectEffect(effect.Owner, effect.Effectiveness);
 
@@ -155,9 +155,9 @@ namespace DawnOfLight.GameServer.Spells.Heretic
             base.OnEffectExpires(effect, noMessages);
             if (!noMessages)
             {
-                MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
+                MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
 
-                Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+                Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
             }
 
             return 0;
@@ -204,15 +204,15 @@ namespace DawnOfLight.GameServer.Spells.Heretic
                     GamePlayer owner = brain.GetPlayerOwner();
                     if (owner != null)
                     {
-                        MessageToLiving(owner, "Your " + target.Name + " resists the effect!", eChatType.CT_SpellResisted);
+                        MessageToLiving(owner, "Your " + target.Name + " resists the effect!", ChatType.CT_SpellResisted);
                     }
                 }
             }
             else
             {
-                MessageToLiving(target, "You resist the effect!", eChatType.CT_SpellResisted);
+                MessageToLiving(target, "You resist the effect!", ChatType.CT_SpellResisted);
             }
-            MessageToCaster(target.GetName(0, true) + " resists the effect!", eChatType.CT_SpellResisted);
+            MessageToCaster(target.GetName(0, true) + " resists the effect!", ChatType.CT_SpellResisted);
 
             if (Spell.Damage != 0)
             {

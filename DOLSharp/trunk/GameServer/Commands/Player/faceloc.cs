@@ -52,8 +52,8 @@ namespace DawnOfLight.GameServer.commands.Player
 				client.Out.SendMessage
 					(
 					"Please enter X and Y coordinates.",
-					eChatType.CT_System,
-					eChatLoc.CL_SystemWindow
+					ChatType.CT_System,
+					ChatLocation.CL_SystemWindow
 					);
 				return;
 			}
@@ -66,7 +66,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			}
 			catch
 			{
-				client.Out.SendMessage("Please enter a valid X and Y location.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Please enter a valid X and Y location.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			int Xoffset = client.Player.CurrentZone.XOffset;

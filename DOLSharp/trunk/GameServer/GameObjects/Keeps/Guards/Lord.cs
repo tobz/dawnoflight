@@ -215,14 +215,14 @@ namespace DawnOfLight.GameServer.GameObjects.Keeps.Guards
 
 			if (InCombat || Component.Keep.InCombat)
 			{
-				player.Out.SendMessage("You can't talk to the lord while under siege.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You can't talk to the lord while under siege.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				log.DebugFormat("KEEPWARNING: {0} attempted to interact with {1} of {2} while keep or lord in combat.", player.Name, Name, Component.Keep.Name);
 				return false;
 			}
 
 			if (GameServer.ServerRules.IsAllowedToClaim(player, CurrentRegion))
 			{
-				player.Out.SendMessage("Would you like to [Claim Keep] now? Or maybe [Release Keep]?", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Would you like to [Claim Keep] now? Or maybe [Release Keep]?", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 			}
 
             return true;
@@ -269,7 +269,7 @@ namespace DawnOfLight.GameServer.GameObjects.Keeps.Guards
 			if ((attacker != null && IsWithinRadius(attacker, distance) == false) || IsWithinRadius(source, distance) == false)
 			{
 				if (attacker != null)
-					attacker.Out.SendMessage(this.Name + " is immune to damage from this range", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+					attacker.Out.SendMessage(this.Name + " is immune to damage from this range", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return;
 			}
 

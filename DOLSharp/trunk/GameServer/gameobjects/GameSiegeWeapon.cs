@@ -194,23 +194,23 @@ namespace DawnOfLight.GameServer.GameObjects
 		{
 			if (Owner != null && Owner != player)
 			{
-				player.Out.SendMessage(GetName(0, true) + " is already under control.", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(GetName(0, true) + " is already under control.", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			if (player.SiegeWeapon != null && player.SiegeWeapon != this)
 			{
-				player.Out.SendMessage("You already have a siege weapon under your control.", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You already have a siege weapon under your control.", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			if (IsMoving)
 			{
-				player.Out.SendMessage("You can't take control of a siege weapon while it is moving.", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You can't take control of a siege weapon while it is moving.", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			Owner = player;
 			player.SiegeWeapon = this;
 			Owner.Out.SendSiegeWeaponInterface(this, SiegeWeaponTimer.TimeUntilElapsed / 100);
-			player.Out.SendMessage("You take control of " + GetName(0, false) + ".", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage("You take control of " + GetName(0, false) + ".", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 			if ((CurrentState & GameSiegeWeapon.eState.Armed) != GameSiegeWeapon.eState.Armed)
 				Arm();
 
@@ -218,7 +218,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		public virtual void ReleaseControl()
 		{
 			if (Owner == null) return;
-			Owner.Out.SendMessage("You are no longer controlling " + GetName(0, false) + ".", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+			Owner.Out.SendMessage("You are no longer controlling " + GetName(0, false) + ".", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 			Owner.Out.SendSiegeWeaponCloseInterface();
 			Owner.SiegeWeapon = null;
 			Owner = null;
@@ -246,7 +246,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			PreAction();
 			if (Owner != null)
 			{
-				Owner.Out.SendMessage(GetName(0, true) + " is turning to your target.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				Owner.Out.SendMessage(GetName(0, true) + " is turning to your target.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -258,7 +258,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			PreAction();
 			if (Owner != null)
 			{//You prepare the cauldron of boiling oil for firing. (15.0s until armed)
-				Owner.Out.SendMessage("You prepare " + GetName(0, false) + " for firing. (" + (GetActionDelay(SiegeTimer.eAction.Arming) / 1000).ToString("N") + "s until armed)", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				Owner.Out.SendMessage("You prepare " + GetName(0, false) + " for firing. (" + (GetActionDelay(SiegeTimer.eAction.Arming) / 1000).ToString("N") + "s until armed)", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 
 		}
@@ -269,14 +269,14 @@ namespace DawnOfLight.GameServer.GameObjects
 			if (Owner == null || Owner.GroundTarget == null) return;
             if ( !this.IsWithinRadius( Owner.GroundTarget, 1000 ) )
 			{
-				Owner.Out.SendMessage("Ground target is too far away to move to!", eChatType.CT_System,
-									  eChatLoc.CL_SystemWindow);
+				Owner.Out.SendMessage("Ground target is too far away to move to!", ChatType.CT_System,
+									  ChatLocation.CL_SystemWindow);
 				return;
 			}
 			if (!Owner.GroundTargetInView)
 			{
-				Owner.Out.SendMessage("Ground target is out of sight!", eChatType.CT_System,
-									  eChatLoc.CL_SystemWindow);
+				Owner.Out.SendMessage("Ground target is out of sight!", ChatType.CT_System,
+									  ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -285,7 +285,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			{
 				if (door is GameKeepDoor)
 				{
-					Owner.Out.SendMessage("You can't move a ram that close to a door!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					Owner.Out.SendMessage("You can't move a ram that close to a door!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 			}
@@ -310,7 +310,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			CurrentState |= eState.Aimed;
 			if (Owner != null)
 			{
-				Owner.Out.SendMessage("Your " + Name + " is now aimed!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				Owner.Out.SendMessage("Your " + Name + " is now aimed!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 		public void Armed()
@@ -319,7 +319,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			CurrentState |= eState.Armed;
 			if (Owner != null)
 			{
-				Owner.Out.SendMessage("Your " + Name + " is now armed!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				Owner.Out.SendMessage("Your " + Name + " is now armed!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 		public void Fire()
@@ -329,7 +329,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			{
 				if (Owner != null)
 				{
-					Owner.Out.SendMessage("The " + Name + " is not ready to fire yet!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					Owner.Out.SendMessage("The " + Name + " is not ready to fire yet!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				return;
 			}
@@ -340,7 +340,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			new RegionTimer(this, new RegionTimerCallback(MakeDelayedDamage), GetActionDelay(SiegeTimer.eAction.Fire));
 			BroadcastFireAnimation(GetActionDelay(SiegeTimer.eAction.Fire));
 			if (Owner != null)
-				Owner.Out.SendMessage("You fire " + GetName(0, false) + "!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				Owner.Out.SendMessage("You fire " + GetName(0, false) + "!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			Arm();
 		}
 
@@ -365,7 +365,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			{
 				if (Owner.GetCraftingSkillValue(eCraftingSkill.WoodWorking) < 301)
 				{
-					Owner.Out.SendMessage("You must have woodworking skill to repair a siege weapon.", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+					Owner.Out.SendMessage("You must have woodworking skill to repair a siege weapon.", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 					return;
 				}
 				TimesRepaired = TimesRepaired + 1;
@@ -373,7 +373,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			}
 			else
 			{
-				this.Owner.Out.SendMessage("The siegeweapon has decayed beyond repairs!", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+				this.Owner.Out.SendMessage("The siegeweapon has decayed beyond repairs!", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -381,7 +381,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		{
 			if (Owner.GetCraftingSkillValue(eCraftingSkill.SiegeCrafting) == -1)
 			{
-				Owner.Out.SendMessage("You must be a Siege weapon crafter to salvage it.", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+				Owner.Out.SendMessage("You must be a Siege weapon crafter to salvage it.", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			Owner.SalvageSiegeWeapon(this);
@@ -436,17 +436,17 @@ namespace DawnOfLight.GameServer.GameObjects
 			Owner.Stealth(false);
 			if (!Owner.IsAlive || Owner.IsMezzed || Owner.IsStunned)
 			{
-				this.Owner.Out.SendMessage("You can't use this siegeweapon now!", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+				this.Owner.Out.SendMessage("You can't use this siegeweapon now!", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 			if (Health <= DecayedHp)
 			{
-				this.Owner.Out.SendMessage("The siegeweapon needs to be repaired!", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+				this.Owner.Out.SendMessage("The siegeweapon needs to be repaired!", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 			if (!this.IsWithinRadius(this.Owner, SIEGE_WEAPON_CONTROLE_DISTANCE))
 			{
-				Owner.Out.SendMessage("You are too far from your siege equipment to control it any longer!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				Owner.Out.SendMessage("You are too far from your siege equipment to control it any longer!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 			return true;
@@ -622,7 +622,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		protected override void OnTick()
 		{
 			if (SiegeWeapon.Owner != null)
-				SiegeWeapon.Owner.Out.SendMessage("Action = " + CurrentAction, eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+				SiegeWeapon.Owner.Out.SendMessage("Action = " + CurrentAction, ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 			else return;
 			switch (CurrentAction)
 			{

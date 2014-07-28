@@ -46,7 +46,7 @@ namespace DawnOfLight.GameServer.SkillHandler
         {
             if (!player.IsAlive)
             {
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.Dead"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.Dead"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
             if (player == null)
@@ -64,7 +64,7 @@ namespace DawnOfLight.GameServer.SkillHandler
                     if (bg.GuardSource == player)
                         bg.Cancel(false);
                 }
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.Dead"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.Dead"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
 
@@ -72,7 +72,7 @@ namespace DawnOfLight.GameServer.SkillHandler
             GamePlayer guardTarget = player.TargetObject as GamePlayer;
             if (guardTarget == player)
             {
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.GuardTargetIsGuardSource"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.GuardTargetIsGuardSource"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
 
@@ -81,7 +81,7 @@ namespace DawnOfLight.GameServer.SkillHandler
             Group group = player.Group;
             if (guardTarget == null || group == null || !group.IsInTheGroup(guardTarget))
             {
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.GuardTargetIsGuardSource"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.GuardTargetIsGuardSource"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
 
@@ -94,7 +94,7 @@ namespace DawnOfLight.GameServer.SkillHandler
                     bg.Cancel(false);
                     return;
                 }
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.GuardTargetAlreadyBodyGuarded", bg.GuardSource.GetName(0, true), bg.GuardTarget.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.GuardTargetAlreadyBodyGuarded", bg.GuardSource.GetName(0, true), bg.GuardTarget.GetName(0, false)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
 
@@ -102,7 +102,7 @@ namespace DawnOfLight.GameServer.SkillHandler
             {
                     if (bg != null && player == bg.GuardTarget)
                     {
-                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.GuardSourceBodyGuarded"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Bodyguard.GuardSourceBodyGuarded"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         return;
                     }
             }

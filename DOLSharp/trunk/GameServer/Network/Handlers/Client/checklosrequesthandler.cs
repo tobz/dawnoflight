@@ -23,12 +23,12 @@ using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.CheckLOSRequest, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.CheckLOSRequest, ClientStatus.PlayerInGame)]
 	public class CheckLOSResponseHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			ushort checkerOID = packet.ReadShort();
 			ushort targetOID = packet.ReadShort();

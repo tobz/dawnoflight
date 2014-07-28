@@ -162,9 +162,9 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				godelevaDowden.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 138);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 134);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 135);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 138);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 134);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 135);
 				godelevaDowden.Inventory = template.CloseTemplate();
 				godelevaDowden.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -480,7 +480,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 			{
 				UseSlotEventArgs uArgs = (UseSlotEventArgs)args;
 
-				InventoryItem item = player.Inventory.GetItem((eInventorySlot)uArgs.Slot);
+				InventoryItem item = player.Inventory.GetItem((InventorySlot)uArgs.Slot);
 				if (item != null && item.Id_nb == woodenBucket.Id_nb)
 				{
 					if (player.IsWithinRadius(cotswoldVillageBridge, 500))

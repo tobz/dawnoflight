@@ -350,7 +350,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 									PathPoint startpoint = new PathPoint(client.Player.X, client.Player.Y, client.Player.Z, 100000, ePathType.Once);
 									client.Player.TempProperties.setProperty(TEMP_PATH_FIRST, startpoint);
 									client.Player.TempProperties.setProperty(TEMP_PATH_LAST, startpoint);
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.KeepGuard.Path.CreationStarted"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.KeepGuard.Path.CreationStarted"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									CreateTempPathObject(client, startpoint, "TMP PP 1");
 									break;
 								}

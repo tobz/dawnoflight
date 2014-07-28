@@ -111,7 +111,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 							break;
 					}
 
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					Step = 3;
 					return true;
 				}
@@ -145,7 +145,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"like you, I am not sure what purpose it will serve! I hope you have better luck than",
 					"its previous owner! Do you have any scrolls with it?");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}
@@ -175,7 +175,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 								String reply = String.Format("May Bruiser serve you well. Do not lose {0}",
 									"this, for I can only unlock the artifact's powers once.");
 								scholar.TurnTo(player);
-								scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+								scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 								FinishQuest();
 								return true;
 							}

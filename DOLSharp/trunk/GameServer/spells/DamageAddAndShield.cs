@@ -109,7 +109,7 @@ namespace DawnOfLight.GameServer.Spells
 					GamePlayer owner = brain.GetPlayerOwner();
 					if (owner != null)
 					{
-                        MessageToLiving(owner, String.Format(LanguageMgr.GetTranslation( owner.Client, "DamageAddAndShield.EventHandlerDA.YourHitFor" ), ad.Attacker.Name, target.GetName(0, false), ad.Damage ), eChatType.CT_Spell);
+                        MessageToLiving(owner, String.Format(LanguageMgr.GetTranslation( owner.Client, "DamageAddAndShield.EventHandlerDA.YourHitFor" ), ad.Attacker.Name, target.GetName(0, false), ad.Damage ), ChatType.CT_Spell);
                     }
 				}
 			}
@@ -120,7 +120,7 @@ namespace DawnOfLight.GameServer.Spells
 
 				if ( attackerClient != null )
 				{
-					MessageToLiving( attacker, String.Format( LanguageMgr.GetTranslation( attackerClient, "DamageAddAndShield.EventHandlerDA.YouHitExtra" ), target.GetName( 0, false ), ad.Damage ), eChatType.CT_Spell );
+					MessageToLiving( attacker, String.Format( LanguageMgr.GetTranslation( attackerClient, "DamageAddAndShield.EventHandlerDA.YouHitExtra" ), target.GetName( 0, false ), ad.Damage ), ChatType.CT_Spell );
 				}
             }
 
@@ -129,7 +129,7 @@ namespace DawnOfLight.GameServer.Spells
 
 			if ( targetClient != null )
 			{
-				MessageToLiving( target, String.Format( LanguageMgr.GetTranslation( targetClient, "DamageAddAndShield.EventHandlerDA.DamageToYou" ), attacker.GetName( 0, false ), ad.Damage ), eChatType.CT_Spell );
+				MessageToLiving( target, String.Format( LanguageMgr.GetTranslation( targetClient, "DamageAddAndShield.EventHandlerDA.DamageToYou" ), attacker.GetName( 0, false ), ad.Damage ), ChatType.CT_Spell );
 			}
 
             target.OnAttackedByEnemy(ad);
@@ -214,20 +214,20 @@ namespace DawnOfLight.GameServer.Spells
 					owner = brain.GetPlayerOwner();
 					if (owner != null && owner.ControlledBrain != null && ad.Attacker == owner.ControlledBrain.Body)
 					{
-                        MessageToLiving(owner, String.Format(LanguageMgr.GetTranslation( owner.Client, "DamageAddAndShield.EventHandlerDS.YourHitFor" ), ad.Attacker.Name, target.GetName(0, false), ad.Damage ), eChatType.CT_Spell);
+                        MessageToLiving(owner, String.Format(LanguageMgr.GetTranslation( owner.Client, "DamageAddAndShield.EventHandlerDS.YourHitFor" ), ad.Attacker.Name, target.GetName(0, false), ad.Damage ), ChatType.CT_Spell);
                     }
 				}
 			}
 			else if( attackerClient != null )
 			{
-                MessageToLiving(attacker, String.Format(LanguageMgr.GetTranslation( attackerClient, "DamageAddAndShield.EventHandlerDS.YouHitFor" ), target.GetName(0, false), ad.Damage ), eChatType.CT_Spell);
+                MessageToLiving(attacker, String.Format(LanguageMgr.GetTranslation( attackerClient, "DamageAddAndShield.EventHandlerDS.YouHitFor" ), target.GetName(0, false), ad.Damage ), ChatType.CT_Spell);
             }
 
 			GameClient targetClient = null;
 			if ( target is GamePlayer ) targetClient = ( (GamePlayer)target ).Client;
 
 			if ( targetClient != null )
-				MessageToLiving(target, String.Format(LanguageMgr.GetTranslation( targetClient, "DamageAddAndShield.EventHandlerDS.DamageToYou" ), attacker.GetName(0, false), ad.Damage ), eChatType.CT_Spell);
+				MessageToLiving(target, String.Format(LanguageMgr.GetTranslation( targetClient, "DamageAddAndShield.EventHandlerDS.DamageToYou" ), attacker.GetName(0, false), ad.Damage ), ChatType.CT_Spell);
 
             target.OnAttackedByEnemy(ad);
 			attacker.DealDamage(ad);
@@ -313,10 +313,10 @@ namespace DawnOfLight.GameServer.Spells
 			base.OnEffectStart(effect);
 			// "Your weapon is blessed by the gods!"
 			// "{0}'s weapon glows with the power of the gods!"
-			eChatType chatType = eChatType.CT_SpellPulse;
+			ChatType chatType = ChatType.CT_SpellPulse;
 			if (Spell.Pulse == 0)
 			{
-				chatType = eChatType.CT_Spell;
+				chatType = ChatType.CT_Spell;
 			}
 			bool upperCase = Spell.Message2.StartsWith("{0}");
 			MessageToLiving(effect.Owner, Spell.Message1, chatType);
@@ -339,9 +339,9 @@ namespace DawnOfLight.GameServer.Spells
 				// "Your weapon returns to normal."
 				// "{0}'s weapon returns to normal."
 				bool upperCase = Spell.Message4.StartsWith("{0}");
-				MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
+				MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
 				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, 
-					effect.Owner.GetName(0, upperCase)), eChatType.CT_SpellExpires, effect.Owner);
+					effect.Owner.GetName(0, upperCase)), ChatType.CT_SpellExpires, effect.Owner);
 			}
 			GameEventMgr.RemoveHandler(effect.Owner, EventType, new DOLEventHandler(EventHandler));
 			return 0;

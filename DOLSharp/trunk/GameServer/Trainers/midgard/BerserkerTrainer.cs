@@ -58,7 +58,7 @@ namespace DawnOfLight.GameServer.Trainers.midgard
 				// perhaps player can be promoted
 				if (CanPromotePlayer(player))
 				{
-					player.Out.SendMessage(this.Name + " says, \"Do you desire to [join the House of Modi] and defend our realm as a Berserker?\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"Do you desire to [join the House of Modi] and defend our realm as a Berserker?\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 					if (!player.IsLevelRespecUsed)
 					{
 						OfferRespecialize(player);

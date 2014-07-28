@@ -103,23 +103,23 @@ namespace DawnOfLight.GameServer.GameEvents
 			m_guardMaster.Name = "Master Guard Trainer";
 			//Now we add some nice equipment to the guard-trainer
 			GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-			template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 843, 43, 13);
-			template.AddNPCEquipment(eInventorySlot.Cloak, 57, 65);
-			template.AddNPCEquipment(eInventorySlot.TorsoArmor, 46);
-			template.AddNPCEquipment(eInventorySlot.LegsArmor, 47);
-			template.AddNPCEquipment(eInventorySlot.ArmsArmor, 48);
-			template.AddNPCEquipment(eInventorySlot.HandsArmor, 49);
-			template.AddNPCEquipment(eInventorySlot.FeetArmor, 50);
+			template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 843, 43, 13);
+			template.AddNPCEquipment(InventorySlot.Cloak, 57, 65);
+			template.AddNPCEquipment(InventorySlot.TorsoArmor, 46);
+			template.AddNPCEquipment(InventorySlot.LegsArmor, 47);
+			template.AddNPCEquipment(InventorySlot.ArmsArmor, 48);
+			template.AddNPCEquipment(InventorySlot.HandsArmor, 49);
+			template.AddNPCEquipment(InventorySlot.FeetArmor, 50);
 			m_guardMaster.Inventory = template.CloseTemplate();
 			m_guardMaster.SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
 
-			/*m_guardMaster.AddNPCEquipment((byte)eInventorySlot.TwoHandWeapon,843,43,13,0);
-			m_guardMaster.AddNPCEquipment((byte)eInventorySlot.Cloak,57,65,0,0);
-			m_guardMaster.AddNPCEquipment((byte)eInventorySlot.TorsoArmor,46,0,0,0);
-			m_guardMaster.AddNPCEquipment((byte)eInventorySlot.LegsArmor,47,0,0,0);
-			m_guardMaster.AddNPCEquipment((byte)eInventorySlot.ArmsArmor,48,0,0,0);
-			m_guardMaster.AddNPCEquipment((byte)eInventorySlot.HandsArmor,49,0,0,0);
-			m_guardMaster.AddNPCEquipment((byte)eInventorySlot.FeetArmor,50,0,0,0);
+			/*m_guardMaster.AddNPCEquipment((byte)InventorySlot.TwoHandWeapon,843,43,13,0);
+			m_guardMaster.AddNPCEquipment((byte)InventorySlot.Cloak,57,65,0,0);
+			m_guardMaster.AddNPCEquipment((byte)InventorySlot.TorsoArmor,46,0,0,0);
+			m_guardMaster.AddNPCEquipment((byte)InventorySlot.LegsArmor,47,0,0,0);
+			m_guardMaster.AddNPCEquipment((byte)InventorySlot.ArmsArmor,48,0,0,0);
+			m_guardMaster.AddNPCEquipment((byte)InventorySlot.HandsArmor,49,0,0,0);
+			m_guardMaster.AddNPCEquipment((byte)InventorySlot.FeetArmor,50,0,0,0);
 			m_guardMaster.ActiveWeaponSlot=GameLiving.eActiveWeaponSlot.TwoHanded;*/
 
 			//Now we declare 5 guard trainees that will fight the master and
@@ -128,13 +128,13 @@ namespace DawnOfLight.GameServer.GameEvents
 
 			// same inventory template for all
 			template = new GameNpcInventoryTemplate();
-			template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 843);
-			template.AddNPCEquipment(eInventorySlot.Cloak, 57, 32);
-			template.AddNPCEquipment(eInventorySlot.TorsoArmor, 36);
-			template.AddNPCEquipment(eInventorySlot.LegsArmor, 37);
-			template.AddNPCEquipment(eInventorySlot.ArmsArmor, 38);
-			template.AddNPCEquipment(eInventorySlot.HandsArmor, 39);
-			template.AddNPCEquipment(eInventorySlot.FeetArmor, 40);
+			template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 843);
+			template.AddNPCEquipment(InventorySlot.Cloak, 57, 32);
+			template.AddNPCEquipment(InventorySlot.TorsoArmor, 36);
+			template.AddNPCEquipment(InventorySlot.LegsArmor, 37);
+			template.AddNPCEquipment(InventorySlot.ArmsArmor, 38);
+			template.AddNPCEquipment(InventorySlot.HandsArmor, 39);
+			template.AddNPCEquipment(InventorySlot.FeetArmor, 40);
 			template = template.CloseTemplate();
 
 			for (int i = 0; i < 5; i++)

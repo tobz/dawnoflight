@@ -27,12 +27,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// <summary>
 	/// Handles effect cancel requests
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerCancelsEffect, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.PlayerCancelsEffect, ClientStatus.PlayerInGame)]
 	public class PlayerCancelsEffectHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int effectID = packet.ReadShort();
 

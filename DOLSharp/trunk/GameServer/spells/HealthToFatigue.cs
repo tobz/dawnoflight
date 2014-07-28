@@ -34,7 +34,7 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if (m_caster.Endurance == m_caster.MaxEndurance)
 			{
-				MessageToCaster("You already have full endurance!", eChatType.CT_Spell);
+				MessageToCaster("You already have full endurance!", ChatType.CT_Spell);
 				return false;
 			}
 
@@ -64,7 +64,7 @@ namespace DawnOfLight.GameServer.Spells
 				amount = target.MaxEndurance - target.Endurance;
 
 			target.ChangeEndurance(target, GameLiving.eEnduranceChangeType.Spell, amount);
-			MessageToCaster("You transfer " + amount + " life to Endurance!", eChatType.CT_Spell);
+			MessageToCaster("You transfer " + amount + " life to Endurance!", ChatType.CT_Spell);
 		}
 
 		// constructor

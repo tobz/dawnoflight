@@ -22,14 +22,14 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			GamePlayer player = living as GamePlayer;
 			/* if (player.IsSpeedWarped)
 			 {
-				 player.Out.SendMessage("You cannot use this ability while speed warped!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				 player.Out.SendMessage("You cannot use this ability while speed warped!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				 return;
 			 }*/
 
 			if (player.TempProperties.getProperty("Charging", false)
 				|| player.EffectList.CountOfType(typeof(SpeedOfSoundEffect), typeof(ArmsLengthEffect), typeof(ChargeEffect)) > 0)
 			{
-				player.Out.SendMessage("You already an effect of that type!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You already an effect of that type!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return;
 			}
 

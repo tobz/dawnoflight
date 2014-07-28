@@ -117,8 +117,8 @@ namespace DawnOfLight.GameServer.GameObjects.Atlantis
 					long totalValue = item.Price;
 					player.BountyPoints += totalValue;
 					player.Out.SendUpdatePoints();
-					player.Out.SendMessage(totalValue + " Bounty Points refunded", eChatType.CT_ScreenCenterSmaller, eChatLoc.CL_SystemWindow);
-					player.Out.SendMessage("You already have this credit or your class is not eligible to receive this artifact. " + totalValue + " Bounty Points refunded!", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(totalValue + " Bounty Points refunded", ChatType.CT_ScreenCenterSmaller, ChatLocation.CL_SystemWindow);
+					player.Out.SendMessage("You already have this credit or your class is not eligible to receive this artifact. " + totalValue + " Bounty Points refunded!", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 					return true;
 				}
             }

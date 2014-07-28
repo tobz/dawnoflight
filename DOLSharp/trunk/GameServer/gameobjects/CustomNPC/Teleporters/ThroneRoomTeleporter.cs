@@ -58,7 +58,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC.Teleporters
 			{
 				String reply = "I am afraid, but the King is busy right now.";
 
-				if (player.Inventory.CountItemTemplate("Personal_Bind_Recall_Stone", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == 0)
+				if (player.Inventory.CountItemTemplate("Personal_Bind_Recall_Stone", InventorySlot.Min_Inv, InventorySlot.Max_Inv) == 0)
 					reply += " If you're only here to get your Personal Bind Recall Stone then I'll see what I can [do].";
 
 				SayTo(player, reply);
@@ -107,7 +107,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC.Teleporters
 				if (throneRegionID == 0)
 				{
 					log.ErrorFormat("Can't find King for player {0} speaking to {1} of realm {2}!", player.Name, Name, Realm);
-					player.Out.SendMessage("Server error, can't find throne room.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Server error, can't find throne room.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 					return false;
 				}
 
@@ -119,7 +119,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC.Teleporters
 					if (teleport == null)
 					{
 						log.ErrorFormat("Can't find throne room exit TeleportID {0}!", teleportExitID);
-						player.Out.SendMessage("Server error, can't find exit to this throne room.  Moving you to your last bind point.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("Server error, can't find exit to this throne room.  Moving you to your last bind point.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 						player.MoveToBind();
 					}
 				}
@@ -129,7 +129,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC.Teleporters
 					if (teleport == null)
 					{
 						log.ErrorFormat("Can't find throne room TeleportID {0}!", teleportThroneID);
-						player.Out.SendMessage("Server error, can't find throne room teleport location.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("Server error, can't find throne room teleport location.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 					}
 				}
 
@@ -145,7 +145,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC.Teleporters
 
 			if (text.ToLower() == "do")
 			{
-				if (player.Inventory.CountItemTemplate("Personal_Bind_Recall_Stone", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == 0)
+				if (player.Inventory.CountItemTemplate("Personal_Bind_Recall_Stone", InventorySlot.Min_Inv, InventorySlot.Max_Inv) == 0)
 				{
 					SayTo(player, "Very well then. Here's your Personal Bind Recall Stone, may it serve you well.");
 					player.ReceiveItem(this, "Personal_Bind_Recall_Stone");

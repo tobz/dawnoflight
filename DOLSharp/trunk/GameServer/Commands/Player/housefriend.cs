@@ -44,7 +44,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
             if (!client.Player.InHouse)
             {
-                client.Out.SendMessage("You need to be in your House to use this command", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                client.Out.SendMessage("You need to be in your House to use this command", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
 
@@ -61,13 +61,13 @@ namespace DawnOfLight.GameServer.commands.Player
 						GameClient targetClient = WorldMgr.GetClientByPlayerNameAndRealm(args[2], 0, true);
 						if (targetClient == null)
 						{
-							client.Out.SendMessage("No players online with that name.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("No players online with that name.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
 						if (client.Player.CurrentHouse.AddPermission(targetClient.Player, PermissionType.Player, HousingConstants.MinPermissionLevel))
 						{
-							client.Out.SendMessage("You added " + targetClient.Player.Name + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("You added " + targetClient.Player.Name + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 						break;
 					}
@@ -83,13 +83,13 @@ namespace DawnOfLight.GameServer.commands.Player
                         GameClient targetClient = WorldMgr.GetClientByPlayerNameAndRealm(args[2], 0, true);
                         if (targetClient == null)
                         {
-                            client.Out.SendMessage("No players online with that name.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                            client.Out.SendMessage("No players online with that name.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                             return;
                         }
 
 						if (client.Player.CurrentHouse.AddPermission(targetClient.Player, PermissionType.Account, HousingConstants.MinPermissionLevel))
 						{
-							client.Out.SendMessage("You added " + targetClient.Player.Name + "'s account.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("You added " + targetClient.Player.Name + "'s account.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
                         break;
                     }
@@ -102,13 +102,13 @@ namespace DawnOfLight.GameServer.commands.Player
                         Guild targetGuild = GuildMgr.GetGuildByName(args[2]);
                         if (targetGuild == null)
                         {
-                            client.Out.SendMessage("A guild with that name was not found. Don't forget to put longer names in quotes eg: \"My Guild\".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                            client.Out.SendMessage("A guild with that name was not found. Don't forget to put longer names in quotes eg: \"My Guild\".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                             return;
                         }
 
 						if (client.Player.CurrentHouse.AddPermission(targetGuild.Name, PermissionType.Guild, HousingConstants.MinPermissionLevel))
 						{
-							client.Out.SendMessage("You added " + targetGuild.Name + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("You added " + targetGuild.Name + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
                         break;
                     
@@ -117,7 +117,7 @@ namespace DawnOfLight.GameServer.commands.Player
 					{
 						if (client.Player.CurrentHouse.AddPermission("All", PermissionType.All, HousingConstants.MinPermissionLevel))
 						{
-							client.Out.SendMessage("You added everybody!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("You added everybody!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 						break;
 					}

@@ -1401,14 +1401,14 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 
 			if (response == 0x00)
 			{
-				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 			}
 			else
 			{
 				//Check if we can add the quest!
 				if (!Brigit.GiveQuest(typeof (Essence_50), player, 1))
 					return;
-				player.Out.SendMessage("Kill Caithor in Cursed Forest loc 28k 48k ", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Kill Caithor in Cursed Forest loc 28k 48k ", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 			}
 		}
 
@@ -1446,7 +1446,7 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 				EnemyKilledEventArgs gArgs = (EnemyKilledEventArgs) args;
 				if (gArgs.Target.Name == Caithor.Name)
 				{
-					m_questPlayer.Out.SendMessage("You collect the Moonstone from Caithor", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					m_questPlayer.Out.SendMessage("You collect the Moonstone from Caithor", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					GiveItem(m_questPlayer, Moonstone);
 					Step = 2;
 					return;
@@ -1475,7 +1475,7 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 
 		public override void FinishQuest()
 		{
-			if (m_questPlayer.Inventory.IsSlotsFree(6, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+			if (m_questPlayer.Inventory.IsSlotsFree(6, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
 				RemoveItem(Brigit, m_questPlayer, Moonstone);
 
@@ -1523,7 +1523,7 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 			}
 			else
 			{
-				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 

@@ -25,12 +25,12 @@ using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.HouseEnterLeave, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.HouseEnterLeave, ClientStatus.PlayerInGame)]
 	public class HouseEnterLeaveHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int pid = packet.ReadShort();
 			int housenumber = packet.ReadShort();

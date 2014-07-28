@@ -98,7 +98,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 						"in the stories and the history behind these artifacts than the actual items",
 						"themselves.");
 					scholar.TurnTo(player);
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					FinishQuest();
 					return true;
 				}
@@ -128,7 +128,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 			{
                 String reply = "Oh, the mysterious Erinys Charm. Do you have the scrolls on it? I've found a few that allude to its true nature, but haven't found anything with any detail.";
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}

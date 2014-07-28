@@ -17,14 +17,15 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0x35^168,"Handles sending the region overview")]
+    [PacketHandler(PacketType.TCP, ClientPackets.RegionListRequest)]
 	public class RegionListRequestHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			client.Out.SendRegions();
 		}

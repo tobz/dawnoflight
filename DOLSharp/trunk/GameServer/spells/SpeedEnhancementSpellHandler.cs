@@ -73,7 +73,7 @@ namespace DawnOfLight.GameServer.Spells
 			// Graveen: archery speed shot
 			if ((Spell.Pulse != 0 || Spell.CastTime != 0) && target.InCombat)
 			{
-				MessageToLiving(target, "You've been in combat recently, the spell has no effect on you!", eChatType.CT_SpellResisted);
+				MessageToLiving(target, "You've been in combat recently, the spell has no effect on you!", ChatType.CT_SpellResisted);
 				return;
 			}
 			base.ApplyEffectOnTarget(target, effectiveness);

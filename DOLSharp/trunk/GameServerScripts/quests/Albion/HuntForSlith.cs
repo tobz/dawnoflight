@@ -156,14 +156,14 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				commanderBurcrif.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 26);
-				template.AddNPCEquipment(eInventorySlot.HeadArmor, 93);
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 49);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 50);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 662);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 91);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 47);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 48);
+				template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 26);
+				template.AddNPCEquipment(InventorySlot.HeadArmor, 93);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 49);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 50);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 662);
+				template.AddNPCEquipment(InventorySlot.Cloak, 91);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 47);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 48);
 				commanderBurcrif.Inventory = template.CloseTemplate();
 				commanderBurcrif.SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
 

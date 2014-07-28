@@ -854,8 +854,8 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				dunwynClone.Heading = 342;
 
 				template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 798);
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 19);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 798);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 19);
 				dunwynClone.Inventory = template.CloseTemplate();
 				dunwynClone.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -912,12 +912,12 @@ namespace DawnOfLight.GameServer.Quests.Albion
 			recruits[0].Name = "Recruit Armsman McTavish";
 			recruits[0].Model = 40;
 			template = new GameNpcInventoryTemplate();
-			template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 69);
-			template.AddNPCEquipment(eInventorySlot.TorsoArmor, 46);
-			template.AddNPCEquipment(eInventorySlot.LegsArmor, 47);
-			template.AddNPCEquipment(eInventorySlot.FeetArmor, 50);
-			template.AddNPCEquipment(eInventorySlot.ArmsArmor, 48);
-			template.AddNPCEquipment(eInventorySlot.HandsArmor, 49);
+			template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 69);
+			template.AddNPCEquipment(InventorySlot.TorsoArmor, 46);
+			template.AddNPCEquipment(InventorySlot.LegsArmor, 47);
+			template.AddNPCEquipment(InventorySlot.FeetArmor, 50);
+			template.AddNPCEquipment(InventorySlot.ArmsArmor, 48);
+			template.AddNPCEquipment(InventorySlot.HandsArmor, 49);
 			recruits[0].Inventory = template.CloseTemplate();
 			recruits[0].SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
 
@@ -931,12 +931,12 @@ namespace DawnOfLight.GameServer.Quests.Albion
 			recruits[1].Name = "Recruit Paladin Andral";
 			recruits[1].Model = 41;
 			template = new GameNpcInventoryTemplate();
-			template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 6);
-			template.AddNPCEquipment(eInventorySlot.TorsoArmor, 41);
-			template.AddNPCEquipment(eInventorySlot.LegsArmor, 42);
-			template.AddNPCEquipment(eInventorySlot.FeetArmor, 45);
-			template.AddNPCEquipment(eInventorySlot.ArmsArmor, 43);
-			template.AddNPCEquipment(eInventorySlot.HandsArmor, 44);
+			template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 6);
+			template.AddNPCEquipment(InventorySlot.TorsoArmor, 41);
+			template.AddNPCEquipment(InventorySlot.LegsArmor, 42);
+			template.AddNPCEquipment(InventorySlot.FeetArmor, 45);
+			template.AddNPCEquipment(InventorySlot.ArmsArmor, 43);
+			template.AddNPCEquipment(InventorySlot.HandsArmor, 44);
 			recruits[1].Inventory = template.CloseTemplate();
 			recruits[1].SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
 
@@ -950,9 +950,9 @@ namespace DawnOfLight.GameServer.Quests.Albion
 			recruits[2].Name = "Recruit Scout Gillman";
 			recruits[2].Model = 32;
 			template = new GameNpcInventoryTemplate();
-			template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 4);
-			template.AddNPCEquipment(eInventorySlot.TorsoArmor, 36);
-			template.AddNPCEquipment(eInventorySlot.LegsArmor, 37);
+			template.AddNPCEquipment(InventorySlot.RightHandWeapon, 4);
+			template.AddNPCEquipment(InventorySlot.TorsoArmor, 36);
+			template.AddNPCEquipment(InventorySlot.LegsArmor, 37);
 			recruits[2].Inventory = template.CloseTemplate();
 			recruits[2].SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -963,9 +963,9 @@ namespace DawnOfLight.GameServer.Quests.Albion
 			recruits[3].Name = "Recruit Scout Stuart";
 			recruits[3].Model = 32;
 			template = new GameNpcInventoryTemplate();
-			template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 5);
-			template.AddNPCEquipment(eInventorySlot.TorsoArmor, 36);
-			template.AddNPCEquipment(eInventorySlot.LegsArmor, 37);
+			template.AddNPCEquipment(InventorySlot.RightHandWeapon, 5);
+			template.AddNPCEquipment(InventorySlot.TorsoArmor, 36);
+			template.AddNPCEquipment(InventorySlot.LegsArmor, 37);
 			recruits[3].Inventory = template.CloseTemplate();
 			recruits[3].SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

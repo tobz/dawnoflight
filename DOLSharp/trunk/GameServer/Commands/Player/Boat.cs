@@ -39,7 +39,7 @@ namespace DawnOfLight.GameServer.commands.Player
 							if (!client.Player.IsSwimming)
 							{
 								// Not in water
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotInWater"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotInWater"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								return;
 							}
 
@@ -61,7 +61,7 @@ namespace DawnOfLight.GameServer.commands.Player
 								if (GameBoat.PlayerHasItem(client.Player, "scout_boat"))
 								{
 									GameBoat playerBoat = new GameBoat();
-									InventoryItem item = client.Player.Inventory.GetFirstItemByID("scout_boat", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv);
+									InventoryItem item = client.Player.Inventory.GetFirstItemByID("scout_boat", InventorySlot.Min_Inv, InventorySlot.Max_Inv);
 									playerBoat.BoatID = System.Guid.NewGuid().ToString();
 									playerBoat.Name = client.Player.Name + "'s scout boat";
 									playerBoat.X = client.Player.X;
@@ -88,12 +88,12 @@ namespace DawnOfLight.GameServer.commands.Player
 									}
 									playerBoat.AddToWorld();
 									client.Player.MountSteed(playerBoat, true);
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								}
 								else if (GameBoat.PlayerHasItem(client.Player, "warship"))
 								{
 									GameBoat playerBoat = new GameBoat();
-									InventoryItem item = client.Player.Inventory.GetFirstItemByID("warship", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv);
+									InventoryItem item = client.Player.Inventory.GetFirstItemByID("warship", InventorySlot.Min_Inv, InventorySlot.Max_Inv);
 									playerBoat.BoatID = System.Guid.NewGuid().ToString();
 									playerBoat.Name = client.Player.Name + "'s warship";
 									playerBoat.X = client.Player.X;
@@ -120,12 +120,12 @@ namespace DawnOfLight.GameServer.commands.Player
 									}
 									playerBoat.AddToWorld();
 									client.Player.MountSteed(playerBoat, true);
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								}
 								else if (GameBoat.PlayerHasItem(client.Player, "galleon"))
 								{
 									GameBoat playerBoat = new GameBoat();
-									InventoryItem item = client.Player.Inventory.GetFirstItemByID("galleon", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv);
+									InventoryItem item = client.Player.Inventory.GetFirstItemByID("galleon", InventorySlot.Min_Inv, InventorySlot.Max_Inv);
 									playerBoat.BoatID = System.Guid.NewGuid().ToString();
 									playerBoat.Name = client.Player.Name + "'s galleon";
 									playerBoat.X = client.Player.X;
@@ -152,12 +152,12 @@ namespace DawnOfLight.GameServer.commands.Player
 									}
 									playerBoat.AddToWorld();
 									client.Player.MountSteed(playerBoat, true);
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								}
 								else if (GameBoat.PlayerHasItem(client.Player, "skiff"))
 								{
 									GameBoat playerBoat = new GameBoat();
-									InventoryItem item = client.Player.Inventory.GetFirstItemByID("skiff", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv);
+									InventoryItem item = client.Player.Inventory.GetFirstItemByID("skiff", InventorySlot.Min_Inv, InventorySlot.Max_Inv);
 									playerBoat.BoatID = System.Guid.NewGuid().ToString();
 									playerBoat.Name = client.Player.Name + "'s skiff";
 									playerBoat.X = client.Player.X;
@@ -184,12 +184,12 @@ namespace DawnOfLight.GameServer.commands.Player
 									}
 									playerBoat.AddToWorld();
 									client.Player.MountSteed(playerBoat, true);
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								}
 								else if (GameBoat.PlayerHasItem(client.Player, "Viking_Longship"))
 								{
 									GameBoat playerBoat = new GameBoat();
-									InventoryItem item = client.Player.Inventory.GetFirstItemByID("Viking_Longship", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv);
+									InventoryItem item = client.Player.Inventory.GetFirstItemByID("Viking_Longship", InventorySlot.Min_Inv, InventorySlot.Max_Inv);
 									playerBoat.BoatID = System.Guid.NewGuid().ToString();
 									playerBoat.Name = client.Player.Name + "'s Viking longship";
 									playerBoat.X = client.Player.X;
@@ -216,12 +216,12 @@ namespace DawnOfLight.GameServer.commands.Player
 									}
 									playerBoat.AddToWorld();
 									client.Player.MountSteed(playerBoat, true);
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								}
 								else if (GameBoat.PlayerHasItem(client.Player, "ps_longship"))
 								{
 									GameBoat playerBoat = new GameBoat();
-									InventoryItem item = client.Player.Inventory.GetFirstItemByID("ps_longship", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv);
+									InventoryItem item = client.Player.Inventory.GetFirstItemByID("ps_longship", InventorySlot.Min_Inv, InventorySlot.Max_Inv);
 									playerBoat.BoatID = System.Guid.NewGuid().ToString();
 									playerBoat.Name = client.Player.Name + "'s Longship";
 									playerBoat.X = client.Player.X;
@@ -248,12 +248,12 @@ namespace DawnOfLight.GameServer.commands.Player
 									}
 									playerBoat.AddToWorld();
 									client.Player.MountSteed(playerBoat, true);
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								}
 								else if (GameBoat.PlayerHasItem(client.Player, "stygian_ship"))
 								{
 									GameBoat playerBoat = new GameBoat();
-									InventoryItem item = client.Player.Inventory.GetFirstItemByID("stygian_ship", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv);
+									InventoryItem item = client.Player.Inventory.GetFirstItemByID("stygian_ship", InventorySlot.Min_Inv, InventorySlot.Max_Inv);
 									playerBoat.BoatID = System.Guid.NewGuid().ToString();
 									playerBoat.Name = client.Player.Name + "'s Stygian ship";
 									playerBoat.X = client.Player.X;
@@ -280,12 +280,12 @@ namespace DawnOfLight.GameServer.commands.Player
 									}
 									playerBoat.AddToWorld();
 									client.Player.MountSteed(playerBoat, true);
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								}
 								else if (GameBoat.PlayerHasItem(client.Player, "atlantean_ship"))
 								{
 									GameBoat playerBoat = new GameBoat();
-									InventoryItem item = client.Player.Inventory.GetFirstItemByID("atlantean_ship", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv);
+									InventoryItem item = client.Player.Inventory.GetFirstItemByID("atlantean_ship", InventorySlot.Min_Inv, InventorySlot.Max_Inv);
 									playerBoat.BoatID = System.Guid.NewGuid().ToString();
 									playerBoat.Name = client.Player.Name + "'s Atlantean ship";
 									playerBoat.X = client.Player.X;
@@ -312,12 +312,12 @@ namespace DawnOfLight.GameServer.commands.Player
 									}
 									playerBoat.AddToWorld();
 									client.Player.MountSteed(playerBoat, true);
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								}
 								else if (GameBoat.PlayerHasItem(client.Player, "British_Cog"))
 								{
 									GameBoat playerBoat = new GameBoat();
-									InventoryItem item = client.Player.Inventory.GetFirstItemByID("British_Cog", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv);
+									InventoryItem item = client.Player.Inventory.GetFirstItemByID("British_Cog", InventorySlot.Min_Inv, InventorySlot.Max_Inv);
 									playerBoat.BoatID = System.Guid.NewGuid().ToString();
 									playerBoat.Name = client.Player.Name + "'s British Cog";
 									playerBoat.X = client.Player.X;
@@ -344,11 +344,11 @@ namespace DawnOfLight.GameServer.commands.Player
 									}
 									playerBoat.AddToWorld();
 									client.Player.MountSteed(playerBoat, true);
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", playerBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								}
 								else
 								{
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 									return;
 								}
 								BoatMgr.SaveAllBoats();
@@ -374,11 +374,11 @@ namespace DawnOfLight.GameServer.commands.Player
 								curBoat.SetOwnBrain(brain);
 								curBoat.AddToWorld();
 								client.Player.MountSteed(curBoat, true);
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", curBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Summoned", curBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 							}
 							else
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 							}
 							break;
 						}
@@ -390,14 +390,14 @@ namespace DawnOfLight.GameServer.commands.Player
 							{
 								if (client.Player.InternalID == playerBoat.OwnerID)
 								{
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Unsummoned", playerBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Unsummoned", playerBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 									playerBoat.SaveIntoDatabase();
 									playerBoat.RemoveFromWorld();
 								}
 							}
 							else
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 							}
 							break;
 						}
@@ -406,18 +406,18 @@ namespace DawnOfLight.GameServer.commands.Player
 							GameBoat playerBoat = BoatMgr.GetBoatByName(client.Player.TargetObject.Name);
 							if (client.Player.TargetObject == null)
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NoBoatSelected"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NoBoatSelected"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								break;
 							}
 
 							if (playerBoat.MAX_PASSENGERS > 1)
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.YouBoard", playerBoat.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.YouBoard", playerBoat.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								client.Player.MountSteed(playerBoat, true);
 							}
 							else
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.FullBoat"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.FullBoat"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 							}
 							break;
 						}
@@ -429,16 +429,16 @@ namespace DawnOfLight.GameServer.commands.Player
 							{
 								if (client.Player.TargetObject == null)
 								{
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NoBoatSelected"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NoBoatSelected"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 									break;
 								}
 
 								client.Player.Steed.Follow(targetBoat, 800, 5000);
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.MoveFollow", client.Player.TargetObject.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.MoveFollow", client.Player.TargetObject.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 							}
 							else
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 							}
 							break;
 						}
@@ -447,11 +447,11 @@ namespace DawnOfLight.GameServer.commands.Player
 							if (client.Player.Steed.OwnerID == client.Player.InternalID)// needs to be player on own boat
 							{
 								client.Player.Steed.StopFollowing();
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.StopFollow"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.StopFollow"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 							}
 							else
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 							}
 							break;
 						}
@@ -463,7 +463,7 @@ namespace DawnOfLight.GameServer.commands.Player
 						{
 							if (client.Player.TargetObject == null)
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NoBoatSelected"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NoBoatSelected"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								break;
 							}
 							GameBoat playerBoat = BoatMgr.GetBoatByName(client.Player.TargetObject.Name);
@@ -471,7 +471,7 @@ namespace DawnOfLight.GameServer.commands.Player
 							if (client.Player.InternalID == playerBoat.OwnerID)
 								client.Player.Out.SendCustomDialog(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.DeleteConfirmation", playerBoat.Name), new CustomDialogResponse(BoatDeleteConfirmation));
 							else
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 
 							break;
 						}
@@ -491,23 +491,23 @@ namespace DawnOfLight.GameServer.commands.Player
 								if (playerBoat.RiderSlot(target) != -1)
 								{
 									target.DismountSteed(true);
-									target.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.BootedBy", client.Player.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.BootedTarget", target.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									target.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.BootedBy", client.Player.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.BootedTarget", target.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								}
 								else
 								{
-									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.TargetNotInBoat", target.Name), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+									client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.TargetNotInBoat", target.Name), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 								}
 							}
 							else
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.NotOwnBoat"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 							}
 							break;
 						}
 					default:
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.UnknownCommand"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.UnknownCommand"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 							DisplayHelp(client);
 						}
 						break;
@@ -520,14 +520,14 @@ namespace DawnOfLight.GameServer.commands.Player
 		}
 		public void DisplayHelp(GameClient client)
 		{
-			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Usage"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
-			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Summon"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
-			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Unsummon"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
-			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Follow"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
-			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.StopFollow"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
-			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Board"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
-			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Boot"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
-			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Delete"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Usage"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
+			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Summon"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
+			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Unsummon"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
+			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Follow"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
+			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.StopFollow"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
+			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Board"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
+			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Boot"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
+			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.Boat.Help.Delete"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 		}
 
 		protected void BoatDeleteConfirmation(GamePlayer player, byte response)

@@ -17,7 +17,7 @@ namespace DawnOfLight.GameServer.Utilities
 		{
 			foreach (InventoryItem item in template.AllItems)
 			{
-				AddItem((eInventorySlot)item.SlotPosition, GameInventoryItem.Create<InventoryItem>(item));
+				AddItem((InventorySlot)item.SlotPosition, GameInventoryItem.Create<InventoryItem>(item));
 			}
 		}
 	}

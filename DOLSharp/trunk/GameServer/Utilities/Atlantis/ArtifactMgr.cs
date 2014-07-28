@@ -373,7 +373,7 @@ namespace DawnOfLight.GameServer.Utilities.Atlantis
 			{
 				while (item.ArtifactLevel < 10)
 				{
-					player.Out.SendMessage(String.Format("Your {0} has gained a level!", item.Name), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(String.Format("Your {0} has gained a level!", item.Name), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					item.OnLevelGained(player, item.ArtifactLevel + 1);
 				}
 
@@ -384,7 +384,7 @@ namespace DawnOfLight.GameServer.Utilities.Atlantis
 			{
 				long xpBonus = (long)(xpAmount * ServerProperties.Properties.GUILD_BUFF_ARTIFACT_XP * .01);
 				xpAmount += xpBonus;
-				player.Out.SendMessage(string.Format("Your {0} gains additional experience due to your guild's buff!", item.Name), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(string.Format("Your {0} gains additional experience due to your guild's buff!", item.Name), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 			}
 
@@ -404,7 +404,7 @@ namespace DawnOfLight.GameServer.Utilities.Atlantis
 			long artifactXPNew = (long)(artifactXPOld + (xpAmount * xpRate) / ServerProperties.Properties.ARTIFACT_XP_RATE);
 			item.Experience = artifactXPNew;
 
-			player.Out.SendMessage(String.Format("Your {0} has gained experience.", item.Name), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage(String.Format("Your {0} has gained experience.", item.Name), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 			// Now let's see if this artifact has gained a new level yet.
 
@@ -416,7 +416,7 @@ namespace DawnOfLight.GameServer.Utilities.Atlantis
 				if (artifactXPOld > m_xpForLevel[level])
 					continue;
 
-				player.Out.SendMessage(String.Format("Your {0} has gained a level!", item.Name), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(String.Format("Your {0} has gained a level!", item.Name), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				item.OnLevelGained(player, level);
 			}
 		}
@@ -660,7 +660,7 @@ namespace DawnOfLight.GameServer.Utilities.Atlantis
 		public static Book GetPageNumbers(InventoryItem item, ref String artifactID)
 		{
 			if (item == null || item.Object_Type != (int)eObjectType.Magical
-			    || item.Item_Type != (int)eInventorySlot.FirstBackpack)
+			    || item.Item_Type != (int)InventorySlot.FirstBackpack)
 				return Book.NoPage;
 
 			lock (m_artifacts)
@@ -751,11 +751,11 @@ namespace DawnOfLight.GameServer.Utilities.Atlantis
 
 			// Now check if the player has got it.
 
-			var backpack = player.Inventory.GetItemRange(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+			var backpack = player.Inventory.GetItemRange(InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 			foreach (InventoryItem item in backpack)
 			{
 				if (item.Object_Type == (int)eObjectType.Magical &&
-				    item.Item_Type == (int)eInventorySlot.FirstBackpack &&
+				    item.Item_Type == (int)InventorySlot.FirstBackpack &&
 				    item.Name == bookID)
 					return true;
 			}

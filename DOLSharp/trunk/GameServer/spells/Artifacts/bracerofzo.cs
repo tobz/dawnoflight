@@ -51,7 +51,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
             {
                 String errorMessage = String.Format("NPC template {0} is missing, spell ID = {1}", Spell.LifeDrainReturn, Spell.ID);
                 if (log.IsWarnEnabled) log.Warn(errorMessage);
-                if (player.Client.Account.PrivLevel > 1) MessageToCaster(errorMessage, eChatType.CT_Skill);
+                if (player.Client.Account.PrivLevel > 1) MessageToCaster(errorMessage, ChatType.CT_Skill);
                 return;
             }
 

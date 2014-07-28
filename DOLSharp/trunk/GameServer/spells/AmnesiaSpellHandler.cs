@@ -71,7 +71,7 @@ namespace DawnOfLight.GameServer.Spells
 			target.StopCurrentSpellcast(); //stop even if MoC or QC
 
             if (target is GamePlayer)
-                MessageToLiving(target, LanguageMgr.GetTranslation((target as GamePlayer).Client, "Amnesia.MessageToTarget"), eChatType.CT_Spell);
+                MessageToLiving(target, LanguageMgr.GetTranslation((target as GamePlayer).Client, "Amnesia.MessageToTarget"), ChatType.CT_Spell);
 
             GameSpellEffect effect;
             effect = SpellHandler.FindEffectOnTarget(target, "Mesmerize");

@@ -17,14 +17,15 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0x2C^168,"handle Change LFG flag")]
+    [PacketHandler(PacketType.TCP, ClientPackets.LookingForAGroupFlag, ClientStatus.PlayerInGame)]
 	public class LookingForAGroupFlagHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{  
 			byte code =(byte) packet.ReadByte();
 			switch(code)

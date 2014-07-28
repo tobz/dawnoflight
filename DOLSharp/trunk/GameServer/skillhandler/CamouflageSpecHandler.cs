@@ -47,22 +47,22 @@ namespace DawnOfLight.GameServer.SkillHandler
 			{
 				if (player.IsMezzed)
 				{
-                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Camouflage.Mezzed"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Camouflage.Mezzed"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     return;
 				}
 
 				if (player.IsStunned)
 				{
-                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Camouflage.Stunned"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Camouflage.Stunned"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     return;
 				}
 
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Camouflage.NotStealthed"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Camouflage.NotStealthed"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
 			}
 			if (!player.IsAlive)
 			{
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Camouflage.Dead"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Camouflage.Dead"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
 			}
 
@@ -77,7 +77,7 @@ namespace DawnOfLight.GameServer.SkillHandler
 			long changeTime = player.CurrentRegion.Time - player.LastAttackTickPvP;
 			if (player.CurrentRegion.IsRvR && changeTime < DISABLE_DURATION)
 			{
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Camouflage.DisableDuration", ((DISABLE_DURATION - changeTime) / 1000)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUse.Camouflage.DisableDuration", ((DISABLE_DURATION - changeTime) / 1000)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
 			}
 			player.DisableSkill(ab, DISABLE_DURATION);

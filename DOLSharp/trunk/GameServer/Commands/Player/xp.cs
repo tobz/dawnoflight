@@ -42,12 +42,12 @@ namespace DawnOfLight.GameServer.commands.Player
 			if (args[1].ToLower().Equals("on"))
 			{
 				client.Player.GainXP = true;
-				client.Out.SendMessage("Your xp flag is ON. You will gain experience points. Use '/xp off' to stop gaining experience points.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Your xp flag is ON. You will gain experience points. Use '/xp off' to stop gaining experience points.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 			else if (args[1].ToLower().Equals("off"))
 			{
 				client.Player.GainXP = false;
-				client.Out.SendMessage("Your xp flag is OFF. You will no longer gain experience points. Use '/xp on' to start gaining experience points again.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Your xp flag is OFF. You will no longer gain experience points. Use '/xp on' to start gaining experience points again.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 	}

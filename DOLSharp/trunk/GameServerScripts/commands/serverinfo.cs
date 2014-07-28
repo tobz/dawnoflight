@@ -32,11 +32,11 @@ namespace DawnOfLight.GameServer.Commands
 	{
 		public void OnCommand(GameClient client, string[] args)
 		{
-			client.Out.SendMessage(GameServer.Instance.Configuration.ServerName, eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage(GameServer.Instance.Configuration.ServerName, ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			AssemblyName an = Assembly.GetAssembly(typeof(GameServer)).GetName();
-			client.Out.SendMessage("version: " + an.Version, eChatType.CT_System, eChatLoc.CL_SystemWindow);
-			client.Out.SendMessage("type: " + GameServer.Instance.Configuration.ServerType + " (" + GameServer.ServerRules.RulesDescription() + ")", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-			client.Out.SendMessage("playing: " + WorldMgr.GetAllPlayingClientsCount(), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage("version: " + an.Version, ChatType.CT_System, ChatLocation.CL_SystemWindow);
+			client.Out.SendMessage("type: " + GameServer.Instance.Configuration.ServerType + " (" + GameServer.ServerRules.RulesDescription() + ")", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+			client.Out.SendMessage("playing: " + WorldMgr.GetAllPlayingClientsCount(), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			if (client.Player != null)
 			{
 				long sec = client.Player.CurrentRegion.Time / 1000;

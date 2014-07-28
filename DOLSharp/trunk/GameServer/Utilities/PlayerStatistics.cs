@@ -311,45 +311,45 @@ namespace DawnOfLight.GameServer.Utilities
                     client.Out.SendCustomTextWindow("Top 20 Players", toplist);
                     break;
                 case "rp":
-                    client.Player.Out.SendMessage("Top 20 for Realm Points\n" + statsrp, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    client.Player.Out.SendMessage("Top 20 for Realm Points\n" + statsrp, ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     break;
                 case "lrp":
-                    client.Player.Out.SendMessage("Top 20 for RP / Hour\n" + statslrp, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    client.Player.Out.SendMessage("Top 20 for RP / Hour\n" + statslrp, ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     break;
                 case "kills":
-                    client.Player.Out.SendMessage("Top 20 Killers\n" + statskills, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    client.Player.Out.SendMessage("Top 20 Killers\n" + statskills, ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     break;
                 case "deathblows":
-                    client.Player.Out.SendMessage("Top 20 Deathblows\n" + statsdeath, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    client.Player.Out.SendMessage("Top 20 Deathblows\n" + statsdeath, ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     break;
                 case "irs":
-                    client.Player.Out.SendMessage("Top 20 \"I Remain Standing\"\n" + statsirs, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    client.Player.Out.SendMessage("Top 20 \"I Remain Standing\"\n" + statsirs, ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     break;
                 case "heal":
-                    client.Player.Out.SendMessage("Top 20 Healers\n" + statsheal, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    client.Player.Out.SendMessage("Top 20 Healers\n" + statsheal, ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     break;
                 case "rez":
-                    client.Player.Out.SendMessage("Top 20 Resurrectors\n" + statsres, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    client.Player.Out.SendMessage("Top 20 Resurrectors\n" + statsres, ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     break;
                 case "player":
                     GameClient clientc = WorldMgr.GetClientByPlayerName(playerName, false, true);
                     if (clientc == null)
                     {
-                        client.Player.Out.SendMessage("No player with name '" + playerName + "' found!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        client.Player.Out.SendMessage("No player with name '" + playerName + "' found!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         return;
                     }
 
                     if (clientc.Player.StatsAnonFlag)
                     {
-                        client.Player.Out.SendMessage(playerName + " doesn't want you to view his stats.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        client.Player.Out.SendMessage(playerName + " doesn't want you to view his stats.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         return;
                     }
 
-                    client.Player.Out.SendMessage(clientc.Player.Statistics.GetStatisticsMessage(), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    client.Player.Out.SendMessage(clientc.Player.Statistics.GetStatisticsMessage(), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     break;
 
                 default:
-                    client.Player.Out.SendMessage("Options: /stats [ top | rp | kills | deathblows | irs | heal | rez | player <name|target> ]", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    client.Player.Out.SendMessage("Options: /stats [ top | rp | kills | deathblows | irs | heal | rez | player <name|target> ]", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     break;
             }
 

@@ -124,8 +124,8 @@ namespace DawnOfLight.GameServer.GameObjects
 
 				GameServer.Database.AddObject(template);
 				GameInventoryItem trophy = new GameInventoryItem(template);
-                player.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, trophy);
-				OwnerGuild.SendMessageToGuildMembers(player.Name + " of " + GlobalConstants.RealmToName(player.Realm) + " has captured your guild banner!", eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+                player.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, trophy);
+				OwnerGuild.SendMessageToGuildMembers(player.Name + " of " + GlobalConstants.RealmToName(player.Realm) + " has captured your guild banner!", ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 				OwnerGuild.GuildBannerLostTime = DateTime.Now;
 			}
 			else
@@ -135,7 +135,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				// A friendly player has picked up the banner.
 				if (OwnerGuild != null)
 				{
-					OwnerGuild.SendMessageToGuildMembers(player.Name + " has recovered your guild banner!", eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+					OwnerGuild.SendMessageToGuildMembers(player.Name + " has recovered your guild banner!", ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 				}
 
 				if (SummonPlayer != null)
@@ -185,7 +185,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				{
 					// banner was dropped and not picked up, must be re-purchased
 					OwnerGuild.GuildBanner = false;
-					OwnerGuild.SendMessageToGuildMembers("Your guild banner has been lost!", eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+					OwnerGuild.SendMessageToGuildMembers("Your guild banner has been lost!", ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 					OwnerGuild = null;
 				}
 			}

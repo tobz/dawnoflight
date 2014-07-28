@@ -38,11 +38,11 @@ namespace DawnOfLight.GameServer.Spells.Warlock
 		{
 			if (!base.CheckBeginCast(selectedTarget)) return false;
             GameSpellEffect RangeSpell = SpellHandler.FindEffectOnTarget(Caster, "Range");
-  			if(RangeSpell != null) { MessageToCaster("You already preparing a Range spell", eChatType.CT_System); return false; }
+  			if(RangeSpell != null) { MessageToCaster("You already preparing a Range spell", ChatType.CT_System); return false; }
             GameSpellEffect PowerlessSpell = SpellHandler.FindEffectOnTarget(Caster, "Powerless");
-  			if(PowerlessSpell != null) { MessageToCaster("You already preparing a Powerless spell", eChatType.CT_System); return false; }
+  			if(PowerlessSpell != null) { MessageToCaster("You already preparing a Powerless spell", ChatType.CT_System); return false; }
             GameSpellEffect UninterruptableSpell = SpellHandler.FindEffectOnTarget(Caster, "Uninterruptable");
-            if (UninterruptableSpell != null) { MessageToCaster("You must finish casting Uninterruptable before you can cast it again", eChatType.CT_System); return false; }
+            if (UninterruptableSpell != null) { MessageToCaster("You must finish casting Uninterruptable before you can cast it again", ChatType.CT_System); return false; }
             return true;
 		}
         public override void FinishSpellCast(GameLiving target)

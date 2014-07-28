@@ -211,7 +211,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				LadyGrynoch.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 58);    //Slot 25
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 58);    //Slot 25
 				LadyGrynoch.Inventory = template.CloseTemplate();
 				LadyGrynoch.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

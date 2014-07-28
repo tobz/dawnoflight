@@ -56,7 +56,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 			if (!(client.Player.TargetObject is GameNPC))
 			{
-				client.Out.SendMessage("You must target an NPC.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You must target an NPC.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -68,7 +68,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (args.Length < 3)
 						{
-							client.Player.Out.SendMessage("Usage: /npc say <message>", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("Usage: /npc say <message>", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						string message = string.Join(" ", args, 2, args.Length - 2);
@@ -79,7 +79,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (args.Length < 3)
 						{
-							client.Player.Out.SendMessage("Usage: /npc yell <message>", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("Usage: /npc yell <message>", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						string message = string.Join(" ", args, 2, args.Length - 2);
@@ -90,14 +90,14 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (args.Length < 3)
 						{
-							client.Player.Out.SendMessage("Usage: /npc action <action message>", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("Usage: /npc action <action message>", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 						string action = string.Join(" ", args, 2, args.Length - 2);
 						action = "<" + npc.Name + " " + action + " >";
 						foreach (GamePlayer player in npc.GetPlayersInRadius(WorldMgr.SAY_DISTANCE))
 						{
-							player.Out.SendMessage(action, eChatType.CT_Emote, eChatLoc.CL_ChatWindow);
+							player.Out.SendMessage(action, ChatType.CT_Emote, ChatLocation.CL_ChatWindow);
 						}
 						break;
 					}
@@ -105,7 +105,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (args.Length != 3)
 						{
-							client.Player.Out.SendMessage("Usage: /npc emote <emote>", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("Usage: /npc emote <emote>", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -191,7 +191,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (args.Length < 3 || args.Length > 4)
 						{
-							client.Out.SendMessage("Usage: /npc walkto <targetname> [speed]", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("Usage: /npc walkto <targetname> [speed]", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -244,19 +244,19 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 						if (X == 0 && Y == 0 && Z == 0)
 						{
-							client.Out.SendMessage("Can't find name " + args[2].ToLower() + " near your target.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("Can't find name " + args[2].ToLower() + " near your target.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
 						npc.WalkTo(X, Y, Z, speed);
-						client.Out.SendMessage("Your target is walking to your location!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("Your target is walking to your location!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						break;
 					}
 				case "face":
 					{
 						if (args.Length != 3)
 						{
-							client.Player.Out.SendMessage("Usage: /npc face <targetname>", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("Usage: /npc face <targetname>", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -295,7 +295,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 						if (target == null)
 						{
-							client.Out.SendMessage("Can't find name " + args[2].ToLower() + " near your target.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("Can't find name " + args[2].ToLower() + " near your target.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -306,7 +306,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (args.Length != 3)
 						{
-							client.Player.Out.SendMessage("Usage: /npc follow <targetname>", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("Usage: /npc follow <targetname>", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -345,7 +345,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 						if (target == null)
 						{
-							client.Out.SendMessage("Can't find name " + args[2].ToLower() + " near your target.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("Can't find name " + args[2].ToLower() + " near your target.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -356,7 +356,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (args.Length != 2)
 						{
-							client.Player.Out.SendMessage("Usage: /npc stopfollow", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("Usage: /npc stopfollow", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -367,7 +367,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (args.Length != 3)
 						{
-							client.Player.Out.SendMessage("Usage: /npc target <targetName>", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("Usage: /npc target <targetName>", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -412,12 +412,12 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
 						if (target == null)
 						{
-							client.Out.SendMessage("Can't find name " + args[2].ToLower() + " near your target.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("Can't find name " + args[2].ToLower() + " near your target.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
 						npc.TargetObject = target;
-						client.Out.SendMessage(npc.Name + " now target " + target.Name + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage(npc.Name + " now target " + target.Name + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						break;
 					}
 
@@ -426,8 +426,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (args.Length != 4)
 						{
-							client.Player.Out.SendMessage("Usage: /npc cast <spellLine> <spellID>", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-							client.Player.Out.SendMessage("(Be sure the npc target something to be able to cast)", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("Usage: /npc cast <spellLine> <spellID>", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+							client.Player.Out.SendMessage("(Be sure the npc target something to be able to cast)", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -435,7 +435,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						List<Spell> spells = SkillBase.GetSpellList(line.KeyName);
 						if (spells.Count <= 0)
 						{
-							client.Out.SendMessage("No spells found in line " + args[2] + "!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("No spells found in line " + args[2] + "!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
@@ -451,7 +451,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 							}
 						}
 
-						client.Out.SendMessage("Spell with id " + Convert.ToInt16(args[3]) + " not found in db!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("Spell with id " + Convert.ToInt16(args[3]) + " not found in db!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 						break;
 					}
@@ -459,25 +459,25 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					{
 						if (args.Length != 3)
 						{
-							client.Player.Out.SendMessage("Usage: /npc weapon <activeWeaponSlot>", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("Usage: /npc weapon <activeWeaponSlot>", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
 						if (Convert.ToInt16(args[2]) < 0 || Convert.ToInt16(args[2]) > 2)
 						{
-							client.Player.Out.SendMessage("The activeWeaponSlot must be between 0 and 2.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage("The activeWeaponSlot must be between 0 and 2.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return;
 						}
 
 						GameLiving.eActiveWeaponSlot slot = (GameLiving.eActiveWeaponSlot)Convert.ToInt16(args[2]);
 						npc.SwitchWeapon(slot);
-						client.Player.Out.SendMessage(npc.Name + " will now use its " + Enum.GetName(typeof(GameLiving.eActiveWeaponSlot), slot) + " weapon to attack.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Player.Out.SendMessage(npc.Name + " will now use its " + Enum.GetName(typeof(GameLiving.eActiveWeaponSlot), slot) + " weapon to attack.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 						break;
 					}
 				default:
 					{
-						client.Out.SendMessage("Type /npc for command overview.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("Type /npc for command overview.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					break;
 			}

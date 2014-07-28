@@ -20,7 +20,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 			if (living.EffectList.CountOfType<BadgeOfValorEffect>() > 0)
             {
 				if (living is GamePlayer)
-					(living as GamePlayer).Out.SendMessage("You already an effect of that type!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+					(living as GamePlayer).Out.SendMessage("You already an effect of that type!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
                 return;
             }
 

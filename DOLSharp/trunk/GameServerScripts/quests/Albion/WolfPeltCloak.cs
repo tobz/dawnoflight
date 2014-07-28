@@ -206,7 +206,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				lynnet.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 58, 30);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 58, 30);
 				lynnet.Inventory = template.CloseTemplate();
 
 //				lynnet.AddNPCEquipment((byte) eEquipmentItems.TORSO, 58, 30, 0, 0);
@@ -241,7 +241,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				don.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 58, 44);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 58, 44);
 				don.Inventory = template.CloseTemplate();
 
 //				don.AddNPCEquipment((byte) eEquipmentItems.TORSO, 58, 44, 0, 0);
@@ -437,9 +437,9 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				if (quest != null)
 				{
 					//If the player is already doing the quest, we ask if he found the fur!
-					if (player.Inventory.GetFirstItemByID(wolfFur.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack) != null)
+					if (player.Inventory.GetFirstItemByID(wolfFur.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack) != null)
 						stewardWillie.SayTo(player, "Ah, well done! His Lordship will be pleased to know there is one less mongrel in the pack! Give me the fur so I can throw it with the others.");
-					else if (player.Inventory.GetFirstItemByID(wolfHeadToken.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack) != null)
+					else if (player.Inventory.GetFirstItemByID(wolfHeadToken.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack) != null)
 						stewardWillie.SayTo(player, "Give the token to Seamstress Lynnet in Ludlow, she'll give ye your reward. Thank ye for your fine services to His Lordship.");
 					else
 						stewardWillie.SayTo(player, "Good! I know we ca'count on ye. I will reward ye for the pelt ye bring me from one of those vile beasts!");
@@ -550,7 +550,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 			if (e == GameObjectEvent.Interact)
 			{
 				//If the player qualifies, we begin talking...
-				if (player.Inventory.GetFirstItemByID(wolfPeltCloak.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack) != null)
+				if (player.Inventory.GetFirstItemByID(wolfPeltCloak.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack) != null)
 					don.SayTo(player, "Hail! You don't perhaps have one of those fine wolf pelt cloaks? If you no longer have need of it, we could greatly use it at the [orphanage].");
 				return;
 			}

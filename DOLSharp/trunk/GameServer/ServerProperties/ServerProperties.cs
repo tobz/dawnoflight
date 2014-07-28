@@ -497,7 +497,7 @@ namespace DawnOfLight.GameServer.ServerProperties
 		/// <summary>
 		/// Show logins channel
 		/// </summary>
-		[ServerProperty("server", "show_logins_channel", "What channel should be used for login messages? See eChatType, default is System.", (byte)0)]
+		[ServerProperty("server", "show_logins_channel", "What channel should be used for login messages? See ChatType, default is System.", (byte)0)]
 		public static byte SHOW_LOGINS_CHANNEL;
 
 		/// <summary>

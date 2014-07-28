@@ -185,7 +185,7 @@ namespace DawnOfLight.GameServer.Effects
 			{
 				if (Owner is GamePlayer)
 				{
-					((GamePlayer)Owner).Out.SendMessage(LanguageMgr.GetTranslation((Owner as GamePlayer).Client, "Effects.GameSpellEffect.CantRemoveEffect"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					((GamePlayer)Owner).Out.SendMessage(LanguageMgr.GetTranslation((Owner as GamePlayer).Client, "Effects.GameSpellEffect.CantRemoveEffect"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 
 				return;

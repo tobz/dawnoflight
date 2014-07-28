@@ -210,11 +210,11 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 				{
 					if (player == caster)
 					{
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility.SendCasterSpellEffectAndCastMessage.You", m_name), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility.SendCasterSpellEffectAndCastMessage.You", m_name), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 					}
 					else
 					{
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility.SendCasterSpellEffectAndCastMessage.Caster", caster.Name), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility.SendCasterSpellEffectAndCastMessage.Caster", caster.Name), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}
@@ -232,11 +232,11 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 				{
 					if (player == caster)
 					{
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility.SendCastMessage.YouCast", m_name), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility.SendCastMessage.YouCast", m_name), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 					}
 					else
 					{
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility.SendCastMessage.PlayerCasts", player.Name), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility.SendCastMessage.PlayerCasts", player.Name), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}
@@ -256,7 +256,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				if (player != null)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Dead"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Dead"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				return true;
 			}
@@ -264,7 +264,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				if (player != null)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Mesmerized"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Mesmerized"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				return true;
 			}
@@ -272,7 +272,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				if (player != null)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Stunned"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Stunned"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				return true;
 			}
@@ -280,7 +280,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				if (player != null)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Sitting"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Sitting"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				return true;
 			}
@@ -288,7 +288,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				if (player != null)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Combat"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Combat"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				return true;
 			}
@@ -296,7 +296,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				if (player != null)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.BeInCombat"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.BeInCombat"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				return true;
 			}
@@ -304,13 +304,13 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				if (player != null)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Stealthed"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.Stealthed"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				return true;
 			}
 			if (player != null && (bitmask & NOTINGROUP) != 0 && player.Group == null)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.BeInGroup"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "RealmAbility..CheckPreconditions.BeInGroup"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return true;
 			}
 			return false;

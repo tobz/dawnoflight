@@ -21,10 +21,10 @@ namespace DawnOfLight.GameServer.Spells.Valkyrie
             base.OnEffectStart(effect);
             // "Your weapon is blessed by the gods!"
             // "{0}'s weapon glows with the power of the gods!"
-            eChatType chatType = eChatType.CT_SpellPulse;
+            ChatType chatType = ChatType.CT_SpellPulse;
             if (Spell.Pulse == 0)
             {
-                chatType = eChatType.CT_Spell;
+                chatType = ChatType.CT_Spell;
             }
             MessageToLiving(effect.Owner, Spell.Message1, chatType);
             Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), chatType, effect.Owner);
@@ -35,8 +35,8 @@ namespace DawnOfLight.GameServer.Spells.Valkyrie
         {
             if (!noMessages)
             {
-                MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-                Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, true)), eChatType.CT_SpellExpires, effect.Owner);
+                MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+                Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, true)), ChatType.CT_SpellExpires, effect.Owner);
             }
             GameEventMgr.RemoveHandler(effect.Owner, GameLivingEvent.AttackFinished, new DOLEventHandler(EventHandler));
             return 0;
@@ -64,7 +64,7 @@ namespace DawnOfLight.GameServer.Spells.Valkyrie
                 if (sender is GamePlayer)
                 {
                     GamePlayer player = (GamePlayer)sender;
-                    InventoryItem leftWeapon = player.Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+                    InventoryItem leftWeapon = player.Inventory.GetItem(InventorySlot.LeftHandWeapon);
                     // if we can use left weapon, we have currently a weapon in left hand and we still have endurance,
                     // we can assume that we are using the two weapons.
                     if (player.CanUseLefthandedWeapon && leftWeapon != null && leftWeapon.Object_Type != (int)eObjectType.Shield)

@@ -99,7 +99,7 @@ namespace DawnOfLight.GameServer.Scripts
 			{
 				TurnTo(player, 5000);
 
-				player.Out.SendMessage(this.Name + " says, \"" + m_msg + "\"", eChatType.CT_Say, eChatLoc.CL_ChatWindow);
+				player.Out.SendMessage(this.Name + " says, \"" + m_msg + "\"", ChatType.CT_Say, ChatLocation.CL_ChatWindow);
 			}
 
 			return res;

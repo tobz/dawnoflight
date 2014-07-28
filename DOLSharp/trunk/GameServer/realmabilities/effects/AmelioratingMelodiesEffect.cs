@@ -96,8 +96,8 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects
 						int heal = m_heal;
 						if (p.Health + heal > p.MaxHealth) heal = p.MaxHealth - p.Health;
 						p.ChangeHealth(player, GameLiving.eHealthChangeType.Regenerate, heal);
-						player.Out.SendMessage("You heal " + p.Name + " for " + heal.ToString() + " hit points.", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
-						p.Out.SendMessage(player.Name + " heals you for " + heal.ToString() + " hit points.", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("You heal " + p.Name + " for " + heal.ToString() + " hit points.", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
+						p.Out.SendMessage(player.Name + " heals you for " + heal.ToString() + " hit points.", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 					}
 				}
 				return 3000;

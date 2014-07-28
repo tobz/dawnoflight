@@ -45,7 +45,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient == null || m_gameClient.Player == null)
 				return;
-			GSTCPPacketOut pak = new GSTCPPacketOut((byte)eServerPackets.XFire);
+			GameTCPPacketOut pak = new GameTCPPacketOut((byte)ServerPackets.XFire);
 			pak.WriteShort((ushort)m_gameClient.Player.ObjectID);
 			pak.WriteByte(flag);
 			pak.WriteByte(0x00);

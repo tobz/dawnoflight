@@ -96,7 +96,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (client.Player.IsMuted)
 			{
-				client.Player.Out.SendMessage("You have been muted and cannot emote!", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage("You have been muted and cannot emote!", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -120,7 +120,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			if (changeTime < ServerProperties.Properties.EMOTE_DELAY && Tick > 0)
 			{
 				string message = LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Emotes.Message" + Util.Random(1,4).ToString());
-				client.Player.Out.SendMessage(message, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage(message, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			client.Player.TempProperties.setProperty(EMOTE_TICK, client.Player.CurrentRegion.Time);
@@ -378,7 +378,7 @@ namespace DawnOfLight.GameServer.commands.Player
 		// send emote chat type message to GamePlayer
 		private void SendEmoteMessage(GamePlayer player, string message)
 		{
-			player.Out.SendMessage(message, eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage(message, ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
 		}
 
 

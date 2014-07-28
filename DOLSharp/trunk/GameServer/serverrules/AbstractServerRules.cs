@@ -289,7 +289,7 @@ namespace DawnOfLight.GameServer.ServerRules
 			if (player.ObjectState != GameObject.eObjectState.Active) return;
 			if (player.Client.IsPlaying == false) return;
 
-			player.Out.SendMessage("Your temporary invulnerability timer has expired.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage("Your temporary invulnerability timer has expired.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 			return;
 		}
@@ -480,7 +480,7 @@ namespace DawnOfLight.GameServer.ServerRules
 				}
 
 				if (!isAllowed && caster is GamePlayer)
-					(caster as GamePlayer).Client.Out.SendMessage("You can't cast this spell on the " + target.Name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					(caster as GamePlayer).Client.Out.SendMessage("You can't cast this spell on the " + target.Name, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				return isAllowed;
 			}
@@ -928,7 +928,7 @@ namespace DawnOfLight.GameServer.ServerRules
 					{
 						GamePlayer player = de.Key as GamePlayer;
 						if (player != null)
-							player.Out.SendMessage(message, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(message, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					return;
 				}
@@ -1353,8 +1353,8 @@ namespace DawnOfLight.GameServer.ServerRules
 					{
 						if (de.Key is GamePlayer)
 						{
-							((GamePlayer)de.Key).Out.SendMessage(killedPlayer.Name + " has been killed recently and is worth no realm points!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
-							((GamePlayer)de.Key).Out.SendMessage(killedPlayer.Name + " has been killed recently and is worth no experience!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+							((GamePlayer)de.Key).Out.SendMessage(killedPlayer.Name + " has been killed recently and is worth no realm points!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
+							((GamePlayer)de.Key).Out.SendMessage(killedPlayer.Name + " has been killed recently and is worth no experience!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 						}
 					}
 				}
@@ -1388,7 +1388,7 @@ namespace DawnOfLight.GameServer.ServerRules
 					{
 						GamePlayer player = de.Key as GamePlayer;
 						if (player != null)
-							player.Out.SendMessage("You gain no experience from this kill!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("You gain no experience from this kill!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					return;
 				}
@@ -1986,7 +1986,7 @@ namespace DawnOfLight.GameServer.ServerRules
 					player.Out.SendMerchantWindow(HouseTemplateMgr.IndoorVaultShopItems, eMerchantWindowType.HousingVaultHookpoint);
 					break;
 				default:
-					player.Out.SendMessage("Unknown merchant type!", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Unknown merchant type!", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 					log.ErrorFormat("Unknown merchant type {0}", merchantType);
 					break;
 			}
@@ -2169,7 +2169,7 @@ namespace DawnOfLight.GameServer.ServerRules
 		/// <param name="message"></param>
 		public virtual void MessageToLiving(GameLiving living, string message)
 		{
-			MessageToLiving(living, message, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			MessageToLiving(living, message, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 		/// <summary>
 		/// Send custom text message to system window
@@ -2177,9 +2177,9 @@ namespace DawnOfLight.GameServer.ServerRules
 		/// <param name="living"></param>
 		/// <param name="message"></param>
 		/// <param name="type"></param>
-		public virtual void MessageToLiving(GameLiving living, string message, eChatType type)
+		public virtual void MessageToLiving(GameLiving living, string message, ChatType type)
 		{
-			MessageToLiving(living, message, type, eChatLoc.CL_SystemWindow);
+			MessageToLiving(living, message, type, ChatLocation.CL_SystemWindow);
 		}
 		/// <summary>
 		/// Send custom text message to GameLiving
@@ -2188,7 +2188,7 @@ namespace DawnOfLight.GameServer.ServerRules
 		/// <param name="message"></param>
 		/// <param name="type"></param>
 		/// <param name="loc"></param>
-		public virtual void MessageToLiving(GameLiving living, string message, eChatType type, eChatLoc loc)
+		public virtual void MessageToLiving(GameLiving living, string message, ChatType type, ChatLocation loc)
 		{
 			if (living is GamePlayer)
 				((GamePlayer)living).Out.SendMessage(message, type, loc);

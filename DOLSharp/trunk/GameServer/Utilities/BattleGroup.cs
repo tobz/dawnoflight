@@ -85,10 +85,10 @@ namespace DawnOfLight.GameServer.Utilities
 				if (m_battlegroupMembers.Contains(player))
 					return false;
 				player.TempProperties.setProperty(BATTLEGROUP_PROPERTY, this);
-				player.Out.SendMessage("You join the battle group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You join the battle group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				foreach(GamePlayer member in Members.Keys)
 				{
-					member.Out.SendMessage(player.Name+" has joined the battle group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					member.Out.SendMessage(player.Name+" has joined the battle group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				m_battlegroupMembers.Add(player,leader);
 
@@ -188,7 +188,7 @@ namespace DawnOfLight.GameServer.Utilities
             return (GamePlayer[])players.ToArray(typeof(GamePlayer));
         }
 
-        public virtual void SendMessageToBattleGroupMembers(string msg, eChatType type, eChatLoc loc)
+        public virtual void SendMessageToBattleGroupMembers(string msg, ChatType type, ChatLocation loc)
         {
             lock (m_battlegroupMembers) // Mannen 10:56 PM 10/30/2006 - Fixing every lock(this)
             {
@@ -217,10 +217,10 @@ namespace DawnOfLight.GameServer.Utilities
 					return false;
 				m_battlegroupMembers.Remove(player);
 				player.TempProperties.removeProperty(BATTLEGROUP_PROPERTY);
-				player.Out.SendMessage("You leave the battle group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You leave the battle group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				foreach(GamePlayer member in Members.Keys)
 				{
-					member.Out.SendMessage(player.Name+" has left the battle group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					member.Out.SendMessage(player.Name+" has left the battle group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				if (m_battlegroupMembers.Count == 1)
 				{

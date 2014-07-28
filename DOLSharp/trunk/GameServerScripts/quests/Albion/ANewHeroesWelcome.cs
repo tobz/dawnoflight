@@ -165,11 +165,11 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				MasterClaistan.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 39);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 40);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 36);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 37);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 38);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 39);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 40);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 36);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 37);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 38);
 				MasterClaistan.Inventory = template.CloseTemplate();
 				MasterClaistan.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -206,11 +206,11 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				PompinTheCrier.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 39);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 40);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 36);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 37);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 38);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 39);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 40);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 36);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 37);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 38);
 				PompinTheCrier.Inventory = template.CloseTemplate();
 				PompinTheCrier.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

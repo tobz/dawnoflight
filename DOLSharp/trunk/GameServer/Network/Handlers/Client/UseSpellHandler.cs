@@ -33,7 +33,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// <summary>
 	/// Handles spell cast requests from client
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.UseSpell, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.UseSpell, ClientStatus.PlayerInGame)]
 	public class UseSpellHandler : IPacketHandler
 	{
 		/// <summary>
@@ -43,7 +43,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int flagSpeedData = packet.ReadShort();
 			int heading = packet.ReadShort();

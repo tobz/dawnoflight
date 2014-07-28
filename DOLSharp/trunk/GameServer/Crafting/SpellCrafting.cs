@@ -154,8 +154,8 @@ namespace DawnOfLight.GameServer.Crafting
 				if (item.Level < 15)
 				{
 					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, 
-						"SpellCrafting.IsAllowedToCombine.NoEnchanted"), eChatType.CT_System, 
-						eChatLoc.CL_SystemWindow);
+						"SpellCrafting.IsAllowedToCombine.NoEnchanted"), ChatType.CT_System, 
+						ChatLocation.CL_SystemWindow);
 
 					return false;
 				}
@@ -169,7 +169,7 @@ namespace DawnOfLight.GameServer.Crafting
 							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, 
 								"SpellCrafting.IsAllowedToCombine.FalseMaterial", 
 								materialToCombine.Name), 
-								eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 							return false;
 						}
@@ -190,7 +190,7 @@ namespace DawnOfLight.GameServer.Crafting
 							bonusToApply.Add(item.Bonus3Type);
 							if (item.Bonus4Type != 0)
 							{
-								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.AlreadyImbued", item.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.AlreadyImbued", item.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								return false;
 							}
 						}
@@ -205,19 +205,19 @@ namespace DawnOfLight.GameServer.Crafting
 
 						if (currentItem.Object_Type != (int)eObjectType.SpellcraftGem)
 						{
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.FalseItem"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.FalseItem"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return false;
 						}
 
 						if (bonusToApply.Contains(currentItem.Bonus1Type))
 						{
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.NoSameBonus"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.NoSameBonus"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return false;
 						}
 
 						if (bonusToApply.Count >= 4)
 						{
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.DifferentTypes", item.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.DifferentTypes", item.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return false;
 						}
 
@@ -228,13 +228,13 @@ namespace DawnOfLight.GameServer.Crafting
 				int bonusLevel = GetTotalImbuePoints(player, item);
 				if (bonusLevel > player.GetCraftingSkillValue(eCraftingSkill.SpellCrafting) / 20)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.NotEnoughSkill"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.NotEnoughSkill"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return false;
 				}
 
 				if (bonusLevel - GetItemMaxImbuePoints(item) > 5)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.NoMoreLevels", item.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.IsAllowedToCombine.NoMoreLevels", item.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return false;
 				}
 			}
@@ -395,13 +395,13 @@ namespace DawnOfLight.GameServer.Crafting
 
 				if (tradePartner != null)
 				{
-					tradePartner.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.ImbuedItem", player.Name), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					tradePartner.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.ImbuedItem", player.Name), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.ImbuedItem", player.Name), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.ImbuedItem", player.Name), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 			else if (Util.Chance(destroyChance))
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.PowerExplodes"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.PowerExplodes"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 				lock (player.TradeWindow.Sync)
 				{
@@ -422,7 +422,7 @@ namespace DawnOfLight.GameServer.Crafting
 				player.Emote(eEmote.SpellGoBoom);
 				player.Health = 0;
 				player.Die(player); // On official you take damages
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.Failed"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.Failed"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 				if (tradePartner != null)
 				{
@@ -432,15 +432,15 @@ namespace DawnOfLight.GameServer.Crafting
 						tradePartner.Health = 0;
 						tradePartner.Die(player);
 					}
-					tradePartner.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.Failed"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					tradePartner.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.Failed"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 			}
 			else
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.Failed"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.Failed"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				if (tradePartner != null)
 				{
-					tradePartner.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.Failed"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					tradePartner.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ApplySpellcraftGems.Failed"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}
@@ -505,13 +505,13 @@ namespace DawnOfLight.GameServer.Crafting
 			GamePlayer partner = player.TradeWindow.Partner;
 			foreach (string line in spellcraftInfos)
 			{
-				player.Out.SendMessage(line, eChatType.CT_Important, eChatLoc.CL_SystemWindow);
-				if (partner != null) partner.Out.SendMessage(line, eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(line, ChatType.CT_Important, ChatLocation.CL_SystemWindow);
+				if (partner != null) partner.Out.SendMessage(line, ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 
 			if (totalGemmesCharges > totalItemCharges)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ShowSpellCraftingInfos.Modified"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "SpellCrafting.ShowSpellCraftingInfos.Modified"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 

@@ -75,7 +75,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			{
 				effect.Cancel(false);
                 player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Healer.Interact.Text1",
-                    GetName(0, false, player.Client.Account.Language, this)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    GetName(0, false, player.Client.Account.Language, this)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
             }
 
 			if (player.TotalConstitutionLostAtDeath > 0)
@@ -87,7 +87,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
             }
 			else
 			{
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Healer.Interact.Text3"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Healer.Interact.Text3"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
             }
 			return true;
 		}
@@ -97,13 +97,13 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
             if (!this.IsWithinRadius(player, WorldMgr.INTERACT_DISTANCE))
             {
                 player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Healer.HealerDialogResponse.Text1",
-                    GetName(0, false, player.Client.Account.Language, this)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    GetName(0, false, player.Client.Account.Language, this)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
 
             if (response != 0x01) //declined
             {
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Healer.HealerDialogResponse.Text2"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Healer.HealerDialogResponse.Text2"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
 
@@ -116,13 +116,13 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
             if (player.RemoveMoney(totalCost))
             {
                 InventoryLogging.LogInventoryAction(player, this, eInventoryActionType.Merchant, totalCost);
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Healer.HealerDialogResponse.Text3", this.Name, Money.GetString(totalCost)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Healer.HealerDialogResponse.Text3", this.Name, Money.GetString(totalCost)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 player.TotalConstitutionLostAtDeath -= restorePoints;
                 player.Out.SendCharStatsUpdate();
             }
             else
             {
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Healer.HealerDialogResponse.Text4", Money.GetString(totalCost), restorePoints), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Healer.HealerDialogResponse.Text4", Money.GetString(totalCost), restorePoints), ChatType.CT_System, ChatLocation.CL_SystemWindow);
             }
             return;
         }

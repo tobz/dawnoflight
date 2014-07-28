@@ -320,11 +320,11 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				Rheda.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 80);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 54);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 51);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 52);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 53);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 80);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 54);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 51);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 52);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 53);
 				Rheda.Inventory = template.CloseTemplate();
 				Rheda.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

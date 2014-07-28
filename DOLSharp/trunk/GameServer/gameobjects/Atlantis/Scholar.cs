@@ -101,14 +101,14 @@ namespace DawnOfLight.GameServer.GameObjects.Atlantis
 
 			intro += ".";
 
-            SayTo(player, eChatLoc.CL_PopupWindow, intro);
+            SayTo(player, ChatLocation.CL_PopupWindow, intro);
 
             intro = String.Format("{0}, did you find any of the stories that chronicle the powers of the {1} {2} ",
                 player.Name,
                 "artifacts? We can unlock the powers of these artifacts by studying the stories.",
                 "I can take the story and unlock the artifact's magic.");
 
-            SayTo(player, eChatLoc.CL_PopupWindow, intro);
+            SayTo(player, ChatLocation.CL_PopupWindow, intro);
             return true;
         }
 
@@ -184,7 +184,7 @@ namespace DawnOfLight.GameServer.GameObjects.Atlantis
                      "complete book of scrolls.",
 					 reason);
 				TurnTo(player);
-				SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				SayTo(player, ChatLocation.CL_PopupWindow, reply);
 			}
 			return;
 		}
@@ -203,7 +203,7 @@ namespace DawnOfLight.GameServer.GameObjects.Atlantis
 											"in Atlantis better suited to your needs.",
 											"\n\nIf you feel like your class qualifies for this artifact please /report this error to my superiors.");
                 TurnTo(player);
-                SayTo(player, eChatLoc.CL_PopupWindow, reply);
+                SayTo(player, ChatLocation.CL_PopupWindow, reply);
             }
             return;
         }
@@ -255,7 +255,7 @@ namespace DawnOfLight.GameServer.GameObjects.Atlantis
 					catch (Exception ex)
 					{
 						log.Error("Scholar ReceiveItem Error: ", ex);
-						SayTo(player, eChatLoc.CL_PopupWindow, "I'm very sorry but I'm having trouble locating an artifact for you.  Please /report this problem to my superiors.");
+						SayTo(player, ChatLocation.CL_PopupWindow, "I'm very sorry but I'm having trouble locating an artifact for you.  Please /report this problem to my superiors.");
 					}
 				}
 			}

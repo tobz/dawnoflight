@@ -44,7 +44,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
 
             if (!targetPlayer.IsUnderwater)
             {
-                MessageToCaster("You must be under water to use this ability.", eChatType.CT_SpellResisted);
+                MessageToCaster("You must be under water to use this ability.", ChatType.CT_SpellResisted);
                 return;
             }
 			foreach (GameSpellEffect Effect in targetPlayer.EffectList.GetAllOfType<GameSpellEffect>())
@@ -57,7 +57,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
                     Effect.SpellHandler.Spell.SpellType.Equals("MaddeningScalars") ||
                     Effect.SpellHandler.Spell.SpellType.Equals("AtlantisTabletMorph"))
                 {
-                    targetPlayer.Out.SendMessage("You already have an active morph!", eChatType.CT_SpellResisted, eChatLoc.CL_ChatWindow);
+                    targetPlayer.Out.SendMessage("You already have an active morph!", ChatType.CT_SpellResisted, ChatLocation.CL_ChatWindow);
                     return;
                 }
             }

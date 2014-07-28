@@ -45,12 +45,12 @@ namespace DawnOfLight.GameServer.commands.Player
 						{
 							if (client.Account.PrivLevel < 2)
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.NoPriv"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.NoPriv"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								return;
 							}
 							if (args[2] == "")
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.Help.Close"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.Help.Close"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								break;
 							}
 
@@ -58,7 +58,7 @@ namespace DawnOfLight.GameServer.commands.Player
 							BugReport report = GameServer.Database.FindObjectByKey<BugReport>(repor);
 							if (report == null)
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.InvalidReport"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.InvalidReport"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								break;
 							}
 							report.ClosedBy = client.Player.Name;
@@ -70,19 +70,19 @@ namespace DawnOfLight.GameServer.commands.Player
 						{
 							if (client.Account.PrivLevel < 2)
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.NoPriv"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.NoPriv"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								return;
 							}
 							if (args[2] == "")
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.Help.Delete"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.Help.Delete"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								break;
 							}
 							int repor = int.Parse(args[2]);
 							BugReport report = GameServer.Database.FindObjectByKey<BugReport>(repor);
 							if (report == null)
 							{
-								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.InvalidReport"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.InvalidReport"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								break;
 							}
 							// Create a counter to keep track of our BugReport ID
@@ -97,12 +97,12 @@ namespace DawnOfLight.GameServer.commands.Player
 								GameServer.Database.SaveObject(curReport);
 								count++;
 							}
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.ReportDeleted", report.ID), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.ReportDeleted", report.ID), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							break;
 						}
 					default:
 						{
-							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.UnknownCommand"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.UnknownCommand"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							DisplayHelp(client);
 						}
 						break;
@@ -130,7 +130,7 @@ namespace DawnOfLight.GameServer.commands.Player
 					Reports += "Report: " + repo.Message + "\n";
 					Reports += "Closed By: " + repo.ClosedBy + "\n";
 					Reports += "Date Closed: " + repo.DateClosed + "\n\n";
-					client.Out.SendMessage(Reports, eChatType.CT_Important, eChatLoc.CL_PopupWindow);
+					client.Out.SendMessage(Reports, ChatType.CT_Important, ChatLocation.CL_PopupWindow);
 					Reports = "";
 				}
 			}
@@ -138,9 +138,9 @@ namespace DawnOfLight.GameServer.commands.Player
 
 		public void DisplayHelp(GameClient client)
 		{
-			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.Usage"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
-			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.Help.Close"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
-			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.Help.Delete"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.Usage"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
+			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.Help.Close"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
+			client.Player.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Player.ViewReport.Help.Delete"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 	}

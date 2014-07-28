@@ -74,7 +74,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
 
             else
             {
-                MessageToCaster("The powers of the Belt of Moon, can only be Summon under the Moon light!", eChatType.CT_SpellResisted);
+                MessageToCaster("The powers of the Belt of Moon, can only be Summon under the Moon light!", ChatType.CT_SpellResisted);
                 return;
             }
         }
@@ -293,7 +293,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
 
 			lock (player.Inventory)
 			{
-                var items = player.Inventory.GetItemRange(eInventorySlot.MinEquipable, eInventorySlot.LastBackpack);
+                var items = player.Inventory.GetItemRange(InventorySlot.MinEquipable, InventorySlot.LastBackpack);
 				foreach (InventoryItem invItem in items)
 				{
                     if (player.CurrentRegion.IsNightTime)
@@ -313,7 +313,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
                     if (invItem.Id_nb.Equals("Moon_Staff"))
                         player.Inventory.RemoveItem(invItem);
                     
-                    player.Out.SendMessage("The Power of Belt of Moon, has left you!",eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage("The Power of Belt of Moon, has left you!",ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 }
 			}
             GameEventMgr.RemoveHandler(sender, GamePlayerEvent.Released, OnPlayerReleased);
@@ -328,7 +328,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
 			GamePlayer player = sender as GamePlayer;
 			lock (player.Inventory)
 			{
-                var items = player.Inventory.GetItemRange(eInventorySlot.MinEquipable, eInventorySlot.LastBackpack);
+                var items = player.Inventory.GetItemRange(InventorySlot.MinEquipable, InventorySlot.LastBackpack);
 				foreach (InventoryItem invItem in items)
 				{
                     if (invItem.Id_nb.Equals("Moon_Mace"))

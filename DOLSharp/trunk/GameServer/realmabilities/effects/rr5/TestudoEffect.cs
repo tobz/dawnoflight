@@ -53,7 +53,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 		{
 			GameLiving living = sender as GameLiving;
 			if (living == null) return;
-			InventoryItem shield = living.Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+			InventoryItem shield = living.Inventory.GetItem(InventorySlot.LeftHandWeapon);
 			if (shield == null)
 				return;
 			if (shield.Object_Type != (int)eObjectType.Shield)
@@ -79,9 +79,9 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 			ad.Damage -= absorb;
 			ad.CriticalDamage -= critic;
 			if (living is GamePlayer)
-				((GamePlayer)living).Out.SendMessage("Your Testudo Stance reduces the damage by " + (absorb+critic) + " points", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				((GamePlayer)living).Out.SendMessage("Your Testudo Stance reduces the damage by " + (absorb+critic) + " points", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 			if (ad.Attacker is GamePlayer)
-				((GamePlayer)ad.Attacker).Out.SendMessage(living.Name + "'s Testudo Stance reducec your damage by " + (absorb+critic) + " points", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				((GamePlayer)ad.Attacker).Out.SendMessage(living.Name + "'s Testudo Stance reducec your damage by " + (absorb+critic) + " points", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 
 		}
 

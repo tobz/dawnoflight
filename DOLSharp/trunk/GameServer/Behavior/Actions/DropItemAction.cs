@@ -48,7 +48,7 @@ namespace DawnOfLight.GameServer.Behavior.Actions
 			InventoryItem inventoryItem = GameInventoryItem.Create<ItemTemplate>(P as ItemTemplate);
 
             player.CreateItemOnTheGround(inventoryItem);
-            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Behaviour.DropItemAction.DropsFrontYou", inventoryItem.Name), eChatType.CT_Loot, eChatLoc.CL_SystemWindow);
+            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Behaviour.DropItemAction.DropsFrontYou", inventoryItem.Name), ChatType.CT_Loot, ChatLocation.CL_SystemWindow);
         }
     }
 }

@@ -297,11 +297,11 @@ namespace DawnOfLight.GameServer.GameObjects
 					if (ConditionPercent != oldPercent)
 					{
 						if (ConditionPercent == 90)
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.CouldRepair", Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.CouldRepair", Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						else if (ConditionPercent == 80)
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.NeedRepair", Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.NeedRepair", Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						else if (ConditionPercent == 70)
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.NeedRepairDire", Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.NeedRepairDire", Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 						player.Out.SendUpdateWeaponAndArmorStats();
 						player.Out.SendInventorySlotsUpdate(new int[] { SlotPosition });
@@ -341,11 +341,11 @@ namespace DawnOfLight.GameServer.GameObjects
 					if (ConditionPercent != oldPercent)
 					{
 						if (ConditionPercent == 90)
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.CouldRepair", Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.CouldRepair", Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						else if (ConditionPercent == 80)
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.NeedRepair", Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.NeedRepair", Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						else if (ConditionPercent == 70)
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.NeedRepairDire", Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.NeedRepairDire", Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 						player.Out.SendUpdateWeaponAndArmorStats();
 						player.Out.SendInventorySlotsUpdate(new int[] { SlotPosition });
@@ -435,7 +435,7 @@ namespace DawnOfLight.GameServer.GameObjects
 				WritePoisonInfo(delve, player.Client);
 			}
 
-			if (Object_Type == (int)eObjectType.Magical && Item_Type == (int)eInventorySlot.FirstBackpack) // potion
+			if (Object_Type == (int)eObjectType.Magical && Item_Type == (int)InventorySlot.FirstBackpack) // potion
 			{
 				WritePotionInfo(delve, player.Client);
 			}
@@ -579,7 +579,7 @@ namespace DawnOfLight.GameServer.GameObjects
 					}
 				}
 
-				if (Object_Type == (int)eObjectType.Magical && Item_Type == (int)eInventorySlot.FirstBackpack) // potion
+				if (Object_Type == (int)eObjectType.Magical && Item_Type == (int)InventorySlot.FirstBackpack) // potion
 				{
 					// let WritePotion handle the rest of the display
 					return;

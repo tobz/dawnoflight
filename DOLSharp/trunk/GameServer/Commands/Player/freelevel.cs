@@ -51,7 +51,7 @@ namespace DawnOfLight.GameServer.commands.Player
 					// NOT SURE FOR THIS MESSAGE
 					message = LanguageMgr.GetTranslation(client.Account.Language, "PLCommands.FreeLevel.NoFreeLevel");
 				}
-				client.Out.SendMessage(message, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(message, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -92,7 +92,7 @@ namespace DawnOfLight.GameServer.commands.Player
 					break;
 
 			}
-			client.Out.SendMessage(message, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			client.Out.SendMessage(message, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 	}
 }

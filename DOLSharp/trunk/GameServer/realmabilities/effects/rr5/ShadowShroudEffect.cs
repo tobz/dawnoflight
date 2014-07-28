@@ -111,8 +111,8 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
             {
                 ad.Damage -= damageAbsorbed;
                 //TODO correct messages
-                MessageToLiving(ad.Target, string.Format("Shadow Shroud Ability absorbs {0} damage!", damageAbsorbed), eChatType.CT_Spell);
-                MessageToLiving(ad.Attacker, string.Format("A barrier absorbs {0} damage of your attack!", damageAbsorbed), eChatType.CT_Spell);
+                MessageToLiving(ad.Target, string.Format("Shadow Shroud Ability absorbs {0} damage!", damageAbsorbed), ChatType.CT_Spell);
+                MessageToLiving(ad.Attacker, string.Format("A barrier absorbs {0} damage of your attack!", damageAbsorbed), ChatType.CT_Spell);
             }
         }
 
@@ -122,7 +122,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
         /// <param name="living"></param>
         /// <param name="message"></param>
         /// <param name="type"></param>
-        public void MessageToLiving(GameLiving living, string message, eChatType type)
+        public void MessageToLiving(GameLiving living, string message, ChatType type)
         {
             if (living is GamePlayer && message != null && message.Length > 0)
             {

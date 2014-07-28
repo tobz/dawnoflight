@@ -178,14 +178,14 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 									obj.Model = 100; // bag
 
 								if (!obj.AddToWorld())
-									client.Out.SendMessage("Error: Object not added to world correctly!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+									client.Out.SendMessage("Error: Object not added to world correctly!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 								else
-									client.Out.SendMessage("Object added!", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+									client.Out.SendMessage("Object added!", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							}
 						}
 						catch (Exception ex)
 						{
-							client.Out.SendMessage("An Exception has occurred when trying to add object, review server error logs! Exception: " + ex.Message, eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("An Exception has occurred when trying to add object, review server error logs! Exception: " + ex.Message, ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 							log.Error("Instance Entry Error", ex);
 						}
                     }
@@ -202,12 +202,12 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
                         if (o == null)
                         {
-                            client.Out.SendMessage("Could not find the entry in the database! <key=" + ObjectId + ">", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+                            client.Out.SendMessage("Could not find the entry in the database! <key=" + ObjectId + ">", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
                             return;
                         }
 
                         GameServer.Database.DeleteObject(o);
-                        client.Out.SendMessage("Object removed!", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+                        client.Out.SendMessage("Object removed!", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 
                         //Remove object...
                         obj.RemoveFromWorld();
@@ -388,7 +388,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 
         public void SendMessage(GameClient c, string str)
         {
-			c.Out.SendMessage(str, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			c.Out.SendMessage(str, ChatType.CT_System, ChatLocation.CL_SystemWindow);
         }
     }
 }

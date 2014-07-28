@@ -24,13 +24,13 @@ namespace DawnOfLight.GameServer.Network.Packets
 	/// <summary>
 	/// An outgoing TCP packet
 	/// </summary>
-	public class GSTCPPacketOut : PacketOut
+	public class GameTCPPacketOut : PacketOut
 	{
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		/// <param name="packetCode">ID of the packet</param>
-		public GSTCPPacketOut(byte packetCode)
+		public GameTCPPacketOut(byte packetCode)
 		{
 			base.WriteShort(0x00); //reserved for size
 			base.WriteByte(packetCode);
@@ -40,7 +40,7 @@ namespace DawnOfLight.GameServer.Network.Packets
 		/// Constructor
 		/// </summary>
 		/// <param name="packetCode">ID of the packet</param>
-		public GSTCPPacketOut(byte packetCode, int startingSize) : base(startingSize + 3)
+		public GameTCPPacketOut(byte packetCode, int startingSize) : base(startingSize + 3)
 		{
 			base.WriteShort(0x00); //reserved for size
 			base.WriteByte(packetCode);

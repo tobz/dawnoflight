@@ -18,20 +18,19 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0x63^168,"Checks if a character name already exists")]
-	public class DupNameCheckRequestHandler : IPacketHandler
+    [PacketHandler(PacketType.TCP, ClientPackets.DuplicateNameCheckRequest)]
+	public class DuplicateNameCheckRequestHandler : IPacketHandler
 	{
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			string name = packet.ReadString(30);
 			string select = string.Format("Name = '{0}'", GameServer.Database.Escape(name));
-			DOLCharacters character = GameServer.Database.SelectObject<DOLCharacters>(select);
+			var character = GameServer.Database.SelectObject<DOLCharacters>(select);
 			bool nameExists = (character != null);
 
 			client.Out.SendDupNameCheckReply(name, nameExists);

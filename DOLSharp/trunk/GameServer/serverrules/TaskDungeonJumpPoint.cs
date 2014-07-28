@@ -73,7 +73,7 @@ namespace DawnOfLight.GameServer.ServerRules
                 return true;
             }
 
-            player.Out.SendMessage("You need to have a proper mission before entering this area!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+            player.Out.SendMessage("You need to have a proper mission before entering this area!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
             return false;
         }
 	}

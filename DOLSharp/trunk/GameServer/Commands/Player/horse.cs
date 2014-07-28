@@ -21,7 +21,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (!client.Player.IsOnHorse)
 			{
-				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "HorseEmote.MustBeOnMount"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "HorseEmote.MustBeOnMount"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -127,7 +127,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 		private void SendEmoteMessage(GamePlayer player, string message)
 		{
-			player.Out.SendMessage(message, eChatType.CT_Emote, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage(message, ChatType.CT_Emote, ChatLocation.CL_SystemWindow);
 		}
 	}
 }

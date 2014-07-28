@@ -160,29 +160,29 @@ namespace DawnOfLight.GameServer.Spells
             if (Spell.Name.StartsWith("Proc"))
             {
                 MessageToCaster(String.Format(LanguageMgr.GetTranslation(PlayerReceivingMessages.Client, "DoTSpellHandler.SendDamageMessages.YouHitFor",
-                    ad.Target.GetName(0, false), ad.Damage)), eChatType.CT_YouHit);
+                    ad.Target.GetName(0, false), ad.Damage)), ChatType.CT_YouHit);
             }
             else
             {
                 MessageToCaster(String.Format(LanguageMgr.GetTranslation(PlayerReceivingMessages.Client, "DoTSpellHandler.SendDamageMessages.YourHitsFor",
-                    Spell.Name, ad.Target.GetName(0, false), ad.Damage)), eChatType.CT_YouHit);
+                    Spell.Name, ad.Target.GetName(0, false), ad.Damage)), ChatType.CT_YouHit);
             }
             if (ad.CriticalDamage > 0)
                 MessageToCaster(String.Format(LanguageMgr.GetTranslation(PlayerReceivingMessages.Client, "DoTSpellHandler.SendDamageMessages.YourCriticallyHits",
-                    Spell.Name, ad.Target.GetName(0, false), ad.CriticalDamage)), eChatType.CT_YouHit);
+                    Spell.Name, ad.Target.GetName(0, false), ad.CriticalDamage)), ChatType.CT_YouHit);
 
                 //			if (ad.Damage > 0)
                 //			{
                 //				string modmessage = "";
                 //				if (ad.Modifier > 0) modmessage = " (+"+ad.Modifier+")";
                 //				if (ad.Modifier < 0) modmessage = " ("+ad.Modifier+")";
-                //				MessageToCaster("You hit "+ad.Target.GetName(0, false)+" for " + ad.Damage + " damage!", eChatType.CT_Spell);
+                //				MessageToCaster("You hit "+ad.Target.GetName(0, false)+" for " + ad.Damage + " damage!", ChatType.CT_Spell);
                 //			}
                 //			else
                 //			{
-                //				MessageToCaster("You hit "+ad.Target.GetName(0, false)+" for " + ad.Damage + " damage!", eChatType.CT_Spell);
-                //				MessageToCaster(ad.Target.GetName(0, true) + " resists the effect!", eChatType.CT_SpellResisted);
-                //				MessageToLiving(ad.Target, "You resist the effect!", eChatType.CT_SpellResisted);
+                //				MessageToCaster("You hit "+ad.Target.GetName(0, false)+" for " + ad.Damage + " damage!", ChatType.CT_Spell);
+                //				MessageToCaster(ad.Target.GetName(0, true) + " resists the effect!", ChatType.CT_SpellResisted);
+                //				MessageToLiving(ad.Target, "You resist the effect!", ChatType.CT_SpellResisted);
                 //			}
 		}
 
@@ -211,9 +211,9 @@ namespace DawnOfLight.GameServer.Spells
 			if (effect.Owner.IsAlive)
 			{
 				// An acidic cloud surrounds you!
-				MessageToLiving(effect.Owner, Spell.Message1, eChatType.CT_Spell);
+				MessageToLiving(effect.Owner, Spell.Message1, ChatType.CT_Spell);
 				// {0} is surrounded by an acidic cloud!
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), eChatType.CT_YouHit, effect.Owner);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), ChatType.CT_YouHit, effect.Owner);
 				OnDirectEffect(effect.Owner, effect.Effectiveness);
 			}
 		}
@@ -231,9 +231,9 @@ namespace DawnOfLight.GameServer.Spells
 			if (!noMessages)
 			{
 				// The acidic mist around you dissipates.
-				MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
+				MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
 				// The acidic mist around {0} dissipates.
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
 			}
 			return 0;
 		}

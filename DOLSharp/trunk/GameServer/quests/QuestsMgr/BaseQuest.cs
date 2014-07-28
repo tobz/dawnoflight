@@ -275,7 +275,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 
 			if (location.Name != null)
 			{
-                m_questPlayer.Out.SendMessage(LanguageMgr.GetTranslation(m_questPlayer.Client, "BaseQuest.TeleportTo.Text1", target.Name, location.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                m_questPlayer.Out.SendMessage(LanguageMgr.GetTranslation(m_questPlayer.Client, "BaseQuest.TeleportTo.Text1", target.Name, location.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
             }
 
 		}
@@ -348,7 +348,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 					{
 						if (GiveItem(player, info.itemResult, false))
 						{
-							player.Out.SendMessage(info.interactText, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(info.interactText, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							staticItem.RemoveFromWorld(INTERACT_ITEM_RESPAWN_SECONDS);
 							OnObjectInteract(info);
 						}

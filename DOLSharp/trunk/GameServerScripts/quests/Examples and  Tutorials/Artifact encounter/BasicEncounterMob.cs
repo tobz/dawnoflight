@@ -166,7 +166,7 @@ namespace DawnOfLight.GameServer.Atlantis
 				if (source is GamePlayer)
 				{
 					GamePlayer player = source as GamePlayer;
-					player.Out.SendMessage("The " + this.Name + " is immune to magic and your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The " + this.Name + " is immune to magic and your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					return;
 				}
 				return;
@@ -177,7 +177,7 @@ namespace DawnOfLight.GameServer.Atlantis
 				if (source is GamePlayer)
 				{
 					GamePlayer player = source as GamePlayer;
-					player.Out.SendMessage("The " + this.Name + " is immune to melee and your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The " + this.Name + " is immune to melee and your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					return;
 				}
 				return;
@@ -188,7 +188,7 @@ namespace DawnOfLight.GameServer.Atlantis
 				if (source is GamePlayer)
 				{
 					GamePlayer player = source as GamePlayer;
-					player.Out.SendMessage("The " + this.Name + " is immune to crush and your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The " + this.Name + " is immune to crush and your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					return;
 				}
 				return;
@@ -199,7 +199,7 @@ namespace DawnOfLight.GameServer.Atlantis
 				if (source is GamePlayer)
 				{
 					GamePlayer player = source as GamePlayer;
-					player.Out.SendMessage("The " + this.Name + " is immune to slash and your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The " + this.Name + " is immune to slash and your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					return;
 				}
 				return;
@@ -210,7 +210,7 @@ namespace DawnOfLight.GameServer.Atlantis
 				if (source is GamePlayer)
 				{
 					GamePlayer player = source as GamePlayer;
-					player.Out.SendMessage("The " + this.Name + " is immune to thrust and your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The " + this.Name + " is immune to thrust and your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					return;
 				}
 				return;
@@ -221,7 +221,7 @@ namespace DawnOfLight.GameServer.Atlantis
 				if (source is GamePlayer)
 				{
 					GamePlayer player = source as GamePlayer;
-					player.Out.SendMessage("The " + this.Name + " is immune to body and your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The " + this.Name + " is immune to body and your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					return;
 				}
 				return;
@@ -232,7 +232,7 @@ namespace DawnOfLight.GameServer.Atlantis
 				if (source is GamePlayer)
 				{
 					GamePlayer player = source as GamePlayer;
-					player.Out.SendMessage("The " + this.Name + " is immune to cold and your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The " + this.Name + " is immune to cold and your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					return;
 				}
 				return;
@@ -243,7 +243,7 @@ namespace DawnOfLight.GameServer.Atlantis
 				if (source is GamePlayer)
 				{
 					GamePlayer player = source as GamePlayer;
-					player.Out.SendMessage("The " + this.Name + " is immune to energy and your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The " + this.Name + " is immune to energy and your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					return;
 				}
 				return;
@@ -254,7 +254,7 @@ namespace DawnOfLight.GameServer.Atlantis
 				if (source is GamePlayer)
 				{
 					GamePlayer player = source as GamePlayer;
-					player.Out.SendMessage("The " + this.Name + " is immune to heat and your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The " + this.Name + " is immune to heat and your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					return;
 				}
 				return;
@@ -265,7 +265,7 @@ namespace DawnOfLight.GameServer.Atlantis
 				if (source is GamePlayer)
 				{
 					GamePlayer player = source as GamePlayer;
-					player.Out.SendMessage("The " + this.Name + " is immune to matter and your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The " + this.Name + " is immune to matter and your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					return;
 				}
 				return;
@@ -276,7 +276,7 @@ namespace DawnOfLight.GameServer.Atlantis
 				if (source is GamePlayer)
 				{
 					GamePlayer player = source as GamePlayer;
-					player.Out.SendMessage("The " + this.Name + " is immune to spirit and your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("The " + this.Name + " is immune to spirit and your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					return;
 				}
 				return;

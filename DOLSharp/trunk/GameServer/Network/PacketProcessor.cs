@@ -28,6 +28,7 @@ using System.Threading;
 using System.Timers;
 using DawnOfLight.Base;
 using DawnOfLight.Base.Network;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Events;
 using DawnOfLight.GameServer.Events.Scripts;
 using DawnOfLight.GameServer.Network.Crypto;
@@ -88,7 +89,7 @@ namespace DawnOfLight.GameServer.Network
 			m_udpCounter = 0;
 			//TODO set encoding based on client version in the future :)
 			m_encoding = new PacketEncoding168();
-			m_asyncUdpCallback = new AsyncCallback(AsyncUdpSendCallback);
+			m_asyncUdpCallback = AsyncUdpSendCallback;
 			m_tcpSendBuffer = client.Server.AcquirePacketBuffer();
 			m_udpSendBuffer = client.Server.AcquirePacketBuffer();
 		}
@@ -167,9 +168,9 @@ namespace DawnOfLight.GameServer.Network
 		/// </summary>
 		/// <param name="handler">The packet handler to register</param>
 		/// <param name="packetCode">The packet ID to register it with</param>
-		public static void RegisterPacketHandler(int packetCode, IPacketHandler handler)
+		public static void RegisterPacketHandler(ClientPackets packetCode, IPacketHandler handler)
 		{
-			m_packetHandlers[packetCode] = handler;
+			m_packetHandlers[(int)packetCode] = handler;
 		}
 
 		/// <summary>
@@ -195,13 +196,12 @@ namespace DawnOfLight.GameServer.Network
 				if (!type.Namespace.ToLower().EndsWith(version.ToLower()))
 					continue;
 
-				var packethandlerattribs =
-					(PacketHandlerAttribute[]) type.GetCustomAttributes(typeof (PacketHandlerAttribute), true);
-				if (packethandlerattribs.Length > 0)
+				var packetHandlerAttributes = (PacketHandlerAttribute[]) type.GetCustomAttributes(typeof (PacketHandlerAttribute), true);
+				if (packetHandlerAttributes.Length > 0)
 				{
 					count++;
-					RegisterPacketHandler(packethandlerattribs[0].Code, (IPacketHandler) Activator.CreateInstance(type));
-					PacketPreprocessing.RegisterPacketDefinition(packethandlerattribs[0].Code, packethandlerattribs[0].PreprocessorID);
+					RegisterPacketHandler(packetHandlerAttributes[0].Code, (IPacketHandler) Activator.CreateInstance(type));
+					PacketPreprocessing.RegisterPacketDefinition(packetHandlerAttributes[0].Code, packetHandlerAttributes[0].PreprocessorID);
 				}
 			}
 			return count;
@@ -240,7 +240,7 @@ namespace DawnOfLight.GameServer.Network
 		/// Sends a packet via TCP
 		/// </summary>
 		/// <param name="packet">The packet to be sent</param>
-		public void SendTCP(GSTCPPacketOut packet)
+		public void SendTCP(GameTCPPacketOut packet)
 		{
 			//Fix the packet size
 			packet.WritePacketLength();
@@ -285,7 +285,7 @@ namespace DawnOfLight.GameServer.Network
 						if (Properties.IGNORE_TOO_LONG_OUTCOMING_PACKET)
 						{
 							log.Error("ALERT: Oversize packet detected and discarded.");
-							m_client.Out.SendMessage("ALERT: Error sending an update to your client. Oversize packet detected and discarded. Please /report this issue!", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+							m_client.Out.SendMessage("ALERT: Error sending an update to your client. Oversize packet detected and discarded. Please /report this issue!", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 						}
 						else
 						{
@@ -451,7 +451,7 @@ namespace DawnOfLight.GameServer.Network
 		/// Send the packet via TCP without changing any portion of the packet
 		/// </summary>
 		/// <param name="packet">Packet to send</param>
-		public void SendTCPRaw(GSTCPPacketOut packet)
+		public void SendTCPRaw(GameTCPPacketOut packet)
 		{
 			SendTCP((byte[]) packet.GetBuffer().Clone());
 		}
@@ -490,7 +490,7 @@ namespace DawnOfLight.GameServer.Network
 		/// </summary>
 		/// <param name="packet">Packet to be sent</param>
 		/// <param name="isForced">Force UDP packet if <code>true</code>, else packet can be sent over TCP</param>
-		public virtual void SendUDP(GSUDPPacketOut packet, bool isForced)
+		public virtual void SendUDP(GameUDPPacketOut packet, bool isForced)
 		{
 			//Fix the packet size
 			packet.WritePacketLength();
@@ -641,7 +641,7 @@ namespace DawnOfLight.GameServer.Network
 		/// Send the UDP packet without changing any portion of the packet
 		/// </summary>
 		/// <param name="packet">Packet to be sent</param>
-		public void SendUDPRaw(GSUDPPacketOut packet)
+		public void SendUDPRaw(GameUDPPacketOut packet)
 		{
 			SendUDP((byte[]) packet.GetBuffer().Clone(), false);
 		}
@@ -662,7 +662,7 @@ namespace DawnOfLight.GameServer.Network
 				int bufferSize = m_client.ReceiveBufferOffset + numBytes;
 
 				//Size < minimum
-				if (bufferSize < GSPacketIn.HDR_SIZE)
+				if (bufferSize < GamePacketIn.HDR_SIZE)
 				{
 					m_client.ReceiveBufferOffset = bufferSize; // undo buffer read
 					return;
@@ -676,7 +676,7 @@ namespace DawnOfLight.GameServer.Network
 
 				do
 				{
-					int packetLength = (buffer[curOffset] << 8) + buffer[curOffset + 1] + GSPacketIn.HDR_SIZE;
+					int packetLength = (buffer[curOffset] << 8) + buffer[curOffset + 1] + GamePacketIn.HDR_SIZE;
 					int dataLeft = bufferSize - curOffset;
 
 					if (dataLeft < packetLength)
@@ -720,7 +720,7 @@ namespace DawnOfLight.GameServer.Network
 						return;
 					}
 
-					var pak = new GSPacketIn(packetLength - GSPacketIn.HDR_SIZE);
+					var pak = new GamePacketIn(packetLength - GamePacketIn.HDR_SIZE);
 					pak.Load(buffer, curOffset, packetLength);
 
 					try
@@ -856,7 +856,7 @@ namespace DawnOfLight.GameServer.Network
 		}
 
 
-		public void HandlePacket(GSPacketIn packet)
+		public void HandlePacket(GamePacketIn packet)
 		{
 			if (packet == null || m_client == null)
 				return;

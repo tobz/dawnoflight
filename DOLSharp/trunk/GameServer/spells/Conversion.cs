@@ -45,8 +45,8 @@ namespace DawnOfLight.GameServer.Spells
 			effect.Owner.TempProperties.setProperty(ConvertDamage, 100000);
 			GameEventMgr.AddHandler(effect.Owner, GameLivingEvent.AttackedByEnemy, new DOLEventHandler(OnAttack));
 
-			eChatType toLiving = (Spell.Pulse == 0) ? eChatType.CT_Spell : eChatType.CT_SpellPulse;
-			eChatType toOther = (Spell.Pulse == 0) ? eChatType.CT_System : eChatType.CT_Spell;
+			ChatType toLiving = (Spell.Pulse == 0) ? ChatType.CT_Spell : ChatType.CT_SpellPulse;
+			ChatType toOther = (Spell.Pulse == 0) ? ChatType.CT_System : ChatType.CT_Spell;
 			MessageToLiving(effect.Owner, Spell.Message1, toLiving);
 			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), toOther, effect.Owner);
 		}
@@ -85,12 +85,12 @@ namespace DawnOfLight.GameServer.Spells
 			}
 
 			if (ad.Damage > 0)
-				MessageToLiving(ad.Target, string.Format("You convert {0} damage into " + damageConverted + " Health.", damageConverted), eChatType.CT_Spell);
-			MessageToLiving(ad.Attacker, string.Format("A magical spell absorbs {0} damage of your attack!", damageConverted), eChatType.CT_Spell);
+				MessageToLiving(ad.Target, string.Format("You convert {0} damage into " + damageConverted + " Health.", damageConverted), ChatType.CT_Spell);
+			MessageToLiving(ad.Attacker, string.Format("A magical spell absorbs {0} damage of your attack!", damageConverted), ChatType.CT_Spell);
 
 			if (Caster.Health != Caster.MaxHealth)
 			{
-				MessageToCaster("You convert " + damageConverted + " damage into health.", eChatType.CT_Spell);
+				MessageToCaster("You convert " + damageConverted + " damage into health.", ChatType.CT_Spell);
 				Caster.Health = Caster.Health + damageConverted;
 
                 #region PVP DAMAGE
@@ -108,26 +108,26 @@ namespace DawnOfLight.GameServer.Spells
 			}
 			else
 			{
-				MessageToCaster("You cannot convert anymore health!", eChatType.CT_Spell);
+				MessageToCaster("You cannot convert anymore health!", ChatType.CT_Spell);
 			}
 
 			if (Caster.Endurance != Caster.MaxEndurance)
 			{
-				MessageToCaster("You convert " + damageConverted + " damage into endurance", eChatType.CT_Spell);
+				MessageToCaster("You convert " + damageConverted + " damage into endurance", ChatType.CT_Spell);
 				Caster.Endurance = Caster.Endurance + damageConverted;
 			}
 			else
 			{
-				MessageToCaster("You cannot convert anymore endurance!", eChatType.CT_Spell);
+				MessageToCaster("You cannot convert anymore endurance!", ChatType.CT_Spell);
 			}
 			if (Caster.Mana != Caster.MaxMana)
 			{
-				MessageToCaster("You convert " + damageConverted + " damage into mana.", eChatType.CT_Spell);
+				MessageToCaster("You convert " + damageConverted + " damage into mana.", ChatType.CT_Spell);
 				Caster.Mana = Caster.Mana + damageConverted;
 			}
 			else
 			{
-				MessageToCaster("You cannot convert anymore mana!", eChatType.CT_Spell);
+				MessageToCaster("You cannot convert anymore mana!", ChatType.CT_Spell);
 			}
 
 			if (reduceddmg <= 0)
@@ -197,35 +197,35 @@ namespace DawnOfLight.GameServer.Spells
 								if (effect != null)
 									effect.Cancel(false);
 							}
-							MessageToLiving(ad.Target, string.Format("You convert {0} damage into " + damageConverted + " Health.", damageConverted), eChatType.CT_Spell);
-							MessageToLiving(ad.Attacker, string.Format("A magical spell absorbs {0} damage of your attack!", damageConverted), eChatType.CT_Spell);
+							MessageToLiving(ad.Target, string.Format("You convert {0} damage into " + damageConverted + " Health.", damageConverted), ChatType.CT_Spell);
+							MessageToLiving(ad.Attacker, string.Format("A magical spell absorbs {0} damage of your attack!", damageConverted), ChatType.CT_Spell);
 							if (Caster.Health != Caster.MaxHealth)
 							{
-								MessageToCaster("You convert " + damageConverted + " damage into health.", eChatType.CT_Spell);
+								MessageToCaster("You convert " + damageConverted + " damage into health.", ChatType.CT_Spell);
 								Caster.Health = Caster.Health + damageConverted;
 							}
 							else
 							{
-								MessageToCaster("You cannot convert anymore health!", eChatType.CT_Spell);
+								MessageToCaster("You cannot convert anymore health!", ChatType.CT_Spell);
 							}
 
 							if (Caster.Endurance != Caster.MaxEndurance)
 							{
-								MessageToCaster("You convert " + damageConverted + " damage into endurance", eChatType.CT_Spell);
+								MessageToCaster("You convert " + damageConverted + " damage into endurance", ChatType.CT_Spell);
 								Caster.Endurance = Caster.Endurance + damageConverted;
 							}
 							else
 							{
-								MessageToCaster("You cannot convert anymore endurance!", eChatType.CT_Spell);
+								MessageToCaster("You cannot convert anymore endurance!", ChatType.CT_Spell);
 							}
 							if (Caster.Mana != Caster.MaxMana)
 							{
-								MessageToCaster("You convert " + damageConverted + " damage into mana.", eChatType.CT_Spell);
+								MessageToCaster("You convert " + damageConverted + " damage into mana.", ChatType.CT_Spell);
 								Caster.Mana = Caster.Mana + damageConverted;
 							}
 							else
 							{
-								MessageToCaster("You cannot convert anymore mana!", eChatType.CT_Spell);
+								MessageToCaster("You cannot convert anymore mana!", ChatType.CT_Spell);
 							}
 						}
 						break;

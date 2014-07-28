@@ -23,7 +23,7 @@ namespace DawnOfLight.GameServer.Effects
 			if (playerCanceled && HasNegativeEffect)
 			{
 				if (Owner is GamePlayer)
-					((GamePlayer)Owner).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)Owner).Client, "Effects.StaticEffect.YouCantRemoveThisEffect"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					((GamePlayer)Owner).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)Owner).Client, "Effects.StaticEffect.YouCantRemoveThisEffect"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			Stop();

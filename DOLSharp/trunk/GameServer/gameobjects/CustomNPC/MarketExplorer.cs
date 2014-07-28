@@ -36,7 +36,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			}
 			else
 			{
-				player.Out.SendMessage("Sorry, the market is not available at this time.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Sorry, the market is not available at this time.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 			}
             return true;
         }
@@ -64,7 +64,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		/// </summary>
 		public virtual int FirstClientSlot
 		{
-			get { return (int)eInventorySlot.MarketExplorerFirst; }
+			get { return (int)InventorySlot.MarketExplorerFirst; }
 		}
 
 		/// <summary>
@@ -72,7 +72,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		/// </summary>
 		public virtual int LastClientSlot
 		{
-			get { return (int)eInventorySlot.MarketExplorerFirst + 39; } // not really sure
+			get { return (int)InventorySlot.MarketExplorerFirst + 39; } // not really sure
 		}
 
 		/// <summary>
@@ -80,7 +80,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		/// </summary>
 		public virtual int FirstDBSlot
 		{
-			get { return (int)eInventorySlot.Consignment_First; } // not used
+			get { return (int)InventorySlot.Consignment_First; } // not used
 		}
 
 		/// <summary>
@@ -88,23 +88,23 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		/// </summary>
 		public virtual int LastDBSlot
 		{
-			get { return (int)eInventorySlot.Consignment_Last; } // not used
+			get { return (int)InventorySlot.Consignment_Last; } // not used
 		}
 
 
 		/// <summary>
 		/// Search the MarketCache
 		/// </summary>
-		public virtual bool SearchInventory(GamePlayer player, MarketSearch.SearchData searchData)
+		public virtual bool SearchInventory(GamePlayer player, MarketSearch.SearchData marketSearchQuery)
 		{
-			MarketSearch marketSearch = new MarketSearch(player);
-			List<InventoryItem> items = marketSearch.FindItemsInList(DBItems(), searchData);
+			var marketSearch = new MarketSearch(player);
+			List<InventoryItem> items = marketSearch.FindItemsInList(DBItems(), marketSearchQuery);
 
 			if (items != null)
 			{
 				int maxPerPage = 20;
-				byte maxPages = (byte)(Math.Ceiling((double)items.Count / (double)maxPerPage) - 1);
-				int first = (searchData.page) * maxPerPage;
+				byte maxPages = (byte)(Math.Ceiling(items.Count / (double)maxPerPage) - 1);
+				int first = (marketSearchQuery.page) * maxPerPage;
 				int last = first + maxPerPage;
 				List<InventoryItem> list = new List<InventoryItem>();
 				int index = 0;
@@ -115,19 +115,19 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 					index++;
 				}
 
-				if ((int)searchData.page == 0)
+				if ((int)marketSearchQuery.page == 0)
 				{
-					player.Out.SendMessage("Items returned: " + items.Count + ".", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Items returned: " + items.Count + ".", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 
 				if (items.Count == 0)	// No items returned, let the client know
 				{
 					player.Out.SendMarketExplorerWindow(list, 0, 0);
 				}
-				else if ((int)searchData.page <= (int)maxPages)	//Don't let us tell the client about any more than the max pages
+				else if ((int)marketSearchQuery.page <= (int)maxPages)	//Don't let us tell the client about any more than the max pages
 				{
-					player.Out.SendMessage("Moving to page " + ((int)(searchData.page + 1)) + ".", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
-					player.Out.SendMarketExplorerWindow(list, searchData.page, maxPages);
+					player.Out.SendMessage("Moving to page " + ((int)(marketSearchQuery.page + 1)) + ".", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
+					player.Out.SendMarketExplorerWindow(list, marketSearchQuery.page, maxPages);
 				}
 
 				// Save the last search list in case we buy an item from it
@@ -152,7 +152,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 			bool canHandle = false;
 
-			if (fromClientSlot >= FirstClientSlot && toClientSlot >= (int)eInventorySlot.FirstBackpack && toClientSlot <= (ushort)eInventorySlot.LastBackpack)
+			if (fromClientSlot >= FirstClientSlot && toClientSlot >= (int)InventorySlot.FirstBackpack && toClientSlot <= (ushort)InventorySlot.LastBackpack)
 			{
 				// buy request
 				canHandle = true;
@@ -171,9 +171,9 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		public virtual bool MoveItem(GamePlayer player, ushort fromClientSlot, ushort toClientSlot)
 		{
 			// this move represents a buy item request
-			if (fromClientSlot >= (ushort)eInventorySlot.MarketExplorerFirst && 
-				toClientSlot >= (ushort)eInventorySlot.FirstBackpack && 
-				toClientSlot <= (ushort)eInventorySlot.LastBackpack &&
+			if (fromClientSlot >= (ushort)InventorySlot.MarketExplorerFirst && 
+				toClientSlot >= (ushort)InventorySlot.FirstBackpack && 
+				toClientSlot <= (ushort)InventorySlot.LastBackpack &&
 				player.ActiveInventoryObject == this)
 			{
 				var list = player.TempProperties.getProperty<List<InventoryItem>>(EXPLORER_ITEM_LIST, null);
@@ -182,7 +182,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 					return false;
 				}
 
-				int itemSlot = fromClientSlot - (int)eInventorySlot.MarketExplorerFirst;
+				int itemSlot = fromClientSlot - (int)InventorySlot.MarketExplorerFirst;
 
 				InventoryItem item = list[itemSlot];
 
@@ -223,7 +223,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 			if (cm == null)
 			{
-				player.Out.SendMessage("I can't find the consigmnent merchant for this item!", eChatType.CT_Merchant, eChatLoc.CL_ChatWindow);
+				player.Out.SendMessage("I can't find the consigmnent merchant for this item!", ChatType.CT_Merchant, ChatLocation.CL_ChatWindow);
 				log.ErrorFormat("ME: Error finding consignment merchant for lot {0}; {1}:{2} trying to buy {3}", item.OwnerLot, player.Name, player.Client.Account.Name, item.Name);
 				return;
 			}

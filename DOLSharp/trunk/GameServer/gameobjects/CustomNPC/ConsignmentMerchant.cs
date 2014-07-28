@@ -54,7 +54,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		/// </summary>
 		public virtual int FirstClientSlot
 		{
-			get { return (int)eInventorySlot.HousingInventory_First; }
+			get { return (int)InventorySlot.HousingInventory_First; }
 		}
 
 		/// <summary>
@@ -62,7 +62,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		/// </summary>
 		public virtual int LastClientSlot
 		{
-			get { return (int)eInventorySlot.HousingInventory_Last; }
+			get { return (int)InventorySlot.HousingInventory_Last; }
 		}
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
         /// </summary>
 		public virtual int FirstDBSlot
         {
-            get { return (int)eInventorySlot.Consignment_First; }
+            get { return (int)InventorySlot.Consignment_First; }
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
         /// </summary>
 		public virtual int LastDBSlot
         {
-            get { return (int)eInventorySlot.Consignment_Last; }
+            get { return (int)InventorySlot.Consignment_Last; }
         }
 
         #region Token return
@@ -133,7 +133,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
             if (!player.IsWithinRadius(this, 500))
             {
-                ((GamePlayer)source).Out.SendMessage("You are to far away to give anything to " + this.Name + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                ((GamePlayer)source).Out.SendMessage("You are to far away to give anything to " + this.Name + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return false;
             }
 
@@ -283,7 +283,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 						// ... consignment merchant
 						if (HasPermissionToMove(player))
 						{
-							NotifyObservers(player, this.MoveItemInsideObject(player, (eInventorySlot)fromClientSlot, (eInventorySlot)toClientSlot));
+							NotifyObservers(player, this.MoveItemInsideObject(player, (InventorySlot)fromClientSlot, (InventorySlot)toClientSlot));
 						}
 						else
 						{
@@ -294,28 +294,28 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 					{
 						// ... player
 
-						InventoryItem toItem = player.Inventory.GetItem((eInventorySlot)toClientSlot);
+						InventoryItem toItem = player.Inventory.GetItem((InventorySlot)toClientSlot);
 
 						if (toItem != null)
 						{
-							player.Client.Out.SendMessage("You can only move an item to an empty slot!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Client.Out.SendMessage("You can only move an item to an empty slot!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return false;
 						}
 
 						if (HasPermissionToMove(player) == false)
 						{
 							// Move must be an attempt to buy
-							OnPlayerBuy(player, (eInventorySlot)fromClientSlot, (eInventorySlot)toClientSlot);
+							OnPlayerBuy(player, (InventorySlot)fromClientSlot, (InventorySlot)toClientSlot);
 						}
 						else if (player.TargetObject == this)
 						{
 							// Allow a move only if the player with permission is standing in front of the CM.
 							// This prevents moves if player has owner permission but is viewing from the Market Explorer
-							NotifyObservers(player, this.MoveItemFromObject(player, (eInventorySlot)fromClientSlot, (eInventorySlot)toClientSlot));
+							NotifyObservers(player, this.MoveItemFromObject(player, (InventorySlot)fromClientSlot, (InventorySlot)toClientSlot));
 						}
 						else
 						{
-							player.Client.Out.SendMessage("You can't buy items from yourself!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Client.Out.SendMessage("You can't buy items from yourself!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return false;
 						}
 					}
@@ -325,16 +325,16 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 					// moving an item from the client to the consignment merchant
 					if (HasPermissionToMove(player))
 					{
-						InventoryItem toItem = player.Inventory.GetItem((eInventorySlot)toClientSlot);
+						InventoryItem toItem = player.Inventory.GetItem((InventorySlot)toClientSlot);
 
 						if (toItem != null)
 						{
 							// in most clients this is actually handled ON the client, but just in case...
-							player.Client.Out.SendMessage("You can only move an item to an empty slot!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Client.Out.SendMessage("You can only move an item to an empty slot!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							return false;
 						}
 
-						NotifyObservers(player, this.MoveItemToObject(player, (eInventorySlot)fromClientSlot, (eInventorySlot)toClientSlot));
+						NotifyObservers(player, this.MoveItemToObject(player, (InventorySlot)fromClientSlot, (InventorySlot)toClientSlot));
 					}
 					else
 					{
@@ -418,7 +418,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				item.OwnerID = conMerchant.GetOwner(player);
 				GameServer.Database.SaveObject(item);
 				ChatUtil.SendDebugMessage(player, item.Name + " SellPrice=" + price + ", OwnerLot=" + item.OwnerLot + ", OwnerID=" + item.OwnerID);
-				player.Out.SendMessage("Price set!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Price set!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				if (ServerProperties.Properties.MARKET_ENABLE_LOG)
 				{
@@ -435,7 +435,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		/// <summary>
 		/// Do we handle a search?
 		/// </summary>
-		public virtual bool SearchInventory(GamePlayer player, MarketSearch.SearchData searchData)
+		public virtual bool SearchInventory(GamePlayer player, MarketSearch.SearchData marketSearchQuery)
 		{
 			return false; // not applicable
 		}
@@ -448,7 +448,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
         /// <param name="playerInventory"></param>
         /// <param name="fromClientSlot"></param>
         /// <param name="toClientSlot"></param>
-		public virtual void OnPlayerBuy(GamePlayer player, eInventorySlot fromClientSlot, eInventorySlot toClientSlot, bool usingMarketExplorer = false)
+		public virtual void OnPlayerBuy(GamePlayer player, InventorySlot fromClientSlot, InventorySlot toClientSlot, bool usingMarketExplorer = false)
         {
 			IDictionary<int, InventoryItem> clientInventory = GetClientInventory(player);
 
@@ -529,7 +529,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 		protected virtual void BuyItem(GamePlayer player, bool usingMarketExplorer = false)
 		{
-			eInventorySlot fromClientSlot = player.TempProperties.getProperty<eInventorySlot>(CONSIGNMENT_BUY_ITEM, eInventorySlot.Invalid);
+			InventorySlot fromClientSlot = player.TempProperties.getProperty<InventorySlot>(CONSIGNMENT_BUY_ITEM, InventorySlot.Invalid);
 			player.TempProperties.removeProperty(CONSIGNMENT_BUY_ITEM);
 
 			InventoryItem item = null;
@@ -537,7 +537,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			lock (LockObject())
 			{
 
-				if (fromClientSlot != eInventorySlot.Invalid)
+				if (fromClientSlot != InventorySlot.Invalid)
 				{
 					IDictionary<int, InventoryItem> clientInventory = GetClientInventory(player);
 
@@ -589,9 +589,9 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 						}
 					}
 
-					eInventorySlot toClientSlot = player.Inventory.FindFirstEmptySlot(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+					InventorySlot toClientSlot = player.Inventory.FindFirstEmptySlot(InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 
-					if (toClientSlot == eInventorySlot.Invalid)
+					if (toClientSlot == InventorySlot.Invalid)
 					{
 						ChatUtil.SendSystemMessage(player, "GameMerchant.OnPlayerBuy.NotInventorySpace", null);
 						return;
@@ -729,7 +729,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 				if (ServerProperties.Properties.CONSIGNMENT_USE_BP)
                 {
-                    player.Out.SendMessage("Your merchant currently holds " + amount + " BountyPoints.", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+                    player.Out.SendMessage("Your merchant currently holds " + amount + " BountyPoints.", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
                 }
             }
             else
@@ -811,57 +811,57 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				case eRealm.Albion:
 					{
 						Model = 92;
-						template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 310, 81);
-						template.AddNPCEquipment(eInventorySlot.FeetArmor, 1301);
-						template.AddNPCEquipment(eInventorySlot.LegsArmor, 1312);
+						template.AddNPCEquipment(InventorySlot.RightHandWeapon, 310, 81);
+						template.AddNPCEquipment(InventorySlot.FeetArmor, 1301);
+						template.AddNPCEquipment(InventorySlot.LegsArmor, 1312);
 
 						if (Util.Chance(50))
 						{
-							template.AddNPCEquipment(eInventorySlot.TorsoArmor, 1005, 67);
+							template.AddNPCEquipment(InventorySlot.TorsoArmor, 1005, 67);
 						}
 						else
 						{
-							template.AddNPCEquipment(eInventorySlot.TorsoArmor, 1313);
+							template.AddNPCEquipment(InventorySlot.TorsoArmor, 1313);
 						}
 
-						template.AddNPCEquipment(eInventorySlot.Cloak, 669, 65);
+						template.AddNPCEquipment(InventorySlot.Cloak, 669, 65);
 					}
 					break;
 				case eRealm.Midgard:
 					{
 						Model = 156;
-						template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 321, 81);
-						template.AddNPCEquipment(eInventorySlot.FeetArmor, 1301);
-						template.AddNPCEquipment(eInventorySlot.LegsArmor, 1303);
+						template.AddNPCEquipment(InventorySlot.RightHandWeapon, 321, 81);
+						template.AddNPCEquipment(InventorySlot.FeetArmor, 1301);
+						template.AddNPCEquipment(InventorySlot.LegsArmor, 1303);
 
 						if (Util.Chance(50))
 						{
-							template.AddNPCEquipment(eInventorySlot.TorsoArmor, 1300);
+							template.AddNPCEquipment(InventorySlot.TorsoArmor, 1300);
 						}
 						else
 						{
-							template.AddNPCEquipment(eInventorySlot.TorsoArmor, 993);
+							template.AddNPCEquipment(InventorySlot.TorsoArmor, 993);
 						}
 
-						template.AddNPCEquipment(eInventorySlot.Cloak, 669, 51);
+						template.AddNPCEquipment(InventorySlot.Cloak, 669, 51);
 					}
 					break;
 				case eRealm.Hibernia:
 					{
 						Model = 335;
-						template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 457, 81);
-						template.AddNPCEquipment(eInventorySlot.FeetArmor, 1333);
+						template.AddNPCEquipment(InventorySlot.RightHandWeapon, 457, 81);
+						template.AddNPCEquipment(InventorySlot.FeetArmor, 1333);
 
 						if (Util.Chance(50))
 						{
-							template.AddNPCEquipment(eInventorySlot.TorsoArmor, 1336);
+							template.AddNPCEquipment(InventorySlot.TorsoArmor, 1336);
 						}
 						else
 						{
-							template.AddNPCEquipment(eInventorySlot.TorsoArmor, 1008);
+							template.AddNPCEquipment(InventorySlot.TorsoArmor, 1008);
 						}
 
-						template.AddNPCEquipment(eInventorySlot.Cloak, 669);
+						template.AddNPCEquipment(InventorySlot.Cloak, 669);
 					}
 					break;
 			}
@@ -886,7 +886,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                 var guild = GameServer.Database.SelectObject<DBGuild>("GuildName = '" + house.DatabaseItem.GuildName + "'");
                 int emblem = guild.Emblem;
 
-                InventoryItem cloak = Inventory.GetItem(eInventorySlot.Cloak);
+                InventoryItem cloak = Inventory.GetItem(InventorySlot.Cloak);
                 if (cloak != null)
                 {
                     cloak.Emblem = emblem;

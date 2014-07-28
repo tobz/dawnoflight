@@ -48,7 +48,7 @@ namespace DawnOfLight.GameServer.Spells
 				//This spell doesn't work on pets or monsters
 				if (selectedTarget is GameNPC)
 				{
-					MessageToCaster("This spell may not be cast on pets!", eChatType.CT_SpellResisted);
+					MessageToCaster("This spell may not be cast on pets!", ChatType.CT_SpellResisted);
 					return false;
 				}
 
@@ -70,7 +70,7 @@ namespace DawnOfLight.GameServer.Spells
 			}
 			else
 			{
-				MessageToCaster("This spell only works on members of your realm!", eChatType.CT_SpellResisted);
+				MessageToCaster("This spell only works on members of your realm!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -91,11 +91,11 @@ namespace DawnOfLight.GameServer.Spells
 			}
 
 			//Send the spell messages
-			MessageToLiving(FSTarget, Spell.Message1, eChatType.CT_Spell);
+			MessageToLiving(FSTarget, Spell.Message1, ChatType.CT_Spell);
 			foreach (GamePlayer player in FSTarget.GetPlayersInRadius(WorldMgr.INFO_DISTANCE))
 			{
 				if (player != FSTarget)
-					MessageToLiving(player, string.Format(Spell.Message3, FSTarget.Name), eChatType.CT_Spell);
+					MessageToLiving(player, string.Format(Spell.Message3, FSTarget.Name), ChatType.CT_Spell);
 			}
 
 			timer = new FSTimer(Caster, this);
@@ -118,11 +118,11 @@ namespace DawnOfLight.GameServer.Spells
 			timer.Stop();
 
 			//Send the spell messages
-			MessageToLiving(FSTarget, Spell.Message2, eChatType.CT_SpellExpires);
+			MessageToLiving(FSTarget, Spell.Message2, ChatType.CT_SpellExpires);
 			foreach (GamePlayer player in FSTarget.GetPlayersInRadius(WorldMgr.INFO_DISTANCE))
 			{
 				if (player != FSTarget)
-					MessageToLiving(player, string.Format(Spell.Message4, FSTarget.Name), eChatType.CT_System);
+					MessageToLiving(player, string.Format(Spell.Message4, FSTarget.Name), ChatType.CT_System);
 			}
 
 			return base.OnEffectExpires(effect, noMessages);

@@ -81,7 +81,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// </summary>
 		public virtual int FirstClientSlot
 		{
-			get { return (int)eInventorySlot.HousingInventory_First; }
+			get { return (int)InventorySlot.HousingInventory_First; }
 		}
 
 		/// <summary>
@@ -89,7 +89,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// </summary>
 		public int LastClientSlot
 		{
-			get { return (int)eInventorySlot.HousingInventory_Last; }
+			get { return (int)InventorySlot.HousingInventory_Last; }
 		}
 
 		/// <summary>
@@ -97,7 +97,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// </summary>
 		public virtual int FirstDBSlot
 		{
-			get { return (int)(eInventorySlot.HouseVault_First) + VaultSize * Index; }
+			get { return (int)(InventorySlot.HouseVault_First) + VaultSize * Index; }
 		}
 
 		/// <summary>
@@ -105,7 +105,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// </summary>
 		public virtual int LastDBSlot
 		{
-			get { return (int)(eInventorySlot.HouseVault_First) + VaultSize * (Index + 1) - 1; }
+			get { return (int)(InventorySlot.HouseVault_First) + VaultSize * (Index + 1) - 1; }
 		}
 
 		public virtual string GetOwner(GamePlayer player = null)
@@ -122,7 +122,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		/// <summary>
 		/// Do we handle a search?
 		/// </summary>
-		public bool SearchInventory(GamePlayer player, MarketSearch.SearchData searchData)
+		public bool SearchInventory(GamePlayer player, MarketSearch.SearchData marketSearchQuery)
 		{
 			return false; // not applicable
 		}
@@ -133,7 +133,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		public virtual Dictionary<int, InventoryItem> GetClientInventory(GamePlayer player)
 		{
 			var inventory = new Dictionary<int, InventoryItem>();
-			int slotOffset = -FirstDBSlot + (int)(eInventorySlot.HousingInventory_First);
+			int slotOffset = -FirstDBSlot + (int)(InventorySlot.HousingInventory_First);
 			foreach (InventoryItem item in DBItems(player))
 			{
 				if (item != null)
@@ -164,7 +164,7 @@ namespace DawnOfLight.GameServer.GameObjects
 
 			if (!CanView(player))
 			{
-				player.Out.SendMessage("You don't have permission to view this vault!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You don't have permission to view this vault!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
@@ -203,13 +203,13 @@ namespace DawnOfLight.GameServer.GameObjects
 			bool canHandle = false;
 
 			// House Vaults and GameConsignmentMerchant Merchants deliver the same slot numbers
-			if (fromSlot >= (ushort)eInventorySlot.HousingInventory_First &&
-				fromSlot <= (ushort)eInventorySlot.HousingInventory_Last)
+			if (fromSlot >= (ushort)InventorySlot.HousingInventory_First &&
+				fromSlot <= (ushort)InventorySlot.HousingInventory_Last)
 			{
 				canHandle = true;
 			}
-			else if (toSlot >= (ushort)eInventorySlot.HousingInventory_First &&
-				toSlot <= (ushort)eInventorySlot.HousingInventory_Last)
+			else if (toSlot >= (ushort)InventorySlot.HousingInventory_First &&
+				toSlot <= (ushort)InventorySlot.HousingInventory_Last)
 			{
 				canHandle = true;
 			}
@@ -227,8 +227,8 @@ namespace DawnOfLight.GameServer.GameObjects
 				return false;
 			}
 
-			bool fromHousing = (fromSlot >= (ushort)eInventorySlot.HousingInventory_First && fromSlot <= (ushort)eInventorySlot.HousingInventory_Last);
-			bool toHousing = (toSlot >= (ushort)eInventorySlot.HousingInventory_First && toSlot <= (ushort)eInventorySlot.HousingInventory_Last);
+			bool fromHousing = (fromSlot >= (ushort)InventorySlot.HousingInventory_First && fromSlot <= (ushort)InventorySlot.HousingInventory_Last);
+			bool toHousing = (toSlot >= (ushort)InventorySlot.HousingInventory_First && toSlot <= (ushort)InventorySlot.HousingInventory_Last);
 
 			if (fromHousing == false && toHousing == false)
 			{
@@ -238,30 +238,30 @@ namespace DawnOfLight.GameServer.GameObjects
 			GameVault gameVault = player.ActiveInventoryObject as GameVault;
 			if (gameVault == null)
 			{
-				player.Out.SendMessage("You are not actively viewing a vault!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You are not actively viewing a vault!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				player.Out.SendInventoryItemsUpdate(null);
 				return false;
 			}
 
 			if (toHousing && gameVault.CanAddItems(player) == false)
 			{
-				player.Out.SendMessage("You don't have permission to add items!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You don't have permission to add items!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			if (fromHousing && gameVault.CanRemoveItems(player) == false)
 			{
-				player.Out.SendMessage("You don't have permission to remove items!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You don't have permission to remove items!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
-			InventoryItem itemInFromSlot = player.Inventory.GetItem((eInventorySlot)fromSlot);
-			InventoryItem itemInToSlot = player.Inventory.GetItem((eInventorySlot)toSlot);
+			InventoryItem itemInFromSlot = player.Inventory.GetItem((InventorySlot)fromSlot);
+			InventoryItem itemInToSlot = player.Inventory.GetItem((InventorySlot)toSlot);
 
 			// Check for a swap to get around not allowing non-tradables in a housing vault - Tolakram
 			if (fromHousing && itemInToSlot != null && itemInToSlot.IsTradable == false)
 			{
-				player.Out.SendMessage("You cannot swap with an untradable item!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You cannot swap with an untradable item!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				log.DebugFormat("GameVault: {0} attempted to swap untradable item {2} with {1}", player.Name, itemInFromSlot.Name, itemInToSlot.Name);
 				player.Out.SendInventoryItemsUpdate(null);
 				return false;
@@ -271,7 +271,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			// block placing untradables into housing vaults from any source - Tolakram
 			if (toHousing && itemInFromSlot != null && itemInFromSlot.IsTradable == false)
 			{
-				player.Out.SendMessage("You can not put this item into a House Vault!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You can not put this item into a House Vault!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				player.Out.SendInventoryItemsUpdate(null);
 				return false;
 			}
@@ -284,16 +284,16 @@ namespace DawnOfLight.GameServer.GameObjects
 				{
 					if (toHousing)
 					{
-						NotifyObservers(player, this.MoveItemInsideObject(player, (eInventorySlot)fromSlot, (eInventorySlot)toSlot));
+						NotifyObservers(player, this.MoveItemInsideObject(player, (InventorySlot)fromSlot, (InventorySlot)toSlot));
 					}
 					else
 					{
-						NotifyObservers(player, this.MoveItemFromObject(player, (eInventorySlot)fromSlot, (eInventorySlot)toSlot));
+						NotifyObservers(player, this.MoveItemFromObject(player, (InventorySlot)fromSlot, (InventorySlot)toSlot));
 					}
 				}
 				else if (toHousing)
 				{
-					NotifyObservers(player, this.MoveItemToObject(player, (eInventorySlot)fromSlot, (eInventorySlot)toSlot));
+					NotifyObservers(player, this.MoveItemToObject(player, (InventorySlot)fromSlot, (InventorySlot)toSlot));
 				}
 			}
 

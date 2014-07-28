@@ -152,12 +152,12 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				laridiaTheMinstrel.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 137, 9);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 138, 9);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 134, 9);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 96, 72);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 140, 43);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 141, 43);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 137, 9);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 138, 9);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 134, 9);
+				template.AddNPCEquipment(InventorySlot.Cloak, 96, 72);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 140, 43);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 141, 43);
 				laridiaTheMinstrel.Inventory = template.CloseTemplate();
 				laridiaTheMinstrel.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -194,10 +194,10 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				farmerAsma.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 31);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 57);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 32);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 33);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 31);
+				template.AddNPCEquipment(InventorySlot.Cloak, 57);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 32);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 33);
 				farmerAsma.Inventory = template.CloseTemplate();
 				farmerAsma.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -311,7 +311,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				{
 					if (quest.Step == 2)
 					{
-						SendMessage(player, "You tell Laridia that the rumor of the displaced farmer is true, and that Farmer Asma is searching for a way to reestablish herself.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow); 
+						SendMessage(player, "You tell Laridia that the rumor of the displaced farmer is true, and that Farmer Asma is searching for a way to reestablish herself.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow); 
 						laridiaTheMinstrel.SayTo(player, "I had a feeling this rumor might turn out to be true. It angers me that Farmer Asma didn't enter into consideration when the pig herders were looking for a field.  We'll have to find a way to help her get back on her [feet].");
 					}
 					return;
@@ -410,7 +410,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 					switch (wArgs.Text)
 					{
 						case "happened":
-							SendMessage(player, "You start to ask Farmer Asma if she's the person Minstrel Laridia was talking about, the farmer continues speaking before you can organize your thoughts.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+							SendMessage(player, "You start to ask Farmer Asma if she's the person Minstrel Laridia was talking about, the farmer continues speaking before you can organize your thoughts.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 							farmerAsma.SayTo(player, "You see, I used to lease land close to Vetusta Abbey, where I raised barley.  Being a farmer never made me wealthy, but it was satisfying. I never had any problems with the Church or my neighbors, so I was shocked when the Abbey asked me to [leave].");
 							break;
 

@@ -18,6 +18,7 @@
  */
 #define NOENCRYPTION
 using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Crafting;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
@@ -49,7 +50,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (player == null)
 				return;
 			
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 			pak.WriteByte(0x03); //subcode
 			pak.WriteByte(0x0f); //number of entry
 			pak.WriteByte(0x00); //subtype
@@ -116,7 +117,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient.Player == null)
 				return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterPointsUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterPointsUpdate));
 			pak.WriteInt((uint)m_gameClient.Player.RealmPoints);
 			pak.WriteShort(m_gameClient.Player.LevelPermill);
 			pak.WriteShort((ushort) m_gameClient.Player.SkillSpecialtyPoints);

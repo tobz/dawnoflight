@@ -56,7 +56,7 @@ namespace DawnOfLight.GameServer.Trainers.hibernia
 				// player can be promoted
 				if (player.Level>=5)
 				{
-					player.Out.SendMessage(this.Name + " says, \"You must now seek your training elsewhere. Which path would you like to follow? [Animist] or [Valewalker]?\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"You must now seek your training elsewhere. Which path would you like to follow? [Animist] or [Valewalker]?\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 				else
 				{
@@ -64,9 +64,9 @@ namespace DawnOfLight.GameServer.Trainers.hibernia
 				}
 
 				// ask for basic equipment if player doesnt own it
-				if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, eInventorySlot.MinEquipable, eInventorySlot.LastBackpack) == null)
+				if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, InventorySlot.MinEquipable, InventorySlot.LastBackpack) == null)
 				{
-					player.Out.SendMessage(this.Name + " says, \"Do you require a [practice weapon]?\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"Do you require a [practice weapon]?\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 				
 			}
@@ -91,22 +91,22 @@ namespace DawnOfLight.GameServer.Trainers.hibernia
 			switch (text) {
 				case "Animist":
 					if(player.Race == (int) eRace.Celt || player.Race == (int) eRace.Firbolg || player.Race == (int) eRace.Sylvan){
-						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					else{
-						player.Out.SendMessage(this.Name + " says, \"The path of a Animist is not available to your race. Please choose another.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"The path of a Animist is not available to your race. Please choose another.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					return true;
 				case "Valewalker":
 					if(player.Race == (int) eRace.Celt || player.Race == (int) eRace.Firbolg || player.Race == (int) eRace.Sylvan){
-						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					else{
-						player.Out.SendMessage(this.Name + " says, \"The path of a Valewalker is not available to your race. Please choose another.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"The path of a Valewalker is not available to your race. Please choose another.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					return true;
 				case "practice weapon":
-					if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == null)
+					if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, InventorySlot.Min_Inv, InventorySlot.Max_Inv) == null)
 					{
 						player.ReceiveItem(this,PRACTICE_WEAPON_ID);
 					}

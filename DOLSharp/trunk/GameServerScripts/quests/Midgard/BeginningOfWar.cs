@@ -195,12 +195,12 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 				briedi.Heading = 292;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 348);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 349);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 350);
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 351);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 352);
-				template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 640);                
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 348);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 349);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 350);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 351);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 352);
+				template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 640);                
 				briedi.Inventory = template.CloseTemplate();
 				briedi.SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
                 
@@ -1046,12 +1046,12 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 				briediClone.Heading = locationBriediClone.Heading;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 348);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 349);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 350);
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 351);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 352);
-				template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 640);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 348);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 349);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 350);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 351);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 352);
+				template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 640);
 				briediClone.Inventory = template.CloseTemplate();
 				briediClone.SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
 
@@ -1111,7 +1111,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 
 			UseSlotEventArgs uArgs = (UseSlotEventArgs) args;
 
-			InventoryItem item = player.Inventory.GetItem((eInventorySlot)uArgs.Slot);
+			InventoryItem item = player.Inventory.GetItem((InventorySlot)uArgs.Slot);
 			if (item != null && item.Id_nb == listBriedi.Id_nb)
 			{
 				if (quest.Step >= 4 && quest.Step <= 8)

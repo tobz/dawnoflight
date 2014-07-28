@@ -47,7 +47,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			// Dunnerholl : Basic Crafting Master does not give the option to rejoin this craft
 			if (InitialEntersentence != null)
 			{
-				SayTo(player, eChatLoc.CL_PopupWindow, InitialEntersentence);
+				SayTo(player, ChatLocation.CL_PopupWindow, InitialEntersentence);
 			}
             
             		
@@ -77,7 +77,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 			player.CraftingPrimarySkill = TheCraftingSkill;
 
-			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "CraftNPC.CraftNpcDialogResponse.Accepted", ACCEPTED_BY_ORDER_NAME), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "CraftNPC.CraftNpcDialogResponse.Accepted", ACCEPTED_BY_ORDER_NAME), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				
 			foreach (eCraftingSkill skill in TrainedSkills)
 			{

@@ -35,7 +35,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 		{
 			if (args.Length < 2)
 			{
-				client.Out.SendMessage("Use: /team <message>", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Use: /team <message>", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -45,7 +45,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				if (player.Account.PrivLevel > 1)
 				{
-					player.Out.SendMessage("[StaffInformation-" + client.Player.Name + "]:\n " + msg, eChatType.CT_Staff, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("[StaffInformation-" + client.Player.Name + "]:\n " + msg, ChatType.CT_Staff, ChatLocation.CL_ChatWindow);
 				}
 			}
 		}

@@ -53,7 +53,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 			m_caster.Endurance -= CalculateEnduranceCost();
 			//if ((target is Keeps.GameKeepDoor || target is Keeps.GameKeepComponent) && Spell.SpellType != "SiegeArrow")
 			//{
-			//    MessageToCaster(String.Format("Your spell has no effect on the {0}!", target.Name), eChatType.CT_SpellResisted);
+			//    MessageToCaster(String.Format("Your spell has no effect on the {0}!", target.Name), ChatType.CT_SpellResisted);
 			//    return;
 			//}
 			base.FinishSpellCast(target);
@@ -186,8 +186,8 @@ namespace DawnOfLight.GameServer.Spells.Archery
 				if (Util.Chance(missrate))
 				{
 					ad.AttackResult = GameLiving.eAttackResult.Missed;
-					m_handler.MessageToCaster("You miss!", eChatType.CT_YouHit);
-					m_handler.MessageToLiving(target, caster.GetName(0, false) + " missed!", eChatType.CT_Missed);
+					m_handler.MessageToCaster("You miss!", ChatType.CT_YouHit);
+					m_handler.MessageToLiving(target, caster.GetName(0, false) + " missed!", ChatType.CT_Missed);
 					target.OnAttackedByEnemy(ad);
 					target.StartInterruptTimer(target.SpellInterruptDuration, ad.AttackType, caster);
 					if (target is GameNPC)
@@ -206,7 +206,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 				if (target is GamePlayer && !target.IsStunned && !target.IsMezzed && !target.IsSitting && m_handler.Spell.LifeDrainReturn != (int)Archery.eShotType.Critical)
 				{
 					GamePlayer player = (GamePlayer)target;
-					InventoryItem lefthand = player.Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+					InventoryItem lefthand = player.Inventory.GetItem(InventorySlot.LeftHandWeapon);
 					if (lefthand != null && (player.AttackWeapon == null || player.AttackWeapon.Item_Type == Slot.RIGHTHAND || player.AttackWeapon.Item_Type == Slot.LEFTHAND))
 					{
 						if (target.IsObjectInFront(caster, 180) && lefthand.Object_Type == (int)eObjectType.Shield)
@@ -229,7 +229,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 									if (engage.EngageTarget.LastAttackedByEnemyTick > engage.EngageTarget.CurrentRegion.Time - EngageAbilityHandler.ENGAGE_ATTACK_DELAY_TICK)
 									{
 										if (engage.Owner is GamePlayer)
-											(engage.Owner as GamePlayer).Out.SendMessage(engage.EngageTarget.GetName(0, true) + " has been attacked recently and you are unable to engage.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+											(engage.Owner as GamePlayer).Out.SendMessage(engage.EngageTarget.GetName(0, true) + " has been attacked recently and you are unable to engage.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 									}  // Check if player has enough endurance left to engage
 									else if (engage.Owner.Endurance < EngageAbilityHandler.ENGAGE_DURATION_LOST)
 									{
@@ -239,7 +239,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 									{
 										engage.Owner.Endurance -= EngageAbilityHandler.ENGAGE_DURATION_LOST;
 										if (engage.Owner is GamePlayer)
-											(engage.Owner as GamePlayer).Out.SendMessage("You concentrate on blocking the blow!", eChatType.CT_Skill, eChatLoc.CL_SystemWindow);
+											(engage.Owner as GamePlayer).Out.SendMessage("You concentrate on blocking the blow!", ChatType.CT_Skill, ChatLocation.CL_SystemWindow);
 
 										if (blockchance < 85)
 											blockchance = 85;
@@ -250,10 +250,10 @@ namespace DawnOfLight.GameServer.Spells.Archery
 							if (blockchance >= Util.Random(1, 100))
 							{
 								arrowBlock = true;
-								m_handler.MessageToLiving(player, "You block " + caster.GetName(0, false) + "'s arrow!", eChatType.CT_System);
+								m_handler.MessageToLiving(player, "You block " + caster.GetName(0, false) + "'s arrow!", ChatType.CT_System);
 								if (m_handler.Spell.Target.ToLower() != "area")
 								{
-									m_handler.MessageToCaster(player.GetName(0, true) + " blocks your arrow!", eChatType.CT_System);
+									m_handler.MessageToCaster(player.GetName(0, true) + " blocks your arrow!", ChatType.CT_System);
 									m_handler.DamageTarget(ad, false, 0x02);
 								}
 							}
@@ -271,7 +271,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 
 					InventoryItem armor = null;
 					if (target.Inventory != null)
-						armor = target.Inventory.GetItem((eInventorySlot)ad.ArmorHitLocation);
+						armor = target.Inventory.GetItem((InventorySlot)ad.ArmorHitLocation);
 
 					double ws = (caster.Level * 8 * (1.0 + (caster.GetModified(eProperty.Dexterity) - 50) / 200.0));
 

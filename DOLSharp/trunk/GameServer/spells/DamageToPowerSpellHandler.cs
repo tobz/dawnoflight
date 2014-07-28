@@ -46,11 +46,11 @@ namespace DawnOfLight.GameServer.Spells
 
             if (heal > 0)
             {
-                MessageToCaster("You steal " + heal + " power point" + (heal == 1 ? "." : "s."), eChatType.CT_Spell);
+                MessageToCaster("You steal " + heal + " power point" + (heal == 1 ? "." : "s."), ChatType.CT_Spell);
             }
             else
             {
-                MessageToCaster("You cannot absorb any more power.", eChatType.CT_SpellResisted);
+                MessageToCaster("You cannot absorb any more power.", ChatType.CT_SpellResisted);
             }
         }
 

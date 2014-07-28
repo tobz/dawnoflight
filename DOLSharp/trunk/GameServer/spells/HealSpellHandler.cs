@@ -66,7 +66,7 @@ namespace DawnOfLight.GameServer.Spells
 
                 if (healTarget.IsDiseased)
                 {
-                    MessageToCaster("Your target is diseased!", eChatType.CT_SpellResisted);
+                    MessageToCaster("Your target is diseased!", ChatType.CT_SpellResisted);
                     heal >>= 1;
                 }
 
@@ -121,7 +121,7 @@ namespace DawnOfLight.GameServer.Spells
 			if (!target.IsAlive)
             {
                 //"You cannot heal the dead!" sshot550.tga
-                MessageToCaster(target.GetName(0, true) + " is dead!", eChatType.CT_SpellResisted);
+                MessageToCaster(target.GetName(0, true) + " is dead!", ChatType.CT_SpellResisted);
                 return false;
             }
 
@@ -133,7 +133,7 @@ namespace DawnOfLight.GameServer.Spells
                     (Caster as GamePlayer).Group == null ||
                     (Caster as GamePlayer).Group != (target as GamePlayer).Group)
                 {
-                    MessageToCaster("That player does not want assistance", eChatType.CT_SpellResisted);
+                    MessageToCaster("That player does not want assistance", ChatType.CT_SpellResisted);
                     return false;
                 }
             }
@@ -175,7 +175,7 @@ namespace DawnOfLight.GameServer.Spells
 				{
 					double HealBonus = amount * ((int)HealEffect.Spell.Value * 0.01);
 					amount += (int)HealBonus;
-					playerTarget.Out.SendMessage("Your Efficient Healing buff grants you a additional" + HealBonus + " in the Heal!", eChatType.CT_Spell, eChatLoc.CL_ChatWindow);
+					playerTarget.Out.SendMessage("Your Efficient Healing buff grants you a additional" + HealBonus + " in the Heal!", ChatType.CT_Spell, ChatLocation.CL_ChatWindow);
 				}
 				GameSpellEffect EndEffect = SpellHandler.FindEffectOnTarget(playerTarget, "EfficientEndurance");
 				if (EndEffect != null)
@@ -183,7 +183,7 @@ namespace DawnOfLight.GameServer.Spells
 					double EndBonus = amount * ((int)EndEffect.Spell.Value * 0.01);
 					//600 / 10 = 60end
 					playerTarget.Endurance += (int)EndBonus;
-					playerTarget.Out.SendMessage("Your Efficient Endurance buff grants you " + EndBonus + " Endurance from the Heal!", eChatType.CT_Spell, eChatLoc.CL_ChatWindow);
+					playerTarget.Out.SendMessage("Your Efficient Endurance buff grants you " + EndBonus + " Endurance from the Heal!", ChatType.CT_Spell, ChatLocation.CL_ChatWindow);
 				}
 			}
 
@@ -213,9 +213,9 @@ namespace DawnOfLight.GameServer.Spells
                 if (Spell.Pulse == 0)
                 {
                     if (target == m_caster) 
-                        MessageToCaster("You are fully healed.", eChatType.CT_SpellResisted);
+                        MessageToCaster("You are fully healed.", ChatType.CT_SpellResisted);
                     else 
-                        MessageToCaster(target.GetName(0, true) + " is fully healed.", eChatType.CT_SpellResisted);
+                        MessageToCaster(target.GetName(0, true) + " is fully healed.", ChatType.CT_SpellResisted);
                 }
                 return false;
             }
@@ -250,7 +250,7 @@ namespace DawnOfLight.GameServer.Spells
                             }
 
                             player.GainRealmPoints(Bonus_RP_Soin, false);
-                            player.Out.SendMessage("Vous gagnez " + Bonus_RP_Soin.ToString() + " points de royaume pour avoir soigné un membre de votre royaume.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+                            player.Out.SendMessage("Vous gagnez " + Bonus_RP_Soin.ToString() + " points de royaume pour avoir soigné un membre de votre royaume.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
                         }
                     }
                 }
@@ -260,7 +260,7 @@ namespace DawnOfLight.GameServer.Spells
 
             if (m_caster == target)
             {
-                MessageToCaster("You heal yourself for " + heal + " hit points.", eChatType.CT_Spell);
+                MessageToCaster("You heal yourself for " + heal + " hit points.", ChatType.CT_Spell);
                 if (heal < amount)
                 {
                     #region PVP DAMAGE
@@ -274,13 +274,13 @@ namespace DawnOfLight.GameServer.Spells
 
                     #endregion PVP DAMAGE
 
-                    MessageToCaster("You are fully healed.", eChatType.CT_Spell);
+                    MessageToCaster("You are fully healed.", ChatType.CT_Spell);
                 }
             }
             else
             {
-                MessageToCaster("You heal " + target.GetName(0, false) + " for " + heal + " hit points!", eChatType.CT_Spell);
-                MessageToLiving(target, "You are healed by " + m_caster.GetName(0, false) + " for " + heal + " hit points.", eChatType.CT_Spell);
+                MessageToCaster("You heal " + target.GetName(0, false) + " for " + heal + " hit points!", ChatType.CT_Spell);
+                MessageToLiving(target, "You are healed by " + m_caster.GetName(0, false) + " for " + heal + " hit points.", ChatType.CT_Spell);
                 if (heal < amount)
                 {
 
@@ -295,10 +295,10 @@ namespace DawnOfLight.GameServer.Spells
 
                     #endregion PVP DAMAGE
 
-                    MessageToCaster(target.GetName(0, true) + " is fully healed.", eChatType.CT_Spell);
+                    MessageToCaster(target.GetName(0, true) + " is fully healed.", ChatType.CT_Spell);
                 }
                 if (heal > 0 && criticalvalue > 0)
-                    MessageToCaster("Your heal criticals for an extra " + criticalvalue + " amount of hit points!", eChatType.CT_Spell);
+                    MessageToCaster("Your heal criticals for an extra " + criticalvalue + " amount of hit points!", ChatType.CT_Spell);
             }
 
             return true;
@@ -329,11 +329,11 @@ namespace DawnOfLight.GameServer.Spells
 
 			if (m_caster == target && heal > 0)
 			{
-				MessageToCaster("You heal yourself for " + heal + " hit points.", eChatType.CT_Spell);
+				MessageToCaster("You heal yourself for " + heal + " hit points.", ChatType.CT_Spell);
 
 				if (heal < amount)
 				{
-					MessageToCaster("You are fully healed.", eChatType.CT_Spell);
+					MessageToCaster("You are fully healed.", ChatType.CT_Spell);
                     #region PVP DAMAGE
 
                     if (target is NecromancerPet &&
@@ -348,8 +348,8 @@ namespace DawnOfLight.GameServer.Spells
 			}
 			else if (heal > 0)
 			{
-				MessageToCaster("You heal " + target.GetName(0, false) + " for " + heal + " hit points!", eChatType.CT_Spell);
-				MessageToLiving(target, "You are healed by " + m_caster.GetName(0, false) + " for " + heal + " hit points.", eChatType.CT_Spell);
+				MessageToCaster("You heal " + target.GetName(0, false) + " for " + heal + " hit points!", ChatType.CT_Spell);
+				MessageToLiving(target, "You are healed by " + m_caster.GetName(0, false) + " for " + heal + " hit points.", ChatType.CT_Spell);
                 
                 #region PVP DAMAGE
 

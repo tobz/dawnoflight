@@ -172,10 +172,10 @@ namespace DawnOfLight.GameServer.commands.Admin
 						GameServer.Database.SaveObject(target.Client.Account);
 						client.Player.RefreshWorld();
 
-						target.Client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "AdminCommands.plvl.YourPlvlHasBeenSetted", plvl.ToString()), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+						target.Client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "AdminCommands.plvl.YourPlvlHasBeenSetted", plvl.ToString()), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 						if (target != client.Player)
-							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "AdminCommands.plvl.PlayerPlvlHasBeenSetted", target.Name, plvl.ToString()), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "AdminCommands.plvl.PlayerPlvlHasBeenSetted", target.Name, plvl.ToString()), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 						break;
 					}

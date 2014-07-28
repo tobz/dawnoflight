@@ -121,7 +121,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 						if (GiveItem(scholar, player, ArtifactID, venum.Current.Value))
 						{
 							scholar.TurnTo(player);
-							scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+							scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 							FinishQuest();
 							return true;
 						}
@@ -158,7 +158,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 
 			reply = reply.TrimEnd(',');
 
-			scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+			scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 		}
 
 		/// <summary>
@@ -185,7 +185,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"but I cannot release it without the spell hidden in the Journal. Please give me Eirene's",
 					"Journal now. If you no longer have it, go and find the pages again. I will wait for you.");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}
@@ -205,7 +205,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 							"from you forever. I hope it will help you succeed in the trials.",
 							"Bring glory to ", GlobalConstants.RealmToName(player.Realm));
 						scholar.TurnTo(player);
-						scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+						scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 						FinishQuest();
 						return true;
 					}

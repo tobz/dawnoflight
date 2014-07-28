@@ -18,33 +18,28 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x07, "Handles housing permissions changes")]
+    [PacketHandler(PacketType.TCP, ClientPackets.HousePermissionsSet, ClientStatus.PlayerInGame)]
 	public class HousePermissionsSetHandler : IPacketHandler
 	{
-		#region IPacketHandler Members
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int level = packet.ReadByte();
 			int unk1 = packet.ReadByte();
-			ushort housenumber = packet.ReadShort();
+			ushort houseNumber = packet.ReadShort();
 
 			// make sure permission level is within bounds
 			if (level < HousingConstants.MinPermissionLevel || level > HousingConstants.MaxPermissionLevel)
 				return;
 
 			// house is null, return
-			var house = HouseMgr.GetHouse(housenumber);
+			var house = HouseMgr.GetHouse(houseNumber);
 			if (house == null)
-				return;
-
-			// player is null, return
-			if (client.Player == null)
 				return;
 
 			// player has no owner permissions and isn't a GM or admin, return
@@ -73,7 +68,5 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			// save the updated permission
 			GameServer.Database.SaveObject(permission);
 		}
-
-		#endregion
 	}
 }

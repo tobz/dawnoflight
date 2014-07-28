@@ -239,7 +239,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			{
 				if (player.ObjectState == eObjectState.Active)
 				{
-					player.Out.SendMessage("You may now pick up " + Name + "!", eChatType.CT_Loot, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You may now pick up " + Name + "!", ChatType.CT_Loot, ChatLocation.CL_SystemWindow);
 				}
 			}
 			m_pickup.Stop();

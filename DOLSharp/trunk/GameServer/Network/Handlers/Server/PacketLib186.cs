@@ -76,7 +76,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendCombatAnimation(GameObject attacker, GameObject defender, ushort weaponID, ushort shieldID, int style, byte stance, byte result, byte targetHealthPercent)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CombatAnimation));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CombatAnimation));
 			if (attacker != null)
 				pak.WriteShort((ushort)attacker.ObjectID);
 			else
@@ -101,14 +101,14 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendMinotaurRelicMapRemove(byte id)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.MinotaurRelicMapRemove));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.MinotaurRelicMapRemove));
             pak.WriteIntLowEndian((uint)id);
 			SendTCP(pak);
 		}
 		
 		public override void SendMinotaurRelicMapUpdate(byte id, ushort region, int x, int y, int z)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.MinotaurRelicMapUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.MinotaurRelicMapUpdate));
 
 			pak.WriteIntLowEndian((uint)id);
             pak.WriteIntLowEndian((uint)region);
@@ -121,7 +121,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		
 		public override void SendMinotaurRelicWindow(GamePlayer player, int effect, bool flag)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VisualEffect));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VisualEffect));
 
 			pak.WriteShort((ushort)player.ObjectID);
 			pak.WriteByte((byte)13);
@@ -141,7 +141,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendMinotaurRelicBarUpdate(GamePlayer player, int xp)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VisualEffect));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VisualEffect));
 
 			pak.WriteShort((ushort)player.ObjectID);
 			pak.WriteByte((byte)14);

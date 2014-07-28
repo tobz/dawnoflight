@@ -76,7 +76,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			player.ActiveInventoryObject = null;
 
 			TurnTo(player, 10000);
-			var items = player.Inventory.GetItemRange(eInventorySlot.FirstVault, eInventorySlot.LastVault);
+			var items = player.Inventory.GetItemRange(InventorySlot.FirstVault, InventorySlot.LastVault);
 			player.Out.SendInventoryItemsUpdate(eInventoryWindowType.PlayerVault, items.Count > 0 ? items : null);
 			return true;
 		}

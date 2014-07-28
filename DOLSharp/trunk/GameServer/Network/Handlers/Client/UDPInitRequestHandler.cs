@@ -17,21 +17,15 @@
  *
  */
 
-using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
-using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.UDP,0xBC^168,"Handles UDP init")]
+    [PacketHandler(PacketType.UDP, ClientPackets.UDPInitRequest)]
 	public class UDPInitRequestHandler : IPacketHandler
 	{
-		/// <summary>
-		/// Defines a logger for this class.
-		/// </summary>
-		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			string localIP = packet.ReadString(22);
 			ushort localPort = packet.ReadShort();

@@ -20,6 +20,7 @@
 using System;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Network.Packets;
 using DawnOfLight.GameServer.Quests.QuestsMgr;
@@ -56,7 +57,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		protected override void SendQuestWindow(GameNPC questNPC, GamePlayer player, RewardQuest quest,	bool offer)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Dialog));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Dialog));
 			ushort QuestID = QuestMgr.GetIDForQuestType(quest.GetType());
 			pak.WriteShort((offer) ? (byte)0x22 : (byte)0x21); // Dialog
 			pak.WriteShort(QuestID);
@@ -124,7 +125,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			SendTCP(pak);
 		}
 
-		protected virtual void WriteTemplateData(GSTCPPacketOut pak, ItemTemplate template, int count)
+		protected virtual void WriteTemplateData(GameTCPPacketOut pak, ItemTemplate template, int count)
 		{
 			pak.WriteByte((byte)template.Level);
 
@@ -228,7 +229,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 
 			RewardQuest quest = q as RewardQuest;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.QuestEntry));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.QuestEntry));
 			pak.WriteByte((byte)index);
 			pak.WriteByte((byte)quest.Name.Length);
 			pak.WriteShort(0x00); // unknown

@@ -47,7 +47,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 
 			if (isGoodTarget == false)
 			{
-				player.Out.SendMessage("You have to target a dead member of your realm!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You have to target a dead member of your realm!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -74,13 +74,13 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			GameLiving resurrectionCaster = targetPlayer.TempProperties.getProperty<object>(RESURRECT_CASTER_PROPERTY, null) as GameLiving;
 			if (resurrectionCaster != null)
 			{
-				player.Out.SendMessage("Your target is already considering a resurrection!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Your target is already considering a resurrection!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return;
 			}
             if( !player.IsWithinRadius( targetPlayer, (int)( 1500 * player.GetModified(eProperty.SpellRange) * 0.01 ) ) )
 
 			{
-				player.Out.SendMessage("You are too far away from your target to use this ability!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You are too far away from your target to use this ability!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			if (targetPlayer != null)
@@ -133,7 +133,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
             {
                 if (rezzer == null)
                 {
-                    player.Out.SendMessage("No one is currently trying to resurrect you.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage("No one is currently trying to resurrect you.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 }
                 else
                 {
@@ -144,7 +144,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
                     }
                     else
                     {
-                        player.Out.SendMessage("You decline to be resurrected.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage("You decline to be resurrected.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         //Dont need to refund anything with PR
                         //m_caster.Mana += CalculateNeededPower(player);
                         //but we do need to give them PR back
@@ -168,7 +168,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
             GamePlayer player = (GamePlayer)callingTimer.Properties.getProperty<object>("targetPlayer", null);
             if (player == null) return 0;
             player.TempProperties.removeProperty(RESURRECT_CASTER_PROPERTY);
-            player.Out.SendMessage("Your resurrection spell has expired.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+            player.Out.SendMessage("Your resurrection spell has expired.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
             return 0;
         }
 
@@ -203,7 +203,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			GameSpellEffect effect = SpellHandler.FindEffectOnTarget(resurrectedPlayer, GlobalSpells.PvERessurectionIllnessSpellType);
 			if (effect != null)
 				effect.Cancel(false);
-			resurrectedPlayer.Out.SendMessage("You have been resurrected by " + rezzer.GetName(0, false) + "!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			resurrectedPlayer.Out.SendMessage("You have been resurrected by " + rezzer.GetName(0, false) + "!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
             //Lifeflight: this should make it so players who have been ressurected don't take damage for 5 seconds
             RezDmgImmunityEffect rezImmune = new RezDmgImmunityEffect();
             rezImmune.Start(resurrectedPlayer);
@@ -219,8 +219,8 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
                 }
                 else
                 {
-                    casterPlayer.Out.SendMessage("The player you resurrected was not worth realm points on death.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
-                    casterPlayer.Out.SendMessage("You thus get no realm points for the resurrect.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+                    casterPlayer.Out.SendMessage("The player you resurrected was not worth realm points on death.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
+                    casterPlayer.Out.SendMessage("You thus get no realm points for the resurrect.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
                 }
             }
 

@@ -31,7 +31,7 @@ using Hashtable = System.Collections.Hashtable;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerRegionChangeRequest, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.PlayerRegionChangeRequest, ClientStatus.PlayerInGame)]
 	public class PlayerRegionChangeRequestHandler : IPacketHandler
 	{
 		/// <summary>
@@ -46,7 +46,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			ushort jumpSpotID = packet.ReadShort();
 
@@ -91,8 +91,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 			if (client.Account.PrivLevel > 1)
 			{
-				client.Out.SendMessage("JumpSpotID = " + jumpSpotID, eChatType.CT_System, eChatLoc.CL_SystemWindow);
-				client.Out.SendMessage("ZonePoint Target: Region = " + zonePoint.TargetRegion + ", ClassType = '" + zonePoint.ClassType + "'", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("JumpSpotID = " + jumpSpotID, ChatType.CT_System, ChatLocation.CL_SystemWindow);
+				client.Out.SendMessage("ZonePoint Target: Region = " + zonePoint.TargetRegion + ", ClassType = '" + zonePoint.ClassType + "'", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 
 			//Dinberg: Fix - some jump points are handled code side, such as instances.
@@ -110,7 +110,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						if ((client.Player.Mission is TaskDungeonMission &&
 						     (client.Player.Mission as TaskDungeonMission).TaskRegion.Skin == reg.Skin) == false)
 						{
-							client.Out.SendMessage("This region has been disabled!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("This region has been disabled!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							if (client.Account.PrivLevel == 1)
 							{
 								return;
@@ -235,7 +235,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				if (reg != null && reg.Expansion > (int)player.Client.ClientType)
 				{
 					player.Out.SendMessage("Destination region (" + reg.Description + ") is not supported by your client type.",
-					                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
@@ -272,8 +272,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						if (Log.IsErrorEnabled)
 							Log.Error("Jump point handler (" + m_zonePoint.ClassType + ")", e);
 
-						player.Out.SendMessage("exception in jump point (" + m_zonePoint.Id + ") handler...", eChatType.CT_System,
-						                       eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("exception in jump point (" + m_zonePoint.Id + ") handler...", ChatType.CT_System,
+						                       ChatLocation.CL_SystemWindow);
 						return;
 					}
 				}

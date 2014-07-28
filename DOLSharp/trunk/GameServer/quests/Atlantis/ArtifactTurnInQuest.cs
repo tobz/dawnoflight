@@ -328,7 +328,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis
 			{
 				//Why are they giving this to us!
 				player.Out.SendMessage(string.Format("{0} doesn't want that item.", scholar.Name),
-				                       eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+				                       ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 			}
 
 			return base.ReceiveItem(source, target, item);
@@ -378,7 +378,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis
 					if (!versions.ContainsKey(m_chosenTypes))
 					{
 						log.Warn(String.Format("Artifact version {0} not found", m_chosenTypes));
-						scholar.SayTo(player, eChatLoc.CL_PopupWindow, "I can't find your chosen replacement, it may not be available for your class. Please try again.");
+						scholar.SayTo(player, ChatLocation.CL_PopupWindow, "I can't find your chosen replacement, it may not be available for your class. Please try again.");
 						ReturnArtifact(player);
 						return true;
 					}
@@ -388,7 +388,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis
 					if (GiveItem(player, template))
 					{
 						FinishQuest();
-						scholar.SayTo(player, eChatLoc.CL_PopupWindow, string.Format("Here is your {0}, {1}. May it serve you well!", ArtifactID, player.CharacterClass.Name));
+						scholar.SayTo(player, ChatLocation.CL_PopupWindow, string.Format("Here is your {0}, {1}. May it serve you well!", ArtifactID, player.CharacterClass.Name));
 						return true;
 					}
 
@@ -409,7 +409,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis
 
 			if (!player.ReceiveItem(null, artifact))
 			{
-				player.Out.SendMessage(String.Format("Your backpack is full, please make some room and try again.  You may have to relog to get to complete this quest."), eChatType.CT_Important, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage(String.Format("Your backpack is full, please make some room and try again.  You may have to relog to get to complete this quest."), ChatType.CT_Important, ChatLocation.CL_PopupWindow);
 				return;
 			}
 
@@ -429,7 +429,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis
 			InventoryArtifact item = new InventoryArtifact(itemTemplate);
 			if (!player.ReceiveItem(null, item))
 			{
-				player.Out.SendMessage(String.Format("Your backpack is full, please make some room and try again."), eChatType.CT_Important, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage(String.Format("Your backpack is full, please make some room and try again."), ChatType.CT_Important, ChatLocation.CL_PopupWindow);
 				return false;
 			}
 
@@ -575,7 +575,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis
 		public override void FinishQuest()
 		{
 			Step = -1; // -1 indicates finished or aborted quests etc, they won't show up in the list
-			m_questPlayer.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(m_questPlayer.Client, "ArtifactTurnInQuest.FinishQuest.Completed", Name)), eChatType.CT_ScreenCenter, eChatLoc.CL_SystemWindow);
+			m_questPlayer.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(m_questPlayer.Client, "ArtifactTurnInQuest.FinishQuest.Completed", Name)), ChatType.CT_ScreenCenter, ChatLocation.CL_SystemWindow);
 
 			// move quest from active list to finished list...
 			m_questPlayer.QuestList.Remove(this);

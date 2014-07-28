@@ -154,10 +154,10 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				farmerAsma.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 31);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 57);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 32);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 33);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 31);
+				template.AddNPCEquipment(InventorySlot.Cloak, 57);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 32);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 33);
 				farmerAsma.Inventory = template.CloseTemplate();
 				farmerAsma.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -317,7 +317,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 						case "Wilbur":
 							if(quest.Step == 3)
 							{
-								SendMessage(player, "You tell Farmer Asma that you succeeded in killing Wilbur, but that one of the pig herders discovered you and chased you away.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "You tell Farmer Asma that you succeeded in killing Wilbur, but that one of the pig herders discovered you and chased you away.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								farmerAsma.SayTo(player, "They saw you? Oh, no...what have I done? I feel terrible, Gwonn.  I shouldn't have asked you to kill Wilbur, but we can't undo what's been done.  If the guards come looking for you, I'll tell them that I'm the one who did [the deed].");
 							}
 							break;
@@ -332,7 +332,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 						case "things":
 							if(quest.Step == 3)
 							{
-								SendMessage(player, "Farmer Asma begins to ramble and soon becomes incoherent. When she realizes what's happened, she takes a deep breath and tries to compose herself.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+								SendMessage(player, "Farmer Asma begins to ramble and soon becomes incoherent. When she realizes what's happened, she takes a deep breath and tries to compose herself.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 								farmerAsma.SayTo(player, "Oh, my. I'm so sorry, I just...well, I don't know what to do. I need a break from farming and pigs, and rural life. Maybe I'll take up something completely different...like brewing. Yes, brewing! Please take these coins and never speak of this again.");
 								quest.FinishQuest();
 							}
@@ -428,7 +428,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				if (!farmerAsma.GiveQuest(typeof (RevengeTheOtherWhiteMeat), player, 1))
 					return;
 
-				SendMessage(player, "Farmer Asma rubs her hands together in anticipation.", 0, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				SendMessage(player, "Farmer Asma rubs her hands together in anticipation.", 0, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				SendReply(player, "Excellent. Thank you for agreeing to help. Here's what I have in [mind].");
 			}
 		}
@@ -494,8 +494,8 @@ namespace DawnOfLight.GameServer.Quests.Albion
 						pigHerderWyatt.CurrentRegionID = 1;
 
 						GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-						template.AddNPCEquipment(eInventorySlot.FeetArmor, 143);
-						template.AddNPCEquipment(eInventorySlot.TorsoArmor, 1005);
+						template.AddNPCEquipment(InventorySlot.FeetArmor, 143);
+						template.AddNPCEquipment(InventorySlot.TorsoArmor, 1005);
 						pigHerderWyatt.Inventory = template.CloseTemplate();
 						pigHerderWyatt.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

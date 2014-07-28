@@ -26,12 +26,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// <summary>
 	/// Handles spell cast requests from client
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.UseSlot, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.UseSlot, ClientStatus.PlayerInGame)]
 	public class UseSlotHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int flagSpeedData = packet.ReadShort();
 			int slot = packet.ReadByte();

@@ -19,34 +19,21 @@
 
 using System.Collections.Generic;
 using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Language;
 using DawnOfLight.GameServer.Utilities;
 using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x62 ^ 168, "Handles player bonuses button clicks")]
+    [PacketHandler(PacketType.TCP, ClientPackets.PlayerBonusesListRequest, ClientStatus.PlayerInGame)]
 	public class PlayerBonusesListRequestHandler : IPacketHandler
 	{
-		/// <summary>
-		/// Defines a logger for this class.
-		/// </summary>
-		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
-			if (client.Player == null)
-				return;
-
-			int code = packet.ReadByte();
-			if (code != 0)
-			{
-				if (log.IsWarnEnabled)
-					log.Warn("bonuses button: code is other than zero (" + code + ")");
-			}
+            int code = packet.ReadByte();
 
 			var info = new List<string>();
-
 			client.Player.GetBonuses(info);
 
 			client.Out.SendCustomTextWindow(LanguageMgr.GetTranslation(client.Account.Language, "PlayerBonusesListRequestHandler.HandlePacket.Bonuses"), info);

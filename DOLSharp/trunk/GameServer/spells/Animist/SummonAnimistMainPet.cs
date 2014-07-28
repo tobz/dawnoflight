@@ -46,7 +46,7 @@ namespace DawnOfLight.GameServer.Spells.Animist
     {
       if(Caster is GamePlayer && Caster.ControlledBrain != null)
       {
-        MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SummonAnimistPet.CheckBeginCast.AlreadyHaveaPet"), eChatType.CT_SpellResisted);
+        MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SummonAnimistPet.CheckBeginCast.AlreadyHaveaPet"), ChatType.CT_SpellResisted);
         return false;
       }
       return base.CheckBeginCast(selectedTarget);

@@ -393,12 +393,12 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 				m_taskPlayer.Inventory.BeginChanges();
 				foreach (InventoryItem item in RewardItems)
 				{
-                    if (m_taskPlayer.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, item))
+                    if (m_taskPlayer.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, item))
                         InventoryLogging.LogInventoryAction("(TASK;" + m_dbTask.TaskType + ")", m_taskPlayer, eInventoryActionType.Quest, item.Template, item.Count);
 				}
 				m_taskPlayer.Inventory.CommitChanges();
 			}
-			m_taskPlayer.Out.SendMessage("You finish the "+Name+"!",eChatType.CT_System,eChatLoc.CL_SystemWindow);
+			m_taskPlayer.Out.SendMessage("You finish the "+Name+"!",ChatType.CT_System,ChatLocation.CL_SystemWindow);
 			m_dbTask.TaskType = typeof(AbstractTask).ToString();
 			m_dbTask.CustomPropertiesString = null;
 			m_customProperties.Clear();
@@ -416,17 +416,17 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 			{
 				lock (m_taskPlayer.Inventory)
 				{
-					InventoryItem item = m_taskPlayer.Inventory.GetFirstItemByID(ItemName, eInventorySlot.Min_Inv, eInventorySlot.Max_Inv);
+					InventoryItem item = m_taskPlayer.Inventory.GetFirstItemByID(ItemName, InventorySlot.Min_Inv, InventorySlot.Max_Inv);
                     if (item != null)
                     {
                         m_taskPlayer.Inventory.RemoveItem(item);
                         InventoryLogging.LogInventoryAction(m_taskPlayer, "(TASK;" + m_dbTask.TaskType + ")", eInventoryActionType.Quest, item.Template, item.Count);
                     }
 				}
-				m_taskPlayer.Out.SendMessage("Your task related item has been removed from your inventory.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				m_taskPlayer.Out.SendMessage("Your task related item has been removed from your inventory.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 
-			m_taskPlayer.Out.SendMessage("Your "+Name+" has expired!",eChatType.CT_System,eChatLoc.CL_SystemWindow);
+			m_taskPlayer.Out.SendMessage("Your "+Name+" has expired!",ChatType.CT_System,ChatLocation.CL_SystemWindow);
 			m_dbTask.TaskType = typeof(AbstractTask).ToString();
 			m_dbTask.CustomPropertiesString = null;
 			m_customProperties.Clear();
@@ -527,22 +527,22 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 
 			if(player.Level > 20)
 			{
-				player.Out.SendMessage("Tasks are available only for level 20 or less!", eChatType.CT_System,eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Tasks are available only for level 20 or less!", ChatType.CT_System,ChatLocation.CL_SystemWindow);
 				return false;
 			}
 			else if(player.Task!=null && player.Task.TaskActive)
 			{
-				player.Out.SendMessage("You already have a Task. Select yourself and type /Task for more Information.",eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You already have a Task. Select yourself and type /Task for more Information.",ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 			else if(player.Task!=null && player.Task.TasksDone >= MaxTasksDone(player.Level))
 			{
-				player.Out.SendMessage("You cannot do more than "+MaxTasksDone(player.Level).ToString()+" tasks at your level!",eChatType.CT_System,eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You cannot do more than "+MaxTasksDone(player.Level).ToString()+" tasks at your level!",ChatType.CT_System,ChatLocation.CL_SystemWindow);
 				return false;
 			}
 			else if (player.TempProperties.getProperty<int>(CHECK_TASK_TICK) > Environment.TickCount)
 			{
-				player.Out.SendMessage("I have no tasks for you at the moment. Come back sometime later, perhaps then you can help we with something.",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("I have no tasks for you at the moment. Come back sometime later, perhaps then you can help we with something.",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 				return false;
 			}
 			else if (Util.Chance(chanceOfSuccess))
@@ -551,7 +551,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 			}
 			else
 			{
-				player.Out.SendMessage("I have no tasks for you at the moment. Come back sometime later, perhaps then you can help we with something.",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("I have no tasks for you at the moment. Come back sometime later, perhaps then you can help we with something.",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 				// stored time of try to disable task for defined time.
 				player.TempProperties.setProperty(CHECK_TASK_TICK, Environment.TickCount + CHECK_TASK_DELAY);
 				return false;

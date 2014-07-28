@@ -201,10 +201,10 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				colm.Level = 50;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 81, 10);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 82, 10);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 84, 10);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 57, 32);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 81, 10);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 82, 10);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 84, 10);
+				template.AddNPCEquipment(InventorySlot.Cloak, 57, 32);
 				colm.Inventory = template.CloseTemplate();
 
 //				colm.AddNPCEquipment(Slot.TORSO, 81, 10, 0, 0);

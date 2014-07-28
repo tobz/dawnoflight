@@ -18,7 +18,9 @@
  */
 
 using System.Collections;
+using System.Linq;
 using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Utilities;
@@ -27,15 +29,10 @@ using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x0D ^ 168, "Update all GameObjects in Playerrange")]
+    [PacketHandler(PacketType.TCP, ClientPackets.ObjectUpdateRequest, ClientStatus.PlayerInGame)]
 	public class ObjectUpdateRequestHandler : IPacketHandler
 	{
-		/// <summary>
-		/// Defines a logger for this class.
-		/// </summary>
-		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			foreach (GameStaticItem item in client.Player.GetItemsInRadius(WorldMgr.OBJ_UPDATE_DISTANCE))
 			{
@@ -50,44 +47,41 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			//housing
 			if (client.Player.CurrentRegion.HousingEnabled)
 			{
-				if (client.Player.HousingUpdateArray == null)
-					client.Player.HousingUpdateArray = new BitArray(ServerProperties.Properties.MAX_NUM_HOUSES, false);
+			    if (client.Player.HousingUpdateArray == null)
+			    {
+			        client.Player.HousingUpdateArray = new BitArray(ServerProperties.Properties.MAX_NUM_HOUSES, false);
+			    }
 
 				var houses = HouseMgr.GetHouses(client.Player.CurrentRegionID);
 				if (houses != null)
 				{
-					foreach (House house in houses.Values)
+					foreach (var house in houses.Values.Where(house => house.UniqueID < client.Player.HousingUpdateArray.Length))
 					{
-						if (house.UniqueID < client.Player.HousingUpdateArray.Length)
-						{
-							if (client.Player.IsWithinRadius(house, HousingConstants.HouseViewingDistance))
-							{
-								if (!client.Player.HousingUpdateArray[house.UniqueID])
-								{
-									client.Out.SendHouse(house);
-									client.Out.SendGarden(house);
+					    if (client.Player.IsWithinRadius(house, HousingConstants.HouseViewingDistance))
+					    {
+					        if (client.Player.HousingUpdateArray[house.UniqueID])
+                                continue;
 
-									var list = house.GetAllPlayersInHouse();
-									if (list.Count > 0)
-									{
-										client.Out.SendHouseOccupied(house, true);
-									}
+					        client.Out.SendHouse(house);
+					        client.Out.SendGarden(house);
 
-									client.Player.HousingUpdateArray[house.UniqueID] = true;
-								}
-							}
-							else
-							{
-								client.Player.HousingUpdateArray[house.UniqueID] = false;
-							}
-						}
+					        var list = house.GetAllPlayersInHouse();
+					        if (list.Count > 0)
+					        {
+					            client.Out.SendHouseOccupied(house, true);
+					        }
+
+					        client.Player.HousingUpdateArray[house.UniqueID] = true;
+					    }
+					    else
+					    {
+					        client.Player.HousingUpdateArray[house.UniqueID] = false;
+					    }
 					}
 				}
 			}
-			else if (client.Player.HousingUpdateArray != null)
-			{
-				client.Player.HousingUpdateArray = null;
-			}
+			
+            client.Player.HousingUpdateArray = null;
 		}
 	}
 }

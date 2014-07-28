@@ -37,7 +37,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="message">The message to send</param>
 		/// <param name="chatType">The type of message to send</param>
 		/// <param name="excludes">An optional list of excluded players</param>
-		public static void ChatToArea(GameObject centerObject, string message, eChatType chatType, params GameObject[] excludes)
+		public static void ChatToArea(GameObject centerObject, string message, ChatType chatType, params GameObject[] excludes)
 		{
 			ChatToArea(centerObject, message, chatType, WorldMgr.INFO_DISTANCE, excludes);
 		}
@@ -50,7 +50,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="message">The message to send</param>
 		/// <param name="chatType">The type of message to send</param>
 		/// <remarks>If the centerObject is a player, he won't receive the message</remarks>
-		public static void ChatToOthers(GameObject centerObject, string message, eChatType chatType)
+		public static void ChatToOthers(GameObject centerObject, string message, ChatType chatType)
 		{
 			ChatToArea(centerObject, message, chatType, WorldMgr.INFO_DISTANCE, centerObject);
 		}
@@ -65,9 +65,9 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="distance">The distance around the center where players will receive the message</param>
 		/// <param name="excludes">An optional list of excluded players</param>
 		/// <remarks>If the center object is a player, he will get the message too</remarks>
-		public static void ChatToArea(GameObject centerObject, string message, eChatType chatType, ushort distance, params GameObject[] excludes)
+		public static void ChatToArea(GameObject centerObject, string message, ChatType chatType, ushort distance, params GameObject[] excludes)
 		{
-			MessageToArea(centerObject, message, chatType, eChatLoc.CL_ChatWindow, distance, excludes);
+			MessageToArea(centerObject, message, chatType, ChatLocation.CL_ChatWindow, distance, excludes);
 		}
 
 		/// <summary>
@@ -78,7 +78,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="message">The message to send</param>
 		/// <param name="chatType">The type of message to send</param>
 		/// <param name="excludes">An optional list of excluded players</param>
-		public static void SystemToArea(GameObject centerObject, string message, eChatType chatType, params GameObject[] excludes)
+		public static void SystemToArea(GameObject centerObject, string message, ChatType chatType, params GameObject[] excludes)
 		{
 			SystemToArea(centerObject, message, chatType, WorldMgr.INFO_DISTANCE, excludes);
 		}
@@ -91,7 +91,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="message">The message to send</param>
 		/// <param name="chatType">The type of message to send</param>
 		/// <remarks>If the centerObject is a player, he won't receive the message</remarks>
-		public static void SystemToOthers(GameObject centerObject, string message, eChatType chatType)
+		public static void SystemToOthers(GameObject centerObject, string message, ChatType chatType)
 		{
 			SystemToArea(centerObject, message, chatType, WorldMgr.INFO_DISTANCE, centerObject);
 		}
@@ -105,14 +105,14 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="LanguageMessageID">The language message ID</param>
 		/// <param name="args">The Translation args</param>
 		/// <remarks>If the centerObject is a player, he won't receive the message</remarks>
-		public static void SystemToOthers2(GameObject centerObject, eChatType chatType, string LanguageMessageID, params object[] args)
+		public static void SystemToOthers2(GameObject centerObject, ChatType chatType, string LanguageMessageID, params object[] args)
 		{
 			if (LanguageMessageID == null || LanguageMessageID.Length <= 0) return;
 			foreach (GamePlayer player in centerObject.GetPlayersInRadius(WorldMgr.INFO_DISTANCE))
 			{
 				if (!(centerObject is GamePlayer && centerObject == player))
 				{
-					player.MessageFromArea(centerObject, LanguageMgr.GetTranslation(player.Client.Account.Language, LanguageMessageID, args), chatType, eChatLoc.CL_SystemWindow);
+					player.MessageFromArea(centerObject, LanguageMgr.GetTranslation(player.Client.Account.Language, LanguageMessageID, args), chatType, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}
@@ -127,9 +127,9 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="distance">The distance around the center where players will receive the message</param>
 		/// <param name="excludes">An optional list of excluded players</param>
 		/// <remarks>If the center object is a player, he will get the message too</remarks>
-		public static void SystemToArea(GameObject centerObject, string message, eChatType chatType, ushort distance, params GameObject[] excludes)
+		public static void SystemToArea(GameObject centerObject, string message, ChatType chatType, ushort distance, params GameObject[] excludes)
 		{
-			MessageToArea(centerObject, message, chatType, eChatLoc.CL_SystemWindow, distance, excludes);
+			MessageToArea(centerObject, message, chatType, ChatLocation.CL_SystemWindow, distance, excludes);
 		}
 
 		/// <summary>
@@ -141,7 +141,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="chatLoc">The chat location</param>
 		/// <param name="distance">The distance</param>
 		/// <param name="excludes">A list of GameObjects to exlude from the message</param>
-		public static void MessageToArea(GameObject centerObject, string message, eChatType chatType, eChatLoc chatLoc, ushort distance, params GameObject[] excludes)
+		public static void MessageToArea(GameObject centerObject, string message, ChatType chatType, ChatLocation chatLoc, ushort distance, params GameObject[] excludes)
 		{
 			if (message == null || message.Length <= 0) return;
 			bool excluded;

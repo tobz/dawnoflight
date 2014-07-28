@@ -902,7 +902,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 
 			if (response == 0x00)
 			{
-				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 			}
 			else
 			{
@@ -950,7 +950,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				{
 					if (gArgs.Target.Name == Blythe.Name)
 					{
-						m_questPlayer.Out.SendMessage("As you search the dead body of sister Blythe, you find a sacred " + statue_of_arawn.Name + ", bring it to " + Roben.Name + " has proof of your success.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						m_questPlayer.Out.SendMessage("As you search the dead body of sister Blythe, you find a sacred " + statue_of_arawn.Name + ", bring it to " + Roben.Name + " has proof of your success.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						GiveItem(m_questPlayer, statue_of_arawn);
 						Step = 2;
 						return;
@@ -980,7 +980,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 
 		public override void FinishQuest()
 		{
-			if (m_questPlayer.Inventory.IsSlotsFree(6, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+			if (m_questPlayer.Inventory.IsSlotsFree(6, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
 				RemoveItem(m_questPlayer, statue_of_arawn, true);
 
@@ -1010,7 +1010,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 			}
 			else
 			{
-				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 

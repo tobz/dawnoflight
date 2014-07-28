@@ -44,7 +44,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public override void SendPlayerTitles()
 		{
 			IList titles = m_gameClient.Player.Titles;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DetailWindow));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DetailWindow));
 
 			pak.WriteByte(1); // new in 1.75
 			pak.WriteByte(0); // new in 1.81

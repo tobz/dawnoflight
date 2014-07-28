@@ -125,7 +125,7 @@ namespace DawnOfLight.GameServer.Spells
         {
             if (target.HasAbility(Abilities.VampiirStrength))
             {
-                MessageToCaster("Your target already has an effect of that type!", eChatType.CT_Spell);
+                MessageToCaster("Your target already has an effect of that type!", ChatType.CT_Spell);
                 return;
             }
             base.ApplyEffectOnTarget(target, effectiveness);
@@ -146,7 +146,7 @@ namespace DawnOfLight.GameServer.Spells
         {
             if (target.HasAbility(Abilities.VampiirDexterity))
             {
-                MessageToCaster("Your target already has an effect of that type!", eChatType.CT_Spell);
+                MessageToCaster("Your target already has an effect of that type!", ChatType.CT_Spell);
                 return;
             }
             base.ApplyEffectOnTarget(target, effectiveness);
@@ -167,7 +167,7 @@ namespace DawnOfLight.GameServer.Spells
         {
             if (target.HasAbility(Abilities.VampiirConstitution))
             {
-                MessageToCaster("Your target already has an effect of that type!", eChatType.CT_Spell);
+                MessageToCaster("Your target already has an effect of that type!", ChatType.CT_Spell);
                 return;
             }
             base.ApplyEffectOnTarget(target, effectiveness);

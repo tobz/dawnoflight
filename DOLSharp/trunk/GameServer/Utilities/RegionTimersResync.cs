@@ -164,7 +164,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 										
 									}
-									plr.Client.Out.SendMessage("["+reg.Description+"] detected as frozen, restarting the zone.", eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow);
+									plr.Client.Out.SendMessage("["+reg.Description+"] detected as frozen, restarting the zone.", ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow);
 								}
 								//Restart Brains & Paths
 								if (obj is GameNPC && (obj as GameNPC).Brain != null)

@@ -55,7 +55,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				catch
 				{
 					client.Out.SendMessage("ADMIN Usage: /time <speed> (24 is normal, higher numbers make faster days) <time> (1 - 1000) - Reset days with new length, starting at the given time.",
-											eChatType.CT_System, eChatLoc.CL_SystemWindow);
+											ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 
@@ -83,7 +83,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				}
 
 				client.Out.SendMessage("It is " + hour.ToString() + ":" + minute.ToString("00") + ":" + seconds.ToString("00") + (pm ? " pm" : ""),
-									   eChatType.CT_System, eChatLoc.CL_SystemWindow);
+									   ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 	}

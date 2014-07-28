@@ -53,7 +53,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
                 return;
             GamePlayer target = afea.AttackData.Target as GamePlayer;
             
-            DawnOfLight.Database.InventoryItem armor = target.Inventory.GetItem((eInventorySlot)((int)afea.AttackData.ArmorHitLocation));
+            DawnOfLight.Database.InventoryItem armor = target.Inventory.GetItem((InventorySlot)((int)afea.AttackData.ArmorHitLocation));
             
             if (armor == null || armor.SPD_ABS == 0)
                 return;

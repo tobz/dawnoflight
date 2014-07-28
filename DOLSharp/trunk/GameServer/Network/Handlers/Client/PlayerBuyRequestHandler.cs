@@ -17,35 +17,26 @@
  *
  */
 
-using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Utilities;
-using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0xD0 ^ 168, "Handles player buy")]
+    [PacketHandler(PacketType.TCP, ClientPackets.PlayerBuyRequest, ClientStatus.PlayerInGame)]
 	public class PlayerBuyRequestHandler : IPacketHandler
 	{
-		/// <summary>
-		/// Defines a logger for this class.
-		/// </summary>
-		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
-			if (client.Player == null)
-				return;
-
 			uint X = packet.ReadInt();
 			uint Y = packet.ReadInt();
 			ushort id = packet.ReadShort();
-			ushort item_slot = packet.ReadShort();
-			byte item_count = (byte)packet.ReadByte();
-			byte menu_id = (byte)packet.ReadByte();
+			ushort itemSlot = packet.ReadShort();
+			byte itemCount = (byte)packet.ReadByte();
+			byte menuId = (byte)packet.ReadByte();
 
-			switch ((eMerchantWindowType)menu_id)
+			switch ((eMerchantWindowType)menuId)
 			{
 				case eMerchantWindowType.HousingInsideShop:
 				case eMerchantWindowType.HousingOutsideShop:
@@ -54,7 +45,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				case eMerchantWindowType.HousingNPCHookpoint:
 				case eMerchantWindowType.HousingVaultHookpoint:
 					{
-						HouseMgr.BuyHousingItem(client.Player, item_slot, item_count, (eMerchantWindowType)menu_id);
+						HouseMgr.BuyHousingItem(client.Player, itemSlot, itemCount, (eMerchantWindowType)menuId);
 						break;
 					}
 				default:
@@ -66,11 +57,11 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						if (client.Player.TargetObject is GameMerchant)
 						{
 							//Let merchant choose what happens
-							((GameMerchant)client.Player.TargetObject).OnPlayerBuy(client.Player, item_slot, item_count);
+							((GameMerchant)client.Player.TargetObject).OnPlayerBuy(client.Player, itemSlot, itemCount);
 						}
 						else if (client.Player.TargetObject is GameLotMarker)
 						{
-							((GameLotMarker)client.Player.TargetObject).OnPlayerBuy(client.Player, item_slot, item_count);
+							((GameLotMarker)client.Player.TargetObject).OnPlayerBuy(client.Player, itemSlot, itemCount);
 						}
 						break;
 					}

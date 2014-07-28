@@ -59,7 +59,7 @@ namespace DawnOfLight.GameServer.Trainers.hibernia
 				// player can be promoted
 				if (player.Level>=5)
 				{
-					player.Out.SendMessage(this.Name + " says, \"You must now seek your training elsewhere. Which path would you like to follow? [Ranger] or [Nightshade]?\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"You must now seek your training elsewhere. Which path would you like to follow? [Ranger] or [Nightshade]?\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 				else
 				{
@@ -67,9 +67,9 @@ namespace DawnOfLight.GameServer.Trainers.hibernia
 				}
 
 				// ask for basic equipment if player doesnt own it
-				if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, eInventorySlot.MinEquipable, eInventorySlot.LastBackpack) == null)
+				if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, InventorySlot.MinEquipable, InventorySlot.LastBackpack) == null)
 				{
-					player.Out.SendMessage(this.Name + " says, \"Do you require a [practice weapon]?\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"Do you require a [practice weapon]?\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 				
 			}
@@ -94,22 +94,22 @@ namespace DawnOfLight.GameServer.Trainers.hibernia
 			switch (text) {
 				case "Ranger":
 					if(player.Race == (int) eRace.Celt || player.Race == (int) eRace.Elf || player.Race == (int) eRace.Lurikeen || player.Race == (int) eRace.Shar){
-						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					else{
-						player.Out.SendMessage(this.Name + " says, \"The path of an Ranger is not available to your race. Please choose another.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"The path of an Ranger is not available to your race. Please choose another.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					return true;
 				case "Nightshade":
 					if(player.Race == (int) eRace.Elf || player.Race == (int) eRace.Lurikeen){
-						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"I can't tell you something about this class.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					else{
-						player.Out.SendMessage(this.Name + " says, \"The path of a Nightshade is not available to your race. Please choose another.\"", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"The path of a Nightshade is not available to your race. Please choose another.\"", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					}
 					return true;
 				case "practice weapon":
-					if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == null)
+					if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, InventorySlot.Min_Inv, InventorySlot.Max_Inv) == null)
 					{
 						player.ReceiveItem(this,PRACTICE_WEAPON_ID);
 					}

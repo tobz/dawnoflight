@@ -56,7 +56,7 @@ namespace DawnOfLight.GameServer.Trainers.albion
 				// player can be promoted
 				if (player.Level>=5)
 				{
-					player.Out.SendMessage(this.Name + " says, \"You must now seek your training elsewhere. Which path would you like to follow? [Infiltrator], [Minstrel], or [Scout]?\"", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"You must now seek your training elsewhere. Which path would you like to follow? [Infiltrator], [Minstrel], or [Scout]?\"", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				}
 				else
 				{
@@ -64,9 +64,9 @@ namespace DawnOfLight.GameServer.Trainers.albion
 				}
 
 				// ask for basic equipment if player doesnt own it
-				if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, eInventorySlot.MinEquipable, eInventorySlot.LastBackpack) == null)
+				if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, InventorySlot.MinEquipable, InventorySlot.LastBackpack) == null)
 				{
-					player.Out.SendMessage(this.Name + " says, \"Do you require a [practice weapon]?\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"Do you require a [practice weapon]?\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 				}
 			}
 			else
@@ -90,30 +90,30 @@ namespace DawnOfLight.GameServer.Trainers.albion
 			switch (text) {
 				case "Infiltrator":
 					if(player.Race == (int) eRace.Briton || player.Race == (int) eRace.Saracen || player.Race == (int) eRace.Inconnu){
-						player.Out.SendMessage(this.Name + " says, \"You seek a tough life if you go that path. The life of an Infiltrator involves daily use of his special skills. The Guild of Shadows has made its fortune by using them to sneak, hide, disguise, backstab, and spy on the enemy. Without question they are an invaluable asset to Albion.\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"You seek a tough life if you go that path. The life of an Infiltrator involves daily use of his special skills. The Guild of Shadows has made its fortune by using them to sneak, hide, disguise, backstab, and spy on the enemy. Without question they are an invaluable asset to Albion.\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 					}
 					else{
-						player.Out.SendMessage(this.Name + " says, \"The path of an Infiltrator is not available to your race. Please choose another.\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"The path of an Infiltrator is not available to your race. Please choose another.\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 					}
 					return true;
 				case "Minstrel":
 					if(player.Race == (int) eRace.Briton || player.Race == (int) eRace.Saracen || player.Race == (int) eRace.Highlander){
-						player.Out.SendMessage(this.Name + " says, \"Ah! To sing the victories of Albion! To give praise to those who fight to keep the light of Camelot eternal. Many have studied their skill within the walls of The Academy and come forth to defend this realm. Without their magical songs, many would not be here today.\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"Ah! To sing the victories of Albion! To give praise to those who fight to keep the light of Camelot eternal. Many have studied their skill within the walls of The Academy and come forth to defend this realm. Without their magical songs, many would not be here today.\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 					}
 					else{
-						player.Out.SendMessage(this.Name + " says, \"The path of a Minstrel is not available to your race. Please choose another.\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"The path of a Minstrel is not available to your race. Please choose another.\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 					}
 					return true;
 				case "Scout":
 					if(player.Race == (int) eRace.Briton || player.Race == (int) eRace.Saracen || player.Race == (int) eRace.Highlander || player.Race == (int) eRace.Inconnu){
-						player.Out.SendMessage(this.Name + " says, \"Ah! You wish to join the Defenders of Albion eh? That is quite a good choice for a Rogue. A Scouts accuracy with a bow is feared by all our enemies and has won Albion quite a few battles.\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"Ah! You wish to join the Defenders of Albion eh? That is quite a good choice for a Rogue. A Scouts accuracy with a bow is feared by all our enemies and has won Albion quite a few battles.\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 					}
 					else{
-						player.Out.SendMessage(this.Name + " says, \"The path of a Scout is not available to your race. Please choose another.\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"The path of a Scout is not available to your race. Please choose another.\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 					}
 					return true;
 				case "practice weapon":
-					if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == null)
+					if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, InventorySlot.Min_Inv, InventorySlot.Max_Inv) == null)
 					{
 						player.ReceiveItem(this,PRACTICE_WEAPON_ID);
 					}

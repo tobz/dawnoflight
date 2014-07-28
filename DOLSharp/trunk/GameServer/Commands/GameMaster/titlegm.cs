@@ -39,7 +39,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			GamePlayer target = client.Player.TargetObject as GamePlayer;
 			if (target == null)
 			{
-				client.Out.SendMessage("You must target a player to change his titles!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You must target a player to change his titles!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -48,7 +48,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 				IPlayerTitle title = PlayerTitleMgr.GetTitleByTypeName(args[2]);
 				if (title == null)
 				{
-					client.Out.SendMessage("Title '" + args[2] + "' not found.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Title '" + args[2] + "' not found.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 

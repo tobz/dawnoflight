@@ -51,12 +51,12 @@ namespace DawnOfLight.GameServer.Spells.Heretic
 			}
             if (target.HasAbility(Abilities.CCImmunity))
             {
-                MessageToCaster(target.Name + " is immune to this effect!", eChatType.CT_SpellResisted);
+                MessageToCaster(target.Name + " is immune to this effect!", ChatType.CT_SpellResisted);
                 return;
             }
             if (target.TempProperties.getProperty("Charging", false))
             {
-                MessageToCaster(target.Name + " is moving to fast for this spell to have any effect!", eChatType.CT_SpellResisted);
+                MessageToCaster(target.Name + " is moving to fast for this spell to have any effect!", ChatType.CT_SpellResisted);
                 return;
             }
 			base.ApplyEffectOnTarget(target, effectiveness);
@@ -141,8 +141,8 @@ namespace DawnOfLight.GameServer.Spells.Heretic
 
 			SendUpdates(effect.Owner);
 
-			MessageToLiving(effect.Owner, Spell.Message1, eChatType.CT_Spell);
-			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), eChatType.CT_Spell, effect.Owner);
+			MessageToLiving(effect.Owner, Spell.Message1, ChatType.CT_Spell);
+			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), ChatType.CT_Spell, effect.Owner);
 
 			RestoreSpeedTimer timer = new RestoreSpeedTimer(effect);
 			effect.Owner.TempProperties.setProperty(effect, timer);
@@ -167,8 +167,8 @@ namespace DawnOfLight.GameServer.Spells.Heretic
 
 			SendUpdates(effect.Owner);
 
-			MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, true)), eChatType.CT_SpellExpires, effect.Owner);
+			MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, true)), ChatType.CT_SpellExpires, effect.Owner);
 
 			return 60000;
 		}

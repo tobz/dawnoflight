@@ -17,6 +17,7 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
@@ -24,27 +25,31 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// <summary>
 	/// EmblemDialogReponseHandler is the response of client wend when we close the emblem selection dialogue.
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP, 0x4A ^ 168, "Handles when a player chooses a guild emblem")]
+    [PacketHandler(PacketType.TCP, ClientPackets.EmblemDialogReponse, ClientStatus.PlayerInGame)]
 	public class EmblemDialogReponseHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			if(client.Player.Guild == null)
 				return;
+
 			if(!client.Player.Guild.HasRank(client.Player, Guild.eRank.Leader))
 				return;
-			int primarycolor = packet.ReadByte() & 0x0F; //4bits
-			int secondarycolor = packet.ReadByte() & 0x07; //3bits
+
+			int primaryColor = packet.ReadByte() & 0x0F; //4bits
+			int secondaryColor = packet.ReadByte() & 0x07; //3bits
 			int pattern = packet.ReadByte() & 0x03; //2bits
 			int logo = packet.ReadByte(); //8bits
-			int oldemblem = client.Player.Guild.Emblem;
-			int newemblem = ((logo << 9) | (pattern << 7) | (primarycolor << 3) | secondarycolor);
-			if (GuildMgr.IsEmblemUsed(newemblem))
+
+			int oldEmblem = client.Player.Guild.Emblem;
+			int newEmblem = ((logo << 9) | (pattern << 7) | (primaryColor << 3) | secondaryColor);
+			if (GuildMgr.IsEmblemUsed(newEmblem))
 			{
-				client.Player.Out.SendMessage("This emblem is already in use by another guild, please choose another!", eChatType.CT_System, eChatLoc.CL_SystemWindow );
+				client.Player.Out.SendMessage("This emblem is already in use by another guild, please choose another!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
-			GuildMgr.ChangeEmblem(client.Player, oldemblem, newemblem);
+
+			GuildMgr.ChangeEmblem(client.Player, oldEmblem, newEmblem);
 		}
 	}
 }

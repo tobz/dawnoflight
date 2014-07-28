@@ -23,6 +23,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Crafting;
 using DawnOfLight.GameServer.Events;
 using DawnOfLight.GameServer.Events.Database;
@@ -38,7 +39,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// Character Create and Customization handler.  Please maintain all commented debug statements
 	/// in order to support future debugging. - Tolakram
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP, 0x57 ^ 168, "Handles character creation requests")]
+    [PacketHandler(PacketType.TCP, ClientPackets.CharacterCreateRequest)]
 	public class CharacterCreateRequestHandler : IPacketHandler
 	{
 		/// <summary>
@@ -46,24 +47,24 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 		/// </summary>
 		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
-			string accountName = packet.ReadString(24);
-
-			log.Debug("CharacterCreateRequestHandler for account " + accountName + " using version " + client.Version);
-
+			var accountName = packet.ReadString(24);
 			if (!accountName.StartsWith(client.Account.Name))// TODO more correctly check, client send accountName as account-S, -N, -H (if it not fit in 20, then only account)
 			{
-				if (ServerProperties.Properties.BAN_HACKERS)
+				if (Properties.BAN_HACKERS)
 				{
-					DBBannedAccount b = new DBBannedAccount();
-					b.Author = "SERVER";
-					b.Ip = client.TcpEndpointAddress;
-					b.Account = client.Account.Name;
-					b.DateBan = DateTime.Now;
-					b.Type = "B";
-					b.Reason = String.Format("Autoban wrong Account '{0}'", GameServer.Database.Escape(accountName));
-					GameServer.Database.AddObject(b);
+					var b = new DBBannedAccount
+					{
+					    Author = "SERVER",
+					    Ip = client.TcpEndpointAddress,
+					    Account = client.Account.Name,
+					    DateBan = DateTime.Now,
+					    Type = "B",
+					    Reason = String.Format("Autoban wrong Account '{0}'", GameServer.Database.Escape(accountName))
+					};
+
+				    GameServer.Database.AddObject(b);
 					GameServer.Database.SaveObject(b);
 					GameServer.Instance.LogCheatAction(b.Reason + ". Account: " + b.Account);
 				}
@@ -77,14 +78,14 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				packet.ReadIntLowEndian(); //unk - probably indicates customize or create
 			}
 
-			int charsCount = client.Version < GameClient.eClientVersion.Version173 ? 8 : 10;
+			var charsCount = client.Version < GameClient.eClientVersion.Version173 ? 8 : 10;
 			for (int i = 0; i < charsCount; i++)
 			{
-				string charName = packet.ReadString(24);
+				var characterName = packet.ReadString(24);
 
 				//log.DebugFormat("Character[{0}] = {1}", i, charName);
 
-				if (charName.Length == 0)
+				if (characterName.Length == 0)
 				{
 					// 1.104+  if character is not in list but is in DB then delete the character
 					if (client.Version >= GameClient.eClientVersion.Version1104)
@@ -103,21 +104,24 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				else
 				{
 					// Graveen: changed the following to allow GMs to have special chars in their names (_,-, etc..)
-					Regex nameCheck = new Regex("^[A-Z][a-zA-Z]");
-					if (charName.Length < 3 || !nameCheck.IsMatch(charName))
+					var nameCheck = new Regex("^[A-Z][a-zA-Z]");
+					if (characterName.Length < 3 || !nameCheck.IsMatch(characterName))
 					{
 						if (client.Account.PrivLevel == 1)
 						{
-							if (ServerProperties.Properties.BAN_HACKERS)
+							if (Properties.BAN_HACKERS)
 							{
-								DBBannedAccount b = new DBBannedAccount();
-								b.Author = "SERVER";
-								b.Ip = client.TcpEndpointAddress;
-								b.Account = client.Account.Name;
-								b.DateBan = DateTime.Now;
-								b.Type = "B";
-								b.Reason = String.Format("Autoban bad CharName '{0}'", GameServer.Database.Escape(charName));
-								GameServer.Database.AddObject(b);
+								var b = new DBBannedAccount
+								{
+								    Author = "SERVER",
+								    Ip = client.TcpEndpointAddress,
+								    Account = client.Account.Name,
+								    DateBan = DateTime.Now,
+								    Type = "B",
+								    Reason = String.Format("Autoban bad CharName '{0}'", GameServer.Database.Escape(characterName))
+								};
+
+							    GameServer.Database.AddObject(b);
 								GameServer.Database.SaveObject(b);
 								GameServer.Instance.LogCheatAction(b.Reason + ". Account: " + b.Account);
 							}
@@ -127,22 +131,27 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						}
 					}
 
-					String select = String.Format("Name = '{0}'", GameServer.Database.Escape(charName));
-					DOLCharacters character = GameServer.Database.SelectObject<DOLCharacters>(select);
+					var select = String.Format("Name = '{0}'", GameServer.Database.Escape(characterName));
+					var character = GameServer.Database.SelectObject<DOLCharacters>(select);
 					if (character != null)
 					{
 						if (character.AccountName != client.Account.Name)
 						{
-							if (Properties.BAN_HACKERS == true)
+							if (Properties.BAN_HACKERS)
 							{
-								DBBannedAccount b = new DBBannedAccount();
-								b.Author = "SERVER";
-								b.Ip = client.TcpEndpointAddress;
-								b.Account = client.Account.Name;
-								b.DateBan = DateTime.Now;
-								b.Type = "B";
-								b.Reason = String.Format("Autoban CharName '{0}' on wrong Account '{1}'", GameServer.Database.Escape(charName), GameServer.Database.Escape(client.Account.Name));
-								GameServer.Database.AddObject(b);
+								var b = new DBBannedAccount
+								{
+								    Author = "SERVER",
+								    Ip = client.TcpEndpointAddress,
+								    Account = client.Account.Name,
+								    DateBan = DateTime.Now,
+								    Type = "B",
+								    Reason =
+								        String.Format("Autoban CharName '{0}' on wrong Account '{1}'", GameServer.Database.Escape(characterName),
+								            GameServer.Database.Escape(client.Account.Name))
+								};
+
+							    GameServer.Database.AddObject(b);
 								GameServer.Database.SaveObject(b);
 								GameServer.Instance.LogCheatAction(string.Format(b.Reason + ". Client Account: {0}, DB Account: {1}", client.Account.Name, character.AccountName));
 							}
@@ -151,17 +160,15 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 							return;
 						}
 
-						byte customizationMode = (byte)packet.ReadByte();
-
-						// log.DebugFormat("CustomizationMode = {0} for charName {1}", customizationMode, charName);
+						var customizationMode = (byte)packet.ReadByte();
 
 						// check for update to existing character
-						CheckCharacterForUpdates(client, packet, character, charName, customizationMode);
+						CheckCharacterForUpdates(client, packet, character, characterName, customizationMode);
 					}
 					else
 					{
 						// create new character and return
-						CreateCharacter(client, packet, charName, i);
+						CreateCharacter(client, packet, characterName, i);
 					}
 				}
 			}
@@ -170,14 +177,11 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 		#region Create Character
 
-		private void CreateCharacter(GameClient client, GSPacketIn packet, string charName, int accountSlot)
+		private void CreateCharacter(GameClient client, GamePacketIn packet, string charName, int accountSlot)
 		{
-			Account account = client.Account;
-			DOLCharacters ch = new DOLCharacters();
-			ch.AccountName = account.Name;
-			ch.Name = charName;
+			var ch = new DOLCharacters {AccountName = client.Account.Name, Name = charName};
 
-			if (packet.ReadByte() == 0x01)
+		    if (packet.ReadByte() == 0x01)
 			{
 				ch.EyeSize = (byte)packet.ReadByte();
 				ch.LipSize = (byte)packet.ReadByte();
@@ -204,7 +208,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			ch.Level = packet.ReadByte(); //not safe!
 			ch.Level = 1;
 			ch.Class = packet.ReadByte();
-			if (ServerProperties.Properties.START_AS_BASE_CLASS)
+			if (Properties.START_AS_BASE_CLASS)
 			{
 				ch.Class = RevertClass(ch);
 			}
@@ -214,13 +218,10 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				log.Debug("Creation " + client.Version + " character, class:" + ch.Class + ", realm:" + ch.Realm);
 
 			// Is class disabled ?
-			int occurences = 0;
-			List<string> disabled_classes = Properties.DISABLED_CLASSES.SplitCSV(true);
-			occurences = (from j in disabled_classes
-			              where j == ch.Class.ToString()
-			              select j).Count();
+			var disabledClasses = Properties.DISABLED_CLASSES.SplitCSV(true);
+		    var isClassDisabled = disabledClasses.Any(x => x == ch.Class.ToString());
 
-			if (occurences > 0 && (ePrivLevel)client.Account.PrivLevel == ePrivLevel.Player)
+			if (isClassDisabled && (ePrivLevel)client.Account.PrivLevel == ePrivLevel.Player)
 			{
 				log.Debug("Client " + client.Account.Name + " tried to create a disabled classe: " + (eCharacterClass)ch.Class);
 				client.Out.SendCharacterOverview((eRealm)ch.Realm);
@@ -241,14 +242,19 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				log.Error(client.Account.Name + " tried to create a character with wrong class ID: " + ch.Class + ", realm:" + ch.Realm);
 				if (ServerProperties.Properties.BAN_HACKERS)
 				{
-					DBBannedAccount b = new DBBannedAccount();
-					b.Author = "SERVER";
-					b.Ip = client.TcpEndpointAddress;
-					b.Account = client.Account.Name;
-					b.DateBan = DateTime.Now;
-					b.Type = "B";
-					b.Reason = string.Format("Autoban character create class: id:{0} realm:{1} name:{2} account:{3}", ch.Class, ch.Realm, ch.Name, account.Name);
-					GameServer.Database.AddObject(b);
+					var b = new DBBannedAccount
+					{
+					    Author = "SERVER",
+					    Ip = client.TcpEndpointAddress,
+					    Account = client.Account.Name,
+					    DateBan = DateTime.Now,
+					    Type = "B",
+					    Reason =
+					        string.Format("Autoban character create class: id:{0} realm:{1} name:{2} account:{3}", ch.Class, ch.Realm,
+					            ch.Name, client.Account.Name)
+					};
+
+				    GameServer.Database.AddObject(b);
 					GameServer.Database.SaveObject(b);
 					GameServer.Instance.LogCheatAction(b.Reason + ". Account: " + b.Account);
 					client.Disconnect();
@@ -268,13 +274,11 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 			ch.Race = (startRaceGender & 0x0F) + ((startRaceGender & 0x40) >> 2);
 
-			List<string> disabled_races = new List<string>(Properties.DISABLED_RACES.SplitCSV(true));
-			occurences = (from j in disabled_races
-			              where j == ch.Race.ToString()
-			              select j).Count();
-			if (occurences > 0 && (ePrivLevel)client.Account.PrivLevel == ePrivLevel.Player)
+			var disabledRaces = new List<string>(Properties.DISABLED_RACES.SplitCSV(true));
+            var isRaceDisabled = disabledRaces.Any(x => x == ch.Race.ToString());
+
+			if (isRaceDisabled && (ePrivLevel)client.Account.PrivLevel == ePrivLevel.Player)
 			{
-				log.Debug("Client " + client.Account.Name + " tried to create a disabled race: " + (eRace)ch.Race);
 				client.Out.SendCharacterOverview((eRealm)ch.Realm);
 			    return;
 			}
@@ -411,12 +415,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 			#region starting guilds
 
-			if (account.PrivLevel == 1 && Properties.STARTING_GUILD)
+			if (client.Account.PrivLevel == 1 && Properties.STARTING_GUILD)
 			{
 				switch (ch.Realm)
 				{
 					case 1:
-						switch (ServerProperties.Properties.SERV_LANGUAGE)
+						switch (Properties.SERV_LANGUAGE)
 						{
 							case "EN":
 								ch.GuildID = GuildMgr.GuildNameToGuildID("Clan Cotswold");
@@ -430,7 +434,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						}
 						break;
 					case 2:
-						switch (ServerProperties.Properties.SERV_LANGUAGE)
+						switch (Properties.SERV_LANGUAGE)
 						{
 							case "EN":
 								ch.GuildID = GuildMgr.GuildNameToGuildID("Mularn Protectors");
@@ -444,7 +448,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						}
 						break;
 					case 3:
-						switch (ServerProperties.Properties.SERV_LANGUAGE)
+						switch (Properties.SERV_LANGUAGE)
 						{
 							case "EN":
 								ch.GuildID = GuildMgr.GuildNameToGuildID("Tir na Nog Adventurers");
@@ -517,8 +521,6 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 			GameServer.Database.FillObjectRelations(client.Account);
 			client.Out.SendCharacterOverview((eRealm)ch.Realm);
-
-		    return;
 		}
 
 		#endregion Create Character
@@ -526,7 +528,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 		#region Character Updates
 
-		private int CheckCharacterForUpdates(GameClient client, GSPacketIn packet, DOLCharacters character, string charName, byte customizationMode)
+		private int CheckCharacterForUpdates(GameClient client, GamePacketIn packet, DOLCharacters character, string charName, byte customizationMode)
 		{
 			int newModel = character.CurrentModel;
 
@@ -736,16 +738,20 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				{
 					if (client.Account.PrivLevel == 1 && ((newModel >> 11) & 3) == 0) // Player size must be > 0 (from 1 to 3)
 					{
-						DBBannedAccount b = new DBBannedAccount();
-						b.Author = "SERVER";
-						b.Ip = client.TcpEndpointAddress;
-						b.Account = client.Account.Name;
-						b.DateBan = DateTime.Now;
-						b.Type = "B";
-						b.Reason = String.Format("Autoban Hack char update : zero character size in model:{0}", newModel);
-						GameServer.Database.AddObject(b);
+						var b = new DBBannedAccount
+						{
+						    Author = "SERVER",
+						    Ip = client.TcpEndpointAddress,
+						    Account = client.Account.Name,
+						    DateBan = DateTime.Now,
+						    Type = "B",
+						    Reason = String.Format("Autoban Hack char update : zero character size in model:{0}", newModel)
+						};
+
+					    GameServer.Database.AddObject(b);
 						GameServer.Database.SaveObject(b);
 						GameServer.Instance.LogCheatAction(b.Reason + ". Account: " + b.Account);
+
 						client.Disconnect();
 						return 1;
 					}

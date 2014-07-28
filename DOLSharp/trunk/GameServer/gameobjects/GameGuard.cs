@@ -39,11 +39,11 @@ namespace DawnOfLight.GameServer.GameObjects
                     switch (Realm)
                     {
                         case eRealm.Albion:
-                            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameGuard.Albion.StartAttackSay"), eChatType.CT_System, eChatLoc.CL_SystemWindow); break;
+                            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameGuard.Albion.StartAttackSay"), ChatType.CT_System, ChatLocation.CL_SystemWindow); break;
                         case eRealm.Midgard:
-                            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameGuard.Midgard.StartAttackSay"), eChatType.CT_System, eChatLoc.CL_SystemWindow); break;
+                            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameGuard.Midgard.StartAttackSay"), ChatType.CT_System, ChatLocation.CL_SystemWindow); break;
                         case eRealm.Hibernia:
-                            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameGuard.Hibernia.StartAttackSay"), eChatType.CT_System, eChatLoc.CL_SystemWindow); break;
+                            player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameGuard.Hibernia.StartAttackSay"), ChatType.CT_System, ChatLocation.CL_SystemWindow); break;
                     }
             }
         }

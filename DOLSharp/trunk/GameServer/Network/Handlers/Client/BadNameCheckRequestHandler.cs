@@ -17,40 +17,21 @@
  *
  */
 
-using System.Collections;
+using System.Linq;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0x6A^168,"Checks for bad character names")]
+	[PacketHandler(PacketType.TCP, ClientPackets.BadNameCheckRequest)]
 	public class BadNameCheckRequestHandler : IPacketHandler
 	{
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
-			string name=packet.ReadString(30);
-			//TODO do bad name checks here from some database with
-			//bad names, this is just a temp testthing here
-			bool bad = false;
+		    var name = packet.ReadString(30).ToLower();
+		    var isBadName = GameServer.Instance.InvalidNames.Any(s => name.IndexOf(s) != -1);
 
-			ArrayList names = GameServer.Instance.InvalidNames;
-
-			foreach(string s in names)
-			{
-				if(name.ToLower().IndexOf(s) != -1)
-				{
-					bad = true;
-					break;
-				}
-			}
-
-			//if(bad)
-			//DOLConsole.WriteLine(String.Format("Name {0} is bad!",name));
-			//else
-			//DOLConsole.WriteLine(String.Format("Name {0} seems to be a good name!",name));
-
-			client.Out.SendBadNameCheckReply(name,bad);
+			client.Out.SendBadNameCheckReply(name, isBadName);
 		}
 	}
 }

@@ -51,7 +51,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				GameNPC npc = npcs[0];
 				ushort heading = targetnpc.GetHeading(npc);
 				string directionstring = GetDirectionFromHeading(heading);
-				targetnpc.SayTo(client.Player, eChatLoc.CL_SystemWindow, npc.Name + " is in the " + directionstring);
+				targetnpc.SayTo(client.Player, ChatLocation.CL_SystemWindow, npc.Name + " is in the " + directionstring);
 				targetnpc.TurnTo(npc, 10000);
 				targetnpc.Emote(eEmote.Point);
 			}

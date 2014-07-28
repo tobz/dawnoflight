@@ -1039,7 +1039,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		{
 			if (player.Client.Account.PrivLevel == 1 && !this.IsWithinRadius(player, InteractDistance))
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObject.Interact.TooFarAway", GetName(0, true)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObject.Interact.TooFarAway", GetName(0, true)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				Notify(GameObjectEvent.InteractFailed, this, new InteractEventArgs(player));
 				return false;
 			}
@@ -1514,7 +1514,7 @@ namespace DawnOfLight.GameServer.GameObjects
 		}
 		public static bool PlayerHasItem(GamePlayer player, string str)
 		{
-			InventoryItem item = player.Inventory.GetFirstItemByID(str, eInventorySlot.Min_Inv, eInventorySlot.Max_Inv);
+			InventoryItem item = player.Inventory.GetFirstItemByID(str, InventorySlot.Min_Inv, InventorySlot.Max_Inv);
 			if (item != null)
 				return true;
 			return false;

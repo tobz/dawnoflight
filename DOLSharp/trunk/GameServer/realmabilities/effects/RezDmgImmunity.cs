@@ -61,7 +61,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects
 
         private void OnRemove(DOLEvent e, object sender, EventArgs args)
         {
-            //((GamePlayer)Owner).Out.SendMessage("Sputins Legacy grants you a damage immunity!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+            //((GamePlayer)Owner).Out.SendMessage("Sputins Legacy grants you a damage immunity!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 
             Stop();
         }

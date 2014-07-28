@@ -60,7 +60,7 @@ namespace DawnOfLight.GameServer.Trainers.albion
 				// perhaps player can be promoted
 				if (CanPromotePlayer(player)) 
 				{
-					player.Out.SendMessage(this.Name + " says, \"Do you desire to [join the Academy] and summon the power of the elements as a Wizard?\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"Do you desire to [join the Academy] and summon the power of the elements as a Wizard?\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 					if (!player.IsLevelRespecUsed)
 					{
 						OfferRespecialize(player);

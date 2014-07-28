@@ -96,7 +96,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC.Teleporters
 			int numDestinations = 0;
 			foreach (Teleport destination in m_destinations)
 			{
-				player.Out.SendMessage(String.Format("[{0}]", destination.TeleportID), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage(String.Format("[{0}]", destination.TeleportID), ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				numDestinations++;
 			}
 

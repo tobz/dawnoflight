@@ -24,12 +24,12 @@ using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-    [PacketHandler(PacketHandlerType.TCP, eClientPackets.ObjectInteractRequest, ClientStatus.PlayerInGame)]
+    [PacketHandler(PacketType.TCP, ClientPackets.ObjectInteractRequest, ClientStatus.PlayerInGame)]
 	public class ObjectInteractRequestHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			// packet.Skip(10);
 			uint playerX = packet.ReadInt();

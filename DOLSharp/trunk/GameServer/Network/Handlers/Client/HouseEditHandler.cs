@@ -18,34 +18,29 @@
  */
 
 using System.Collections.Generic;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x01, "Change handler for outside/inside look (houses).")]
+	[PacketHandler(PacketType.TCP, ClientPackets.HouseEdit, ClientStatus.PlayerInGame)]
 	public class HouseEditHandler : IPacketHandler
 	{
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-		#region IPacketHandler Members
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
-			ushort playerID = packet.ReadShort(); // no use for that.
-
 			// house is null, return
 			var house = client.Player.CurrentHouse;
-			if(house == null)
+			if (house == null)
 				return;
 
 			// grab all valid changes
 			var changes = new List<int>();
 			for (int i = 0; i < 10; i++)
 			{
-				int swtch = packet.ReadByte();
+				int id = packet.ReadByte();
 				int change = packet.ReadByte();
 
-				if (swtch != 255)
+				if (id != 255)
 				{
 					changes.Add(change);
 				}
@@ -57,7 +52,5 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				house.Edit(client.Player, changes);
 			}
 		}
-
-		#endregion
 	}
 }

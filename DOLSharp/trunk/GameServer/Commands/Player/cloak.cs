@@ -50,12 +50,12 @@ namespace DawnOfLight.GameServer.commands.Player
 				if(client.Player.IsCloakInvisible)
 				{
 					client.Player.IsCloakInvisible = false;
-					client.Out.SendMessage("Your cloak will no longer be hidden from view.", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Your cloak will no longer be hidden from view.", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
 					return;
 				}
 				else
 				{
-					client.Out.SendMessage("Your cloak is already visible.", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Your cloak is already visible.", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
 					return;
 				}
 			}
@@ -64,13 +64,13 @@ namespace DawnOfLight.GameServer.commands.Player
 			{
 				if (client.Player.IsCloakInvisible)
 				{
-					client.Out.SendMessage("Your cloak is already invisible.", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Your cloak is already invisible.", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
 					return;
 				}
 				else
 				{
 					client.Player.IsCloakInvisible = true;
-					client.Out.SendMessage("Your cloak will now be hidden from view.", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Your cloak will now be hidden from view.", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
 					return;
 				}
 			}

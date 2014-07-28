@@ -98,7 +98,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					String reply = String.Format("Thank you! Here, take this cloak. {0}",
 						"I hope you find it useful. Please don't lose it, I can't replace it!");
 					scholar.TurnTo(player);
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					FinishQuest();
 					return true;
 				}
@@ -133,7 +133,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
                         "Then, when you've translated them into a book, return the book to me, and I will",
                         "give you the artifact. Do you have the [story]?");
                     scholar.TurnTo(player);
-                    scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+                    scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
                     Step = 2;
                     return true;
                 }
@@ -142,7 +142,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
             if (text.ToLower() == "story" && Step > 1)
             {
                 scholar.TurnTo(player);
-                scholar.SayTo(player, eChatLoc.CL_PopupWindow,
+                scholar.SayTo(player, ChatLocation.CL_PopupWindow,
                     "Well, hand me the story. If you don't have it, go out and get it!");
                 return true;
             }

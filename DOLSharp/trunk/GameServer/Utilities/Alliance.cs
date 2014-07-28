@@ -73,7 +73,7 @@ namespace DawnOfLight.GameServer.Utilities
 				GameServer.Database.FillObjectRelations(m_dballiance);
 				//sirru 23.12.06 save changes to db for each guild
 				SaveIntoDatabase();
-				SendMessageToAllianceMembers(myguild.Name + " has joined the alliance of " + m_dballiance.AllianceName, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				SendMessageToAllianceMembers(myguild.Name + " has joined the alliance of " + m_dballiance.AllianceName, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 		public void RemoveGuild(Guild myguild)
@@ -85,7 +85,7 @@ namespace DawnOfLight.GameServer.Utilities
                 Guilds.Remove(myguild);
                 if (myguild.GuildID == m_dballiance.DBguildleader.GuildID)
                 {
-                    SendMessageToAllianceMembers(myguild.Name + " has disbanded the alliance of " + m_dballiance.AllianceName, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    SendMessageToAllianceMembers(myguild.Name + " has disbanded the alliance of " + m_dballiance.AllianceName, ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     ArrayList mgl = new ArrayList(Guilds);
                     foreach (Guild mg in mgl)
                     {
@@ -107,8 +107,8 @@ namespace DawnOfLight.GameServer.Utilities
                 }
 				//sirru 23.12.06 save changes to db for each guild
 				myguild.SaveIntoDatabase();
-                myguild.SendMessageToGuildMembers(myguild.Name + " has left the alliance of " + m_dballiance.AllianceName, eChatType.CT_System, eChatLoc.CL_SystemWindow);
-                SendMessageToAllianceMembers(myguild.Name + " has left the alliance of " + m_dballiance.AllianceName, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                myguild.SendMessageToGuildMembers(myguild.Name + " has left the alliance of " + m_dballiance.AllianceName, ChatType.CT_System, ChatLocation.CL_SystemWindow);
+                SendMessageToAllianceMembers(myguild.Name + " has left the alliance of " + m_dballiance.AllianceName, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 		public void Clear()
@@ -138,7 +138,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <summary>
 		/// send message to all member of alliance
 		/// </summary>
-		public void SendMessageToAllianceMembers(string msg, eChatType type, eChatLoc loc)
+		public void SendMessageToAllianceMembers(string msg, ChatType type, ChatLocation loc)
 		{
 			lock (Guilds.SyncRoot)
 			{

@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Language;
@@ -31,7 +32,7 @@ using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x0C, "Handles things like placing indoor/outdoor items")]
+    [PacketHandler(PacketType.TCP, ClientPackets.HousingPlaceItem, ClientStatus.PlayerInGame)]
 	public class HousingPlaceItemHandler : IPacketHandler
 	{
 		private const string DeedWeak = "deedItem";
@@ -41,13 +42,13 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			try
 			{
 				int unknow1 = packet.ReadByte(); // 1=Money 0=Item (?)
 				int slot = packet.ReadByte(); // Item/money slot
-				ushort housenumber = packet.ReadShort(); // N° of house
+				ushort houseNumber = packet.ReadShort(); // N° of house
 				int unknow2 = (byte)packet.ReadByte();
 				_position = (byte)packet.ReadByte();
 				int method = packet.ReadByte(); // 2=Wall 3=Floor
@@ -58,17 +59,13 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 				ChatUtil.SendDebugMessage(client, string.Format("HousingPlaceItem: slot: {0}, position: {1}, method: {2}, xpos: {3}, ypos: {4}", slot, _position, method, xpos, ypos));
 
-				if (client.Player == null)
-					return;
-
 				// house must exist
-				House house = HouseMgr.GetHouse(client.Player.CurrentRegionID, housenumber);
+				var house = HouseMgr.GetHouse(client.Player.CurrentRegionID, houseNumber);
 				if (house == null)
 				{
 					client.Player.Out.SendInventorySlotsUpdate(null);
 					return;
 				}
-
 
 				if ((slot >= 244) && (slot <= 248)) // money
 				{
@@ -108,7 +105,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				}
 
 				// make sure the item dropped still exists
-				InventoryItem orgitem = client.Player.Inventory.GetItem((eInventorySlot)slot);
+				var orgitem = client.Player.Inventory.GetItem((InventorySlot)slot);
 				if (orgitem == null)
 				{
 					client.Player.Out.SendInventorySlotsUpdate(null);
@@ -148,7 +145,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 					client.Player.TempProperties.setProperty(DeedWeak, new WeakReference(orgitem));
 					client.Player.TempProperties.setProperty(TargetHouse, house);
-					client.Player.Out.SendMessage("Warning:\n This will remove *all* items from your current house!", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					client.Player.Out.SendMessage("Warning:\n This will remove *all* items from your current house!", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					client.Player.Out.SendCustomDialog("Are you sure you want to upgrade your House?", HouseUpgradeDialog);
 
 					return;
@@ -193,7 +190,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						// This will still take the item even if player answers NO to confirmation.
  						// I'm fixing consignment, not housing, and frankly I'm sick of fixing stuff!  :)  - tolakram
 						client.Player.Inventory.RemoveItem(orgitem);
-						InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+						InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 						client.Player.Guild.UpdateGuildWindow();
 					}
 					return;
@@ -317,14 +314,14 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 							//add item in db
 							pos = GetFirstFreeSlot(house.OutdoorItems.Keys);
-							DBHouseOutdoorItem odbitem = oitem.CreateDBOutdoorItem(housenumber);
+							DBHouseOutdoorItem odbitem = oitem.CreateDBOutdoorItem(houseNumber);
 							oitem.DatabaseItem = odbitem;
 
 							GameServer.Database.AddObject(odbitem);
 
 							// remove the item from the player's inventory
 							client.Player.Inventory.RemoveItem(orgitem);
-							InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+							InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 
 							//add item to outdooritems
 							house.OutdoorItems.Add(pos, oitem);
@@ -416,7 +413,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 							{
 								//its a housing item, so lets take it!
 								client.Player.Inventory.RemoveItem(orgitem);
-								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 
 								//set right base item, so we can recreate it on take.
 								if (orgitem.Id_nb.Contains("GuildBanner"))
@@ -430,7 +427,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 								}
 							}
 
-							DBHouseIndoorItem idbitem = iitem.CreateDBIndoorItem(housenumber);
+							DBHouseIndoorItem idbitem = iitem.CreateDBIndoorItem(houseNumber);
 							iitem.DatabaseItem = idbitem;
 							GameServer.Database.AddObject(idbitem);
 
@@ -474,7 +471,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 									{
 										// remove the original item from the player's inventory
 										client.Player.Inventory.RemoveItem(orgitem);
-										InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+										InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 									}
 									else
 									{
@@ -497,7 +494,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 									{
 										// remove the original item from the player's inventory
 										client.Player.Inventory.RemoveItem(orgitem);
-										InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+										InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 									}
 									else
 									{
@@ -520,7 +517,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 										{
 											// remove the original item from the player's inventory
 											client.Player.Inventory.RemoveItem(orgitem);
-											InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+											InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 										}
 										else
 										{
@@ -616,7 +613,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 								// remove the original item from the player's inventory
 								client.Player.Inventory.RemoveItem(orgitem);
-								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 
 								ChatUtil.SendSystemMessage(client, "Scripts.Player.Housing.HookPointAdded", null);
 
@@ -647,28 +644,28 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 								house.OutdoorGuildBanner = true;
 								ChatUtil.SendSystemMessage(client, "Scripts.Player.Housing.OutdoorBannersAdded", null);
 								client.Player.Inventory.RemoveItem(orgitem);
-								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 							}
 							else if (objType == 58) // We have outdoor shield
 							{
 								house.OutdoorGuildShield = true;
 								ChatUtil.SendSystemMessage(client, "Scripts.Player.Housing.OutdoorShieldsAdded", null);
 								client.Player.Inventory.RemoveItem(orgitem);
-								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 							}
 							else if (objType == 66) // We have indoor banner
 							{
 								house.IndoorGuildBanner = true;
 								ChatUtil.SendSystemMessage(client, "Scripts.Player.Housing.InteriorBannersAdded", null);
 								client.Player.Inventory.RemoveItem(orgitem);
-								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 							}
 							else if (objType == 67) // We have indoor shield
 							{
 								house.IndoorGuildShield = true;
 								ChatUtil.SendSystemMessage(client, "Scripts.Player.Housing.InteriorShieldsAdded", null);
 								client.Player.Inventory.RemoveItem(orgitem);
-								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+								InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 							}
 							else
 							{
@@ -728,8 +725,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 							int vaultIndex = house.GetFreeVaultNumber();
 							if (vaultIndex < 0)
 							{
-								client.Player.Out.SendMessage("You can't add any more vaults to this house!", eChatType.CT_System,
-															  eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage("You can't add any more vaults to this house!", ChatType.CT_System,
+															  ChatLocation.CL_SystemWindow);
 								client.Out.SendInventorySlotsUpdate(new[] { slot });
 
 								return;
@@ -752,7 +749,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 							// remove the original item from the player's inventory
 							client.Player.Inventory.RemoveItem(orgitem);
-							InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + housenumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
+							InventoryLogging.LogInventoryAction(client.Player, "(HOUSE;" + houseNumber + ")", eInventoryActionType.Other, orgitem.Template, orgitem.Count);
 
 							// save the house and broadcast uodates
 							house.SaveIntoDatabase();
@@ -770,7 +767,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			catch (Exception ex)
 			{
 				log.Error("HousingPlaceItemHandler", ex);
-				client.Out.SendMessage("Error processing housing action; the error has been logged!", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Error processing housing action; the error has been logged!", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 				client.Out.SendInventorySlotsUpdate(null);
 			}
 		}
@@ -938,7 +935,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				return;
 			}
 
-			if (item == null || item.SlotPosition == (int)eInventorySlot.Ground
+			if (item == null || item.SlotPosition == (int)InventorySlot.Ground
 				|| item.OwnerID == null || item.OwnerID != player.InternalID)
 			{
 				ChatUtil.SendSystemMessage(player, "You need a House Removal Deed for this.");
@@ -981,7 +978,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				return;
 			}
 
-			if (item == null || item.SlotPosition == (int)eInventorySlot.Ground
+			if (item == null || item.SlotPosition == (int)InventorySlot.Ground
 				|| item.OwnerID == null || item.OwnerID != player.InternalID)
 			{
 				ChatUtil.SendSystemMessage(player, "This does not work without a House Deed.");

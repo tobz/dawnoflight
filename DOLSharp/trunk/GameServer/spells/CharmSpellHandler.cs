@@ -134,14 +134,14 @@ namespace DawnOfLight.GameServer.Spells
         	// check cast target
             if (selectedTarget == null || (selectedTarget != null && !selectedTarget.IsAlive))
             {
-                MessageToCaster("You must select a target for this spell!", eChatType.CT_SpellResisted);
+                MessageToCaster("You must select a target for this spell!", ChatType.CT_SpellResisted);
                 return false;
             }
             
             if (selectedTarget is GameNPC == false)
             {
             	//proper message?
-                MessageToCaster("This spell does not charm this type of creature!", eChatType.CT_SpellResisted);
+                MessageToCaster("This spell does not charm this type of creature!", ChatType.CT_SpellResisted);
                 return false;
             }
 
@@ -156,7 +156,7 @@ namespace DawnOfLight.GameServer.Spells
 
             if (Caster is GamePlayer && ((GamePlayer)Caster).ControlledBrain != null)
             {
-                MessageToCaster("You already have a charmed creature, release it first!", eChatType.CT_SpellResisted);
+                MessageToCaster("You already have a charmed creature, release it first!", ChatType.CT_SpellResisted);
                 return false;
             }
             
@@ -173,7 +173,7 @@ namespace DawnOfLight.GameServer.Spells
         	
         	// This prevent most of type casting errors
         	if(target is GameNPC == false) {
-        		MessageToCaster("This spell does not charm this type of monster!", eChatType.CT_SpellResisted);
+        		MessageToCaster("This spell does not charm this type of monster!", ChatType.CT_SpellResisted);
                 return;
         	}
         	
@@ -184,28 +184,28 @@ namespace DawnOfLight.GameServer.Spells
 	    	    if(((GameNPC)target).Brain != null && ((GameNPC)target).Brain is IControlledBrain && (((IControlledBrain)((GameNPC)target).Brain).Owner as GamePlayer) != Caster)
 	            {
 	                // TODO: proper message
-	                MessageToCaster("Your target is not valid.", eChatType.CT_SpellResisted);
+	                MessageToCaster("Your target is not valid.", ChatType.CT_SpellResisted);
 	                return;
 	            }
 	    	    
             	// Already have a pet...
 	    	    if(Caster.ControlledBrain != null)
 	            {
-	                MessageToCaster("You already have a charmed creature, release it first!", eChatType.CT_SpellResisted);
+	                MessageToCaster("You already have a charmed creature, release it first!", ChatType.CT_SpellResisted);
 	                return;
 	            }
 	    	    
             	// Body Type None (0) is used to make mobs un-charmable , Realm Guards or NPC cannot be charmed.
             	if (target.Realm != 0 || ((GameNPC)target).BodyType == (ushort)NpcTemplateMgr.eBodyType.None)
                 {
-                    MessageToCaster("This spell does not charm this type of monster!", eChatType.CT_SpellResisted);
+                    MessageToCaster("This spell does not charm this type of monster!", ChatType.CT_SpellResisted);
                     return;
                 }
                 
             	// If server properties prevent Named charm.
             	if(ServerProperties.Properties.SPELL_CHARM_NAMED_CHECK != 0 && !target.Name[0].ToString().ToLower().Equals(target.Name[0].ToString()))
                 {
-                    MessageToCaster("This spell does not charm this type of monster!", eChatType.CT_SpellResisted);
+                    MessageToCaster("This spell does not charm this type of monster!", ChatType.CT_SpellResisted);
                     return;
                 }
                             		
@@ -278,7 +278,7 @@ namespace DawnOfLight.GameServer.Spells
                 	if(!charmable) 
                 	{
                 		
-            		   	MessageToCaster("This spell does not charm this type of monster!", eChatType.CT_SpellResisted);
+            		   	MessageToCaster("This spell does not charm this type of monster!", ChatType.CT_SpellResisted);
                         return;
                 	}
 
@@ -289,7 +289,7 @@ namespace DawnOfLight.GameServer.Spells
             // Spell.Value == Max Level this spell can charm, Spell.Damage == Max percent of the caster level this spell can charm
             if (target.Level > Spell.Value || target.Level > Caster.Level * Spell.Damage / 100)
             {
-                MessageToCaster(target.GetName(0, true) + " is too strong for you to charm!", eChatType.CT_SpellResisted);
+                MessageToCaster(target.GetName(0, true) + " is too strong for you to charm!", ChatType.CT_SpellResisted);
                 return;
             }
 
@@ -331,7 +331,7 @@ namespace DawnOfLight.GameServer.Spells
                 if (Util.Chance(resistChance))
                 {
                 	
-                    MessageToCaster(target.GetName(0, true) + " resists the charm!", eChatType.CT_SpellResisted);
+                    MessageToCaster(target.GetName(0, true) + " resists the charm!", ChatType.CT_SpellResisted);
                     return;
                 }
             }
@@ -370,8 +370,8 @@ namespace DawnOfLight.GameServer.Spells
                 {
                 	
                     // sorc: "The slough serpent is enthralled!" ct_spell
-                    Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message1, npc.GetName(0, false)), eChatType.CT_Spell);
-                    MessageToCaster(npc.GetName(0, true) + " is now under your control.", eChatType.CT_Spell);
+                    Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message1, npc.GetName(0, false)), ChatType.CT_Spell);
+                    MessageToCaster(npc.GetName(0, true) + " is now under your control.", ChatType.CT_Spell);
 
                     player.SetControlledBrain(m_controlledBrain);
                     
@@ -453,7 +453,7 @@ namespace DawnOfLight.GameServer.Spells
                     GameEventMgr.RemoveHandler(npc, GameLivingEvent.PetReleased, new DOLEventHandler(ReleaseEventHandler));
 
                     player.SetControlledBrain(null);
-                    MessageToCaster("You lose control of " + npc.GetName(0, false) + "!", eChatType.CT_SpellExpires);
+                    MessageToCaster("You lose control of " + npc.GetName(0, false) + "!", ChatType.CT_SpellExpires);
 
                     lock (npc.BrainSync)
                     {

@@ -2208,14 +2208,14 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 
 			if (response == 0x00)
 			{
-				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 			}
 			else
 			{
 				// Check to see if we can add quest
 				if (!Revelin.GiveQuest(typeof(Harmony_50), player, 1))
 					return;
-				player.Out.SendMessage("Kill Cailean in Cursed Forest loc 28k 24k ", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Kill Cailean in Cursed Forest loc 28k 24k ", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 			}
 		}
 
@@ -2254,7 +2254,7 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 
 				if (gArgs.Target.Name == Cailean.Name)
 				{
-					m_questPlayer.Out.SendMessage("You collect the Horn from Cailean", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					m_questPlayer.Out.SendMessage("You collect the Horn from Cailean", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					GiveItem(m_questPlayer, Horn);
 					Step = 2;
 					return;
@@ -2283,7 +2283,7 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 
 		public override void FinishQuest()
 		{
-			if (m_questPlayer.Inventory.IsSlotsFree(6, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+			if (m_questPlayer.Inventory.IsSlotsFree(6, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
 				RemoveItem(Revelin, m_questPlayer, Horn);
 
@@ -2368,7 +2368,7 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 			}
 			else
 			{
-				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 

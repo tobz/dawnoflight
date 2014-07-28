@@ -213,7 +213,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
                 //k109: Handle the player not choosing a reward.
                 if (Rewards.ChoiceOf > 0 && rewardArgs.CountChosen <= 0)
                 {
-                    QuestPlayer.Out.SendMessage(LanguageMgr.GetTranslation(QuestPlayer.Client, "RewardQuest.Notify"), eChatType.CT_System, eChatLoc.CL_ChatWindow);
+                    QuestPlayer.Out.SendMessage(LanguageMgr.GetTranslation(QuestPlayer.Client, "RewardQuest.Notify"), ChatType.CT_System, ChatLocation.CL_ChatWindow);
                     return;
                 }
 
@@ -227,7 +227,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 		/// <param name="player"></param>
 		public override void OnQuestAssigned(GamePlayer player)
 		{
-            player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "RewardQuest.OnQuestAssigned", Name)), eChatType.CT_ScreenCenter, eChatLoc.CL_SystemWindow);
+            player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation(player.Client.Account.Language, "RewardQuest.OnQuestAssigned", Name)), ChatType.CT_ScreenCenter, ChatLocation.CL_SystemWindow);
             player.Out.SendSoundEffect(7, 0, 0, 0, 0, 0);
 		}
 
@@ -238,7 +238,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 		{
 			int inventorySpaceRequired = Rewards.BasicItems.Count + Rewards.ChosenItems.Count;
 
-			if (QuestPlayer.Inventory.IsSlotsFree(inventorySpaceRequired, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+			if (QuestPlayer.Inventory.IsSlotsFree(inventorySpaceRequired, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
 				base.FinishQuest();
 				QuestPlayer.Out.SendSoundEffect(11, 0, 0, 0, 0, 0);
@@ -266,7 +266,7 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 			}
 			else
 			{
-				QuestPlayer.Out.SendMessage(string.Format("Your inventory is full, you need {0} free slot(s) to complete this quest.", inventorySpaceRequired), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				QuestPlayer.Out.SendMessage(string.Format("Your inventory is full, you need {0} free slot(s) to complete this quest.", inventorySpaceRequired), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				Rewards.ChosenItems.Clear();
 			}
 		}
@@ -422,8 +422,8 @@ namespace DawnOfLight.GameServer.Quests.QuestsMgr
 				if (Current < Target)
 				{
 					Current++;
-					m_quest.QuestPlayer.Out.SendMessage(Description, eChatType.CT_ScreenCenter, 
-						eChatLoc.CL_SystemWindow);
+					m_quest.QuestPlayer.Out.SendMessage(Description, ChatType.CT_ScreenCenter, 
+						ChatLocation.CL_SystemWindow);
 					m_quest.QuestPlayer.Out.SendQuestUpdate(m_quest);
 				}
 			}

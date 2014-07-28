@@ -20,6 +20,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.Keeps;
 using DawnOfLight.GameServer.Housing;
@@ -46,13 +47,13 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 		}
 
-		public override void SendFindGroupWindowUpdate(GamePlayer[] list)
+		public override void SendFindGroupWindowUpdate(List<GamePlayer> list)
 		{
 			if (m_gameClient.Player==null) return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.FindGroupUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.FindGroupUpdate));
 			if (list!=null)
 			{
-				pak.WriteByte((byte)list.Length);
+				pak.WriteByte((byte)list.Count);
 				byte nbleader=0;
 				byte nbsolo=0x1E;
 				foreach(GamePlayer player in list)
@@ -97,7 +98,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (obj.IsVisibleTo(m_gameClient.Player) == false)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ObjectCreate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ObjectCreate));
 			pak.WriteShort((ushort)obj.ObjectID);
 			if (obj is GameStaticItem)
 				pak.WriteShort((ushort)(obj as GameStaticItem).Emblem);
@@ -160,7 +161,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		protected override void SendInventorySlotsUpdateRange(ICollection<int> slots, eInventoryWindowType windowType)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.InventoryUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.InventoryUpdate));
 			pak.WriteByte((byte)(slots == null ? 0 : slots.Count));
 			pak.WriteByte((byte)((m_gameClient.Player.IsCloakHoodUp ? 0x01 : 0x00) | (int)m_gameClient.Player.ActiveQuiverSlot)); //bit0 is hood up bit4 to 7 is active quiver
 			pak.WriteByte((byte)m_gameClient.Player.VisibleActiveWeaponSlots);
@@ -169,12 +170,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			{
 				foreach (int updatedSlot in slots)
 				{
-					if (updatedSlot >= (int)eInventorySlot.Consignment_First && updatedSlot <= (int)eInventorySlot.Consignment_Last)
-						pak.WriteByte((byte)(updatedSlot - (int)eInventorySlot.Consignment_First + (int)eInventorySlot.HousingInventory_First));
+					if (updatedSlot >= (int)InventorySlot.Consignment_First && updatedSlot <= (int)InventorySlot.Consignment_Last)
+						pak.WriteByte((byte)(updatedSlot - (int)InventorySlot.Consignment_First + (int)InventorySlot.HousingInventory_First));
 					else
 						pak.WriteByte((byte)(updatedSlot));
 					InventoryItem item = null;
-					item = m_gameClient.Player.Inventory.GetItem((eInventorySlot)updatedSlot);
+					item = m_gameClient.Player.Inventory.GetItem((InventorySlot)updatedSlot);
 
 					if (item == null)
 					{
@@ -281,7 +282,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null || living.IsVisibleTo(m_gameClient.Player) == false)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.EquipmentUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.EquipmentUpdate));
 
 			ICollection<InventoryItem> items = null;
 			if (living.Inventory != null)
@@ -333,7 +334,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		 * public override void SendPlayerBanner(GamePlayer player, int GuildEmblem)
 		{
 			if (player == null) return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VisualEffect));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VisualEffect));
 			pak.WriteShort((ushort) player.ObjectID);
 			pak.WriteByte(12);
 			if (GuildEmblem == 0)
@@ -353,7 +354,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendHouse(House house)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseCreate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseCreate));
 			pak.WriteShort((ushort)house.HouseNumber);
 			pak.WriteShort((ushort)house.Z);
 			pak.WriteInt((uint)house.X);
@@ -377,7 +378,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendEnterHouse(House house)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseEnter));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseEnter));
 
 			pak.WriteShort((ushort)house.HouseNumber);
 			pak.WriteShort((ushort)25000);         //constant!
@@ -402,7 +403,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			SendTCP(pak);
 		}
 
-		protected override void WriteHouseFurniture(GSTCPPacketOut pak, IndoorItem item, int index)
+		protected override void WriteHouseFurniture(GameTCPPacketOut pak, IndoorItem item, int index)
 		{
 			pak.WriteByte((byte)index);
 			byte type = 0;
@@ -443,7 +444,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			//cannot show banners for players that have no guild.
 			if (show && player.Guild == null)
 				return;
-			GSTCPPacketOut pak = new GSTCPPacketOut((byte)eServerPackets.VisualEffect);
+			GameTCPPacketOut pak = new GameTCPPacketOut((byte)ServerPackets.VisualEffect);
 			pak.WriteShort((ushort)player.ObjectID);
 			pak.WriteByte(0xC); // show Banner
 			pak.WriteByte((byte)((show) ? 0 : 1)); // 0-enable, 1-disable

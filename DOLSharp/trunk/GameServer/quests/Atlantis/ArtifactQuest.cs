@@ -240,7 +240,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis
 			InventoryItem item = new InventoryArtifact(itemTemplate);
 			if (!player.ReceiveItem(source, item))
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(ServerProperties.Properties.DB_LANGUAGE, "ArtifactQuest.GiveItem.BackpackFull"), eChatType.CT_Important, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(ServerProperties.Properties.DB_LANGUAGE, "ArtifactQuest.GiveItem.BackpackFull"), ChatType.CT_Important, ChatLocation.CL_PopupWindow);
 				return false;
 			}
 

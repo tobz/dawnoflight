@@ -55,7 +55,7 @@ namespace DawnOfLight.GameServer.Trainers.albion
 				// player can be promoted
 				if (player.Level>=5)
 				{
-					player.Out.SendMessage(this.Name + " says, \"You must now seek your training elsewhere. Which path would you like to follow? [Necromancer]?\"", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"You must now seek your training elsewhere. Which path would you like to follow? [Necromancer]?\"", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				}
 				else
 				{
@@ -63,9 +63,9 @@ namespace DawnOfLight.GameServer.Trainers.albion
 				}
 
 				// ask for basic equipment if player doesnt own it
-				if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, eInventorySlot.MinEquipable, eInventorySlot.LastBackpack) == null)
+				if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, InventorySlot.MinEquipable, InventorySlot.LastBackpack) == null)
 				{
-					player.Out.SendMessage(this.Name + " says, \"Do you require a [practice branch]?\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(this.Name + " says, \"Do you require a [practice branch]?\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 				}
 			}
 			else
@@ -89,14 +89,14 @@ namespace DawnOfLight.GameServer.Trainers.albion
 			switch (text) {
 				case "Necromancer":
 					if(player.Race == (int) eRace.Briton || player.Race == (int) eRace.Inconnu || player.Race == (int) eRace.Saracen){
-						player.Out.SendMessage(this.Name + " says, \"So you want to become a Necromancer? As a Necromancer you can summon undeath creatures.\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"So you want to become a Necromancer? As a Necromancer you can summon undeath creatures.\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 					}
 					else{
-						player.Out.SendMessage(this.Name + " says, \"The path of a Necromancer is not available to your race. Please choose another.\"",eChatType.CT_Say,eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(this.Name + " says, \"The path of a Necromancer is not available to your race. Please choose another.\"",ChatType.CT_Say,ChatLocation.CL_PopupWindow);
 					}
 					return true;
 				case "practice branch":
-					if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == null)
+					if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, InventorySlot.Min_Inv, InventorySlot.Max_Inv) == null)
 					{
 						player.ReceiveItem(this,PRACTICE_WEAPON_ID);
 					}

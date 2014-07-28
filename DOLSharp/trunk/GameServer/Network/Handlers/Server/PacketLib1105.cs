@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Network.Packets;
 using DawnOfLight.GameServer.RealmAbilities.handlers;
 using DawnOfLight.GameServer.Spells;
@@ -56,7 +57,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 			// type 0 & type 1
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TrainerWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TrainerWindow)))
 			{
 				IList specs = m_gameClient.Player.GetSpecList();
 				pak.WriteByte((byte)specs.Count);
@@ -107,7 +108,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 					}
 				}
 
-				using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TrainerWindow)))
+				using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TrainerWindow)))
 				{
 					pak.WriteByte((byte)offeredRA.Count);
 					pak.WriteByte((byte)m_gameClient.Player.RealmSpecialtyPoints);
@@ -130,7 +131,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 
 			// type 4 (skills) & type 3 (description)
-			GSTCPPacketOut paksub = new GSTCPPacketOut(GetPacketCode(eServerPackets.TrainerWindow));
+			GameTCPPacketOut paksub = new GameTCPPacketOut(GetPacketCode(ServerPackets.TrainerWindow));
 			long pos = paksub.Position;
 			IList spls = m_gameClient.Player.GetSpellLines();
 			IList spcls = m_gameClient.Player.GetSpecList();
@@ -187,7 +188,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 					paksub.WriteByte((byte)skillindex);
 					skillindex++;
 
-					using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TrainerWindow)))
+					using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TrainerWindow)))
 					{
 						List<Spell> lss = SkillBase.GetSpellList(Spec2Line[spc.KeyName]);
 
@@ -233,7 +234,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 					List<Style> lst = SkillBase.GetStyleList(spc.KeyName, m_gameClient.Player.CharacterClass.ID);
 					if (lst != null && lst.Count > 0) //styles
 					{
-						using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TrainerWindow)))
+						using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TrainerWindow)))
 						{
 							pak.WriteByte((byte)lst.Count);
 							pak.WriteByte((byte)m_gameClient.Player.SkillSpecialtyPoints);
@@ -262,7 +263,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 					}
 					else //other
 					{
-						using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TrainerWindow)))
+						using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TrainerWindow)))
 						{
 							pak.WriteByte(0);
 							pak.WriteByte((byte)m_gameClient.Player.SkillSpecialtyPoints);
@@ -286,7 +287,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 			// type 5 (realm abilities)
 			List<RealmAbility> ras = SkillBase.GetClassRealmAbilities(m_gameClient.Player.CharacterClass.ID);
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TrainerWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TrainerWindow)))
 			{
 				pak.WriteByte((byte)ras.Count);
 				pak.WriteByte((byte)m_gameClient.Player.RealmSpecialtyPoints);

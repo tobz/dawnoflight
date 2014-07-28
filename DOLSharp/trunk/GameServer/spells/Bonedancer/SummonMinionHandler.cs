@@ -67,13 +67,13 @@ namespace DawnOfLight.GameServer.Spells.Bonedancer
 		{
 			if (Caster is GamePlayer && ((GamePlayer)Caster).ControlledBrain == null)
 			{
-                MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SummonMinionHandler.CheckBeginCast.Text1"), eChatType.CT_SpellResisted);
+                MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SummonMinionHandler.CheckBeginCast.Text1"), ChatType.CT_SpellResisted);
                 return false;
 			}
 
 			if (Caster is GamePlayer && (((GamePlayer)Caster).ControlledBrain.Body.ControlledNpcList == null || ((GamePlayer)Caster).ControlledBrain.Body.PetCount >= ((GamePlayer)Caster).ControlledBrain.Body.ControlledNpcList.Length))
 			{
-                MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SummonMinionHandler.CheckBeginCast.Text2"), eChatType.CT_SpellResisted);
+                MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SummonMinionHandler.CheckBeginCast.Text2"), ChatType.CT_SpellResisted);
 
                 return false;
 			}
@@ -118,9 +118,9 @@ namespace DawnOfLight.GameServer.Spells.Bonedancer
 					if (m_pet.Inventory == null)
 						m_pet.Inventory = new GameNPCInventory(new GameNpcInventoryTemplate());
 					else
-						m_pet.Inventory.RemoveItem(m_pet.Inventory.GetItem(eInventorySlot.DistanceWeapon));
+						m_pet.Inventory.RemoveItem(m_pet.Inventory.GetItem(InventorySlot.DistanceWeapon));
 
-					m_pet.Inventory.AddItem(eInventorySlot.DistanceWeapon, GameInventoryItem.Create<ItemTemplate>(temp));
+					m_pet.Inventory.AddItem(InventorySlot.DistanceWeapon, GameInventoryItem.Create<ItemTemplate>(temp));
 				}
 				m_pet.UpdateNPCEquipmentAppearance();
 			}

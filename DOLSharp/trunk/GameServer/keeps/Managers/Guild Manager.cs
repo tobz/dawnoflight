@@ -31,7 +31,7 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 				return;
 
 			message = "[Guild] [" + message +"]";
-			guild.SendMessageToGuildMembers(message, eChatType.CT_Guild, eChatLoc.CL_ChatWindow);
+			guild.SendMessageToGuildMembers(message, ChatType.CT_Guild, ChatLocation.CL_ChatWindow);
 		}
 
 		public static void SendLevelChangeMessage(AbstractGameKeep keep)

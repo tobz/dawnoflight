@@ -94,7 +94,7 @@ namespace DawnOfLight.GameServer.GameEvents
 				return;
 
 			//We send a nice output message to the player when he enters the game
-			player.Out.SendMessage("Welcome to the DAWN OF LIGHT Testserver!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage("Welcome to the DAWN OF LIGHT Testserver!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 			//Now we check if our player is a certain distance from
 			//DOLTopia (our selfproclaimed town to show off)

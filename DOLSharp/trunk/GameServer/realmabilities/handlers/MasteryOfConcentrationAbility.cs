@@ -51,7 +51,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			ShieldOfImmunityEffect ra5l = caster.EffectList.GetOfType<ShieldOfImmunityEffect>();
 			if (ra5l != null)
 			{
-				caster.Out.SendMessage("You cannot currently use this ability", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				caster.Out.SendMessage("You cannot currently use this ability", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			
@@ -63,13 +63,13 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 				{
 					if (player == caster)
 					{
-						player.MessageToSelf("You cast " + this.Name + "!", eChatType.CT_Spell);
-						player.MessageToSelf("You become steadier in your casting abilities!", eChatType.CT_Spell);
+						player.MessageToSelf("You cast " + this.Name + "!", ChatType.CT_Spell);
+						player.MessageToSelf("You become steadier in your casting abilities!", ChatType.CT_Spell);
 					}
 					else
 					{
-						player.MessageFromArea(caster, caster.Name + " casts a spell!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
-						player.Out.SendMessage(caster.Name + "'s castings have perfect poise!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.MessageFromArea(caster, caster.Name + " casts a spell!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
+						player.Out.SendMessage(caster.Name + "'s castings have perfect poise!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}

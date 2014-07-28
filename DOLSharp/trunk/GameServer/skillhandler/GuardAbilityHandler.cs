@@ -59,7 +59,7 @@ namespace DawnOfLight.GameServer.SkillHandler
 					if (guard.GuardSource == player)
 						guard.Cancel(false);
 				}
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Guard.CancelTargetNull"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Guard.CancelTargetNull"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
 			}
 
@@ -67,7 +67,7 @@ namespace DawnOfLight.GameServer.SkillHandler
 			GamePlayer guardTarget = player.TargetObject as GamePlayer;
 			if (guardTarget == player)
 			{
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Guard.CannotUse.GuardTargetIsGuardSource"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Guard.CannotUse.GuardTargetIsGuardSource"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
 			}
 
@@ -76,7 +76,7 @@ namespace DawnOfLight.GameServer.SkillHandler
 			Group group = player.Group;
 			if (guardTarget == null || group == null || !group.IsInTheGroup(guardTarget))
 			{
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Guard.CannotUse.NotInGroup"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Guard.CannotUse.NotInGroup"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
 			}
 
@@ -91,7 +91,7 @@ namespace DawnOfLight.GameServer.SkillHandler
 				}
 				if(!(guard.GuardSource is GameNPC))
 				{
-                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Guard.CannotUse.GuardTargetAlreadyGuarded", guard.GuardSource.GetName(0, true), guard.GuardTarget.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.Guard.CannotUse.GuardTargetAlreadyGuarded", guard.GuardSource.GetName(0, true), guard.GuardTarget.GetName(0, false)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     return;
 				}
 			}

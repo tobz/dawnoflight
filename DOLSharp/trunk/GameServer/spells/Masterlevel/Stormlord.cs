@@ -89,7 +89,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             neweffect.Start(target);
 
             if (target is GamePlayer)
-                ((GamePlayer)target).Out.SendMessage("You're harder to hit!", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+                ((GamePlayer)target).Out.SendMessage("You're harder to hit!", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
 
         }
 
@@ -233,8 +233,8 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             target.ChangeEndurance(target, GameLiving.eEnduranceChangeType.Spell, (-end));
 
             if (target is GamePlayer)
-                ((GamePlayer)target).Out.SendMessage(" You lose " + end + " endurance!", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
-            (m_caster as GamePlayer).Out.SendMessage("" + target.Name + " loses " + end + " endurance!", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+                ((GamePlayer)target).Out.SendMessage(" You lose " + end + " endurance!", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
+            (m_caster as GamePlayer).Out.SendMessage("" + target.Name + " loses " + end + " endurance!", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
         }
 
         public override int OnEffectExpires(GameSpellEffect effect, bool noMessages)
@@ -313,7 +313,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             neweffect.Start(target);
 
             if (target is GamePlayer)
-                ((GamePlayer)target).Out.SendMessage("Your dexterity and quickness decreased!", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+                ((GamePlayer)target).Out.SendMessage("Your dexterity and quickness decreased!", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
 
         }
 
@@ -401,7 +401,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
 
             if (target is GamePlayer)
             {
-                ((GamePlayer)target).Out.SendMessage(m_caster.Name + " steals you " + mana + " points of power!", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+                ((GamePlayer)target).Out.SendMessage(m_caster.Name + " steals you " + mana + " points of power!", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
             }
 
             StealMana(target, mana);
@@ -420,14 +420,14 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
 
         public virtual void SendCasterMessage(GameLiving target, int mana)
         {
-            MessageToCaster(string.Format("You steal {0} for {1} power!", target.Name, mana), eChatType.CT_YouHit);
+            MessageToCaster(string.Format("You steal {0} for {1} power!", target.Name, mana), ChatType.CT_YouHit);
             if (mana > 0)
             {
-                MessageToCaster("You steal " + mana + " power points" + (mana == 1 ? "." : "s."), eChatType.CT_Spell);
+                MessageToCaster("You steal " + mana + " power points" + (mana == 1 ? "." : "s."), ChatType.CT_Spell);
             }
             //else
             //{
-            //   MessageToCaster("You cannot absorb any more power.", eChatType.CT_SpellResisted);
+            //   MessageToCaster("You cannot absorb any more power.", ChatType.CT_SpellResisted);
             //}
         }
         public override int OnEffectExpires(GameSpellEffect effect, bool noMessages)
@@ -457,7 +457,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             {
                 GameStorm targetStorm = effect.Owner as GameStorm;
                 targetStorm.Movable = false;
-                MessageToCaster("Now the vortex of this storm is locked!", eChatType.CT_YouWereHit);
+                MessageToCaster("Now the vortex of this storm is locked!", ChatType.CT_YouWereHit);
                 GameEventMgr.AddHandler(m_caster, GameLivingEvent.Moving, new DOLEventHandler(LivingMoves));
             }
         }
@@ -479,7 +479,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             if (player == null) return;
             if (e == GameLivingEvent.Moving)
             {
-                MessageToCaster("You are moving. Your concentration fades", eChatType.CT_SpellExpires);
+                MessageToCaster("You are moving. Your concentration fades", ChatType.CT_SpellExpires);
                 OnEffectExpires(m_effect, true);
                 return;
             }
@@ -550,7 +550,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             neweffect.Start(target);
 
             if (target is GamePlayer)
-                ((GamePlayer)target).Out.SendMessage("Your strenght and constitution decreased!", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+                ((GamePlayer)target).Out.SendMessage("Your strenght and constitution decreased!", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
 
         }
 
@@ -644,7 +644,7 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             neweffect.Start(target);
 
             if (target is GamePlayer)
-                ((GamePlayer)target).Out.SendMessage("Your acuity decreased!", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+                ((GamePlayer)target).Out.SendMessage("Your acuity decreased!", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
 
         }
 

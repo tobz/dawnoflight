@@ -847,7 +847,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 
 			UseSlotEventArgs uArgs = (UseSlotEventArgs) args;
 
-			InventoryItem item = player.Inventory.GetItem((eInventorySlot)uArgs.Slot);
+			InventoryItem item = player.Inventory.GetItem((InventorySlot)uArgs.Slot);
 			if (item != null && item.Id_nb == assistantNecklace.Id_nb)
 			{
 				foreach (GamePlayer visPlayer in player.GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))

@@ -52,7 +52,7 @@ namespace DawnOfLight.GameServer.Network
 		/// </summary>
 		/// <param name="packetCode"></param>
 		/// <returns></returns>
-		public virtual byte GetPacketCode(eServerPackets packetCode)
+		public virtual byte GetPacketCode(ServerPackets packetCode)
 		{
 			return (byte)packetCode;
 		}
@@ -61,7 +61,7 @@ namespace DawnOfLight.GameServer.Network
 		/// Sends a packet via TCP
 		/// </summary>
 		/// <param name="packet">The packet to be sent</param>
-		public void SendTCP(GSTCPPacketOut packet)
+		public void SendTCP(GameTCPPacketOut packet)
 		{
 			m_gameClient.PacketProcessor.SendTCP(packet);
 		}
@@ -79,7 +79,7 @@ namespace DawnOfLight.GameServer.Network
 		/// Send the packet via TCP without changing any portion of the packet
 		/// </summary>
 		/// <param name="packet">Packet to send</param>
-		public void SendTCPRaw(GSTCPPacketOut packet)
+		public void SendTCPRaw(GameTCPPacketOut packet)
 		{
 			m_gameClient.PacketProcessor.SendTCPRaw(packet);
 		}
@@ -88,7 +88,7 @@ namespace DawnOfLight.GameServer.Network
 		/// Send the packet via UDP
 		/// </summary>
 		/// <param name="packet">Packet to be sent</param>
-		public virtual void SendUDP(GSUDPPacketOut packet)
+		public virtual void SendUDP(GameUDPPacketOut packet)
 		{
 			SendUDP(packet, false);
 		}
@@ -98,7 +98,7 @@ namespace DawnOfLight.GameServer.Network
 		/// </summary>
 		/// <param name="packet">Packet to be sent</param>
 		/// <param name="isForced">Force UDP packet if <code>true</code>, else packet can be sent over TCP</param>
-		public virtual void SendUDP(GSUDPPacketOut packet, bool isForced)
+		public virtual void SendUDP(GameUDPPacketOut packet, bool isForced)
 		{
 			m_gameClient.PacketProcessor.SendUDP(packet, isForced);
 		}
@@ -116,7 +116,7 @@ namespace DawnOfLight.GameServer.Network
 		/// Send the UDP packet without changing any portion of the packet
 		/// </summary>
 		/// <param name="packet">Packet to be sent</param>
-		public void SendUDPRaw(GSUDPPacketOut packet)
+		public void SendUDPRaw(GameUDPPacketOut packet)
 		{
 			m_gameClient.PacketProcessor.SendUDPRaw(packet);
 		}

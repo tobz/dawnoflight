@@ -21,8 +21,8 @@ namespace DawnOfLight.GameServer.commands.Player
 			}
 			finally
 			{
-				if (client.Player.Inventory.GetItem(eInventorySlot.Horse) != null)
-					client.Player.UseSlot(eInventorySlot.Horse, eUseType.clic);
+				if (client.Player.Inventory.GetItem(InventorySlot.Horse) != null)
+					client.Player.UseSlot(InventorySlot.Horse, eUseType.clic);
 			}
 		}
 	}

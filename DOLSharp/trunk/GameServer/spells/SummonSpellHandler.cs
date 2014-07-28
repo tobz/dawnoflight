@@ -63,7 +63,7 @@ namespace DawnOfLight.GameServer.Spells
 			foreach (GamePlayer player in m_caster.GetPlayersInRadius(WorldMgr.INFO_DISTANCE))
 			{
 				if (player != m_caster)
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObject.Casting.CastsASpell", m_caster.GetName(0, true)), eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObject.Casting.CastsASpell", m_caster.GetName(0, true)), ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 			}
 
 			m_caster.Mana -= PowerCost(target);
@@ -77,12 +77,12 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (m_isSilent == false)
 				{
-					MessageToCaster(String.Format("The {0} is now under your control.", m_pet.Name), eChatType.CT_Spell);
+					MessageToCaster(String.Format("The {0} is now under your control.", m_pet.Name), ChatType.CT_Spell);
 				}
 			}
 			else
 			{
-				MessageToCaster(Spell.Message1, eChatType.CT_Spell);
+				MessageToCaster(Spell.Message1, ChatType.CT_Spell);
 			}
 		}
 
@@ -147,7 +147,7 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (log.IsWarnEnabled)
 					log.WarnFormat("NPC template {0} not found! Spell: {1}", Spell.LifeDrainReturn, Spell.ToString());
-				MessageToCaster("NPC template " + Spell.LifeDrainReturn + " not found!", eChatType.CT_System);
+				MessageToCaster("NPC template " + Spell.LifeDrainReturn + " not found!", ChatType.CT_System);
 				return;
 			}
 

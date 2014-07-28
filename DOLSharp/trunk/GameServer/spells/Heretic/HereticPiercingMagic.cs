@@ -32,7 +32,7 @@ namespace DawnOfLight.GameServer.Spells.Heretic
                 if (!m_focusTargets.Contains(effect.Owner))
                     m_focusTargets.Add(effect.Owner);
 
-                MessageToCaster("You concentrated on the spell!", eChatType.CT_Spell);
+                MessageToCaster("You concentrated on the spell!", ChatType.CT_Spell);
             }
         }
         protected virtual void BeginEffect()
@@ -48,7 +48,7 @@ namespace DawnOfLight.GameServer.Spells.Heretic
             GameLiving player = sender as GameLiving;
 
             if (player == null) return;
-            MessageToCaster("You lose your concentration!", eChatType.CT_SpellExpires);
+            MessageToCaster("You lose your concentration!", ChatType.CT_SpellExpires);
             RemoveEffect();
         }
         protected virtual void RemoveEffect()
@@ -65,7 +65,7 @@ namespace DawnOfLight.GameServer.Spells.Heretic
                     }
                 }
             }
-            MessageToCaster("You lose your concentration!", eChatType.CT_Spell);
+            MessageToCaster("You lose your concentration!", ChatType.CT_Spell);
             if (Spell.Pulse != 0 && Spell.Frequency > 0)
                 CancelPulsingSpell(Caster, Spell.SpellType);
 

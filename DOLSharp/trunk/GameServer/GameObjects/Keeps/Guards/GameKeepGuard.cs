@@ -460,7 +460,7 @@ namespace DawnOfLight.GameServer.GameObjects.Keeps.Guards
 				if (this is GuardArcher || this is GuardLord)
 				{
 					if (this.Inventory == null) return false;
-					if (this.Inventory.GetItem(eInventorySlot.DistanceWeapon) == null) return false;
+					if (this.Inventory.GetItem(InventorySlot.DistanceWeapon) == null) return false;
 					if (this.ActiveWeaponSlot == GameLiving.eActiveWeaponSlot.Distance) return false;
 				}
 				if (this is GuardCaster || this is GuardHealer)
@@ -898,11 +898,11 @@ namespace DawnOfLight.GameServer.GameObjects.Keeps.Guards
 			int emblem = 0;
 			if (guild != null)
 				emblem = guild.Emblem;
-			InventoryItem lefthand = this.Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+			InventoryItem lefthand = this.Inventory.GetItem(InventorySlot.LeftHandWeapon);
 			if (lefthand != null)
 				lefthand.Emblem = emblem;
 
-			InventoryItem cloak = this.Inventory.GetItem(eInventorySlot.Cloak);
+			InventoryItem cloak = this.Inventory.GetItem(InventorySlot.Cloak);
 			if (cloak != null)
 			{
 				cloak.Emblem = emblem;

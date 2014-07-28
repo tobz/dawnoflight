@@ -31,7 +31,7 @@ using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.DoorRequest, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.DoorRequest, ClientStatus.PlayerInGame)]
 	public class DoorRequestHandler : IPacketHandler
 	{
 		public static int m_handlerDoorID;
@@ -41,7 +41,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 		/// <summary>
 		/// door index which is unique
 		/// </summary>
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			var doorID = (int) packet.ReadInt();
 			m_handlerDoorID = doorID;
@@ -109,7 +109,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 			if (target != null && !client.Player.IsWithinRadius(target, radius))
 			{
-				client.Player.Out.SendMessage("You are too far to open this door", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage("You are too far to open this door", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -174,7 +174,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					{
 						client.Player.Out.SendMessage(
 							"This door is not in the database. Use '/door show' to enable the add door dialog when targeting doors.",
-							eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+							ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					}
 				}
 
@@ -213,8 +213,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				door.Heading = player.Heading;
 				GameServer.Database.AddObject(door);
 
-				player.Out.SendMessage("Added door " + m_handlerDoorID + " to the database!", eChatType.CT_Important,
-				                       eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Added door " + m_handlerDoorID + " to the database!", ChatType.CT_Important,
+				                       ChatLocation.CL_SystemWindow);
 				DoorMgr.Init();
 			}
 		}
@@ -294,7 +294,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					if (!success)
 						player.Out.SendMessage(
 							LanguageMgr.GetTranslation(player.Client.Account.Language, "DoorRequestHandler.OnTick.TooFarAway", doorList[0].Name),
-							eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else
 				{

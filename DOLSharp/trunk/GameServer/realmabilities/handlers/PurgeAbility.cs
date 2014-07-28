@@ -147,7 +147,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
                 }
                 if (removed)
                 {
-                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "PurgeAbility.RemoveNegativeEffects.FallFromYou"), eChatType.CT_Advise, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "PurgeAbility.RemoveNegativeEffects.FallFromYou"), ChatType.CT_Advise, ChatLocation.CL_SystemWindow);
                 }
                 else
                 {
@@ -188,7 +188,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
                     GamePlayer player = m_caster as GamePlayer;
                     if (player != null)
                     {
-                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "PurgeAbility.OnTick.PurgeActivate", counter), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "PurgeAbility.OnTick.PurgeActivate", counter), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     }
                     counter--;
                     return;

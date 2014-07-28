@@ -158,13 +158,13 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				ydeniaPhilpott.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TwoHandWeapon, 227);
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 80);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 54);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 51);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 57);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 52);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 53);
+				template.AddNPCEquipment(InventorySlot.TwoHandWeapon, 227);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 80);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 54);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 51);
+				template.AddNPCEquipment(InventorySlot.Cloak, 57);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 52);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 53);
 				ydeniaPhilpott.Inventory = template.CloseTemplate();
 				ydeniaPhilpott.SwitchWeapon(GameLiving.eActiveWeaponSlot.TwoHanded);
 
@@ -200,12 +200,12 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				elvarTambor.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 3);
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 159, 67);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 160, 63);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 156, 67);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 157, 63);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 158, 67);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 3);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 159, 67);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 160, 63);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 156, 67);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 157, 63);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 158, 67);
 				elvarTambor.Inventory = template.CloseTemplate();
 				elvarTambor.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

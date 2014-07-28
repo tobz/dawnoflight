@@ -22,6 +22,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.Keeps.Managers;
@@ -62,7 +63,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				default: throw new Exception("CharacterOverview requested for unknown realm " + realm);
 			}
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterOverview));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterOverview));
 			pak.FillString(m_gameClient.Account.Name, 24);
 			IList<InventoryItem> items;
 			DOLCharacters[] characters = m_gameClient.Account.Characters;
@@ -205,7 +206,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 								int l;
 								if (k == 0x15 + 3)
 									//shield emblem
-									l = (int)eInventorySlot.LeftHandWeapon;
+									l = (int)InventorySlot.LeftHandWeapon;
 								else
 									l = k;
 
@@ -255,9 +256,9 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 								byte lefthand = 0xFF;
 								foreach (InventoryItem item in items)
 								{
-									if (item.SlotPosition == (int)eInventorySlot.RightHandWeapon)
+									if (item.SlotPosition == (int)InventorySlot.RightHandWeapon)
 										righthand = 0x00;
-									if (item.SlotPosition == (int)eInventorySlot.LeftHandWeapon)
+									if (item.SlotPosition == (int)InventorySlot.LeftHandWeapon)
 										lefthand = 0x01;
 								}
 								if (righthand == lefthand)
@@ -310,7 +311,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null || playerToCreate.IsVisibleTo(m_gameClient.Player) == false)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PlayerCreate172));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PlayerCreate172));
 			pak.WriteShort((ushort)playerToCreate.Client.SessionID);
 			pak.WriteShort((ushort)playerToCreate.ObjectID);
 			pak.WriteShort(playerToCreate.Model);
@@ -365,7 +366,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient.Player == null) return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PositionAndObjectID));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PositionAndObjectID));
 			pak.WriteShort((ushort)m_gameClient.Player.ObjectID); //This is the player's objectid not Sessionid!!!
 			pak.WriteShort((ushort)m_gameClient.Player.Z);
 			pak.WriteInt((uint)m_gameClient.Player.X);
@@ -400,13 +401,13 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			SendTCP(pak);
 		}
 
-		protected override void WriteGroupMemberUpdate(GSTCPPacketOut pak, bool updateIcons, GameLiving living)
+		protected override void WriteGroupMemberUpdate(GameTCPPacketOut pak, bool updateIcons, GameLiving living)
 		{
 			base.WriteGroupMemberUpdate(pak, updateIcons, living);
 			WriteGroupMemberMapUpdate(pak, living);
 		}
 
-		protected virtual void WriteGroupMemberMapUpdate(GSTCPPacketOut pak, GameLiving living)
+		protected virtual void WriteGroupMemberMapUpdate(GameTCPPacketOut pak, GameLiving living)
 		{
 			bool sameRegion = living.CurrentRegion == m_gameClient.Player.CurrentRegion;
 			if (sameRegion && living.CurrentSpeed != 0)//todo : find a better way to detect when player change coord
@@ -427,7 +428,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 			SendRegions();
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.RegionChanged));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.RegionChanged));
             //Dinberg - Changing to allow instances...
             pak.WriteShort(m_gameClient.Player.CurrentRegion.Skin);
             //Dinberg:Instances - also need to continue the bluff here, with zoneSkinID, for 
@@ -443,7 +444,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendSpellEffectAnimation(GameObject spellCaster, GameObject spellTarget, ushort spellid, ushort boltTime, bool noSound, byte success)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.SpellEffectAnimation));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.SpellEffectAnimation));
 			pak.WriteShort((ushort)spellCaster.ObjectID);
 			pak.WriteShort(spellid);
 			pak.WriteShort((ushort)(spellTarget == null ? 0 : spellTarget.ObjectID));
@@ -453,7 +454,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			SendTCP(pak);
 		}
 
-		public override void CheckLengthHybridSkillsPacket(ref GSTCPPacketOut pak, ref int maxSkills, ref int first)
+		public override void CheckLengthHybridSkillsPacket(ref GameTCPPacketOut pak, ref int maxSkills, ref int first)
 		{
 			if (pak.Length > 1000)
 			{
@@ -462,7 +463,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				pak.WriteByte(0x03); //subtype
 				pak.WriteByte((byte)first);
 				SendTCP(pak);
-				pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+				pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 				pak.WriteByte(0x01); //subcode
 				pak.WriteByte((byte)maxSkills); //number of entry
 				pak.WriteByte(0x03); //subtype
@@ -472,7 +473,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			maxSkills++;
 		}
 
-		public override void SendWarmapBonuses()
+		public override void SendWarMapBonuses()
 		{
 			if (m_gameClient.Player == null) return;
 			int AlbTowers = 0;
@@ -525,7 +526,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				OwnerDF = eRealm.Hibernia;
 				OwnerDFTowers = HibTowers;
 			}
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.WarmapBonuses));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.WarmapBonuses));
 			int RealmKeeps = 0;
 			int RealmTowers = 0;
 			switch ((eRealm)m_gameClient.Player.Realm)
@@ -557,7 +558,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null || living.IsVisibleTo(m_gameClient.Player) == false)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.EquipmentUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.EquipmentUpdate));
 
 			ICollection<InventoryItem> items = null;
 			if (living.Inventory != null)
@@ -609,7 +610,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null || living == null)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VisualEffect));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VisualEffect));
 
 			pak.WriteShort((ushort)living.ObjectID);
 			pak.WriteByte(0x4); // Vampire (can fly)

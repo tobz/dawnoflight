@@ -170,11 +170,11 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				masterFrederick.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 41);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 42);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 40);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 91);
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 4);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 41);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 42);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 40);
+				template.AddNPCEquipment(InventorySlot.Cloak, 91);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 4);
 				masterFrederick.Inventory = template.CloseTemplate();
 				masterFrederick.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

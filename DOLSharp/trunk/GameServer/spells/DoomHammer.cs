@@ -15,7 +15,7 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if(Caster.IsDisarmed)
 			{
-				MessageToCaster("You are disarmed and can't use this spell!",eChatType.CT_SpellResisted);
+				MessageToCaster("You are disarmed and can't use this spell!",ChatType.CT_SpellResisted);
 				return false;
 			}
 			return base.CheckBeginCast(selectedTarget);

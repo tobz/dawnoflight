@@ -134,7 +134,7 @@ namespace DawnOfLight.GameServer.Utilities.Atlantis
 			{
 				ArtifactLevel = artifactLevel;
 				if (AddAbilities(player, ArtifactLevel) && player != null)
-					player.Out.SendMessage(String.Format("Your {0} has gained a new ability!", Name), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(String.Format("Your {0} has gained a new ability!", Name), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 

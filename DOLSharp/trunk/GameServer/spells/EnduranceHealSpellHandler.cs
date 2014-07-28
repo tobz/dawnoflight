@@ -102,7 +102,7 @@ namespace DawnOfLight.GameServer.Spells
 			if (!target.IsAlive)
 			{
 				//"You cannot heal the dead!" sshot550.tga
-				MessageToCaster(target.GetName(0, true) + " is dead!", eChatType.CT_SpellResisted);
+				MessageToCaster(target.GetName(0, true) + " is dead!", ChatType.CT_SpellResisted);
 				return false;
 			}
 
@@ -112,24 +112,24 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (Spell.Pulse == 0)
 				{
-					if (target == m_caster) MessageToCaster("Your endurance is full.", eChatType.CT_SpellResisted);
-					else MessageToCaster(target.GetName(0, true) + " endurance is full.", eChatType.CT_SpellResisted);
+					if (target == m_caster) MessageToCaster("Your endurance is full.", ChatType.CT_SpellResisted);
+					else MessageToCaster(target.GetName(0, true) + " endurance is full.", ChatType.CT_SpellResisted);
 				}
 				return false;
 			}
 
 			if (m_caster == target)
 			{
-				MessageToCaster("You restore " + heal + " endurance points.", eChatType.CT_Spell);
+				MessageToCaster("You restore " + heal + " endurance points.", ChatType.CT_Spell);
 				if (heal < amount)
-					MessageToCaster("Your endurance is full.", eChatType.CT_Spell);
+					MessageToCaster("Your endurance is full.", ChatType.CT_Spell);
 			}
 			else
 			{
-				MessageToCaster("You restore " + target.GetName(0, false) + " for " + heal + " ednurance points!", eChatType.CT_Spell);
-				MessageToLiving(target, "Your endurance was restored by " + m_caster.GetName(0, false) + " for " + heal + " points.", eChatType.CT_Spell);
+				MessageToCaster("You restore " + target.GetName(0, false) + " for " + heal + " ednurance points!", ChatType.CT_Spell);
+				MessageToLiving(target, "Your endurance was restored by " + m_caster.GetName(0, false) + " for " + heal + " points.", ChatType.CT_Spell);
 				if (heal < amount)
-					MessageToCaster(target.GetName(0, true) + " endurance is full.", eChatType.CT_Spell);
+					MessageToCaster(target.GetName(0, true) + " endurance is full.", ChatType.CT_Spell);
 			}
 			return true;
 		}
@@ -157,7 +157,7 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if (selectedTarget != null && selectedTarget.EndurancePercent >= 90)
 			{
-				MessageToCaster("You cannot cast an endurance heal the target has above 90% endurance!", eChatType.CT_SpellResisted);
+				MessageToCaster("You cannot cast an endurance heal the target has above 90% endurance!", ChatType.CT_SpellResisted);
 				return false;
 			}
 			return base.CheckBeginCast(selectedTarget);

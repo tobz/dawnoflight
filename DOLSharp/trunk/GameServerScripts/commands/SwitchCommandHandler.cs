@@ -21,21 +21,21 @@ namespace DawnOfLight.GameServer.Commands
                 return;
             }
 
-            eInventorySlot ToSlot = eInventorySlot.FirstBackpack;
+            InventorySlot ToSlot = InventorySlot.FirstBackpack;
 
             switch (args[1])
             {
                 case "1h":
-                    ToSlot = eInventorySlot.RightHandWeapon;
+                    ToSlot = InventorySlot.RightHandWeapon;
                     break;
                 case "2h":
-                    ToSlot = eInventorySlot.TwoHandWeapon;
+                    ToSlot = InventorySlot.TwoHandWeapon;
                     break;
                 case "offhand":
-                    ToSlot = eInventorySlot.LeftHandWeapon;
+                    ToSlot = InventorySlot.LeftHandWeapon;
                     break;
                 case "range":
-                    ToSlot = eInventorySlot.DistanceWeapon;
+                    ToSlot = InventorySlot.DistanceWeapon;
                     break;
             }
 
@@ -45,7 +45,7 @@ namespace DawnOfLight.GameServer.Commands
             if (int.TryParse(args[2], out FromSlot))
             {
                 FromSlot = int.Parse(args[2]);
-                SwitchItem(client.Player, ToSlot, (eInventorySlot)FromSlot + 39);
+                SwitchItem(client.Player, ToSlot, (InventorySlot)FromSlot + 39);
             }
             else
             {
@@ -55,7 +55,7 @@ namespace DawnOfLight.GameServer.Commands
             }
 
         }
-        public void SwitchItem(GamePlayer player, eInventorySlot ToSlot, eInventorySlot FromSlot)
+        public void SwitchItem(GamePlayer player, InventorySlot ToSlot, InventorySlot FromSlot)
         {
             if (player.Inventory.GetItem(FromSlot) != null)
             {

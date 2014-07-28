@@ -24,7 +24,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 
 			if (caster.IsMoving)
 			{
-				caster.Out.SendMessage("You must be standing still to use this ability!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				caster.Out.SendMessage("You must be standing still to use this ability!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -32,11 +32,11 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 			{
 				if (i_player == caster)
 				{
-					i_player.MessageToSelf("You cast " + this.Name + "!", eChatType.CT_Spell);
+					i_player.MessageToSelf("You cast " + this.Name + "!", ChatType.CT_Spell);
 				}
 				else
 				{
-					i_player.MessageFromArea(caster, caster.Name + " casts a spell!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					i_player.MessageFromArea(caster, caster.Name + " casts a spell!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				}
 
 				i_player.Out.SendSpellCastAnimation(caster, 7028, 20);

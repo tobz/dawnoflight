@@ -46,17 +46,17 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
             WorldInventoryItem as2 = WorldInventoryItem.CreateFromTemplate(arrow_summoning_2);
             WorldInventoryItem as3 = WorldInventoryItem.CreateFromTemplate(arrow_summoning_3);
 
-            if(!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(arrow_summoning_1),10,eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+            if(!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(arrow_summoning_1),10,InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
-				player.Out.SendMessage("You do not have enough inventory space to place this item!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You do not have enough inventory space to place this item!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
-			else if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(arrow_summoning_2), 10, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+			else if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(arrow_summoning_2), 10, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
-                player.Out.SendMessage("You do not have enough inventory space to place this item!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You do not have enough inventory space to place this item!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
-			else if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(arrow_summoning_3), 10, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+			else if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(arrow_summoning_3), 10, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
-                player.Out.SendMessage("You do not have enough inventory space to place this item!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You do not have enough inventory space to place this item!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}			
 
 			GameEventMgr.AddHandler(player,GamePlayerEvent.Quit, new DOLEventHandler(PlayerQuit));	
@@ -78,23 +78,23 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			if (player == null) return;		
 			lock(player.Inventory)
 			{
-                InventoryItem item = player.Inventory.GetFirstItemByID("arrow_summoning1", eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+                InventoryItem item = player.Inventory.GetFirstItemByID("arrow_summoning1", InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 				while (item != null)
 				{
 					player.Inventory.RemoveItem(item);
-                    item = player.Inventory.GetFirstItemByID("arrow_summoning1", eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+                    item = player.Inventory.GetFirstItemByID("arrow_summoning1", InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 				}
-                item = player.Inventory.GetFirstItemByID("arrow_summoning2", eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+                item = player.Inventory.GetFirstItemByID("arrow_summoning2", InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 				while (item != null)
 				{
 					player.Inventory.RemoveItem(item);
-                    item = player.Inventory.GetFirstItemByID("arrow_summoning2", eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+                    item = player.Inventory.GetFirstItemByID("arrow_summoning2", InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 				}
-                item = player.Inventory.GetFirstItemByID("arrow_summoning3", eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+                item = player.Inventory.GetFirstItemByID("arrow_summoning3", InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 				while (item != null)
 				{
 					player.Inventory.RemoveItem(item);
-                    item = player.Inventory.GetFirstItemByID("arrow_summoning3", eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+                    item = player.Inventory.GetFirstItemByID("arrow_summoning3", InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 				}
 			}
 		}

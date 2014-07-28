@@ -45,7 +45,7 @@ namespace DawnOfLight.GameServer.Spells
 			if (Spell.Value == 99 &&
 				FindStaticEffectOnTarget(target, typeof(MezzRootImmunityEffect)) != null)
 			{
-				MessageToCaster("Your target is immune!", eChatType.CT_System);
+				MessageToCaster("Your target is immune!", ChatType.CT_System);
 				return;
 			}
 			base.ApplyEffectOnTarget(target, effectiveness);
@@ -61,7 +61,7 @@ namespace DawnOfLight.GameServer.Spells
 			// Cannot apply if the effect owner has a charging effect
 			if (effect.Owner.EffectList.GetOfType<ChargeEffect>() != null || effect.Owner.TempProperties.getProperty("Charging", false))
 			{
-				MessageToCaster(effect.Owner.Name + " is moving too fast for this spell to have any effect!", eChatType.CT_SpellResisted);
+				MessageToCaster(effect.Owner.Name + " is moving too fast for this spell to have any effect!", ChatType.CT_SpellResisted);
 				return;
 			}
 			base.OnEffectStart(effect);

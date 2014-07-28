@@ -73,7 +73,7 @@ namespace DawnOfLight.GameServer.Behavior.Requirements
 			bool result = true;
             GamePlayer player = BehaviourUtils.GuessGamePlayerFromNotify(e, sender, args);
 
-            result = player.Inventory.GetFirstItemByName(N.Name, eInventorySlot.Min_Inv, eInventorySlot.FirstBackpack - 1) != null;
+            result = player.Inventory.GetFirstItemByName(N.Name, InventorySlot.Min_Inv, InventorySlot.FirstBackpack - 1) != null;
 
 			return result;
 		}

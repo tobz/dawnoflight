@@ -56,7 +56,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (player == null || player.ObjectState != GameObject.eObjectState.Active)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ControlledHorse));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ControlledHorse));
 
 			if (player.HasHorse)
 			{
@@ -90,7 +90,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (player == null || player.ObjectState != GameObject.eObjectState.Active)
 				return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ControlledHorse));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ControlledHorse));
 			if (!flag || !player.HasHorse)
 			{
 				pak.WriteShort((ushort)player.ObjectID);
@@ -153,7 +153,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (playerToCreate.IsVisibleTo(m_gameClient.Player) == false)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PlayerCreate172));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PlayerCreate172));
 
 			pak.WriteShort((ushort)playerToCreate.Client.SessionID);
 			pak.WriteShort((ushort)playerToCreate.ObjectID);
@@ -220,7 +220,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 		}
 
-		public override void CheckLengthHybridSkillsPacket(ref GSTCPPacketOut pak, ref int maxSkills, ref int first)
+		public override void CheckLengthHybridSkillsPacket(ref GameTCPPacketOut pak, ref int maxSkills, ref int first)
 		{
 			if(pak.Length > 1500)
 			{
@@ -229,7 +229,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				pak.WriteByte( (byte)( first == 0 ? 99 : 0x03 ) ); //subtype
 				pak.WriteByte((byte)first);
 				SendTCP(pak);
-				pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+				pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 				pak.WriteByte(0x01); //subcode
 				pak.WriteByte((byte)maxSkills); //number of entry
 				pak.WriteByte(0x03); //subtype
@@ -251,7 +251,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			int maxSkills = 0;
 			int firstSkills = 0;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 			bool sendHybridList = m_gameClient.Player.CharacterClass.ClassType != eClassType.ListCaster;
 
 			lock (skills.SyncRoot)

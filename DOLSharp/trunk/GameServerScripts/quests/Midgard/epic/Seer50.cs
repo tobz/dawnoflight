@@ -965,7 +965,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 
 			if (response == 0x00)
 			{
-				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 			}
 			else
 			{
@@ -973,7 +973,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 				if (!Inaksha.GiveQuest(typeof (Seer_50), player, 1))
 					return;
 
-				player.Out.SendMessage("Good now go kill him!", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Good now go kill him!", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 			}
 		}
 
@@ -1015,7 +1015,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 				EnemyKilledEventArgs gArgs = (EnemyKilledEventArgs) args;
 				if (gArgs.Target.Name == Loken.Name)
 				{
-					m_questPlayer.Out.SendMessage("You get a ball of flame", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					m_questPlayer.Out.SendMessage("You get a ball of flame", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					GiveItem(m_questPlayer, ball_of_flame);
 					Step = 2;
 					return;
@@ -1056,7 +1056,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 
 		public override void FinishQuest()
 		{
-			if (m_questPlayer.Inventory.IsSlotsFree(6, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+			if (m_questPlayer.Inventory.IsSlotsFree(6, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
 				RemoveItem(Miri, m_questPlayer, sealed_pouch);
 
@@ -1086,7 +1086,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 			}
 			else
 			{
-				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 

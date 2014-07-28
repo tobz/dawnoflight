@@ -17,23 +17,16 @@
  *
  */
 
-using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
-using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-    [PacketHandler(PacketHandlerType.TCP, 0x4C, "Handles Relic window commands")]
+    [PacketHandler(PacketType.TCP, ClientPackets.MinotaurRelicWindow, ClientStatus.PlayerInGame)]
     public class MinotaurRelicWindowHandler : IPacketHandler
     {
-        /// <summary>
-        /// Defines a logger for this class.
-        /// </summary>
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        public void HandlePacket(GameClient client, GSPacketIn packet)
+        public void HandlePacket(GameClient client, GamePacketIn packet)
         {
-            // todo
         }
     }
 }

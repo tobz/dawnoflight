@@ -48,7 +48,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			}
             if (client.Player.IsMuted)
             {
-                client.Player.Out.SendMessage("You have been muted. You cannot yell.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+                client.Player.Out.SendMessage("You have been muted. You cannot yell.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
                 return;
             }
 
@@ -79,10 +79,10 @@ namespace DawnOfLight.GameServer.commands.Player
 							direction = "East";
 						else if (headingtotarget > 3328 && headingtotarget < 3840)
 							direction = "South East";
-						player.Out.SendMessage(client.Player.Name + " yells for help from the " + direction + "!", eChatType.CT_Help, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(client.Player.Name + " yells for help from the " + direction + "!", ChatType.CT_Help, ChatLocation.CL_SystemWindow);
 					}
 					else
-						client.Out.SendMessage("You yell for help!", eChatType.CT_Help, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("You yell for help!", ChatType.CT_Help, ChatLocation.CL_SystemWindow);
 				}
 				client.Player.TempProperties.setProperty(YELL_TICK, client.Player.CurrentRegion.Time);
 				return;

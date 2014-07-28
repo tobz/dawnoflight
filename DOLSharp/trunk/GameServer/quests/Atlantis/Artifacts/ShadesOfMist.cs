@@ -98,7 +98,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					GiveItem(scholar, player, ArtifactID, versionsEnum.Value as ItemTemplate);
 					String reply = String.Format("Here is your cloak. Do not lose it, it is irreplaceable.");
 					scholar.TurnTo(player);
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					FinishQuest();
 					return true;
 				}
@@ -130,7 +130,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"making rather unique, don't you think? If you give me the scroll, I'll give you the",
 					"cloak, with all its ancient powers back.");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}

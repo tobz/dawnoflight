@@ -17,6 +17,7 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.Keeps;
 using DawnOfLight.GameServer.Keeps;
@@ -26,12 +27,10 @@ using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0xE0 ^ 168, "Show warmap")]
-	public class WarmapShowRequestHandler : IPacketHandler
+    [PacketHandler(PacketType.TCP, ClientPackets.WarMapShowRequest, ClientStatus.PlayerInGame)]
+	public class WarMapShowRequestHandler : IPacketHandler
 	{
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int code = packet.ReadByte();
 			int RealmMap = packet.ReadByte();
@@ -60,14 +59,14 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				}
 				case 1:
 				{
-					client.Out.SendWarmapUpdate(GameServer.KeepManager.GetKeepsByRealmMap(client.Player.WarMapPage));
+					client.Out.SendWarMapUpdate(GameServer.KeepManager.GetKeepsByRealmMap(client.Player.WarMapPage));
 					WarMapMgr.SendFightInfo(client);
 					break;
 				}
 				//teleport
 				case 2:
 					{
-						client.Out.SendWarmapUpdate(GameServer.KeepManager.GetKeepsByRealmMap(client.Player.WarMapPage));
+						client.Out.SendWarMapUpdate(GameServer.KeepManager.GetKeepsByRealmMap(client.Player.WarMapPage));
 						WarMapMgr.SendFightInfo(client);
 
 						if (client.Account.PrivLevel == (int)ePrivLevel.Player &&
@@ -126,7 +125,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 							if (!found)
 							{
-								client.Player.Out.SendMessage("You cannot teleport unless you are near a valid portal stone.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Player.Out.SendMessage("You cannot teleport unless you are near a valid portal stone.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								return;
 							}
 						}

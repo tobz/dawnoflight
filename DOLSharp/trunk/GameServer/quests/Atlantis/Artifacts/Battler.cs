@@ -106,7 +106,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 						"or a two-handed one. All you must do is decide which kind of damage you",
 						"would like to do to your enemies. Once you have chosen, you cannot change",
 						"your mind.");
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					Step = 3;
 					return true;
 				}
@@ -136,7 +136,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 			{
 				String reply = "Battler, eh? Careful, when I unlock this sword's abilities, for it has a thirst for blood, from what we've learned of it. Do you have the scrolls that talk about Battler?";
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}
@@ -152,7 +152,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 								(text.ToLower() == "slashing") ? "" : " Mace",
 								"[one handed] or [two handed]?");
 							scholar.TurnTo(player);
-							scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+							scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 							Step = 4;
 							return true;
 						}
@@ -180,7 +180,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 							{
 								String reply = String.Format("Here you are. Do not lose {0}, for it is irreplaceable.",	template.Name);
 								scholar.TurnTo(player);
-								scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+								scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 								FinishQuest();
 								return true;
 							}

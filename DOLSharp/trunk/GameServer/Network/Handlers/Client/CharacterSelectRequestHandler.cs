@@ -17,16 +17,15 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0xB8 ^ 168, "Handles setting SessionID and the active character")]
+    [PacketHandler(PacketType.TCP, ClientPackets.CharacterSelectRequest, ClientStatus.LoggedIn)]
 	public class CharacterSelectRequestHandler : IPacketHandler
 	{
-		#region IPacketHandler Members
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int packetVersion;
 			switch (client.Version)
@@ -50,36 +49,26 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				packet.Skip(1);
 			}
 
-			string charName = packet.ReadString(28);
-
-			//TODO Character handling 
-			if (charName.Equals("noname"))
-			{
-				client.Out.SendSessionID();
-			}
-			else
+			var characterName = packet.ReadString(28);
+			if (characterName != "noname")
 			{
 				// SH: Also load the player if client player is NOT null but their charnames differ!!!
 				// only load player when on charscreen and player is not loaded yet
 				// packet is sent on every region change (and twice after "play" was pressed)
-				if (
-					(
-						(client.Player == null && client.Account.Characters != null)
-						|| (client.Player != null && client.Player.Name.ToLower() != charName.ToLower())
-					) && client.ClientState == GameClient.eClientState.CharScreen)
+				if (((client.Player == null && client.Account.Characters != null) || (client.Player != null && client.Player.Name.ToLower() != characterName.ToLower())) && client.ClientState == GameClient.eClientState.CharScreen)
 				{
-					bool charFound = false;
+					bool characterFound = false;
 					for (int i = 0; i < client.Account.Characters.Length; i++)
 					{
-						if (client.Account.Characters[i] != null
-						    && client.Account.Characters[i].Name == charName)
+						if (client.Account.Characters[i] != null && client.Account.Characters[i].Name == characterName)
 						{
-							charFound = true;
+							characterFound = true;
 							client.LoadPlayer(i);
 							break;
 						}
 					}
-					if (charFound == false)
+
+					if (characterFound == false)
 					{
 						client.Player = null;
 						client.ActiveCharIndex = -1;
@@ -87,7 +76,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					else
 					{
 						// Log character play
-						AuditMgr.AddAuditEntry(client, AuditType.Character, AuditSubtype.CharacterLogin, "", charName);
+						AuditMgr.AddAuditEntry(client, AuditType.Character, AuditSubtype.CharacterLogin, "", characterName);
 					}
 				}
 
@@ -96,11 +85,9 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					// client keeps sending the name of the deleted char even if new one was created, correct name only after "play" button pressed
 					//client.Server.Error(new Exception("ERROR, active character not found!!! name="+charName));
 				}
-
-				client.Out.SendSessionID();
 			}
-		}
 
-		#endregion
+            client.Out.SendSessionID();
+		}
 	}
 }

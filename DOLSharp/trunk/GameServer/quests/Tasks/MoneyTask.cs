@@ -182,7 +182,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 			GameNPC NPC = GetRandomNPC(player);
 			if(NPC == null)
 			{
-				player.Out.SendMessage("I have no task for you, come back some time later.",eChatType.CT_System,eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("I have no task for you, come back some time later.",ChatType.CT_System,ChatLocation.CL_PopupWindow);
 				return false;
 			}
 			else
@@ -195,7 +195,7 @@ namespace DawnOfLight.GameServer.Quests.Tasks
 				player.Task.RecieverName = NPC.Name;
 				((MoneyTask)player.Task).RecieverZone = NPC.CurrentZone.Description;
 				
-				player.Out.SendMessage("Bring "+TaskItems.GetName(0,false)+" to "+NPC.Name +" in "+ NPC.CurrentZone.Description, eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Bring "+TaskItems.GetName(0,false)+" to "+NPC.Name +" in "+ NPC.CurrentZone.Description, ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				//Player.Out.SendCustomDialog("", new CustomDialogResponse(TaskDialogResponse));
 
 				player.ReceiveItem(source,TaskItems);

@@ -22,6 +22,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Language;
 using DawnOfLight.GameServer.Network.Packets;
@@ -65,7 +66,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 					throw new Exception("CharacterOverview requested for unknown realm " + realm);
 			}
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterOverview));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterOverview));
 			pak.FillString(m_gameClient.Account.Name, 24);
 			IList<InventoryItem> items;
 			DOLCharacters[] characters = m_gameClient.Account.Characters;
@@ -211,7 +212,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 								int l;
 								if (k == 0x15 + 3)
 									//shield emblem
-									l = (int)eInventorySlot.LeftHandWeapon;
+									l = (int)InventorySlot.LeftHandWeapon;
 								else
 									l = k;
 
@@ -261,9 +262,9 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 								byte lefthand = 0xFF;
 								foreach (InventoryItem item in items)
 								{
-									if (item.SlotPosition == (int)eInventorySlot.RightHandWeapon)
+									if (item.SlotPosition == (int)InventorySlot.RightHandWeapon)
 										righthand = 0x00;
-									if (item.SlotPosition == (int)eInventorySlot.LeftHandWeapon)
+									if (item.SlotPosition == (int)InventorySlot.LeftHandWeapon)
 										lefthand = 0x01;
 								}
 								if (righthand == lefthand)

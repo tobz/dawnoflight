@@ -389,7 +389,7 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 			AbstractGameKeep keep = GameServer.KeepManager.GetKeepByID(keepID);
 			if (keep == null)
 			{
-				player.Out.SendMessage("Cannot create door as keep is null!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Cannot create door as keep is null!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			GameKeepComponent component = null;
@@ -403,7 +403,7 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 			}
 			if (component == null)
 			{
-				player.Out.SendMessage("Cannot create door as component is null!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Cannot create door as component is null!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			DBKeepPosition pos = new DBKeepPosition();
@@ -424,7 +424,7 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 
 			GameServer.Database.AddObject(pos);
 
-			player.Out.SendMessage("Added door as a position to keep.  A server restart will be required to load this position.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage("Added door as a position to keep.  A server restart will be required to load this position.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 	}
 }

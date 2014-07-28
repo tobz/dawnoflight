@@ -270,12 +270,12 @@ namespace DawnOfLight.GameServer
 	public enum eArmorSlot : int
 	{
 		NOTSET = 0x00,
-		HEAD = eInventorySlot.HeadArmor,
-		HAND = eInventorySlot.HandsArmor,
-		FEET = eInventorySlot.FeetArmor,
-		TORSO = eInventorySlot.TorsoArmor,
-		LEGS = eInventorySlot.LegsArmor,
-		ARMS = eInventorySlot.ArmsArmor,
+		HEAD = InventorySlot.HeadArmor,
+		HAND = InventorySlot.HandsArmor,
+		FEET = InventorySlot.FeetArmor,
+		TORSO = InventorySlot.TorsoArmor,
+		LEGS = InventorySlot.LegsArmor,
+		ARMS = InventorySlot.ArmsArmor,
 	};
 
 	/// <summary>

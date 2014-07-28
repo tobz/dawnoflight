@@ -1536,7 +1536,7 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
                     Charles.SayTo(player, LanguageMgr.GetTranslation(player.Client, "ChildsPlay.TalkToCharles.Text2"));
 
                     //k109:  Until I can get the quest dialog from live, I reward based on class, feel free to edit.
-                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client, "ChildsPlay.TalkToCharles.Text3", questTitle), eChatType.CT_ScreenCenter, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client, "ChildsPlay.TalkToCharles.Text3", questTitle), ChatType.CT_ScreenCenter, ChatLocation.CL_SystemWindow);
                     if (player.CharacterClass.BaseName == LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "PlayerClass.Name.Guardian"))
                     {
                         GiveItem(Charles, quest.m_questPlayer, daringstuddedboots_hib);

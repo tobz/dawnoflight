@@ -76,7 +76,7 @@ namespace DawnOfLight.GameServer.Behavior.Triggers
             if (e == GamePlayerEvent.UseSlot)
             {
                 UseSlotEventArgs uArgs = (UseSlotEventArgs)args;
-                InventoryItem item = player.Inventory.GetItem((eInventorySlot)uArgs.Slot) as InventoryItem;
+                InventoryItem item = player.Inventory.GetItem((InventorySlot)uArgs.Slot) as InventoryItem;
 				if (item != null && I != null)
 					result = I.Name == item.Name;
             }

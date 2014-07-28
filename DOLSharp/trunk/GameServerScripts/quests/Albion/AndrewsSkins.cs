@@ -160,10 +160,10 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				andrewWyatt.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 80);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 54);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 51);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 52);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 80);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 54);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 51);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 52);
 				andrewWyatt.Inventory = template.CloseTemplate();
 				andrewWyatt.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -199,11 +199,11 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				georNadren.CurrentRegionID = 10;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 39);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 40);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 36);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 37);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 38);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 39);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 40);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 36);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 37);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 38);
 				georNadren.Inventory = template.CloseTemplate();
 				georNadren.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -238,12 +238,12 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				verNuren.CurrentRegionID = 10;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.LeftHandWeapon, 61);
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 39);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 40);
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 36);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 37);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 38);
+				template.AddNPCEquipment(InventorySlot.LeftHandWeapon, 61);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 39);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 40);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 36);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 37);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 38);
 				verNuren.Inventory = template.CloseTemplate();
 				verNuren.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

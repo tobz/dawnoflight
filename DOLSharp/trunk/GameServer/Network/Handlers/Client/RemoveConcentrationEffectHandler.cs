@@ -27,12 +27,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// <summary>
 	/// Called when player removes concentration spell in conc window
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.RemoveConcentrationEffect, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.RemoveConcentrationEffect, ClientStatus.PlayerInGame)]
 	public class RemoveConcentrationEffectHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int index = packet.ReadByte();
 

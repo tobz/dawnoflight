@@ -84,7 +84,7 @@ namespace DawnOfLight.GameServer.PropertyCalculators
 						if (speed <= 0)
 						{
 							speed = 0;
-							player.Out.SendMessage("You are encumbered and cannot move.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("You are encumbered and cannot move.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 					}
 					else

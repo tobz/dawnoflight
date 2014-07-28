@@ -23,12 +23,12 @@ using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.InviteToGroup, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.InviteToGroup, ClientStatus.PlayerInGame)]
 	public class InviteToGroupHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			new HandleGroupInviteAction(client.Player).Start(1);
 		}

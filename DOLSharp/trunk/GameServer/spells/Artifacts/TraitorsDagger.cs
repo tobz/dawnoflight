@@ -47,7 +47,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
                         Effect.SpellHandler.Spell.SpellType.Equals("AtlantisTabletMorph") ||
                         Effect.SpellHandler.Spell.SpellType.Equals("AlvarusMorph"))
                     {
-                        player.Out.SendMessage("You already have an active morph!", eChatType.CT_SpellResisted, eChatLoc.CL_ChatWindow);
+                        player.Out.SendMessage("You already have an active morph!", ChatType.CT_SpellResisted, ChatLocation.CL_ChatWindow);
                         return;
                     }
                 }

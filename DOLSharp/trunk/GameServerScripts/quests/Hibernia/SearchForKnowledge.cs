@@ -178,7 +178,7 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 				Blercyn.CurrentRegionID = 200;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 58);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 58);
 				Blercyn.Inventory = template.CloseTemplate();
 				Blercyn.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -215,7 +215,7 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 				Epona.CurrentRegionID = 200;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 58);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 58);
 				Epona.Inventory = template.CloseTemplate();
 				Epona.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

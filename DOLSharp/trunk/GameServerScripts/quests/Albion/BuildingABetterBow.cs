@@ -155,7 +155,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				elvarIronhand.CurrentRegionID = 1;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 12);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 12);
 				elvarIronhand.Inventory = template.CloseTemplate();
 				elvarIronhand.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

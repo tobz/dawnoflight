@@ -86,17 +86,17 @@ namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 				{
 					if (Name == LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "GameObjects.CommanderPet.DreadGuardian"))
 					{
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DreadGuardian", Name), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DreadGuardian", Name), ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 					}
 
 					if (Name == LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "GameObjects.CommanderPet.DreadLich"))
 					{
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DreadLich", Name), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DreadLich", Name), ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 					}
 
 					if (Name == LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "GameObjects.CommanderPet.DreadArcher"))
 					{
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DreadArcher", Name), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DreadArcher", Name), ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 					}
 
 					if (Name.ToLower() == LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "GameObjects.CommanderPet.DreadCommander") ||
@@ -105,20 +105,20 @@ namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 					    Name.ToLower() == LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "GameObjects.CommanderPet.SkeletalCommander") ||
 					    Name.ToLower() == LanguageMgr.GetTranslation(ServerProperties.Properties.SERV_LANGUAGE, "GameObjects.CommanderPet.BoneCommander"))
 					{
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.XCommander", Name), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.XCommander", Name), ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 					}
 
 				}
 
 				if (curStr == LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Const.Combat"))
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Combat", Name), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Combat", Name), ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				}
 
 				if (curStr == LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Const.Assist"))
 				{
 					//TODO: implement this - I have no idea how to do that...
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Assist.Text"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Assist.Text"), ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				}
 
 				if (curStr == LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Const.Taunt"))
@@ -130,7 +130,7 @@ namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 						if (spell.ID == 60127)
 						{
 							Spells.Remove(spell);
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.CommNoTaunt"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.CommNoTaunt"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 							found = true;
 							break;
 						}
@@ -138,7 +138,7 @@ namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 					if (found) break;
 					//TODO: change this so it isn't hardcoded
 					Spell tauntspell = SkillBase.GetSpellByID(60127);
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.CommStartTaunt"), eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.CommStartTaunt"), ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 					if (tauntspell != null)
 						Spells.Add(tauntspell);
 					else
@@ -156,7 +156,7 @@ namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 					{
 						break;
 					}
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DiffCommander", Name), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DiffCommander", Name), ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				}
 
 				if (curStr == LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Const.Spells"))
@@ -165,7 +165,7 @@ namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 					{
 						return false;
 					}
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DreadLich2", Name), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DreadLich2", Name), ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				}
 
 				if (curStr == LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Const.Empower"))
@@ -202,7 +202,7 @@ namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 					i++;
 					if (i + 1 >= strargs.Length)
 						return false;
-					CommanderSwitchWeapon(eInventorySlot.RightHandWeapon, eActiveWeaponSlot.Standard, strargs[++i]);
+					CommanderSwitchWeapon(InventorySlot.RightHandWeapon, eActiveWeaponSlot.Standard, strargs[++i]);
 				}
 
 				if (curStr == LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Const.Two"))
@@ -210,7 +210,7 @@ namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 					i++;
 					if (i + 1 >= strargs.Length)
 						return false;
-					CommanderSwitchWeapon(eInventorySlot.TwoHandWeapon, eActiveWeaponSlot.TwoHanded, strargs[++i]);
+					CommanderSwitchWeapon(InventorySlot.TwoHandWeapon, eActiveWeaponSlot.TwoHanded, strargs[++i]);
 				}
 
 				if (curStr == LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Const.Harm"))
@@ -219,7 +219,7 @@ namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 					{
 						return false;
 					}
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DreadGuardian2", Name), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.DreadGuardian2", Name), ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				}
 
 				if (curStr == LanguageMgr.GetTranslation(player.Client.Account.Language, "GameObjects.CommanderPet.WR.Const.Drain"))
@@ -239,16 +239,16 @@ namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 		/// <param name="slot"></param>
 		/// <param name="aSlot"></param>
 		/// <param name="weaponType"></param>
-		protected void CommanderSwitchWeapon(eInventorySlot slot, eActiveWeaponSlot aSlot, string weaponType)
+		protected void CommanderSwitchWeapon(InventorySlot slot, eActiveWeaponSlot aSlot, string weaponType)
 		{
 			if (Inventory == null)
 				return;
 
 			string itemId = string.Format("BD_Commander_{0}_{1}", slot.ToString(), weaponType);
 			//all weapons removed before
-			InventoryItem item = Inventory.GetItem(eInventorySlot.RightHandWeapon);
+			InventoryItem item = Inventory.GetItem(InventorySlot.RightHandWeapon);
 			if (item != null) Inventory.RemoveItem(item);
-			item = Inventory.GetItem(eInventorySlot.TwoHandWeapon);
+			item = Inventory.GetItem(InventorySlot.TwoHandWeapon);
 			if (item != null) Inventory.RemoveItem(item);
 
 			ItemTemplate temp = GameServer.Database.FindObjectByKey<ItemTemplate>(itemId);

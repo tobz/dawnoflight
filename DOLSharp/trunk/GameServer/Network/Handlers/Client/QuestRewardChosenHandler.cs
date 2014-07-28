@@ -28,12 +28,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// Handler for quest reward dialog response.
 	/// </summary>
 	/// <author>Aredhel</author>
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.QuestRewardChosen, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.QuestRewardChosen, ClientStatus.PlayerInGame)]
 	public class QuestRewardChosenHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			var response = (byte) packet.ReadByte();
 			if (response != 1) // confirm

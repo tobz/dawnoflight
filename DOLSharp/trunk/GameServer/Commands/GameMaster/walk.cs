@@ -45,7 +45,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			{
 				if (targetNPC == null)
 				{
-					client.Out.SendMessage("Type /stop to stop your target npc from moving", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("Type /stop to stop your target npc from moving", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 				targetNPC.StopMoving();
@@ -53,14 +53,14 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			}
 			if (args.Length < 4)
 			{
-				client.Out.SendMessage("Usage:", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-				client.Out.SendMessage("'/walk <xoff> <yoff> <zoff> <speed>'", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Usage:", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+				client.Out.SendMessage("'/walk <xoff> <yoff> <zoff> <speed>'", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			if (targetNPC == null)
 			{
-				client.Out.SendMessage("Type /walk for command overview", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Type /walk for command overview", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			int xoff = 0;
@@ -77,7 +77,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 			}
 			catch (Exception)
 			{
-				client.Out.SendMessage("Type /walk for command overview", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Type /walk for command overview", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 

@@ -18,24 +18,24 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			GamePlayer caster = living as GamePlayer;
             if (caster.TargetObject == null)
             {
-                caster.Out.SendMessage("You need a target for this ability!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                caster.Out.SendMessage("You need a target for this ability!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
 
             if (!(caster.TargetObject is GameLiving)
                 || !GameServer.ServerRules.IsAllowedToAttack(caster, (GameLiving)caster.TargetObject, true))
             {
-                caster.Out.SendMessage("You cannot attack " + caster.TargetObject.Name + "!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                caster.Out.SendMessage("You cannot attack " + caster.TargetObject.Name + "!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
             if (!caster.TargetInView)
             {
-                caster.Out.SendMessage("You cannot see " + caster.TargetObject.Name + "!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                caster.Out.SendMessage("You cannot see " + caster.TargetObject.Name + "!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
             if (!caster.IsWithinRadius( caster.TargetObject, 1500 ))
             {
-                caster.Out.SendMessage("You target is too far away to use this ability!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                caster.Out.SendMessage("You target is too far away to use this ability!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
             this.m_player = caster;
@@ -67,11 +67,11 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
             {
 				if (i_player == caster)
 				{
-					i_player.MessageToSelf("You cast " + this.Name + "!", eChatType.CT_Spell);
+					i_player.MessageToSelf("You cast " + this.Name + "!", ChatType.CT_Spell);
 				}
 				else
 				{
-					i_player.MessageFromArea(caster, caster.Name + " casts a spell!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					i_player.MessageFromArea(caster, caster.Name + " casts a spell!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				}
 			}
             Statics.StaticTempestBase st = new Statics.StaticTempestBase(m_stunDuration);

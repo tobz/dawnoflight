@@ -75,7 +75,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public virtual void SendVersionAndCryptKey()
 		{
 			//Construct the new packet
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CryptKey)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CryptKey)))
 			{
 				//Enable encryption
 				#if !NOENCRYPTION
@@ -112,7 +112,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendLoginDenied(eLoginError et)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.LoginDenied)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.LoginDenied)))
 			{
 				pak.WriteByte((byte) et); // Error Code
 				/*
@@ -137,7 +137,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendLoginGranted(byte color)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.LoginGranted)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.LoginGranted)))
 			{
 				/*
 				if(is_si)
@@ -161,7 +161,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendSessionID()
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.SessionID)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.SessionID)))
 			{
 				pak.WriteShortLowEndian((ushort) m_gameClient.SessionID);
 				SendTCP(pak);
@@ -170,7 +170,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendPingReply(ulong timestamp, ushort sequence)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PingReply)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PingReply)))
 			{
 				pak.WriteInt((uint) timestamp);
 				pak.Fill(0x00, 4);
@@ -182,7 +182,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendRealm(eRealm realm)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Realm)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Realm)))
 			{
 				pak.WriteByte((byte) realm);
 				SendTCP(pak);
@@ -207,7 +207,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 					throw new Exception("CharacterOverview requested for unknown realm " + realm);
 			}
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterOverview)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterOverview)))
 			{
 				pak.FillString(m_gameClient.Account.Name, 24);
 				DOLCharacters[] characters = m_gameClient.Account.Characters;
@@ -319,7 +319,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 								int l;
 								if (k == 0x15 + 3)
 									//shield emblem
-									l = (int) eInventorySlot.LeftHandWeapon;
+									l = (int) InventorySlot.LeftHandWeapon;
 								else
 									l = k;
 
@@ -369,9 +369,9 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 								byte lefthand = 0xFF;
 								foreach (InventoryItem item in items)
 								{
-									if (item.SlotPosition == (int) eInventorySlot.RightHandWeapon)
+									if (item.SlotPosition == (int) InventorySlot.RightHandWeapon)
 										righthand = 0x00;
-									if (item.SlotPosition == (int) eInventorySlot.LeftHandWeapon)
+									if (item.SlotPosition == (int) InventorySlot.LeftHandWeapon)
 										lefthand = 0x01;
 								}
 								if (righthand == lefthand)
@@ -408,7 +408,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient == null || m_gameClient.Account == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DupNameCheckReply)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DupNameCheckReply)))
 			{
 				pak.FillString(name, 30);
 				pak.FillString(m_gameClient.Account.Name, 20);
@@ -420,7 +420,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendBadNameCheckReply(string name, bool bad)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.BadNameCheckReply)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.BadNameCheckReply)))
 			{
 				pak.FillString(name, 30);
 				pak.FillString(m_gameClient.Account.Name, 20);
@@ -435,7 +435,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.AttackMode)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.AttackMode)))
 			{
 				pak.WriteByte((byte) (attackState ? 0x01 : 0x00));
 				pak.Fill(0x00, 3);
@@ -446,7 +446,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendCharCreateReply(string name)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterCreateReply)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterCreateReply)))
 			{
 				pak.FillString(name, 24);
 				SendTCP(pak);
@@ -458,7 +458,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.StatsUpdate), 36))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.StatsUpdate), 36))
 			{
 				pak.WriteShort((ushort) m_gameClient.Player.GetBaseStat(eStat.STR));
 				pak.WriteShort((ushort) m_gameClient.Player.GetBaseStat(eStat.DEX));
@@ -509,7 +509,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			int count = entries.Length;
 			while (count > index)
 			{
-				using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ClientRegions)))
+				using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ClientRegions)))
 				{
 					for (int i = 0; i < 4; i++)
 					{
@@ -549,7 +549,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendGameOpenReply()
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.GameOpenReply)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.GameOpenReply)))
 			{
 				pak.WriteByte(0x00);
 				SendTCP(pak);
@@ -561,7 +561,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PositionAndObjectID)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PositionAndObjectID)))
 			{
 				pak.WriteShort((ushort) m_gameClient.Player.ObjectID); //This is the player's objectid not Sessionid!!!
 				pak.WriteShort((ushort) m_gameClient.Player.Z);
@@ -584,7 +584,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterJump)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterJump)))
 			{
 				pak.WriteInt((uint) (headingOnly ? 0 : m_gameClient.Player.X));
 				pak.WriteInt((uint) (headingOnly ? 0 : m_gameClient.Player.Y));
@@ -605,7 +605,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendPlayerInitFinished(byte mobs)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterInitFinished)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterInitFinished)))
 			{
 				pak.WriteByte(mobs);
 				SendTCP(pak);
@@ -614,7 +614,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendUDPInitReply()
 		{
-			var pak = new GSUDPPacketOut(GetPacketCode(eServerPackets.UDPInitReply));
+			var pak = new GameUDPPacketOut(GetPacketCode(ServerPackets.UDPInitReply));
 			Region playerRegion = null;
 			if (!m_gameClient.Socket.Connected)
 				return;
@@ -636,7 +636,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendTime()
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Time)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Time)))
 			{
 				if (m_gameClient != null && m_gameClient.Player != null)
 				{
@@ -652,7 +652,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 		}
 
-		public virtual void SendMessage(string msg, eChatType type, eChatLoc loc)
+		public virtual void SendMessage(string msg, ChatType type, ChatLocation loc)
 		{
 			if (m_gameClient.ClientState == GameClient.eClientState.CharScreen)
 				return;
@@ -660,12 +660,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			// types not supported by 1.68+ clients
 			switch (type)
 			{
-				case eChatType.CT_ScreenCenterSmaller:
-				case eChatType.CT_ScreenCenter:
+				case ChatType.CT_ScreenCenterSmaller:
+				case ChatType.CT_ScreenCenter:
 					return;
 			}
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Message)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Message)))
 			{
 				pak.WriteShort((ushort) m_gameClient.SessionID);
 				pak.WriteShort(0x00);
@@ -673,9 +673,9 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				pak.Fill(0x0, 3);
 
 				String str;
-				if (loc == eChatLoc.CL_ChatWindow)
+				if (loc == ChatLocation.CL_ChatWindow)
 					str = "@@";
-				else if (loc == eChatLoc.CL_PopupWindow)
+				else if (loc == ChatLocation.CL_PopupWindow)
 					str = "##";
 				else
 					str = "";
@@ -711,7 +711,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				return;
 
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PlayerCreate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PlayerCreate)))
 			{
 				pak.WriteShort((ushort) playerToCreate.Client.SessionID);
 				pak.WriteShort((ushort) playerToCreate.ObjectID);
@@ -756,7 +756,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendObjectGuildID(GameObject obj, Guild guild)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ObjectGuildID)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ObjectGuildID)))
 			{
 				pak.WriteShort((ushort) obj.ObjectID);
 				if (guild == null)
@@ -849,7 +849,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 					targetOID = (ushort) target.ObjectID;
 			}
 
-			var pak = new GSUDPPacketOut(GetPacketCode(eServerPackets.ObjectUpdate));
+			var pak = new GameUDPPacketOut(GetPacketCode(ServerPackets.ObjectUpdate));
 			pak.WriteShort((ushort) speed);
 			if (obj is GameNPC)
 			{
@@ -892,7 +892,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendPlayerQuit(bool totalOut)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Quit)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Quit)))
 			{
 				pak.WriteByte((byte) (totalOut ? 0x01 : 0x00));
 				if (m_gameClient.Player == null)
@@ -911,7 +911,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			else if (obj is GameNPC)
 				oType = (((GameLiving) obj).IsAlive ? 1 : 0);
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.RemoveObject)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.RemoveObject)))
 			{
 				pak.WriteShort((ushort) obj.ObjectID);
 				pak.WriteShort((ushort) oType);
@@ -927,7 +927,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (obj.IsVisibleTo(m_gameClient.Player) == false)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ObjectCreate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ObjectCreate)))
 			{
 				pak.WriteShort((ushort) obj.ObjectID);
 				if (obj is GameStaticItem)
@@ -987,7 +987,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendDebugMode(bool on)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DebugMode)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DebugMode)))
 			{
 				if (m_gameClient.Account.PrivLevel == 1)
 				{
@@ -1017,7 +1017,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendModelAndSizeChange(ushort objectId, ushort newModel, byte newSize)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ModelChange)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ModelChange)))
 			{
 				pak.WriteShort(objectId);
 				pak.WriteShort(newModel);
@@ -1028,7 +1028,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendEmoteAnimation(GameObject obj, eEmote emote)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.EmoteAnimation)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.EmoteAnimation)))
 			{
 				pak.WriteShort((ushort) obj.ObjectID);
 				pak.WriteByte((byte) emote);
@@ -1048,7 +1048,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				return;
 			}
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.NPCCreate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.NPCCreate)))
 			{
 				int speed = 0;
 				ushort speedZ = 0;
@@ -1122,7 +1122,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null || living.IsVisibleTo(m_gameClient.Player) == false)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.EquipmentUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.EquipmentUpdate)))
 			{
 				pak.WriteShort((ushort) living.ObjectID);
 				pak.WriteByte((byte) ((living.IsCloakHoodUp ? 0x01 : 0x00) | (int) living.ActiveQuiverSlot));
@@ -1168,7 +1168,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient.Player == null)
 				return;
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.RegionChanged)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.RegionChanged)))
 			{
 				//Dinberg - Changing to allow instances...
 				pak.WriteShort(m_gameClient.Player.CurrentRegion.Skin);
@@ -1181,7 +1181,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient.Player == null)
 				return;
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterPointsUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterPointsUpdate)))
 			{
 				pak.WriteInt((uint) m_gameClient.Player.RealmPoints);
 				pak.WriteShort(m_gameClient.Player.LevelPermill);
@@ -1197,7 +1197,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient.Player == null)
 				return;
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.MoneyUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.MoneyUpdate)))
 			{
 				pak.WriteByte((byte) m_gameClient.Player.DBCharacter.Copper);
 				pak.WriteByte((byte) m_gameClient.Player.DBCharacter.Silver);
@@ -1213,7 +1213,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			//Speed is in % not a fixed value!
 			if (m_gameClient.Player == null)
 				return;
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.MaxSpeed)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.MaxSpeed)))
 			{
 				pak.WriteShort((ushort) (m_gameClient.Player.MaxSpeed*100/GamePlayer.PLAYER_BASE_SPEED));
 				pak.WriteByte((byte) (m_gameClient.Player.IsTurningDisabled ? 0x01 : 0x00));
@@ -1230,7 +1230,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public virtual void SendCombatAnimation(GameObject attacker, GameObject defender, ushort weaponID, ushort shieldID,
 		                                        int style, byte stance, byte result, byte targetHealthPercent)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CombatAnimation)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CombatAnimation)))
 			{
 				if (attacker != null)
 					pak.WriteShort((ushort) attacker.ObjectID);
@@ -1268,7 +1268,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient.Player == null)
 				return;
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterStatusUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterStatusUpdate)))
 			{
 				pak.WriteByte(m_gameClient.Player.HealthPercent);
 				pak.WriteByte(m_gameClient.Player.ManaPercent);
@@ -1283,7 +1283,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendSpellCastAnimation(GameLiving spellCaster, ushort spellID, ushort castingTime)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.SpellCastAnimation)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.SpellCastAnimation)))
 			{
 				pak.WriteShort((ushort) spellCaster.ObjectID);
 				pak.WriteShort(spellID);
@@ -1296,7 +1296,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public virtual void SendSpellEffectAnimation(GameObject spellCaster, GameObject spellTarget, ushort spellid,
 		                                             ushort boltTime, bool noSound, byte success)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.SpellEffectAnimation)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.SpellEffectAnimation)))
 			{
 				pak.WriteShort((ushort) spellCaster.ObjectID);
 				pak.WriteShort(spellid);
@@ -1318,7 +1318,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 			if (slot == -1)
 				log.Error("SendRiding error, slot is -1 with rider " + rider.Name + " steed " + steed.Name);
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Riding)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Riding)))
 			{
 				pak.WriteShort((ushort) rider.ObjectID);
 				pak.WriteShort((ushort) steed.ObjectID);
@@ -1329,15 +1329,13 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 		}
 
-		public virtual void SendFindGroupWindowUpdate(GamePlayer[] list)
+		public virtual void SendFindGroupWindowUpdate(List<GamePlayer> list)
 		{
-			if (m_gameClient.Player == null)
-				return;
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.FindGroupUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.FindGroupUpdate)))
 			{
 				if (list != null)
 				{
-					pak.WriteByte((byte) list.Length);
+					pak.WriteByte((byte) list.Count);
 					byte nbleader = 0;
 					byte nbsolo = 0x1E;
 					foreach (GamePlayer player in list)
@@ -1370,7 +1368,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendGroupInviteCommand(GamePlayer invitingPlayer, string inviteMessage)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Dialog)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Dialog)))
 			{
 				pak.WriteByte(0x00);
 				pak.WriteByte(0x05);
@@ -1387,7 +1385,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendGuildInviteCommand(GamePlayer invitingPlayer, string inviteMessage)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Dialog)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Dialog)))
 			{
 				pak.WriteByte(0x00);
 				pak.WriteByte(0x03);
@@ -1404,7 +1402,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendGuildLeaveCommand(GamePlayer invitingPlayer, string inviteMessage)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Dialog)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Dialog)))
 			{
 				pak.WriteByte(0x00);
 				pak.WriteByte(0x08);
@@ -1447,7 +1445,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		// data 3 defines wether it's subscribe or abort
 		public virtual void SendQuestSubscribeCommand(GameNPC invitingNPC, ushort questid, string inviteMessage)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Dialog)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Dialog)))
 			{
 				pak.WriteByte(0x00);
 				pak.WriteByte(0x64);
@@ -1468,7 +1466,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		// data 3 defines wether it's subscribe or abort
 		public virtual void SendQuestAbortCommand(GameNPC abortingNPC, ushort questid, string abortMessage)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Dialog)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Dialog)))
 			{
 				pak.WriteByte(0x00);
 				pak.WriteByte(0x64);
@@ -1488,7 +1486,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public virtual void SendDialogBox(eDialogCode code, ushort data1, ushort data2, ushort data3, ushort data4,
 		                                  eDialogType type, bool autoWrapText, string message)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Dialog)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Dialog)))
 			{
 				pak.WriteByte(0x00);
 				pak.WriteByte((byte) code);
@@ -1517,7 +1515,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				m_gameClient.Player.CustomDialogCallback = callback;
 			}
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Dialog)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Dialog)))
 			{
 				pak.WriteByte(0x00);
 				pak.WriteByte((byte) eDialogCode.CustomDialog);
@@ -1550,7 +1548,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (old_callback != null)
 				old_callback(m_gameClient.Player, 0, 0); // not sure for this,  i want targetOID there
 
-			using (var pak = new GSTCPPacketOut(0xD0))
+			using (var pak = new GameTCPPacketOut(0xD0))
 			{
 				pak.WriteShort((ushort) Checker.ObjectID);
 				pak.WriteShort((ushort) TargetOID);
@@ -1579,7 +1577,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (old_callback != null)
 				old_callback(m_gameClient.Player, 0, 0, 0);
 
-			using (var pak = new GSTCPPacketOut(0xD0))
+			using (var pak = new GameTCPPacketOut(0xD0))
 			{
 				pak.WriteShort((ushort) SourceOID);
 				pak.WriteShort((ushort) TargetOID);
@@ -1630,7 +1628,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate)))
 			{
 				pak.WriteByte(0x06);
 
@@ -1702,7 +1700,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (group == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.GroupMemberUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.GroupMemberUpdate)))
 			{
 				lock (group)
 				{
@@ -1724,7 +1722,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			Group group = m_gameClient.Player.Group;
 			if (group == null)
 				return;
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.GroupMemberUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.GroupMemberUpdate)))
 			{
 				foreach (GameLiving living in group.GetMembersInTheGroup())
 					WriteGroupMemberUpdate(pak, updateIcons, living);
@@ -1810,7 +1808,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendDoorState(Region region, IDoor door)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DoorState)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DoorState)))
 			{
 				ushort zone = (ushort)(door.DoorID / 1000000);
 				int doorType = door.DoorID / 100000000;
@@ -1833,7 +1831,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendMerchantWindow(MerchantTradeItems tradeItemsList, eMerchantWindowType windowType)
 		{
-			GSTCPPacketOut pak;
+			GameTCPPacketOut pak;
 
 			if (tradeItemsList != null)
 			{
@@ -1843,7 +1841,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 					if (itemsInPage == null || itemsInPage.Count == 0)
 						continue;
 
-					using (pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.MerchantWindow)))
+					using (pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.MerchantWindow)))
 					{
 						pak.WriteByte((byte) itemsInPage.Count); //Item count on this page
 						pak.WriteByte((byte) windowType);
@@ -1932,7 +1930,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 			else
 			{
-				using (pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.MerchantWindow)))
+				using (pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.MerchantWindow)))
 				{
 					pak.WriteByte(0); //Item count on this page
 					pak.WriteByte((byte) windowType); //Unknown 0x00
@@ -1947,7 +1945,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (m_gameClient.Player == null)
 				return;
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TradeWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TradeWindow)))
 			{
 				lock (m_gameClient.Player.TradeWindow.Sync)
 				{
@@ -2019,7 +2017,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendCloseTradeWindow()
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TradeWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TradeWindow)))
 			{
 				pak.Fill(0x00, 40);
 				SendTCP(pak);
@@ -2028,7 +2026,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendPlayerDied(GamePlayer killedPlayer, GameObject killer)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PlayerDeath)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PlayerDeath)))
 			{
 				pak.WriteShort((ushort) killedPlayer.ObjectID);
 				if (killer != null)
@@ -2042,7 +2040,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendPlayerRevive(GamePlayer revivedPlayer)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PlayerRevive)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PlayerRevive)))
 			{
 				pak.WriteShort((ushort) revivedPlayer.ObjectID);
 				pak.WriteShort(0x00);
@@ -2056,7 +2054,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (player == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate)))
 			{
 				pak.WriteByte(0x03); //subcode
 				pak.WriteByte(0x0d); //number of entry
@@ -2108,7 +2106,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 		}
 
-		public virtual void CheckLengthHybridSkillsPacket(ref GSTCPPacketOut pak, ref int maxSkills, ref int first)
+		public virtual void CheckLengthHybridSkillsPacket(ref GameTCPPacketOut pak, ref int maxSkills, ref int first)
 		{
 			maxSkills++;
 		}
@@ -2125,7 +2123,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			int maxSkills = 0;
 			int firstSkills = 0;
 
-			var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+			var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 
 			try
 			{
@@ -2310,7 +2308,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 							}
 						}
 
-						using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate)))
+						using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate)))
 						{
 							pak.WriteByte(0x02); //subcode
 							pak.WriteByte((byte)(spellCount + 1)); //number of entry
@@ -2344,7 +2342,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate)))
 			{
 				pak.WriteByte(0x08); //subcode
 				pak.WriteByte((byte) m_gameClient.Player.CraftingSkills.Count); //count
@@ -2368,7 +2366,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate)))
 			{
 				pak.WriteByte(0x05); //subcode
 				pak.WriteByte(6); //number of entries
@@ -2403,7 +2401,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Encumberance)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Encumberance)))
 			{
 				pak.WriteShort((ushort) m_gameClient.Player.MaxEncumberance); // encumb total
 				pak.WriteShort((ushort) m_gameClient.Player.Encumberance); // encumb used
@@ -2416,7 +2414,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (text == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DetailWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DetailWindow)))
 			{
 				if (caption == null)
 					caption = "";
@@ -2453,7 +2451,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendAddFriends(string[] friendNames)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.AddFriend)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.AddFriend)))
 			{
 				foreach (string friend in friendNames)
 					pak.WritePascalString(friend);
@@ -2464,7 +2462,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendRemoveFriends(string[] friendNames)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.RemoveFriend)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.RemoveFriend)))
 			{
 				foreach (string friend in friendNames)
 					pak.WritePascalString(friend);
@@ -2475,7 +2473,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendTimerWindow(string title, int seconds)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TimerWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TimerWindow)))
 			{
 				pak.WriteShort((ushort) seconds);
 				pak.WriteByte((byte) title.Length);
@@ -2487,7 +2485,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendCloseTimerWindow()
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TimerWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TimerWindow)))
 			{
 				pak.WriteShort(0);
 				pak.WriteByte(0);
@@ -2498,7 +2496,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendChampionTrainerWindow(int type)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TrainerWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TrainerWindow)))
 			{
 				pak.WriteByte((byte) type);
 				pak.WriteByte((byte) m_gameClient.Player.ChampionSpecialtyPoints);
@@ -2567,7 +2565,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendTrainerWindow()
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TrainerWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TrainerWindow)))
 			{
 				IList specs = m_gameClient.Player.GetSpecList();
 				pak.WriteByte((byte) specs.Count);
@@ -2618,7 +2616,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 					}
 				}
 
-				using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TrainerWindow)))
+				using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TrainerWindow)))
 				{
 					pak.WriteByte((byte) offeredRA.Count);
 					pak.WriteByte((byte) m_gameClient.Player.RealmSpecialtyPoints);
@@ -2643,7 +2641,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendInterruptAnimation(GameLiving living)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.InterruptSpellCast)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.InterruptSpellCast)))
 			{
 				pak.WriteShort((ushort) living.ObjectID);
 				pak.WriteShort(1);
@@ -2658,7 +2656,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 			if (skill.SkillType == eSkillPage.Abilities || skill.SkillType == eSkillPage.RealmAbilities)
 			{
-				using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DisableSkills)))
+				using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DisableSkills)))
 				{
 					pak.WriteShort((ushort) duration);
 					int id = -1;
@@ -2683,7 +2681,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 			if (skill.SkillType == eSkillPage.Spells)
 			{
-				using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DisableSkills)))
+				using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DisableSkills)))
 				{
 					if (m_gameClient.Player.CharacterClass.ClassType == eClassType.ListCaster)
 					{
@@ -2764,7 +2762,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			byte fxcount = 0;
 			if (m_gameClient.Player == null)
 				return;
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.UpdateIcons)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.UpdateIcons)))
 			{
 				lock (m_gameClient.Player.EffectList)
 				{
@@ -2799,7 +2797,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public virtual void SendLevelUpSound()
 		{
 			// not sure what package this is, but it triggers the mob color update
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.RegionSound)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.RegionSound)))
 			{
 				pak.WriteShort((ushort) m_gameClient.Player.ObjectID);
 				pak.WriteByte(1); //level up sounds
@@ -2810,7 +2808,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendRegionEnterSound(byte soundId)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.RegionSound)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.RegionSound)))
 			{
 				pak.WriteShort((ushort) m_gameClient.Player.ObjectID);
 				pak.WriteByte(2); //region enter sounds
@@ -2822,18 +2820,18 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public virtual void SendDebugMessage(string format, params object[] parameters)
 		{
 			if (m_gameClient.Account.PrivLevel > (int)ePrivLevel.Player || ServerProperties.Properties.ENABLE_DEBUG)
-				SendMessage(String.Format("[DEBUG] " + format, parameters), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				SendMessage(String.Format("[DEBUG] " + format, parameters), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		public virtual void SendDebugPopupMessage(string format, params object[] parameters)
 		{
 			if (m_gameClient.Account.PrivLevel > (int)ePrivLevel.Player || ServerProperties.Properties.ENABLE_DEBUG)
-				SendMessage(String.Format("[DEBUG] " + format, parameters), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				SendMessage(String.Format("[DEBUG] " + format, parameters), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 		}
 
 		public virtual void SendEmblemDialogue()
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.EmblemDialogue)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.EmblemDialogue)))
 			{
 				pak.Fill(0x00, 4);
 				SendTCP(pak);
@@ -2843,7 +2841,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		//FOR GM to test param and see min and max of each param
 		public virtual void SendWeather(uint x, uint width, ushort speed, ushort fogdiffusion, ushort intensity)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Weather)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Weather)))
 			{
 				pak.WriteInt(x);
 				pak.WriteInt(width);
@@ -2857,7 +2855,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendPlayerModelTypeChange(GamePlayer player, byte modelType)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PlayerModelTypeChange)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PlayerModelTypeChange)))
 			{
 				pak.WriteShort((ushort) player.ObjectID);
 				pak.WriteByte(modelType);
@@ -2868,7 +2866,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendObjectDelete(GameObject obj)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ObjectDelete)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ObjectDelete)))
 			{
 				pak.WriteShort((ushort) obj.ObjectID);
 				pak.WriteShort(1); //TODO: unknown
@@ -2881,7 +2879,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ConcentrationList)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ConcentrationList)))
 			{
 				lock (m_gameClient.Player.ConcentrationEffects)
 				{
@@ -2908,7 +2906,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public void SendChangeTarget(GameObject newTarget)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ChangeTarget)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ChangeTarget)))
 			{
 				pak.WriteShort((ushort) (newTarget == null ? 0 : newTarget.ObjectID));
 				pak.WriteShort(0); // unknown
@@ -2918,7 +2916,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public void SendChangeGroundTarget(Point3D newTarget)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ChangeGroundTarget)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ChangeGroundTarget)))
 			{
 				pak.WriteInt((uint) (newTarget == null ? 0 : newTarget.X));
 				pak.WriteInt((uint) (newTarget == null ? 0 : newTarget.Y));
@@ -2930,7 +2928,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public virtual void SendPetWindow(GameLiving pet, ePetWindowAction windowAction, eAggressionState aggroState,
 		                                  eWalkState walkState)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PetWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PetWindow)))
 			{
 				pak.WriteShort((ushort) (pet == null ? 0 : pet.ObjectID));
 				pak.WriteByte(0x00); //unused
@@ -3022,11 +3020,11 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 		}
 
-		public virtual void SendWarmapUpdate(ICollection<AbstractGameKeep> list)
+		public virtual void SendWarMapUpdate(ICollection<AbstractGameKeep> list)
 		{
 		}
 
-		public virtual void SendWarmapBonuses()
+		public virtual void SendWarMapBonuses()
 		{
 		}
 
@@ -3037,7 +3035,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		//housing
 		public virtual void SendHouse(House house)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseCreate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseCreate)))
 			{
 				pak.WriteShort((ushort) house.HouseNumber);
 				pak.WriteShort((ushort) house.Z);
@@ -3063,7 +3061,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendRemoveHouse(House house)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseCreate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseCreate)))
 			{
 				pak.WriteShort((ushort) house.HouseNumber);
 				pak.WriteShort((ushort) house.Z);
@@ -3079,7 +3077,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendHousePayRentDialog(string title)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Dialog)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Dialog)))
 			{
 				pak.WriteByte(0x00);
 				pak.WriteByte((byte) eDialogCode.HousePayRent);
@@ -3095,7 +3093,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendGarden(House house)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseChangeGarden)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseChangeGarden)))
 			{
 				pak.WriteShort((ushort) house.HouseNumber);
 				pak.WriteByte((byte) house.OutdoorItems.Count);
@@ -3116,7 +3114,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendGarden(House house, int i)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseChangeGarden)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseChangeGarden)))
 			{
 				pak.WriteShort((ushort) house.HouseNumber);
 				pak.WriteByte(0x01);
@@ -3132,7 +3130,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendHouseOccupied(House house, bool flagHouseOccuped)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseChangeGarden)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseChangeGarden)))
 			{
 				pak.WriteShort((ushort) house.HouseNumber);
 				pak.WriteByte(0x00);
@@ -3144,7 +3142,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendEnterHouse(House house)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseEnter)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseEnter)))
 			{
 				pak.WriteShort((ushort) house.HouseNumber);
 				pak.WriteShort(25000); //constant!
@@ -3175,7 +3173,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			// do not send anything if client is leaving house due to linkdeath
 			if (m_gameClient != null && m_gameClient.Player != null && m_gameClient.ClientState != GameClient.eClientState.Linkdead)
 			{
-				using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseExit)))
+				using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseExit)))
 				{
 					pak.WriteShort((ushort)house.HouseNumber);
 					pak.WriteShort(unknown);
@@ -3186,7 +3184,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendToggleHousePoints(House house)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseTogglePoints)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseTogglePoints)))
 			{
 				pak.WriteShort((ushort) house.HouseNumber);
 				pak.WriteByte(0x04);
@@ -3201,7 +3199,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if(house == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseUserPermissions)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseUserPermissions)))
 			{
 				pak.WriteByte((byte)house.HousePermissions.Count()); // number of permissions
 				pak.WriteByte(0x00); // ?
@@ -3226,7 +3224,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendFurniture(House house)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HousingItem)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HousingItem)))
 			{
 				pak.WriteShort((ushort) house.HouseNumber);
 				pak.WriteByte((byte) house.IndoorItems.Count);
@@ -3244,7 +3242,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendFurniture(House house, int i)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HousingItem)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HousingItem)))
 			{
 				pak.WriteShort((ushort) house.HouseNumber);
 				pak.WriteByte(0x01); //cnt
@@ -3258,7 +3256,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public virtual void SendRentReminder(House house)
 		{
 			//0:00:58.047 S=>C 0xF7 show help window (topicIndex:106 houseLot?:4281)
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HelpWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HelpWindow)))
 			{
 				pak.WriteShort(106); //short index
 				pak.WriteShort((ushort) house.HouseNumber); //short lot
@@ -3269,7 +3267,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public virtual void SendStarterHelp()
 		{
 			//* 0:00:57.984 S=>C 0xF7 show help window (topicIndex:1 houseLot?:0)
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HelpWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HelpWindow)))
 			{
 				pak.WriteShort(1); //short index
 				pak.WriteShort(0); //short lot
@@ -3279,7 +3277,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendPlaySound(eSoundType soundType, ushort soundID)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PlaySound)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PlaySound)))
 			{
 				pak.WriteShort((ushort) soundType);
 				pak.WriteShort(soundID);
@@ -3314,7 +3312,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendMovingObjectCreate(GameMovingObject obj)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.MovingObjectCreate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.MovingObjectCreate)))
 			{
 				pak.WriteShort((ushort) obj.ObjectID);
 				pak.WriteShort(0);
@@ -3346,7 +3344,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendSiegeWeaponInterface(GameSiegeWeapon siegeWeapon, int time)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.SiegeWeaponInterface)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.SiegeWeaponInterface)))
 			{
 				var flag = (ushort) ((siegeWeapon.EnableToMove ? 1 : 0) | siegeWeapon.AmmoType << 8);
 				pak.WriteShort(flag); //byte Ammo,  byte SiegeMoving(1/0)
@@ -3400,7 +3398,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendSiegeWeaponCloseInterface()
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.SiegeWeaponInterface)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.SiegeWeaponInterface)))
 			{
 				pak.WriteShort(0);
 				pak.WriteShort(1);
@@ -3413,7 +3411,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (siegeWeapon == null)
 				return;
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.SiegeWeaponAnimation)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.SiegeWeaponAnimation)))
 			{
 				pak.WriteInt((uint) siegeWeapon.ObjectID);
 				pak.WriteInt(
@@ -3444,7 +3442,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (siegeWeapon == null)
 				return;
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.SiegeWeaponAnimation)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.SiegeWeaponAnimation)))
 			{
 				pak.WriteInt((uint) siegeWeapon.ObjectID);
 				pak.WriteInt((uint) (siegeWeapon.TargetObject == null ? 0 : siegeWeapon.TargetObject.X));
@@ -3490,7 +3488,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendSoundEffect(ushort soundId, ushort zoneId, ushort x, ushort y, ushort z, ushort radius)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.SoundEffect)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.SoundEffect)))
 			{
 				pak.WriteShort(soundId);
 				pak.WriteShort(zoneId);
@@ -3512,7 +3510,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendCrash(string str)
 		{
-			using (var pak = new GSTCPPacketOut(0x86))
+			using (var pak = new GameTCPPacketOut(0x86))
 			{
 				pak.WriteByte(0xFF);
 				pak.WritePascalString(str);
@@ -3547,7 +3545,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendMarketExplorerWindow()
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.MarketExplorerWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.MarketExplorerWindow)))
 			{
 				pak.WriteByte(255);
 				pak.Fill(0, 3);
@@ -3560,7 +3558,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient == null || m_gameClient.Player == null)
 				return;
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.MarketExplorerWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.MarketExplorerWindow)))
 			{
 				pak.WriteByte((byte)items.Count);
 				pak.WriteByte(page);
@@ -3668,7 +3666,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				mlXPPercent = 100.0; // ML10 has no MLXP, so always 100%
 			}
 
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.MasterLevelWindow)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.MasterLevelWindow)))
 			{
 				pak.WriteByte((byte) mlXPPercent); // MLXP (displayed in window)
 				pak.WriteByte(0x64);
@@ -3697,7 +3695,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public virtual void SendConsignmentMerchantMoney(long money)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ConsignmentMerchantMoney)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ConsignmentMerchantMoney)))
 			{
 				pak.WriteByte((byte)Money.GetCopper(money));
 				pak.WriteByte((byte)Money.GetSilver(money));
@@ -3772,7 +3770,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		protected virtual void SendQuestPacket(AbstractQuest quest, int index)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.QuestEntry)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.QuestEntry)))
 			{
 				pak.WriteByte((byte) index);
 
@@ -3862,7 +3860,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			return name;
 		}
 
-		protected virtual void WriteGroupMemberUpdate(GSTCPPacketOut pak, bool updateIcons, GameLiving living)
+		protected virtual void WriteGroupMemberUpdate(GameTCPPacketOut pak, bool updateIcons, GameLiving living)
 		{
 			pak.WriteByte((byte) (living.GroupIndex + 1)); // From 1 to 8
 			bool sameRegion = living.CurrentRegion == m_gameClient.Player.CurrentRegion;
@@ -3927,7 +3925,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		protected virtual void SendInventorySlotsUpdateRange(ICollection<int> slots, eInventoryWindowType windowType)
 		{
-			using (var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.InventoryUpdate)))
+			using (var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.InventoryUpdate)))
 			{
 				pak.WriteByte((byte) (slots == null ? 0 : slots.Count));
 				pak.WriteByte(
@@ -3939,12 +3937,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				{
 					foreach (int updatedSlot in slots)
 					{
-						if (updatedSlot >= (int) eInventorySlot.Consignment_First && updatedSlot <= (int) eInventorySlot.Consignment_Last)
+						if (updatedSlot >= (int) InventorySlot.Consignment_First && updatedSlot <= (int) InventorySlot.Consignment_Last)
 							pak.WriteByte(
-								(byte) (updatedSlot - (int) eInventorySlot.Consignment_First + (int) eInventorySlot.HousingInventory_First));
+								(byte) (updatedSlot - (int) InventorySlot.Consignment_First + (int) InventorySlot.HousingInventory_First));
 						else
 							pak.WriteByte((byte) (updatedSlot));
-						InventoryItem item = m_gameClient.Player.Inventory.GetItem((eInventorySlot) updatedSlot);
+						InventoryItem item = m_gameClient.Player.Inventory.GetItem((InventorySlot) updatedSlot);
 
 						if (item == null)
 						{
@@ -4026,7 +4024,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 		}
 
-		protected void WriteCustomTextWindowData(GSTCPPacketOut pak, IList<string> text)
+		protected void WriteCustomTextWindowData(GameTCPPacketOut pak, IList<string> text)
 		{
 			byte line = 0;
 			bool needBreak = false;
@@ -4075,7 +4073,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			}
 		}
 
-		protected virtual void WriteHouseFurniture(GSTCPPacketOut pak, IndoorItem item, int index)
+		protected virtual void WriteHouseFurniture(GameTCPPacketOut pak, IndoorItem item, int index)
 		{
 			pak.WriteByte((byte) index);
 			pak.WriteShort((ushort) item.Model);

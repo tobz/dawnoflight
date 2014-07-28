@@ -79,10 +79,10 @@ namespace DawnOfLight.GameServer.Utilities
 				if (m_chatgroupMembers.Contains(player))
 					return false;
 				player.TempProperties.setProperty(CHATGROUP_PROPERTY, this);
-				player.Out.SendMessage("You join the chat group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You join the chat group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				foreach(GamePlayer member in Members.Keys)
 				{
-					member.Out.SendMessage(player.Name+" has joined the chat group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					member.Out.SendMessage(player.Name+" has joined the chat group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				m_chatgroupMembers.Add(player,leader);
 			}
@@ -103,10 +103,10 @@ namespace DawnOfLight.GameServer.Utilities
 					return false;
 				m_chatgroupMembers.Remove(player);
 				player.TempProperties.removeProperty(CHATGROUP_PROPERTY);
-				player.Out.SendMessage("You leave the chat group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You leave the chat group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				foreach(GamePlayer member in Members.Keys)
 				{
-					member.Out.SendMessage(player.Name+" has left the chat group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					member.Out.SendMessage(player.Name+" has left the chat group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				if (m_chatgroupMembers.Count == 1)
 				{

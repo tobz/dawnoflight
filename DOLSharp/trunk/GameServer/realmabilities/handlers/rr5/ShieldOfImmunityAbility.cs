@@ -41,7 +41,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 			}
 			if (ra5l != null)
 			{
-				player.Out.SendMessage("You cannot currently use this ability", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You cannot currently use this ability", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			

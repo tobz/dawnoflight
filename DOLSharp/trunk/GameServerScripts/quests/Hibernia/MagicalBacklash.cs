@@ -318,12 +318,12 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 				Josson.CurrentRegionID = 200;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 386);   //Slot 22
-				template.AddNPCEquipment(eInventorySlot.HeadArmor, 835);    //Slot 21
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 387);     //Slot 23
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 383);    //Slot 25
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 384);    //Slot 27
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 385);    //Slot 28
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 386);   //Slot 22
+				template.AddNPCEquipment(InventorySlot.HeadArmor, 835);    //Slot 21
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 387);     //Slot 23
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 383);    //Slot 25
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 384);    //Slot 27
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 385);    //Slot 28
 				Josson.Inventory = template.CloseTemplate();
 				Josson.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

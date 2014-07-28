@@ -17,17 +17,16 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x03, "Handles housing Users permissions requests from menu")]
+    [PacketHandler(PacketType.TCP, ClientPackets.HouseUsersPermissionsRequest, ClientStatus.PlayerInGame)]
 	public class HouseUsersPermissionsRequestHandler : IPacketHandler
 	{
-		#region IPacketHandler Members
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int unk1 = packet.ReadByte();
 			int unk2 = packet.ReadByte();
@@ -38,10 +37,6 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			if (house == null)
 				return;
 
-			// player is null, return
-			if (client.Player == null)
-				return;
-
 			// player has no owner permissions and isn't a GM or admin, return
 			if (!house.HasOwnerPermissions(client.Player) && client.Account.PrivLevel <= 1)
 				return;
@@ -49,7 +44,5 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			// build the packet
 			client.Out.SendHouseUsersPermissions(house);
 		}
-
-		#endregion
 	}
 }

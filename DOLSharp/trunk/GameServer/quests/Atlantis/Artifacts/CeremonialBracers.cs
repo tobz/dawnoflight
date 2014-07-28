@@ -103,7 +103,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 						"Here, these bracers are unlike any other artifact. I can unlock one power,",
 						"[strength], [constitution], [dexterity], [quickness] or [casting]. You can",
 						"only choose one, and can not return for another. Choose wisely.");
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					Step = 3;
 					return true;
 				}
@@ -138,7 +138,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"please. If you don't have it, I suggest you hunt the creatures of Oceanus til you",
 					"find it.");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}
@@ -166,7 +166,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 								String reply = String.Format("You have made your choice. Here is your {0}",
 									"bracer. Do not lose it. It is irreplaceable.");
 								scholar.TurnTo(player);
-								scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+								scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 								FinishQuest();
 								return true;
 							}

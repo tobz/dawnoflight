@@ -59,29 +59,29 @@ namespace DawnOfLight.GameServer.SkillHandler
 
             if (!player.IsAlive)
             {
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseDead"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseDead"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
             if (player.IsMezzed)
             {
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseMezzed"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseMezzed"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
             if (player.IsStunned)
             {
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseStunned"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseStunned"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
             if (player.IsSitting)
             {
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseStanding"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseStanding"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
 			//Cancel old stag effects on player
 			StagEffect stag = player.EffectList.GetOfType<StagEffect>();
 			if (stag != null)
 			{
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseAlreadyActive"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Skill.Ability.CannotUseAlreadyActive"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
 			}
 			player.DisableSkill(ab, REUSE_TIMER);

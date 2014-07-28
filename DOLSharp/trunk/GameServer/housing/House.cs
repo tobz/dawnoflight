@@ -778,7 +778,7 @@ namespace DawnOfLight.GameServer.Housing
 				var template = GameServer.Database.FindObjectByKey<ItemTemplate>(obj.OwnerID);
 				if (template != null)
 				{
-                    if (player.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, GameInventoryItem.Create<ItemTemplate>(template)))
+                    if (player.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, GameInventoryItem.Create<ItemTemplate>(template)))
                         InventoryLogging.LogInventoryAction("(HOUSE;" + HouseNumber + ")", player, eInventoryActionType.Loot, template);
 				}
 			}

@@ -608,7 +608,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 
             UseSlotEventArgs uArgs = (UseSlotEventArgs)args;
 
-            InventoryItem item = player.Inventory.GetItem((eInventorySlot)uArgs.Slot);
+            InventoryItem item = player.Inventory.GetItem((InventorySlot)uArgs.Slot);
             if (item != null && item.Id_nb == enchantedtenebrousflask.Id_nb)
             {
                 if (quest.Step == 3)

@@ -29,14 +29,14 @@ namespace DawnOfLight.GameServer.Events.GameObjects
 	public class ItemEquippedArgs : EventArgs
 	{
 		private InventoryItem m_item;
-		private eInventorySlot m_previousSlotPosition;
+		private InventorySlot m_previousSlotPosition;
 
 		/// <summary>
 		/// Constructs a new ItemEquippedArgs
 		/// </summary>
 		/// <param name="item">The equipped item</param>
 		/// <param name="previousSlotPosition">The slot position item had before it was equipped</param>
-		public ItemEquippedArgs(InventoryItem item, eInventorySlot previousSlotPosition)
+		public ItemEquippedArgs(InventoryItem item, InventorySlot previousSlotPosition)
 		{
 			m_item = item;
 			m_previousSlotPosition = previousSlotPosition;
@@ -50,7 +50,7 @@ namespace DawnOfLight.GameServer.Events.GameObjects
 		public ItemEquippedArgs(InventoryItem item, int previousSlotPosition)
 		{
 			m_item = item;
-			m_previousSlotPosition = (eInventorySlot)previousSlotPosition;
+			m_previousSlotPosition = (InventorySlot)previousSlotPosition;
 		}
 
 		/// <summary>
@@ -64,7 +64,7 @@ namespace DawnOfLight.GameServer.Events.GameObjects
 		/// <summary>
 		/// Gets the previous slot position
 		/// </summary>
-		public eInventorySlot PreviousSlotPosition
+		public InventorySlot PreviousSlotPosition
 		{
 			get { return m_previousSlotPosition; }
 		}

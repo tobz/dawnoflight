@@ -44,7 +44,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendBlinkPanel(byte flag)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VisualEffect));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VisualEffect));
 			GamePlayer player = base.m_gameClient.Player;
 
 			pak.WriteShort((ushort)player.ObjectID);

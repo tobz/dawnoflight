@@ -44,7 +44,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 			if (args.Length < 3)
 			{
-				client.Out.SendMessage("Please enter X and Y coordinates.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Please enter X and Y coordinates.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -56,7 +56,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			}
 			catch (Exception)
 			{
-				client.Out.SendMessage("Please enter X and Y coordinates.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Please enter X and Y coordinates.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 

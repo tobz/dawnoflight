@@ -37,7 +37,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			if (args.Length < 2)
 			{
                 client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.CmdUsage", bpWorth),
-                    eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				return;
 			}
@@ -45,7 +45,7 @@ namespace DawnOfLight.GameServer.commands.Player
             if (args.Length < 3)
             {
                 client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.CorrectFormat"),
-                    eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
                 return;
             }
@@ -54,7 +54,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			if (house == null)
 			{
                 client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.RangeOfAHouse"),
-                    eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				return;
 			}
@@ -67,7 +67,7 @@ namespace DawnOfLight.GameServer.commands.Player
             catch
             {
                 client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.CorrectFormat"),
-                    eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
                 return;
             }
@@ -79,7 +79,7 @@ namespace DawnOfLight.GameServer.commands.Player
                         if (!house.CanPayRent(client.Player))
                         {
                             client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.NoPayRentPerm"),
-                                eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
                             return;
                         }
@@ -87,7 +87,7 @@ namespace DawnOfLight.GameServer.commands.Player
 						if ((client.Player.BountyPoints -= BPsToAdd) < 0)
 						{
                             client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.NotEnoughBp"),
-                                eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 							return;
 						}
@@ -95,7 +95,7 @@ namespace DawnOfLight.GameServer.commands.Player
                         if (house.KeptMoney >= (HouseMgr.GetRentByModel(house.Model) * ServerProperties.Properties.RENT_LOCKBOX_PAYMENTS))
                         {
                             client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.AlreadyMaxMoney"),
-                                eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
                             return;
                         }
@@ -103,7 +103,7 @@ namespace DawnOfLight.GameServer.commands.Player
                         if ((house.KeptMoney + (BPsToAdd * bpWorth)) > (HouseMgr.GetRentByModel(house.Model) * ServerProperties.Properties.RENT_LOCKBOX_PAYMENTS))
                         {
                             client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.ToManyMoney"),
-                                eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
                             return;
                         }
@@ -116,7 +116,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
                         client.Out.SendUpdatePoints();
                         client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.YouSpend", BPsToAdd, ((BPsToAdd * bpWorth) / bpWorth)),
-                            eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                            ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					} break;
 				case "guild":
 					{
@@ -127,14 +127,14 @@ namespace DawnOfLight.GameServer.commands.Player
                                 if ((client.Player.Guild.BountyPoints -= BPsToAdd) < 0)
                                 {
                                     client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.NotEnoughGuildBp"),
-                                        eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                        ChatType.CT_System, ChatLocation.CL_SystemWindow);
                                     return;
                                 }
 
                                 if (house.KeptMoney >= (HouseMgr.GetRentByModel(house.Model) * ServerProperties.Properties.RENT_LOCKBOX_PAYMENTS))
                                 {
                                     client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.AlreadyMaxMoney"),
-                                        eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                        ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
                                     return;
                                 }
@@ -142,7 +142,7 @@ namespace DawnOfLight.GameServer.commands.Player
                                 if ((house.KeptMoney + (BPsToAdd * bpWorth)) > (HouseMgr.GetRentByModel(house.Model) * ServerProperties.Properties.RENT_LOCKBOX_PAYMENTS))
                                 {
                                     client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.ToManyMoney"),
-                                        eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                        ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
                                     return;
                                 }
@@ -154,14 +154,14 @@ namespace DawnOfLight.GameServer.commands.Player
                                 client.Player.Guild.SaveIntoDatabase();
 
                                 client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.YouSpendGuild", BPsToAdd, ((BPsToAdd * bpWorth) / bpWorth)),
-                                    eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                    ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
                                 return;
                             }
                             else
                             {
                                 client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Bountyrent.NoPayRentPerm"),
-                                    eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                    ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
                                 return;
                             }

@@ -43,7 +43,7 @@ namespace DawnOfLight.GameServer.commands.Player
 
 				IPlayerTitle current = client.Player.CurrentTitle;
 				if (current != null && current.IsForced(client.Player))
-					client.Out.SendMessage("You cannot change the current title.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You cannot change the current title.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				else
 				{
 					IList titles = client.Player.Titles;

@@ -35,7 +35,7 @@ namespace DawnOfLight.GameServer.commands.Player
 		{
 			if (client.Player.Group != null && client.Player.Group.Leader != client.Player)
 			{
-				client.Out.SendMessage("You are not the leader of your group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You are not the leader of your group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -49,13 +49,13 @@ namespace DawnOfLight.GameServer.commands.Player
 			{ // Inviting by target
 				if (client.Player.TargetObject == null || client.Player.TargetObject == client.Player)
 				{
-					client.Out.SendMessage("You have not selected a valid player as your target.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You have not selected a valid player as your target.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 
 				if (!(client.Player.TargetObject is GamePlayer))
 				{
-					client.Out.SendMessage("You have not selected a valid player as your target.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You have not selected a valid player as your target.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 				target = (GamePlayer) client.Player.TargetObject;
@@ -73,26 +73,26 @@ namespace DawnOfLight.GameServer.commands.Player
 					target = targetClient.Player;
 				if (target == null || !GameServer.ServerRules.IsAllowedToGroup(client.Player, target, true))
 				{ // Invalid target or realm restriction
-					client.Out.SendMessage("No players online with that name.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("No players online with that name.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 				if (target == client.Player)
 				{
-					client.Out.SendMessage("You can't invite yourself.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You can't invite yourself.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 			}
 
 			if (target.Group != null)
 			{
-				client.Out.SendMessage("The player is still in a group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("The player is still in a group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
 			if (GameServer.Instance.Configuration.ServerType == eGameServerType.GST_PvP &&
 				target.IsStealthed)
 			{
-				client.Out.SendMessage("You can't find the player around here.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You can't find the player around here.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -112,14 +112,14 @@ namespace DawnOfLight.GameServer.commands.Player
 					client.Player.Group.AddMember(target);
 				}
 
-				client.Out.SendMessage("(GM) You have added " + target.Name + " to your group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-				target.Out.SendMessage("GM " + client.Player.Name + " has added you to " + client.Player.GetPronoun(1, false) + " group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("(GM) You have added " + target.Name + " to your group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+				target.Out.SendMessage("GM " + client.Player.Name + " has added you to " + client.Player.GetPronoun(1, false) + " group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
-				client.Out.SendMessage("You have invited " + target.Name + " to join your group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You have invited " + target.Name + " to join your group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				target.Out.SendGroupInviteCommand(client.Player, client.Player.Name + " has invited you to join\n" + client.Player.GetPronoun(1, false) + " group. Do you wish to join?");
-				target.Out.SendMessage(client.Player.Name + " has invited you to join " + client.Player.GetPronoun(1, false) + " group.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				target.Out.SendMessage(client.Player.Name + " has invited you to join " + client.Player.GetPronoun(1, false) + " group.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 	}

@@ -20,6 +20,7 @@
 using System.Collections;
 using System.IO;
 using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.Network.Packets;
 using log4net;
@@ -48,7 +49,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		/// <param name="info"></param>
 		public override void SendDelveInfo(string info)
 		{
-			var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DelveInfo));
+			var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DelveInfo));
 			pak.WriteString(info, 2048);
 			pak.WriteByte(0); // 0-terminated
 			SendTCP(pak);
@@ -60,7 +61,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			{
 				return;
 			}
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.UpdateIcons));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.UpdateIcons));
 			long initPos = pak.Position;
 
 			int fxcount = 0;
@@ -170,7 +171,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			int maxSkills = 0;
 			int firstSkills = 0;
 
-			var pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+			var pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 			bool flagSendHybrid = true;
 			if (m_gameClient.Player.CharacterClass.ClassType == eClassType.ListCaster)
 				flagSendHybrid = false;
@@ -324,7 +325,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 			if (m_gameClient.Player.CharacterClass.ClassType != eClassType.ListCaster)
 			{
-				pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+				pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 				pak.WriteByte(0x02); //subcode
 				pak.WriteByte(0x00);
 				pak.WriteByte(99); //subtype (new subtype 99 in 1.80e)
@@ -338,7 +339,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 
-			GSTCPPacketOut pak; // = new GSTCPPacketOut(GetPacketCode(ePackets.VariousUpdate));
+			GameTCPPacketOut pak; // = new GameTCPPacketOut(GetPacketCode(ePackets.VariousUpdate));
 			IList<SpellLine> spelllines = m_gameClient.Player.GetSpellLines();
 			byte linenumber = 0;
 
@@ -365,7 +366,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 							spellcount++;
 						}
 					}
-					pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+					pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 					pak.WriteByte(0x02); //subcode
 					pak.WriteByte((byte)(spellcount + 1)); //number of entry
 					pak.WriteByte(0x02); //subtype
@@ -390,7 +391,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				}
 			}
 
-			pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+			pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 			pak.WriteByte(0x02); //subcode
 			pak.WriteByte(0x00);
 			pak.WriteByte(99); //subtype (new subtype 99 in 1.80e)

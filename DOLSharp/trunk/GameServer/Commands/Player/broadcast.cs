@@ -53,7 +53,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			}
 			if (client.Player.IsMuted)
 			{
-				client.Player.Out.SendMessage("You have been muted. You cannot broadcast.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage("You have been muted. You cannot broadcast.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			string message = string.Join(" ", args, 1, args.Length - 1);
@@ -66,7 +66,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			long changeTime = client.Player.CurrentRegion.Time - BroadTick;
 			if (changeTime < 800 && BroadTick > 0)
 			{
-				client.Player.Out.SendMessage("Slow down! Think before you say each word!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage("Slow down! Think before you say each word!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				client.Player.TempProperties.setProperty(BROAD_TICK, client.Player.CurrentRegion.Time);
 				return;
 			}
@@ -81,7 +81,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			{
 				if (GameServer.ServerRules.IsAllowedToUnderstand(p, player) || ((eBroadcastType)ServerProperties.Properties.BROADCAST_TYPE == eBroadcastType.Server))
 				{
-					p.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Players.Broadcast.Message", player.Name, message), eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow);
+					p.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Players.Broadcast.Message", player.Name, message), ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow);
 				}
 			}
 
@@ -112,7 +112,7 @@ namespace DawnOfLight.GameServer.commands.Player
 						}
 						if (!found)
 						{
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Players.Broadcast.NoHere"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Players.Broadcast.NoHere"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 						break;
 					}

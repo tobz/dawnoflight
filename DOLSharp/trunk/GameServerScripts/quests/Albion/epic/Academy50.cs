@@ -163,8 +163,8 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				Morgana.SetOwnBrain(brain);
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 98, 43);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 133, 61);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 98, 43);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 133, 61);
 				Morgana.Inventory = template.CloseTemplate();
 
 //				Morgana.AddNPCEquipment((byte) eVisibleItems.TORSO, 98, 43, 0, 0);
@@ -1115,8 +1115,8 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				Morgana.SetOwnBrain(brain);
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 98, 43);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 133, 61);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 98, 43);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 133, 61);
 				Morgana.Inventory = template.CloseTemplate();
 
 //				Morgana.AddNPCEquipment((byte) eVisibleItems.TORSO, 98, 43, 0, 0);
@@ -1273,7 +1273,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 
 			if (response == 0x00)
 			{
-				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 			}
 			else
 			{
@@ -1324,7 +1324,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 						Morgana.Yell("You may have stopped me here, but I'll come back! Albion will be mine!");
 						DeleteMorgana();
 
-						m_questPlayer.Out.SendMessage("Take the pouch to " + Ferowl.GetName(0, true), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						m_questPlayer.Out.SendMessage("Take the pouch to " + Ferowl.GetName(0, true), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						GiveItem(m_questPlayer, sealed_pouch);
 						Step = 2;
 						return;
@@ -1353,7 +1353,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 
 		public override void FinishQuest()
 		{
-			if (m_questPlayer.Inventory.IsSlotsFree(6, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+			if (m_questPlayer.Inventory.IsSlotsFree(6, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
 				RemoveItem(Ferowl, m_questPlayer, sealed_pouch);
 
@@ -1393,7 +1393,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 			}
 			else
 			{
-				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 

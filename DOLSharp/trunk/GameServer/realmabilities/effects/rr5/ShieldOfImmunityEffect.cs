@@ -54,9 +54,9 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 				ad.Damage -= absorb;
 				ad.CriticalDamage -= critic;
 				if (living is GamePlayer)
-					((GamePlayer)living).Out.SendMessage("Your Shield of Immunity absorbs " + (absorb + critic) + " points of damage", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					((GamePlayer)living).Out.SendMessage("Your Shield of Immunity absorbs " + (absorb + critic) + " points of damage", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				if (ad.Attacker is GamePlayer)
-					((GamePlayer)ad.Attacker).Out.SendMessage(living.Name + "'s Shield of Immunity absorbs " + (absorb + critic) + " points of damage", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					((GamePlayer)ad.Attacker).Out.SendMessage(living.Name + "'s Shield of Immunity absorbs " + (absorb + critic) + " points of damage", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 
 			}
 		}

@@ -63,7 +63,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects
 		{
 			if (m_countdown > 0)
 			{
-				((GamePlayer)Owner).Out.SendMessage("You are hidden for " + m_countdown + " more seconds!", eChatType.CT_SpellPulse, eChatLoc.CL_SystemWindow);
+				((GamePlayer)Owner).Out.SendMessage("You are hidden for " + m_countdown + " more seconds!", ChatType.CT_SpellPulse, ChatLocation.CL_SystemWindow);
 				m_countdown--;
 				return 1000;
 			}

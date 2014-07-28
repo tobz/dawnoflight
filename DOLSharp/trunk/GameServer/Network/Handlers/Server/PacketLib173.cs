@@ -24,6 +24,7 @@ using System.IO;
 using System.Net;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Keeps;
@@ -56,7 +57,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
         public override void SendWarlockChamberEffect(GamePlayer player)
         {
-            GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VisualEffect));
+            GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VisualEffect));
 
             pak.WriteShort((ushort)player.ObjectID);
             pak.WriteByte((byte)3);
@@ -133,7 +134,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public override void SendUpdateIcons(IList changedEffects, ref int lastUpdateEffectsCount)
 		{
 			if (m_gameClient.Player == null) return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.UpdateIcons));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.UpdateIcons));
 			long initPos = pak.Position;
 
 			int fxcount = 0;
@@ -205,7 +206,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				Region region = WorldMgr.GetRegion((ushort)m_gameClient.Player.CurrentRegionID);
 				if (region == null)
 					return;
-				GSTCPPacketOut pak = new GSTCPPacketOut(0xB1);
+				GameTCPPacketOut pak = new GameTCPPacketOut(0xB1);
 				//				pak.WriteByte((byte)((region.Expansion + 1) << 4)); // Must be expansion
 				pak.WriteByte(0); // but this packet sended when client in old region. but this field must show expanstion for jump destanation region
 				//Dinberg - trying to get instances to work.
@@ -229,7 +230,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				int count = entries.Length;
 				while (entries != null && count > index)
 				{
-					GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.ClientRegions));
+					GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.ClientRegions));
 					for (int i = 0; i < 4; i++)
 					{
 						while (index < count && (int)m_gameClient.ClientType <= entries[index].expansion)
@@ -274,7 +275,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				default: throw new Exception("CharacterOverview requested for unknown realm " + realm);
 			}
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.CharacterOverview));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.CharacterOverview));
 			pak.FillString(m_gameClient.Account.Name, 24);
 			IList<InventoryItem> items;
 			DOLCharacters[] characters = m_gameClient.Account.Characters;
@@ -416,7 +417,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 								int l;
 								if (k == 0x15 + 3)
 									//shield emblem
-									l = (int)eInventorySlot.LeftHandWeapon;
+									l = (int)InventorySlot.LeftHandWeapon;
 								else
 									l = k;
 
@@ -466,9 +467,9 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 								byte lefthand = 0xFF;
 								foreach (InventoryItem item in items)
 								{
-									if (item.SlotPosition == (int)eInventorySlot.RightHandWeapon)
+									if (item.SlotPosition == (int)InventorySlot.RightHandWeapon)
 										righthand = 0x00;
-									if (item.SlotPosition == (int)eInventorySlot.LeftHandWeapon)
+									if (item.SlotPosition == (int)InventorySlot.LeftHandWeapon)
 										lefthand = 0x01;
 								}
 								if (righthand == lefthand)
@@ -503,7 +504,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public override void SendKeepInfo(AbstractGameKeep keep)
 		{
 			if (m_gameClient.Player == null) return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.KeepInfo));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.KeepInfo));
 
 			pak.WriteShort((ushort)keep.KeepID);
 			pak.WriteShort(0);
@@ -523,7 +524,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			if (player == null)
 				return;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VisualEffect));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VisualEffect));
 			pak.WriteShort((ushort)player.ObjectID);
 			pak.WriteByte(0x3); // show Hex
 			pak.WriteByte(effect1);
@@ -540,7 +541,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null || npc == null)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VisualEffect));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VisualEffect));
 
 			pak.WriteShort((ushort)npc.ObjectID);
 			pak.WriteByte(0x7); // Quest visual effect
@@ -550,21 +551,21 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			SendTCP(pak);
 		}
 
-		public override void SendMessage(string msg, eChatType type, eChatLoc loc)
+		public override void SendMessage(string msg, ChatType type, ChatLocation loc)
 		{
 			if (m_gameClient.ClientState == GameClient.eClientState.CharScreen)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.Message));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.Message));
 			pak.WriteShort(0xFFFF);
 			pak.WriteShort((ushort)m_gameClient.SessionID);
 			pak.WriteByte((byte)type);
 			pak.Fill(0x0, 3);
 
 			String str;
-			if (loc == eChatLoc.CL_ChatWindow)
+			if (loc == ChatLocation.CL_ChatWindow)
 				str = "@@";
-			else if (loc == eChatLoc.CL_PopupWindow)
+			else if (loc == ChatLocation.CL_PopupWindow)
 				str = "##";
 			else
 				str = "";
@@ -622,7 +623,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player == null)
 				return;
 			SendRegions();
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.RegionChanged));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.RegionChanged));
 
             //Dinberg - Changing to allow instances...
             pak.WriteShort(m_gameClient.Player.CurrentRegion.Skin);
@@ -634,7 +635,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		protected override void SendQuestPacket(AbstractQuest quest, int index)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.QuestEntry));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.QuestEntry));
 
 			pak.WriteByte((byte)index);
 			if (quest.Step <= 0)
@@ -675,7 +676,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			string name = BuildTaskString();
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.QuestEntry));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.QuestEntry));
 			pak.WriteByte(0); //index
 			pak.WriteShortLowEndian((ushort)name.Length);
 			pak.WriteByte((byte)0);
@@ -686,7 +687,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendSiegeWeaponInterface(GameSiegeWeapon siegeWeapon, int time)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.SiegeWeaponInterface));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.SiegeWeaponInterface));
 			ushort flag = (ushort)((siegeWeapon.EnableToMove ? 1 : 0) | siegeWeapon.AmmoType << 8);
 			pak.WriteShort(flag); //byte Ammo,  byte SiegeMoving(1/0)
 			pak.WriteByte(0);

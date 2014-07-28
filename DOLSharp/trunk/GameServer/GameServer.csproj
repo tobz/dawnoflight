@@ -374,6 +374,8 @@
     <Compile Include="GameObjects\GameInventoryObject.cs" />
     <Compile Include="GameObjects\GameMythirian.cs" />
     <Compile Include="GameObjects\GameSiegeItem.cs" />
+    <Compile Include="Network\Handlers\Client\PlayerTrainHandler.cs" />
+    <Compile Include="Network\Handlers\Client\PlayerTrainWindowHandler.cs" />
     <Compile Include="Utilities\LootGeneratorAtlanteanGlass.cs" />
     <Compile Include="Utilities\LootGeneratorAurulite.cs" />
     <Compile Include="Utilities\LootGeneratorDragonscales.cs" />
@@ -381,6 +383,7 @@
     <Compile Include="Utilities\MarketSearch.cs" />
     <Compile Include="Utilities\InventoryLogging.cs" />
     <Compile Include="Utilities\MarketCache.cs" />
+    <Compile Include="Utilities\Password.cs" />
     <Compile Include="Utilities\ServerListUpdate.cs" />
     <Compile Include="Keeps\IKeepManager.cs" />
     <Compile Include="Keeps\Relics\GameInventoryRelic.cs" />
@@ -913,11 +916,11 @@
     <Compile Include="Network\Handlers\Client\CharacterOverviewRequestHandler.cs" />
     <Compile Include="Network\Handlers\Client\CharacterSelectRequestHandler.cs" />
     <Compile Include="Network\Handlers\Client\checklosrequesthandler.cs" />
-    <Compile Include="Network\Handlers\Client\ClientCrashPacketHandler.cs" />
+    <Compile Include="Network\Handlers\Client\ClientCrashHandler.cs" />
     <Compile Include="Network\Handlers\Client\MinotaurRelicWindowHandler.cs" />
     <Compile Include="Network\Handlers\Client\PlayerMarketSearchRequestHandler.cs" />
     <Compile Include="Network\Handlers\Client\PlayerSetMarketPrice.cs" />
-    <Compile Include="Network\Handlers\Client\PlayerWithdrawMerchantMoney.cs" />
+    <Compile Include="Network\Handlers\Client\PlayerWithdrawMerchantMoneyHandler.cs" />
     <Compile Include="Network\Handlers\Client\QuestRewardChosenHandler.cs" />
     <Compile Include="Network\Handlers\Client\ShipHookpointInteract.cs" />
     <Compile Include="Network\Handlers\Client\CryptKeyRequestHandler.cs" />
@@ -967,7 +970,7 @@
     <Compile Include="Network\Handlers\Client\PlayerPickUpRequestHandler.cs" />
     <Compile Include="Network\Handlers\Client\PlayerPositionUpdateHandler.cs" />
     <Compile Include="Network\Handlers\Client\PlayerSellRequestHandler.cs" />
-    <Compile Include="Network\Handlers\Client\PlayerSitRequest.cs" />
+    <Compile Include="Network\Handlers\Client\PlayerSitRequestHandler.cs" />
     <Compile Include="Network\Handlers\Client\PlayerTargetHandler.cs" />
     <Compile Include="Network\Handlers\Client\PlayerTrainRequestHandler.cs" />
     <Compile Include="Network\Handlers\Client\RegionChangeRequestHandler.cs" />
@@ -979,8 +982,8 @@
     <Compile Include="Network\Handlers\Client\UseSkillHandler.cs" />
     <Compile Include="Network\Handlers\Client\UseSlotHandler.cs" />
     <Compile Include="Network\Handlers\Client\UseSpellHandler.cs" />
-    <Compile Include="Network\Handlers\Client\warmapbonusesrequesthandler.cs" />
-    <Compile Include="Network\Handlers\Client\warmapshowrequesthandler.cs" />
+    <Compile Include="Network\Handlers\Client\WarMapBonusesRequestHandler.cs" />
+    <Compile Include="Network\Handlers\Client\WarMapShowRequestHandler.cs" />
     <Compile Include="Network\Handlers\Client\WorldInitRequestHandler.cs" />
     <Compile Include="Network\Handlers\Client\QuestRemoveRequestHandler.cs" />
     <Compile Include="Network\AbstractPacketLib.cs" />
@@ -1002,8 +1005,8 @@
     <Compile Include="Network\Handlers\Server\PacketLib196.cs" />
     <Compile Include="Network\Handlers\Server\PacketLib188.cs" />
     <Compile Include="Network\Crypto\CryptLib168.cs" />
-    <Compile Include="Network\Packets\GSTCPPacketOut.cs" />
-    <Compile Include="Network\Packets\GSUDPPacketOut.cs" />
+    <Compile Include="Network\Packets\GameTCPPacketOut.cs" />
+    <Compile Include="Network\Packets\GameUDPPacketOut.cs" />
     <Compile Include="Network\IPacketEncoding.cs" />
     <Compile Include="Network\IPacketHandler.cs" />
     <Compile Include="Network\IPacketLib.cs" />
@@ -1486,7 +1489,7 @@
     <Compile Include="Utilities\GroupMgr.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Utilities\GSPacketIn.cs">
+    <Compile Include="Utilities\GamePacketIn.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utilities\Guild.cs">

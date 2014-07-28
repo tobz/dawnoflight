@@ -106,7 +106,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 						"or a two-handed one. All you must do is decide which kind of damage you",
 						"would like to do to your enemies. Once you have chosen, you cannot change",
 						"your mind.");
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					Step = 3;
 					return true;
 				}
@@ -136,7 +136,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 			{
 				String reply = "Ah, yes, the axe of Malice. It has an interesting tale, but I'm not sure I believe it. Did you find the story of the axe? If you have, please give it to me now.";
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}
@@ -152,7 +152,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 								text.ToLower(),
 								"[one handed] or [two handed]?");
 							scholar.TurnTo(player);
-							scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+							scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 							Step = 4;
 							return true;
 						}
@@ -182,7 +182,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 									template.Name,
 									"Just don't lose it. You can't ever replace it.");
 								scholar.TurnTo(player);
-								scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+								scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 								FinishQuest();
 								return true;
 							}

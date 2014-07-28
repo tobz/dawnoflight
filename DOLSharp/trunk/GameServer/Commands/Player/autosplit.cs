@@ -63,7 +63,7 @@ namespace DawnOfLight.GameServer.commands.Player
 						{
 							client.Player.Group.AutosplitLoot = true;
 							client.Player.Group.AutosplitCoins = true;
-							client.Player.Group.SendMessageToGroupMembers(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Autosplit.On"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Group.SendMessageToGroupMembers(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Autosplit.On"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							break;
 						}
 
@@ -71,19 +71,19 @@ namespace DawnOfLight.GameServer.commands.Player
 						{
 							client.Player.Group.AutosplitLoot = false;
 							client.Player.Group.AutosplitCoins = false;
-							client.Player.Group.SendMessageToGroupMembers(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Autosplit.Off"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Group.SendMessageToGroupMembers(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Autosplit.Off"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							break;
 						}
 					case "coins":
 						{
 							client.Player.Group.AutosplitCoins = !client.Player.Group.AutosplitCoins;
-							client.Player.Group.SendMessageToGroupMembers(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Autosplit.Coins") + (client.Player.Group.AutosplitCoins ? "on" : "off") + " the autosplit coin", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Group.SendMessageToGroupMembers(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Autosplit.Coins") + (client.Player.Group.AutosplitCoins ? "on" : "off") + " the autosplit coin", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							break;
 						}
 					case "loot":
 						{
 							client.Player.Group.AutosplitLoot = !client.Player.Group.AutosplitLoot;
-							client.Player.Group.SendMessageToGroupMembers(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Autosplit.Loot") + (client.Player.Group.AutosplitCoins ? "on" : "off") + " the autosplit coin", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Player.Group.SendMessageToGroupMembers(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Autosplit.Loot") + (client.Player.Group.AutosplitCoins ? "on" : "off") + " the autosplit coin", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							break;
 						}
 				}
@@ -94,7 +94,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			if (command == "self")
 			{
 				client.Player.AutoSplitLoot = !client.Player.AutoSplitLoot;
-				client.Player.Group.SendMessageToGroupMembers(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Autosplit.Self", client.Player.Name) + (client.Player.AutoSplitLoot ? "on" : "off") + " their autosplit loot", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Player.Group.SendMessageToGroupMembers(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Autosplit.Self", client.Player.Name) + (client.Player.AutoSplitLoot ? "on" : "off") + " their autosplit loot", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 

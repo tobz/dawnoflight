@@ -36,10 +36,10 @@ namespace DawnOfLight.GameServer.commands.Player
 			if (client.Player.GroundTarget != null)
 			{
                 int range = client.Player.GetDistanceTo( client.Player.GroundTarget );
-				client.Out.SendMessage("Range to target: " + range + " units.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Range to target: " + range + " units.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
-				client.Out.SendMessage("Range to target: You don't have a ground target set.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Range to target: You don't have a ground target set.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 	}
 }

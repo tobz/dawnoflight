@@ -49,11 +49,11 @@ namespace DawnOfLight.GameServer.Behavior.Actions
             ItemTemplate newItem = Q;
 
             //TODO: what about stacked items???
-            if (player.Inventory.RemoveTemplate(oldItem.Id_nb, 1, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+            if (player.Inventory.RemoveTemplate(oldItem.Id_nb, 1, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
             {
                 InventoryLogging.LogInventoryAction(player, NPC, eInventoryActionType.Quest, oldItem, 1);
 				InventoryItem inventoryItem = GameInventoryItem.Create<ItemTemplate>(newItem);
-                if (player.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, inventoryItem))
+                if (player.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, inventoryItem))
                     InventoryLogging.LogInventoryAction(NPC, player, eInventoryActionType.Quest, newItem, 1);
             }
         }

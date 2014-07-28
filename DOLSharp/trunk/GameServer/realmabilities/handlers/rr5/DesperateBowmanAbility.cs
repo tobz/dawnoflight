@@ -52,7 +52,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 
 			GamePlayer player = caster as GamePlayer;
 			if (player != null)
-				player.Out.SendMessage("You hit " + target.Name + " for " + damage + " points of damage!", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You hit " + target.Name + " for " + damage + " points of damage!", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 
 			GamePlayer targetPlayer = target as GamePlayer;
 			if (targetPlayer != null)

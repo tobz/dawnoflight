@@ -18,6 +18,7 @@
  */
 
 using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects.CustomNPC;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Utilities;
@@ -25,34 +26,26 @@ using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-    [PacketHandler(PacketHandlerType.TCP, 0x1C, "Withdraw GameConsignmentMerchant Merchant Money")]
-    public class PlayerWithdrawMerchantMoney : IPacketHandler
+    [PacketHandler(PacketType.TCP, ClientPackets.PlayerWithdrawMerchantMoney, ClientStatus.PlayerInGame)]
+    public class PlayerWithdrawMerchantMoneyHandler : IPacketHandler
     {
-        /// <summary>
-        /// Defines a logger for this class.
-        /// </summary>
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        public void HandlePacket(GameClient client, GSPacketIn packet)
+        public void HandlePacket(GameClient client, GamePacketIn packet)
         {
-			// player is null, return
-            if (client.Player == null)
-                return;
-
-			// active consignment merchant is null, return
-            GameConsignmentMerchant conMerchant = client.Player.ActiveInventoryObject as GameConsignmentMerchant;
+			var conMerchant = client.Player.ActiveInventoryObject as GameConsignmentMerchant;
             if (conMerchant == null)
                 return;
 
 			// current house is null, return
-            House house = HouseMgr.GetHouse(conMerchant.HouseNumber);
+            var house = HouseMgr.GetHouse(conMerchant.HouseNumber);
             if (house == null)
                 return;
 
 			// make sure player has permissions to withdraw from the consignment merchant
             if (!house.CanUseConsignmentMerchant(client.Player, ConsignmentPermissions.Withdraw))
             {
-                client.Player.Out.SendMessage("You don't have permission to withdraw money from this merchant!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+                client.Player.Out.SendMessage("You don't have permission to withdraw money from this merchant!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
                 return;
             }
 
@@ -64,7 +57,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				{
 					if (ServerProperties.Properties.CONSIGNMENT_USE_BP)
 					{
-						client.Player.Out.SendMessage("You withdraw " + totalConMoney.ToString() + " BountyPoints from your Merchant.", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+						client.Player.Out.SendMessage("You withdraw " + totalConMoney.ToString() + " BountyPoints from your Merchant.", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 						client.Player.BountyPoints += totalConMoney;
 						client.Player.Out.SendUpdatePoints();
 					}

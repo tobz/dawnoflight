@@ -89,12 +89,12 @@ namespace DawnOfLight.GameServer.GameEvents
 					message = realm + message;
 				}
 
-				eChatType chatType = eChatType.CT_System;
+				ChatType chatType = ChatType.CT_System;
 
-				if (Enum.IsDefined(typeof(eChatType), ServerProperties.Properties.SHOW_LOGINS_CHANNEL))
-					chatType = (eChatType)ServerProperties.Properties.SHOW_LOGINS_CHANNEL;
+				if (Enum.IsDefined(typeof(ChatType), ServerProperties.Properties.SHOW_LOGINS_CHANNEL))
+					chatType = (ChatType)ServerProperties.Properties.SHOW_LOGINS_CHANNEL;
 
-				pclient.Out.SendMessage(message, chatType, eChatLoc.CL_SystemWindow);
+				pclient.Out.SendMessage(message, chatType, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -134,12 +134,12 @@ namespace DawnOfLight.GameServer.GameEvents
 					message = realm + message;
 				}
 
-				eChatType chatType = eChatType.CT_System;
+				ChatType chatType = ChatType.CT_System;
 
-				if (Enum.IsDefined(typeof(eChatType), ServerProperties.Properties.SHOW_LOGINS_CHANNEL))
-					chatType = (eChatType)ServerProperties.Properties.SHOW_LOGINS_CHANNEL;
+				if (Enum.IsDefined(typeof(ChatType), ServerProperties.Properties.SHOW_LOGINS_CHANNEL))
+					chatType = (ChatType)ServerProperties.Properties.SHOW_LOGINS_CHANNEL;
 
-				pclient.Out.SendMessage(message, chatType, eChatLoc.CL_SystemWindow);
+				pclient.Out.SendMessage(message, chatType, ChatLocation.CL_SystemWindow);
 			}
 		}
 	}

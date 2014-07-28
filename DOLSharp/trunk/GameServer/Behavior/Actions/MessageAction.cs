@@ -52,25 +52,25 @@ namespace DawnOfLight.GameServer.Behavior.Actions
                     player.Out.SendCustomDialog(message, null);
                     break;
                 case eTextType.Emote:
-                    player.Out.SendMessage(message, eChatType.CT_Emote, eChatLoc.CL_ChatWindow);
+                    player.Out.SendMessage(message, ChatType.CT_Emote, ChatLocation.CL_ChatWindow);
                     break;
 				case eTextType.Say:
-					player.Out.SendMessage(message, eChatType.CT_Say, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage(message, ChatType.CT_Say, ChatLocation.CL_ChatWindow);
 					break;
 				case eTextType.SayTo:
-					player.Out.SendMessage(message, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					player.Out.SendMessage(message, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 					break;
 				case eTextType.Yell:
-					player.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_ChatWindow);
 					break;
                 case eTextType.Broadcast:
                     foreach (GameClient clientz in WorldMgr.GetAllPlayingClients())
                     {
-                        clientz.Player.Out.SendMessage(message, eChatType.CT_Broadcast, eChatLoc.CL_ChatWindow);
+                        clientz.Player.Out.SendMessage(message, ChatType.CT_Broadcast, ChatLocation.CL_ChatWindow);
                     }
                     break;
                 case eTextType.Read:
-                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Behaviour.MessageAction.ReadMessage", message), eChatType.CT_Emote, eChatLoc.CL_PopupWindow);
+                    player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Behaviour.MessageAction.ReadMessage", message), ChatType.CT_Emote, ChatLocation.CL_PopupWindow);
                     break;  
                 case eTextType.None:
                     //nohting

@@ -43,26 +43,26 @@ namespace DawnOfLight.GameServer.Spells.Animist
 			if(selectedTarget == null)
 			{
                 if (Caster is GamePlayer)
-                    MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "TurretsRelease.CheckBeginCast.NoSelectedTarget"), eChatType.CT_SpellResisted);
+                    MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "TurretsRelease.CheckBeginCast.NoSelectedTarget"), ChatType.CT_SpellResisted);
                 return false;
 			}
 			GameNPC target = selectedTarget as GameNPC;
 			if(target == null || !(target.Brain is TurretBrain) || !Caster.IsControlledNPC(target))
 			{
                 if (Caster is GamePlayer)
-                    MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "TurretsRelease.CheckBeginCast.NoSelectedTarget"), eChatType.CT_SpellResisted);
+                    MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "TurretsRelease.CheckBeginCast.NoSelectedTarget"), ChatType.CT_SpellResisted);
                 return false;
 			}
 			if((target.Brain is TurretBrain) && !Caster.IsControlledNPC(target))
 			{
                 if (Caster is GamePlayer)
-                    MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "TurretsRelease.CheckBeginCast.NoSelectedTarget"), eChatType.CT_SpellResisted);
+                    MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "TurretsRelease.CheckBeginCast.NoSelectedTarget"), ChatType.CT_SpellResisted);
                 return false;
 			}
             if ( !Caster.IsWithinRadius( target, Spell.Range ) )
 			{
                 if (Caster is GamePlayer)
-                    MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "TurretsRelease.CheckBeginCast.TargetTooFarAway"), eChatType.CT_SpellResisted);
+                    MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "TurretsRelease.CheckBeginCast.TargetTooFarAway"), ChatType.CT_SpellResisted);
                 return false;
 			}
 			return base.CheckBeginCast(selectedTarget);

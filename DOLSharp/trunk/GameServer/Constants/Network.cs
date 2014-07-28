@@ -5,7 +5,27 @@ using System.Text;
 
 namespace DawnOfLight.GameServer.Constants
 {
-    public enum eServerPackets : byte
+    public enum eEncryptionState
+    {
+        NotEncrypted = 0,
+        RSAEncrypted = 1,
+        PseudoRC4Encrypted = 2
+    }
+
+    public enum PacketType
+    {
+        TCP = 0x01,
+        UDP = 0x02
+    }
+
+    public enum ClientStatus
+    {
+        None = 0,
+        LoggedIn = 1,
+        PlayerInGame = 2
+    }
+
+    public enum ServerPackets : byte
     {
         InventoryUpdate = 0x02,
         HouseUserPermissions = 0x03,
@@ -120,33 +140,86 @@ namespace DawnOfLight.GameServer.Constants
         MasterLevelWindow = 0x13,
     }
 
-    public enum eClientPackets : byte
+    public enum ClientPackets : byte
     {
-        PlayerCancelsEffect = 0xF8,			// 0x50 ^ 168
-        PlayerAttackRequest = 0x74,			// 0xDC ^ 168
-        PlayerAppraiseItemRequest = 0xE0,	// 0x48 ^ 168
+        PlayerCancelsEffect = 0xF8,
+        PlayerAttackRequest = 0x74,
+        PlayerAppraiseItemRequest = 0xE0,
         PetWindow = 0x8A,
-        ObjectInteractRequest = 0x7A,		// 0xD2 ^ 168
-        InviteToGroup = 0x87,				// 0x2F ^ 168
+        ObjectInteractRequest = 0x7A,
+        InviteToGroup = 0x87,
         HouseEnterLeave = 0x0B,
-        DoorRequest = 0x99,					// 0x31 ^ 168
-        DisbandFromGroup = 0xA8,			// 0x37 ^ 168
-        DialogResponse = 0x82,				// 0x2A ^ 168
+        DoorRequest = 0x99,
+        DisbandFromGroup = 0xA8,
+        DialogResponse = 0x82,
         CheckLOSRequest = 0xD0,
-        WorldInit = 0xD4,					// 0x7C ^ 168
-        UseSpell = 0x7D,					// 0xD5 ^ 168
-        UseSlot = 0x71,						// 0xD9 ^ 168
-        UseSkill = 0xBB,					// 0x13 ^ 168
-        RemoveConcentrationEffect = 0x76,	// 0xDE ^ 168
-        PlayerRegionChangeRequest = 0x90,	// 0x38 ^ 168
+        WorldInitRequest = 0xD4,
+        UseSpell = 0x7D,
+        UseSlot = 0x71,
+        UseSkill = 0xBB,
+        RemoveConcentrationEffect = 0x76,
+        PlayerRegionChangeRequest = 0x90,
         QuestRewardChosen = 0x40,
-        PlayerTarget = 0xB0,				// 0x18 ^ 168
-        PlayerSitRequest = 0xC7,			// 0x6F ^ 168
-        PlayerInitRequest = 0xE8,			// 0x40 ^ 168
-        PlayerGroundTarget = 0xEC,			// 0x44 ^ 168
-        PlayerDismountRequest = 0xC8,		// 0x60 ^ 168
-        PlayerHeadingUpdate = 0xBA,			// 0x12 ^ 168  also known as Short State
+        PlayerTarget = 0xB0,
+        PlayerSitRequest = 0xC7,
+        PlayerInitRequest = 0xE8,
+        PlayerGroundTarget = 0xEC,
+        PlayerDismountRequest = 0xC8,
+        PlayerHeadingUpdate = 0xBA,
         PlayerPickupHouseItem = 0x0D,
-        PlayerMoveItem = 0x75 ^ 168,
+        PlayerMoveItem = 0xDD,
+        BadNameCheckRequest = 0xC2,
+        HousingMenuRequest = 0x00,
+        BuyHookPoint = 0x64,
+        CharacterCreateRequest = 0xFF,
+        CharacterDeleteRequest = 0xC0,
+        CharacterOverviewRequest = 0xFC,
+        CharacterSelectRequest = 0x10,
+        ClientCrash = 0x37,
+        CryptKeyRequest = 0xF4,
+        DestroyItemRequest = 0x80,
+        DuplicateNameCheckRequest = 0xCB,
+        EmblemDialogReponse = 0xE2,
+        GameOpenRequest = 0xBF,
+        DetailDisplay = 0xD8,
+        HouseEdit = 0x01,
+        HousePermissionsRequest = 0x05,
+        HousePermissionsSet = 0x07,
+        HouseUsersPermissionsRequest = 0x03,
+        HouseUsersPermissionsSet = 0x06,
+        HousingDecorationRotate = 0x0E,
+        HousingDecorationRotateRequest = 0x18,
+        HousingPlaceItem = 0x0C,
+        KeepComponentInteract = 0x6F,
+        LoginRequest = 0xA7,
+        LookingForAGroupFlag = 0x84,
+        LookingForAGroup = 0x85,
+        MakeProduct = 0xED,
+        MinotaurRelicWindow = 0x4C,
+        NPCCreationRequest = 0xBE,
+        ObjectUpdateRequest = 0xA5,
+        PingRequest = 0xA3,
+        PlayerBonusesListRequest = 0xCA,
+        PlayerBuyRequest = 0x78,
+        PlayerCommand = 0xAF,
+        PlayerCreationRequest = 0xD5,
+        PlayerTrain = 0x83,
+        PlayerTrainWindow = 0x7B,
+        PlayerTrainRequest = 0x7C,
+        PlayerMarketSearchRequest = 0x11,
+        PlayerModifyTrade = 0xEB,
+        PlayerPickUpRequest = 0xB5,
+        PlayerPositionUpdate = 0xA9,
+        PlayerSellRequest = 0x79,
+        PlayerSetMarketPrice = 0x1A,
+        PlayerWithdrawMerchantMoney = 0x1C,
+        QuestRemoveRequest = 0x4F,
+        RegionListRequest = 0x9D,
+        ShipHookpointInteract = 0xE4,
+        SiegeWeaponAction = 0xF5,
+        UDPInitRequest = 0x14,
+        UDPPingRequest = 0xF2,
+        WarMapBonusesRequest = 0x66,
+        WarMapShowRequest = 0x48
     }
 }

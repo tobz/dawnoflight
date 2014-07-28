@@ -99,7 +99,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 				if (material == null)
 				{
-					player.Out.SendMessage("Can't find material (" + material.Id_nb + ") needed to salvage this item!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Can't find material (" + material.Id_nb + ") needed to salvage this item!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					log.ErrorFormat("Salvage Error for ID: {0}:  Material not found: {1}", salvageYield.ID, material.Id_nb);
 				}
 			}
@@ -108,12 +108,12 @@ namespace DawnOfLight.GameServer.Crafting
 			{
 				if (salvageYield == null && item.SalvageYieldID > 0)
 				{
-					player.Out.SendMessage("This items salvage recipe (" + item.SalvageYieldID + ") not implemented yet.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("This items salvage recipe (" + item.SalvageYieldID + ") not implemented yet.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					log.ErrorFormat("SalvageYield ID {0} not found for item: {1}", item.SalvageYieldID, item.Name);
 				}
 				else if (salvageYield == null)
 				{
-					player.Out.SendMessage("Salvage recipe not found for this item.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Salvage recipe not found for this item.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					log.ErrorFormat("Salvage Lookup Error: ObjectType: {0}, Item: {1}", item.Object_Type, item.Name);
 				}
 				return 0;
@@ -121,7 +121,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 			if (player.IsMoving || player.IsStrafing)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.InterruptSalvage"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.InterruptSalvage"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return 0;
 			}
 
@@ -130,7 +130,7 @@ namespace DawnOfLight.GameServer.Crafting
 				player.Stealth(false);
 			}
 			
-			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.BeginSalvage", item.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.BeginSalvage", item.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 			// clone the yield entry and update values to work with this salvage (not saved to the DB)
 			SalvageYield yield = salvageYield.Clone() as SalvageYield;
@@ -141,7 +141,7 @@ namespace DawnOfLight.GameServer.Crafting
 				int count = GetMaterialYield(player, item, yield, material);
 				if (count < 1)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.NoSalvage", item.Name + ". The material returned amount is zero"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.NoSalvage", item.Name + ". The material returned amount is zero"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return 0;
 				}
 			}
@@ -175,7 +175,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 			if (recipe == null)
             {
-				player.Out.SendMessage("Error retrieving salvage data!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Error retrieving salvage data!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				log.Error("Salvage Siege Error: DBCraftedItem is null for" + siegeWeapon.ItemId);
 				return 1;
             }
@@ -184,14 +184,14 @@ namespace DawnOfLight.GameServer.Crafting
 
 			if (rawMaterials == null || rawMaterials.Count == 0)
             {
-				player.Out.SendMessage("No raw materials provided for this siege weapon!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("No raw materials provided for this siege weapon!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				log.Error("Salvage Siege Error: No Raw Materials found for " + siegeWeapon.ItemId);
 				return 1;
             }
 
             if (player.IsCrafting)
             {
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.IsAllowedToBeginWork.EndCurrentAction"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.IsAllowedToBeginWork.EndCurrentAction"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return 0;
             }
 			InventoryItem item;
@@ -202,14 +202,14 @@ namespace DawnOfLight.GameServer.Crafting
 
 				if (template == null)
 				{
-					player.Out.SendMessage("Missing raw material " + material.IngredientId_nb + "!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Missing raw material " + material.IngredientId_nb + "!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					log.Error("Salvage Siege Error: Raw Material not found " + material.IngredientId_nb);
 					return 1;
 				}
 
 				item = GameInventoryItem.Create<ItemTemplate>(template);
 				item.Count = material.Count;
-				if (!player.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, item))
+				if (!player.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, item))
 				{
 					error = true;
 					break;
@@ -218,7 +218,7 @@ namespace DawnOfLight.GameServer.Crafting
 			}
 
 			if (error)
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.NoRoom"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.NoRoom"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 			return 1;
 		}
@@ -237,7 +237,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 			if (player == null || itemToSalvage == null || yield == null || materialCount == 0)
 			{
-				player.Out.SendMessage("Error retrieving salvage data for this item!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Error retrieving salvage data for this item!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				log.Error("Salvage: There was a problem getting back salvage info from the craft timer.");
 				return 0;
 			}
@@ -251,7 +251,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 			if (rawMaterial == null)
 			{
-				player.Out.SendMessage("Error finding the raw material needed to salvage this item!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Error finding the raw material needed to salvage this item!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				log.Error("Salvage: Error finding raw material " + yield.MaterialId_nb);
 				return 0;
 			}
@@ -261,7 +261,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 			if (!player.Inventory.RemoveItem(itemToSalvage)) // clean the free of the item to salvage
 			{
-				player.Out.SendMessage("Error finding the item to salvage!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Error finding the item to salvage!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				return 0;
 			}
 
@@ -271,7 +271,7 @@ namespace DawnOfLight.GameServer.Crafting
 			lock(player.Inventory)
 			{
 				int count = materialCount;
-				foreach (InventoryItem item in player.Inventory.GetItemRange(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+				foreach (InventoryItem item in player.Inventory.GetItemRange(InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 				{
 					if (item == null) continue;
 					if (item.Id_nb != rawMaterial.Id_nb) continue;
@@ -293,7 +293,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 				if(count > 0) // Add new object
 				{
-					eInventorySlot firstEmptySlot = player.Inventory.FindFirstEmptySlot(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+					InventorySlot firstEmptySlot = player.Inventory.FindFirstEmptySlot(InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 					changedSlots.Add((int)firstEmptySlot, -count); // Create the item in the free slot (always at least one)
 					count = 0;
 				}
@@ -310,7 +310,7 @@ namespace DawnOfLight.GameServer.Crafting
 				int countToAdd = de.Value;
 				if(countToAdd > 0)	// Add to exiting item
 				{
-					newItem = player.Inventory.GetItem((eInventorySlot)de.Key);
+					newItem = player.Inventory.GetItem((InventorySlot)de.Key);
 					player.Inventory.AddCountToStack(newItem, countToAdd);
 					InventoryLogging.LogInventoryAction("(salvage)", player, eInventoryActionType.Craft, newItem.Template, countToAdd);
 				}
@@ -318,13 +318,13 @@ namespace DawnOfLight.GameServer.Crafting
 				{
 					newItem = GameInventoryItem.Create<ItemTemplate>(rawMaterial);
 					newItem.Count = -countToAdd;
-					player.Inventory.AddItem((eInventorySlot)de.Key, newItem);
+					player.Inventory.AddItem((InventorySlot)de.Key, newItem);
 					InventoryLogging.LogInventoryAction("(salvage)", player, eInventoryActionType.Craft, newItem.Template, newItem.Count);
 				}
 			}
 
 			player.Inventory.CommitChanges();
-			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.Proceed.GetBackMaterial", materialCount, rawMaterial.Name, itemToSalvage.Name), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.Proceed.GetBackMaterial", materialCount, rawMaterial.Name, itemToSalvage.Name), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			
 			return 0;
 		}
@@ -343,45 +343,45 @@ namespace DawnOfLight.GameServer.Crafting
 		{
 			if (player.InCombat)
 			{
-				player.Out.SendMessage("You can't salvage while in combat.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You can't salvage while in combat.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			if (item.IsNotLosingDur || item.IsIndestructible)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.NoSalvage", item.Name + ".  This item is indestructible"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.NoSalvage", item.Name + ".  This item is indestructible"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			// using negative numbers to indicate item cannot be salvaged
 			if (item.SalvageYieldID < 0)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client, "Salvage.BeginWork.NoSalvage", item.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client, "Salvage.BeginWork.NoSalvage", item.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 			
-			if(item.SlotPosition < (int)eInventorySlot.FirstBackpack || item.SlotPosition > (int)eInventorySlot.LastBackpack)
+			if(item.SlotPosition < (int)InventorySlot.FirstBackpack || item.SlotPosition > (int)InventorySlot.LastBackpack)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.IsAllowedToBeginWork.BackpackItems"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.IsAllowedToBeginWork.BackpackItems"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			eCraftingSkill skill = CraftingMgr.GetSecondaryCraftingSkillToWorkOnItem(item);
 			if(skill == eCraftingSkill.NoCrafting)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.NoSalvage", item.Name + ".  You do not have the required secondary skill"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.BeginWork.NoSalvage", item.Name + ".  You do not have the required secondary skill"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			if (player.IsCrafting)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.IsAllowedToBeginWork.EndCurrentAction"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.IsAllowedToBeginWork.EndCurrentAction"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			if (player.GetCraftingSkillValue(skill) < (0.75 * CraftingMgr.GetItemCraftLevel(item)))
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.IsAllowedToBeginWork.NotEnoughSkill", item.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "Salvage.IsAllowedToBeginWork.NotEnoughSkill", item.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 

@@ -175,13 +175,13 @@ namespace DawnOfLight.GameServer.Spells
 					{
 						SendEffectAnimation(target, 0, false, 1);
 						effect.Cancel(false);
-						MessageToCaster("Your spell rips away some of your target's enhancing magic.", eChatType.CT_Spell);
-						MessageToLiving(target, "Some of your enhancing magic has been ripped away by a spell!", eChatType.CT_Spell);
+						MessageToCaster("Your spell rips away some of your target's enhancing magic.", ChatType.CT_Spell);
+						MessageToLiving(target, "Some of your enhancing magic has been ripped away by a spell!", ChatType.CT_Spell);
 					}
 					else
 					{
 						SendEffectAnimation(target, 0, false, 0);
-						MessageToCaster("The target's connection to their enhancement is too strong for you to remove.", eChatType.CT_SpellResisted);
+						MessageToCaster("The target's connection to their enhancement is too strong for you to remove.", ChatType.CT_SpellResisted);
 					}
 
 					return;
@@ -189,13 +189,13 @@ namespace DawnOfLight.GameServer.Spells
 			}
 
 			SendEffectAnimation(target, 0, false, 0);
-			MessageToCaster("No enhancement of that type found on the target.", eChatType.CT_SpellResisted);
+			MessageToCaster("No enhancement of that type found on the target.", ChatType.CT_SpellResisted);
 
 			/*
 			if (!noMessages) 
 			{
-				MessageToLiving(effect.Owner, effect.Spell.Message3, eChatType.CT_SpellExpires);
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(effect.Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+				MessageToLiving(effect.Owner, effect.Spell.Message3, ChatType.CT_SpellExpires);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(effect.Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
 			}
 			*/
 		}
@@ -301,21 +301,21 @@ namespace DawnOfLight.GameServer.Spells
 					{
 						SendEffectAnimation(target, 0, false, 1);
 						effect.Cancel(false);
-						MessageToCaster("Your spell rips away some of your target's enhancing magic.", eChatType.CT_Spell);
-						MessageToLiving(target, "Some of your enhancing magic has been ripped away by a spell!", eChatType.CT_Spell);
+						MessageToCaster("Your spell rips away some of your target's enhancing magic.", ChatType.CT_Spell);
+						MessageToLiving(target, "Some of your enhancing magic has been ripped away by a spell!", ChatType.CT_Spell);
 						return;
 					}
 				}
 			}
 
 			SendEffectAnimation(target, 0, false, 0);
-			MessageToCaster("No enhancement of that type found on the target.", eChatType.CT_SpellResisted);
+			MessageToCaster("No enhancement of that type found on the target.", ChatType.CT_SpellResisted);
 
 			/*
 			if (!noMessages) 
 			{
-				MessageToLiving(effect.Owner, effect.Spell.Message3, eChatType.CT_SpellExpires);
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(effect.Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+				MessageToLiving(effect.Owner, effect.Spell.Message3, ChatType.CT_SpellExpires);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(effect.Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
 			}
 			*/
 		}

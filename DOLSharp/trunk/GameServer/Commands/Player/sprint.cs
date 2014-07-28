@@ -39,7 +39,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				}
 				else
 				{
-					client.Out.SendMessage("You do not have a sprint ability.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage("You do not have a sprint ability.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}

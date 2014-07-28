@@ -47,11 +47,11 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				if (i_player == caster)
 				{
-					i_player.MessageToSelf("You cast " + this.Name + "!", eChatType.CT_Spell);
+					i_player.MessageToSelf("You cast " + this.Name + "!", ChatType.CT_Spell);
 				}
 				else
 				{
-					i_player.MessageFromArea(caster, caster.Name + " casts a spell!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					i_player.MessageFromArea(caster, caster.Name + " casts a spell!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				}
 			}
 
@@ -61,7 +61,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 				if (GameServer.ServerRules.IsAllowedToAttack(caster, mob, true) == false) continue;
 
 				mob.TakeDamage(caster, eDamageType.Spirit, dmgValue, 0);
-				caster.Out.SendMessage("You hit the " + mob.Name + " for " + dmgValue + " damage.", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+				caster.Out.SendMessage("You hit the " + mob.Name + " for " + dmgValue + " damage.", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 				foreach (GamePlayer player2 in caster.GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))
 				{
 					player2.Out.SendSpellCastAnimation(caster, 4468, 0);
@@ -80,7 +80,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
                 phaseshift = SpellHandler.FindEffectOnTarget(t_player, "Phaseshift");
                 if (phaseshift != null)
                 {
-                    caster.Out.SendMessage(t_player.Name + " is Phaseshifted and can't be effected by this Spell!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+                    caster.Out.SendMessage(t_player.Name + " is Phaseshifted and can't be effected by this Spell!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
                     continue;
                 }
 
@@ -89,8 +89,8 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 				t_player.TakeDamage(caster, eDamageType.Spirit, dmgValue, 0);
 
 				// send a message
-				caster.Out.SendMessage("You hit " + t_player.Name + " for " + dmgValue + " damage.", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
-				t_player.Out.SendMessage(caster.Name + " hits you for " + dmgValue + " damage.", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+				caster.Out.SendMessage("You hit " + t_player.Name + " for " + dmgValue + " damage.", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
+				t_player.Out.SendMessage(caster.Name + " hits you for " + dmgValue + " damage.", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
 
 				foreach (GamePlayer n_player in t_player.GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))
 				{

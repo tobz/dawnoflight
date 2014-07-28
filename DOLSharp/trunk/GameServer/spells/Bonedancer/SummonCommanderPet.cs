@@ -44,7 +44,7 @@ namespace DawnOfLight.GameServer.Spells.Bonedancer
 		{
 			if (Caster is GamePlayer && ((GamePlayer)Caster).ControlledBrain != null)
 			{
-                MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SummonCommanderPet.CheckBeginCast.Text"), eChatType.CT_SpellResisted);
+                MessageToCaster(LanguageMgr.GetTranslation((Caster as GamePlayer).Client, "SummonCommanderPet.CheckBeginCast.Text"), ChatType.CT_SpellResisted);
                 return false;
             }
 			return base.CheckBeginCast(selectedTarget);

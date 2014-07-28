@@ -136,13 +136,13 @@ namespace DawnOfLight.GameServer.GameObjects.Keeps
 
 			if (player.IsMezzed)
 			{
-				player.Out.SendMessage("You are mesmerized!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You are mesmerized!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			if (player.IsStunned)
 			{
-				player.Out.SendMessage("You are stunned!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You are stunned!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 

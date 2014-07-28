@@ -221,12 +221,12 @@ namespace DawnOfLight.GameServer.Quests.Hibernia
 				Richael.CurrentRegionID = 200;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 416, 37);       //Slot 22
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 413, 37);       //Slot 25
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 417, 37);        //Slot 23
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 414, 35);        //Slot 27
-				template.AddNPCEquipment(eInventorySlot.Cloak, 57, 35);             //Slot 26
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 415, 37);             //Slot 28
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 416, 37);       //Slot 22
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 413, 37);       //Slot 25
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 417, 37);        //Slot 23
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 414, 35);        //Slot 27
+				template.AddNPCEquipment(InventorySlot.Cloak, 57, 35);             //Slot 26
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 415, 37);             //Slot 28
 				Richael.Inventory = template.CloseTemplate();
 				Richael.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

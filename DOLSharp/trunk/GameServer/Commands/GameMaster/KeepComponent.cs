@@ -68,7 +68,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 							int i = 0;
 							foreach (string str in Enum.GetNames(typeof(GameKeepComponent.eComponentSkin)))
 							{
-								client.Out.SendMessage("#" + i + ": " + str, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Out.SendMessage("#" + i + ": " + str, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								i++;
 							}
 							DisplaySyntax(client);
@@ -91,7 +91,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 							int i = 0;
 							foreach (string str in Enum.GetNames(typeof(GameKeepComponent.eComponentSkin)))
 							{
-								client.Out.SendMessage("#" + i + ": " + str, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Out.SendMessage("#" + i + ": " + str, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								i++;
 							}
 							DisplaySyntax(client);
@@ -157,7 +157,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						component.SaveIntoDatabase();
 						client.Out.SendKeepInfo(myKeep);
 						client.Out.SendKeepComponentInfo(component);
-						client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.KeepComponents.Create.KCCreated"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.KeepComponents.Create.KCCreated"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					} break;
 				#endregion Create
                 #region Move
@@ -186,7 +186,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
                         client.Out.SendKeepInfo(myKeep);
                         client.Out.SendKeepComponentInfo(component);
 						client.Out.SendKeepComponentDetailUpdate(component);
-						client.Out.SendMessage("Component moved.  Use /keepcomponent save to save, or reload to reload the original position.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage("Component moved.  Use /keepcomponent save to save, or reload to reload the original position.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     } break;
                 #endregion
 				#region Rotate
@@ -207,7 +207,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 							client.Out.SendKeepInfo(myKeep);
 							client.Out.SendKeepComponentInfo(component);
 							client.Out.SendKeepComponentDetailUpdate(component);
-							client.Out.SendMessage("Component rotated.  Use /keepcomponent save to save, or reload to reload the original position.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							client.Out.SendMessage("Component rotated.  Use /keepcomponent save to save, or reload to reload the original position.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						}
 						catch
 						{
@@ -223,7 +223,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 							int i = 0;
 							foreach (string str in Enum.GetNames(typeof(GameKeepComponent.eComponentSkin)))
 							{
-								client.Out.SendMessage("#" + i + ": " + str, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								client.Out.SendMessage("#" + i + ": " + str, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								i++;
 							}
 							DisplaySyntax(client);
@@ -252,8 +252,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
                             cli.Out.SendKeepComponentInfo(component);
 							cli.Out.SendKeepComponentDetailUpdate(component);
                         }
-						//client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.KeepComponents.Skin.YChangeSkin"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
-						client.Out.SendMessage("Component skin updated.  Use /keepcomponent save to save, or reload to reload the original skin.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						//client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.KeepComponents.Skin.YChangeSkin"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
+						client.Out.SendMessage("Component skin updated.  Use /keepcomponent save to save, or reload to reload the original skin.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					} break;
 				#endregion Skin
 				#region Delete
@@ -268,7 +268,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 						component.RemoveFromWorld();
 						component.Delete();
 						component.DeleteFromDatabase();
-						client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.KeepComponents.Delete.YDeleteKC"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "GMCommands.KeepComponents.Delete.YDeleteKC"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 					} break;
 				#endregion Delete
@@ -286,7 +286,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 															component.ID, 
 															(component.Keep == null ? "0" : component.Keep.KeepID.ToString()), 
 															component.Skin, 
-															component.HealthPercent), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+															component.HealthPercent), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 					} break;
 				#endregion Save
@@ -313,7 +313,7 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 							cli.Out.SendKeepComponentDetailUpdate(component);
 						}
 
-                        client.Out.SendMessage("Component Reloaded", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        client.Out.SendMessage("Component Reloaded", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         break;
 					}
 				#endregion Reload

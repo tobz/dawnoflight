@@ -18,6 +18,7 @@
  */
 
 using System.Reflection;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
@@ -25,7 +26,7 @@ using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP,0x7D^168,"Handles requests for players(0x7C) in game")]
+    [PacketHandler(PacketType.TCP, ClientPackets.PlayerCreationRequest, ClientStatus.LoggedIn)]
 	public class PlayerCreationRequestHandler : IPacketHandler
 	{
 		/// <summary>
@@ -33,11 +34,11 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 		/// </summary>
 		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			ushort id = packet.ReadShort();
-			GameClient target = WorldMgr.GetClientFromID(id);
-			if(target==null)
+			var target = WorldMgr.GetClientFromID(id);
+			if(target == null)
 			{
 				if (log.IsWarnEnabled)
 					log.Warn(string.Format("Client {0}:{1} account {2} requested invalid client {3} --- disconnecting", client.SessionID, client.TcpEndpointAddress, client.Account == null ? "null" : client.Account.Name, id));
@@ -46,8 +47,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				return;
 			}
 
-			//DOLConsole.WriteLine("player creation request "+target.Player.Name);
-			if(target.IsPlaying && target.Player!=null && target.Player.ObjectState==GameObject.eObjectState.Active)
+			if(target.IsPlaying && target.Player != null && target.Player.ObjectState == GameObject.eObjectState.Active)
 			{
 				client.Out.SendPlayerCreate(target.Player);
 				client.Out.SendLivingEquipmentUpdate(target.Player);

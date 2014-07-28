@@ -378,13 +378,13 @@ namespace DawnOfLight.GameServer.Quests.Missions
 	                                /* - Dinberg, disabled this. Messages extremely annoying.
 									if (m_owner is GamePlayer)
 									{
-										(m_owner as GamePlayer).Out.SendMessage((m_total - m_current) + " " + m_targetName + " Left", eChatType.CT_ScreenCenter_And_CT_System, eChatLoc.CL_ChatWindow);
+										(m_owner as GamePlayer).Out.SendMessage((m_total - m_current) + " " + m_targetName + " Left", ChatType.CT_ScreenCenter_And_CT_System, ChatLocation.CL_ChatWindow);
 									}
 									else if (m_owner is Group)
 									{
 										foreach (GamePlayer player in (m_owner as Group).GetPlayersInTheGroup())
 										{
-											player.Out.SendMessage((m_total - m_current) + " " + m_targetName + " Left", eChatType.CT_ScreenCenter, eChatLoc.CL_ChatWindow);
+											player.Out.SendMessage((m_total - m_current) + " " + m_targetName + " Left", ChatType.CT_ScreenCenter, ChatLocation.CL_ChatWindow);
 										}
 									}
 	                                 */
@@ -407,13 +407,13 @@ namespace DawnOfLight.GameServer.Quests.Missions
 	                            /*
 								if (m_owner is GamePlayer)
 								{
-									(m_owner as GamePlayer).Out.SendMessage((m_total - m_current) + " Creatures Left", eChatType.CT_ScreenCenter_And_CT_System, eChatLoc.CL_ChatWindow);
+									(m_owner as GamePlayer).Out.SendMessage((m_total - m_current) + " Creatures Left", ChatType.CT_ScreenCenter_And_CT_System, ChatLocation.CL_ChatWindow);
 								}
 								else if (m_owner is Group)
 								{
 									foreach (GamePlayer player in (m_owner as Group).GetPlayersInTheGroup())
 									{
-										player.Out.SendMessage((m_total - m_current) + " Creatures Left", eChatType.CT_ScreenCenter, eChatLoc.CL_ChatWindow);
+										player.Out.SendMessage((m_total - m_current) + " Creatures Left", ChatType.CT_ScreenCenter, ChatLocation.CL_ChatWindow);
 									}
 								}
 	                             */
@@ -510,13 +510,13 @@ namespace DawnOfLight.GameServer.Quests.Missions
 		{
 			if (m_owner is GamePlayer)
 			{
-				(m_owner as GamePlayer).Out.SendMessage("Mission Complete", eChatType.CT_ScreenCenter, eChatLoc.CL_ChatWindow);
+				(m_owner as GamePlayer).Out.SendMessage("Mission Complete", ChatType.CT_ScreenCenter, ChatLocation.CL_ChatWindow);
 			}
 			else if (m_owner is Group)
 			{
 				foreach (GamePlayer player in (m_owner as Group).GetPlayersInTheGroup())
 				{
-					player.Out.SendMessage("Mission Complete", eChatType.CT_ScreenCenter, eChatLoc.CL_ChatWindow);
+					player.Out.SendMessage("Mission Complete", ChatType.CT_ScreenCenter, ChatLocation.CL_ChatWindow);
 				}
 			}
 			base.FinishMission();
@@ -552,8 +552,8 @@ namespace DawnOfLight.GameServer.Quests.Missions
             UpdateInstanceLevel();
 
             //The player will not yet be in the instance, so wont receive the relevant text.
-            player.Out.SendMessage("You have entered " + Description + ".", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
-            player.Out.SendMessage("This instance is currently level " + m_level + ".", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+            player.Out.SendMessage("You have entered " + Description + ".", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
+            player.Out.SendMessage("This instance is currently level " + m_level + ".", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
         }
 
         public override void OnPlayerLeaveInstance(GamePlayer player)
@@ -587,7 +587,7 @@ namespace DawnOfLight.GameServer.Quests.Missions
 	            //Update to the players..
 	            foreach (GameClient client in WorldMgr.GetClientsOfRegion(ID))
 	                if (client != null)
-	                    client.Out.SendMessage("This instance is now level " + m_level, eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+	                    client.Out.SendMessage("This instance is now level " + m_level, ChatType.CT_Important, ChatLocation.CL_SystemWindow);
             }
             
         }

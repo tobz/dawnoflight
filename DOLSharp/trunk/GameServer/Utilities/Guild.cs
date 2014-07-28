@@ -246,22 +246,22 @@ namespace DawnOfLight.GameServer.Utilities
 
 			if (amount < 0)
 			{
-				donating.Out.SendMessage(LanguageMgr.GetTranslation(donating.Client, "Scripts.Player.Guild.DepositInvalid"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+				donating.Out.SendMessage(LanguageMgr.GetTranslation(donating.Client, "Scripts.Player.Guild.DepositInvalid"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			else if ((donating.Guild.GetGuildBank() + amount) >= 1000000001)
 			{
-				donating.Out.SendMessage(LanguageMgr.GetTranslation(donating.Client, "Scripts.Player.Guild.DepositFull"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+				donating.Out.SendMessage(LanguageMgr.GetTranslation(donating.Client, "Scripts.Player.Guild.DepositFull"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
             if (!donating.RemoveMoney(long.Parse(amount.ToString())))
             {
-                donating.Out.SendMessage("You don't have this amount of money !", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+                donating.Out.SendMessage("You don't have this amount of money !", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
                 return;
             }
 
-			donating.Out.SendMessage(LanguageMgr.GetTranslation(donating.Client, "Scripts.Player.Guild.DepositAmount", Money.GetString(long.Parse(amount.ToString()))), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+			donating.Out.SendMessage(LanguageMgr.GetTranslation(donating.Client, "Scripts.Player.Guild.DepositAmount", Money.GetString(long.Parse(amount.ToString()))), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 
 			donating.Guild.UpdateGuildWindow();
 			m_DBguild.Bank += amount;
@@ -274,16 +274,16 @@ namespace DawnOfLight.GameServer.Utilities
 		{
             if (amount < 0)
 			{
-				withdraw.Out.SendMessage(LanguageMgr.GetTranslation(withdraw.Client, "Scripts.Player.Guild.WithdrawInvalid"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+				withdraw.Out.SendMessage(LanguageMgr.GetTranslation(withdraw.Client, "Scripts.Player.Guild.WithdrawInvalid"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			else if ((withdraw.Guild.GetGuildBank() - amount) < 0)
 			{
-				withdraw.Out.SendMessage(LanguageMgr.GetTranslation(withdraw.Client, "Scripts.Player.Guild.WithdrawTooMuch"), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+				withdraw.Out.SendMessage(LanguageMgr.GetTranslation(withdraw.Client, "Scripts.Player.Guild.WithdrawTooMuch"), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
-            withdraw.Out.SendMessage(LanguageMgr.GetTranslation(withdraw.Client, "Scripts.Player.Guild.Withdrawamount", Money.GetString(long.Parse(amount.ToString()))), eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+            withdraw.Out.SendMessage(LanguageMgr.GetTranslation(withdraw.Client, "Scripts.Player.Guild.Withdrawamount", Money.GetString(long.Parse(amount.ToString()))), ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 			withdraw.Guild.UpdateGuildWindow();
 			m_DBguild.Bank -= amount;
 
@@ -527,7 +527,7 @@ namespace DawnOfLight.GameServer.Utilities
 			{
 				if (player == member) continue;
 				if (player.ShowGuildLogins)
-					player.Out.SendMessage("Guild member " + member.Name + " has logged in!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Guild member " + member.Name + " has logged in!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -617,9 +617,9 @@ namespace DawnOfLight.GameServer.Utilities
 				addPlayer.Guild = this;
 				addPlayer.SaveIntoDatabase();
 				GuildMgr.AddPlayerToAllGuildPlayersList(addPlayer);
-				addPlayer.Out.SendMessage("You have agreed to join " + this.Name + "!", eChatType.CT_Group, eChatLoc.CL_SystemWindow);
-				addPlayer.Out.SendMessage("Your current rank is " + addPlayer.GuildRank.Title + "!", eChatType.CT_Group, eChatLoc.CL_SystemWindow);
-				SendMessageToGuildMembers(addPlayer.Name + " has joined the guild!", eChatType.CT_Group, eChatLoc.CL_SystemWindow);
+				addPlayer.Out.SendMessage("You have agreed to join " + this.Name + "!", ChatType.CT_Group, ChatLocation.CL_SystemWindow);
+				addPlayer.Out.SendMessage("Your current rank is " + addPlayer.GuildRank.Title + "!", ChatType.CT_Group, ChatLocation.CL_SystemWindow);
+				SendMessageToGuildMembers(addPlayer.Name + " has joined the guild!", ChatType.CT_Group, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception e)
 			{
@@ -653,9 +653,9 @@ namespace DawnOfLight.GameServer.Utilities
 				member.Out.SendObjectGuildID(member, member.Guild);
 				// Send message to removerClient about successful removal
 				if (removername == member.Name)
-					member.Out.SendMessage("You leave the guild.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					member.Out.SendMessage("You leave the guild.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				else
-					member.Out.SendMessage(removername + " removed you from " + this.Name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					member.Out.SendMessage(removername + " removed you from " + this.Name, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			catch (Exception e)
 			{
@@ -835,7 +835,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="msg">message string</param>
 		/// <param name="type">message type</param>
 		/// <param name="loc">message location</param>
-		public void SendMessageToGuildMembers(string msg, eChatType type, eChatLoc loc)
+		public void SendMessageToGuildMembers(string msg, ChatType type, ChatLocation loc)
 		{
 			lock (m_onlineGuildPlayers)
 			{
@@ -1034,7 +1034,7 @@ namespace DawnOfLight.GameServer.Utilities
 			mes += ',' + player.Guild.GuildBannerStatus(player); //"Banner available for purchase", "Missing banner buying permissions"
 			mes += ",\"" + player.Guild.Motd + '\"'; // Guild Motd
 			mes += ",\"" + player.Guild.Omotd + '\"'; // Guild oMotd
-			player.Out.SendMessage(mes, eChatType.CT_SocialInterface, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage(mes, ChatType.CT_SocialInterface, ChatLocation.CL_SystemWindow);
 			player.Guild.SaveIntoDatabase();
 		}
 

@@ -33,7 +33,7 @@ namespace DawnOfLight.GameServer.Spells.Vampiir
 		{
 			if (Caster.InCombat == true)
 			{
-				MessageToCaster("You cannot cast this spell in combat!", eChatType.CT_SpellResisted);
+				MessageToCaster("You cannot cast this spell in combat!", ChatType.CT_SpellResisted);
 				return false;
 			}
 			return base.CheckBeginCast(selectedTarget);
@@ -64,7 +64,7 @@ namespace DawnOfLight.GameServer.Spells.Vampiir
 		{
 			if (target is GameKeepDoor || target is Keeps.GameKeepComponent)
 			{
-				MessageToCaster("Your spell has no effect on the keep component!", eChatType.CT_SpellResisted);
+				MessageToCaster("Your spell has no effect on the keep component!", ChatType.CT_SpellResisted);
 				return;
 			}
 			base.FinishSpellCast(target);
@@ -110,16 +110,16 @@ namespace DawnOfLight.GameServer.Spells.Vampiir
 					if (target is GamePlayer)
 					{
 						target.Mana -= power;
-						((GamePlayer)target).Out.SendMessage(caster.Name + " takes " + power + " power!", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+						((GamePlayer)target).Out.SendMessage(caster.Name + " takes " + power + " power!", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
 					}
 
 					if (caster is GamePlayer)
 					{
-						((GamePlayer)caster).Out.SendMessage("You receive " + power + " power from " + target.Name + "!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+						((GamePlayer)caster).Out.SendMessage("You receive " + power + " power from " + target.Name + "!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 					}
 				}
 				else
-					((GamePlayer)caster).Out.SendMessage("You did not receive any power from " + target.Name + "!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					((GamePlayer)caster).Out.SendMessage("You did not receive any power from " + target.Name + "!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 
 				//Place the caster in combat
 				if (target is GamePlayer)

@@ -92,7 +92,7 @@ namespace DawnOfLight.GameServer.GameObjects.Necromancer
 					LoadEquipmentTemplate("barehand_weapon");
 					InventoryItem item;
 					if (Inventory != null &&
-					    (item = Inventory.GetItem(eInventorySlot.RightHandWeapon)) != null)
+					    (item = Inventory.GetItem(InventorySlot.RightHandWeapon)) != null)
 						item.ProcSpellID = (int)Procs.Stun;
 					break;
 				case "reanimated servant" :
@@ -104,7 +104,7 @@ namespace DawnOfLight.GameServer.GameObjects.Necromancer
 				case "greater necroservant":
 					LoadEquipmentTemplate("barehand_weapon");
 					if (Inventory != null &&
-					    (item = Inventory.GetItem(eInventorySlot.RightHandWeapon)) != null)
+					    (item = Inventory.GetItem(InventorySlot.RightHandWeapon)) != null)
 						item.ProcSpellID = (int)Procs.Poison;
 					break;
 				case "abomination":
@@ -406,7 +406,7 @@ namespace DawnOfLight.GameServer.GameObjects.Necromancer
 				tauntEffect.Stop();
 				if (owner != null)
 					owner.Out.SendMessage(String.Format("{0} seems to be less aggressive than before.",
-					                                    GetName(0, true)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					                                    GetName(0, true)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else
 			{
@@ -414,7 +414,7 @@ namespace DawnOfLight.GameServer.GameObjects.Necromancer
 
 				if (owner != null)
 					owner.Out.SendMessage(String.Format("{0} enters an aggressive stance.",
-					                                    GetName(0, true)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					                                    GetName(0, true)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				new TauntEffect().Start(this);
 			}
@@ -635,22 +635,22 @@ namespace DawnOfLight.GameServer.GameObjects.Necromancer
 				case "disease":
 					InventoryItem item;
 					if (Inventory != null &&
-					    (item = Inventory.GetItem(eInventorySlot.RightHandWeapon)) != null)
+					    (item = Inventory.GetItem(InventorySlot.RightHandWeapon)) != null)
 					{
 						item.ProcSpellID = (int)Procs.Disease;
-						SayTo(owner, eChatLoc.CL_SystemWindow, "As you command.");
+						SayTo(owner, ChatLocation.CL_SystemWindow, "As you command.");
 					}
 					return true;
 				case "empower":
-					SayTo(owner, eChatLoc.CL_SystemWindow, "As you command.");
+					SayTo(owner, ChatLocation.CL_SystemWindow, "As you command.");
 					Empower();
 					return true;
 				case "poison":
 					if (Inventory != null &&
-					    (item = Inventory.GetItem(eInventorySlot.RightHandWeapon)) != null)
+					    (item = Inventory.GetItem(InventorySlot.RightHandWeapon)) != null)
 					{
 						item.ProcSpellID = (int)Procs.Poison;
-						SayTo(owner, eChatLoc.CL_SystemWindow, "As you command.");
+						SayTo(owner, ChatLocation.CL_SystemWindow, "As you command.");
 					}
 					return true;
 				case "taunt":
@@ -676,7 +676,7 @@ namespace DawnOfLight.GameServer.GameObjects.Necromancer
 
 						String templateID = String.Format("{0}_{1}", Name, text.Replace(" ", "_"));
 						if (LoadEquipmentTemplate(templateID))
-							SayTo(owner, eChatLoc.CL_SystemWindow, "As you command.");
+							SayTo(owner, ChatLocation.CL_SystemWindow, "As you command.");
 						return true;
 					}
 					default: return false;
@@ -697,7 +697,7 @@ namespace DawnOfLight.GameServer.GameObjects.Necromancer
 				{
 					Inventory = new GameNPCInventory(inventoryTemplate);
 					InventoryItem item;
-					if ((item = Inventory.GetItem(eInventorySlot.TwoHandWeapon)) != null)
+					if ((item = Inventory.GetItem(InventorySlot.TwoHandWeapon)) != null)
 					{
 						item.DPS_AF = (int)(Level * 3.3);
 						item.SPD_ABS = 50;
@@ -720,12 +720,12 @@ namespace DawnOfLight.GameServer.GameObjects.Necromancer
 					}
 					else
 					{
-						if ((item = Inventory.GetItem(eInventorySlot.RightHandWeapon)) != null)
+						if ((item = Inventory.GetItem(InventorySlot.RightHandWeapon)) != null)
 						{
 							item.DPS_AF = (int)(Level * 3.3);
 							item.SPD_ABS = 37;
 						}
-						if ((item = Inventory.GetItem(eInventorySlot.LeftHandWeapon)) != null)
+						if ((item = Inventory.GetItem(InventorySlot.LeftHandWeapon)) != null)
 						{
 							item.DPS_AF = (int)(Level * 3.3);
 							item.SPD_ABS = 37;

@@ -200,7 +200,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 				if(!m_recipiant)
 				{
-					m_owner.Out.SendMessage("Only a recipient of a trade can initiate a repair.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					m_owner.Out.SendMessage("Only a recipient of a trade can initiate a repair.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					m_partnerWindow.m_repair = false;
 					m_repair = false;
 					return;
@@ -208,7 +208,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 				if(m_partnerWindow.ItemsCount != 1)
 				{
-					m_owner.Out.SendMessage("You can only repair one item at a time!",eChatType.CT_System,eChatLoc.CL_SystemWindow);
+					m_owner.Out.SendMessage("You can only repair one item at a time!",ChatType.CT_System,ChatLocation.CL_SystemWindow);
 					m_partnerWindow.m_repair = false;
 					m_repair = false;
 					return;
@@ -216,7 +216,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 				if(ItemsCount > 0)
 				{
-					m_owner.Out.SendMessage("Your trade windows side must be empty to repair!",eChatType.CT_System,eChatLoc.CL_SystemWindow);
+					m_owner.Out.SendMessage("Your trade windows side must be empty to repair!",ChatType.CT_System,ChatLocation.CL_SystemWindow);
 					m_partnerWindow.m_repair = false;
 					m_repair = false;
 					return;	
@@ -262,7 +262,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 				if(!m_recipiant)
 				{
-					m_owner.Out.SendMessage("Only a recipient of a trade can initiate a combine.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					m_owner.Out.SendMessage("Only a recipient of a trade can initiate a combine.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					m_partnerWindow.m_combine = false;
 					m_combine = false;
 					return;
@@ -270,7 +270,7 @@ namespace DawnOfLight.GameServer.Utilities
 
 				if(m_partnerWindow.ItemsCount != 1)
 				{
-					m_owner.Out.SendMessage("You can only combine your items into one item!",eChatType.CT_System,eChatLoc.CL_SystemWindow);
+					m_owner.Out.SendMessage("You can only combine your items into one item!",ChatType.CT_System,ChatLocation.CL_SystemWindow);
 					m_partnerWindow.m_combine = false;
 					m_combine = false;
 					return;
@@ -327,7 +327,7 @@ namespace DawnOfLight.GameServer.Utilities
 				}
 				else
 				{
-					m_owner.Out.SendMessage("You don't have enough skill to combine items.",eChatType.CT_System,eChatLoc.CL_SystemWindow);
+					m_owner.Out.SendMessage("You don't have enough skill to combine items.",ChatType.CT_System,ChatLocation.CL_SystemWindow);
 				}
 
 				m_partnerWindow.m_combine = false;
@@ -439,7 +439,7 @@ namespace DawnOfLight.GameServer.Utilities
 				m_tradeAccept = true;
 				GamePlayer partner = m_partnerWindow.Owner;
 
-				partner.Out.SendMessage(m_owner.Name + " has accepted the trade.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				partner.Out.SendMessage(m_owner.Name + " has accepted the trade.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				// Check if the tradepartner has also agreed to the trade
 				if (!m_partnerWindow.m_tradeAccept) return false;
@@ -465,8 +465,8 @@ namespace DawnOfLight.GameServer.Utilities
                             InventoryLogging.LogInventoryAction(partner, m_owner, eInventoryActionType.Trade, m_partnerWindow.TradeMoney);
                         }
 
-					    m_owner.Out.SendMessage("You don't have enough money.", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
-						partner.Out.SendMessage(m_owner.Name + " doesn't have enough money.", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+					    m_owner.Out.SendMessage("You don't have enough money.", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
+						partner.Out.SendMessage(m_owner.Name + " doesn't have enough money.", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 					}
 					if (!partnerEnoughMoney)
 					{
@@ -478,8 +478,8 @@ namespace DawnOfLight.GameServer.Utilities
                             InventoryLogging.LogInventoryAction(m_owner, partner, eInventoryActionType.Trade, TradeMoney);
                         }
 
-					    partner.Out.SendMessage("You don't have enough money.", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
-						m_owner.Out.SendMessage(partner.Name + " doesn't have enough money.", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+					    partner.Out.SendMessage("You don't have enough money.", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
+						m_owner.Out.SendMessage(partner.Name + " doesn't have enough money.", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 					}
 
 					//Update our tradewindow and return
@@ -541,21 +541,21 @@ namespace DawnOfLight.GameServer.Utilities
 					//Test if we and our partner have enough space in inventory
 					int mySpaceNeeded      = Math.Max(0, partnerTradeItemsCount - myTradeItemsCount);
 					int partnerSpaceNeeded = Math.Max(0, myTradeItemsCount - partnerTradeItemsCount);
-					bool enoughSpace        = m_owner.Inventory.IsSlotsFree(mySpaceNeeded, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
-					bool partnerEnoughSpace = partner.Inventory.IsSlotsFree(partnerSpaceNeeded, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
+					bool enoughSpace        = m_owner.Inventory.IsSlotsFree(mySpaceNeeded, InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
+					bool partnerEnoughSpace = partner.Inventory.IsSlotsFree(partnerSpaceNeeded, InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
 
 					//Check the preconditions
 					if (!enoughSpace || !partnerEnoughSpace)
 					{
 						if (!enoughSpace)
 						{
-							m_owner.Out.SendMessage("You don't have enough space in your inventory.", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
-							partner.Out.SendMessage(m_owner.Name + " doesn't have enough space in his inventory.", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+							m_owner.Out.SendMessage("You don't have enough space in your inventory.", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
+							partner.Out.SendMessage(m_owner.Name + " doesn't have enough space in his inventory.", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 						}
 						if (!partnerEnoughSpace)
 						{
-							partner.Out.SendMessage("You don't have enough space in your inventory.", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
-							m_owner.Out.SendMessage(partner.Name + " doesn't have enough space in his inventory.", eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+							partner.Out.SendMessage("You don't have enough space in your inventory.", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
+							m_owner.Out.SendMessage(partner.Name + " doesn't have enough space in his inventory.", ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
 						}
 
 						//Update our tradewindow and return
@@ -624,11 +624,11 @@ namespace DawnOfLight.GameServer.Utilities
 
 						if (item.IsDeleted)
 						{
-							tradeSuccess = partner.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, item);
+							tradeSuccess = partner.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, item);
 						}
 						else
 						{
-							tradeSuccess = partner.Inventory.AddTradeItem(eInventorySlot.FirstEmptyBackpack, item);
+							tradeSuccess = partner.Inventory.AddTradeItem(InventorySlot.FirstEmptyBackpack, item);
 						}
 
 						if (!tradeSuccess)
@@ -656,11 +656,11 @@ namespace DawnOfLight.GameServer.Utilities
 
 						if (item.IsDeleted)
 						{
-							tradeSuccess = m_owner.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, item);
+							tradeSuccess = m_owner.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, item);
 						}
 						else
 						{
-							tradeSuccess = m_owner.Inventory.AddTradeItem(eInventorySlot.FirstEmptyBackpack, item);
+							tradeSuccess = m_owner.Inventory.AddTradeItem(InventorySlot.FirstEmptyBackpack, item);
 						}
 
 						if (!tradeSuccess)
@@ -682,8 +682,8 @@ namespace DawnOfLight.GameServer.Utilities
 					m_changesCount--;
 					m_partnerWindow.m_changesCount--;
 
-					m_owner.Out.SendMessage("Trade Completed. " + myTradeItemsCount + " items for " + partnerTradeItemsCount + " items.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-					partner.Out.SendMessage("Trade Completed. " + partnerTradeItemsCount + " items for " + myTradeItemsCount + " items.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					m_owner.Out.SendMessage("Trade Completed. " + myTradeItemsCount + " items for " + partnerTradeItemsCount + " items.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+					partner.Out.SendMessage("Trade Completed. " + partnerTradeItemsCount + " items for " + myTradeItemsCount + " items.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 					m_owner.Inventory.SaveIntoDatabase(m_owner.InternalID);
 					partner.Inventory.SaveIntoDatabase(partner.InternalID);

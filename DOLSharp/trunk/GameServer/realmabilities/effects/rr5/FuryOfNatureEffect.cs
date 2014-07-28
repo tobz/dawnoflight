@@ -58,7 +58,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 			if (player.Group == null)
 				return;
 			if (extra > 0)
-				player.Out.SendMessage("Your Fury enables you to strike " + args.AttackData.Target.Name + " for " + extra + " additional points of damage", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Your Fury enables you to strike " + args.AttackData.Target.Name + " for " + extra + " additional points of damage", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 			Hashtable injuredTargets = new Hashtable();
 			GamePlayer mostInjuredLiving = null;
 
@@ -107,7 +107,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 
 			if (mostInjuredPercent >= 1)
 			{
-				player.Out.SendMessage("Your group is fully healed!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Your group is fully healed!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -148,9 +148,9 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 				if (reducedHeal < baseheal)
 					baseheal = reducedHeal;
 				healTarget.ChangeHealth(player, GameLiving.eHealthChangeType.Spell, baseheal);
-				player.Out.SendMessage("You heal " + healTarget.Name + " for " + baseheal + "!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You heal " + healTarget.Name + " for " + baseheal + "!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				if (healTarget is GamePlayer)
-					((GamePlayer)healTarget).Out.SendMessage(player.Name + " heals you for " + baseheal + "!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					((GamePlayer)healTarget).Out.SendMessage(player.Name + " heals you for " + baseheal + "!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 			}
 
 			return;

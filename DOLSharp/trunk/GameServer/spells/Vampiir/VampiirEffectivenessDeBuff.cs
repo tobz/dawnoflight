@@ -59,8 +59,8 @@ namespace DawnOfLight.GameServer.Spells.Vampiir
 				}
 			
 
-				MessageToLiving(effect.Owner, Spell.Message1, eChatType.CT_Spell);
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), eChatType.CT_Spell, effect.Owner);
+				MessageToLiving(effect.Owner, Spell.Message1, ChatType.CT_Spell);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, true)), ChatType.CT_Spell, effect.Owner);
 
 				// Added to fix?
 				player.Out.SendUpdateWeaponAndArmorStats();
@@ -77,8 +77,8 @@ namespace DawnOfLight.GameServer.Spells.Vampiir
 				GamePlayer player = effect.Owner as GamePlayer;
 				player.Effectiveness = player.TempProperties.getProperty<double>("PreEffectivenessDebuff");
 				player.TempProperties.removeProperty("PreEffectivenessDebuff");
-				MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_Spell);
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, true)), eChatType.CT_Spell, effect.Owner);
+				MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_Spell);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, true)), ChatType.CT_Spell, effect.Owner);
 
 				// Added to fix?
 				player.Out.SendUpdateWeaponAndArmorStats();

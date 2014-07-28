@@ -78,13 +78,13 @@ namespace DawnOfLight.GameServer.Utilities
 		/// Check if the slot is valid in the inventory
 		/// </summary>
 		/// <param name="slot">SlotPosition to check</param>
-		/// <returns>the slot if it's valid or eInventorySlot.Invalid if not</returns>
-		protected override eInventorySlot GetValidInventorySlot(eInventorySlot slot)
+		/// <returns>the slot if it's valid or InventorySlot.Invalid if not</returns>
+		protected override InventorySlot GetValidInventorySlot(InventorySlot slot)
 		{
-			foreach (eInventorySlot visibleSlot in VISIBLE_SLOTS)
+			foreach (InventorySlot visibleSlot in VISIBLE_SLOTS)
 				if (visibleSlot == slot)
 					return slot;
-			return eInventorySlot.Invalid;
+			return InventorySlot.Invalid;
 		}
 
 		#region AddNPCEquipment/RemoveNPCEquipment/CloseTemplate/CloneTemplate
@@ -95,7 +95,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="slot">The equipment slot</param>
 		/// <param name="model">The equipment model</param>
 		/// <returns>true if added</returns>
-		public bool AddNPCEquipment(eInventorySlot slot, int model)
+		public bool AddNPCEquipment(InventorySlot slot, int model)
 		{
 			return AddNPCEquipment(slot, model, 0, 0, 0);
 		}
@@ -107,7 +107,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="model">The equipment model</param>
 		/// <param name="color">The equipment color</param>
 		/// <returns>true if added</returns>
-		public bool AddNPCEquipment(eInventorySlot slot, int model, int color)
+		public bool AddNPCEquipment(InventorySlot slot, int model, int color)
 		{
 			return AddNPCEquipment(slot, model, color, 0, 0);
 		}
@@ -120,7 +120,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="color">The equipment color</param>
 		/// <param name="effect">The equipment effect</param>
 		/// <returns>true if added</returns>
-		public bool AddNPCEquipment(eInventorySlot slot, int model, int color, int effect)
+		public bool AddNPCEquipment(InventorySlot slot, int model, int color, int effect)
 		{
 			return AddNPCEquipment(slot, model, color, effect, 0);
 		}
@@ -134,7 +134,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="effect">The equipment effect</param>
 		/// <param name="extension">The equipment extension</param>
 		/// <returns>true if added</returns>
-		public bool AddNPCEquipment(eInventorySlot slot, int model, int color, int effect, int extension, int emblem = 0)
+		public bool AddNPCEquipment(InventorySlot slot, int model, int color, int effect, int extension, int emblem = 0)
 		{
 			lock (m_items)
 			{
@@ -143,7 +143,7 @@ namespace DawnOfLight.GameServer.Utilities
 					if (m_isClosed)
 						return false;
 					slot = GetValidInventorySlot(slot);
-					if (slot == eInventorySlot.Invalid)
+					if (slot == InventorySlot.Invalid)
 						return false;
 					//Changed to support randomization of slots - if we try to load a weapon in the same spot with a different model,
 					//let's make it random 50% chance to either overwrite the item or leave it be
@@ -184,13 +184,13 @@ namespace DawnOfLight.GameServer.Utilities
 		/// </summary>
 		/// <param name="slot">The slot to remove</param>
 		/// <returns>true if removed</returns>
-		public bool RemoveNPCEquipment(eInventorySlot slot)
+		public bool RemoveNPCEquipment(InventorySlot slot)
 		{
 			lock (m_items)
 			{
 				slot = GetValidInventorySlot(slot);
 
-				if (slot == eInventorySlot.Invalid)
+				if (slot == InventorySlot.Invalid)
 					return false;
 
 				if (m_isClosed)
@@ -254,7 +254,7 @@ namespace DawnOfLight.GameServer.Utilities
 			lock (m_items)
 			{
 				var clone = new GameNpcInventoryTemplate();
-				clone.m_changedSlots = new List<eInventorySlot>(m_changedSlots);
+				clone.m_changedSlots = new List<InventorySlot>(m_changedSlots);
 				clone.m_changesCounter = m_changesCounter;
 
 				foreach (var de in m_items)
@@ -315,7 +315,7 @@ namespace DawnOfLight.GameServer.Utilities
 				
 				foreach (NPCEquipment npcItem in npcEquip)
 				{
-					if (!AddNPCEquipment((eInventorySlot)npcItem.Slot, npcItem.Model, npcItem.Color, npcItem.Effect, npcItem.Extension, npcItem.Emblem))
+					if (!AddNPCEquipment((InventorySlot)npcItem.Slot, npcItem.Model, npcItem.Color, npcItem.Effect, npcItem.Extension, npcItem.Emblem))
 					{
 						if (log.IsWarnEnabled)
 							log.Warn("Error adding NPC equipment for templateID " + templateID + ", ModelID=" + npcItem.Model + ", slot=" + npcItem.Slot);
@@ -375,7 +375,7 @@ namespace DawnOfLight.GameServer.Utilities
 					// delete removed item templates
 					foreach (NPCEquipment npcItem in npcEquipment)
 					{
-						if (!m_items.ContainsKey((eInventorySlot)npcItem.Slot))
+						if (!m_items.ContainsKey((InventorySlot)npcItem.Slot))
 							GameServer.Database.DeleteObject(npcItem);
 					}
 
@@ -439,7 +439,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="slot"></param>
 		/// <param name="item"></param>
 		/// <returns>false</returns>
-		public override bool AddItem(eInventorySlot slot, InventoryItem item)
+		public override bool AddItem(InventorySlot slot, InventoryItem item)
 		{
 			return false;
 		}
@@ -483,7 +483,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="toSlot"></param>
 		/// <param name="itemCount"></param>
 		/// <returns></returns>
-		public override bool MoveItem(eInventorySlot fromSlot, eInventorySlot toSlot, int itemCount)
+		public override bool MoveItem(InventorySlot fromSlot, InventorySlot toSlot, int itemCount)
 		{
 			return false;
 		}
@@ -506,7 +506,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="toSlot">Second SlotPosition</param>
 		/// <param name="itemCount">How many items to move</param>
 		/// <returns>false</returns>
-		protected override bool StackItems(eInventorySlot fromSlot, eInventorySlot toSlot, int itemCount)
+		protected override bool StackItems(InventorySlot fromSlot, InventorySlot toSlot, int itemCount)
 		{
 			return false;
 		}
@@ -517,7 +517,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="fromSlot">First SlotPosition</param>
 		/// <param name="toSlot">Second SlotPosition</param>
 		/// <returns>false</returns>
-		protected override bool ExchangeItems(eInventorySlot fromSlot, eInventorySlot toSlot)
+		protected override bool ExchangeItems(InventorySlot fromSlot, InventorySlot toSlot)
 		{
 			return false;
 		}
@@ -530,7 +530,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="minSlot">The first slot</param>
 		/// <param name="maxSlot">The last slot</param>
 		/// <returns>false</returns>
-		public override bool AddTemplate(InventoryItem template, int count, eInventorySlot minSlot, eInventorySlot maxSlot)
+		public override bool AddTemplate(InventoryItem template, int count, InventorySlot minSlot, InventorySlot maxSlot)
 		{
 			return false;
 		}
@@ -543,7 +543,7 @@ namespace DawnOfLight.GameServer.Utilities
 		/// <param name="minSlot">The first slot</param>
 		/// <param name="maxSlot">The last slot</param>
 		/// <returns>false</returns>
-		public override bool RemoveTemplate(string templateID, int count, eInventorySlot minSlot, eInventorySlot maxSlot)
+		public override bool RemoveTemplate(string templateID, int count, InventorySlot minSlot, InventorySlot maxSlot)
 		{
 			return false;
 		}

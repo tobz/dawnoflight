@@ -23,7 +23,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			if (CheckPreconditions(living, DEAD | SITTING | MEZZED | STUNNED)) return;
 			if (player.TempProperties.getProperty(BofBaSb, false))
 			{
-				player.Out.SendMessage("You already an effect of that type!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You already an effect of that type!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			if(ServerProperties.Properties.USE_NEW_ACTIVES_RAS_SCALING)

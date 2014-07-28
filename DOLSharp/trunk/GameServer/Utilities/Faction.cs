@@ -278,7 +278,7 @@ namespace DawnOfLight.GameServer.Utilities
 				{
 					msg += "increased.";
 				}
-				player.Out.SendMessage(msg, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(msg, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 

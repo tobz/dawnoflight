@@ -61,8 +61,8 @@ namespace DawnOfLight.GameServer.Spells
 			effect.Owner.DebuffCategory[(int)eProperty.ArcheryRange] += (int)Spell.Value;
 			effect.Owner.DebuffCategory[(int)eProperty.SpellRange] += (int)Spell.Value;
 			SendEffectAnimation(effect.Owner, 0, false, 1);
-			MessageToLiving(effect.Owner, Spell.Message1, eChatType.CT_Spell);
-			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), eChatType.CT_Spell, effect.Owner);
+			MessageToLiving(effect.Owner, Spell.Message1, ChatType.CT_Spell);
+			Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), ChatType.CT_Spell, effect.Owner);
 		}
 
 		/// <summary>
@@ -78,8 +78,8 @@ namespace DawnOfLight.GameServer.Spells
 			effect.Owner.DebuffCategory[(int)eProperty.ArcheryRange] -= (int)Spell.Value;
 			effect.Owner.DebuffCategory[(int)eProperty.SpellRange] -= (int)Spell.Value;
 			if (!noMessages) {
-				MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+				MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+				Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
 			}
 			return 60000;
 		}

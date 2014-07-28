@@ -114,7 +114,7 @@ namespace DawnOfLight.GameServer.Housing
 
 			    long totalCost = HouseTemplateMgr.GetLotPrice(DatabaseItem);
 				if (player.RemoveMoney(totalCost, "You just bought this lot for {0}.",
-				                       eChatType.CT_Merchant, eChatLoc.CL_SystemWindow))
+				                       ChatType.CT_Merchant, ChatLocation.CL_SystemWindow))
 				{
                     InventoryLogging.LogInventoryAction(player, this, eInventoryActionType.Merchant, totalCost);
 					DatabaseItem.LastPaid = DateTime.Now;

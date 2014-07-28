@@ -55,7 +55,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				};
 			if (client.Player.IsAnonymous)
 			{
-				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Anonymous.On"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Anonymous.On"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				foreach (GameClient pclient in WorldMgr.GetAllPlayingClients())
 				{
 					if (pclient.Player.Friends.Contains(client.Player.Name))
@@ -64,7 +64,7 @@ namespace DawnOfLight.GameServer.commands.Player
 			}
 			else
 			{
-				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Anonymous.Off"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Anonymous.Off"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				foreach (GameClient pclient in WorldMgr.GetAllPlayingClients())
 				{
 					if (pclient.Player.Friends.Contains(client.Player.Name))

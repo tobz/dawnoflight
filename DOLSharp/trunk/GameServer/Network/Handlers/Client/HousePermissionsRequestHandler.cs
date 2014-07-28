@@ -17,29 +17,24 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Network.Packets;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x05, "Handles housing permissions requests from menu")]
+	[PacketHandler(PacketType.TCP, ClientPackets.HousePermissionsRequest, ClientStatus.PlayerInGame)]
 	public class HousePermissionsRequestHandler : IPacketHandler
 	{
-		#region IPacketHandler Members
-
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int pid = packet.ReadShort();
-			ushort housenumber = packet.ReadShort();
+			ushort houseNumber = packet.ReadShort();
 
 			// house is null, return
-			var house = HouseMgr.GetHouse(housenumber);
+			var house = HouseMgr.GetHouse(houseNumber);
 			if (house == null)
-				return;
-
-			// player is null, return
-			if (client.Player == null)
 				return;
 
 			// player has no owner permissions and isn't a GM or admin, return
@@ -47,7 +42,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				return;
 
 			// send out the house permissions
-			using (var pak = new GSTCPPacketOut(client.Out.GetPacketCode(eServerPackets.HousingPermissions)))
+			using (var pak = new GameTCPPacketOut(client.Out.GetPacketCode(ServerPackets.HousingPermissions)))
 			{
 				pak.WriteByte(HousingConstants.MaxPermissionLevel); // number of permissions ?
 				pak.WriteByte(0x00); // unknown
@@ -79,7 +74,5 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				client.Out.SendTCP(pak);
 			}
 		}
-
-		#endregion
 	}
 }

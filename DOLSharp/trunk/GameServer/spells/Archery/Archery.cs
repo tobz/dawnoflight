@@ -55,7 +55,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 			if (m_caster.ObjectState != GameLiving.eObjectState.Active)	return false;
 			if (!m_caster.IsAlive)
 			{
-				MessageToCaster("You are dead and can't cast!", eChatType.CT_System);
+				MessageToCaster("You are dead and can't cast!", ChatType.CT_System);
 				return false;
 			}
 			
@@ -63,7 +63,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 			GameSpellEffect Phaseshift = SpellHandler.FindEffectOnTarget(Caster, "Phaseshift");
 			if (Phaseshift != null && (Spell.InstrumentRequirement == 0 || Spell.SpellType == "Mesmerize"))
 			{
-				MessageToCaster("You're phaseshifted and can't cast a spell", eChatType.CT_System);
+				MessageToCaster("You're phaseshifted and can't cast a spell", ChatType.CT_System);
 				return false;
 			}
 
@@ -71,7 +71,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 			ShieldTripDisarmEffect shieldDisarm = Caster.EffectList.GetOfType<ShieldTripDisarmEffect>();
 			if (shieldDisarm != null)
 			{
-				MessageToCaster("You're disarmed and can't cast a spell", eChatType.CT_System);
+				MessageToCaster("You're disarmed and can't cast a spell", ChatType.CT_System);
 				return false;
 			}
 
@@ -83,7 +83,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 				if(EffectOwner==selectedTarget)
 				{
 					if (m_caster is GamePlayer)
-						((GamePlayer)m_caster).Out.SendMessage(string.Format("{0} is invisible to you!", selectedTarget.GetName(0, true)), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+						((GamePlayer)m_caster).Out.SendMessage(string.Format("{0} is invisible to you!", selectedTarget.GetName(0, true)), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 					
 					return false;
 				}
@@ -92,13 +92,13 @@ namespace DawnOfLight.GameServer.Spells.Archery
 			// Is immune ?
 			if (selectedTarget!=null&&selectedTarget.HasAbility("DamageImmunity"))
 			{
-				MessageToCaster(selectedTarget.Name + " is immune to this effect!", eChatType.CT_SpellResisted);
+				MessageToCaster(selectedTarget.Name + " is immune to this effect!", ChatType.CT_SpellResisted);
 				return false;
 			}
 			
 			if (m_caster.IsSitting)
 			{
-				MessageToCaster("You can't cast while sitting!", eChatType.CT_SpellResisted);
+				MessageToCaster("You can't cast while sitting!", ChatType.CT_SpellResisted);
 				return false;
 			}
 			if (m_spell.RecastDelay > 0)
@@ -106,7 +106,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 				int left = m_caster.GetSkillDisabledDuration(m_spell);
 				if (left > 0)
 				{
-					MessageToCaster("You must wait " + (left / 1000 + 1).ToString() + " seconds to use this spell!", eChatType.CT_System);
+					MessageToCaster("You must wait " + (left / 1000 + 1).ToString() + " seconds to use this spell!", ChatType.CT_System);
 					return false;
 				}
 			}
@@ -115,7 +115,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 			{
 				if (!m_caster.IsWithinRadius(m_caster.GroundTarget, CalculateSpellRange()))
 				{
-					MessageToCaster("Your area target is out of range.  Select a closer target.", eChatType.CT_SpellResisted);
+					MessageToCaster("Your area target is out of range.  Select a closer target.", ChatType.CT_SpellResisted);
 					return false;
 				}
 			}
@@ -124,14 +124,14 @@ namespace DawnOfLight.GameServer.Spells.Archery
 			{
 				if (m_caster.IsObjectInFront(selectedTarget, 180) == false)
 				{
-					MessageToCaster("Your target is not in view!", eChatType.CT_SpellResisted);
+					MessageToCaster("Your target is not in view!", ChatType.CT_SpellResisted);
 					Caster.Notify(GameLivingEvent.CastFailed, new CastFailedEventArgs(this, CastFailedEventArgs.Reasons.TargetNotInView));
 					return false;
 				}
 
 				if (m_caster.TargetInView == false)
 				{
-					MessageToCaster("Your target is not visible!", eChatType.CT_SpellResisted);
+					MessageToCaster("Your target is not visible!", ChatType.CT_SpellResisted);
 					Caster.Notify(GameLivingEvent.CastFailed, new CastFailedEventArgs(this, CastFailedEventArgs.Reasons.TargetNotInView));
 					return false;
 				}
@@ -141,7 +141,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 			{
 				if (Spell.LifeDrainReturn == (int)eShotType.Critical && (!(Caster.IsStealthed)))
 				{
-					MessageToCaster("You must be stealthed and wielding a bow to use this ability!", eChatType.CT_SpellResisted);
+					MessageToCaster("You must be stealthed and wielding a bow to use this ability!", ChatType.CT_SpellResisted);
 					return false;
 				}
 
@@ -151,18 +151,18 @@ namespace DawnOfLight.GameServer.Spells.Archery
 			{
 				if (Spell.LifeDrainReturn == (int)eShotType.Critical)
 				{
-					MessageToCaster("You must be stealthed and wielding a bow to use this ability!", eChatType.CT_SpellResisted);
+					MessageToCaster("You must be stealthed and wielding a bow to use this ability!", ChatType.CT_SpellResisted);
 					return false;
 				}
 
-				MessageToCaster("You must be wielding a bow to use this ability!", eChatType.CT_SpellResisted);
+				MessageToCaster("You must be wielding a bow to use this ability!", ChatType.CT_SpellResisted);
 				return false;
 			}
 		}
 		
 		public override void SendSpellMessages()
 		{
-			MessageToCaster("You prepare a " + Spell.Name, eChatType.CT_YouHit);
+			MessageToCaster("You prepare a " + Spell.Name, ChatType.CT_YouHit);
 		}
 
 
@@ -226,7 +226,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 							if (target is GamePlayer)
 							{
 								player = target as GamePlayer;
-								player.Out.SendMessage("A shot penetrated your magic barrier!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage("A shot penetrated your magic barrier!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 							}
 							ad.AttackResult = GameLiving.eAttackResult.HitUnstyled;
 						}
@@ -235,7 +235,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 					case (int)eShotType.Power:
 						{
 							player = target as GamePlayer;
-							player.Out.SendMessage("A shot penetrated your magic barrier!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("A shot penetrated your magic barrier!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 							ad.AttackResult = GameLiving.eAttackResult.HitUnstyled;
 							bladeturn.Cancel(false);
 						}
@@ -247,12 +247,12 @@ namespace DawnOfLight.GameServer.Spells.Archery
 							if (Caster is GamePlayer)
 							{
 								player = Caster as GamePlayer;
-								player.Out.SendMessage("Your strike was absorbed by a magical barrier!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage("Your strike was absorbed by a magical barrier!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 							}
 							if (target is GamePlayer)
 							{
 								player = target as GamePlayer;
-								player.Out.SendMessage("The blow was absorbed by a magical barrier!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage("The blow was absorbed by a magical barrier!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 								ad.AttackResult = GameLiving.eAttackResult.Missed;
 								bladeturn.Cancel(false);
 							}
@@ -438,7 +438,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 				if (Util.Chance((int)chance))
 				{
 					Caster.TempProperties.setProperty(INTERRUPT_TIMEOUT_PROPERTY, Caster.CurrentRegion.Time + Caster.SpellInterruptDuration);
-					MessageToLiving(Caster, attacker.GetName(0, true) + " attacks you and your shot is interrupted!", eChatType.CT_SpellResisted);
+					MessageToLiving(Caster, attacker.GetName(0, true) + " attacks you and your shot is interrupted!", ChatType.CT_SpellResisted);
 					InterruptCasting();
 					return true;
 				}

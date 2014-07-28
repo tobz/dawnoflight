@@ -90,7 +90,7 @@ namespace DawnOfLight.GameServer.Scripts
                 if (item is DesmonaCoin)
                 {
                     player.Inventory.RemoveItem(item);
-                    player.Out.SendMessage(Name + " stole your " + item.Name + "!", eChatType.CT_Emote, eChatLoc.CL_ChatWindow);
+                    player.Out.SendMessage(Name + " stole your " + item.Name + "!", ChatType.CT_Emote, ChatLocation.CL_ChatWindow);
                     return;
                 }
             }

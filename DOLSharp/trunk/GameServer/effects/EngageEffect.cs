@@ -54,7 +54,7 @@ namespace DawnOfLight.GameServer.Effects
 			engageSource.IsEngaging = true;
 
 			if (m_owner is GamePlayer)
-				(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.EngageEffect.ConcOnBlockingX", m_engageTarget.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.EngageEffect.ConcOnBlockingX", m_engageTarget.GetName(0, false)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			/*
 			// only emulate attack mode so it works more like on live servers
 			// entering real attack mode while engaging someone stops engage
@@ -64,8 +64,8 @@ namespace DawnOfLight.GameServer.Effects
 				m_owner.StartAttack(m_engageTarget);
 				if (m_owner is GamePlayer)
 					(m_owner as GamePlayer).Out.SendAttackMode(true);
-				//m_engageSource.Out.SendMessage("You enter combat mode to engage your target!", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
-				//m_engageSource.Out.SendMessage("You enter combat mode and target ["+engageTarget.GetName(0, false)+"]", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+				//m_engageSource.Out.SendMessage("You enter combat mode to engage your target!", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
+				//m_engageSource.Out.SendMessage("You enter combat mode and target ["+engageTarget.GetName(0, false)+"]", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 			}
 			 */
 		}
@@ -80,9 +80,9 @@ namespace DawnOfLight.GameServer.Effects
 			if (m_owner is GamePlayer)
 			{
 				if (playerCancel)
-					(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.EngageEffect.YouNoConcOnBlock"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.EngageEffect.YouNoConcOnBlock"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				else
-					(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.EngageEffect.YouNoAttemptToEngageT"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.EngageEffect.YouNoAttemptToEngageT"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 		}
 

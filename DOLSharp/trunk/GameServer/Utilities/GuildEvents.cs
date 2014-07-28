@@ -102,7 +102,7 @@ namespace DawnOfLight.GameServer.Utilities
 				{
 					int meritpoints = cea.Points - 600;
 					player.Guild.GainMeritPoints(meritpoints);
-					player.Out.SendMessage("You have earned " + meritpoints + " merit points for your guild!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You have earned " + meritpoints + " merit points for your guild!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}
@@ -116,7 +116,7 @@ namespace DawnOfLight.GameServer.Utilities
 			if (player.IsEligibleToGiveMeritPoints)
 			{
 				player.Guild.GainMeritPoints(meritPoints);
-				player.Out.SendMessage("You have earned " + meritPoints + " merit points for your guild!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You have earned " + meritPoints + " merit points for your guild!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 
 		}
@@ -135,7 +135,7 @@ namespace DawnOfLight.GameServer.Utilities
 				// ... These scale from 6 at level 2 to 253 at level 50.
 				int meritPoints = (int)((double)player.Level * (3.0 + ((double)player.Level / 25.0)));
 				player.Guild.GainMeritPoints(meritPoints);
-				player.Out.SendMessage("You have earned " + meritPoints + " merit points for your guild!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You have earned " + meritPoints + " merit points for your guild!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 
@@ -165,7 +165,7 @@ namespace DawnOfLight.GameServer.Utilities
 				{
 					int a = (int)Math.Pow((3 * (newRR - 1)), 2);
 					player.Guild.GainMeritPoints(a);
-					player.Out.SendMessage("Your guild is awarded " + (int)Math.Pow((3 * (newRR - 1)), 2) + " merit points!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Your guild is awarded " + (int)Math.Pow((3 * (newRR - 1)), 2) + " merit points!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 			}
 			else if (player.RealmLevel > 60)
@@ -176,7 +176,7 @@ namespace DawnOfLight.GameServer.Utilities
 				{
 					int a = (int)Math.Pow((3 * (RRHigh - 1)), 2);
 					player.Guild.GainMeritPoints(a);
-					player.Out.SendMessage("Your guild is awarded " + (int)Math.Pow((3 * (RRHigh - 1)), 2) + " merit points!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Your guild is awarded " + (int)Math.Pow((3 * (RRHigh - 1)), 2) + " merit points!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 			}
 			else
@@ -188,7 +188,7 @@ namespace DawnOfLight.GameServer.Utilities
 						int RRHigh = ((int)Math.Floor(player.RealmLevel * 0.1) + 1);
 						int a = (int)Math.Pow((3 * (RRHigh - 1)), 2);
 						player.Guild.GainMeritPoints(a);
-						player.Out.SendMessage("Your guild is awarded " + (int)Math.Pow((3 * (RRHigh - 1)), 2) + " merit points!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("Your guild is awarded " + (int)Math.Pow((3 * (RRHigh - 1)), 2) + " merit points!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}
@@ -213,7 +213,7 @@ namespace DawnOfLight.GameServer.Utilities
 			{
 				long bonusXP = (long)Math.Ceiling((double)xpArgs.ExpBase * ServerProperties.Properties.GUILD_BUFF_XP / 100);
 				player.GainExperience(GameLiving.eXPSource.Other, bonusXP, 0, 0, 0, false);
-				player.Out.SendMessage("You gain an additional " + bonusXP + " experience due to your guild's buff!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You gain an additional " + bonusXP + " experience due to your guild's buff!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				player.Guild.UpdateGuildWindow();
 			}
 		}
@@ -238,7 +238,7 @@ namespace DawnOfLight.GameServer.Utilities
 					long bonusRealmPoints = (long)Math.Ceiling((double)rpsArgs.RealmPoints * ServerProperties.Properties.GUILD_BUFF_RP / 100);
 
 					player.GainRealmPoints(bonusRealmPoints, false, false, false);
-					player.Out.SendMessage("You get an additional " + bonusRealmPoints + " realm points due to your guild's buff!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You get an additional " + bonusRealmPoints + " realm points due to your guild's buff!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 					if ((oldGuildRealmPoints < 100000000) && (player.Guild.RealmPoints > 100000000))
 					{
@@ -272,7 +272,7 @@ namespace DawnOfLight.GameServer.Utilities
 					long bonusBountyPoints = (long)Math.Ceiling((double)bpsArgs.BountyPoints * ServerProperties.Properties.GUILD_BUFF_BP / 100);
 					player.GainBountyPoints(bonusBountyPoints, false, false, false);
 					player.Guild.BountyPoints += bonusBountyPoints;
-					player.Out.SendMessage("You get an additional " + bonusBountyPoints + " bounty points due to your guild's buff!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("You get an additional " + bonusBountyPoints + " bounty points due to your guild's buff!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 			}
 
@@ -307,7 +307,7 @@ namespace DawnOfLight.GameServer.Utilities
 						string message = "[Guild Buff] Your guild buff has now worn off!";
 						foreach (GamePlayer player in checkGuild.GetListOfOnlineMembers())
 						{
-							player.Out.SendMessage(message, eChatType.CT_Guild, eChatLoc.CL_ChatWindow);
+							player.Out.SendMessage(message, ChatType.CT_Guild, ChatLocation.CL_ChatWindow);
 						}
 					}
 				}

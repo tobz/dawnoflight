@@ -27,7 +27,7 @@ using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerHeadingUpdate, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.PlayerHeadingUpdate, ClientStatus.PlayerInGame)]
 	public class PlayerHeadingUpdateHandler : IPacketHandler
 	{
 		/// <summary>
@@ -35,7 +35,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 		/// </summary>
 		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			if (client == null || client.Player == null)
 				return;
@@ -82,12 +82,12 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			}
 			con[8] = (byte)((con[8] & 0x80) | client.Player.HealthPercent);
 
-			GSUDPPacketOut outpak = new GSUDPPacketOut(client.Out.GetPacketCode(eServerPackets.PlayerHeading));
+			GameUDPPacketOut outpak = new GameUDPPacketOut(client.Out.GetPacketCode(ServerPackets.PlayerHeading));
 			//Now copy the whole content of the packet
 			outpak.Write(con, 0, /*con.Length*/10);
 			outpak.WritePacketLength();
 
-			GSUDPPacketOut outpak190 = null;
+			GameUDPPacketOut outpak190 = null;
 
 //			byte[] outp = outpak.GetBuffer();
 //			outpak = null;
@@ -100,7 +100,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					{
 						if (outpak190 == null)
 						{
-	 						outpak190 = new GSUDPPacketOut(client.Out.GetPacketCode(eServerPackets.PlayerHeading));
+	 						outpak190 = new GameUDPPacketOut(client.Out.GetPacketCode(ServerPackets.PlayerHeading));
 	 						byte[] con190 = (byte[]) con.Clone();
 							//Now copy the whole content of the packet
 							outpak190.Write(con190, 0, /*con190.Lenght*/10);

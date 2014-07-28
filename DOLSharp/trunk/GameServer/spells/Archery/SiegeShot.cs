@@ -25,11 +25,11 @@ namespace DawnOfLight.GameServer.Spells.Archery
 			{
 				if (!(selectedTarget is GameKeepComponent || selectedTarget is GameKeepDoor))
 				{
-					MessageToCaster("You must have a Keep Component targeted for this spell!", eChatType.CT_Spell);
+					MessageToCaster("You must have a Keep Component targeted for this spell!", ChatType.CT_Spell);
 					return false;
 				}
 				return base.CheckBeginCast(selectedTarget);
-				//if (!Caster.IsWithinRadius( selectedTarget, Spell.Range )) { MessageToCaster("That target is too far away!", eChatType.CT_Spell); return false; }
+				//if (!Caster.IsWithinRadius( selectedTarget, Spell.Range )) { MessageToCaster("That target is too far away!", ChatType.CT_Spell); return false; }
 			}
 			return false;
 		}
@@ -38,7 +38,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 		{
 			if (!(target is GameKeepComponent || target is GameKeepDoor))
 			{
-				MessageToCaster("Your target must be a Keep Component!", eChatType.CT_SpellResisted);
+				MessageToCaster("Your target must be a Keep Component!", ChatType.CT_SpellResisted);
 				return;
 			}
 
@@ -48,7 +48,7 @@ namespace DawnOfLight.GameServer.Spells.Archery
 			base.FinishSpellCast(target);
 		}
 
-		public override void SendSpellMessages() { MessageToCaster("You prepare " + Spell.Name, eChatType.CT_Spell); }
+		public override void SendSpellMessages() { MessageToCaster("You prepare " + Spell.Name, ChatType.CT_Spell); }
 		public override AttackData CalculateDamageToTarget(GameLiving target, double effectiveness)
 		{
 			AttackData ad = base.CalculateDamageToTarget(target, effectiveness);

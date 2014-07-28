@@ -113,7 +113,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 						"fragile and if the leggings are lost or destroyed, the magic will be gone forever.",
 						"May these leggings serve you well as you travel through the trial planes.");
 					scholar.TurnTo(player);
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					FinishQuest();
 					return true;
 				}
@@ -147,7 +147,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"If you have accidentally lost those letters, you must go and find them before",
 					"the spell can be completed.");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}

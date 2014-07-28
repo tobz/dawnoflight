@@ -61,7 +61,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 
 			if (targets.Count == 0)
 			{
-				player.Out.SendMessage(((player.Group != null) ? "Your group is" : "You are") + " fully healed!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(((player.Group != null) ? "Your group is" : "You are") + " fully healed!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 				return;
 			}
 

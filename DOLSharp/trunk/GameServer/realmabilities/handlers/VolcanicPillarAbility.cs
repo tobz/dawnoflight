@@ -21,14 +21,14 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 
 			if (m_caster.TargetObject == null)
 			{
-				m_caster.Out.SendMessage("You need a target for this ability!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				m_caster.Out.SendMessage("You need a target for this ability!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				m_caster.DisableSkill(this, 3 * 1000);
 				return;
 			}
 
 			if ( !m_caster.IsWithinRadius( m_caster.TargetObject, (int)( 1500 * m_caster.GetModified(eProperty.SpellRange) * 0.01 ) ) )
 			{
-				m_caster.Out.SendMessage(m_caster.TargetObject + " is too far away.", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				m_caster.Out.SendMessage(m_caster.TargetObject + " is too far away.", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -59,11 +59,11 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				if (i_player == m_caster)
 				{
-					i_player.MessageToSelf("You cast " + this.Name + "!", eChatType.CT_Spell);
+					i_player.MessageToSelf("You cast " + this.Name + "!", ChatType.CT_Spell);
 				}
 				else
 				{
-					i_player.MessageFromArea(m_caster, m_caster.Name + " casts a spell!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+					i_player.MessageFromArea(m_caster, m_caster.Name + " casts a spell!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				}
 
 				i_player.Out.SendSpellCastAnimation(m_caster, 7025, 20);
@@ -73,7 +73,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 			{
 				m_caster.RealmAbilityCastTimer.Stop();
 				m_caster.RealmAbilityCastTimer = null;
-				m_caster.Out.SendMessage("You cancel your Spell!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+				m_caster.Out.SendMessage("You cancel your Spell!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
 			}
 
 			m_caster.RealmAbilityCastTimer = new RegionTimer(m_caster);
@@ -85,14 +85,14 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 		{
 			if (m_caster.TargetObject == null)
 			{
-				m_caster.Out.SendMessage("You need a target for this ability!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				m_caster.Out.SendMessage("You need a target for this ability!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				m_caster.DisableSkill(this, 3 * 1000);
 				return 0;
 			}
 
             if ( !m_caster.IsWithinRadius( m_caster.TargetObject, (int)( 1500 * m_caster.GetModified( eProperty.SpellRange ) * 0.01 ) ) )
 			{
-				m_caster.Out.SendMessage(m_caster.TargetObject + " is too far away.", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				m_caster.Out.SendMessage(m_caster.TargetObject + " is too far away.", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 				return 0;
 			}
 
@@ -107,7 +107,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 					continue;
 
 				mob.TakeDamage(m_caster, eDamageType.Heat, m_dmgValue, 0);
-				m_caster.Out.SendMessage("You hit the " + mob.Name + " for " + m_dmgValue + " damage.", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+				m_caster.Out.SendMessage("You hit the " + mob.Name + " for " + m_dmgValue + " damage.", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 				foreach (GamePlayer player2 in m_caster.TargetObject.GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))
 				{
 					player2.Out.SendSpellEffectAnimation(m_caster, mob, 7025, 0, false, 1);
@@ -120,8 +120,8 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers
 					continue;
 
 				aeplayer.TakeDamage(m_caster, eDamageType.Heat, m_dmgValue, 0);
-				m_caster.Out.SendMessage("You hit " + aeplayer.Name + " for " + m_dmgValue + " damage.", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
-				aeplayer.Out.SendMessage(m_caster.Name + " hits you for " + m_dmgValue + " damage.", eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow); 
+				m_caster.Out.SendMessage("You hit " + aeplayer.Name + " for " + m_dmgValue + " damage.", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
+				aeplayer.Out.SendMessage(m_caster.Name + " hits you for " + m_dmgValue + " damage.", ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow); 
 				foreach (GamePlayer player3 in m_caster.TargetObject.GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))
 				{
 					player3.Out.SendSpellEffectAnimation(m_caster, aeplayer, 7025, 0, false, 1);

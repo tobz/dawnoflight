@@ -23,12 +23,12 @@ using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerGroundTarget, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.PlayerGroundTarget, ClientStatus.PlayerInGame)]
 	public class PlayerGroundTargetHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			var groundX = (int) packet.ReadInt();
 			var groundY = (int) packet.ReadInt();
@@ -91,7 +91,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				player.SetGroundTarget(m_x, m_y, (ushort) m_z);
 
 				if (!player.GroundTargetInView)
-					player.Out.SendMessage("Your ground target is not visible!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Your ground target is not visible!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				if (player.SiegeWeapon != null)
 				{
@@ -106,7 +106,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					{
 						if (player.Steed.OwnerID == player.InternalID)
 						{
-							player.Out.SendMessage("You usher your boat forward.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							player.Out.SendMessage("You usher your boat forward.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 							player.Steed.WalkTo(player.GroundTarget, player.Steed.MaxSpeed);
 							return;
 						}
@@ -115,7 +115,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					if (player.Steed.MAX_PASSENGERS > 8 && player.Steed.CurrentRiders.Length < player.Steed.REQUIRED_PASSENGERS)
 					{
 						player.Out.SendMessage("The " + player.Steed.Name + " does not yet have enough passengers to move!",
-						                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						return;
 					}
 					player.Steed.WalkTo(player.GroundTarget, player.Steed.MaxSpeed);

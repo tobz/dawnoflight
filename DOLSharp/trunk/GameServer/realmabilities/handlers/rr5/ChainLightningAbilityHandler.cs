@@ -53,18 +53,18 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
             GamePlayer target = living.TargetObject as GamePlayer;
             if (player.TargetObject == null || target == null)
             {
-                player.Out.SendMessage("You must target a player to launch this spell!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You must target a player to launch this spell!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
                 return;
             }
             if (!GameServer.ServerRules.IsAllowedToAttack(living, target, true))
             {
-                player.Out.SendMessage("You must select an enemy target!", eChatType.CT_SpellResisted, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You must select an enemy target!", ChatType.CT_SpellResisted, ChatLocation.CL_SystemWindow);
                 return;
             }
 
             if (!living.IsWithinRadius( target, (int)(1500 * living.GetModified(eProperty.SpellRange) * 0.01)))
             {
-                Message.ChatToOthers(living, "You are too far away from your target to use this ability!", eChatType.CT_SpellResisted);
+                Message.ChatToOthers(living, "You are too far away from your target to use this ability!", ChatType.CT_SpellResisted);
                 return;
             }
             SendCasterSpellEffectAndCastMessage(living, 3505, true);
@@ -102,7 +102,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 
             GamePlayer player = caster as GamePlayer;
             if (player != null)
-                player.Out.SendMessage("You hit " + target.Name + " for " + damage + "(" + resist + ") points of damage!", eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You hit " + target.Name + " for " + damage + "(" + resist + ") points of damage!", ChatType.CT_YouHit, ChatLocation.CL_SystemWindow);
 
             GamePlayer targetPlayer = target as GamePlayer;
             if (targetPlayer != null)

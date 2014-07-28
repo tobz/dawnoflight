@@ -53,7 +53,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
         {
             if (caster.CurrentRegion.IsNightTime)
             {
-                MessageToCaster("The powers of the Belt of Sun, can only be Summon under the Sun light!", eChatType.CT_SpellResisted);
+                MessageToCaster("The powers of the Belt of Sun, can only be Summon under the Sun light!", ChatType.CT_SpellResisted);
                 return;
             }
 
@@ -469,7 +469,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
 
             else
             {
-                player.Out.SendMessage("" + player.CharacterClass.Name + "'s cant Summon Light!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("" + player.CharacterClass.Name + "'s cant Summon Light!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return;
             }
         }
@@ -1771,7 +1771,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
 
             lock (player.Inventory)
             {
-                var items = player.Inventory.GetItemRange(eInventorySlot.MinEquipable, eInventorySlot.LastBackpack);
+                var items = player.Inventory.GetItemRange(InventorySlot.MinEquipable, InventorySlot.LastBackpack);
                 foreach (InventoryItem invItem in items)
                 {
                     if (player.CurrentRegion.IsNightTime)
@@ -1831,7 +1831,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
                         if (invItem.Id_nb.Equals("Sun_Spear"))
                             player.Inventory.RemoveItem(invItem);
 
-                        player.Out.SendMessage("The Power of Belt of Sun, has left you!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage("The Power of Belt of Sun, has left you!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     }
                 }
             }
@@ -1846,7 +1846,7 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
             GamePlayer player = sender as GamePlayer;
             lock (player.Inventory)
             {
-                var items = player.Inventory.GetItemRange(eInventorySlot.MinEquipable, eInventorySlot.LastBackpack);
+                var items = player.Inventory.GetItemRange(InventorySlot.MinEquipable, InventorySlot.LastBackpack);
                 foreach (InventoryItem invItem in items)
                 {
 

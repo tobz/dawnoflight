@@ -17,6 +17,7 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Utilities;
 
@@ -25,10 +26,10 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// <summary>
 	///SiegeWeaponActionHandler handler the command of player to control siege weapon
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP, 0xf5, "Handles Siege command Request")]
+    [PacketHandler(PacketType.TCP, ClientPackets.SiegeWeaponAction, ClientStatus.PlayerInGame)]
 	public class SiegeWeaponActionHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			packet.ReadShort();//unk
 			int action = packet.ReadByte();
@@ -36,22 +37,22 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			if (client.Player.SiegeWeapon == null) return;
 			if (client.Player.IsStealthed)
 			{
-				client.Out.SendMessage("You can't control a siege weapon while hidden!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You can't control a siege weapon while hidden!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			if (client.Player.IsSitting)
 			{
-				client.Out.SendMessage("You can't fire a siege weapon while sitting!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You can't fire a siege weapon while sitting!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 			if (!client.Player.IsAlive || client.Player.IsMezzed || client.Player.IsStunned)
 			{
-				client.Out.SendMessage("You can't control a siege weapon now!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("You can't control a siege weapon now!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
             if( !client.Player.IsWithinRadius( client.Player.SiegeWeapon, GameSiegeWeapon.SIEGE_WEAPON_CONTROLE_DISTANCE ) )
 			{
-				client.Out.SendMessage(client.Player.SiegeWeapon.GetName(0, true) + " is too far away for you to control!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage(client.Player.SiegeWeapon.GetName(0, true) + " is too far away for you to control!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -69,7 +70,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				case 10: { client.Player.SiegeWeapon.Fire(); } break;//swing
 				default:
 					{
-						client.Player.Out.SendMessage("Unhandled action ID: " + action, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Player.Out.SendMessage("Unhandled action ID: " + action, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						break;
 					}
 			}

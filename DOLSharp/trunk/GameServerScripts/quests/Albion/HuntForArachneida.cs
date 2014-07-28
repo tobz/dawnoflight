@@ -588,9 +588,9 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				else
 				{
 					//If the player is already doing the quest, we ask if he found the fur!
-					if (player.Inventory.GetFirstItemByID(bloatedFang.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack) != null)
+					if (player.Inventory.GetFirstItemByID(bloatedFang.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack) != null)
 						kealan.SayTo(player, "Good, you managed to retrieve a bloated spider fang, but did you also slay Arachneida?");
-					else if (player.Inventory.GetFirstItemByID(spiderChitin.Id_nb, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack) != null)
+					else if (player.Inventory.GetFirstItemByID(spiderChitin.Id_nb, InventorySlot.FirstBackpack, InventorySlot.LastBackpack) != null)
 						kealan.SayTo(player, "Ah, I see you killed her, I knew you were other than the rest. Now hand me over the chitin and fang so that I can give you your reward.");
 					else
 						kealan.SayTo(player, "Go now, and bring back her chitin as prof of your success.");
@@ -689,7 +689,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 			{
 				UseSlotEventArgs uArgs = (UseSlotEventArgs) args;
 
-				InventoryItem item = player.Inventory.GetItem((eInventorySlot)uArgs.Slot);
+				InventoryItem item = player.Inventory.GetItem((InventorySlot)uArgs.Slot);
 				if (item != null && item.Id_nb == bloatedFang.Id_nb)
 				{
                     if ( player.IsWithinRadius( arachneida, 500 ) && !arachneida.IsAlive )

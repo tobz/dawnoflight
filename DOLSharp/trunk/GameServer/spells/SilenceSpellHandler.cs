@@ -41,7 +41,7 @@ namespace DawnOfLight.GameServer.Spells
             effect = SpellHandler.FindEffectOnTarget(target, "Silence");
 			if(effect!=null)
             {
-				MessageToCaster("Your target already have an effect of that type!", eChatType.CT_SpellResisted);
+				MessageToCaster("Your target already have an effect of that type!", ChatType.CT_SpellResisted);
 				return;
             }
             base.ApplyEffectOnTarget(target, effectiveness);

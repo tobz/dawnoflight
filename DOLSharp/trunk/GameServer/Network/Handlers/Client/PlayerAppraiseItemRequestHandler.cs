@@ -25,12 +25,12 @@ using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerAppraiseItemRequest, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.PlayerAppraiseItemRequest, ClientStatus.PlayerInGame)]
 	public class PlayerAppraiseItemRequestHandler : IPacketHandler
 	{
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			uint X = packet.ReadInt();
 			uint Y = packet.ReadInt();
@@ -74,7 +74,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				if (player.TargetObject == null)
 					return;
 
-				InventoryItem item = player.Inventory.GetItem((eInventorySlot) m_slot);
+				InventoryItem item = player.Inventory.GetItem((InventorySlot) m_slot);
 
 				if (player.TargetObject is GameMerchant)
 				{

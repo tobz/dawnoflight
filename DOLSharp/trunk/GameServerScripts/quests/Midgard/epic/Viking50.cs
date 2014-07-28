@@ -2088,7 +2088,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 
 			if (response == 0x00)
 			{
-				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				player.Out.SendMessage("Our God forgives your laziness, just look out for stray lightning bolts.", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 			}
 			else
 			{
@@ -2141,7 +2141,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 				{
 					Step = 2;
 					GiveItem(m_questPlayer, tome_enchantments);
-					m_questPlayer.Out.SendMessage("Ydenia drops the Tome of Enchantments and you pick it up!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					m_questPlayer.Out.SendMessage("Ydenia drops the Tome of Enchantments and you pick it up!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return;
 				}
 			}
@@ -2180,7 +2180,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 
 		public override void FinishQuest()
 		{
-			if (m_questPlayer.Inventory.IsSlotsFree(6, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+			if (m_questPlayer.Inventory.IsSlotsFree(6, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 			{
 				base.FinishQuest(); //Defined in Quest, changes the state, stores in DB etc ...
 
@@ -2263,7 +2263,7 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 			}
 			else
 			{
-				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				m_questPlayer.Out.SendMessage("You do not have enough free space in your inventory!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 	}

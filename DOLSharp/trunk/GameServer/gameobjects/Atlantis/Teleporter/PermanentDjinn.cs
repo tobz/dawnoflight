@@ -78,7 +78,7 @@ namespace DawnOfLight.GameServer.GameObjects.Atlantis.Teleporter
 
             foreach (GamePlayer player in GetPlayersInRadius(WorldMgr.SAY_DISTANCE))
                 player.Out.SendMessage(String.Format(emotes[Util.Random(emotes.GetUpperBound(0))], this.Name),
-                    eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    ChatType.CT_System, ChatLocation.CL_SystemWindow);
         }
 
         /// <summary>

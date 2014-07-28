@@ -59,10 +59,10 @@ namespace DawnOfLight.GameServer.commands.Admin
                             return;
                         }
 
-                        string AccountName = args[2].ToLower();
-                        string Password = args[3];
+                        string accountName = args[2].ToLower();
+                        string password = args[3];
 
-                        foreach (char c in AccountName.ToCharArray())
+                        foreach (char c in accountName.ToCharArray())
                         {
                             if ((c < '0' || c > '9') && (c < 'a' || c > 'z'))
                             {
@@ -71,13 +71,13 @@ namespace DawnOfLight.GameServer.commands.Admin
                             }
                         }
 
-                        if (AccountName.Length < 4 || Password.Length < 4)
+                        if (accountName.Length < 4 || password.Length < 4)
                         {
                             DisplayMessage(client, LanguageMgr.GetTranslation(client.Account.Language, "AdminCommands.Account.InvalidAccountNameOrPassword"));
                             return;
                         }
 
-                        Account account = GetAccount(AccountName);
+                        Account account = GetAccount(accountName);
                         if (account != null)
                         {
                             DisplayMessage(client, LanguageMgr.GetTranslation(client.Account.Language, "AdminCommands.Account.AccountNameAlreadyRegistered"));
@@ -85,8 +85,8 @@ namespace DawnOfLight.GameServer.commands.Admin
                         }
                         
                         account = new Account();
-                        account.Name = AccountName;
-                        account.Password = LoginRequestHandler.CryptPassword(Password);
+                        account.Name = accountName;
+                        account.Password = Password.HashPassword(password);
                         account.PrivLevel = (uint)ePrivLevel.Player;
                         account.Realm = (int)eRealm.None;
                         account.CreationDate = DateTime.Now;
@@ -116,7 +116,7 @@ namespace DawnOfLight.GameServer.commands.Admin
 							return;
 						}
 
-						acc.Password = LoginRequestHandler.CryptPassword(newpass);
+						acc.Password = Password.HashPassword(newpass);
 						GameServer.Database.SaveObject(acc);
 
 						// Log change

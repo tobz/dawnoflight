@@ -42,8 +42,8 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
             
             GameEventMgr.AddHandler(effect.Owner, GameLivingEvent.AttackedByEnemy, new DOLEventHandler(OnAttack));
 
-            eChatType toLiving = (Spell.Pulse == 0) ? eChatType.CT_Spell : eChatType.CT_SpellPulse;
-            eChatType toOther = (Spell.Pulse == 0) ? eChatType.CT_System : eChatType.CT_SpellPulse;
+            ChatType toLiving = (Spell.Pulse == 0) ? ChatType.CT_Spell : ChatType.CT_SpellPulse;
+            ChatType toOther = (Spell.Pulse == 0) ? ChatType.CT_System : ChatType.CT_SpellPulse;
             MessageToLiving(effect.Owner, Spell.Message1, toLiving);
             Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message2, effect.Owner.GetName(0, false)), toOther, effect.Owner);
         }
@@ -61,8 +61,8 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
             
             if (!noMessages && Spell.Pulse == 0)
             {
-                MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-                Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+                MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+                Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
             }
             return 0;
         }
@@ -105,8 +105,8 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
             OnDamageAbsorbed(ad, damageAbsorbed);
 
             //TODO correct messages
-            MessageToLiving(ad.Target, string.Format("Your style absorbtion absorbs {0} damage!", damageAbsorbed), eChatType.CT_Spell);
-            MessageToLiving(ad.Attacker, string.Format("A barrier absorbs {0} damage of your attack!", damageAbsorbed), eChatType.CT_Spell);
+            MessageToLiving(ad.Target, string.Format("Your style absorbtion absorbs {0} damage!", damageAbsorbed), ChatType.CT_Spell);
+            MessageToLiving(ad.Attacker, string.Format("A barrier absorbs {0} damage of your attack!", damageAbsorbed), ChatType.CT_Spell);
 
         }
 
@@ -140,8 +140,8 @@ namespace DawnOfLight.GameServer.Spells.Artifacts
             GameEventMgr.RemoveHandler(effect.Owner, GameLivingEvent.AttackedByEnemy, new DOLEventHandler(OnAttack));
             if (!noMessages && Spell.Pulse == 0)
             {
-                MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-                Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), eChatType.CT_SpellExpires, effect.Owner);
+                MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+                Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, false)), ChatType.CT_SpellExpires, effect.Owner);
             }
             return 0;
         }

@@ -26,7 +26,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects
 			//Send messages
 			if (m_living is GamePlayer)
 			{
-				((GamePlayer)m_living).Out.SendMessage("You begin to charge wildly!", eChatType.CT_Spell, eChatLoc.CL_SystemWindow);
+				((GamePlayer)m_living).Out.SendMessage("You begin to charge wildly!", ChatType.CT_Spell, ChatLocation.CL_SystemWindow);
 			}
 			else if (m_living is GameNPC)
 			{
@@ -37,7 +37,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects
 
 					if (playerowner != null)
 					{
-						playerowner.Out.SendMessage("The " + icb.Body.Name + " charges its prey!", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+						playerowner.Out.SendMessage("The " + icb.Body.Name + " charges its prey!", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}
@@ -82,7 +82,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects
 			{
 				GamePlayer player = m_living as GamePlayer;
 				player.Out.SendUpdateMaxSpeed();
-				player.Out.SendMessage("You no longer seem so crazy!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("You no longer seem so crazy!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 			}
 			else if (m_living is GameNPC)
 			{
@@ -93,7 +93,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.effects
 
 					if (playerowner != null)
 					{
-						playerowner.Out.SendMessage("The " + icb.Body.Name + " ceases its charge!", eChatType.CT_Say, eChatLoc.CL_SystemWindow);
+						playerowner.Out.SendMessage("The " + icb.Body.Name + " ceases its charge!", ChatType.CT_Say, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}

@@ -186,8 +186,8 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				masterVisur.MaxSpeedBase = 200;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 798);
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 19);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 798);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 19);
 				masterVisur.Inventory = template.CloseTemplate();
 				masterVisur.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -224,11 +224,11 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				alice.Z = 2448;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 81);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 82);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 84);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 91);
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 3);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 81);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 82);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 84);
+				template.AddNPCEquipment(InventorySlot.Cloak, 91);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 3);
 				alice.Inventory = template.CloseTemplate();
 				alice.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -279,10 +279,10 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				colm.Level = 50;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 81, 10);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 82, 10);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 84, 10);
-				template.AddNPCEquipment(eInventorySlot.Cloak, 57, 32);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 81, 10);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 82, 10);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 84, 10);
+				template.AddNPCEquipment(InventorySlot.Cloak, 57, 32);
 				colm.Inventory = template.CloseTemplate();
 
 //				colm.AddNPCEquipment(Slot.TORSO, 81, 10, 0, 0);
@@ -1113,7 +1113,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 		{
 			base.AbortQuest(); //Defined in Quest, changes the state, stores in DB etc ...
 
-			if (Step < 3 && m_questPlayer.Inventory.GetFirstItemByID(dragonflyTicket.Id_nb, eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == null)
+			if (Step < 3 && m_questPlayer.Inventory.GetFirstItemByID(dragonflyTicket.Id_nb, InventorySlot.Min_Inv, InventorySlot.Max_Inv) == null)
 			{
 				m_questPlayer.RemoveMoney(Money.GetMoney(0, 0, 0, 6, 0), null);
                 InventoryLogging.LogInventoryAction(m_questPlayer, "(QUEST;" + Name + ")", eInventoryActionType.Quest, 600);

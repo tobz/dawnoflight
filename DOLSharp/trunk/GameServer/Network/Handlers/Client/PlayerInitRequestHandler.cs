@@ -34,7 +34,7 @@ using log4net;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerInitRequest, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.PlayerInitRequest, ClientStatus.PlayerInGame)]
 	public class PlayerInitRequestHandler : IPacketHandler
 	{
 		/// <summary>
@@ -44,7 +44,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 		#region IPacketHandler Members
 
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			new PlayerInitRequestAction(client.Player).Start(1);
 		}
@@ -128,17 +128,17 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				SendHouseRentRemindersToPlayer(player);
 				if (player.Level > 1 && Properties.MOTD != "")
 				{
-					player.Out.SendMessage(Properties.MOTD, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(Properties.MOTD, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				}
 				else if (player.Level == 1)
 				{
 					player.Out.SendStarterHelp();
 					if (Properties.STARTING_MSG != "")
-						player.Out.SendMessage(Properties.STARTING_MSG, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+						player.Out.SendMessage(Properties.STARTING_MSG, ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 
 				if (Properties.ENABLE_DEBUG)
-					player.Out.SendMessage("Server is running in DEBUG mode!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Server is running in DEBUG mode!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 				player.Out.SendPlayerFreeLevelUpdate();
 				if (player.FreeLevelState == 2)
@@ -148,8 +148,8 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				}
 				player.Out.SendMasterLevelWindow(0);
 				AssemblyName an = Assembly.GetExecutingAssembly().GetName();
-				player.Out.SendMessage("Dawn of Light " + an.Name + " Version: " + an.Version, eChatType.CT_System,
-				                       eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage("Dawn of Light " + an.Name + " Version: " + an.Version, ChatType.CT_System,
+				                       ChatLocation.CL_SystemWindow);
 
 
 				if (Properties.TELEPORT_LOGIN_NEAR_ENEMY_KEEP)
@@ -206,7 +206,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						if (player.Level > k.BaseLevel)
 						{
 							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "PlayerInitRequestHandler.LevelCap"),
-							                       eChatType.CT_YouWereHit, eChatLoc.CL_SystemWindow);
+							                       ChatType.CT_YouWereHit, ChatLocation.CL_SystemWindow);
 							player.MoveTo((ushort) player.DBCharacter.BindRegion, player.DBCharacter.BindXpos,
 							              player.DBCharacter.BindYpos, player.DBCharacter.BindZpos,
 							              (ushort) player.DBCharacter.BindHeading);
@@ -259,7 +259,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 			private static void SendMessageAndMoveToSafeLocation(GamePlayer player)
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "PlayerInitRequestHandler.SaferLocation"),
-				                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				player.MoveTo((ushort) player.DBCharacter.BindRegion, player.DBCharacter.BindXpos,
 				              player.DBCharacter.BindYpos, player.DBCharacter.BindZpos,
 				              (ushort) player.DBCharacter.BindHeading);
@@ -295,20 +295,20 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					if (player.GuildRank.GcHear && player.Guild.Motd != "")
 					{
 						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "PlayerInitRequestHandler.GuildMessage"),
-						                       eChatType.CT_System, eChatLoc.CL_SystemWindow);
-						player.Out.SendMessage(player.Guild.Motd, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						                       ChatType.CT_System, ChatLocation.CL_SystemWindow);
+						player.Out.SendMessage(player.Guild.Motd, ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					if (player.GuildRank.OcHear && player.Guild.Omotd != "")
 					{
 						player.Out.SendMessage(
 							LanguageMgr.GetTranslation(player.Client.Account.Language, "PlayerInitRequestHandler.OfficerMessage", player.Guild.Omotd),
-							eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					if (player.Guild.alliance != null && player.GuildRank.AcHear && player.Guild.alliance.Dballiance.Motd != "")
 					{
 						player.Out.SendMessage(
 							LanguageMgr.GetTranslation(player.Client.Account.Language, "PlayerInitRequestHandler.AllianceMessage",
-							                           player.Guild.alliance.Dballiance.Motd), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+							                           player.Guild.alliance.Dballiance.Motd), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 				}
 				catch (Exception ex)
@@ -318,7 +318,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					{
 						player.Out.SendMessage(
 							"There was an error sending motd for your guild. Guild ranks may be missing or corrupted.",
-							eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+							ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}

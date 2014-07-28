@@ -138,7 +138,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 			int craftingTime = GetCraftingTime(player, recipe, rawMaterials);
 
-			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CraftItem.BeginWork", itemToCraft.Name, CalculateChanceToMakeItem(player, recipe).ToString()), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CraftItem.BeginWork", itemToCraft.Name, CalculateChanceToMakeItem(player, recipe).ToString()), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 			player.Out.SendTimerWindow(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CraftItem.CurrentlyMaking", itemToCraft.Name), craftingTime);
 
 			player.Stealth(false);
@@ -161,7 +161,7 @@ namespace DawnOfLight.GameServer.Crafting
 		{
 			player.CraftTimer.Stop();
 			player.Out.SendCloseTimerWindow();
-			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CraftItem.StopWork", itemToCraft.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CraftItem.StopWork", itemToCraft.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		protected virtual bool CanPlayerStartToCraftItem(GamePlayer player, DBCraftedItem recipe, ItemTemplate itemToCraft, IList<DBCraftedXItem> rawMaterials)
@@ -188,13 +188,13 @@ namespace DawnOfLight.GameServer.Crafting
 
 			if (player.IsMoving || player.IsStrafing)
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CraftItem.MoveAndInterrupt"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CraftItem.MoveAndInterrupt"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
 			if (player.InCombat)
 			{
-                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CraftItem.CantCraftInCombat"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CraftItem.CantCraftInCombat"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return false;
 			}
 
@@ -212,7 +212,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 			if (player == null || recipe == null || rawMaterials == null)
 			{
-				if (player != null) player.Out.SendMessage("Could not find recipe or item to craft!", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				if (player != null) player.Out.SendMessage("Could not find recipe or item to craft!", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				log.Error("Crafting.MakeItem: Could not retrieve player, recipe, or raw materials to craft from CraftTimer.");
 				return 0;
 			}
@@ -230,7 +230,7 @@ namespace DawnOfLight.GameServer.Crafting
 			{
 				if (!RemoveUsedMaterials(player, recipe, rawMaterials))
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.MakeItem.NotAllMaterials"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.MakeItem.NotAllMaterials"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 					if (player.Client.Account.PrivLevel == 1)
 						return 0;
@@ -241,7 +241,7 @@ namespace DawnOfLight.GameServer.Crafting
 			}
 			else
 			{
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.MakeItem.LoseNoMaterials", itemToCraft.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.MakeItem.LoseNoMaterials", itemToCraft.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				player.Out.SendPlaySound(eSoundType.Craft, 0x02);
 			}
 			return 0;
@@ -283,7 +283,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 				if (template == null)
 				{
-					player.Out.SendMessage("Can't find a material (" + material.IngredientId_nb + ") needed for recipe.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage("Can't find a material (" + material.IngredientId_nb + ") needed for recipe.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					log.Error("Cannot find raw material ItemTemplate: " + material.IngredientId_nb + ") needed for recipe: " + recipe.CraftedItemID);
 					return false;
 				}
@@ -295,7 +295,7 @@ namespace DawnOfLight.GameServer.Crafting
 						{
 							if (player.GetCraftingSkillValue(eCraftingSkill.ClothWorking) < minimumLevel)
 							{
-								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckSecondCraftingSkillRequirement.NoClothworkingSkill", minimumLevel, template.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckSecondCraftingSkillRequirement.NoClothworkingSkill", minimumLevel, template.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								return false;
 							}
 							break;
@@ -305,7 +305,7 @@ namespace DawnOfLight.GameServer.Crafting
 						{
 							if (player.GetCraftingSkillValue(eCraftingSkill.LeatherCrafting) < minimumLevel)
 							{
-								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckSecondCraftingSkillRequirement.NoLeathercraftingSkill", minimumLevel, template.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckSecondCraftingSkillRequirement.NoLeathercraftingSkill", minimumLevel, template.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								return false;
 							}
 							break;
@@ -315,7 +315,7 @@ namespace DawnOfLight.GameServer.Crafting
 						{
 							if (player.GetCraftingSkillValue(eCraftingSkill.MetalWorking) < minimumLevel)
 							{
-								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckSecondCraftingSkillRequirement.NoMetalworkingSkill", minimumLevel, template.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckSecondCraftingSkillRequirement.NoMetalworkingSkill", minimumLevel, template.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								return false;
 							}
 							break;
@@ -325,7 +325,7 @@ namespace DawnOfLight.GameServer.Crafting
 						{
 							if (player.GetCraftingSkillValue(eCraftingSkill.WoodWorking) < minimumLevel)
 							{
-								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckSecondCraftingSkillRequirement.NoWoodworkingSkill", minimumLevel, template.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+								player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckSecondCraftingSkillRequirement.NoWoodworkingSkill", minimumLevel, template.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 								return false;
 							}
 							break;
@@ -350,7 +350,7 @@ namespace DawnOfLight.GameServer.Crafting
 					
 					if (template == null)
 					{
-						player.Out.SendMessage("Can't find a material (" + material.IngredientId_nb + ") needed for this recipe.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("Can't find a material (" + material.IngredientId_nb + ") needed for this recipe.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						log.Error("Cannot find raw material ItemTemplate: " + material.IngredientId_nb + ") needed for recipe: " + recipe.CraftedItemID);
 						return false;
 					}
@@ -358,7 +358,7 @@ namespace DawnOfLight.GameServer.Crafting
 					bool result = false;
 					int count = material.Count;
 
-					foreach (InventoryItem item in player.Inventory.GetItemRange(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+					foreach (InventoryItem item in player.Inventory.GetItemRange(InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 					{
 						if (item != null && item.Name == template.Name)
 						{
@@ -387,11 +387,11 @@ namespace DawnOfLight.GameServer.Crafting
 
 				if (missingMaterials != null)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckRawMaterial.NoIngredients", itemToCraft.Name), eChatType.CT_System, eChatLoc.CL_SystemWindow);
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckRawMaterial.YouAreMissing", itemToCraft.Name), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckRawMaterial.NoIngredients", itemToCraft.Name), ChatType.CT_System, ChatLocation.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.CheckRawMaterial.YouAreMissing", itemToCraft.Name), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					foreach (string materialName in missingMaterials)
 					{
-						player.Out.SendMessage(materialName, eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+						player.Out.SendMessage(materialName, ChatType.CT_Important, ChatLocation.CL_ChatWindow);
 					}
 
 					if (player.Client.Account.PrivLevel == (uint)ePrivLevel.Player) return false;
@@ -482,7 +482,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 					if (template == null)
 					{
-						player.Out.SendMessage("Can't find a material (" + material.IngredientId_nb + ") needed for this recipe.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage("Can't find a material (" + material.IngredientId_nb + ") needed for this recipe.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 						log.Error("RemoveUsedMaterials: Cannot find raw material ItemTemplate: " + material.IngredientId_nb + " needed for recipe: " + recipe.CraftedItemID);
 						return false;
 					}
@@ -490,7 +490,7 @@ namespace DawnOfLight.GameServer.Crafting
 					bool result = false;
 					int count = material.Count;
 
-					foreach (InventoryItem item in player.Inventory.GetItemRange(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+					foreach (InventoryItem item in player.Inventory.GetItemRange(InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 					{
 						if (item != null && item.Name == template.Name)
 						{
@@ -526,7 +526,7 @@ namespace DawnOfLight.GameServer.Crafting
 			while (enumerator.MoveNext())
 			{
 				KeyValuePair<int, int?> de = enumerator.Current;
-				InventoryItem item = player.Inventory.GetItem((eInventorySlot)de.Key);
+				InventoryItem item = player.Inventory.GetItem((InventorySlot)de.Key);
 				if (item != null)
 				{
 					if (!de.Value.HasValue)
@@ -558,7 +558,7 @@ namespace DawnOfLight.GameServer.Crafting
 			lock (player.Inventory)
 			{
 				int count = itemToCraft.PackSize < 1 ? 1 : itemToCraft.PackSize;
-				foreach (InventoryItem item in player.Inventory.GetItemRange(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+				foreach (InventoryItem item in player.Inventory.GetItemRange(InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 				{
 					if (item == null)
 						continue;
@@ -585,8 +585,8 @@ namespace DawnOfLight.GameServer.Crafting
 
 				if (count > 0) // Add new object
 				{
-					eInventorySlot firstEmptySlot = player.Inventory.FindFirstEmptySlot(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack);
-					if (firstEmptySlot == eInventorySlot.Invalid)
+					InventorySlot firstEmptySlot = player.Inventory.FindFirstEmptySlot(InventorySlot.FirstBackpack, InventorySlot.LastBackpack);
+					if (firstEmptySlot == InventorySlot.Invalid)
 					{
 						changedSlots.Add(-1, -count); // Create the item on the ground
 					}
@@ -608,7 +608,7 @@ namespace DawnOfLight.GameServer.Crafting
 					int countToAdd = slot.Value;
 					if (countToAdd > 0)	// Add to exiting item
 					{
-						newItem = player.Inventory.GetItem((eInventorySlot)slot.Key);
+						newItem = player.Inventory.GetItem((InventorySlot)slot.Key);
 						if (newItem != null && player.Inventory.AddCountToStack(newItem, countToAdd))
 						{
 							InventoryLogging.LogInventoryAction("(craft)", player, eInventoryActionType.Other, newItem.Template, countToAdd);
@@ -644,7 +644,7 @@ namespace DawnOfLight.GameServer.Crafting
 
 					if (slot.Key > 0)	// Create new item in the backpack
 					{
-						player.Inventory.AddItem((eInventorySlot)slot.Key, newItem);
+						player.Inventory.AddItem((InventorySlot)slot.Key, newItem);
 						InventoryLogging.LogInventoryAction("(craft)", player, eInventoryActionType.Craft, newItem.Template, newItem.Count);
 					}
 					else					// Create new item on the ground
@@ -656,11 +656,11 @@ namespace DawnOfLight.GameServer.Crafting
 
 				player.Inventory.CommitChanges();
 
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.BuildCraftedItem.Successfully", itemToCraft.Name, newItem.Quality), eChatType.CT_Missed, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.BuildCraftedItem.Successfully", itemToCraft.Name, newItem.Quality), ChatType.CT_Missed, ChatLocation.CL_SystemWindow);
 
 				if (recipe.MakeTemplated == false && newItem.Quality == 100)
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.BuildCraftedItem.Masterpiece"), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "AbstractCraftingSkill.BuildCraftedItem.Masterpiece"), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 					player.Out.SendPlaySound(eSoundType.Craft, 0x04);
 				}
 				else

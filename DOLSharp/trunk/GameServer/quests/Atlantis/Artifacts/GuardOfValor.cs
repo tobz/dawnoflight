@@ -112,7 +112,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					reply += String.Format("such a gift! It cannot be replaced! I wish you well, {0}.",
 						player.CharacterClass.Name);
 					scholar.TurnTo(player);
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					FinishQuest();
 					return true;
 				}
@@ -147,7 +147,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"my research. Please give me the Love Story now while I finish up with",
 					"the Guard of Valor.");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}

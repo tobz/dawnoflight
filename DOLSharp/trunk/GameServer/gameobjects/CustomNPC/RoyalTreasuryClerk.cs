@@ -42,7 +42,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			{
 				SayTo(player, "Let me check to see if you are owed any items ... ");
 
-				if (player.Inventory.CountItemTemplate("Personal_Bind_Recall_Stone", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == 0)
+				if (player.Inventory.CountItemTemplate("Personal_Bind_Recall_Stone", InventorySlot.Min_Inv, InventorySlot.Max_Inv) == 0)
 				{
 					SayTo(player, "I see you are missing your Personal Bind Recall Stone.  Would you like [another]?");
 				}
@@ -68,7 +68,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
 			if (text.ToLower() == "another")
 			{
-				if (player.Inventory.CountItemTemplate("Personal_Bind_Recall_Stone", eInventorySlot.Min_Inv, eInventorySlot.Max_Inv) == 0)
+				if (player.Inventory.CountItemTemplate("Personal_Bind_Recall_Stone", InventorySlot.Min_Inv, InventorySlot.Max_Inv) == 0)
 				{
 					SayTo(player, "Very well then, here's your Personal Bind Recall Stone, may it serve you well.");
 					player.ReceiveItem(this, "Personal_Bind_Recall_Stone");

@@ -52,7 +52,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendLivingEquipmentUpdate(GameLiving living)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.EquipmentUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.EquipmentUpdate));
 
 			ICollection<InventoryItem> items = null;
 			if (living.Inventory != null)
@@ -149,7 +149,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			//ChatUtil.SendDebugMessage(m_gameClient, string.Format("SendItemsPartialUpdate: windowType: {0}, {1}", windowType, items == null ? "nothing" : items[0].Name));
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.InventoryUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.InventoryUpdate));
 			GameVault houseVault = m_gameClient.Player.ActiveInventoryObject as GameVault;
 			pak.WriteByte((byte)(items.Count));
 			pak.WriteByte(0x00); // new in 189b+, show shield in left hand
@@ -177,7 +177,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		/// <param name="preAction"></param>
 		protected override void SendInventorySlotsUpdateRange(ICollection<int> slots, eInventoryWindowType windowType)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.InventoryUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.InventoryUpdate));
 			GameVault houseVault = m_gameClient.Player.ActiveInventoryObject as GameVault;
 
 			pak.WriteByte((byte)(slots == null ? 0 : slots.Count));
@@ -200,17 +200,17 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			{
 				foreach (int updatedSlot in slots)
 				{
-					if (updatedSlot >= (int)eInventorySlot.Consignment_First && updatedSlot <= (int)eInventorySlot.Consignment_Last)
+					if (updatedSlot >= (int)InventorySlot.Consignment_First && updatedSlot <= (int)InventorySlot.Consignment_Last)
 					{
 						log.Error("PacketLib198:SendInventorySlotsUpdateBase - GameConsignmentMerchant inventory is no longer cached with player.  Use a Dictionary<int, InventoryItem> instead.");
-						pak.WriteByte((byte)(updatedSlot - (int)eInventorySlot.Consignment_First + (int)eInventorySlot.HousingInventory_First));
+						pak.WriteByte((byte)(updatedSlot - (int)InventorySlot.Consignment_First + (int)InventorySlot.HousingInventory_First));
 					}
 					else
 					{
 						pak.WriteByte((byte)(updatedSlot));
 					}
 
-					WriteItemData(pak, m_gameClient.Player.Inventory.GetItem((eInventorySlot)(updatedSlot)));
+					WriteItemData(pak, m_gameClient.Player.Inventory.GetItem((InventorySlot)(updatedSlot)));
 				}
 			}
 
@@ -219,7 +219,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		protected static int MAX_NAME_LENGTH = 55;
 
-		protected virtual void WriteItemData(GSTCPPacketOut pak, InventoryItem item)
+		protected virtual void WriteItemData(GameTCPPacketOut pak, InventoryItem item)
 		{
 			if (item == null)
 			{
@@ -402,7 +402,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendHouse(House house)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseCreate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseCreate));
 			pak.WriteShort((ushort)house.HouseNumber);
 			pak.WriteShort((ushort)house.Z);
 			pak.WriteInt((uint)house.X);
@@ -435,7 +435,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendGarden(House house)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseChangeGarden));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseChangeGarden));
 			pak.WriteShort((ushort)house.HouseNumber);
 			pak.WriteShort(0); // sheduled for repossession (in hours) new in 1.89b+
 			pak.WriteByte((byte)house.OutdoorItems.Count);
@@ -455,7 +455,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendGarden(House house, int i)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseChangeGarden));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseChangeGarden));
 			pak.WriteShort((ushort)house.HouseNumber);
 			pak.WriteShort(0); // sheduled for repossession (in hours) new in 1.89b+
 			pak.WriteByte(0x01);
@@ -471,7 +471,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendHouseOccupied(House house, bool flagHouseOccuped)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseChangeGarden));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseChangeGarden));
 			pak.WriteShort((ushort)house.HouseNumber);
 			pak.WriteShort(0); // sheduled for repossession (in hours) new in 1.89b+
 			pak.WriteByte(0x00);
@@ -482,7 +482,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendEnterHouse(House house)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.HouseEnter));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.HouseEnter));
 
 			pak.WriteShort((ushort)house.HouseNumber);
 			pak.WriteShort((ushort)25000);         //constant!

@@ -37,7 +37,7 @@ namespace DawnOfLight.GameServer.commands.Player
 		{
 			if (client.Player.IsMuted)
 			{
-				client.Player.Out.SendMessage("You have been muted and are not allowed to speak in this channel.", eChatType.CT_Staff, eChatLoc.CL_SystemWindow);
+				client.Player.Out.SendMessage("You have been muted and are not allowed to speak in this channel.", ChatType.CT_Staff, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
@@ -63,11 +63,11 @@ namespace DawnOfLight.GameServer.commands.Player
 					   client.Account.PrivLevel > 1))
 					{
 						total++;
-						client.Out.SendMessage(total + ")" + playerClient.Player.Name + (playerClient.Player.IsAnonymous ? " [ANON]" : ""), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						client.Out.SendMessage(total + ")" + playerClient.Player.Name + (playerClient.Player.IsAnonymous ? " [ANON]" : ""), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 
 				}
-				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Advice.AdvicersOn", total), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+				client.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Advice.AdvicersOn", total), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				return;
 			}
 			foreach (GameClient playerClient in WorldMgr.GetAllClients())
@@ -76,7 +76,7 @@ namespace DawnOfLight.GameServer.commands.Player
 				if ((playerClient.Player.Advisor &&
 					playerClient.Player.Realm == client.Player.Realm) ||
 					playerClient.Account.PrivLevel > 1)
-					playerClient.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Advice.Advice", getRealmString(client.Player.Realm), client.Player.Name, msg), eChatType.CT_Staff, eChatLoc.CL_ChatWindow);
+					playerClient.Out.SendMessage(LanguageMgr.GetTranslation(client.Account.Language, "Scripts.Players.Advice.Advice", getRealmString(client.Player.Realm), client.Player.Name, msg), ChatType.CT_Staff, ChatLocation.CL_ChatWindow);
 
 			}
 		}

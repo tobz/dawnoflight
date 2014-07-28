@@ -799,7 +799,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
         private void SendReply(GamePlayer target, string msg)
         {
-            target.Out.SendMessage(msg, eChatType.CT_System, eChatLoc.CL_PopupWindow);
+            target.Out.SendMessage(msg, ChatType.CT_System, ChatLocation.CL_PopupWindow);
         }
 
         public class Container
@@ -843,7 +843,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
             TradeItems = new MerchantTradeItems("BuffTokens");
             if (!base.Interact(player)) return false;
             TurnTo(player, 10000);
-            player.Out.SendMessage("Greetings, " + player.Name + ". The King has instructed me to strengthen you so that you may defend the lands with valor. Simply hand me the token for the enhancement you desire, and I will empower you accordingly. Do you wish to purchase tokens with [Gold] or [Bounty Points]?", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+            player.Out.SendMessage("Greetings, " + player.Name + ". The King has instructed me to strengthen you so that you may defend the lands with valor. Simply hand me the token for the enhancement you desire, and I will empower you accordingly. Do you wish to purchase tokens with [Gold] or [Bounty Points]?", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
             isBounty = false;
             SendMerchantWindow(player);
             return true;
@@ -900,12 +900,12 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                 {
                     if (player.BountyPoints < totalValue)
                     {
-                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeedBP", totalValue), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeedBP", totalValue), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         return;
                     }
-                    if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+                    if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
                     {
-                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         return;
                     }
                     InventoryLogging.LogInventoryAction(this, player, eInventoryActionType.Merchant, template, amountToBuy);
@@ -917,7 +917,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                         message = LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.BoughtBP", template.GetName(1, false), totalValue);
                     player.BountyPoints -= totalValue;
                     player.Out.SendUpdatePoints();
-                    player.Out.SendMessage(message, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow);
+                    player.Out.SendMessage(message, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow);
                 }
             }
             if (isBounty == false) //...pay with Money.
@@ -941,13 +941,13 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 
                     if (player.GetCurrentMoney() < totalValue)
                     {
-                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeed", Money.GetString(totalValue)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.YouNeed", Money.GetString(totalValue)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         return;
                     }
 
-                    if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+                    if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(template), amountToBuy, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
                     {
-                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.NotInventorySpace"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         return;
                     }
                     InventoryLogging.LogInventoryAction(this, player, eInventoryActionType.Merchant, template, amountToBuy);
@@ -958,7 +958,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                     else
                         message = LanguageMgr.GetTranslation(player.Client.Account.Language, "GameMerchant.OnPlayerBuy.Bought", template.GetName(1, false), Money.GetString(totalValue));
 
-                    if (!player.RemoveMoney(totalValue, message, eChatType.CT_Merchant, eChatLoc.CL_SystemWindow))
+                    if (!player.RemoveMoney(totalValue, message, ChatType.CT_Merchant, ChatLocation.CL_SystemWindow))
                     {
                         throw new Exception("Money amount changed while adding items.");
                     }
@@ -975,7 +975,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			
             if (GetDistanceTo(t) > WorldMgr.INTERACT_DISTANCE)
             {
-                ((GamePlayer)source).Out.SendMessage("You are too far away to give anything to " + GetName(0, false) + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                ((GamePlayer)source).Out.SendMessage("You are too far away to give anything to " + GetName(0, false) + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 return false;
             }
             if (t != null && item != null)
@@ -1013,7 +1013,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                     //BuffPlayer(t, MerchEndRegenBuff, MerchSpecSpellLine);
                     //BuffPlayer(t, MerchHealBuff, MerchSpecSpellLine);
                     #endregion Non-live (commented out)
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
                 }
@@ -1033,7 +1033,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                         BuffPlayer(t, MerchDexQuiBuff, MerchSpecSpellLine);
                         BuffPlayer(t, MerchAcuityBuff, MerchSpecSpellLine);
                     }
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
 
@@ -1054,7 +1054,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                         BuffPlayer(t, MerchDexBuff, MerchBaseSpellLine);
                         BuffPlayer(t, MerchConBuff, MerchBaseSpellLine);
                     }
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
                 }
@@ -1068,7 +1068,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                     {
                         BuffPlayer(t, MerchStrBuff, MerchBaseSpellLine);
                     }
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
                 }
@@ -1082,7 +1082,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                     {
                         BuffPlayer(t, MerchConBuff, MerchBaseSpellLine);
                     }
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
                 }
@@ -1096,7 +1096,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                     {
                         BuffPlayer(t, MerchDexBuff, MerchBaseSpellLine);
                     }
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
                 }
@@ -1110,7 +1110,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                     {
                         BuffPlayer(t, MerchBaseAFBuff, MerchBaseSpellLine);
                     }
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
                 }
@@ -1124,7 +1124,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                     {
                         BuffPlayer(t, MerchStrConBuff, MerchSpecSpellLine);
                     }
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
                 }
@@ -1138,7 +1138,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                     {
                         BuffPlayer(t, MerchDexQuiBuff, MerchSpecSpellLine);
                     }
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
                 }
@@ -1152,7 +1152,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                     {
                         BuffPlayer(t, MerchAcuityBuff, MerchSpecSpellLine);
                     }
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
                 }
@@ -1166,14 +1166,14 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
                     {
                         BuffPlayer(t, MerchSpecAFBuff, MerchSpecSpellLine);
                     }
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
                 }
                 if (item.Id_nb == "Haste_Buff_Token" || item.Id_nb == "BPHaste_Buff_Token")
                 {
                     BuffPlayer(t, MerchHasteBuff, MerchSpecSpellLine);
-                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                    t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
                     t.Inventory.RemoveItem(item);
                     return true;
                 }
@@ -1182,21 +1182,21 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				if (item.Id_nb == "PowerReg_Buff_Token")
 				{
 					BuffPlayer(t, MerchPoweregBuff, MerchSpecSpellLine);
-					t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 					t.Inventory.RemoveItem(item);
 					return true;
 				}
 				if (item.Id_nb == "DmgAdd_Buff_Token")
 				{
 					BuffPlayer(t, MerchDmgaddBuff, MerchSpecSpellLine);
-					t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 					t.Inventory.RemoveItem(item);
 					return true;
 				}
 				if (item.Id_nb == "HPReg_Buff_Token")
 				{
 					BuffPlayer(t, MerchHPRegenBuff, MerchSpecSpellLine);
-					t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+					t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 					t.Inventory.RemoveItem(item);
 					return true;
 				}
@@ -1207,14 +1207,14 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
             /*if (item.Id_nb == "EnduReg_Buff_Token")
 			{
 				BuffPlayer(t, MerchEndRegenBuff, MerchSpecSpellLine);
-				t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				t.Inventory.RemoveItem(item);
 				return true;
 			}
 			if (item.Id_nb == "Heal_Buff_Token")
 			{
 				BuffPlayer(t, MerchHealBuff, MerchSpecSpellLine);
-				t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				t.Inventory.RemoveItem(item);
 				return true;
 			}
@@ -1226,7 +1226,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				BuffPlayer(t, MerchHPRegenBuff, MerchSpecSpellLine);
 				//BuffPlayer(t, MerchEndRegenBuff, MerchSpecSpellLine);
 				BuffPlayer(t, MerchHealBuff, MerchSpecSpellLine);
-				t.Out.SendMessage("Fight well, " + t.RaceName + ".", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+				t.Out.SendMessage("Fight well, " + t.RaceName + ".", ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 				t.Inventory.RemoveItem(item);
 				return true;
 			}

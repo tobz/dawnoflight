@@ -103,7 +103,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 						"you to success in the trials, ",
 						player.CharacterClass.Name);
 					scholar.TurnTo(player);
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					FinishQuest();
 					return true;
 				}
@@ -136,7 +136,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"Once I have uncovered the secrets in the Vase, I shall make the Band of Stars",
 					"available to you.");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}

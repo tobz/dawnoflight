@@ -117,7 +117,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 						"they serve you well,",
 						player.CharacterClass.Name);
 					scholar.TurnTo(player);
-					scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+					scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 					FinishQuest();
 					return true;
 				}
@@ -150,7 +150,7 @@ namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 					"the Arms of the Winds in the Skin. If you have lost the skin, and I hope you haven't,",
 					"you will have to go find the scales again and bring them to me.");
 				scholar.TurnTo(player);
-				scholar.SayTo(player, eChatLoc.CL_PopupWindow, reply);
+				scholar.SayTo(player, ChatLocation.CL_PopupWindow, reply);
 				Step = 2;
 				return true;
 			}

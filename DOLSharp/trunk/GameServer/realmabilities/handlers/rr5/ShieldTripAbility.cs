@@ -20,7 +20,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 		public override void Execute(GameLiving living)
 		{
 			if (CheckPreconditions(living, DEAD | SITTING | MEZZED | STUNNED)) return;
-			InventoryItem shield = living.Inventory.GetItem(eInventorySlot.LeftHandWeapon);
+			InventoryItem shield = living.Inventory.GetItem(InventorySlot.LeftHandWeapon);
 			if (shield == null)
 				return;
 			if (shield.Object_Type != (int)eObjectType.Shield)

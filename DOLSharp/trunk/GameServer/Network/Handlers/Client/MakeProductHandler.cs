@@ -17,6 +17,7 @@
  *
  */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
@@ -24,13 +25,13 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// <summary>
 	/// makeproducthandler handle the crafted product start
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP,0x45^168,"Handles the crafted product answer")]
+    [PacketHandler(PacketType.TCP, ClientPackets.MakeProduct, ClientStatus.PlayerInGame)]
 	public class MakeProductHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
-			ushort ItemID = packet.ReadShort();
-			client.Player.CraftItem(ItemID);
+			ushort itemId = packet.ReadShort();
+			client.Player.CraftItem(itemId);
 		}
 	}
 }

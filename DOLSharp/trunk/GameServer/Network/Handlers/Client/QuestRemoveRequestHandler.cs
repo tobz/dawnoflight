@@ -17,15 +17,16 @@
 *
 */
 
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.Quests.QuestsMgr;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Network.Handlers.Client
 {
-	[PacketHandler(PacketHandlerType.TCP, 0x4F, "Quest remove request")]
+    [PacketHandler(PacketType.TCP, ClientPackets.QuestRemoveRequest, ClientStatus.PlayerInGame)]
 	public class QuestRemoveRequestHandler : IPacketHandler
 	{
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			ushort unk1 = packet.ReadShort();
 			ushort questIndex = packet.ReadShort();
@@ -53,8 +54,10 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 				}
 			}
 
-			if (quest != null)
-				quest.AbortQuest();
+		    if (quest != null)
+		    {
+		        quest.AbortQuest();
+		    }
 		}
 	}
 }

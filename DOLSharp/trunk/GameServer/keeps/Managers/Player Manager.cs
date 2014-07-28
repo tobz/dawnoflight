@@ -114,7 +114,7 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 					continue;
 				if ((client.Account.PrivLevel != 1 || realm == eRealm.None) || client.Player.Realm == realm)
 				{
-					client.Out.SendMessage(message, eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					client.Out.SendMessage(message, ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 				}
 			}
 		}
@@ -129,8 +129,8 @@ namespace DawnOfLight.GameServer.Keeps.Managers
 			/*
 			 * Blood of the Realm has claimed this outpost.
 			 */
-			player.Out.SendMessage(message + ".", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-			player.Out.SendMessage(message, eChatType.CT_ScreenCenterSmaller, eChatLoc.CL_SystemWindow);
+			player.Out.SendMessage(message + ".", ChatType.CT_System, ChatLocation.CL_SystemWindow);
+			player.Out.SendMessage(message, ChatType.CT_ScreenCenterSmaller, ChatLocation.CL_SystemWindow);
 		}
 
 		/// <summary>

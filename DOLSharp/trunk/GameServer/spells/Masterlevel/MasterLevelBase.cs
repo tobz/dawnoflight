@@ -809,8 +809,8 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
             effect.Owner.BuffBonusMultCategory1.Remove((int)eProperty.MaxSpeed, effect);
 
             SendUpdates(effect.Owner);
-            MessageToLiving(effect.Owner, Spell.Message3, eChatType.CT_SpellExpires);
-            Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, true)), eChatType.CT_SpellExpires, effect.Owner);
+            MessageToLiving(effect.Owner, Spell.Message3, ChatType.CT_SpellExpires);
+            Message.SystemToArea(effect.Owner, Util.MakeSentence(Spell.Message4, effect.Owner.GetName(0, true)), ChatType.CT_SpellExpires, effect.Owner);
 
             return 0;
         }
@@ -1223,11 +1223,11 @@ namespace DawnOfLight.GameServer.Spells.Masterlevel
 
                 foreach (InventoryItem item in items)
                 {
-                    if (targetPlayer.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, item))
+                    if (targetPlayer.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, item))
                     {
 
                         InventoryLogging.LogInventoryAction(Caster, targetPlayer, eInventoryActionType.Other, item.Template, item.Count);
-                        targetPlayer.Out.SendMessage("Item created: " + item.GetName(0, false), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        targetPlayer.Out.SendMessage("Item created: " + item.GetName(0, false), ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     }
                 }
             }

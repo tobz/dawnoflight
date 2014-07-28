@@ -52,7 +52,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 				return;
 
 			base.SendNonHybridSpellLines();
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.VariousUpdate));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.VariousUpdate));
 			pak.WriteByte(0x02); //subcode
 			pak.WriteByte(0x00);
 			pak.WriteByte(99); //subtype (new subtype 99 in 1.80e)
@@ -65,7 +65,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (text == null)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DetailWindow));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DetailWindow));
 
 			pak.WriteByte(0); // new in 1.75
 			pak.WriteByte(0); // new in 1.81
@@ -85,7 +85,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		public override void SendPlayerTitles()
 		{
 			IList titles = m_gameClient.Player.Titles;
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.DetailWindow));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.DetailWindow));
 
 			pak.WriteByte(1); // new in 1.75
 			pak.WriteByte(0); // new in 1.81
@@ -121,7 +121,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		public override void SendPetWindow(GameLiving pet, ePetWindowAction windowAction, eAggressionState aggroState, eWalkState walkState)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.PetWindow));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.PetWindow));
 			pak.WriteShort((ushort)(pet == null ? 0 : pet.ObjectID));
 			pak.WriteByte(0x00); //unused
 			pak.WriteByte(0x00); //unused

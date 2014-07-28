@@ -69,8 +69,8 @@ namespace DawnOfLight.GameServer.commands.GameMaster
 					message = LanguageMgr.GetTranslation(clientc, "GMCommands.Kick.RemovedFromServer");
 				}
 
-				clientc.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_SystemWindow);
-				clientc.Out.SendMessage(message, eChatType.CT_Help, eChatLoc.CL_ChatWindow);
+				clientc.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_SystemWindow);
+				clientc.Out.SendMessage(message, ChatType.CT_Help, ChatLocation.CL_ChatWindow);
 			}
 
 			clientc.Out.SendPlayerQuit(true);

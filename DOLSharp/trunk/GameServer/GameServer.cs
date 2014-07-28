@@ -107,7 +107,7 @@ namespace DawnOfLight.GameServer
 		/// <summary>
 		/// Contains a list of invalid names
 		/// </summary>
-		protected ArrayList m_invalidNames = new ArrayList();
+		protected List<string> m_invalidNames = new List<string>();
 
 		/// <summary>
 		/// Holds instance of current server rules
@@ -254,7 +254,7 @@ namespace DawnOfLight.GameServer
 		/// <summary>
 		/// Gets an array of invalid player names
 		/// </summary>
-		public ArrayList InvalidNames
+		public List<string> InvalidNames
 		{
 			get { return m_invalidNames; }
 		}
@@ -458,7 +458,7 @@ namespace DawnOfLight.GameServer
 						{
 							var sender = (IPEndPoint) (tempRemoteEP);
 
-							var pakin = new GSPacketIn(read - GSPacketIn.HDR_SIZE);
+							var pakin = new GamePacketIn(read - GamePacketIn.HDR_SIZE);
 							pakin.Load(server.UDPBuffer, 0, read);
 
 							//Get the next message

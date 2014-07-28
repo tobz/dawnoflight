@@ -214,7 +214,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 						player.SkillSpecialtyPoints += specPoints;
 						player.RemoveAllStyles(); // Kill styles
 						player.UpdateSpellLineLevels(false);
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.Interact.RegainPoints", specPoints), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.Interact.RegainPoints", specPoints), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					player.RefreshSpecDependantSkills(false);
 					// Notify Player of points
@@ -241,7 +241,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		{
 			player.Out.SendMessage(String.Format(LanguageMgr.GetTranslation
 			                                     (player.Client, "GameTrainer.Interact.Respecialize", this.Name, player.Name)),
-			                       eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+			                       ChatType.CT_Say, ChatLocation.CL_PopupWindow);
 		}
 
 		/// <summary>
@@ -256,15 +256,15 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				foreach (InventoryItem item in player.Inventory.EquippedItems)
 				{
 					if (!player.HasAbilityToUseItem(item.Template))
-						if (player.Inventory.IsSlotsFree(item.Count, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack) == true)
+						if (player.Inventory.IsSlotsFree(item.Count, InventorySlot.FirstBackpack, InventorySlot.LastBackpack) == true)
 					{
-						player.Inventory.MoveItem((eInventorySlot)item.SlotPosition, player.Inventory.FindFirstEmptySlot(eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack), item.Count);
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.CheckAbilityToUseItem.Text1", item.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Inventory.MoveItem((InventorySlot)item.SlotPosition, player.Inventory.FindFirstEmptySlot(InventorySlot.FirstBackpack, InventorySlot.LastBackpack), item.Count);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.CheckAbilityToUseItem.Text1", item.GetName(0, false)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 					else
 					{
-						player.Inventory.MoveItem((eInventorySlot)item.SlotPosition, eInventorySlot.Ground, item.Count);
-						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.CheckAbilityToUseItem.Text1", item.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+						player.Inventory.MoveItem((InventorySlot)item.SlotPosition, InventorySlot.Ground, item.Count);
+						player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.CheckAbilityToUseItem.Text1", item.GetName(0, false)), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					}
 				}
 			}
@@ -290,7 +290,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 							player.Inventory.RemoveCountFromStack(item, 1);
 							InventoryLogging.LogInventoryAction(player, this, eInventoryActionType.Merchant, item.Template);
 							player.RespecAmountSingleSkill++;
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.ReceiveItem.RespecSingle"), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.ReceiveItem.RespecSingle"), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 							return true;
 						}
 					case "respec_full":
@@ -298,7 +298,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 							player.Inventory.RemoveCountFromStack(item, 1);
 							InventoryLogging.LogInventoryAction(player, this, eInventoryActionType.Merchant, item.Template);
 							player.RespecAmountAllSkill++;
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.ReceiveItem.RespecFull", item.Name), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.ReceiveItem.RespecFull", item.Name), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 							return true;
 						}
 					case "respec_realm":
@@ -306,7 +306,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 							player.Inventory.RemoveCountFromStack(item, 1);
 							InventoryLogging.LogInventoryAction(player, this, eInventoryActionType.Merchant, item.Template);
 							player.RespecAmountRealmSkill++;
-							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.ReceiveItem.RespecRealm"), eChatType.CT_System, eChatLoc.CL_PopupWindow);
+							player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.ReceiveItem.RespecRealm"), ChatType.CT_System, ChatLocation.CL_PopupWindow);
 							return true;
 						}
 				}
@@ -341,8 +341,8 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				player.RemoveAllStyles();
 
 				if (messageToPlayer != "")
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.PromotePlayer.Says", this.Name, messageToPlayer), eChatType.CT_System, eChatLoc.CL_PopupWindow);
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.PromotePlayer.Upgraded", player.CharacterClass.Name), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.PromotePlayer.Says", this.Name, messageToPlayer), ChatType.CT_System, ChatLocation.CL_PopupWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.PromotePlayer.Upgraded", player.CharacterClass.Name), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 				player.CharacterClass.OnLevelUp(player, player.Level);
 				player.UpdateSpellLineLevels(true);
@@ -362,7 +362,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 				}
 
 				// after gifts
-				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.PromotePlayer.Accepted", player.CharacterClass.Profession), eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.PromotePlayer.Accepted", player.CharacterClass.Profession), ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 
 				Notify(GameTrainerEvent.PlayerPromoted, this, new PlayerPromotedEventArgs(player, oldClass));
 
@@ -383,9 +383,9 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 			ItemTemplate temp = GameServer.Database.FindObjectByKey<ItemTemplate>(template);
 			if (temp != null)
 			{
-				if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(temp), 1, eInventorySlot.FirstBackpack, eInventorySlot.LastBackpack))
+				if (!player.Inventory.AddTemplate(GameInventoryItem.Create<ItemTemplate>(temp), 1, InventorySlot.FirstBackpack, InventorySlot.LastBackpack))
 				{
-					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.AddGift.NotEnoughSpace"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+					player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.AddGift.NotEnoughSpace"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 					return false;
 				}
 				InventoryLogging.LogInventoryAction(this, player, eInventoryActionType.Other, temp);
@@ -401,7 +401,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		{
 			if (CanTrainChampionLevels(player) == false)
 			{
-				SayTo(player, eChatLoc.CL_ChatWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.Train.SeekElsewhere"));
+				SayTo(player, ChatLocation.CL_ChatWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.Train.SeekElsewhere"));
 			}
 		}
 
@@ -411,7 +411,7 @@ namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 		/// <param name="player"></param>
 		protected virtual void OfferTraining(GamePlayer player)
 		{
-			SayTo(player, eChatLoc.CL_ChatWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.Train.WouldYouLikeTo"));
+			SayTo(player, ChatLocation.CL_ChatWindow, LanguageMgr.GetTranslation(player.Client.Account.Language, "GameTrainer.Train.WouldYouLikeTo"));
 		}
 		
 		/// <summary>

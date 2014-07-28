@@ -61,7 +61,7 @@ namespace DawnOfLight.GameServer.Spells
         {
             if (Caster.CurrentRegion.IsRvR || Caster.CurrentRegion.IsHousing || Caster.CurrentRegion.IsCapitalCity)
             {
-                MessageToCaster("You cannot cast this spell here!", eChatType.CT_SpellResisted);
+                MessageToCaster("You cannot cast this spell here!", ChatType.CT_SpellResisted);
                 return false;
             }
 

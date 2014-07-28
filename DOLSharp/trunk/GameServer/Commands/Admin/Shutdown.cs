@@ -94,7 +94,7 @@ namespace DawnOfLight.GameServer.commands.Admin
 				foreach (GameClient m_client in WorldMgr.GetAllPlayingClients())
 				{
 					m_client.Out.SendDialogBox(eDialogCode.SimpleWarning, 0, 0, 0, 0, eDialogType.Ok, true, "Automated server restart / backup triggered. Restart in " + m_counter / 60 + " mins! (Restart at " + date.ToString("HH:mm \"GMT\" zzz") + ")");
-					//m_client.Out.SendMessage("Automated server restart / backup triggered. Restart in " + m_counter / 60 + " mins! (Restart on " + date.ToString("HH:mm \"GMT\" zzz") + ")", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					//m_client.Out.SendMessage("Automated server restart / backup triggered. Restart in " + m_counter / 60 + " mins! (Restart on " + date.ToString("HH:mm \"GMT\" zzz") + ")", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 
 				string msg = "Automated server restart in " + m_counter / 60 + " mins! (Restart at " + date.ToString("HH:mm \"GMT\" zzz") + ")";
@@ -203,7 +203,7 @@ namespace DawnOfLight.GameServer.commands.Admin
 				{
 					foreach (GameClient client in WorldMgr.GetAllPlayingClients())
 					{
-						client.Out.SendMessage(sendMessage, eChatType.CT_Staff, eChatLoc.CL_ChatWindow);
+						client.Out.SendMessage(sendMessage, ChatType.CT_Staff, ChatLocation.CL_ChatWindow);
 					}
 				}
 
@@ -314,10 +314,10 @@ namespace DawnOfLight.GameServer.commands.Admin
 				if (popup)
 				{
 					m_client.Out.SendDialogBox(eDialogCode.SimpleWarning, 0, 0, 0, 0, eDialogType.Ok, true, "Attention: Server restart in " + m_counter / 60 + " mins! (restart at " + date.ToString("HH:mm \"GMT\" zzz") + ")");
-					m_client.Out.SendMessage("Server restart in " + m_counter / 60 + " mins! (restart on " + date.ToString("HH:mm \"GMT\" zzz") + ")", eChatType.CT_System, eChatLoc.CL_PopupWindow);
+					m_client.Out.SendMessage("Server restart in " + m_counter / 60 + " mins! (restart on " + date.ToString("HH:mm \"GMT\" zzz") + ")", ChatType.CT_System, ChatLocation.CL_PopupWindow);
 				}
 
-				m_client.Out.SendMessage(msg, eChatType.CT_Staff, eChatLoc.CL_ChatWindow);
+				m_client.Out.SendMessage(msg, ChatType.CT_Staff, ChatLocation.CL_ChatWindow);
 			}
 
 			log.Warn(msg);

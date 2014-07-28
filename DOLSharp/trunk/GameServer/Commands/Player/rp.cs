@@ -42,12 +42,12 @@ namespace DawnOfLight.GameServer.commands.Player
 			if (args[1].ToLower().Equals("on"))
 			{
 				client.Player.GainRP = true;
-				client.Out.SendMessage("Your rp flag is ON. You will gain realm points. Use '/rp off' to stop gaining realm points.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Your rp flag is ON. You will gain realm points. Use '/rp off' to stop gaining realm points.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 			else if (args[1].ToLower().Equals("off"))
 			{
 				client.Player.GainRP = false;
-				client.Out.SendMessage("Your rp flag is OFF. You will no longer gain realm points. Use '/rp on' to start gaining realm points again.", eChatType.CT_Important, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Your rp flag is OFF. You will no longer gain realm points. Use '/rp on' to start gaining realm points again.", ChatType.CT_Important, ChatLocation.CL_SystemWindow);
 			}
 		}
 	}

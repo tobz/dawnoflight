@@ -107,7 +107,7 @@ namespace DawnOfLight.GameServer.Housing
 				log.Info("[Housing] Loaded " + houses + " houses and " + lotmarkers + " lotmarkers in " + regions + " regions!");
 
 			if (client != null)
-				client.Out.SendMessage("Loaded " + houses + " houses and " + lotmarkers + " lotmarkers in " + regions + " regions!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				client.Out.SendMessage("Loaded " + houses + " houses and " + lotmarkers + " lotmarkers in " + regions + " regions!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
 
 			if (CheckRentTimer != null)
 			{
@@ -735,7 +735,7 @@ namespace DawnOfLight.GameServer.Housing
 			// notify guild members of the guild house acquisition
 			player.Guild.SendMessageToGuildMembers(
 				LanguageMgr.GetTranslation(player.Client.Account.Language, "Scripts.Player.Housing.GuildNowOwns", player.Guild.Name, player.Name),
-				eChatType.CT_Guild, eChatLoc.CL_SystemWindow);
+				ChatType.CT_Guild, ChatLocation.CL_SystemWindow);
 
 			// save the guild and broadcast updates
 			player.Guild.SaveIntoDatabase();

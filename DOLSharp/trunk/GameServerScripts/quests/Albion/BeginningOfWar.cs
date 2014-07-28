@@ -196,8 +196,8 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				dunwyn.Heading = 187;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 798);
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 19);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 798);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 19);
 				dunwyn.Inventory = template.CloseTemplate();
 
 //				dunwyn.AddNPCEquipment((byte) eEquipmentItems.TORSO, 798, 0, 0, 0);
@@ -1023,8 +1023,8 @@ namespace DawnOfLight.GameServer.Quests.Albion
 				dunwynClone.Heading = 3292;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 798);
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 19);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 798);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 19);
 				dunwynClone.Inventory = template.CloseTemplate();
 				dunwynClone.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -1081,7 +1081,7 @@ namespace DawnOfLight.GameServer.Quests.Albion
 
 			UseSlotEventArgs uArgs = (UseSlotEventArgs) args;
 
-			InventoryItem item = player.Inventory.GetItem((eInventorySlot)uArgs.Slot);
+			InventoryItem item = player.Inventory.GetItem((InventorySlot)uArgs.Slot);
 			if (item != null && item.Id_nb == listDunwyn.Id_nb)
 			{
 				if (quest.Step >= 4 && quest.Step <= 8)

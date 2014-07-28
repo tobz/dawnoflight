@@ -52,7 +52,7 @@ namespace DawnOfLight.GameServer.GameObjects
                                 {
                                         return true;
                                 }
-                                player.Out.SendMessage("You do not meet the Champion Level requirement to equip this item.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                                player.Out.SendMessage("You do not meet the Champion Level requirement to equip this item.", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                         }
                         return false;
                 }
@@ -64,7 +64,7 @@ namespace DawnOfLight.GameServer.GameObjects
                     if (this.Name.ToLower().Contains("ektaktos"))
                     {
                         player.CanBreathUnderWater = true;
-                        player.Out.SendMessage("You find yourself able to breathe water like air!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage("You find yourself able to breathe water like air!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                     }
                     base.OnEquipped(player);
                 }
@@ -74,7 +74,7 @@ namespace DawnOfLight.GameServer.GameObjects
                     if (this.Name.ToLower().Contains("ektaktos") && SpellHandler.FindEffectOnTarget(player, "WaterBreathing") == null)
                     {
                         player.CanBreathUnderWater = false;
-                        player.Out.SendMessage("With a gulp and a gasp you realize that you are unable to breathe underwater any longer!", eChatType.CT_SpellExpires, eChatLoc.CL_SystemWindow);
+                        player.Out.SendMessage("With a gulp and a gasp you realize that you are unable to breathe underwater any longer!", ChatType.CT_SpellExpires, ChatLocation.CL_SystemWindow);
                     }
                     base.OnUnEquipped(player);
                 }

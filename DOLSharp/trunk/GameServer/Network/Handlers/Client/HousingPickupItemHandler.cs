@@ -18,6 +18,7 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Constants;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Network.Packets;
@@ -28,7 +29,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 	/// <summary>
 	/// Handle housing pickup item requests from the client.
 	/// </summary>
-	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerPickupHouseItem, ClientStatus.PlayerInGame)]
+	[PacketHandler(PacketType.TCP, ClientPackets.PlayerPickupHouseItem, ClientStatus.PlayerInGame)]
 	public class HousingPickupItemHandler : IPacketHandler
 	{
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -41,7 +42,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 		/// <param name="client"></param>
 		/// <param name="packet"></param>
 		/// <returns></returns>
-		public void HandlePacket(GameClient client, GSPacketIn packet)
+		public void HandlePacket(GameClient client, GamePacketIn packet)
 		{
 			int unknown = packet.ReadByte();
 			int position = packet.ReadByte();
@@ -74,7 +75,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 						// return indoor item into inventory item, add to player inventory
 						var invitem = GameInventoryItem.Create<ItemTemplate>((house.OutdoorItems[i]).BaseItem);
-						if (client.Player.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, invitem))
+						if (client.Player.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, invitem))
 							InventoryLogging.LogInventoryAction("(HOUSE;" + house.HouseNumber + ")", client.Player, eInventoryActionType.Other, invitem.Template, invitem.Count);
 						house.OutdoorItems.Remove(i);
 
@@ -102,7 +103,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					IndoorItem iitem = house.IndoorItems[position];
 					if (iitem == null)
 					{
-						client.Player.Out.SendMessage("error: id was null", eChatType.CT_Help, eChatLoc.CL_SystemWindow);
+						client.Player.Out.SendMessage("error: id was null", ChatType.CT_Help, ChatLocation.CL_SystemWindow);
 						return;
 					} 
 
@@ -111,7 +112,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 						var item = GameInventoryItem.Create<ItemTemplate>((house.IndoorItems[(position)]).BaseItem);
 						if (GetItemBack(item))
 						{
-							if (client.Player.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, item))
+							if (client.Player.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, item))
 							{
 								string removalMsg = string.Format("The {0} is cleared from the {1}.", item.Name,
 								                                  (method == 2 ? "wall surface" : "floor"));
@@ -155,7 +156,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 
 						// TODO: Once again with guild banners, templates are memory only and will not load correctly once player logs out - tolakram
 						var inv = GameInventoryItem.Create<ItemTemplate>(it);
-						if (client.Player.Inventory.AddItem(eInventorySlot.FirstEmptyBackpack, inv))
+						if (client.Player.Inventory.AddItem(InventorySlot.FirstEmptyBackpack, inv))
 						{
 							string invMsg = string.Format("The {0} is cleared from the {1}.", inv.Name,
 							                              (method == 2 ? "wall surface" : "floor"));
@@ -181,7 +182,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Client
 					GameServer.Database.DeleteObject((house.IndoorItems[(position)]).DatabaseItem);
 					house.IndoorItems.Remove(position);
 
-					var pak = new GSTCPPacketOut(client.Out.GetPacketCode(eServerPackets.HousingItem));
+					var pak = new GameTCPPacketOut(client.Out.GetPacketCode(ServerPackets.HousingItem));
 					pak.WriteShort((ushort) housenumber);
 					pak.WriteByte(0x01);
 					pak.WriteByte(0x00);

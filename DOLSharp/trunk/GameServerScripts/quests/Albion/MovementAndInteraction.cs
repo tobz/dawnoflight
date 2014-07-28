@@ -119,12 +119,12 @@ namespace DawnOfLight.GameServer.Quests.Albion {
 				questGiver.CurrentRegionID = 27;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 691, 0);		//Slot 22
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 692, 0);			//Slot 23
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 688, 0);		//Slot 25
-				template.AddNPCEquipment(eInventorySlot.Cloak, 676, 0);				//Slot 26
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 689, 0);			//Slot 27
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 690, 0);			//Slot 28
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 691, 0);		//Slot 22
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 692, 0);			//Slot 23
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 688, 0);		//Slot 25
+				template.AddNPCEquipment(InventorySlot.Cloak, 676, 0);				//Slot 26
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 689, 0);			//Slot 27
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 690, 0);			//Slot 28
 				questGiver.Inventory = template.CloseTemplate();
 				questGiver.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 
@@ -156,12 +156,12 @@ namespace DawnOfLight.GameServer.Quests.Albion {
 				questTarget.CurrentRegionID = 27;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 665, 0);		//Slot 22
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 666, 0);			//Slot 23
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 662, 0);		//Slot 25
-				template.AddNPCEquipment(eInventorySlot.Cloak, 676, 0);				//Slot 26
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 663, 0);			//Slot 27
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 664, 0);			//Slot 28
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 665, 0);		//Slot 22
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 666, 0);			//Slot 23
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 662, 0);		//Slot 25
+				template.AddNPCEquipment(InventorySlot.Cloak, 676, 0);				//Slot 26
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 663, 0);			//Slot 27
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 664, 0);			//Slot 28
 				questTarget.Inventory = template.CloseTemplate();
 				questTarget.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

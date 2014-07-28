@@ -61,7 +61,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 
 		protected override void SendQuestPacket(AbstractQuest quest, int index)
 		{
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.QuestEntry));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.QuestEntry));
 
 			pak.WriteByte((byte) index);
 			if (quest.Step <= 0)
@@ -104,7 +104,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		{
 			string name = BuildTaskString();
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.QuestEntry));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.QuestEntry));
 			pak.WriteByte(0); //index
 			pak.WriteShortLowEndian((ushort)name.Length);
 			pak.WriteByte((byte)0);

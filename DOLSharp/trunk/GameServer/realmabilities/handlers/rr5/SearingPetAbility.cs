@@ -56,7 +56,7 @@ namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
             }
             else if (player != null)
             {
-                player.Out.SendMessage("You must have a controlled pet to use this ability!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You must have a controlled pet to use this ability!", ChatType.CT_System, ChatLocation.CL_SystemWindow);
                 player.DisableSkill(this, 3 * 1000);
             }
         }

@@ -52,7 +52,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 			if (m_gameClient.Player.TradeWindow == null)
 				return;
 
-			GSTCPPacketOut pak = new GSTCPPacketOut(GetPacketCode(eServerPackets.TradeWindow));
+			GameTCPPacketOut pak = new GameTCPPacketOut(GetPacketCode(ServerPackets.TradeWindow));
 			lock (m_gameClient.Player.TradeWindow.Sync)
 			{
 				foreach (InventoryItem item in m_gameClient.Player.TradeWindow.TradeItems)
@@ -109,7 +109,7 @@ namespace DawnOfLight.GameServer.Network.Handlers.Server
 		/// </summary>
 		/// <param name="pak"></param>
 		/// <param name="item"></param>
-		protected override void WriteItemData(GSTCPPacketOut pak, InventoryItem item)
+		protected override void WriteItemData(GameTCPPacketOut pak, InventoryItem item)
 		{
 			if (item == null)
 			{

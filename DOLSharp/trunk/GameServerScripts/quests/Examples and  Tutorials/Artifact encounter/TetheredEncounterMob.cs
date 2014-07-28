@@ -34,7 +34,7 @@ namespace DawnOfLight.GameServer.Atlantis
                     if (source is GamePlayer)
                     {
                         GamePlayer player = source as GamePlayer;
-                        player.Out.SendMessage("The " + this.Name + " is too far from its encounter area, your damage fails to have an effect on it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+                        player.Out.SendMessage("The " + this.Name + " is too far from its encounter area, your damage fails to have an effect on it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
                         return;
                     }
                     return;
@@ -49,7 +49,7 @@ namespace DawnOfLight.GameServer.Atlantis
                     if (source is GamePlayer)
                     {
                         GamePlayer player = source as GamePlayer;
-                        player.Out.SendMessage("You are too far from the " + this.Name + ", your damage fails to effect it!", eChatType.CT_Important, eChatLoc.CL_ChatWindow);
+                        player.Out.SendMessage("You are too far from the " + this.Name + ", your damage fails to effect it!", ChatType.CT_Important, ChatLocation.CL_ChatWindow);
                     }
                     return;
                 }

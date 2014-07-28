@@ -173,12 +173,12 @@ namespace DawnOfLight.GameServer.Quests.Midgard
 				dalikor.CurrentRegionID = locationDalikor.RegionID;
 
 				GameNpcInventoryTemplate template = new GameNpcInventoryTemplate();
-				template.AddNPCEquipment(eInventorySlot.TorsoArmor, 348);
-				template.AddNPCEquipment(eInventorySlot.LegsArmor, 349);
-				template.AddNPCEquipment(eInventorySlot.ArmsArmor, 350);
-				template.AddNPCEquipment(eInventorySlot.HandsArmor, 351);
-				template.AddNPCEquipment(eInventorySlot.FeetArmor, 352);
-				template.AddNPCEquipment(eInventorySlot.RightHandWeapon, 4);
+				template.AddNPCEquipment(InventorySlot.TorsoArmor, 348);
+				template.AddNPCEquipment(InventorySlot.LegsArmor, 349);
+				template.AddNPCEquipment(InventorySlot.ArmsArmor, 350);
+				template.AddNPCEquipment(InventorySlot.HandsArmor, 351);
+				template.AddNPCEquipment(InventorySlot.FeetArmor, 352);
+				template.AddNPCEquipment(InventorySlot.RightHandWeapon, 4);
 				dalikor.Inventory = template.CloseTemplate();
 				dalikor.SwitchWeapon(GameLiving.eActiveWeaponSlot.Standard);
 

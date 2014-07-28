@@ -36,7 +36,7 @@ namespace DawnOfLight.GameServer.Effects
 		{
 			base.Start(living);
 			if (living is GamePlayer)
-				(living as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((living as GamePlayer).Client, "Effects.RapidFireEffect.YouSwitchRFMode"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+				(living as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((living as GamePlayer).Client, "Effects.RapidFireEffect.YouSwitchRFMode"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 		}
 
 		/// <summary>

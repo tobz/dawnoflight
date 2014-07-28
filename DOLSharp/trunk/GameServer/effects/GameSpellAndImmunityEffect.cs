@@ -99,7 +99,7 @@ namespace DawnOfLight.GameServer.Effects
 			if (playerCanceled)
 			{
 				if (Owner is GamePlayer)
-                    ((GamePlayer)Owner).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)Owner).Client, "Effects.CantRemoveThis"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                    ((GamePlayer)Owner).Out.SendMessage(LanguageMgr.GetTranslation(((GamePlayer)Owner).Client, "Effects.CantRemoveThis"), ChatType.CT_System, ChatLocation.CL_SystemWindow);
 				return;
 			}
 
