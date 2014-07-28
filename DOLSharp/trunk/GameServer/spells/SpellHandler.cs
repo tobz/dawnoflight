@@ -34,7 +34,7 @@ using DawnOfLight.GameServer.GameObjects.SiegeWeapon;
 using DawnOfLight.GameServer.Keeps.Managers;
 using DawnOfLight.GameServer.Keeps.Relics;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.RealmAbilities;
 using DawnOfLight.GameServer.RealmAbilities.effects;
 using DawnOfLight.GameServer.RealmAbilities.effects.rr5;

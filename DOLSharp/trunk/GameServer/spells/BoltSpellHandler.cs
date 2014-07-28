@@ -24,7 +24,7 @@ using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.Keeps;
 using DawnOfLight.GameServer.Keeps.Managers;
 using DawnOfLight.GameServer.Keeps.Relics;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.SkillHandler;
 using DawnOfLight.GameServer.Spells.Archery;
 using DawnOfLight.GameServer.Utilities;

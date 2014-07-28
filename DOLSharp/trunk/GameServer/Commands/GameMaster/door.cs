@@ -25,8 +25,8 @@ using System;
 using System.Collections.Generic;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Client._168;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
+using DawnOfLight.GameServer.Network.Handlers.Client;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.commands.GameMaster

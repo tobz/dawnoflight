@@ -23,7 +23,7 @@ using DawnOfLight.GameServer.Behavior.Attributes;
 using DawnOfLight.GameServer.Events;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 
 namespace DawnOfLight.GameServer.Behavior.Actions
 {

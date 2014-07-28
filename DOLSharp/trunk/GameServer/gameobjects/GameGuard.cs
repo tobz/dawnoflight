@@ -1,7 +1,7 @@
 using System.Collections;
 using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.GameObjects

@@ -19,7 +19,7 @@
 
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Styles;
 using DawnOfLight.GameServer.Utilities;
 

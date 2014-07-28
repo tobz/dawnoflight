@@ -18,7 +18,7 @@
  */
 
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Quests.QuestsMgr;
 using DawnOfLight.GameServer.Quests.QuestsMgr.Utility;
 using DawnOfLight.GameServer.World;

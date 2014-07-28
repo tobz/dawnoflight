@@ -7,7 +7,7 @@ using DawnOfLight.GameServer.Events;
 using DawnOfLight.GameServer.Events.GameObjects;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.PropertyCalculators;
 using DawnOfLight.GameServer.RealmAbilities.effects;
 using DawnOfLight.GameServer.RealmAbilities.effects.rr5;

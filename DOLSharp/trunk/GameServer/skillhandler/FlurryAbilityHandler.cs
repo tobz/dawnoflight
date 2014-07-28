@@ -22,7 +22,7 @@ using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.PlayerClasses.hibernia;
 using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
 using DawnOfLight.GameServer.Spells;

@@ -24,7 +24,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using Microsoft.CSharp;
 
 namespace DawnOfLight.GameServer.commands.Admin

@@ -5,7 +5,7 @@ using System.Collections;
 using DawnOfLight.GameServer.commands.Player;
 using DawnOfLight.GameServer.Crafting;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.GameObjects.CustomNPC

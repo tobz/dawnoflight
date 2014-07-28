@@ -27,7 +27,7 @@ using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
 using DawnOfLight.GameServer.Keeps;
 using System.Collections.Generic;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Spells.Masterlevel;
 using DawnOfLight.GameServer.Utilities;

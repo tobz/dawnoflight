@@ -32,7 +32,7 @@ using DawnOfLight.GameServer.commands;
 using DawnOfLight.GameServer.Events.GameObjects;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.CharacterClasses;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.ServerRules;
 using DawnOfLight.GameServer.Spells;
 using log4net;

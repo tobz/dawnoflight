@@ -27,7 +27,7 @@ using DawnOfLight.GameServer.GameObjects.Keeps;
 using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
 using DawnOfLight.GameServer.GameObjects.SiegeWeapon;
 using DawnOfLight.GameServer.Keeps.Managers;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 using log4net;
 

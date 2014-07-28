@@ -1,6 +1,6 @@
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Utilities;
 

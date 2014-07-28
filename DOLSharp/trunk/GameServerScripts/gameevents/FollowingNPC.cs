@@ -33,7 +33,7 @@ using System.Timers;
 using DawnOfLight.GameServer.Events;
 using DawnOfLight.GameServer.Events.Scripts;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using log4net;
 
 namespace DawnOfLight.GameServer.GameEvents

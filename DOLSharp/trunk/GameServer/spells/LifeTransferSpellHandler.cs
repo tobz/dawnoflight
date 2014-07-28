@@ -21,7 +21,7 @@ using System.Collections;
 using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.Necromancer;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Spells

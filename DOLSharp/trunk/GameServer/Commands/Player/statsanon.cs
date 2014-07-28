@@ -19,7 +19,7 @@
 
 // By Daeli
 
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 
 namespace DawnOfLight.GameServer.commands.Player
 {

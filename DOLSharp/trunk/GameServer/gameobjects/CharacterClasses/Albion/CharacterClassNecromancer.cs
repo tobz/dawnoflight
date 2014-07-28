@@ -24,7 +24,7 @@ using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.Effects.Necromancer;
 using DawnOfLight.GameServer.Events;
 using DawnOfLight.GameServer.Events.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Spells;
 
 namespace DawnOfLight.GameServer.GameObjects.CharacterClasses.Albion

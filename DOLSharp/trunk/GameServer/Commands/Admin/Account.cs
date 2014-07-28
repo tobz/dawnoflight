@@ -20,7 +20,7 @@
 using System;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Client._168;
+using DawnOfLight.GameServer.Network.Handlers.Client;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 

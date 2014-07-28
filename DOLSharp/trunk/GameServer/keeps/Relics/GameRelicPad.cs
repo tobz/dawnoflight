@@ -4,7 +4,7 @@ using DawnOfLight.GameServer.Events.Keep;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Keeps.Managers;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 using log4net;

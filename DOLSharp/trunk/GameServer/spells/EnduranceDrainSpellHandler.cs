@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Spells

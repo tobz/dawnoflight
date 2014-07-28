@@ -17,7 +17,7 @@
  *
  */
 
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.RealmAbilities.handlers;
 using DawnOfLight.GameServer.Utilities;
 

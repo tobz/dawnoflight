@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;

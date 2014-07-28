@@ -1020,6 +1020,8 @@ namespace DawnOfLight.GameServer
 
 	public class GlobalConstants
 	{
+        public static int USE_AUTOVALUES = -1;
+
 		public static bool IsExpansionEnabled(int expansion)
 		{
 			bool enabled = true;
@@ -1822,9 +1824,5 @@ namespace DawnOfLight.GameServer
 				return m_PvERezIllness;
 			}
 		}
-	}
-	public static class Constants
-	{
-		public static int USE_AUTOVALUES = -1;
 	}
 }

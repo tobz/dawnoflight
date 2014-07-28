@@ -20,7 +20,7 @@
 using DawnOfLight.Database;
 using System.Collections.Generic;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 using DawnOfLight.GameServer.World.Instance;

@@ -20,7 +20,7 @@
 using System;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 
 namespace DawnOfLight.GameServer.commands.Player
 {

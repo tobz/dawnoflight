@@ -21,7 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using log4net;
 
 namespace DawnOfLight.GameServer.commands.Player

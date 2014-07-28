@@ -18,7 +18,7 @@
  */
 
 using System.Collections;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.PlayerTitles;
 
 namespace DawnOfLight.GameServer.commands.Player

@@ -23,7 +23,7 @@ using DawnOfLight.Database;
 using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects.Necromancer;
 using DawnOfLight.GameServer.Events.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;

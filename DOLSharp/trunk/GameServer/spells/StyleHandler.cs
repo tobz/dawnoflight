@@ -19,7 +19,7 @@
 
 using System.Collections.Generic;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Client._168;
+using DawnOfLight.GameServer.Network.Handlers.Client;
 using DawnOfLight.GameServer.Styles;
 using DawnOfLight.GameServer.Utilities;
 

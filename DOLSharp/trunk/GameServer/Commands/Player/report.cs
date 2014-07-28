@@ -18,7 +18,7 @@
  */
 
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.commands.Player

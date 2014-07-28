@@ -22,7 +22,7 @@ using DawnOfLight.Database;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.CustomNPC;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Trainers.albion

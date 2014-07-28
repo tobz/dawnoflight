@@ -23,7 +23,7 @@ using System.Reflection;
 using DawnOfLight.GameServer.Events;
 using DawnOfLight.GameServer.Events.GameObjects;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Utilities;

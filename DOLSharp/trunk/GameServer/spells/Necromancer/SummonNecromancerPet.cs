@@ -25,7 +25,7 @@ using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.Necromancer;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.PropertyCalculators;
 using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
 using DawnOfLight.GameServer.Utilities;

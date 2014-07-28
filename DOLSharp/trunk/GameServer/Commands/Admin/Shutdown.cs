@@ -22,7 +22,7 @@ using System.Threading;
 using DawnOfLight.Base;
 using DawnOfLight.GameServer.Events;
 using DawnOfLight.GameServer.Events.Scripts;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.World;
 

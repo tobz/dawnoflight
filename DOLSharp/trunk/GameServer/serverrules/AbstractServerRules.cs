@@ -34,7 +34,7 @@ using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.Keeps.Managers;
 using DawnOfLight.GameServer.Keeps.Relics;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Utilities;

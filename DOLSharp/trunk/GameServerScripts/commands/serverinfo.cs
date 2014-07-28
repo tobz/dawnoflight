@@ -19,7 +19,7 @@
 
 using System.Reflection;
 using DawnOfLight.GameServer.commands;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Commands

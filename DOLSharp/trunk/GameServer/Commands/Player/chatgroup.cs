@@ -21,7 +21,7 @@ using System;
 using System.Text;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 

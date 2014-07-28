@@ -19,7 +19,7 @@
 
 using System.Collections;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.PlayerClasses.albion;
 using DawnOfLight.GameServer.PlayerClasses.hibernia;
 using DawnOfLight.GameServer.PlayerClasses.midgard;

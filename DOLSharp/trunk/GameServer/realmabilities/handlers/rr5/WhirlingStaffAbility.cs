@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;

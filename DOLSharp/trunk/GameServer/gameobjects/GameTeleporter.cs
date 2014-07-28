@@ -24,7 +24,7 @@ using DawnOfLight.Database;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.Keeps.Relics;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Spells.Teleport;
 using DawnOfLight.GameServer.Utilities;

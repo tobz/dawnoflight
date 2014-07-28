@@ -23,7 +23,7 @@ using System;
 using System.Collections;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;

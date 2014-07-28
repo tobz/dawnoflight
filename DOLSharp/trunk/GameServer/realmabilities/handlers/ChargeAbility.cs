@@ -1,7 +1,7 @@
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Effects;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.RealmAbilities.effects;
 using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
 

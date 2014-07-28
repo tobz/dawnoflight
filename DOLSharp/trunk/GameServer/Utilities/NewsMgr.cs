@@ -2,7 +2,7 @@ using System;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Events;
 using DawnOfLight.GameServer.Events.Database;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Utilities

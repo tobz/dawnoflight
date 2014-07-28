@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using DawnOfLight.AI.Brain;
 using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.Utilities.Atlantis;
 using DawnOfLight.GameServer.World;

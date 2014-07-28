@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 
 namespace DawnOfLight.GameServer.Utilities
 {

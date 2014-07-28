@@ -22,7 +22,7 @@ using System.Collections.Specialized;
 using System.Reflection;
 using System.Threading;
 using DawnOfLight.GameServer.GameObjects;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 using log4net;
 

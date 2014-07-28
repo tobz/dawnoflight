@@ -26,7 +26,7 @@ using DawnOfLight.Database;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.CustomNPC;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;

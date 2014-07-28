@@ -21,7 +21,7 @@ using System;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Keeps.Relics;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 
 namespace DawnOfLight.GameServer.World
 {

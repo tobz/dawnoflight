@@ -23,7 +23,7 @@ using System.Linq;
 using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Housing;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 using log4net;

@@ -20,7 +20,7 @@
 using System.Collections;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Keeps.Managers;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 
 namespace DawnOfLight.GameServer.Keeps
 {

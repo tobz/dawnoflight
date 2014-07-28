@@ -24,7 +24,7 @@ using DawnOfLight.Database;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Quests.Missions;
 using log4net;
 

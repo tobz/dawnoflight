@@ -23,7 +23,7 @@ using System.Threading;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.Utilities;
 

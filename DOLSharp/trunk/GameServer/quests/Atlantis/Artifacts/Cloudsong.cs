@@ -23,7 +23,7 @@ using System.Collections;
 using DawnOfLight.GameServer.Events;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.Atlantis;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities.Atlantis;
 
 namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts

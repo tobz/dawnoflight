@@ -28,7 +28,7 @@ using DawnOfLight.Base.Config;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World.Instance;
 using log4net;

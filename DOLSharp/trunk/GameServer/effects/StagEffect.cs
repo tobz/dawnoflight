@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.SkillHandler;
 using DawnOfLight.GameServer.Utilities;
 

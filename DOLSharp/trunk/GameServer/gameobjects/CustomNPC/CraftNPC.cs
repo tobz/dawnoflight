@@ -19,7 +19,7 @@
 
 using DawnOfLight.GameServer.Crafting;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 
 namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 {

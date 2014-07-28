@@ -34,7 +34,7 @@ using DawnOfLight.GameServer.GameObjects.SiegeWeapon;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Quests.QuestsMgr;
 using DawnOfLight.GameServer.Quests.Tasks;
 using DawnOfLight.GameServer.ServerProperties;
@@ -2010,7 +2010,7 @@ namespace DawnOfLight.GameServer.GameObjects
 			{
 				aggroBrain.AggroLevel = dbMob.AggroLevel;
 				aggroBrain.AggroRange = dbMob.AggroRange;
-				if(aggroBrain.AggroRange == Constants.USE_AUTOVALUES)
+				if(aggroBrain.AggroRange == GlobalConstants.USE_AUTOVALUES)
 				{
 					if (Realm == eRealm.None)
 					{
@@ -2029,7 +2029,7 @@ namespace DawnOfLight.GameServer.GameObjects
 						aggroBrain.AggroRange = 500;
 					}
 				}
-				if(aggroBrain.AggroLevel == Constants.USE_AUTOVALUES)
+				if(aggroBrain.AggroLevel == GlobalConstants.USE_AUTOVALUES)
 				{
 					aggroBrain.AggroLevel = 0;
 					if(Level > 5)

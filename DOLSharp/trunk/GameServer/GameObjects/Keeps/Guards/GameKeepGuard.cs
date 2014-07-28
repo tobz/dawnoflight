@@ -27,7 +27,7 @@ using DawnOfLight.GameServer.Events.GameObjects;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.Keeps.Managers;
 using DawnOfLight.GameServer.Language;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 

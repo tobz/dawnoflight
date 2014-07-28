@@ -22,7 +22,7 @@
 	  with thanks to Smallhorse for guidance.*/
 
 using System;
-using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Network;
 
 namespace DawnOfLight.GameServer.commands.Player
 {
