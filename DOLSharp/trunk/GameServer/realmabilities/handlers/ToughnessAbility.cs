@@ -1,6 +1,7 @@
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
 	/// <summary>
 	/// Toughness

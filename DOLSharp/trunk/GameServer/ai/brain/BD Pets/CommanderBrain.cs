@@ -17,11 +17,11 @@
  *
  */
 
-using DawnOfLight.GameServer;
 using System.Reflection;
+using DawnOfLight.GameServer.GameObjects;
 using log4net;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain
 {
 	/// <summary>
 	/// A brain for the commanders

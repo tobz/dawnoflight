@@ -16,25 +16,29 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
 
-namespace DawnOfLight.GameServer.Spells
+using System;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Spells.Artifacts
 {
-	[SpellHandler("TraitorsDaggerProc")]
-	public class TraitorsDaggerProc : OffensiveProcSpellHandler
-	{
-		public override void OnEffectStart(GameSpellEffect effect)
-		{
-			base.OnEffectStart(effect);
-			if (effect.Owner is GamePlayer)
-			{
-				GamePlayer player = effect.Owner as GamePlayer;
-				foreach (GameSpellEffect Effect in player.EffectList.GetAllOfType<GameSpellEffect>())
+    [SpellHandler("TraitorsDaggerProc")]
+    public class TraitorsDaggerProc : OffensiveProcSpellHandler
+    {
+        public override void OnEffectStart(GameSpellEffect effect)
+        {
+            base.OnEffectStart(effect);
+            if (effect.Owner is GamePlayer)
+            {
+                GamePlayer player = effect.Owner as GamePlayer;
+                foreach (GameSpellEffect Effect in player.EffectList.GetAllOfType<GameSpellEffect>())
                 {
                     if (Effect.SpellHandler.Spell.SpellType.Equals("ShadesOfMist") || 
                         Effect.SpellHandler.Spell.SpellType.Equals("DreamMorph") ||
@@ -47,23 +51,23 @@ namespace DawnOfLight.GameServer.Spells
                         return;
                     }
                 }
-				player.Shade(true);
+                player.Shade(true);
                 player.Out.SendUpdatePlayer();
-			}
-		}
-		public override int OnEffectExpires(GameSpellEffect effect, bool noMessages)
-		{
-			if (effect.Owner is GamePlayer)
-			{
-				GamePlayer player = effect.Owner as GamePlayer;
-				player.Shade(false);
+            }
+        }
+        public override int OnEffectExpires(GameSpellEffect effect, bool noMessages)
+        {
+            if (effect.Owner is GamePlayer)
+            {
+                GamePlayer player = effect.Owner as GamePlayer;
+                player.Shade(false);
                 player.Out.SendUpdatePlayer();
-			}
-			return base.OnEffectExpires(effect, noMessages);
-		}
+            }
+            return base.OnEffectExpires(effect, noMessages);
+        }
    
-		public TraitorsDaggerProc(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
-	}
+        public TraitorsDaggerProc(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
+    }
 
     [SpellHandler("DdtProcDd")]
     public class DdtProcDd:DirectDamageSpellHandler
@@ -140,17 +144,14 @@ namespace DawnOfLight.GameServer.Spells
         public TraitorsDaggerSummon(GameLiving caster, Spell spell, SpellLine line)
             : base(caster, spell, line) { }
     }
-}
 
-namespace DawnOfLight.GameServer
-{
-	public class TraitorDaggerPet : GamePet
-	{
-		public override int MaxHealth
-		{
-			get { return Level * 15; }
-		}
-		public override void OnAttackedByEnemy(AttackData ad) { }
-		public TraitorDaggerPet(INpcTemplate npcTemplate) : base(npcTemplate) { }
-	}
+    public class TraitorDaggerPet : GamePet
+    {
+        public override int MaxHealth
+        {
+            get { return Level * 15; }
+        }
+        public override void OnAttackedByEnemy(AttackData ad) { }
+        public TraitorDaggerPet(INpcTemplate npcTemplate) : base(npcTemplate) { }
+    }
 }

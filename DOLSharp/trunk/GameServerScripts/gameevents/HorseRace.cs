@@ -35,8 +35,12 @@
 using System;
 using System.Reflection;
 using System.Timers;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.Events.Scripts;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.World;
 using log4net;
 
 namespace DawnOfLight.GameServer.GameEvents

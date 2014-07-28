@@ -4,9 +4,11 @@
 
 using System;
 using System.Text.RegularExpressions;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 		"&email",

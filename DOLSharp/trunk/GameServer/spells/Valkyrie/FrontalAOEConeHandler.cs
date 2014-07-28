@@ -18,8 +18,10 @@
  */
 
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Valkyrie
 {
 	/// <summary>
 	/// Handler to make the frontal pulsing cone show the effect animation on every pulse

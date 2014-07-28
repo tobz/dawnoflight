@@ -1,7 +1,9 @@
-﻿using DawnOfLight.Events;
-using DawnOfLight.GameServer;
+﻿using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain.Npcs
 {
     public class CastingBehaviour : IAttackBehaviour
     {

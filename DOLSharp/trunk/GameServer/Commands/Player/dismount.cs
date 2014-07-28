@@ -17,9 +17,9 @@
  *
  */
 
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 		"&dismount",

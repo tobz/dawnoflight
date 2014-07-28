@@ -16,16 +16,19 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CharacterClasses;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 {
 	/// <summary>
 	/// The mother class for all class trainers

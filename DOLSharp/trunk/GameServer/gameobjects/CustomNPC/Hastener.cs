@@ -19,8 +19,9 @@
 
 using System.Collections;
 using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 {
 	public class GameHastener : GameNPC
 	{

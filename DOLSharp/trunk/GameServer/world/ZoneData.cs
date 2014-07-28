@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.World
 {
     //Dinberg: Added this for instances as we dont want to have to parse XML every time we create an instance,
     //but we need to put zones into the instance.

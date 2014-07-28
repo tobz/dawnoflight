@@ -1,6 +1,7 @@
 using System;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalculators
 {
 	/// <summary>
 	/// The Fatigue (Endurance) calculator

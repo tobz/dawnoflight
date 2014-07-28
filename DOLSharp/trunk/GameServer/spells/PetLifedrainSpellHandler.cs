@@ -16,13 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-namespace DawnOfLight.spells
-{
-    using AI.Brain;
-    using GameServer;
-    using GameServer.PacketHandler;
-    using GameServer.Spells;
 
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Spells
+{
     /// <summary>
     /// Return life to Player Owner
     /// </summary>

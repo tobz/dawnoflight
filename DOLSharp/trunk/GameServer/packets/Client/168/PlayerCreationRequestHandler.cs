@@ -18,9 +18,13 @@
  */
 
 using System.Reflection;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP,0x7D^168,"Handles requests for players(0x7C) in game")]
 	public class PlayerCreationRequestHandler : IPacketHandler

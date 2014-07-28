@@ -1,15 +1,21 @@
 using System;
 using System.Collections.Generic;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.PropertyCalculators;
+using DawnOfLight.GameServer.RealmAbilities.effects;
+using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Spells
-{
-    //http://www.camelotherald.com/masterlevels/ma.php?ml=Battlemaster
+namespace DawnOfLight.GameServer.Spells.Masterlevel
+{ //http://www.camelotherald.com/masterlevels/ma.php?ml=Battlemaster
     #region Battlemaster-1
     [SpellHandler("MLEndudrain")]
     public class MLEndudrain : MasterlevelHandling
@@ -97,7 +103,7 @@ namespace DawnOfLight.GameServer.Spells
             if (effect.Owner is GamePlayer)
             {
                 GamePlayer player = effect.Owner as GamePlayer;
-				if (player.EffectList.GetOfType<ChargeEffect>() == null && player != null)
+                if (player.EffectList.GetOfType<ChargeEffect>() == null && player != null)
                 {
                     effect.Owner.BuffBonusMultCategory1.Set((int)eProperty.MaxSpeed, effect, 0);
                     player.Client.Out.SendUpdateMaxSpeed();
@@ -161,14 +167,14 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //ml5 in database Target shood be Group if PvP..Realm if RvR..Value = spell proc'd (a.k the 80value dd proc)
+//ml5 in database Target shood be Group if PvP..Realm if RvR..Value = spell proc'd (a.k the 80value dd proc)
     #region Battlemaster-5
     [SpellHandler("EssenceFlamesProc")]
     public class EssenceFlamesProcSpellHandler : OffensiveProcSpellHandler
     {
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-		/// <summary>
+        /// <summary>
         /// Handler fired whenever effect target is attacked
         /// </summary>
         /// <param name="e"></param>
@@ -246,11 +252,11 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-	#region Battlemaster-6
-	// LifeFlight
+    #region Battlemaster-6
+// LifeFlight
     [SpellHandler("ThrowWeapon")]
     public class ThrowWeaponSpellHandler : DirectDamageSpellHandler
- 	{
+    {
         #region Disarm Weapon
         protected static Spell Disarm_Weapon;
         public static Spell Disarmed
@@ -281,10 +287,10 @@ namespace DawnOfLight.GameServer.Spells
         }
         #endregion
         public const string DISABLE = "ThrowWeapon.Shortened.Disable.Timer";
-		public override bool CheckBeginCast(GameLiving selectedTarget)
-		{
-			GamePlayer player = Caster as GamePlayer;
-			if(player == null) 
+        public override bool CheckBeginCast(GameLiving selectedTarget)
+        {
+            GamePlayer player = Caster as GamePlayer;
+            if(player == null) 
                 return false;
 
             if (player.IsDisarmed)
@@ -293,26 +299,26 @@ namespace DawnOfLight.GameServer.Spells
                 return false;
             }
 
-			InventoryItem weapon = null;
+            InventoryItem weapon = null;
 
             //assign the weapon the player is using, it can be a twohanded or a standard slot weapon
-			if (player.ActiveWeaponSlot.ToString() == "TwoHanded") 
+            if (player.ActiveWeaponSlot.ToString() == "TwoHanded") 
                 weapon = player.Inventory.GetItem((eInventorySlot)12);
-			if (player.ActiveWeaponSlot.ToString() == "Standard")
+            if (player.ActiveWeaponSlot.ToString() == "Standard")
                 weapon = player.Inventory.GetItem((eInventorySlot)10);
             
             //if the weapon is null, ie. they don't have an appropriate weapon active
-			if(weapon == null) 
+            if(weapon == null) 
             { 
                 MessageToCaster("Equip a weapon before using this spell!",eChatType.CT_SpellResisted); 
                 return false; 
             }
 
             return base.CheckBeginCast(selectedTarget);
-		}
+        }
 		
         //Throw Weapon does not "resist"
-		public override int CalculateSpellResistChance(GameLiving target) 
+        public override int CalculateSpellResistChance(GameLiving target) 
         { 
             return 0; 
         }
@@ -413,13 +419,13 @@ namespace DawnOfLight.GameServer.Spells
 
         public override void SendDamageMessages(AttackData ad)
         {
-			GameObject target = ad.Target;
-			InventoryItem weapon = ad.Weapon;
+            GameObject target = ad.Target;
+            InventoryItem weapon = ad.Weapon;
             GamePlayer player = Caster as GamePlayer;
 
-			switch (ad.AttackResult)
-			{
-				case GameLiving.eAttackResult.TargetNotVisible: player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.NotInView", ad.Target.GetName(0, true)), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow); break;
+            switch (ad.AttackResult)
+            {
+                case GameLiving.eAttackResult.TargetNotVisible: player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.NotInView", ad.Target.GetName(0, true)), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow); break;
                 case GameLiving.eAttackResult.OutOfRange: player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.TooFarAway", ad.Target.GetName(0, true)), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow); break;
                 case GameLiving.eAttackResult.TargetDead: player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.AlreadyDead", ad.Target.GetName(0, true)), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow); break;
                 case GameLiving.eAttackResult.Blocked: player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.Blocked", ad.Target.GetName(0, true)), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow); break;
@@ -431,47 +437,47 @@ namespace DawnOfLight.GameServer.Spells
                 case GameLiving.eAttackResult.Fumbled: player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.Fumble"), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow); break;
                 case GameLiving.eAttackResult.HitStyle:
                 case GameLiving.eAttackResult.HitUnstyled:
-					string modmessage = "";
-					if (ad.Modifier > 0) modmessage = " (+" + ad.Modifier + ")";
-					if (ad.Modifier < 0) modmessage = " (" + ad.Modifier + ")";
+                    string modmessage = "";
+                    if (ad.Modifier > 0) modmessage = " (+" + ad.Modifier + ")";
+                    if (ad.Modifier < 0) modmessage = " (" + ad.Modifier + ")";
 
-					string hitWeapon = "";
+                    string hitWeapon = "";
 
-					switch (ServerProperties.Properties.SERV_LANGUAGE)
-					{
-						case "EN":
-							if (weapon != null)
-								hitWeapon = GlobalConstants.NameToShortName(weapon.Name);
-							break;
-						case "DE":
-							if (weapon != null)
-								hitWeapon = weapon.Name;
-							break;
-						default:
-							if (weapon != null)
-								hitWeapon = GlobalConstants.NameToShortName(weapon.Name);
-							break;
-					}
+                    switch (ServerProperties.Properties.SERV_LANGUAGE)
+                    {
+                        case "EN":
+                            if (weapon != null)
+                                hitWeapon = GlobalConstants.NameToShortName(weapon.Name);
+                            break;
+                        case "DE":
+                            if (weapon != null)
+                                hitWeapon = weapon.Name;
+                            break;
+                        default:
+                            if (weapon != null)
+                                hitWeapon = GlobalConstants.NameToShortName(weapon.Name);
+                            break;
+                    }
 
-					if (hitWeapon.Length > 0)
-						hitWeapon = " " + LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.WithYour") + " " + hitWeapon;
+                    if (hitWeapon.Length > 0)
+                        hitWeapon = " " + LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.WithYour") + " " + hitWeapon;
 
-					string attackTypeMsg = LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.YouAttack");
+                    string attackTypeMsg = LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.YouAttack");
  
-					// intercept messages
-					if (target != null && target != ad.Target)
-					{
+                    // intercept messages
+                    if (target != null && target != ad.Target)
+                    {
                         player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.Intercepted", ad.Target.GetName(0, true), target.GetName(0, false)), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
                         player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.InterceptedHit", attackTypeMsg, target.GetName(0, false), hitWeapon, ad.Target.GetName(0, false), ad.Damage, modmessage), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
-					}
-					else
+                    }
+                    else
                         player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.InterceptHit", attackTypeMsg, ad.Target.GetName(0, false), hitWeapon, ad.Damage, modmessage), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
 
-					// critical hit
-					if (ad.CriticalDamage > 0)
+                    // critical hit
+                    if (ad.CriticalDamage > 0)
                         player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, "GamePlayer.Attack.Critical", ad.Target.GetName(0, false), ad.CriticalDamage), eChatType.CT_YouHit, eChatLoc.CL_SystemWindow);
-					break;
-			}
+                    break;
+            }
         }
 
         public override void FinishSpellCast(GameLiving target)
@@ -573,7 +579,7 @@ namespace DawnOfLight.GameServer.Spells
                 damage *= (player.GetWeaponSkill(weapon) + 90.68) / (ad.Target.GetArmorAF(ad.ArmorHitLocation) + 20 * 4.67);
 
                 //If they have badge of Valor, we need to modify the damage
-				if (ad.Attacker.EffectList.GetOfType<BadgeOfValorEffect>() != null)
+                if (ad.Attacker.EffectList.GetOfType<BadgeOfValorEffect>() != null)
                     damage *= 1.0 + Math.Min(0.85, ad.Target.GetArmorAbsorb(ad.ArmorHitLocation));
                 else
                     damage *= 1.0 - Math.Min(0.85, ad.Target.GetArmorAbsorb(ad.ArmorHitLocation));
@@ -608,11 +614,11 @@ namespace DawnOfLight.GameServer.Spells
             }
             return ad;
         }
-		public ThrowWeaponSpellHandler(GameLiving caster,Spell spell,SpellLine line) : base(caster,spell,line) {}
-	}
-	#endregion
+        public ThrowWeaponSpellHandler(GameLiving caster,Spell spell,SpellLine line) : base(caster,spell,line) {}
+    }
+    #endregion
 
-    //essence debuff
+//essence debuff
     #region Battlemaster-7
     [SpellHandler("EssenceSearHandler")]
     public class EssenceSearHandler : SpellHandler
@@ -680,12 +686,12 @@ namespace DawnOfLight.GameServer.Spells
     {
         public override bool CheckBeginCast(GameLiving selectedTarget)
         {
-        //    if (Caster.Group.MemberCount <= 2)
-        //    {
-        //        MessageToCaster("Your group is to small to use this spell.", eChatType.CT_Important);
-        //        return false;
-        //    }
-              return base.CheckBeginCast(selectedTarget);
+            //    if (Caster.Group.MemberCount <= 2)
+            //    {
+            //        MessageToCaster("Your group is to small to use this spell.", eChatType.CT_Important);
+            //        return false;
+            //    }
+            return base.CheckBeginCast(selectedTarget);
         
         }
         public override IList<string> DelveInfo
@@ -701,7 +707,7 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //for ML9 in the database u have to add  EssenceDampenHandler  in type (its a new method customly made) 
+//for ML9 in the database u have to add  EssenceDampenHandler  in type (its a new method customly made) 
     #region Battlemaster-9
     [SpellHandler("EssenceDampenHandler")]
     public class EssenceDampenHandler : SpellHandler
@@ -768,13 +774,10 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //ml10 in database Type shood be RandomBuffShear
-}
+//ml10 in database Type shood be RandomBuffShear
 
-#region KeepDamageCalc
+    #region KeepDamageCalc
 
-namespace DawnOfLight.GameServer.PropertyCalc
-{
     /// <summary>
     /// The melee damage bonus percent calculator
     ///
@@ -790,11 +793,11 @@ namespace DawnOfLight.GameServer.PropertyCalc
         public override int CalcValue(GameLiving living, eProperty property)
         {
             int percent = 100
-                +living.BaseBuffBonusCategory[(int)property];
+                          +living.BaseBuffBonusCategory[(int)property];
 
             return percent;
         }
     }
-}
 
-#endregion
+    #endregion
+}

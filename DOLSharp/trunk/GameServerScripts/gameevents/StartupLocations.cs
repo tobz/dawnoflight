@@ -29,7 +29,9 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Database;
+using DawnOfLight.GameServer.Events.Scripts;
 using log4net;
 
 namespace DawnOfLight.GameServer.GameEvents

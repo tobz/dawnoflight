@@ -18,10 +18,10 @@
  */
 
 using System;
-using DawnOfLight.Database;
 using System.Collections.Generic;
+using DawnOfLight.Database;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects
 {
 	/// <summary>
 	/// Interface for a GameInventoryItem

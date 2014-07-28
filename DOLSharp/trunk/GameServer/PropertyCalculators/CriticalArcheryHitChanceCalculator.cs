@@ -1,4 +1,6 @@
-namespace DawnOfLight.GameServer.PropertyCalc
+using DawnOfLight.GameServer.GameObjects;
+
+namespace DawnOfLight.GameServer.PropertyCalculators
 {
 	/// <summary>
 	/// The critical hit chance calculator. Returns 0 .. 100 chance.

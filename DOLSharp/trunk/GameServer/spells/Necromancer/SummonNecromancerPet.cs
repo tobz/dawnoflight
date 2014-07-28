@@ -16,15 +16,21 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections.Generic;
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain.Necromancer;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.PropertyCalc;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Necromancer;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.PropertyCalculators;
+using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Necromancer
 {
 	/// <summary>
 	/// Spell handler to summon a necromancer pet.

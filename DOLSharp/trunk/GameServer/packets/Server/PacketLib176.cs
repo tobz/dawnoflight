@@ -20,11 +20,14 @@
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
 using DawnOfLight.GameServer.Housing;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	[PacketLib(176, GameClient.eClientVersion.Version176)]
 	public class PacketLib176 : PacketLib175
@@ -112,7 +115,7 @@ namespace DawnOfLight.GameServer.PacketHandler
 					flag |= 0x01; // Underwater
 			}
 			pak.WriteShort(model);
-			if (obj is Keeps.GameKeepBanner)
+			if (obj is GameKeepBanner)
 				flag |= 0x08;
 			if (obj is GameStaticItemTimed && m_gameClient.Player != null && ((GameStaticItemTimed)obj).IsOwner(m_gameClient.Player))
 				flag |= 0x04;

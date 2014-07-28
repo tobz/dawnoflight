@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Utils
+namespace DawnOfLight.GameServer.Utilities
 {
 	public static class FastMath
 	{

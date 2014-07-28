@@ -17,6 +17,8 @@
  *
  */
 
+using DawnOfLight.GameServer.GameObjects;
+
 namespace DawnOfLight.GameServer.PlayerTitles
 {
 	/// <summary>

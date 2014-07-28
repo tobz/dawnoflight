@@ -18,9 +18,9 @@
  */
 
 using DawnOfLight.Database.Connection;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Admin
 {
 	[Command(
 		"&serverproperties",

@@ -16,13 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.Events;
-using log4net;
-using System.Reflection;
-using System.Collections.Generic;
 
-namespace DawnOfLight.GameServer.Behaviour
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.GameObjects;
+using log4net;
+
+namespace DawnOfLight.GameServer.Behavior
 {    
         			
 	/// <summary>

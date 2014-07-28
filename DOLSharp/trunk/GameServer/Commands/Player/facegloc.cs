@@ -23,10 +23,12 @@
  * Desc:	Implements /facegloc command
  * 
  */
-using System;
-using DawnOfLight.GameServer.PacketHandler;
 
-namespace DawnOfLight.GameServer.Commands
+using System;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 		"&facegloc",

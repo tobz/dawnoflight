@@ -17,12 +17,14 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain.Guards;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.Language;
 using DawnOfLight.GameServer.ServerProperties;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Keeps
+namespace DawnOfLight.GameServer.Keeps.Managers
 {
 	public class TemplateMgr
 	{

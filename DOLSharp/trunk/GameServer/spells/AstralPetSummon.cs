@@ -18,17 +18,20 @@
  */
 
 using System;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Spells
 {
-    
-   [SpellHandler("AstralPetSummon")]
+    [SpellHandler("AstralPetSummon")]
     public class AstralPetSummon : SummonSpellHandler
     {
-    	//Graveen: Not implemented property - can be interesting
+        //Graveen: Not implemented property - can be interesting
         /* 
         public bool Controllable
         {
@@ -74,13 +77,10 @@ namespace DawnOfLight.GameServer.Spells
             heading = Caster.Heading;
         }
 
-         public AstralPetSummon(GameLiving caster, Spell spell, SpellLine line)
+        public AstralPetSummon(GameLiving caster, Spell spell, SpellLine line)
             : base(caster, spell, line) { }
     }
-}
 
-namespace DawnOfLight.GameServer
-{
     public class AstralPet : GamePet
     {
         public override int MaxHealth

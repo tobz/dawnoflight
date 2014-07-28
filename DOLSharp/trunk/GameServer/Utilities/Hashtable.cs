@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Reflection;
-using DawnOfLight.GameServer.Utils;
 using log4net;
 
-namespace DawnOfLight.GameServer.Collections {
+namespace DawnOfLight.GameServer.Utilities {
 	class DictionaryEntry {
 		public object key = null;
 		public object value = null;

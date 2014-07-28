@@ -19,9 +19,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.effects;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Spells
 {

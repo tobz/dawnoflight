@@ -16,12 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler.Client.v168;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Client._168;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Admin
 {
 	[Command(
 		"&account",
@@ -83,7 +86,7 @@ namespace DawnOfLight.GameServer.Commands
                         
                         account = new Account();
                         account.Name = AccountName;
-                        account.Password = PacketHandler.Client.v168.LoginRequestHandler.CryptPassword(Password);
+                        account.Password = LoginRequestHandler.CryptPassword(Password);
                         account.PrivLevel = (uint)ePrivLevel.Player;
                         account.Realm = (int)eRealm.None;
                         account.CreationDate = DateTime.Now;

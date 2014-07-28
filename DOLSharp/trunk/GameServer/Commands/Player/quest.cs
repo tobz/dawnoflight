@@ -17,10 +17,10 @@
  *
  */
 
-using DawnOfLight.GameServer.Quests;
 using System;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 		"&quest",

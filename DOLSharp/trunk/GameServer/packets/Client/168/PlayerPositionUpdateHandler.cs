@@ -17,15 +17,21 @@
  *
  */
 //#define OUTPUT_DEBUG_INFO
+
 using System;
 using System.Collections;
 using System.Reflection;
 using System.Text;
 using DawnOfLight.Database;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.MinotaurRelics;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x01 ^ 168, "Handles player position updates")]
 	public class PlayerPositionUpdateHandler : IPacketHandler

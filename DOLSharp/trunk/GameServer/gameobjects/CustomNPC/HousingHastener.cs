@@ -19,9 +19,10 @@
 
 using System.Collections;
 using DawnOfLight.Database;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 {
 	/// <summary>
 	/// Represents an in-game housing hastener NPC

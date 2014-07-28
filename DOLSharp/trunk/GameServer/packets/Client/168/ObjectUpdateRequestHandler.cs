@@ -19,10 +19,14 @@
 
 using System.Collections;
 using System.Reflection;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x0D ^ 168, "Update all GameObjects in Playerrange")]
 	public class ObjectUpdateRequestHandler : IPacketHandler

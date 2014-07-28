@@ -19,7 +19,7 @@
 
 using DawnOfLight.Base.Network;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	/// <summary>
 	/// Outgoing game server UDP packet

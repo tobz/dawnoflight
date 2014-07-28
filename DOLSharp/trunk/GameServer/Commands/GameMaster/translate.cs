@@ -18,9 +18,9 @@
  */
 
 using DawnOfLight.Database;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
     [Command("&translate", ePrivLevel.GM,
          "Use '/translate add [Language] [TranslationId] [Text]' to add a new translation.",

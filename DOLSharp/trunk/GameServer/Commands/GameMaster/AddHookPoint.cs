@@ -16,12 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	[Command(
 		 "&addhookpoint",

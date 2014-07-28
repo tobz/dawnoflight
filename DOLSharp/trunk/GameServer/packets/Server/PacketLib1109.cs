@@ -17,13 +17,16 @@
 *
 */
 #define NOENCRYPTION
+using System.Collections;
 using System.Reflection;
 using DawnOfLight.Database;
-using System.Collections;
+using DawnOfLight.GameServer.Crafting;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
     [PacketLib(1109, GameClient.eClientVersion.Version1109)]
     public class PacketLib1109 : PacketLib1108

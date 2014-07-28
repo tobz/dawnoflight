@@ -20,8 +20,15 @@ using System;
 using System.Collections;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Server;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.GameObjects.SiegeWeapon;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
 namespace DawnOfLight.GameServer.Keeps
@@ -287,7 +294,7 @@ namespace DawnOfLight.GameServer.Keeps
 			if (hookPointObj is GameKeepGuard)
 			{
 				(hookPointObj as GameKeepGuard).HookPoint = hookpoint;
-				Keeps.TemplateMgr.RefreshTemplate(hookPointObj as GameKeepGuard);
+				TemplateMgr.RefreshTemplate(hookPointObj as GameKeepGuard);
 			}
 			if (hookPointObj is GameNPC)
 			{
@@ -302,7 +309,7 @@ namespace DawnOfLight.GameServer.Keeps
 			hookpoint.Object = hookPointObj;
 
 			//create the db entry
-			Database.DBKeepHookPointItem item = new DBKeepHookPointItem(component.Keep.KeepID, component.ID, hookpoint.ID, GameObjectType);
+			DBKeepHookPointItem item = new DBKeepHookPointItem(component.Keep.KeepID, component.ID, hookpoint.ID, GameObjectType);
 			GameServer.Database.AddObject(item);
 		}
 
@@ -336,7 +343,7 @@ namespace DawnOfLight.GameServer.Keeps
 			if (hookPointObj is GameKeepGuard)
 			{
 				(hookPointObj as GameKeepGuard).HookPoint = hookpoint;
-				Keeps.TemplateMgr.RefreshTemplate(hookPointObj as GameKeepGuard);
+				TemplateMgr.RefreshTemplate(hookPointObj as GameKeepGuard);
 			}
 
 			if (ServerProperties.Properties.ENABLE_DEBUG)

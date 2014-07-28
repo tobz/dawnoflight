@@ -16,10 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System.Collections.Generic;
 using DawnOfLight.Database;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// List containing all possible candidates for loot drop

@@ -18,9 +18,11 @@
  */
 
 using System.Reflection;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.UDP,0xBC^168,"Handles UDP init")]
 	public class UDPInitRequestHandler : IPacketHandler

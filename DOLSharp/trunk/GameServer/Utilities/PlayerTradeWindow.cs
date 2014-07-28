@@ -16,14 +16,17 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Crafting;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// TradeWindow is the object for tradewindow from the side of one trader 

@@ -19,7 +19,7 @@
 
 using DawnOfLight.Database;
 
-namespace DawnOfLight.Language
+namespace DawnOfLight.GameServer.Language
 {
     public interface ITranslatableObject
     {

@@ -17,20 +17,31 @@
  *
  */
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Base;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.GameObjects.Necromancer;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Keeps.Relics;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
-using DawnOfLight.Language;
 using log4net;
+using DictionaryEntry = System.Collections.DictionaryEntry;
+using Hashtable = System.Collections.Hashtable;
 
 namespace DawnOfLight.GameServer.ServerRules
 {

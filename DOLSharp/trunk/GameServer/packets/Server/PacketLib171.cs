@@ -20,14 +20,18 @@
 
 using System;
 using System.Reflection;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.Quests;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
+using DawnOfLight.GameServer.Spells.Masterlevel;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	[PacketLib(171, GameClient.eClientVersion.Version171)]
 	public class PacketLib171 : PacketLib170

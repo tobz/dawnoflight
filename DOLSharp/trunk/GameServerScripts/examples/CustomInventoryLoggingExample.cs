@@ -1,5 +1,7 @@
 ﻿using System;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Scripts;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Scripts.Examples
 {

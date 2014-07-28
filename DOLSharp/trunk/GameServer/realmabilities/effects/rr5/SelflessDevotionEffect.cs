@@ -19,9 +19,13 @@
 //Eden - 1.94 RR5 Paladin
 
 using System.Collections.Generic;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
 	public class SelflessDevotionEffect : TimedEffect
 	{

@@ -18,15 +18,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading;
-using DawnOfLight.GameServer.GameEvents;
 using log4net;
 using ThreadState = System.Threading.ThreadState;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// The GameTimer class invokes OnTick() method after

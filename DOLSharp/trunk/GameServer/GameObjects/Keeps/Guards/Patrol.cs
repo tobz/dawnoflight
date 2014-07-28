@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.Database.UniqueID;
-using DawnOfLight.GameServer.Movement;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Keeps
+namespace DawnOfLight.GameServer.GameObjects.Keeps.Guards
 {
 	/// <summary>
 	/// Class for a Guard Patrol

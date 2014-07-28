@@ -19,7 +19,7 @@
 
 using DawnOfLight.GameServer.Keeps;
 
-namespace DawnOfLight.Events
+namespace DawnOfLight.GameServer.Events.Keep
 {
 	/// <summary>
 	/// This class holds all possible keep events.

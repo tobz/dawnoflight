@@ -16,11 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Spells;
 
-namespace DawnOfLight.Events
+using System;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Events.GameObjects
 {
 	/// <summary>
 	/// Holds the arguments for the CastSpell event of GameLivings

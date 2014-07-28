@@ -1,9 +1,11 @@
 using System;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Database;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	public enum eNewsType : byte
 	{ 

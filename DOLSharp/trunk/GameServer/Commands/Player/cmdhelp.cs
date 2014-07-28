@@ -16,11 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.Language;
-using System.Collections.Generic;
 
-namespace DawnOfLight.GameServer.Commands
+using System;
+using System.Collections.Generic;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command("&cmdhelp", //command to handle
 		ePrivLevel.Player, //minimum privelege level

@@ -24,10 +24,12 @@
  *   - Added missing (+language support)
  */
 
-using DawnOfLight.Events;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
 
-namespace DawnOfLight.GameServer.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles.titles.kills.all
 {
     /// <summary>
     /// "Master Enforcer" title granted to everyone who killed 25000+ enemy players.

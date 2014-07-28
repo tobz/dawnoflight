@@ -18,9 +18,15 @@
  */
 using System;
 using System.Collections;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.GameObjects.Necromancer;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.RealmAbilities.effects;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Spells
 {
@@ -109,7 +115,7 @@ namespace DawnOfLight.GameServer.Spells
 				return false;
 
 			// no healing of keep components
-			if (target is Keeps.GameKeepComponent || target is Keeps.GameKeepDoor)
+			if (target is Keeps.GameKeepComponent || target is GameKeepDoor)
 				return false;
 
 			if (!target.IsAlive)
@@ -316,7 +322,7 @@ namespace DawnOfLight.GameServer.Spells
 				return false;
 
 			// no healing of keep components
-			if (target is Keeps.GameKeepComponent || target is Keeps.GameKeepDoor)
+			if (target is Keeps.GameKeepComponent || target is GameKeepDoor)
 				return false;
 
 			int heal = target.ChangeHealth(Caster, GameLiving.eHealthChangeType.Spell, amount);

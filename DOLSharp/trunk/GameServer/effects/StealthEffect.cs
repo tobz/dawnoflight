@@ -18,7 +18,9 @@
  */
 
 using System.Collections.Generic;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Effects
 {

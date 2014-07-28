@@ -17,7 +17,10 @@
  *
  */
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	/// <summary>
 	/// EmblemDialogReponseHandler is the response of client wend when we close the emblem selection dialogue.

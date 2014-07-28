@@ -22,11 +22,13 @@
 using System;
 using System.Collections;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.Spells;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 {
 	/// <summary>
 	/// Represents an in-game GameHealer NPC

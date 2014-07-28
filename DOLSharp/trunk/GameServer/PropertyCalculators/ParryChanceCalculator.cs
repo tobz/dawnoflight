@@ -17,9 +17,12 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Necromancer;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalculators
 {
 	/// <summary>
 	/// The parry chance calculator. Returns 0 .. 1000 chance.

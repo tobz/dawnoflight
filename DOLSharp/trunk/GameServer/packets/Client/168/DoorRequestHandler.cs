@@ -16,14 +16,20 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System.Collections.Generic;
 using DawnOfLight.Base;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
 using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.ServerProperties;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.DoorRequest, ClientStatus.PlayerInGame)]
 	public class DoorRequestHandler : IPacketHandler

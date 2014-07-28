@@ -19,7 +19,7 @@ using System.Reflection;
 using DawnOfLight.Database;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects
 {
         /// <summary>
         /// Items of this class will proc on GameKeepComponent and GameKeepDoors, checked for in GameLiving-CheckWeaponMagicalEffect

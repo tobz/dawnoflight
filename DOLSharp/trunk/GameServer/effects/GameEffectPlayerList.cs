@@ -19,6 +19,7 @@
 
 using System.Collections;
 using System.Reflection;
+using DawnOfLight.GameServer.GameObjects;
 using log4net;
 
 namespace DawnOfLight.GameServer.Effects

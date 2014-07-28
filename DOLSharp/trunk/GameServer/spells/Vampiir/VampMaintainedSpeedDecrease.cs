@@ -16,12 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
 
-namespace DawnOfLight.GameServer.Spells
+using System;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Spells.Vampiir
 {
     /// <summary>
     /// Spell handler for speed decreasing spells.  Special for vampiirs

@@ -17,10 +17,13 @@
  *
  */
 
-using DawnOfLight.Events;
-using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Animist;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain.Animist
 {
   public class TurretMainPetTankBrain : TurretMainPetCasterBrain
   {

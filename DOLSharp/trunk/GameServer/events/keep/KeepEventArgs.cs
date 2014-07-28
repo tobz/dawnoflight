@@ -16,11 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Keeps;
 
-namespace DawnOfLight.Events
+namespace DawnOfLight.GameServer.Events.Keep
 {
 	/// <summary>
 	/// Holds the arguments for the Keep event

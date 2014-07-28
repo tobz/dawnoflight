@@ -16,9 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 
-namespace DawnOfLight.GameServer.DatabaseUpdate
+namespace DawnOfLight.GameServer.Database.updaters
 {
 	/// <summary>
 	/// Attribute that denotes a class as a database converter

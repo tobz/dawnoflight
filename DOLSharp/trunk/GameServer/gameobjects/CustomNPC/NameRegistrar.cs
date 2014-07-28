@@ -2,11 +2,13 @@
    Written by Gavinius */
 
 using System.Collections;
-using DawnOfLight.GameServer.Commands;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.commands.Player;
+using DawnOfLight.GameServer.Crafting;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 {
 	[NPCGuildScript("Name Registrar")]
 	public class NameRegistrar : GameNPC

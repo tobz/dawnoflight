@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
     /* Maintains decks and cards for all players */
     public class CardMgr
@@ -233,8 +234,8 @@ namespace DawnOfLight.GameServer
             }
         };
 
-        private static Hashtable m_dealerDecks = new Hashtable();
-        private static Hashtable m_playerHands = new Hashtable();
+        private static System.Collections.Hashtable m_dealerDecks = new System.Collections.Hashtable();
+        private static System.Collections.Hashtable m_playerHands = new System.Collections.Hashtable();
 
         /* Returns the GameClient which is the designated dealer for Player's group */
         private static GameClient GroupDealer(GameClient player)

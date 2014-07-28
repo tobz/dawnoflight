@@ -18,9 +18,12 @@
  */
 
 using System.Reflection;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
     [PacketHandler(PacketHandlerType.TCP, 0x1A, "Set market price")]
     public class PlayerSetMarketPriceHandler : IPacketHandler

@@ -16,15 +16,18 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections.Generic;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects.Necromancer;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.Spells;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CharacterClasses.Albion
 {
 	/// <summary>
 	/// The necromancer character class.

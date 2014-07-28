@@ -17,9 +17,7 @@
  *
  */
 
-using DawnOfLight.GameServer.AI;
-
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain
 {
 	public class BlankBrain : ABrain
 	{

@@ -16,13 +16,17 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Artifacts
 {
 	[SpellHandler("StarsProc")]
 	public class StarsProc : SpellHandler
@@ -55,7 +59,7 @@ namespace DawnOfLight.GameServer.Spells
 		
 		public override void FinishSpellCast(GameLiving target)
 		{
-			if (target is Keeps.GameKeepDoor || target is Keeps.GameKeepComponent)
+			if (target is GameKeepDoor || target is Keeps.GameKeepComponent)
 			{
 				MessageToCaster("Your spell has no effect on the keep component!", eChatType.CT_SpellResisted);
 				return;

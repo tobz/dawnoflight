@@ -16,17 +16,20 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Crafting
 {
 	/// <summary>
 	/// AbstractCraftingSkill is the base class for all crafting skill

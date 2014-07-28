@@ -19,10 +19,13 @@
 
 using System;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
 using DawnOfLight.GameServer.Spells;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	[Command(
 		"&cast",

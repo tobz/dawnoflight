@@ -1,7 +1,10 @@
 using System;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
 
-namespace DawnOfLight.GameServer.Quests
+namespace DawnOfLight.GameServer.Quests.Missions
 {
 	public class KillMission : AbstractMission
 	{
@@ -27,7 +30,7 @@ namespace DawnOfLight.GameServer.Quests
 
 			//we don't want mission masters to be considered realm guards because they are insta respawn
 			//in addition do not count realm 0 guards
-			if (eargs.Target is Keeps.MissionMaster || eargs.Target.Realm == eRealm.None)
+			if (eargs.Target is MissionMaster || eargs.Target.Realm == eRealm.None)
 				return;
 
 			if (m_targetType.IsInstanceOfType(eargs.Target) == false)
@@ -73,7 +76,7 @@ namespace DawnOfLight.GameServer.Quests
 		{
 			get
 			{
-				if (m_targetType == typeof(Keeps.GameKeepGuard))
+				if (m_targetType == typeof(GameKeepGuard))
 					return 500;
 				else if (m_targetType == typeof(GamePlayer))
 					return 750;

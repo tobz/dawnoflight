@@ -8,11 +8,10 @@ using System.Reflection;
 using System.Threading;
 using System.Xml;
 using DawnOfLight.Base.Config;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.ServerProperties;
 using log4net;
 
-namespace DawnOfLight.Mail
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// Contains functions to compress with the gzip algorithm.
@@ -201,7 +200,7 @@ namespace DawnOfLight.Mail
 		/// <returns>A Queue made of strings containing logs urls.</returns>
 		public static Queue GetArchivedLogsUrls()
 		{
-			FileInfo info = new FileInfo(GameServer.GameServer.Instance.Configuration.LogConfigFile);
+			FileInfo info = new FileInfo(DawnOfLight.GameServer.GameServer.Instance.Configuration.LogConfigFile);
 			Queue dirList = new Queue();
 
 			try
@@ -285,7 +284,7 @@ namespace DawnOfLight.Mail
 					foreach (string str in to.SplitCSV())
 						if (!String.IsNullOrEmpty(str.Trim())) mail.To.Add(str);
 					mail.Subject = "[ Logs ] " + DateTime.Now.ToString();
-					mail.From = new MailAddress(m_emailAddress, GameServer.GameServer.Instance.Configuration.ServerName);
+					mail.From = new MailAddress(m_emailAddress, DawnOfLight.GameServer.GameServer.Instance.Configuration.ServerName);
 					mail.IsBodyHtml = true;
 					mail.Body = ""; // Add the mail core here if needed
 					mail.BodyEncoding = System.Text.Encoding.ASCII;

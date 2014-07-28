@@ -16,13 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System.Reflection;
 using System.Threading;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.AI;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.AI
+namespace DawnOfLight.GameServer.AI
 {
 	/// <summary>
 	/// <p>This class is the base brain of all npc's that only stay active when players are close</p>

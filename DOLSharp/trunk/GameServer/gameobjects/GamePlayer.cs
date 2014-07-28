@@ -17,36 +17,55 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Base;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Crafting;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.Events.World;
+using DawnOfLight.GameServer.GameObjects.CharacterClasses;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.GameObjects.Necromancer;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.PacketHandler.Client.v168;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Keeps.Relics;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.MinotaurRelics;
+using DawnOfLight.GameServer.Packets.Client._168;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.PlayerClasses.albion;
+using DawnOfLight.GameServer.PlayerClasses.hibernia;
+using DawnOfLight.GameServer.PlayerClasses.midgard;
 using DawnOfLight.GameServer.PlayerTitles;
-using DawnOfLight.GameServer.PropertyCalc;
-using DawnOfLight.GameServer.Quests;
-using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.PropertyCalculators;
+using DawnOfLight.GameServer.Quests.Missions;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
+using DawnOfLight.GameServer.Quests.Tasks;
+using DawnOfLight.GameServer.RealmAbilities.effects;
+using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.SkillHandler;
 using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Spells.Warlock;
 using DawnOfLight.GameServer.Styles;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.Utilities.Atlantis;
 using DawnOfLight.GameServer.World;
 using DawnOfLight.GameServer.World.Instance;
-using DawnOfLight.Language;
-using DawnOfLight.GameServer.Utils;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects
 {
 	
 	/// <summary>
@@ -6182,7 +6201,7 @@ namespace DawnOfLight.GameServer
                     }
 			}
 
-			if (CharacterClass is PlayerClass.ClassVampiir)
+			if (CharacterClass is ClassVampiir)
 			{
 				GameSpellEffect removeEffect = SpellHandler.FindEffectOnTarget(this, "VampiirSpeedEnhancement");
 				if (removeEffect != null)
@@ -6691,7 +6710,7 @@ namespace DawnOfLight.GameServer
 							ad.StyleDamage += keepstyle;
 						}
 						// vampiir
-						if (CharacterClass is PlayerClass.ClassVampiir
+						if (CharacterClass is ClassVampiir
 						    && target is GameKeepComponent == false
 						    && target is GameKeepDoor == false
 						    && target is GameSiegeWeapon == false)
@@ -7024,7 +7043,7 @@ namespace DawnOfLight.GameServer
 					}
 			}
 			// vampiir
-			if (CharacterClass is PlayerClass.ClassVampiir)
+			if (CharacterClass is ClassVampiir)
 			{
 				GameSpellEffect removeEffect = SpellHandler.FindEffectOnTarget(this, "VampiirSpeedEnhancement");
 				if (removeEffect != null)
@@ -7576,12 +7595,12 @@ namespace DawnOfLight.GameServer
 		/// <returns></returns>
 		public override bool CanCastInCombat(Spell spell)
 		{
-			if (CharacterClass is PlayerClass.ClassVampiir ||
-			    CharacterClass is PlayerClass.ClassMaulerAlb ||
-			    CharacterClass is PlayerClass.ClassMaulerMid ||
-			    CharacterClass is PlayerClass.ClassMaulerHib ||
-			    (CharacterClass is PlayerClass.ClassWarden && spell.SpellType == "HealOverTime") ||
-			    (CharacterClass is PlayerClass.ClassFriar && spell.SpellType == "HealOverTime"))
+			if (CharacterClass is ClassVampiir ||
+			    CharacterClass is ClassMaulerAlb ||
+			    CharacterClass is ClassMaulerMid ||
+			    CharacterClass is ClassMaulerHib ||
+			    (CharacterClass is ClassWarden && spell.SpellType == "HealOverTime") ||
+			    (CharacterClass is ClassFriar && spell.SpellType == "HealOverTime"))
 			{
 				return true;
 			}

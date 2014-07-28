@@ -20,7 +20,7 @@
 using DawnOfLight.Database;
 using log4net;
 
-namespace DawnOfLight.GameServer.DatabaseUpdate
+namespace DawnOfLight.GameServer.Database.updaters
 {
     /// <summary>
     /// Checks and updates the ServerProperty table.

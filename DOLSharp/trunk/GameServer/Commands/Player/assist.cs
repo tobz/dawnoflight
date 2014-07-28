@@ -18,11 +18,13 @@
  */
 
 using DawnOfLight.Base;
-using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command("&assist", ePrivLevel.Player, "Assist your target", "/assist [playerName]")]
 	public class AssistCommandHandler : AbstractCommandHandler, ICommandHandler

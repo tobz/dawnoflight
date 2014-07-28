@@ -17,9 +17,9 @@
  *
  */
 
-using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.Events
+namespace DawnOfLight.GameServer.Events.GameObjects
 {
 	/// <summary>
 	/// Holds the arguments for the WhisperReceive event of GameLivings

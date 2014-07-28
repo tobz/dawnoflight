@@ -22,7 +22,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
 namespace DawnOfLight.GameServer.Housing

@@ -22,10 +22,11 @@ using System.Collections;
 using System.Collections.Specialized;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
     /// <summary>
     /// The BoatMgr holds pointers to all player boats

@@ -17,9 +17,9 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects
 {
 	/*
 	 * These boats are very fast, and can carry up to sixteen passengers.

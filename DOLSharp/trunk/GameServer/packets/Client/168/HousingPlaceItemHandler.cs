@@ -16,17 +16,21 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.ServerProperties;
-using DawnOfLight.Language;
-using DawnOfLight.GameServer.Utils;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x0C, "Handles things like placing indoor/outdoor items")]
 	public class HousingPlaceItemHandler : IPacketHandler

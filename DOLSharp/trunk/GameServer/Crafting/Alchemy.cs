@@ -17,12 +17,15 @@
  *
  */
 
-using DawnOfLight.Database;
-using DawnOfLight.Language;
 using System;
 using System.Collections.Generic;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Crafting
 {
 	public class Alchemy : AdvancedCraftingSkill
 	{
@@ -92,8 +95,8 @@ namespace DawnOfLight.GameServer
                 (int)eObjectType.AlchemyTincture)
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, 
-                    "Alchemy.IsAllowedToCombine.AlchemyTinctures"), PacketHandler.eChatType.CT_System, 
-                    PacketHandler.eChatLoc.CL_SystemWindow);
+                    "Alchemy.IsAllowedToCombine.AlchemyTinctures"), eChatType.CT_System, 
+                    eChatLoc.CL_SystemWindow);
 				
                 return false;
 			}
@@ -101,8 +104,8 @@ namespace DawnOfLight.GameServer
 			if (player.TradeWindow.ItemsCount > 1)
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language,
-                    "Alchemy.IsAllowedToCombine.OneTincture"), PacketHandler.eChatType.CT_System, 
-                    PacketHandler.eChatLoc.CL_SystemWindow);
+                    "Alchemy.IsAllowedToCombine.OneTincture"), eChatType.CT_System, 
+                    eChatLoc.CL_SystemWindow);
 
 				return false;
 			}
@@ -111,7 +114,7 @@ namespace DawnOfLight.GameServer
 			{
 				player.Out.SendMessage(LanguageMgr.GetTranslation(player.Client.Account.Language, 
                     "Alchemy.IsAllowedToCombine.AlreadyImbued", item.Name), 
-                    PacketHandler.eChatType.CT_System, PacketHandler.eChatLoc.CL_SystemWindow);
+                    eChatType.CT_System, eChatLoc.CL_SystemWindow);
 
 				return false;
 			}

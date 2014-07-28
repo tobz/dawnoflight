@@ -18,10 +18,16 @@
  */
 using System.Reflection;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.PlayerClasses.hibernia;
+using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
 using DawnOfLight.GameServer.Spells;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
 namespace DawnOfLight.GameServer.SkillHandler
@@ -121,7 +127,7 @@ namespace DawnOfLight.GameServer.SkillHandler
 
 			GameLiving target = (GameLiving)player.TargetObject;
 			int damage = 0;
-			int specc = (player.CharacterClass is PlayerClass.ClassBlademaster) ?
+			int specc = (player.CharacterClass is ClassBlademaster) ?
 				player.GetModifiedSpecLevel(Specs.Celtic_Dual) : player.GetModifiedSpecLevel(Specs.Dual_Wield);
 
 			//damage = base HP / 100 * DWspec / 2.7 that would be the original calculation

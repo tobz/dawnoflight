@@ -16,12 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// Faction of mob
@@ -38,7 +40,7 @@ namespace DawnOfLight.GameServer
 			m_name = String.Empty;
 			m_friendFactions = new ArrayList(1);
 			m_enemyFactions = new ArrayList(1);
-			m_playerxFaction = new Hashtable(1);
+			m_playerxFaction = new System.Collections.Hashtable(1);
 			m_updatePlayer = new ArrayList(1);
 		}
 
@@ -154,14 +156,14 @@ namespace DawnOfLight.GameServer
 		/// <summary>
 		/// this is the table of player aggrolevel
 		/// </summary>
-		private Hashtable m_playerxFaction;
+		private System.Collections.Hashtable m_playerxFaction;
 
 		private ArrayList m_updatePlayer;
 
 		/// <summary>
 		/// table of player and aggrolevel (characterid/aggrolevel)
 		/// </summary>
-		public Hashtable PlayerxFaction
+		public System.Collections.Hashtable PlayerxFaction
 		{
 			get { return m_playerxFaction; }
 		}

@@ -17,10 +17,11 @@
  *
  */
 #define NOENCRYPTION
-using log4net;
 using System.Reflection;
+using DawnOfLight.GameServer.GameObjects;
+using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	[PacketLib(186, GameClient.eClientVersion.Version186)]
 	public class PacketLib186 : PacketLib185

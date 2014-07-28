@@ -17,9 +17,9 @@
  *
  */
 
-using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain
 {
 	public class GuardBrain : StandardMobBrain
 	{
@@ -53,7 +53,7 @@ namespace DawnOfLight.AI.Brain
 					continue;
 				if (player.Steed != null)
 					continue; //do not attack players on steed
-				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
+				if (!DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
 					continue;
 				if (!Body.IsWithinRadius(player, AggroRange))
 					continue;
@@ -75,7 +75,7 @@ namespace DawnOfLight.AI.Brain
 					continue; // add only new npcs
 				if ((npc.Flags & GameNPC.eFlags.FLYING) != 0)
 					continue; // let's not try to attack flying mobs
-				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
+				if (!DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
 					continue;
 				if (!npc.IsWithinRadius(Body, AggroRange))
 					continue;
@@ -92,7 +92,7 @@ namespace DawnOfLight.AI.Brain
 		/// <returns></returns>
 		public override int CalculateAggroLevelToTarget(GameLiving target)
 		{
-			if (GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false)
+			if (DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false)
 				return 0;
 
 			return AggroLevel;

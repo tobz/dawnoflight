@@ -16,29 +16,36 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Base;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
 using DawnOfLight.GameServer.AI;
-using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Effects.Necromancer;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
+using DawnOfLight.GameServer.GameObjects.SiegeWeapon;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.Movement;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
+using DawnOfLight.GameServer.Quests.Tasks;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Styles;
-using DawnOfLight.GameServer.Utils;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.Utilities.Atlantis;
+using DawnOfLight.GameServer.World;
+using DictionaryEntry = System.Collections.DictionaryEntry;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects
 {
 	/// <summary>
 	/// This class is the baseclass for all Non Player Characters like
@@ -4438,9 +4445,9 @@ namespace DawnOfLight.GameServer
 							}
 						}
 
-						if (Keeps.KeepBonusMgr.RealmHasBonus(eKeepBonusType.Coin_Drop_5, (eRealm)killer.Realm))
+						if (DawnOfLight.GameServer.Keeps.KeepBonusMgr.RealmHasBonus(eKeepBonusType.Coin_Drop_5, (eRealm)killer.Realm))
 							value += (value / 100) * 5;
-						else if (Keeps.KeepBonusMgr.RealmHasBonus(eKeepBonusType.Coin_Drop_3, (eRealm)killer.Realm))
+						else if (DawnOfLight.GameServer.Keeps.KeepBonusMgr.RealmHasBonus(eKeepBonusType.Coin_Drop_3, (eRealm)killer.Realm))
 							value += (value / 100) * 3;
 
 						//this will need to be changed when the ML for increasing money is added

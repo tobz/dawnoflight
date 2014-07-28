@@ -17,9 +17,10 @@
  *
  */
 
-using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Quests.Missions;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Keeps
+namespace DawnOfLight.GameServer.GameObjects.Keeps.Guards
 {
 	/// <summary>
 	/// Represents a mission master

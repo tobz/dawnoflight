@@ -18,10 +18,13 @@
  */
 
 using System.Reflection;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
 using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
     [PacketHandler(PacketHandlerType.TCP, 0x1C, "Withdraw GameConsignmentMerchant Merchant Money")]
     public class PlayerWithdrawMerchantMoney : IPacketHandler

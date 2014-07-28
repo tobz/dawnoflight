@@ -1,7 +1,8 @@
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.Keeps.Managers;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain.Guards
 {
 	/// <summary>
 	/// Healer Guard Brain

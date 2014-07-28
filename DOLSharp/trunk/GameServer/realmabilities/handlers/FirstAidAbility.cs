@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
 	/// <summary>
 	/// First Aid, healing

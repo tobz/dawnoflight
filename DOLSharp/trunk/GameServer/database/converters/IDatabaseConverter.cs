@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer.DatabaseConverters
+namespace DawnOfLight.GameServer.Database.converters
 {
 	/// <summary>
 	/// Interface for all database format converters

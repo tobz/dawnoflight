@@ -17,7 +17,9 @@
  *
  */
 
-namespace DawnOfLight.GameServer
+using DawnOfLight.GameServer.GameObjects;
+
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// Base for all loot generators

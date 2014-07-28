@@ -17,10 +17,10 @@
  *
  */
 
-using System.Collections;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// Equips new created Characters with standard equipment
@@ -33,7 +33,7 @@ namespace DawnOfLight.GameServer
 		/// <param name="c">The character</param>
 		public static void AddEquipment(DOLCharacters c)
 		{
-			Hashtable usedSlots = new Hashtable();
+			System.Collections.Hashtable usedSlots = new System.Collections.Hashtable();
 
 			// 0 = for all classes, then quickcheck if it contains the classid
 			var items = GameServer.Database.SelectObjects<StarterEquipment>("`Class` = '0' OR `Class` LIKE '%" + c.Class + "%'");

@@ -1,9 +1,15 @@
 using System;
 using System.Collections.Generic;
 using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Behaviour.Actions;
-using DawnOfLight.GameServer.Behaviour.Triggers;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Behavior;
+using DawnOfLight.GameServer.Behavior.Actions;
+using DawnOfLight.GameServer.Behavior.Triggers;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Scripts;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 using System.Reflection;
 

@@ -16,16 +16,21 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Keeps.Relics;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Spells.Teleport;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects
 {
 	/// <summary>
 	/// Base class for all teleporter type NPCs.

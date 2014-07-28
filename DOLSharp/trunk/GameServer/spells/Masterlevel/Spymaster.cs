@@ -20,15 +20,18 @@
 using System;
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Spells
-{
-    //http://www.camelotherald.com/masterlevels/ma.php?ml=Spymaster
+namespace DawnOfLight.GameServer.Spells.Masterlevel
+{ //http://www.camelotherald.com/masterlevels/ma.php?ml=Spymaster
     #region Spymaster-1
-    //AbstractServerRules OnPlayerKilled
+//AbstractServerRules OnPlayerKilled
     #endregion
 
     #region Spymaster-2
@@ -133,7 +136,7 @@ namespace DawnOfLight.GameServer.Spells
     #endregion
 
     #region Spymaster-3
-    //Gameliving - StartWeaponMagicalEffect
+//Gameliving - StartWeaponMagicalEffect
     #endregion
 
     #region Spymaster-4
@@ -155,7 +158,7 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //shared timer 1
+//shared timer 1
     #region Spymaster-5
     [SpellHandler("TangleSnare")]
     public class TangleSnareSpellHandler : MineSpellHandler
@@ -205,7 +208,7 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //shared timer 1
+//shared timer 1
     #region Spymaster-6
     [SpellHandler("PoisonSpike")]
     public class PoisonSpikeSpellHandler : MineSpellHandler
@@ -316,7 +319,7 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //shared timer 1
+//shared timer 1
     #region Spymaster-8
     [SpellHandler("SiegeWrecker")]
     public class SiegeWreckerSpellHandler : MineSpellHandler
@@ -407,115 +410,112 @@ namespace DawnOfLight.GameServer.Spells
                     }
                 }
             }
-            }
         }
+    }
     #endregion
 
-        #region Spymaster-10
-        [SpellHandler("BlanketOfCamouflage")]
-        public class GroupstealthHandler : MasterlevelHandling
-        {
-            public GroupstealthHandler(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
-
-            private GameSpellEffect m_effect;
-
-            public override bool CheckBeginCast(GameLiving selectedTarget)
-            {
-                if (selectedTarget == Caster) return false;
-                return base.CheckBeginCast(selectedTarget);
-            }
-            public override void OnEffectStart(GameSpellEffect effect)
-            {
-                base.OnEffectStart(effect);
-                m_effect = effect;
-                if (effect.Owner is GamePlayer)
-                {
-                    GamePlayer playerTarget = effect.Owner as GamePlayer;
-                    playerTarget.Stealth(true);
-                    if (effect.Owner != Caster)
-                    {
-                        //effect.Owner.BuffBonusCategory1[(int)eProperty.Skill_Stealth] += 80;
-                        GameEventMgr.AddHandler(playerTarget, GamePlayerEvent.Moving, new DOLEventHandler(PlayerAction));
-                        GameEventMgr.AddHandler(playerTarget, GamePlayerEvent.AttackFinished, new DOLEventHandler(PlayerAction));
-                        GameEventMgr.AddHandler(playerTarget, GamePlayerEvent.CastStarting, new DOLEventHandler(PlayerAction));
-                        GameEventMgr.AddHandler(playerTarget, GamePlayerEvent.Dying, new DOLEventHandler(PlayerAction));
-                    }
-                }
-            }
-
-            /// <summary>
-            /// When an applied effect expires.
-            /// Duration spells only.
-            /// </summary>
-            /// <param name="effect">The expired effect</param>
-            /// <param name="noMessages">true, when no messages should be sent to player and surrounding</param>
-            /// <returns>immunity duration in milliseconds</returns>
-            public override int OnEffectExpires(GameSpellEffect effect, bool noMessages)
-            {
-                if (effect.Owner != Caster && effect.Owner is GamePlayer)
-                {
-                    //effect.Owner.BuffBonusCategory1[(int)eProperty.Skill_Stealth] -= 80;
-                    GamePlayer playerTarget = effect.Owner as GamePlayer;
-                    GameEventMgr.RemoveHandler(playerTarget, GamePlayerEvent.AttackFinished, new DOLEventHandler(PlayerAction));
-                    GameEventMgr.RemoveHandler(playerTarget, GamePlayerEvent.CastStarting, new DOLEventHandler(PlayerAction));
-                    GameEventMgr.RemoveHandler(playerTarget, GamePlayerEvent.Moving, new DOLEventHandler(PlayerAction));
-                    GameEventMgr.RemoveHandler(playerTarget, GamePlayerEvent.Dying, new DOLEventHandler(PlayerAction));
-                    playerTarget.Stealth(false);
-                }
-                return base.OnEffectExpires(effect, noMessages);
-            }
-            private void PlayerAction(DOLEvent e, object sender, EventArgs args)
-            {
-                GamePlayer player = (GamePlayer)sender;
-                if (player == null) return;
-                if (args is AttackFinishedEventArgs)
-                {
-                    MessageToLiving((GameLiving)player, "You are attacking. Your camouflage fades!", eChatType.CT_SpellResisted);
-                    OnEffectExpires(m_effect, true);
-                    return;
-                }
-                if (args is DyingEventArgs)
-                {
-                    OnEffectExpires(m_effect, false);
-                    return;
-                }
-                if (args is CastingEventArgs)
-                {
-                    if ((args as CastingEventArgs).SpellHandler.Caster != Caster)
-                        return;
-                    MessageToLiving((GameLiving)player, "You are casting a spell. Your camouflage fades!", eChatType.CT_SpellResisted);
-                    OnEffectExpires(m_effect, true);
-                    return;
-                }
-                if (e == GamePlayerEvent.Moving)
-                {
-                    MessageToLiving((GameLiving)player, "You are moving. Your camouflage fades!", eChatType.CT_SpellResisted);
-                    OnEffectExpires(m_effect, true);
-                    return;
-                }
-            }
-        }
-        #endregion
-    }
-    //to show an Icon & informations to the caster
-    namespace DawnOfLight.GameServer.Effects
+    #region Spymaster-10
+    [SpellHandler("BlanketOfCamouflage")]
+    public class GroupstealthHandler : MasterlevelHandling
     {
-        public class LoockoutOwner : StaticEffect, IGameEffect
+        public GroupstealthHandler(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
+
+        private GameSpellEffect m_effect;
+
+        public override bool CheckBeginCast(GameLiving selectedTarget)
         {
-            public LoockoutOwner() : base() { }
-            public void Start(GamePlayer player) { base.Start(player); }
-            public override void Stop() { base.Stop(); }
-            public override ushort Icon { get { return 2616; } }
-            public override string Name { get { return "Loockout"; } }
-            public override IList<string> DelveInfo
+            if (selectedTarget == Caster) return false;
+            return base.CheckBeginCast(selectedTarget);
+        }
+        public override void OnEffectStart(GameSpellEffect effect)
+        {
+            base.OnEffectStart(effect);
+            m_effect = effect;
+            if (effect.Owner is GamePlayer)
             {
-                get
+                GamePlayer playerTarget = effect.Owner as GamePlayer;
+                playerTarget.Stealth(true);
+                if (effect.Owner != Caster)
                 {
-                    var delveInfoList = new List<string>();
-                    delveInfoList.Add("Your stealth range is increased.");
-                    return delveInfoList;
+                    //effect.Owner.BuffBonusCategory1[(int)eProperty.Skill_Stealth] += 80;
+                    GameEventMgr.AddHandler(playerTarget, GamePlayerEvent.Moving, new DOLEventHandler(PlayerAction));
+                    GameEventMgr.AddHandler(playerTarget, GamePlayerEvent.AttackFinished, new DOLEventHandler(PlayerAction));
+                    GameEventMgr.AddHandler(playerTarget, GamePlayerEvent.CastStarting, new DOLEventHandler(PlayerAction));
+                    GameEventMgr.AddHandler(playerTarget, GamePlayerEvent.Dying, new DOLEventHandler(PlayerAction));
                 }
             }
         }
-    }
 
+        /// <summary>
+        /// When an applied effect expires.
+        /// Duration spells only.
+        /// </summary>
+        /// <param name="effect">The expired effect</param>
+        /// <param name="noMessages">true, when no messages should be sent to player and surrounding</param>
+        /// <returns>immunity duration in milliseconds</returns>
+        public override int OnEffectExpires(GameSpellEffect effect, bool noMessages)
+        {
+            if (effect.Owner != Caster && effect.Owner is GamePlayer)
+            {
+                //effect.Owner.BuffBonusCategory1[(int)eProperty.Skill_Stealth] -= 80;
+                GamePlayer playerTarget = effect.Owner as GamePlayer;
+                GameEventMgr.RemoveHandler(playerTarget, GamePlayerEvent.AttackFinished, new DOLEventHandler(PlayerAction));
+                GameEventMgr.RemoveHandler(playerTarget, GamePlayerEvent.CastStarting, new DOLEventHandler(PlayerAction));
+                GameEventMgr.RemoveHandler(playerTarget, GamePlayerEvent.Moving, new DOLEventHandler(PlayerAction));
+                GameEventMgr.RemoveHandler(playerTarget, GamePlayerEvent.Dying, new DOLEventHandler(PlayerAction));
+                playerTarget.Stealth(false);
+            }
+            return base.OnEffectExpires(effect, noMessages);
+        }
+        private void PlayerAction(DOLEvent e, object sender, EventArgs args)
+        {
+            GamePlayer player = (GamePlayer)sender;
+            if (player == null) return;
+            if (args is AttackFinishedEventArgs)
+            {
+                MessageToLiving((GameLiving)player, "You are attacking. Your camouflage fades!", eChatType.CT_SpellResisted);
+                OnEffectExpires(m_effect, true);
+                return;
+            }
+            if (args is DyingEventArgs)
+            {
+                OnEffectExpires(m_effect, false);
+                return;
+            }
+            if (args is CastingEventArgs)
+            {
+                if ((args as CastingEventArgs).SpellHandler.Caster != Caster)
+                    return;
+                MessageToLiving((GameLiving)player, "You are casting a spell. Your camouflage fades!", eChatType.CT_SpellResisted);
+                OnEffectExpires(m_effect, true);
+                return;
+            }
+            if (e == GamePlayerEvent.Moving)
+            {
+                MessageToLiving((GameLiving)player, "You are moving. Your camouflage fades!", eChatType.CT_SpellResisted);
+                OnEffectExpires(m_effect, true);
+                return;
+            }
+        }
+    }
+    #endregion
+
+//to show an Icon & informations to the caster
+    public class LoockoutOwner : StaticEffect, IGameEffect
+    {
+        public LoockoutOwner() : base() { }
+        public void Start(GamePlayer player) { base.Start(player); }
+        public override void Stop() { base.Stop(); }
+        public override ushort Icon { get { return 2616; } }
+        public override string Name { get { return "Loockout"; } }
+        public override IList<string> DelveInfo
+        {
+            get
+            {
+                var delveInfoList = new List<string>();
+                delveInfoList.Add("Your stealth range is increased.");
+                return delveInfoList;
+            }
+        }
+    }
+}

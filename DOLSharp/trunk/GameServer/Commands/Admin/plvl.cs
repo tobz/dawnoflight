@@ -16,11 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.Commands
+using System;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.commands.Admin
 {
 	[Command(
 		"&plvl",

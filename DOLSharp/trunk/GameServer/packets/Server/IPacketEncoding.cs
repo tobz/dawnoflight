@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	public interface IPacketEncoding
 	{

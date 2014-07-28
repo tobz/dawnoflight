@@ -21,11 +21,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Styles;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	
 	[PacketLib(1105, GameClient.eClientVersion.Version1105)]

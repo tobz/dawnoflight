@@ -18,8 +18,10 @@
  */
 
 using System.Collections;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Keeps
+namespace DawnOfLight.GameServer.GameObjects.Keeps.Guards
 {
 	/// <summary>
 	/// Represents a keep hastener

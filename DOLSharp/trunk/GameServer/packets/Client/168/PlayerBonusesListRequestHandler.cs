@@ -19,10 +19,12 @@
 
 using System.Collections.Generic;
 using System.Reflection;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x62 ^ 168, "Handles player bonuses button clicks")]
 	public class PlayerBonusesListRequestHandler : IPacketHandler

@@ -16,22 +16,27 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.Movement;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects.Necromancer;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.SkillHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain
 {
 	/// <summary>
 	/// Standard brain for standard mobs
@@ -238,7 +243,7 @@ namespace DawnOfLight.AI.Brain
 
 			foreach (GameNPC npc in Body.GetNPCsInRadius((ushort)AggroRange, Body.CurrentRegion.IsDungeon ? false : true))
 			{
-				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true)) continue;
+				if (!DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true)) continue;
 				if (m_aggroTable.ContainsKey(npc))
 					continue; // add only new NPCs
 				if (!npc.IsAlive || npc.ObjectState != GameObject.eObjectState.Active)
@@ -264,7 +269,7 @@ namespace DawnOfLight.AI.Brain
 
 			foreach (GamePlayer player in Body.GetPlayersInRadius((ushort)AggroRange, true))
 			{
-				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true)) continue;
+				if (!DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true)) continue;
 				// Don't aggro on immune players.
 
 				if (player.EffectList.GetOfType<NecromancerShadeEffect>() != null)
@@ -647,7 +652,7 @@ namespace DawnOfLight.AI.Brain
 					    living.ObjectState != GameObject.eObjectState.Active ||
 					    living.IsStealthed ||
 					    Body.GetDistanceTo(living, 0) > MAX_AGGRO_LIST_DISTANCE ||
-					    GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, living, true) == false)
+					    DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, living, true) == false)
 					{
 						removable.Add(living);
 						continue;
@@ -701,7 +706,7 @@ namespace DawnOfLight.AI.Brain
 		/// <returns></returns>
 		public virtual int CalculateAggroLevelToTarget(GameLiving target)
 		{
-			if (GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false)
+			if (DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false)
 				return 0;
 
 			// related to the pet owner if applicable

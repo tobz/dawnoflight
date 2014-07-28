@@ -18,8 +18,10 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// The state a door can take

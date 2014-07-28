@@ -18,10 +18,10 @@
  */
 
 using System.Collections.Generic;
-using DawnOfLight.GameServer.Appeal;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 		"&checkappeal",

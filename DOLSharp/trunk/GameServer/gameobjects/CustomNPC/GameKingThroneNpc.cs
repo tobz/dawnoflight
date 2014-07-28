@@ -18,10 +18,11 @@
  */
 
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 {
 	// This class has to be completed and may be inherited for scripting purpose (like quests)
 	public class KingNPC : GameNPC

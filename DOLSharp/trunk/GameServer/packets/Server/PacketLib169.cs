@@ -19,9 +19,11 @@
 #define NOENCRYPTION
 
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	[PacketLib(169, GameClient.eClientVersion.Version169)]
 	public class PacketLib169 : PacketLib168

@@ -16,11 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.GameServer.PacketHandler;
-using System.Collections.Generic;
 
-namespace DawnOfLight.GameServer.Effects
+using System;
+using System.Collections.Generic;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.RealmAbilities.effects
 {
     // <summary>
     // The helper class for the guard ability
@@ -112,7 +117,7 @@ namespace DawnOfLight.GameServer.Effects
                 guardSource.Out.SendMessage(string.Format("You are now guarding {0}.", guardTarget.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
                 guardTarget.Out.SendMessage(string.Format("{0} is now guarding you.", guardSource.GetName(0, true)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
             }
-            guardTarget.TempProperties.setProperty(RealmAbilities.DashingDefenseAbility.Dashing, true);
+            guardTarget.TempProperties.setProperty(DashingDefenseAbility.Dashing, true);
         }
 
         // <summary>
@@ -125,7 +130,7 @@ namespace DawnOfLight.GameServer.Effects
             m_guardSource.EffectList.Remove(this);
             m_guardTarget.EffectList.Remove(this);
 
-            m_guardTarget.TempProperties.removeProperty(RealmAbilities.DashingDefenseAbility.Dashing);
+            m_guardTarget.TempProperties.removeProperty(DashingDefenseAbility.Dashing);
 
             m_guardSource.Out.SendMessage(string.Format("You are no longer guarding {0}.", m_guardTarget.GetName(0, false)), eChatType.CT_System, eChatLoc.CL_SystemWindow);
             m_guardTarget.Out.SendMessage(string.Format("{0} is no longer guarding you.", m_guardSource.GetName(0, true)), eChatType.CT_System, eChatLoc.CL_SystemWindow);

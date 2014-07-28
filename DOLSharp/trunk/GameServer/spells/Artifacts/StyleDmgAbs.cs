@@ -17,15 +17,18 @@
  *
  */
 //made by DeMAN
+
 using System;
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Artifacts
 {
     [SpellHandler("StyleDmgAbs")]
     public class StyleDmgAbsSpellHandler : SpellHandler

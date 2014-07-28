@@ -17,9 +17,12 @@
  *
  */
 
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Crafting;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CraftMasters
 {
 	/// <summary>
 	/// the master for spell crafting

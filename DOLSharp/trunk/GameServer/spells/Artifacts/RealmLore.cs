@@ -1,11 +1,13 @@
 //Andraste v2.0 - Vico
 
-using System.Collections.Generic;
 using System.Collections;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.RealmAbilities;
+using System.Collections.Generic;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Artifacts
 {
 	[SpellHandler("RealmLore")]
 	public class RealmLore : SpellHandler

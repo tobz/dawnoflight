@@ -17,10 +17,9 @@
 *
 */
 
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Packets.Server;
 
-
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command("&cloak", //command to handle
 		ePrivLevel.Player, //minimum privelege level

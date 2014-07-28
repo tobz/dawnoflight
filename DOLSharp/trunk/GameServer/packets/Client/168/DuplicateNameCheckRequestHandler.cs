@@ -18,9 +18,10 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP,0x63^168,"Checks if a character name already exists")]
 	public class DupNameCheckRequestHandler : IPacketHandler

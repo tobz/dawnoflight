@@ -16,11 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.Trainer
+using System;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Trainers.midgard
 {
 	/// <summary>
 	/// Valkyrie Trainer

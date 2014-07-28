@@ -17,10 +17,11 @@
  *
  */
 
-using DawnOfLight.Events;
-using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Spells;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain.Animist
 {
 	public class BomberBrain : ControlledNpcBrain
 	{

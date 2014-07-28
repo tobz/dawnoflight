@@ -18,7 +18,12 @@
  */
 
 using System.Collections;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.PlayerClasses.albion;
+using DawnOfLight.GameServer.PlayerClasses.hibernia;
+using DawnOfLight.GameServer.PlayerClasses.midgard;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Spells
 {
@@ -48,10 +53,10 @@ namespace DawnOfLight.GameServer.Spells
 			{
 				if (healTarget is GamePlayer 
 				    && (
-				    ((GamePlayer)healTarget).CharacterClass is PlayerClass.ClassVampiir
-					|| ((GamePlayer)healTarget).CharacterClass is PlayerClass.ClassMaulerAlb
-					|| ((GamePlayer)healTarget).CharacterClass is PlayerClass.ClassMaulerHib
-					|| ((GamePlayer)healTarget).CharacterClass is PlayerClass.ClassMaulerMid))
+				    ((GamePlayer)healTarget).CharacterClass is ClassVampiir
+					|| ((GamePlayer)healTarget).CharacterClass is ClassMaulerAlb
+					|| ((GamePlayer)healTarget).CharacterClass is ClassMaulerHib
+					|| ((GamePlayer)healTarget).CharacterClass is ClassMaulerMid))
 					continue;
 				int heal = Util.Random(minHeal, maxHeal);
 				healed |= HealTarget(healTarget, heal);

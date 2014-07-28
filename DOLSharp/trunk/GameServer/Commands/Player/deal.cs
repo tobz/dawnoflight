@@ -1,4 +1,7 @@
-namespace DawnOfLight.GameServer.Commands
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 		"&deal",

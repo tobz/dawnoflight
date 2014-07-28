@@ -16,13 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer;
-using log4net;
-using System.Reflection;
 
-namespace DawnOfLight.AI.Brain
+using System;
+using System.Reflection;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using log4net;
+
+namespace DawnOfLight.GameServer.AI.Brain
 {
 	/// <summary>
 	/// A retriever type mob is an NPC that is spawned from a boss-like

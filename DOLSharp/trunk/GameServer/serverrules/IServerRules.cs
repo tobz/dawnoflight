@@ -19,9 +19,15 @@
 
 using System.Collections.Generic;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.ServerRules
 {

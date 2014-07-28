@@ -19,9 +19,10 @@
 
 using DawnOfLight.Database;
 using DawnOfLight.Database.Attributes;
-using DawnOfLight.GameServer.PacketHandler;
 
 //This script demonstrates how to create a data aware custom NPC
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 
 namespace DawnOfLight.GameServer.Scripts
 {

@@ -18,9 +18,12 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Keeps
+namespace DawnOfLight.GameServer.GameObjects.Keeps
 {
 	public class GameKeepBanner : GameStaticItem , IKeepItem
 	{

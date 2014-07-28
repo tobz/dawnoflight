@@ -16,18 +16,22 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Utils;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
+using DictionaryEntry = DawnOfLight.GameServer.Utilities.DictionaryEntry;
+using Hashtable = DawnOfLight.GameServer.Utilities.Hashtable;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.World
 {
 	/// <summary>
 	/// This class represents one Zone in DAOC. It holds all relevant information
@@ -629,8 +633,8 @@ namespace DawnOfLight.GameServer
 				maxLine = SUBZONE_NBR_ON_ZONE_SIDE - 1;
 			}
 
-			Collections.Hashtable inZoneElements = new Collections.Hashtable();
-			Collections.Hashtable outOfZoneElements = new Collections.Hashtable();
+			Hashtable inZoneElements = new Hashtable();
+			Hashtable outOfZoneElements = new Hashtable();
 
 			for (int currentLine = minLine; currentLine <= maxLine; ++currentLine)
 			{
@@ -726,7 +730,7 @@ namespace DawnOfLight.GameServer
 		}
 
 
-		private void UnsafeAddToListWithoutDistanceCheck(SubNodeElement startElement, int typeIndex, int subZoneIndex, ArrayList partialList, Collections.Hashtable inZoneElements, Collections.Hashtable outOfZoneElements)
+		private void UnsafeAddToListWithoutDistanceCheck(SubNodeElement startElement, int typeIndex, int subZoneIndex, ArrayList partialList, Hashtable inZoneElements, Hashtable outOfZoneElements)
 		{
 			SubNodeElement currentElement = startElement.next;
 			SubNodeElement elementToRemove = null;
@@ -771,8 +775,8 @@ namespace DawnOfLight.GameServer
 			int typeIndex,
 			int subZoneIndex,
 			ArrayList partialList,
-			Collections.Hashtable inZoneElements,
-			Collections.Hashtable outOfZoneElements,
+			Hashtable inZoneElements,
+			Hashtable outOfZoneElements,
 			bool ignoreZ)
 		{
 
@@ -826,8 +830,8 @@ namespace DawnOfLight.GameServer
 
 				SubNodeElement elementToRemove = null;
 
-				Collections.Hashtable outOfZoneElements = new Collections.Hashtable();
-				Collections.Hashtable inZoneElements = new Collections.Hashtable();
+				Hashtable outOfZoneElements = new Hashtable();
+				Hashtable inZoneElements = new Hashtable();
 
 				for (int subZoneIndex = 0; subZoneIndex < m_subZoneElements.Length; subZoneIndex++)
 				{
@@ -912,7 +916,7 @@ namespace DawnOfLight.GameServer
 		}
 
 
-		private bool ShouldElementMove(SubNodeElement currentElement, int typeIndex, int subZoneIndex, Collections.Hashtable inZoneElements, Collections.Hashtable outOfZoneElements)
+		private bool ShouldElementMove(SubNodeElement currentElement, int typeIndex, int subZoneIndex, Hashtable inZoneElements, Hashtable outOfZoneElements)
 		{
 
 			if (!m_initialized) InitializeZone();
@@ -976,9 +980,9 @@ namespace DawnOfLight.GameServer
 		}
 
 
-		private void PlaceElementsInZone(Collections.Hashtable elements)
+		private void PlaceElementsInZone(Hashtable elements)
 		{
-			Collections.DictionaryEntry currentEntry = null;
+			DictionaryEntry currentEntry = null;
 			ArrayList currentList = null;
 			SubNodeElement currentStartElement = null;
 			SubNodeElement currentElement = null;
@@ -987,7 +991,7 @@ namespace DawnOfLight.GameServer
 
 			while (entryEnumerator.MoveNext())
 			{
-				currentEntry = (Collections.DictionaryEntry)entryEnumerator.Current;
+				currentEntry = (DictionaryEntry)entryEnumerator.Current;
 				currentStartElement = (SubNodeElement)currentEntry.key;
 
 				currentList = (ArrayList)currentEntry.value;
@@ -1004,9 +1008,9 @@ namespace DawnOfLight.GameServer
 		}
 
 
-		private void PlaceElementsInOtherZones(Collections.Hashtable elements)
+		private void PlaceElementsInOtherZones(Hashtable elements)
 		{
-			Collections.DictionaryEntry currentEntry = null;
+			DictionaryEntry currentEntry = null;
 
 			int currentType = 0;
 			ArrayList currentList = null;
@@ -1018,7 +1022,7 @@ namespace DawnOfLight.GameServer
 
 			while (entryEnumerator.MoveNext())
 			{
-				currentEntry = (Collections.DictionaryEntry)entryEnumerator.Current;
+				currentEntry = (DictionaryEntry)entryEnumerator.Current;
 				currentType = (int)currentEntry.key;
 
 				currentList = (ArrayList)currentEntry.value;

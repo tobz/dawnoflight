@@ -16,19 +16,20 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Styles;
-using DawnOfLight.Language;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// Skill Attribute
@@ -1685,8 +1686,8 @@ namespace DawnOfLight.GameServer
 			//Search for ability handlers in the gameserver first
 			if (log.IsInfoEnabled)
 				log.Info("Searching ability handlers in GameServer");
-			Hashtable ht = ScriptMgr.FindAllAbilityActionHandler(Assembly.GetExecutingAssembly());
-			foreach (DictionaryEntry entry in ht)
+			System.Collections.Hashtable ht = ScriptMgr.FindAllAbilityActionHandler(Assembly.GetExecutingAssembly());
+			foreach (System.Collections.DictionaryEntry entry in ht)
 			{
 				string key = (string)entry.Key;
 
@@ -1706,7 +1707,7 @@ namespace DawnOfLight.GameServer
 			foreach (Assembly asm in ScriptMgr.Scripts)
 			{
 				ht = ScriptMgr.FindAllAbilityActionHandler(asm);
-				foreach (DictionaryEntry entry in ht)
+				foreach (System.Collections.DictionaryEntry entry in ht)
 				{
 					string message;
 					string key = (string)entry.Key;
@@ -1735,8 +1736,8 @@ namespace DawnOfLight.GameServer
 			//Search for skill handlers in gameserver first
 			if (log.IsInfoEnabled)
 				log.Info("Searching skill handlers in GameServer.");
-			Hashtable ht = ScriptMgr.FindAllSpecActionHandler(Assembly.GetExecutingAssembly());
-			foreach (DictionaryEntry entry in ht)
+			System.Collections.Hashtable ht = ScriptMgr.FindAllSpecActionHandler(Assembly.GetExecutingAssembly());
+			foreach (System.Collections.DictionaryEntry entry in ht)
 			{
 				string key = (string)entry.Key;
 
@@ -1755,7 +1756,7 @@ namespace DawnOfLight.GameServer
 			foreach (Assembly asm in ScriptMgr.Scripts)
 			{
 				ht = ScriptMgr.FindAllSpecActionHandler(asm);
-				foreach (DictionaryEntry entry in ht)
+				foreach (System.Collections.DictionaryEntry entry in ht)
 				{
 					string message;
 					string key = (string)entry.Key;

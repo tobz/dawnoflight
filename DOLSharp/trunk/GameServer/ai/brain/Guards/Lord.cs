@@ -1,7 +1,6 @@
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Keeps.Managers;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain.Guards
 {
 	/// <summary>
 	/// The Brain for the Area Lord

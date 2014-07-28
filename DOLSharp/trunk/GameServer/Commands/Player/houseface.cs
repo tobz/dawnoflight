@@ -1,6 +1,6 @@
 using DawnOfLight.GameServer.Housing;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 	  "&houseface",

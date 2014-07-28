@@ -17,7 +17,9 @@
  *
  */
 
-namespace DawnOfLight.GameServer.PacketHandler
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	/// <summary>
 	/// The interface for all received packets

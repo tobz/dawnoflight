@@ -17,9 +17,11 @@
  *
  */
 
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.SiegeWeapon
 {
 	/// <summary>
 	/// GameMovingObject is a base class for boats and siege weapons.
@@ -200,7 +202,7 @@ namespace DawnOfLight.GameServer
 				double speed = (10.0 + (5.0 * Level) + 100.0 * CurrentRiders.Length / MAX_PASSENGERS);
 				foreach (GamePlayer player in CurrentRiders)
 				{
-					RealmAbilities.RAPropertyEnhancer ab = player.GetAbility<RealmAbilities.LifterAbility>();
+					RAPropertyEnhancer ab = player.GetAbility<LifterAbility>();
 					if (ab != null)
 						speed *= 1 + (ab.Amount / 100);
 				}

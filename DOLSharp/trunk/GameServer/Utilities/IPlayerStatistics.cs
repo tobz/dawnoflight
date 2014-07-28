@@ -1,4 +1,4 @@
-﻿namespace DawnOfLight.GameServer
+﻿namespace DawnOfLight.GameServer.Utilities
 {
     public interface IPlayerStatistics
     {

@@ -17,9 +17,9 @@
  *
  */
 
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command("&cancelstyle", ePrivLevel.Player, "Toggle cancelstyle flag.", "/cancelstyle")]
 	public class CancelStyleCommandHandler : AbstractCommandHandler, ICommandHandler

@@ -1,6 +1,6 @@
-using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Quests.Missions;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 {
 	public class TaskMaster : GameNPC
 	{

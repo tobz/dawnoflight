@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects
 {
 	/// <summary>
 	/// 
@@ -12,7 +14,7 @@ namespace DawnOfLight.GameServer.Effects
 		/// Default constructor for MasteryofConcentrationEffect
 		/// </summary>
 		public MasteryofConcentrationEffect()
-			: base(RealmAbilities.MasteryofConcentrationAbility.Duration)
+			: base(MasteryofConcentrationAbility.Duration)
 		{
 		}
 

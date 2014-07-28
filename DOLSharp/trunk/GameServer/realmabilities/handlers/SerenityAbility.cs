@@ -1,6 +1,6 @@
 using DawnOfLight.Database;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
 	/// <summary>
 	/// Serenity realm ability

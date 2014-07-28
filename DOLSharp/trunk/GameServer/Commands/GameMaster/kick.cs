@@ -1,11 +1,13 @@
 // Kick by Akira (akira@dataloggin.com)
 //
 //
-using System;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.Commands
+using System;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	[Command(
 		"&kick",

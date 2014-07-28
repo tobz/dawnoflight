@@ -16,16 +16,19 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Housing;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 {
     public class GameConsignmentMerchant : GameNPC, IGameInventoryObject
     {
@@ -680,7 +683,7 @@ namespace DawnOfLight.GameServer
 				// The above code is suspect, it seems to work 80% of the time, so let's make sure we update the player doing the move - Tolakram
 				if (hasUpdatedPlayer == false)
 				{
-					player.Client.Out.SendInventoryItemsUpdate(updateItems, PacketHandler.eInventoryWindowType.Update);
+					player.Client.Out.SendInventoryItemsUpdate(updateItems, eInventoryWindowType.Update);
 				}
 			}
 

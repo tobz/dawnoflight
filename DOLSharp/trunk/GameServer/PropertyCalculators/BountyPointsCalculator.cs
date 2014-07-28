@@ -19,8 +19,9 @@
 
 
 using System;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalculators
 {
 	/// <summary>
 	/// Calculator for BountyPoints % bonus

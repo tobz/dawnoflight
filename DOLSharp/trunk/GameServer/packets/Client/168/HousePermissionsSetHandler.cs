@@ -19,8 +19,10 @@
 
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x07, "Handles housing permissions changes")]
 	public class HousePermissionsSetHandler : IPacketHandler

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
 	/// <summary>
 	/// Vehement Renewal, healing all but caster in 2000 range

@@ -18,9 +18,11 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer.DatabaseConverters
+namespace DawnOfLight.GameServer.Database.converters
 {
 	/// <summary>
 	/// Converts the database format to the version 2

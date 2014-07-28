@@ -17,7 +17,10 @@
  *
  */
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP,0xCE^168,"Show warmap bonuses")]
 	public class WarmapBonusesRequestHandler : IPacketHandler

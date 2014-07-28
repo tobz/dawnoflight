@@ -19,14 +19,18 @@
 
 using System;
 using System.Collections.Generic;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Bonedancer;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Bonedancer
 {
 	/// <summary>
 	/// Pet summon spell handler

@@ -17,12 +17,14 @@
  *
  */
 
-using DawnOfLight.Database;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Keeps.Relics;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Teleport
 {
 	/// <summary>
 	/// The spell used by classic teleporters.
@@ -31,9 +33,9 @@ namespace DawnOfLight.GameServer.Spells
 	[SpellHandler("UniPortal")]
 	public class UniPortal : SpellHandler
 	{
-		private Teleport m_destination;
+		private DawnOfLight.Database.Teleport m_destination;
 
-		public UniPortal(GameLiving caster, Spell spell, SpellLine spellLine, Teleport destination)
+		public UniPortal(GameLiving caster, Spell spell, SpellLine spellLine, DawnOfLight.Database.Teleport destination)
 			: base(caster, spell, spellLine) 
 		{
 			m_destination = destination;

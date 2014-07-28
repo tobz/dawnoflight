@@ -18,11 +18,11 @@
  */
 
 using System.Reflection;
-using System.Collections;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// FactionMgr manage all the faction system
@@ -36,9 +36,9 @@ namespace DawnOfLight.GameServer
 		/// </summary>
 		private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-		private static Hashtable m_factions;
+		private static System.Collections.Hashtable m_factions;
 
-		public static Hashtable Factions
+		public static System.Collections.Hashtable Factions
 		{
 			get	{ return m_factions;}
 		}
@@ -47,7 +47,7 @@ namespace DawnOfLight.GameServer
 		/// </summary>	
 		public static bool Init()
 		{
-			m_factions = new Hashtable(1);
+			m_factions = new System.Collections.Hashtable(1);
 
 			var dbfactions =	GameServer.Database.SelectAllObjects<DBFaction>();
 			foreach(DBFaction dbfaction in dbfactions)

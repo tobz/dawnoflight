@@ -21,8 +21,12 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Atlantis;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities.Atlantis;
+using DawnOfLight.GameServer.World;
 using log4net;
 
 namespace DawnOfLight.GameServer.Quests.Atlantis

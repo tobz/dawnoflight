@@ -16,11 +16,17 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections.Generic;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.handlers.rr5;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
     /// <summary>
     /// Effect handler for Fanatacism
@@ -30,7 +36,7 @@ namespace DawnOfLight.GameServer.Effects
  		private GamePlayer EffectOwner;
  		
         public FanatacismEffect()
-            : base(RealmAbilities.FanatacismAbility.DURATION)
+            : base(FanatacismAbility.DURATION)
         { }    
 
          public override void Start(GameLiving target)
@@ -44,7 +50,7 @@ namespace DawnOfLight.GameServer.Effects
                     p.Out.SendSpellEffectAnimation(EffectOwner, p, 7088, 0, false, 1);
                 }
                 GameEventMgr.AddHandler(EffectOwner, GamePlayerEvent.Quit, new DOLEventHandler(PlayerLeftWorld));
-            	EffectOwner.BaseBuffBonusCategory[(int)eProperty.MagicAbsorption] += RealmAbilities.FanatacismAbility.VALUE;
+            	EffectOwner.BaseBuffBonusCategory[(int)eProperty.MagicAbsorption] += FanatacismAbility.VALUE;
             }
         }
 
@@ -52,7 +58,7 @@ namespace DawnOfLight.GameServer.Effects
         {
             if (EffectOwner != null)
             {
-            	EffectOwner.BaseBuffBonusCategory[(int)eProperty.MagicAbsorption] -= RealmAbilities.FanatacismAbility.VALUE;
+            	EffectOwner.BaseBuffBonusCategory[(int)eProperty.MagicAbsorption] -= FanatacismAbility.VALUE;
                 GameEventMgr.RemoveHandler(EffectOwner, GamePlayerEvent.Quit, new DOLEventHandler(PlayerLeftWorld));
             }
             

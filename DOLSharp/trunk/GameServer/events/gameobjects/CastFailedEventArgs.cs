@@ -19,7 +19,7 @@
 
 using DawnOfLight.GameServer.Spells;
 
-namespace DawnOfLight.Events
+namespace DawnOfLight.GameServer.Events.GameObjects
 {
 	/// <summary>
 	/// Arguments for a cast failed event, stating the reason

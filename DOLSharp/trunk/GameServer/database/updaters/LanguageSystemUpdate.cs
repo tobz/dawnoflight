@@ -20,9 +20,10 @@
 using System.Collections.Generic;
 using DawnOfLight.Database;
 using DawnOfLight.Database.Attributes;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.GameServer.DatabaseUpdate
+namespace DawnOfLight.GameServer.Database.updaters
 {
     [DatabaseUpdate]
     public class LanguageSystemUpdate : IDatabaseUpdater

@@ -18,10 +18,11 @@
  */
 
 using System.Reflection;
-using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Spells;
 using log4net;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain
 {
 	/// <summary>
 	/// A brain that can be controlled

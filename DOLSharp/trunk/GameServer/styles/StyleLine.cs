@@ -18,6 +18,7 @@
  */
 
 using System.Collections;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Styles
 {

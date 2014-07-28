@@ -17,10 +17,10 @@
  *
  */
 
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Movement;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain
 {
 	/// <summary>
 	/// A brain that make npc walk on rounds with way point

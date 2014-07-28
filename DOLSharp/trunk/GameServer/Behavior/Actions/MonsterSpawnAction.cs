@@ -16,11 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Behaviour.Attributes;
 
-namespace DawnOfLight.GameServer.Behaviour.Actions
+using System;
+using DawnOfLight.GameServer.Behavior.Attributes;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.Behavior.Actions
 {
     // NOTE it is important that we look into the database for the npc because since it's not spawn at the moment the WorldMgr cant find it!!!
     [Action(ActionType = eActionType.MonsterSpawn,DefaultValueP=eDefaultValueConstants.NPC)]

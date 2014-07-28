@@ -16,17 +16,20 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading;
 using DawnOfLight.Base;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Scripts;
+using DawnOfLight.GameServer.Events.Server;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer.GameEvents
+namespace DawnOfLight.GameServer.Utilities
 {
 	class StatSave
 	{
@@ -106,7 +109,7 @@ namespace DawnOfLight.GameServer.GameEvents
 			Process process = Process.GetCurrentProcess();
 			int id = process.Id;
 			PerformanceCounterCategory perfCounterCat = new PerformanceCounterCategory("Process");
-			foreach (DictionaryEntry entry in perfCounterCat.ReadCategory()["id process"])
+			foreach (System.Collections.DictionaryEntry entry in perfCounterCat.ReadCategory()["id process"])
 			{
 				string processCounterName = (string)entry.Key;
 				if (((InstanceData)entry.Value).RawValue == id)

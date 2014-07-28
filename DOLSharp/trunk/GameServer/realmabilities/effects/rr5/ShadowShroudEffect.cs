@@ -18,13 +18,17 @@
  */
 
 using System;
-
 using System.Collections.Generic;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.handlers.rr5;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
     /// <summary>
     /// ShadowShroud Effect NS RR5 RA
@@ -35,7 +39,7 @@ namespace DawnOfLight.GameServer.Effects
         private GamePlayer EffectOwner;
 
         public ShadowShroudEffect()
-            : base(RealmAbilities.ShadowShroudAbility.DURATION)
+            : base(ShadowShroudAbility.DURATION)
         { }
 
         public override void Start(GameLiving target)

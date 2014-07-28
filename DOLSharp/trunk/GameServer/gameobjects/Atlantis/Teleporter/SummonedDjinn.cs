@@ -16,10 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.Events;
 
-namespace DawnOfLight.GameServer
+using System;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.GameObjects.Atlantis.Teleporter
 {
     /// <summary>
     /// Ancient bound djinn (Atlantis teleporter).

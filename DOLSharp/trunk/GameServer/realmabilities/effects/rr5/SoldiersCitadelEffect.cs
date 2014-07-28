@@ -19,9 +19,14 @@
 
 using System;
 using System.Collections.Generic;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.handlers.rr5;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
 
     public class SoldiersCitadelEffect : TimedEffect
@@ -29,7 +34,7 @@ namespace DawnOfLight.GameServer.Effects
 		private GamePlayer EffectOwner;
 
         public SoldiersCitadelEffect()
-            : base(RealmAbilities.SoldiersCitadelAbility.DURATION)
+            : base(SoldiersCitadelAbility.DURATION)
         { }
 
         public override void Start(GameLiving target)
@@ -101,7 +106,7 @@ namespace DawnOfLight.GameServer.Effects
         private GamePlayer EffectOwner;
 
         public SoldiersCitadelSecondaryEffect()
-            : base(RealmAbilities.SoldiersCitadelAbility.SECOND_DURATION)
+            : base(SoldiersCitadelAbility.SECOND_DURATION)
         { }
 
         public override void Start(GameLiving target)

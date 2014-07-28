@@ -16,12 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Behaviour;
-using DawnOfLight.GameServer.Behaviour.Attributes;
 
-namespace DawnOfLight.GameServer.Quests.Actions
+using System;
+using DawnOfLight.GameServer.Behavior;
+using DawnOfLight.GameServer.Behavior.Attributes;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.GameObjects;
+
+namespace DawnOfLight.GameServer.Quests.QuestsMgr.Actions
 {
     [Action(ActionType = eActionType.OfferQuest)]
     public class OfferQuestAction : AbstractAction<Type,String>

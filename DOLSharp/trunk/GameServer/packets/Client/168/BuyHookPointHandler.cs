@@ -18,8 +18,10 @@
  */
 
 using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP,0xCC^168,"buy hookpoint siege weapon/mob")]
 	public class BuyHookPointHandler : IPacketHandler

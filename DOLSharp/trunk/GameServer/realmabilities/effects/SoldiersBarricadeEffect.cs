@@ -1,8 +1,13 @@
 using System;
 using System.Collections.Generic;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects
 {
 	/// <summary>
 	/// Effect handler for Barrier Of Fortitude
@@ -35,7 +40,7 @@ namespace DawnOfLight.GameServer.Effects
 			m_effectDuration = duration;
 			m_value = value;
 
-			if (player.TempProperties.getProperty(RealmAbilities.BarrierOfFortitudeAbility.BofBaSb, false))
+			if (player.TempProperties.getProperty(BarrierOfFortitudeAbility.BofBaSb, false))
 				return;
 
 			StartTimers();
@@ -53,7 +58,7 @@ namespace DawnOfLight.GameServer.Effects
 			m_player.AbilityBonus[(int)eProperty.Resist_Thrust] += m_value;
 			m_player.Out.SendCharResistsUpdate();
 			m_player.EffectList.Add(this);
-			player.TempProperties.setProperty(RealmAbilities.BarrierOfFortitudeAbility.BofBaSb, true);
+			player.TempProperties.setProperty(BarrierOfFortitudeAbility.BofBaSb, true);
 		}
 
 		/// <summary>
@@ -93,7 +98,7 @@ namespace DawnOfLight.GameServer.Effects
 			m_player.Out.SendCharResistsUpdate();
 			m_player.EffectList.Remove(this);
 			GameEventMgr.RemoveHandler(m_player, GamePlayerEvent.Quit, new DOLEventHandler(PlayerLeftWorld));
-			m_player.TempProperties.removeProperty(RealmAbilities.BarrierOfFortitudeAbility.BofBaSb);
+			m_player.TempProperties.removeProperty(BarrierOfFortitudeAbility.BofBaSb);
 
 		}
 

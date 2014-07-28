@@ -17,9 +17,10 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 {
 	public class BDSubPet : BDPet
 	{

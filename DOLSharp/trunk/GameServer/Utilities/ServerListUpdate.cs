@@ -10,14 +10,16 @@
 
 using System;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Server;
 using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.World;
 using log4net;
-using System.Reflection;
 
-namespace DawnOfLight.GameServer.GameEvents
+namespace DawnOfLight.GameServer.Utilities
 {
 	public class ServerListUpdate
 	{

@@ -16,11 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer.PacketHandler;
 
-namespace DawnOfLight.GameServer.Spells
+using System;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Necromancer;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Spells.Necromancer
 {
 	[SpellHandler("PowerDrainPet")]
 	public class PowerDrainPet : PowerDrain

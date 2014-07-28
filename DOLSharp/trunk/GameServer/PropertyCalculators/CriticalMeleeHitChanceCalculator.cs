@@ -18,11 +18,13 @@
     */
 
 using System;
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Necromancer;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
 
-namespace DawnOfLight.GameServer.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalculators
 {
     /// <summary>
     ///     The critical hit chance calculator. Returns 0 .. 100 chance.

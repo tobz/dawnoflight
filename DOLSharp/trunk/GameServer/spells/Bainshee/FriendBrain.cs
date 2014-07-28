@@ -1,7 +1,7 @@
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.Spells.Bainshee
 {
 	public class FriendBrain : StandardMobBrain
 	{
@@ -30,7 +30,7 @@ namespace DawnOfLight.AI.Brain
 						continue; //do not attack players on steed
 					if(player == m_spellHandler.Caster)
 						continue;
-					if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(m_spellHandler.Caster, player, true))
+					if (!DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(m_spellHandler.Caster, player, true))
 						continue;
 
 					AddToAggroList(player, player.EffectiveLevel<<1);
@@ -44,7 +44,7 @@ namespace DawnOfLight.AI.Brain
 			{
 				foreach (GameNPC npc in Body.GetNPCsInRadius((ushort)AggroRange))
 				{
-					if (GameServer.GameServer.ServerRules.IsAllowedToAttack(m_spellHandler.Caster, npc, true))
+					if (DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(m_spellHandler.Caster, npc, true))
 					{
 						AddToAggroList(npc, npc.Level<<1);
 						return;

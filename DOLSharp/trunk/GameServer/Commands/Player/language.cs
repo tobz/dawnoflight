@@ -18,10 +18,10 @@
  */
 
 using System.Linq;
+using DawnOfLight.GameServer.Language;
 using DawnOfLight.GameServer.ServerProperties;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
     [Command("&language", ePrivLevel.Player, "Change your language.",
         "Use '/language current' to see your current used language.",

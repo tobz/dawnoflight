@@ -21,9 +21,10 @@
 
 using System.Collections.Generic;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	public class MarketCache
 	{

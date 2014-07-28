@@ -22,7 +22,7 @@ using System.Reflection;
 using DawnOfLight.Database;
 using log4net;
 
-namespace DawnOfLight.GameServer.Movement
+namespace DawnOfLight.GameServer.Utilities
 {
     /// <summary>
     /// TODO: instead movement manager we need AI when npc should travel on path and attack 

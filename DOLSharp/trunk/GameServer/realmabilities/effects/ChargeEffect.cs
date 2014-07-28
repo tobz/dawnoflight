@@ -1,10 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.PropertyCalculators;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects
 {
 
 	public class ChargeEffect : StaticEffect, IGameEffect
@@ -58,7 +64,7 @@ namespace DawnOfLight.GameServer.Effects
 			}
 			foreach (GameSpellEffect spell in speedSpells)
 				spell.Cancel(false);
-			m_living.BuffBonusMultCategory1.Set((int)eProperty.MaxSpeed, this, PropertyCalc.MaxSpeedCalculator.SPEED3);
+			m_living.BuffBonusMultCategory1.Set((int)eProperty.MaxSpeed, this, MaxSpeedCalculator.SPEED3);
 			m_living.TempProperties.setProperty("Charging", true);
 			if (m_living is GamePlayer)
 				((GamePlayer)m_living).Out.SendUpdateMaxSpeed();
@@ -97,7 +103,7 @@ namespace DawnOfLight.GameServer.Effects
 		protected virtual void StartTimers()
 		{
 			StopTimers();
-			m_expireTimer = new RegionTimer(m_living, new RegionTimerCallback(ExpiredCallback), RealmAbilities.ChargeAbility.DURATION * 1000);
+			m_expireTimer = new RegionTimer(m_living, new RegionTimerCallback(ExpiredCallback), ChargeAbility.DURATION * 1000);
 		}
 
 

@@ -19,10 +19,11 @@
 
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 {
     /// <summary>
     /// Searing pet RA

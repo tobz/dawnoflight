@@ -18,11 +18,16 @@
  */
 
 using System.Collections.Generic;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.handlers.rr5;
 using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
     /// <summary>
     /// Minion Rescue
@@ -46,7 +51,7 @@ namespace DawnOfLight.GameServer.Effects
         private GamePlayer EffectOwner;			// Owner of the effect
 
         public MinionRescueEffect()
-            : base(RealmAbilities.MinionRescueAbility.DURATION)
+            : base(MinionRescueAbility.DURATION)
         {
             // Init NPC & Timer array
             spirits = new GameNPC[spiritCount];
@@ -84,7 +89,7 @@ namespace DawnOfLight.GameServer.Effects
                 stun = ScriptMgr.CreateSpellHandler(EffectOwner, spiritSpell, spiritSpellLine);
 
                 int targetCount = 0;
-                foreach (GamePlayer targetPlayer in EffectOwner.GetPlayersInRadius((ushort)RealmAbilities.MinionRescueAbility.SpellRadius))
+                foreach (GamePlayer targetPlayer in EffectOwner.GetPlayersInRadius((ushort)MinionRescueAbility.SpellRadius))
                 {
                     if (targetCount == spiritCount) return;
                     if (targetPlayer.IsAlive && GameServer.ServerRules.IsAllowedToAttack(EffectOwner, targetPlayer, true))
@@ -128,7 +133,7 @@ namespace DawnOfLight.GameServer.Effects
             spirits[spiritId].SetOwnBrain(new StandardMobBrain());
             spirits[spiritId].AddToWorld();
             spirits[spiritId].TargetObject = targetPlayer;
-            spirits[spiritId].Follow(targetPlayer, 0, RealmAbilities.MinionRescueAbility.SpellRadius + 100);
+            spirits[spiritId].Follow(targetPlayer, 0, MinionRescueAbility.SpellRadius + 100);
             spiritTimer[spiritId] = new RegionTimer(spirits[spiritId], new RegionTimerCallback(spiritCallBack), 200);
         }
 

@@ -18,9 +18,11 @@
  */
 
 using DawnOfLight.GameServer.Housing;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 		"&housefriend",

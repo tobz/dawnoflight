@@ -1,6 +1,7 @@
 using System;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command("&summon", ePrivLevel.Player,"Summon horse","/summon")]
 	public class SummonHorseCommandHandler : AbstractCommandHandler, ICommandHandler

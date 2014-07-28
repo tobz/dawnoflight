@@ -18,8 +18,9 @@
  */
 
 using System.Collections.Generic;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	[Command(
 		"&clientlist",

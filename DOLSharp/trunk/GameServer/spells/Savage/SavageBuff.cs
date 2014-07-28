@@ -20,9 +20,11 @@
 using System;
 using System.Collections.Generic;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Savage
 {
 	
     // Main class for savage buffs

@@ -16,20 +16,23 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer;
+using System.Reflection;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
 using DawnOfLight.GameServer.ServerProperties;
 using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain
 {
 	/// <summary>
 	/// A brain that can be controlled
@@ -444,14 +447,14 @@ namespace DawnOfLight.AI.Brain
 				{
 					switch (ab.KeyName)
 					{
-						case GameServer.Abilities.Intercept:
+						case Abilities.Intercept:
 							{
 								GamePlayer player = Owner as GamePlayer;
 								//the pet should intercept even if a player is till intercepting for the owner
 								new InterceptEffect().Start(Body, player);
 								break;
 							}
-						case GameServer.Abilities.Guard:
+						case Abilities.Guard:
 							{
 								GamePlayer player = Owner as GamePlayer;
 								new GuardEffect().Start(Body, player);
@@ -795,7 +798,7 @@ namespace DawnOfLight.AI.Brain
 		public override int CalculateAggroLevelToTarget(GameLiving target)
 		{
 			// only attack if target is green+ to OWNER; always attack higher levels regardless of CON
-			if (GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false || Owner.IsObjectGreyCon(target))
+			if (DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, target, true) == false || Owner.IsObjectGreyCon(target))
 				return 0;
 
 			return AggroLevel > 100 ? 100 : AggroLevel;
@@ -814,7 +817,7 @@ namespace DawnOfLight.AI.Brain
 			{
 				if (m_orderAttackTarget.IsAlive &&
 				    m_orderAttackTarget.ObjectState == GameObject.eObjectState.Active &&
-				    GameServer.GameServer.ServerRules.IsAllowedToAttack(this.Body, m_orderAttackTarget, true))
+				    DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(this.Body, m_orderAttackTarget, true))
 				{
 					return m_orderAttackTarget;
 				}
@@ -834,7 +837,7 @@ namespace DawnOfLight.AI.Brain
 					    living.IsAlive == false ||
 					    living.ObjectState != GameObject.eObjectState.Active ||
 					    Body.GetDistanceTo(living, 0) > MAX_AGGRO_LIST_DISTANCE ||
-					    GameServer.GameServer.ServerRules.IsAllowedToAttack(this.Body, living, true) == false)
+					    DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(this.Body, living, true) == false)
 					{
 						removable.Add(living);
 					}
@@ -871,7 +874,7 @@ namespace DawnOfLight.AI.Brain
                 if ((owner_npc.IsCasting || owner_npc.IsAttacking) &&
                     owner_npc.TargetObject != null &&
                     owner_npc.TargetObject is GameLiving &&
-                    GameServer.GameServer.ServerRules.IsAllowedToAttack(owner_npc, owner_npc.TargetObject as GameLiving, false))
+                    DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(owner_npc, owner_npc.TargetObject as GameLiving, false))
                 {
 
                     if (!CheckSpells(eCheckSpellType.Offensive))

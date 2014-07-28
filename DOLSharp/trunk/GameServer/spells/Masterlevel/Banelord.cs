@@ -1,29 +1,32 @@
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.PropertyCalculators;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Spells
-{
-    //http://www.camelotherald.com/masterlevels/ma.php?ml=Banelord
-    //shared timer 1
+namespace DawnOfLight.GameServer.Spells.Masterlevel
+{ //http://www.camelotherald.com/masterlevels/ma.php?ml=Banelord
+//shared timer 1
     #region Banelord-1
     [SpellHandler("CastingSpeedDebuff")]
     public class CastingSpeedDebuff : MasterlevelDebuffHandling
     {
         public override eProperty Property1 { get { return eProperty.CastingSpeed; } }
 		
-		public override void ApplyEffectOnTarget(GameLiving target, double effectiveness)
-		{
-			base.ApplyEffectOnTarget(target, effectiveness);
-			target.StartInterruptTimer(target.SpellInterruptDuration, AttackData.eAttackType.Spell, Caster);
-		}
+        public override void ApplyEffectOnTarget(GameLiving target, double effectiveness)
+        {
+            base.ApplyEffectOnTarget(target, effectiveness);
+            target.StartInterruptTimer(target.SpellInterruptDuration, AttackData.eAttackType.Spell, Caster);
+        }
 
         // constructor
         public CastingSpeedDebuff(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
     }
     #endregion
 
-    //shared timer 5 for ml2 - shared timer 3 for ml8
+//shared timer 5 for ml2 - shared timer 3 for ml8
     #region Banelord-2/8
     [SpellHandler("PBAEDamage")]
     public class PBAEDamage : MasterlevelHandling
@@ -101,7 +104,7 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //shared timer 3
+//shared timer 3
     #region Banelord-3
     [SpellHandler("Oppression")]
     public class OppressionSpellHandler : MasterlevelHandling
@@ -124,7 +127,7 @@ namespace DawnOfLight.GameServer.Spells
             base.OnEffectStart(effect);
             if (effect.Owner is GamePlayer)
                 ((GamePlayer)effect.Owner).UpdateEncumberance();
-			effect.Owner.StartInterruptTimer(effect.Owner.SpellInterruptDuration, AttackData.eAttackType.Spell, Caster);
+            effect.Owner.StartInterruptTimer(effect.Owner.SpellInterruptDuration, AttackData.eAttackType.Spell, Caster);
         }
 
         public override void ApplyEffectOnTarget(GameLiving target, double effectiveness)
@@ -145,7 +148,7 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //shared timer 1
+//shared timer 1
     #region Banelord-4
     [SpellHandler("MLFatDebuff")]
     public class MLFatDebuffHandler : MasterlevelDebuffHandling
@@ -165,7 +168,7 @@ namespace DawnOfLight.GameServer.Spells
 
         public override void OnEffectStart(GameSpellEffect effect)
         {
-			effect.Owner.StartInterruptTimer(effect.Owner.SpellInterruptDuration, AttackData.eAttackType.Spell, Caster);
+            effect.Owner.StartInterruptTimer(effect.Owner.SpellInterruptDuration, AttackData.eAttackType.Spell, Caster);
             base.OnEffectStart(effect);
         }
 
@@ -179,7 +182,7 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //shared timer 5
+//shared timer 5
     #region Banelord-5
     [SpellHandler("MissHit")]
     public class MissHit : MasterlevelBuffHandling
@@ -191,7 +194,7 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //shared timer 1
+//shared timer 1
     #region Banelord-6
     #region ML6Snare
     [SpellHandler("MLUnbreakableSnare")]
@@ -329,7 +332,7 @@ namespace DawnOfLight.GameServer.Spells
     #endregion
     #endregion
 
-    //shared timer 3
+//shared timer 3
     #region Banelord-7
     [SpellHandler("BLToHit")]
     public class BLToHit : MasterlevelBuffHandling
@@ -341,7 +344,7 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //shared timer 5
+//shared timer 5
     #region Banelord-9
     [SpellHandler("EffectivenessDebuff")]
     public class EffectivenessDeBuff : MasterlevelHandling
@@ -395,7 +398,7 @@ namespace DawnOfLight.GameServer.Spells
     }
     #endregion
 
-    //no shared timer
+//no shared timer
     #region Banelord-10
     [SpellHandler("Banespike")]
     public class BanespikeHandler : MasterlevelBuffHandling
@@ -405,12 +408,9 @@ namespace DawnOfLight.GameServer.Spells
         public BanespikeHandler(GameLiving caster, Spell spell, SpellLine line) : base(caster, spell, line) { }
     }
     #endregion
-}
 
-#region MisshitCalc
+    #region MisshitCalc
 
-namespace DawnOfLight.GameServer.PropertyCalc
-{
     /// <summary>
     /// The melee damage bonus percent calculator
     ///
@@ -432,6 +432,6 @@ namespace DawnOfLight.GameServer.PropertyCalc
                 + living.BuffBonusCategory4[(int)property]);
         }
     }
-}
 
-#endregion
+    #endregion
+}

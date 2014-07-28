@@ -1,6 +1,7 @@
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// A class for individual NPC inventories

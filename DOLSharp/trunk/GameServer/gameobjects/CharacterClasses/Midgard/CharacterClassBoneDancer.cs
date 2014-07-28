@@ -17,10 +17,11 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Bonedancer;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CharacterClasses.Midgard
 {
 	/// <summary>
 	/// The Bonedancer character class.

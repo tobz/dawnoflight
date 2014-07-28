@@ -1,8 +1,10 @@
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Packets.Server;
 
-namespace DawnOfLight.GameServer.Keeps
+namespace DawnOfLight.GameServer.GameObjects.Keeps.Guards
 {
 	/// <summary>
 	/// Class for the Lord Guard

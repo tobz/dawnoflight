@@ -20,8 +20,7 @@
 using System.Reflection;
 using log4net;
 
-
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
     [PacketLib(1111, GameClient.eClientVersion.Version1111)]
     public class PacketLib1111 : PacketLib1110

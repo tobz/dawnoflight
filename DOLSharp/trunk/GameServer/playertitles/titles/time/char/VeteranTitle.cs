@@ -23,10 +23,12 @@
  *   - Sorted
  *   - Added missing (+language support)
  */
-using System;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.PlayerTitles
+using System;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+
+namespace DawnOfLight.GameServer.PlayerTitles.titles.time.@char
 {
 	/// <summary>
 	/// "Veteran" title granted to all chars that play for at least 180 days.

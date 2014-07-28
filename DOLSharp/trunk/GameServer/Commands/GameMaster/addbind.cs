@@ -16,12 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Language;
 using DawnOfLight.GameServer.World;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	[Command(
 		"&addbind",

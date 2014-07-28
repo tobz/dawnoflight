@@ -1,9 +1,12 @@
 //Andraste v2.0 -Vico
 
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Archery
 {
 	[SpellHandler("SiegeArrow")]
 	public class SiegeArrow : BoltSpellHandler
@@ -20,7 +23,7 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if (Caster != null && Caster is GamePlayer && Caster.AttackWeapon != null && (Caster.AttackWeapon.Object_Type == 15 || Caster.AttackWeapon.Object_Type == 18 || Caster.AttackWeapon.Object_Type == 9))
 			{
-				if (!(selectedTarget is GameKeepComponent || selectedTarget is Keeps.GameKeepDoor))
+				if (!(selectedTarget is GameKeepComponent || selectedTarget is GameKeepDoor))
 				{
 					MessageToCaster("You must have a Keep Component targeted for this spell!", eChatType.CT_Spell);
 					return false;
@@ -33,7 +36,7 @@ namespace DawnOfLight.GameServer.Spells
 		
 		public override void FinishSpellCast(GameLiving target)
 		{
-			if (!(target is GameKeepComponent || target is Keeps.GameKeepDoor))
+			if (!(target is GameKeepComponent || target is GameKeepDoor))
 			{
 				MessageToCaster("Your target must be a Keep Component!", eChatType.CT_SpellResisted);
 				return;
@@ -55,7 +58,7 @@ namespace DawnOfLight.GameServer.Spells
 
 		public override int CalculateToHitChance(GameLiving target)
 		{
-			if ((target is GameKeepComponent || target is Keeps.GameKeepDoor))
+			if ((target is GameKeepComponent || target is GameKeepDoor))
 				return 100;
 
 			return 0;

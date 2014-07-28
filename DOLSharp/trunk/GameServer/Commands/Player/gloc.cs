@@ -19,7 +19,7 @@
 
 using DawnOfLight.GameServer.World.Instance;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command("&gloc", //command to handle
 		ePrivLevel.Player, //minimum privelege level

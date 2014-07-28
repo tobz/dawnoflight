@@ -21,9 +21,12 @@
  * - Class for turret, like 1.90 EU official servers: Turret isn't interrupted
  */
 
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain.Animist;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.Animist
 {
 	public class TurretPet : GamePet
 	{

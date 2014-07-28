@@ -17,7 +17,10 @@
  *
  */
 
-namespace DawnOfLight.GameServer.PropertyCalc
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.PropertyCalculators
 {
 	/// <summary>
 	/// The block chance calculator. Returns 0 .. 1000 chance.

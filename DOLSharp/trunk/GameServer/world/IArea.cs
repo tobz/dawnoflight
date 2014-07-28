@@ -17,10 +17,11 @@
  *
  */
 
-using DawnOfLight.Events;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.World
 {	
 	/// <summary>
 	/// Interface for areas within game, extend this or AbstractArea if you need to define a new area shape that isn't already defined.

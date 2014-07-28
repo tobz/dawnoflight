@@ -18,9 +18,15 @@
  */
 using System;
 using System.Collections.Generic;
-using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.effects;
+using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Spells
 {
@@ -61,7 +67,7 @@ namespace DawnOfLight.GameServer.Spells
 			if (target is GamePlayer && (target as GamePlayer).IsRiding)
 				return;
 
-			if (target is Keeps.GameKeepGuard)
+			if (target is GameKeepGuard)
 				return;
 
 			// Graveen: archery speed shot

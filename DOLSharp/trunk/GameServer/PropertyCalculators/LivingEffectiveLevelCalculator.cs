@@ -17,9 +17,10 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalculators
 {
 	/// <summary>
 	/// The Living Effective Level calculator

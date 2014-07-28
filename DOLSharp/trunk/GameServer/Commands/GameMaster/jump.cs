@@ -16,13 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.GameServer.Housing;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
-using System.Collections.Generic;
 
-namespace DawnOfLight.GameServer.Commands
+using System;
+using System.Collections.Generic;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	[Command("&jump",
 		ePrivLevel.GM,

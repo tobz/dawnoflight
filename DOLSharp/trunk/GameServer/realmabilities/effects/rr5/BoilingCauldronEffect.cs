@@ -19,9 +19,15 @@
 
 using System;
 using System.Collections.Generic;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.handlers.rr5;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
 
     public class BoilingCauldronEffect : TimedEffect
@@ -38,7 +44,7 @@ namespace DawnOfLight.GameServer.Effects
         private GameStaticItem Cauldron;					// The cauldron
 
         public BoilingCauldronEffect()
-            : base(RealmAbilities.BoilingCauldronAbility.DURATION)
+            : base(BoilingCauldronAbility.DURATION)
         { }
 
         public override void Start(GameLiving target)
@@ -79,7 +85,7 @@ namespace DawnOfLight.GameServer.Effects
             Cauldron.Z = EffectOwner.Z;
             Cauldron.AddToWorld();
 
-            new RegionTimer(EffectOwner, new RegionTimerCallback(CauldronCallBack), RealmAbilities.BoilingCauldronAbility.DURATION - 1000);
+            new RegionTimer(EffectOwner, new RegionTimerCallback(CauldronCallBack), BoilingCauldronAbility.DURATION - 1000);
         }
 
         private int CauldronCallBack(RegionTimer timer)

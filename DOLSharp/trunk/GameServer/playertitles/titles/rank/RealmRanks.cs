@@ -1,6 +1,6 @@
-using DawnOfLight.GameServer.PlayerTitles;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer.Scripts
+namespace DawnOfLight.GameServer.PlayerTitles.titles.rank
 {
 	#region RealmRanks Titles
 	#region Albion

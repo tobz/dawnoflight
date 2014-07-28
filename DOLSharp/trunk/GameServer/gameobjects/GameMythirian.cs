@@ -17,11 +17,11 @@
 
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.Spells;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects
 {
         public class GameMythirian : GameInventoryItem
         {

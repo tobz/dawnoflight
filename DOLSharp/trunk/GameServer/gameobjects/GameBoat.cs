@@ -18,8 +18,10 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects
 {
 	public class GameBoat : GameMovingObject
 	{

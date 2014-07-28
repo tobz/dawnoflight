@@ -16,12 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.Atlantis
 {
     /// <summary>
     /// Base class for all Atlantis scholar type NPCs.

@@ -1,4 +1,6 @@
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.SkillHandler
 {

@@ -1,7 +1,10 @@
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.effects;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
     public class DivineInterventionAbility : TimedRealmAbility
 	{

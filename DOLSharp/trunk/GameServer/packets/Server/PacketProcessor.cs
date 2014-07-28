@@ -19,7 +19,7 @@
 #define LOGACTIVESTACKS
 
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Sockets;
 using System.Reflection;
@@ -28,13 +28,16 @@ using System.Threading;
 using System.Timers;
 using DawnOfLight.Base;
 using DawnOfLight.Base.Network;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Scripts;
 using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
-using Timer=System.Timers.Timer;
-using System.Collections.Generic;
+using DictionaryEntry = System.Collections.DictionaryEntry;
+using Hashtable = System.Collections.Hashtable;
+using Timer = System.Timers.Timer;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	/// <summary>
 	/// This class handles the packets, receiving and sending

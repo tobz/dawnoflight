@@ -25,14 +25,16 @@ using System.Net;
 using System.Reflection;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.Quests;
-using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
+using DawnOfLight.GameServer.Spells.Warlock;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
-using DawnOfLight.Language;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	[PacketLib(173, GameClient.eClientVersion.Version173)]
 	public class PacketLib173 : PacketLib172

@@ -1,4 +1,4 @@
-﻿namespace DawnOfLight.AI.Brain
+﻿namespace DawnOfLight.GameServer.AI.Brain.Npcs
 {
     public interface IAggressiveBrain
     {

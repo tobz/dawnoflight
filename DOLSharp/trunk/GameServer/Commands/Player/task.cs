@@ -26,10 +26,11 @@
  */
 
 using System.Collections.Generic;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Quests.Tasks;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	//[CommandAttribute("&task", ePrivLevel.Player, "Ask for a Task from Guards or Merchants", "/task")]
 	[Command("&task", ePrivLevel.Player, "Show the actual task", "/task")]

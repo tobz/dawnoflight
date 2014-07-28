@@ -18,12 +18,14 @@
  */
 
 using System;
-using System.Collections;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.Spells;
 using System.Collections.Generic;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
+using Hashtable = System.Collections.Hashtable;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 {
     /// <summary>
     /// Minion Rescue RA

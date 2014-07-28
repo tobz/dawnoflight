@@ -16,10 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer
+using System;
+
+namespace DawnOfLight.GameServer.World
 {
 	/// <summary>
 	/// Defines a 3D point

@@ -18,9 +18,9 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Keeps;
 
-
-namespace DawnOfLight.GameServer.Keeps
+namespace DawnOfLight.GameServer.GameObjects.Keeps
 {
 	public interface IKeepItem
 	{

@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
     /// <summary>
     /// Effect handler for Arms Length
@@ -49,7 +53,7 @@ namespace DawnOfLight.GameServer.Effects
                 return;
             GamePlayer target = afea.AttackData.Target as GamePlayer;
             
-            Database.InventoryItem armor = target.Inventory.GetItem((eInventorySlot)((int)afea.AttackData.ArmorHitLocation));
+            DawnOfLight.Database.InventoryItem armor = target.Inventory.GetItem((eInventorySlot)((int)afea.AttackData.ArmorHitLocation));
             
             if (armor == null || armor.SPD_ABS == 0)
                 return;

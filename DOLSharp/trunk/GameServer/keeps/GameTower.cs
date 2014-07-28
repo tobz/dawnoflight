@@ -17,7 +17,8 @@
  *
  */
 
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 
 namespace DawnOfLight.GameServer.Keeps
 {

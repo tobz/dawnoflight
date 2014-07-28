@@ -1,4 +1,6 @@
-namespace DawnOfLight.GameServer.Commands
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 		"&show",

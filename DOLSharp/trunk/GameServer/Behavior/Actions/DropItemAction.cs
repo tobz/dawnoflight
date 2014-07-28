@@ -16,14 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Behaviour.Attributes;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Behavior.Attributes;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
 
-namespace DawnOfLight.GameServer.Behaviour.Actions
+namespace DawnOfLight.GameServer.Behavior.Actions
 {
     [Action(ActionType = eActionType.DropItem)]
     public class DropItemAction : AbstractAction<ItemTemplate,Unused>

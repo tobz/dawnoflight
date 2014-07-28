@@ -1,9 +1,10 @@
-using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
 using System.Collections;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects
 {
     public class GameGuard : GameNPC
     {

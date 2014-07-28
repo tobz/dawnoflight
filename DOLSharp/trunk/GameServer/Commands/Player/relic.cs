@@ -16,10 +16,13 @@
 * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 *
 */
-using System.Collections.Generic;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.Commands
+using System.Collections.Generic;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Keeps.Relics;
+using DawnOfLight.GameServer.Language;
+
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 	"&relics",

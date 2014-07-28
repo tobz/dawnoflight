@@ -18,8 +18,10 @@
  */
 using System;
 using System.Reflection;
-using DawnOfLight.Events;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Scripts;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
 namespace DawnOfLight.GameServer.GameEvents

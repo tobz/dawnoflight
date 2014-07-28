@@ -17,7 +17,9 @@
  *
  */
 
-namespace DawnOfLight.GameServer
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.GameObjects
 {
 	/// <summary>
 	/// Holds a static item in the world that will disappear after some interval

@@ -1,5 +1,7 @@
 ﻿using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 
 namespace DawnOfLight.GameServer.Atlantis
 {

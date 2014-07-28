@@ -16,15 +16,17 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 using log4net;
-using System.Collections.Generic;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// the LootMgr holds pointers to all LootGenerators at 

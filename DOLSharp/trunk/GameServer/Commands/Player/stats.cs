@@ -20,7 +20,9 @@
 // Eden - Darwin 06/10/2008 - Complete /stats
 // Tolakram - moved most code to PlayerStatistics to enable custom stats display
 
-namespace DawnOfLight.GameServer.Commands
+using DawnOfLight.GameServer.GameObjects;
+
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 		"&stats",

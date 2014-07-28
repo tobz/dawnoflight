@@ -18,8 +18,10 @@
  */
 
 using System.Collections;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP,0x6A^168,"Checks for bad character names")]
 	public class BadNameCheckRequestHandler : IPacketHandler

@@ -17,13 +17,17 @@
 *
 */
 
-namespace DawnOfLight.GameServer.Spells
-{
-	using System;
-	using Database;
-	using Events;
-    using DawnOfLight.GameServer.PacketHandler;
+using System;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Spells.Masterlevel;
+using DawnOfLight.GameServer.Utilities;
 
+namespace DawnOfLight.GameServer.Spells.Artifacts
+{
     [SpellHandler("BeltOfMoon")]
 	public class BeltOfMoon : SummonItemSpellHandler
 	{

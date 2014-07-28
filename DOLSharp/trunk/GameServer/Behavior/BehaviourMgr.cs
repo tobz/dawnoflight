@@ -16,14 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Reflection;
-using DawnOfLight.GameServer.Behaviour.Attributes;
+using DawnOfLight.GameServer.Behavior.Attributes;
 using log4net;
 
-namespace DawnOfLight.GameServer.Behaviour
+namespace DawnOfLight.GameServer.Behavior
 {				
 	/// <summary>
 	/// Declares the behaviours managed, all behaviourtypes instances

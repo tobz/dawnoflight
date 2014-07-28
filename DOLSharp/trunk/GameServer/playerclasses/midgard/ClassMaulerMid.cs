@@ -17,9 +17,13 @@
  *
  */
 
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CharacterClasses;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClasses.midgard
 {
 	/// <summary>
 	/// 

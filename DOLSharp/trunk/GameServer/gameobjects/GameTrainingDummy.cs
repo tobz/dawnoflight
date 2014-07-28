@@ -17,10 +17,11 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects
 {
 	/// <summary>
 	/// Training Dummy: Can't move, fight back, or die

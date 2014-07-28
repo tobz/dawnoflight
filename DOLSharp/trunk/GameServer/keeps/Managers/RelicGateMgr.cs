@@ -17,7 +17,10 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Keeps
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Keeps.Managers
 {
 	public class RelicGateMgr
 	{

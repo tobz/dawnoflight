@@ -20,10 +20,18 @@ using System;
 using System.Reflection;
 using System.Collections;
 using System.Text;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Events.Keep;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using DawnOfLight.GameServer.World.Instance;
+using Hashtable = System.Collections.Hashtable;
 
 namespace DawnOfLight.GameServer.Keeps
 {

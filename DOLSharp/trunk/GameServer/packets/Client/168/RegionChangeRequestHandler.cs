@@ -16,15 +16,20 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using System.Collections;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Quests.Missions;
 using DawnOfLight.GameServer.ServerRules;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
+using Hashtable = System.Collections.Hashtable;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerRegionChangeRequest, ClientStatus.PlayerInGame)]
 	public class PlayerRegionChangeRequestHandler : IPacketHandler

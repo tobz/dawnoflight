@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	/// <summary>
 	/// Command handler for the /bind command

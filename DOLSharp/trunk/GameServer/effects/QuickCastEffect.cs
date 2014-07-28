@@ -18,8 +18,10 @@
  */
 
 using System.Collections.Generic;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Spells;
 
 namespace DawnOfLight.GameServer.Effects
 {
@@ -36,7 +38,7 @@ namespace DawnOfLight.GameServer.Effects
 			base.Start(living);
 			if (m_owner is GamePlayer)
 				(m_owner as GamePlayer).Out.SendMessage(LanguageMgr.GetTranslation((m_owner as GamePlayer).Client, "Effects.QuickCastEffect.YouActivatedQC"), eChatType.CT_System, eChatLoc.CL_SystemWindow);
-			m_owner.TempProperties.removeProperty(Spells.SpellHandler.INTERRUPT_TIMEOUT_PROPERTY);
+			m_owner.TempProperties.removeProperty(SpellHandler.INTERRUPT_TIMEOUT_PROPERTY);
 		}
 
 		/// <summary>

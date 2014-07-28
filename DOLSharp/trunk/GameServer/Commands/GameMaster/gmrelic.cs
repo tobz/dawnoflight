@@ -18,8 +18,10 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	[Command(
 		"&gmrelic",

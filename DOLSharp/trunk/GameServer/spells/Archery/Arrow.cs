@@ -16,15 +16,20 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Keeps.Relics;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Archery
 {
 	/// <summary>
 	/// Spell Handler for firing arrows

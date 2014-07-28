@@ -17,9 +17,12 @@
  *
  */
 
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0x0E, "Handles housing decoration rotation")]
 	public class HousingDecorationRotateHandler : IPacketHandler

@@ -24,11 +24,11 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer;
 using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.Language
+namespace DawnOfLight.GameServer.Language
 {
     public class LanguageMgr
     {
@@ -65,7 +65,7 @@ namespace DawnOfLight.Language
         /// <summary>
         /// Give a way to change or relocate the lang files
         /// </summary>
-        private static string LangPath = Path.Combine(GameServer.GameServer.Instance.Configuration.RootDirectory, "languages");
+        private static string LangPath = Path.Combine(DawnOfLight.GameServer.GameServer.Instance.Configuration.RootDirectory, "languages");
         #endregion Variables
 
         #region Properties
@@ -74,7 +74,7 @@ namespace DawnOfLight.Language
         /// </summary>
         public static string DefaultLanguage
         {
-            get { return GameServer.ServerProperties.Properties.SERV_LANGUAGE; } // EN by default.
+            get { return DawnOfLight.GameServer.ServerProperties.Properties.SERV_LANGUAGE; } // EN by default.
         }
 
         /// <summary>
@@ -166,9 +166,9 @@ namespace DawnOfLight.Language
                 int newEntries = 0;
                 int updatedEntries = 0;
 
-                IList<DBLanguageSystem> dbos = GameServer.GameServer.Database.SelectAllObjects<DBLanguageSystem>();
+                IList<DBLanguageSystem> dbos = DawnOfLight.GameServer.GameServer.Database.SelectAllObjects<DBLanguageSystem>();
 
-                if (GameServer.ServerProperties.Properties.UPDATE_EXISTING_DB_SYSTEM_SENTENCES_FROM_FILES)
+                if (DawnOfLight.GameServer.ServerProperties.Properties.UPDATE_EXISTING_DB_SYSTEM_SENTENCES_FROM_FILES)
                 {
                     foreach (string[] sentence in fileSentences)
                     {
@@ -184,7 +184,7 @@ namespace DawnOfLight.Language
                             if (dbo.Text != sentence[TEXT])
                             {
                                 dbo.Text = sentence[TEXT];
-                                GameServer.GameServer.Database.SaveObject(dbo); // Please be sure to use the UTF-8 format for your language files, otherwise
+                                DawnOfLight.GameServer.GameServer.Database.SaveObject(dbo); // Please be sure to use the UTF-8 format for your language files, otherwise
                                 // some database rows will be updated on each server start, because one char
                                 // differs from the one within the database.
                                 updatedEntries++;
@@ -204,7 +204,7 @@ namespace DawnOfLight.Language
                             dbo.Text = sentence[TEXT];
                             dbo.Language = sentence[LANGUAGE];
 
-                            GameServer.GameServer.Database.AddObject(dbo);
+                            DawnOfLight.GameServer.GameServer.Database.AddObject(dbo);
                             RegisterLanguageDataObject(dbo);
                             newEntries++;
 
@@ -237,7 +237,7 @@ namespace DawnOfLight.Language
                             dbo.Text = sentence[TEXT];
                             dbo.Language = sentence[LANGUAGE];
 
-                            GameServer.GameServer.Database.AddObject(dbo);
+                            DawnOfLight.GameServer.GameServer.Database.AddObject(dbo);
                             RegisterLanguageDataObject(dbo);
                             newEntries++;
 
@@ -288,10 +288,10 @@ namespace DawnOfLight.Language
                 log.Info("[Language-Manager] Loading object translations...");
 
             IList<LanguageDataObject> lngObjs = new List<LanguageDataObject>();
-            lngObjs.AddRange((IList<LanguageDataObject>)GameServer.GameServer.Database.SelectAllObjects<DBLanguageArea>());
-            lngObjs.AddRange((IList<LanguageDataObject>)GameServer.GameServer.Database.SelectAllObjects<DBLanguageGameObject>());
-            lngObjs.AddRange((IList<LanguageDataObject>)GameServer.GameServer.Database.SelectAllObjects<DBLanguageNPC>());
-            lngObjs.AddRange((IList<LanguageDataObject>)GameServer.GameServer.Database.SelectAllObjects<DBLanguageZone>());
+            lngObjs.AddRange((IList<LanguageDataObject>)DawnOfLight.GameServer.GameServer.Database.SelectAllObjects<DBLanguageArea>());
+            lngObjs.AddRange((IList<LanguageDataObject>)DawnOfLight.GameServer.GameServer.Database.SelectAllObjects<DBLanguageGameObject>());
+            lngObjs.AddRange((IList<LanguageDataObject>)DawnOfLight.GameServer.GameServer.Database.SelectAllObjects<DBLanguageNPC>());
+            lngObjs.AddRange((IList<LanguageDataObject>)DawnOfLight.GameServer.GameServer.Database.SelectAllObjects<DBLanguageZone>());
 
             foreach (LanguageDataObject lngObj in lngObjs)
                 RegisterLanguageDataObject(lngObj);

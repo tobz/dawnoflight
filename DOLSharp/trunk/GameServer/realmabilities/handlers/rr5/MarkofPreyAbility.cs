@@ -18,11 +18,12 @@
  */
 
 using System.Collections;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.Effects;
 using System.Collections.Generic;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 {
     public class MarkOfPreyAbility : RR5RealmAbility
 	{

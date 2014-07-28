@@ -17,12 +17,14 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Database;
 using System.Collections;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.Dragons
 {
 	/// <summary>
 	/// The Hibernia dragon.

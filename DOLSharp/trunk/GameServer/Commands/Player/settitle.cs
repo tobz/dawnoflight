@@ -18,10 +18,10 @@
  */
 
 using System.Collections;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.PlayerTitles;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 		 "&settitle",

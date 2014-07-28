@@ -23,11 +23,14 @@
  *   - Sorted
  *   - Added missing (+language support)
  */
-using System;
-using DawnOfLight.Events;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.PlayerTitles
+using System;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+
+namespace DawnOfLight.GameServer.PlayerTitles.titles.privlevel
 {
 	/// <summary>
 	/// Example...

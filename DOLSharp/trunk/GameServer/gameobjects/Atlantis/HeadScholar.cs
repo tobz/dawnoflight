@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.Atlantis
 {
     /// <summary>
     /// Head scholar class.

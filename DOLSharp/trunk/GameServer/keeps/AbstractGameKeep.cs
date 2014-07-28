@@ -18,13 +18,20 @@
  */
 using System;
 using System.Reflection;
-using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Keep;
+using DawnOfLight.GameServer.Events.World;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 using log4net;
+using Hashtable = System.Collections.Hashtable;
 
 namespace DawnOfLight.GameServer.Keeps
 {

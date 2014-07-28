@@ -18,8 +18,9 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
 	/// <summary>
 	/// Wild power ability, critical hit chance bonus to damage spells (SpellHandler checks for it)

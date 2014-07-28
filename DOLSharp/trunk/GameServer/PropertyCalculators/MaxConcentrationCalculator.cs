@@ -17,7 +17,9 @@
  *
  */
 
-namespace DawnOfLight.GameServer.PropertyCalc
+using DawnOfLight.GameServer.GameObjects;
+
+namespace DawnOfLight.GameServer.PropertyCalculators
 {
 	/// <summary>
 	/// The Concentration point calculator

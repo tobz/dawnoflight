@@ -24,10 +24,12 @@
  *   - Added missing (+language support)
  */
 
-using DawnOfLight.Events;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
 
-namespace DawnOfLight.GameServer.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles.titles.kills.dragon
 {
 	/// <summary>
 	/// "Dragon Slayer" title granted to everyone who kills the dragon 100+ times.

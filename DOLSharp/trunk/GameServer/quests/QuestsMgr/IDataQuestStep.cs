@@ -1,4 +1,6 @@
-﻿namespace DawnOfLight.GameServer.Quests
+﻿using DawnOfLight.GameServer.GameObjects;
+
+namespace DawnOfLight.GameServer.Quests.QuestsMgr
 {
 	public enum eStepCheckType : int
 	{

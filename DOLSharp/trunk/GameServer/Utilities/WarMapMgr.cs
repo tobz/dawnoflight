@@ -1,9 +1,10 @@
 using System;
-using System.Reflection;
 using System.Collections.Generic;
+using System.Reflection;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
     public class WarMapMgr
     {   

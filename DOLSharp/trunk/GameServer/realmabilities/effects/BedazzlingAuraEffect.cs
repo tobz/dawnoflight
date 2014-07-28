@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
-using DawnOfLight.Events;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.effects
 {
 	/// <summary>
 	/// Effect handler for Barrier Of Fortitude
@@ -30,7 +33,7 @@ namespace DawnOfLight.GameServer.RealmAbilities
 		{
 			m_value = value;
 
-			if (living.TempProperties.getProperty(RealmAbilities.BarrierOfFortitudeAbility.BofBaSb, false))
+			if (living.TempProperties.getProperty(BarrierOfFortitudeAbility.BofBaSb, false))
 				return;
 
 			base.Start(living);
@@ -47,7 +50,7 @@ namespace DawnOfLight.GameServer.RealmAbilities
 				GameEventMgr.AddHandler(living, GamePlayerEvent.Quit, new DOLEventHandler(PlayerLeftWorld));
 				(living as GamePlayer).Out.SendCharResistsUpdate();
 			}
-			living.TempProperties.setProperty(RealmAbilities.BarrierOfFortitudeAbility.BofBaSb, true);
+			living.TempProperties.setProperty(BarrierOfFortitudeAbility.BofBaSb, true);
 		}
 
 		/// <summary>
@@ -82,7 +85,7 @@ namespace DawnOfLight.GameServer.RealmAbilities
 				(m_owner as GamePlayer).Out.SendCharResistsUpdate();
 				GameEventMgr.RemoveHandler(m_owner, GamePlayerEvent.Quit, new DOLEventHandler(PlayerLeftWorld));
 			}
-			m_owner.TempProperties.removeProperty(RealmAbilities.BarrierOfFortitudeAbility.BofBaSb);
+			m_owner.TempProperties.removeProperty(BarrierOfFortitudeAbility.BofBaSb);
 		}
 
 

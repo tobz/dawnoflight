@@ -19,7 +19,7 @@
 
 using System;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands
 {
     /// <summary>
     ///     Marks a class as a command handler

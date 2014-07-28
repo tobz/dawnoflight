@@ -1,5 +1,6 @@
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Keeps

@@ -16,17 +16,20 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.Effects;
-using log4net;
 using System.Reflection;
+using DawnOfLight.GameServer.Effects.Necromancer;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Dragons;
+using DawnOfLight.GameServer.Utilities;
+using log4net;
 
-
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain
 {
 	/// <summary>
 	/// AI for dragon like NPCs.
@@ -112,7 +115,7 @@ namespace DawnOfLight.AI.Brain
 				if (!npc.IsAlive || npc.ObjectState != GameObject.eObjectState.Active)
 					continue;
 
-				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
+				if (!DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
 					continue;
 
 				if (m_aggroTable.ContainsKey(npc))

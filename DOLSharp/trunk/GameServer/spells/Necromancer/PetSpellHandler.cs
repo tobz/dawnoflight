@@ -16,13 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.Spells
+using System;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Spells.Necromancer
 {
 	/// <summary>
 	/// Handler for spells that are issued by the player, but cast

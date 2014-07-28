@@ -17,11 +17,15 @@
  *
  */
 
-using System.Collections.Generic;
-using DawnOfLight.Events;
 using System;
+using System.Collections.Generic;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
     public class SputinsLegacyEffect : TimedEffect
     {

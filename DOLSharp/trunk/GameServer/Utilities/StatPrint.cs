@@ -16,18 +16,21 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using DawnOfLight.Base;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Scripts;
+using DawnOfLight.GameServer.Events.Server;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer.GameEvents
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// 
@@ -51,14 +54,14 @@ namespace DawnOfLight.GameServer.GameEvents
 		private static PerformanceCounter m_memoryPages;
 		private static PerformanceCounter m_physycalDisk;
 
-		private static Hashtable m_timerStatsByMgr;
+		private static System.Collections.Hashtable m_timerStatsByMgr;
 
 		[GameServerStartedEvent]
 		public static void OnScriptCompiled(DOLEvent e, object sender, EventArgs args)
 		{
 			lock (typeof(StatPrint))
 			{
-				m_timerStatsByMgr = new Hashtable();
+				m_timerStatsByMgr = new System.Collections.Hashtable();
 				m_timer = new Timer(new TimerCallback(PrintStats), null, 10000, 0);
 
 				// Create performance counters
@@ -78,7 +81,7 @@ namespace DawnOfLight.GameServer.GameEvents
 			Process process = Process.GetCurrentProcess();
 			int id = process.Id;
 			PerformanceCounterCategory perfCounterCat = new PerformanceCounterCategory("Process");
-			foreach(DictionaryEntry entry in perfCounterCat.ReadCategory()["id process"])
+			foreach(System.Collections.DictionaryEntry entry in perfCounterCat.ReadCategory()["id process"])
 			{
 				string processCounterName = (string)entry.Key;
 				if (((InstanceData)entry.Value).RawValue == id)

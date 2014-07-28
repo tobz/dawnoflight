@@ -1,11 +1,13 @@
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PropertyCalc;
-using DawnOfLight.GameServer.Spells;
 using System.Collections.Generic;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.PropertyCalculators;
+using DawnOfLight.GameServer.RealmAbilities.effects;
+using DawnOfLight.GameServer.Spells;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
 	/// <summary>
 	/// Vanish realm ability

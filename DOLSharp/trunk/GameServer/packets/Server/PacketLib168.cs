@@ -23,21 +23,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Reflection;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Crafting;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CharacterClasses;
+using DawnOfLight.GameServer.GameObjects.Keeps;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Language;
 using DawnOfLight.GameServer.PlayerTitles;
-using DawnOfLight.GameServer.Quests;
-using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.Quests.Missions;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
+using DawnOfLight.GameServer.Quests.Tasks;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Styles;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
-using DawnOfLight.Language;
 using log4net;
+using Hashtable = System.Collections.Hashtable;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	[PacketLib(168, GameClient.eClientVersion.Version168)]
 	public class PacketLib168 : AbstractPacketLib, IPacketLib

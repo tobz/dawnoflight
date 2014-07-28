@@ -16,12 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Behaviour.Attributes;
-using DawnOfLight.GameServer.PacketHandler;
 
-namespace DawnOfLight.GameServer.Behaviour.Actions
+using System;
+using DawnOfLight.GameServer.Behavior.Attributes;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.Behavior.Actions
 {
     [Action(ActionType = eActionType.Animation, IsNullableQ = true)]
     public class AnimationAction : AbstractAction<eEmote,GameLiving>

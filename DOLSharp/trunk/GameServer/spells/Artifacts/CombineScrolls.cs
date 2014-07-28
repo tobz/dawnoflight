@@ -16,12 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
-using System.Collections;
 
-namespace DawnOfLight.GameServer.Spells
+using System;
+using System.Collections;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.Utilities.Atlantis;
+
+namespace DawnOfLight.GameServer.Spells.Artifacts
 {
     /// <summary>
     /// The spell that combines artifact scrolls.

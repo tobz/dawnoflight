@@ -1,4 +1,6 @@
-namespace DawnOfLight.GameServer
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.GameObjects.Theurgist
 {
 	public class TheurgistPet : GamePet
 	{

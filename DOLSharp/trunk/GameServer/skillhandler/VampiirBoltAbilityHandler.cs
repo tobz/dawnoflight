@@ -1,3 +1,5 @@
+using DawnOfLight.GameServer.Utilities;
+
 namespace DawnOfLight.GameServer.SkillHandler
 {
 	/// <summary>

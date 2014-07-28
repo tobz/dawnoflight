@@ -1,6 +1,8 @@
-﻿using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
+﻿using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Atlantis
 {

@@ -24,6 +24,8 @@ using System;
 using System.Collections;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.World.Instance
 {

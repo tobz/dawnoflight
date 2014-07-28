@@ -16,10 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System.Collections;
-using DawnOfLight.GameServer.PacketHandler;
 
-namespace DawnOfLight.GameServer.Commands
+using System.Collections;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command("&target", ePrivLevel.Player, "target a player by name", "/target <playerName>")]
 	public class TargetCommandHandler : AbstractCommandHandler, ICommandHandler

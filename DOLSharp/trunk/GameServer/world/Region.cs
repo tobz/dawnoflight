@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,14 +24,16 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Threading;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.World;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Keeps;
 using DawnOfLight.GameServer.ServerProperties;
-using DawnOfLight.GameServer.Utils;
-using DawnOfLight.GameServer.World;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
+using Hashtable = System.Collections.Hashtable;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.World
 {
 	/// <summary>
 	/// This class represents a region in DAOC. A region is everything where you

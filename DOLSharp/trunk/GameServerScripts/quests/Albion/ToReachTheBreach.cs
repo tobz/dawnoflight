@@ -27,9 +27,15 @@
  */
 using System;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.Events.Scripts;
+using DawnOfLight.GameServer.Events.World;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
-using DawnOfLight.Language;
 
 namespace DawnOfLight.GameServer.Quests.Albion
 {

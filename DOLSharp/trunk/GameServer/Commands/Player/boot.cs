@@ -1,7 +1,9 @@
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 	  "&boot",

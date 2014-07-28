@@ -1,10 +1,12 @@
 //Create by La Grande Bataille french freeshard
 //Free Scripts for DOL-France and DOLserver
 
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command("&horse", ePrivLevel.Player, "Horse emotes", "/horse <emote>")]
 	public class HorseEmoteCommandHandler : AbstractCommandHandler, ICommandHandler

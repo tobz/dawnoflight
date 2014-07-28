@@ -22,9 +22,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	[PacketLib(172, GameClient.eClientVersion.Version172)]
 	public class PacketLib172 : PacketLib171

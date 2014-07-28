@@ -19,7 +19,7 @@
 
 using DawnOfLight.GameServer.Housing;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	/// <summary>
 	/// Command handler to remove House player

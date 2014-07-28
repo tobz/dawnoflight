@@ -1,12 +1,15 @@
 using System.Collections.Generic;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.World;
-using DawnOfLight.Language;
 using System.Reflection;
+using DawnOfLight.GameServer.Events.Keep;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Keeps.Relics
 {
 	public class GameRelicPad : GameStaticItem
 	{

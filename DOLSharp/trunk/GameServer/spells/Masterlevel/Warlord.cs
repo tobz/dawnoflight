@@ -17,12 +17,15 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
-using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
 using System.Collections;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Spells.Bainshee;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Masterlevel
 {    
     //http://www.camelotherald.com/masterlevels/ma.php?ml=Warlord
     #region Warlord-1

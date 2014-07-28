@@ -17,7 +17,10 @@
  *
  */
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP,0x5C^168,"Handles crypt key requests")]
 	public class CryptKeyRequestHandler : IPacketHandler

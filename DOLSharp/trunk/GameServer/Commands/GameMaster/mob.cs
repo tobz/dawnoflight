@@ -16,22 +16,25 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.AI;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
 using DawnOfLight.GameServer.Housing;
-using DawnOfLight.GameServer.Movement;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Quests;
-using DawnOfLight.GameServer.Utils;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	[Command("&mob", //command to handle
 	     ePrivLevel.GM, //minimum privelege level
@@ -1246,10 +1249,10 @@ namespace DawnOfLight.GameServer.Commands
 				info.Add(" + NPCTemplate: " + "[" + targetMob.NPCTemplate.TemplateId + "] " + targetMob.NPCTemplate.Name);
 			}
 
-			if (targetMob is Keeps.IKeepItem)
+			if (targetMob is IKeepItem)
 			{
 				info.Add(" ");
-				Keeps.IKeepItem keepItem = targetMob as Keeps.IKeepItem;
+				IKeepItem keepItem = targetMob as IKeepItem;
 				if (keepItem.Component != null && keepItem.Component.Keep != null)
 				{
 					info.Add(" + KeepItem: " + keepItem.Component.Keep.Name);

@@ -1,8 +1,12 @@
 using System;
-using DawnOfLight.Events;
 using System.Collections.Generic;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.PropertyCalculators;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects
 {
 	/// <summary>
 	/// Effect handler for Barrier Of Fortitude
@@ -26,7 +30,7 @@ namespace DawnOfLight.GameServer.Effects
 			living.TempProperties.setProperty("Charging", true);
 			GameEventMgr.AddHandler(living, GameLivingEvent.AttackFinished, m_attackFinished);
 			GameEventMgr.AddHandler(living, GameLivingEvent.CastFinished, m_attackFinished);
-			living.BuffBonusMultCategory1.Set((int)eProperty.MaxSpeed, this, PropertyCalc.MaxSpeedCalculator.SPEED4);		
+			living.BuffBonusMultCategory1.Set((int)eProperty.MaxSpeed, this, MaxSpeedCalculator.SPEED4);		
 			if (living is GamePlayer)
 				(living as GamePlayer).Out.SendUpdateMaxSpeed();
 		}

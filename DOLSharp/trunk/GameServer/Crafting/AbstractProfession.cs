@@ -16,10 +16,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer
+using System;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+
+namespace DawnOfLight.GameServer.Crafting
 {
     /// <summary>
     /// Tradeskills that earn the crafter a title.

@@ -19,8 +19,9 @@
 
 using System.Text;
 using System.Threading;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// This delegate is the callback function for RegionTimers

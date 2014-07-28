@@ -23,6 +23,11 @@ using System.Linq;
 using System.Reflection;
 using DawnOfLight.Base;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.World;
 using log4net;
 
 namespace DawnOfLight.GameServer.Keeps

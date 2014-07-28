@@ -19,7 +19,7 @@
 
 using DawnOfLight.GameServer.Spells;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.Effects.Necromancer
 {
 	/// <summary>
 	/// The Facilitate Painworking effect.

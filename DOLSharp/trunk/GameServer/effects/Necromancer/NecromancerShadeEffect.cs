@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.Effects.Necromancer
 {
 	/// <summary>
 	/// Necromancer shade effect (grants immunity to all forms of

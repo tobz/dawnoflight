@@ -17,7 +17,9 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Commands
+using DawnOfLight.GameServer.GameObjects;
+
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	[Command(
 		"&speed",

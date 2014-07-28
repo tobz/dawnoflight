@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command("&stand", ePrivLevel.Player, "Stands up when sitting", "/stand")]
 	public class StandCommandHandler : AbstractCommandHandler, ICommandHandler

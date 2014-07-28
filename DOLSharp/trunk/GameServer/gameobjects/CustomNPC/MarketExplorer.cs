@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Housing;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 {
     public class MarketExplorer : GameNPC, IGameInventoryObject
     {

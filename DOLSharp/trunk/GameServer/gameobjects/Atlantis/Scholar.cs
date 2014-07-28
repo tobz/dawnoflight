@@ -16,14 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Quests;
-using DawnOfLight.GameServer.Quests.Atlantis;
-using System.Collections;
 
-namespace DawnOfLight.GameServer
+using System;
+using System.Collections;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Quests.Atlantis;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
+
+namespace DawnOfLight.GameServer.GameObjects.Atlantis
 {
     /// <summary>
     /// The scholars handing out the artifacts.

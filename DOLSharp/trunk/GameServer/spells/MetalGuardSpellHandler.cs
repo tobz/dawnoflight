@@ -17,8 +17,10 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
 using System.Collections;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Spells
 {

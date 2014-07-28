@@ -17,10 +17,13 @@
  *
  */
 using System;
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Spells
 {
@@ -80,7 +83,7 @@ namespace DawnOfLight.GameServer.Spells
 			AttackData ad = base.CalculateDamageToTarget(target, effectiveness);
             if (this.SpellLine.KeyName == GlobalSpellsLines.Mundane_Poisons)
             {
-                RealmAbilities.L3RAPropertyEnhancer ra = Caster.GetAbility<RealmAbilities.ViperAbility>();
+                L3RAPropertyEnhancer ra = Caster.GetAbility<ViperAbility>();
 				if (ra != null)
 				{
 					int additional = (int)((float)ad.Damage * ((float)ra.Amount / 100));

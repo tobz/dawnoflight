@@ -17,7 +17,11 @@
  *
  */
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	/// <summary>
 	/// Handles spell cast requests from client

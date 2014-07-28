@@ -17,9 +17,9 @@
  *
  */
 
-using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain
 {
 	/// <summary>
 	/// Defines walk state when brain is not in combat

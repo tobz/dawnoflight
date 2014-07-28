@@ -20,10 +20,16 @@
 using System;
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.handlers.rr5;
 using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
     /// <summary>
     /// Minion Rescue
@@ -45,7 +51,7 @@ namespace DawnOfLight.GameServer.Effects
         private int currentTick = 0;		// Count ticks
 
         public SearingPetEffect(GamePlayer owner)
-            : base(RealmAbilities.SearingPetAbility.DURATION)
+            : base(SearingPetAbility.DURATION)
         {
             EffectOwner = owner;
 

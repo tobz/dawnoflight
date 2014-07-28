@@ -16,13 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer
+using System;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 {
 	public class CommanderPet : BDPet
 	{

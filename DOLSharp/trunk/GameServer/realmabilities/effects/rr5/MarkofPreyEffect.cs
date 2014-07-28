@@ -16,12 +16,19 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections.Generic;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.handlers.rr5;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
 	/// <summary>
 	/// The helper class for the guard ability
@@ -33,7 +40,7 @@ namespace DawnOfLight.GameServer.Effects
 		private Group m_playerGroup;
 
 		public MarkofPreyEffect()
-			: base(RealmAbilities.MarkOfPreyAbility.DURATION)
+			: base(MarkOfPreyAbility.DURATION)
 		{ }
 
 		/// <summary>
@@ -102,7 +109,7 @@ namespace DawnOfLight.GameServer.Effects
 			double dpsCap;
 			dpsCap = (1.2 + 0.3 * attacker.Level) * 0.7;
 
-			double dps = Math.Min(RealmAbilities.MarkOfPreyAbility.VALUE, dpsCap);
+			double dps = Math.Min(MarkOfPreyAbility.VALUE, dpsCap);
 			double damage = dps * atkArgs.AttackData.WeaponSpeed * 0.1;
 			double damageResisted = damage * target.GetResist(eDamageType.Heat) * -0.01;
 

@@ -16,10 +16,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-namespace DawnOfLight.GameServer.PropertyCalc
-{
-    using System;
 
+using System;
+using DawnOfLight.GameServer.GameObjects;
+
+namespace DawnOfLight.GameServer.PropertyCalculators
+{
     /// <summary>
     /// [Freya] Nidel. 
     /// The ArcaneSyphon calculator: 25% cap like live server: http://www.camelotherald.com/more/3202.shtml

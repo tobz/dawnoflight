@@ -16,18 +16,21 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using DawnOfLight.Database;
 using DawnOfLight.Database.UniqueID;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.Movement;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	/// <summary>
 	/// Various keep guard commands

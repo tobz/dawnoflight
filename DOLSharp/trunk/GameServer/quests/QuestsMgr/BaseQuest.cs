@@ -30,10 +30,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Behaviour;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Behavior;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.Events.Scripts;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
 /* I suggest you declare yourself some namespaces for your quests
@@ -45,7 +50,7 @@ using log4net;
  * Database Code
  */
 
-namespace DawnOfLight.GameServer.Quests
+namespace DawnOfLight.GameServer.Quests.QuestsMgr
 {
 
 	/// <summary>

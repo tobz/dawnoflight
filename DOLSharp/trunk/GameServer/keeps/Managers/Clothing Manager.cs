@@ -1,7 +1,9 @@
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Keeps
+namespace DawnOfLight.GameServer.Keeps.Managers
 {
 	/// <summary>
 	/// This is a convieniance enum for for inventory item hand flag

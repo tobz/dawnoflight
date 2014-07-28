@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.Events
+namespace DawnOfLight.GameServer.Events.GameObjects
 {
 	/// <summary>
 	/// This class holds all possible player group events.

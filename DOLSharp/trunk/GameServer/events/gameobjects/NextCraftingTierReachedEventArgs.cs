@@ -17,9 +17,9 @@
  *
  */
 
-using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Crafting;
 
-namespace DawnOfLight.Events
+namespace DawnOfLight.GameServer.Events.GameObjects
 {
 	public class NextCraftingTierReachedEventArgs : System.EventArgs
 	{

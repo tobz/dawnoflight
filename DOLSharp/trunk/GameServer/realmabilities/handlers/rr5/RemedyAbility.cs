@@ -19,9 +19,11 @@
  * Updated to be a skillhandler to match 1.108.
  */
 
-using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.SkillHandler
+namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 {
 	/// <summary>
 	/// Remedy Realm Ability

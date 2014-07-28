@@ -17,9 +17,10 @@
  *
  */
 
+using DawnOfLight.GameServer.GameObjects;
 using log4net;
 
-namespace DawnOfLight.GameServer.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalculators
 {
 	/// <summary>
 	/// Purpose of a property calculator is to serve

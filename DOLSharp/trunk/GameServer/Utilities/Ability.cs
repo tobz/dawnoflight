@@ -16,14 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// callback handler for an ability that is activated by clicking on an associated icon
@@ -100,7 +102,7 @@ namespace DawnOfLight.GameServer
 					nameByLevel.Add(int.Parse(levelAndName[0]), levelAndName[1]);
 				}
 
-				foreach (DictionaryEntry entry in nameByLevel)
+				foreach (System.Collections.DictionaryEntry entry in nameByLevel)
 				{
 					if ((int)entry.Key > Level) break;
 					name = (string)entry.Value;

@@ -19,15 +19,18 @@
 
 using System;
 using System.Collections.Generic;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler.Client.v168;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Client._168;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	[Command("&GMinfo", ePrivLevel.GM, "Various Information", "'/GMinfo (select a target or not)")]
 	

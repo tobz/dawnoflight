@@ -16,11 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.Utilities.Atlantis;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.Atlantis
 {
     /// <summary>
     /// A bounty merchant for artifact credit.

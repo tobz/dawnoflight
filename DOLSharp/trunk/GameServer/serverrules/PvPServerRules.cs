@@ -17,14 +17,21 @@
  *
  */
 using System;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Base;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
 using System.Collections.Generic;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Spells.Masterlevel;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.ServerRules
 {

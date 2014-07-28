@@ -20,15 +20,30 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects.Necromancer;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CharacterClasses;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.GameObjects.Necromancer;
+using DawnOfLight.GameServer.GameObjects.SiegeWeapon;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Keeps.Relics;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.RealmAbilities.effects;
+using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
 using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.GameServer.Spells.Masterlevel;
+using DawnOfLight.GameServer.Spells.Warlock;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
-using DawnOfLight.Language;
 
 namespace DawnOfLight.GameServer.Spells
 {
@@ -2562,7 +2577,7 @@ namespace DawnOfLight.GameServer.Spells
 				}
 			}
 
-			if ((target is Keeps.GameKeepDoor || target is Keeps.GameKeepComponent))
+			if ((target is GameKeepDoor || target is Keeps.GameKeepComponent))
 			{
 				bool isAllowed = false;
 				bool isSilent = false;

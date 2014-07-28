@@ -1,9 +1,12 @@
 using System.Collections;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.effects;
 using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
 	public class BedazzlingAuraAbility : TimedRealmAbility
 	{

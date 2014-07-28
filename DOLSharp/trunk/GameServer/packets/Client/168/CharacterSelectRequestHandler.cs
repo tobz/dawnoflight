@@ -16,7 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, 0xB8 ^ 168, "Handles setting SessionID and the active character")]
 	public class CharacterSelectRequestHandler : IPacketHandler

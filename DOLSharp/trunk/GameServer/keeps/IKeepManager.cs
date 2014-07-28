@@ -20,6 +20,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Keeps
 {

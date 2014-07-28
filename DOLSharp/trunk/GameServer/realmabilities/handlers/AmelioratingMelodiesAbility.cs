@@ -1,7 +1,9 @@
-using DawnOfLight.Database;
 using System.Collections.Generic;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.effects;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
 	/// <summary>
 	/// Ameliorating Melodies realm ability

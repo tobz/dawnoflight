@@ -16,13 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Behaviour.Attributes;
 using System.Reflection;
+using DawnOfLight.GameServer.Behavior.Attributes;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.GameObjects;
 using log4net;
 
-namespace DawnOfLight.GameServer.Behaviour
+namespace DawnOfLight.GameServer.Behavior
 {
     /// <summary>
     /// If one trigger and all requirements are fulfilled the corresponding actions of

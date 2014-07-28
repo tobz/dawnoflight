@@ -17,7 +17,9 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Commands
+using DawnOfLight.GameServer.Keeps.Relics;
+
+namespace DawnOfLight.GameServer.commands.GameMaster
 {
 	[Command(
 		"&gmrelicpad",

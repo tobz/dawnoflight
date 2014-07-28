@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Specialized;
@@ -23,7 +24,7 @@ using System.Reflection;
 using DawnOfLight.Database;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	public enum eMerchantWindowSlot : int
 	{
@@ -179,7 +180,7 @@ namespace DawnOfLight.GameServer
 				}
 				lock (m_usedItemsTemplates.SyncRoot)
 				{
-					foreach (DictionaryEntry de in m_usedItemsTemplates)
+					foreach (System.Collections.DictionaryEntry de in m_usedItemsTemplates)
 					{
 						if ((int)de.Key >= (MAX_ITEM_IN_TRADEWINDOWS*page) && (int)de.Key < (MAX_ITEM_IN_TRADEWINDOWS*page+MAX_ITEM_IN_TRADEWINDOWS))
 							itemsInPage[(int)de.Key%MAX_ITEM_IN_TRADEWINDOWS] = (ItemTemplate)de.Value;
@@ -241,7 +242,7 @@ namespace DawnOfLight.GameServer
 		{
 			try
 			{
-				Hashtable allItems = new Hashtable();
+				System.Collections.Hashtable allItems = new System.Collections.Hashtable();
 				if (m_itemsListID != null && m_itemsListID.Length > 0)
 				{
 					var itemList = GameServer.Database.SelectObjects<MerchantItem>("ItemListID = '" + GameServer.Database.Escape(m_itemsListID) + "'");
@@ -265,7 +266,7 @@ namespace DawnOfLight.GameServer
 
 				lock (m_usedItemsTemplates.SyncRoot)
 				{
-					foreach (DictionaryEntry de in m_usedItemsTemplates)
+					foreach (System.Collections.DictionaryEntry de in m_usedItemsTemplates)
 					{
 						allItems[(int)de.Key] = (ItemTemplate)de.Value;
 					}

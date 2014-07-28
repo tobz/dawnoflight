@@ -17,11 +17,13 @@
  *
  */
 
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
+using DawnOfLight.GameServer.Quests.QuestsMgr.Utility;
 using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	// Command handler for the various /commands used in quests
 

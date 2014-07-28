@@ -17,9 +17,11 @@
  *
  */
 
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles.titles.kills.dragon
 {
 	public class DragonBaneTitle : EventPlayerTitle
 	{

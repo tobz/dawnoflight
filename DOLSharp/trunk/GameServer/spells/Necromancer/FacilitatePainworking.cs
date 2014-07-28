@@ -18,8 +18,11 @@
  */
 
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Effects.Necromancer;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Spells
+namespace DawnOfLight.GameServer.Spells.Necromancer
 {
 	/// <summary>
 	/// Spell handler for Facilitate Painworking.

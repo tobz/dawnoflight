@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// strong name constants for built in abilities

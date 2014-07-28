@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer.DatabaseUpdate
+namespace DawnOfLight.GameServer.Database.updaters
 {
 	/// <summary>
 	/// Interface for all database updaters

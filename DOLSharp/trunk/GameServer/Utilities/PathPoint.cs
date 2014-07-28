@@ -18,8 +18,9 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Movement
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// represents a point in a way path

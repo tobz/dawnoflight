@@ -37,7 +37,10 @@
  * 
  */
 
-namespace DawnOfLight.GameServer
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.MinotaurRelics.Protectors
 {
     //all classes should inherit from BaseProtector.
     public class ArrektosProtector : BaseProtector

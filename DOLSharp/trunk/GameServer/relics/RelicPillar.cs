@@ -17,6 +17,10 @@
  *
  */
 
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
+
 namespace DawnOfLight.GameServer.Relics
 {
 	/// <summary>

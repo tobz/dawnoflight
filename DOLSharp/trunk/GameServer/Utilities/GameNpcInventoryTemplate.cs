@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,9 +24,10 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	public class GameNpcInventoryTemplate : GameLivingInventory
 	{
@@ -37,12 +39,12 @@ namespace DawnOfLight.GameServer
 		/// <summary>
 		/// Holds inventory item instances already used in inventory templates
 		/// </summary>
-		protected static readonly Hashtable m_usedInventoryItems = new Hashtable(1024);
+		protected static readonly System.Collections.Hashtable m_usedInventoryItems = new System.Collections.Hashtable(1024);
 
 		/// <summary>
 		/// Holds already used inventory template instances
 		/// </summary>
-		protected static readonly Hashtable m_usedInventoryTemplates = new Hashtable(256);
+		protected static readonly System.Collections.Hashtable m_usedInventoryTemplates = new System.Collections.Hashtable(256);
 
 		/// <summary>
 		/// Holds an empty invenotory template instance

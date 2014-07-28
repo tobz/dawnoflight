@@ -22,7 +22,10 @@ using System.IO;
 using DawnOfLight.Database;
 using DawnOfLight.Database.Attributes;
 using DawnOfLight.Database.Connection;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Scripts;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.World;
 using log4net;
 
 namespace DawnOfLight.GameServer.Scripts

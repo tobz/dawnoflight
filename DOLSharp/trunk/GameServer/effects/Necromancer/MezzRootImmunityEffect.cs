@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.Effects.Necromancer
 {
 	/// <summary>
 	/// Class for static mezz and root immunity effects.

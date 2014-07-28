@@ -18,7 +18,9 @@
  */
 using System;
 using DawnOfLight.Database;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer
 {

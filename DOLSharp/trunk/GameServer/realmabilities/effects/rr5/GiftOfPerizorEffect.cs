@@ -18,8 +18,12 @@
  */
 
 using System.Collections.Generic;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.handlers.rr5;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
 
     public class GiftOfPerizorEffect : TimedEffect
@@ -27,7 +31,7 @@ namespace DawnOfLight.GameServer.Effects
         private GamePlayer EffectOwner;
 
         public GiftOfPerizorEffect()
-            : base(RealmAbilities.GiftOfPerizorAbility.DURATION)
+            : base(GiftOfPerizorAbility.DURATION)
         { }
 
         public override void Start(GameLiving target)

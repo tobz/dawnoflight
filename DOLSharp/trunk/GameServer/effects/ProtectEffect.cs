@@ -18,10 +18,13 @@
  */
 using System;
 using System.Collections.Generic;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.SkillHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Effects
 {

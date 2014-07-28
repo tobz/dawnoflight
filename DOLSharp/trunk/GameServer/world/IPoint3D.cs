@@ -17,9 +17,7 @@
  *
  */
 
-using DawnOfLight.GameServer.World;
-
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.World
 {
 	/// <summary>
 	/// interface for classes that represent a point in 3d space

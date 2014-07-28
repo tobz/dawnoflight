@@ -27,7 +27,9 @@
  * the Unlock/Lock Functions work properly!
  */
 
-namespace DawnOfLight.GameServer
+using DawnOfLight.GameServer.GameObjects;
+
+namespace DawnOfLight.GameServer.MinotaurRelics.Protectors
 {
     public class BaseProtector : GameNPC
     {

@@ -17,11 +17,13 @@
  *
  */
 
-using DawnOfLight.GameServer;
 using System.Collections;
 using System.Collections.Generic;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Animist;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain.Animist
 {
 	public class TurretMainPetCasterBrain : TurretBrain
 	{
@@ -35,7 +37,7 @@ namespace DawnOfLight.AI.Brain
 				return;
 			}
 
-			if(!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, defender, true))
+			if(!DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, defender, true))
 			{
 				return;
 			}
@@ -85,7 +87,7 @@ namespace DawnOfLight.AI.Brain
 
 			foreach (GamePlayer living in Body.GetPlayersInRadius((ushort)((TurretPet)Body).TurretSpell.Range, Body.CurrentRegion.IsDungeon ? false : true))
 			{
-				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, living, true))
+				if (!DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, living, true))
 					continue;
 
 				if (living.IsInvulnerableToAttack)
@@ -109,7 +111,7 @@ namespace DawnOfLight.AI.Brain
 
 			foreach (GameNPC living in Body.GetNPCsInRadius((ushort)((TurretPet)Body).TurretSpell.Range, Body.CurrentRegion.IsDungeon ? false : true))
 			{
-				if (!GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, living, true))
+				if (!DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, living, true))
 					continue;
 
 				if (!living.IsAlive || living.CurrentRegion != Body.CurrentRegion || living.ObjectState != GameObject.eObjectState.Active)

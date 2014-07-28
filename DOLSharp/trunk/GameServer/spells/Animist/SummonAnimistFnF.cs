@@ -16,15 +16,22 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.ServerProperties;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.Spells
+using System;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain.Animist;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Animist;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.Spells.Animist
 {
 	/// <summary>
 	/// Summon a fnf animist pet.

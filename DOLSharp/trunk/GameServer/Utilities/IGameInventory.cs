@@ -17,10 +17,10 @@
  *
  */
 
-using DawnOfLight.Database;
 using System.Collections.Generic;
+using DawnOfLight.Database;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	public enum eInventorySlot : int
 	{

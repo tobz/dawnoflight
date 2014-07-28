@@ -1,6 +1,9 @@
 //Andraste v2.0 - Vico
 
-namespace DawnOfLight.GameServer.Spells
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Spells.Archery
 {
 	[SpellHandler("ArrowDamageTypes")]
 	public class ArrowDamageTypes : SpellHandler

@@ -16,7 +16,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerSitRequest, ClientStatus.PlayerInGame)]
 	public class PlayerSitRequestHandler : IPacketHandler

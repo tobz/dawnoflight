@@ -17,8 +17,9 @@
  *
  */
 
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
 
 namespace DawnOfLight.GameServer.Effects
 {

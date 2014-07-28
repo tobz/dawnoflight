@@ -16,16 +16,19 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using System.Reflection;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Database;
-using DawnOfLight.GameServer.Styles;
-using log4net;
 using System.Collections;
 using System.Linq;
+using System.Reflection;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Styles;
+using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// A npc template

@@ -16,11 +16,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System.Text;
-using DawnOfLight.GameServer.ServerProperties;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer
+using System.Text;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.ServerProperties;
+
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// capsulate money operations

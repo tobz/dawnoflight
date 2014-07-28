@@ -19,8 +19,9 @@
 
 using System.Collections;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// Description résume de ITradeWindow.

@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command("&quit", new string[] { "&q" }, //command to handle
 		ePrivLevel.Player, //minimum privelege level

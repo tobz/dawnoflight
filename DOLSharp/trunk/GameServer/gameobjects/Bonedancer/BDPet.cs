@@ -17,7 +17,9 @@
  *
  */
 
-namespace DawnOfLight.GameServer
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.GameObjects.Bonedancer
 {
 	public class BDPet : GamePet
 	{

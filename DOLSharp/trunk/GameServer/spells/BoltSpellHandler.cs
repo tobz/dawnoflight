@@ -17,11 +17,17 @@
  *
  */
 using System;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.Keeps.Managers;
+using DawnOfLight.GameServer.Keeps.Relics;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.SkillHandler;
+using DawnOfLight.GameServer.Spells.Archery;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Spells
@@ -39,7 +45,7 @@ namespace DawnOfLight.GameServer.Spells
 		public override void FinishSpellCast(GameLiving target)
 		{
 			m_caster.Mana -= PowerCost(target);
-			if ((target is Keeps.GameKeepDoor || target is Keeps.GameKeepComponent) && Spell.SpellType != "SiegeArrow")
+			if ((target is GameKeepDoor || target is Keeps.GameKeepComponent) && Spell.SpellType != "SiegeArrow")
 			{
 				MessageToCaster(String.Format("Your spell has no effect on the {0}!", target.Name), eChatType.CT_SpellResisted);
 				return;

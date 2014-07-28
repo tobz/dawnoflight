@@ -17,9 +17,10 @@
  *
  */
 
-using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
 
-namespace DawnOfLight.GameServer.Behaviour
+namespace DawnOfLight.GameServer.Behavior
 {
     public class BehaviourBuilder
     {

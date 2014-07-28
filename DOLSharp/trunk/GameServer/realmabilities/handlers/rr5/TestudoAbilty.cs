@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.effects.rr5;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 {
 	/// <summary>
 	/// Testudo Realm Ability

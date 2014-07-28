@@ -21,11 +21,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CharacterClasses;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Styles;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
+using Hashtable = System.Collections.Hashtable;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	[PacketLib(180, GameClient.eClientVersion.Version180)]
 	public class PacketLib180 : PacketLib179

@@ -16,7 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-namespace DawnOfLight.GameServer.Spells
+
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Spells.Artifacts
 {
     /// <summary>
     /// [Freya] Nidel : Handler for Flask use1: Heals are more effective on the target

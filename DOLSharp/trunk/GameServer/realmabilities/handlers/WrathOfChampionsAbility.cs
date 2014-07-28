@@ -1,10 +1,12 @@
 using System;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
 	public class WrathofChampionsAbility : TimedRealmAbility
 	{

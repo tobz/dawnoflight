@@ -17,8 +17,11 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Spells
 {
@@ -95,7 +98,7 @@ namespace DawnOfLight.GameServer.Spells
 			// duration at the edges. This does NOT change the way area effect spells
 			// work against monsters, only realm enemies (i.e. enemy players and enemy realm guards).
 			double duration = base.CalculateEffectDuration(target, effectiveness);
-			if (!(target is GamePlayer) && !(target is Keeps.GameKeepGuard))
+			if (!(target is GamePlayer) && !(target is GameKeepGuard))
 				return (int)duration;
 			duration *= (0.5 + 0.5*effectiveness);
 			duration -= duration * target.GetResistBase(Spell.DamageType) * 0.01;

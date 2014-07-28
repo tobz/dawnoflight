@@ -4,8 +4,9 @@ using System.Text;
 using System.Timers;
 using DawnOfLight.Base.Threading;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	public enum AuditType
 	{

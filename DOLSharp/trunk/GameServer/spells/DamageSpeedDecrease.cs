@@ -19,8 +19,11 @@
 
 using System.Collections.Generic;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Spells
 {
@@ -40,7 +43,7 @@ namespace DawnOfLight.GameServer.Spells
 			// do damage even if immune to duration effect
 			OnDirectEffect(target, effectiveness);
 
-			if ((target is Keeps.GameKeepDoor) == false && (target is Keeps.GameKeepComponent == false))
+			if ((target is GameKeepDoor) == false && (target is Keeps.GameKeepComponent == false))
 			{
 				base.ApplyEffectOnTarget(target, effectiveness);
 			}
@@ -70,7 +73,7 @@ namespace DawnOfLight.GameServer.Spells
 			if(ad == null) return;
 			if(!m_caster.IsAlive) return;
 
-			if (ad.Target is Keeps.GameKeepDoor || ad.Target is Keeps.GameKeepComponent)
+			if (ad.Target is GameKeepDoor || ad.Target is Keeps.GameKeepComponent)
 			{
 				return;
 			}

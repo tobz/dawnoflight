@@ -16,9 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
 
-namespace DawnOfLight.GameServer.Trainer
+using System;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Trainers.albion
 {
 	/// <summary>
 	/// Necromancer trainer.

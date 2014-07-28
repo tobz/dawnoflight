@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.Atlantis.Teleporter
 {
     /// <summary>
     /// Djinn stone (spawns ancient bound djinn).

@@ -16,10 +16,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using DawnOfLight.GameServer;
 
-namespace DawnOfLight.Events
+using System;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Keeps.Relics;
+
+namespace DawnOfLight.GameServer.Events.Keep
 {
     /// <summary>
     /// Holds the arguments for the RelicPad event

@@ -1,4 +1,4 @@
-namespace DawnOfLight.GameServer.Keeps
+namespace DawnOfLight.GameServer.GameObjects.Keeps.Guards
 {
 	public class GuardStaticArcher : GuardArcher
 	{

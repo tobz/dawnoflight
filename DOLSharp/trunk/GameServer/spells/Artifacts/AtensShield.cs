@@ -17,13 +17,17 @@
 *
 */
 
-namespace DawnOfLight.GameServer.Spells
-{
-	using System;
-	using Database;
-	using Events;
+using System;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Spells.Masterlevel;
+using DawnOfLight.GameServer.Utilities;
 
-	[SpellHandler("AtensShield")]
+namespace DawnOfLight.GameServer.Spells.Artifacts
+{
+    [SpellHandler("AtensShield")]
 	public class AtensShield : SummonItemSpellHandler
 	{
 		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

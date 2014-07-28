@@ -21,7 +21,7 @@ using DawnOfLight.Database;
 using DawnOfLight.Database.Connection;
 using log4net;
 
-namespace DawnOfLight.GameServer.DatabaseConverters
+namespace DawnOfLight.GameServer.Database.converters
 {
 	/// <summary>
 	/// Converts the database format to the version 3

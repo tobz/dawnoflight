@@ -1,7 +1,9 @@
 using System;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Keeps
+namespace DawnOfLight.GameServer.Keeps.Managers
 {
 	/// <summary>
 	/// Class to manage all the dealings with Guilds

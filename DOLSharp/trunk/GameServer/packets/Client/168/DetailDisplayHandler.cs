@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,14 +25,19 @@ using System.Reflection;
 using System.Text;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.Quests;
-using DawnOfLight.GameServer.RealmAbilities;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
 using DawnOfLight.GameServer.Spells;
 using DawnOfLight.GameServer.Styles;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.Utilities.Atlantis;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	/// <summary>
 	/// delve button shift+i = detail of spell object...

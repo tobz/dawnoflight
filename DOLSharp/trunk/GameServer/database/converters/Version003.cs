@@ -20,9 +20,11 @@
 using System.Collections;
 using DawnOfLight.Database;
 using DawnOfLight.Database.Connection;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.GameServer.DatabaseConverters
+namespace DawnOfLight.GameServer.Database.converters
 {
 	/// <summary>
 	/// Converts the database format to the version 3

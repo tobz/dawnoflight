@@ -23,10 +23,12 @@
  *   - Sorted
  *   - Added missing (+language support)
  */
-using System;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer.PlayerTitles
+using System;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+
+namespace DawnOfLight.GameServer.PlayerTitles.titles.time.account
 {
 	/// <summary>
 	/// "Elder" title granted to all chars on all accounts that created for at least one year.

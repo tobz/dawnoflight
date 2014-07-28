@@ -24,10 +24,12 @@
  *   - Added missing (+language support)
  */
 
-using DawnOfLight.Events;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
 
-namespace DawnOfLight.GameServer.PlayerTitles
+namespace DawnOfLight.GameServer.PlayerTitles.titles.kills.demon
 {
 	/// <summary>
 	/// "Demon Bane" title granted to everyone who kills Legion 25+ times.

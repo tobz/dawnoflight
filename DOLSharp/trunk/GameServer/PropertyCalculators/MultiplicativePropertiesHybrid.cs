@@ -20,7 +20,7 @@
 using System.Collections;
 using System.Collections.Specialized;
 
-namespace DawnOfLight.GameServer.PropertyCalc
+namespace DawnOfLight.GameServer.PropertyCalculators
 {
 	/// <summary>
 	/// Implements multiplicative properties using HybridDictionary

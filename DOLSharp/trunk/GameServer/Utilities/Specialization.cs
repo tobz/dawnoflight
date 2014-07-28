@@ -17,7 +17,9 @@
  *
  */
 
-namespace DawnOfLight.GameServer
+using DawnOfLight.GameServer.GameObjects;
+
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// callback handler for a spec that is activated by clicking on an associated icon

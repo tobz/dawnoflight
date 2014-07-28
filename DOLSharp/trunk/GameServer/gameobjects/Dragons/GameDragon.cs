@@ -16,16 +16,19 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
 
-
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.Dragons
 {
 	/// <summary>
 	/// Base class for all dragon type mobs. A dragon will use various abilities,
@@ -95,7 +98,7 @@ namespace DawnOfLight.GameServer
 
 		public override bool HasAbility(string keyName)
 		{
-			if (IsReturningHome && keyName == DawnOfLight.GameServer.Abilities.CCImmunity)
+			if (IsReturningHome && keyName == Utilities.Abilities.CCImmunity)
 				return true;
 
 			return base.HasAbility(keyName);

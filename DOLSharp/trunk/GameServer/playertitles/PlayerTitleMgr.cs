@@ -19,6 +19,8 @@
 using System;
 using System.Collections;
 using System.Reflection;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
 namespace DawnOfLight.GameServer.PlayerTitles

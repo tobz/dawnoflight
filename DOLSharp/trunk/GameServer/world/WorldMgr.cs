@@ -16,23 +16,25 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Threading;
 using DawnOfLight.Base.Config;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.GameServer.Utils;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World.Instance;
 using log4net;
-using Timer=System.Threading.Timer;
-using System.Collections.Generic;
+using Hashtable = System.Collections.Hashtable;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.World
 {
 	/// <summary>
 	/// The WorldMgr is used to retrieve information and objects from

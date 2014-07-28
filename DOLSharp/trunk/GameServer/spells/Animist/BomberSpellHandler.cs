@@ -20,12 +20,17 @@
  * [Ganrod] Nidel 2008-07-08
  * - Corrections for Bomber actions.
  */
-using System;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
 
-namespace DawnOfLight.GameServer.Spells
+using System;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.AI.Brain.Animist;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Spells.Animist
 {
     [SpellHandler("Bomber")]
     public class BomberSpellHandler : SummonSpellHandler

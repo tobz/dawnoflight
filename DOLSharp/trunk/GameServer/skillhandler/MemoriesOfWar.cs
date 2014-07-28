@@ -18,6 +18,7 @@
  */
 
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.SkillHandler
 {

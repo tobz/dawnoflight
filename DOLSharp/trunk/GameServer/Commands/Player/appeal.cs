@@ -17,10 +17,11 @@
  *
  */
 
-using DawnOfLight.GameServer.Appeal;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
     //The appeal command is really just a tool to redirect the players concerns to the proper command.
     //most of it's functionality is built into the client.

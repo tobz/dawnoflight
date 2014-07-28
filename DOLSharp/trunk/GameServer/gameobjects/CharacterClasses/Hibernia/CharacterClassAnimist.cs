@@ -17,10 +17,11 @@
  *
  */
 
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain.Animist;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Animist;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CharacterClasses.Hibernia
 {
 	/// <summary>
 	/// The Animist character class.

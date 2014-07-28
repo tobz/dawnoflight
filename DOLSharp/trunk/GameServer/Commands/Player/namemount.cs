@@ -1,4 +1,4 @@
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command("&namemount", ePrivLevel.Player,"Name your hourse","/namemount")]
 	public class NameHorseCommandHandler : AbstractCommandHandler, ICommandHandler

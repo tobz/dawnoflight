@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	public enum ClientStatus
 	{

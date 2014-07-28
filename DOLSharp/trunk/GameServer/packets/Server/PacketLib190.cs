@@ -22,9 +22,10 @@ using System.Collections;
 using System.IO;
 using System.Reflection;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	[PacketLib(190, GameClient.eClientVersion.Version190)]
 	public class PacketLib190 : PacketLib189

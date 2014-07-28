@@ -1,7 +1,9 @@
 using System.Collections.Generic;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects
 {
 	/// <summary>
 	/// Trueshot grants 50% more range for next archery attack

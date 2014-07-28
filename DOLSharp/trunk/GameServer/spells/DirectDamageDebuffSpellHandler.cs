@@ -1,8 +1,12 @@
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
 using DawnOfLight.GameServer.World;
-using DawnOfLight.Language;
 /*
  * DAWN OF LIGHT - The first free open source DAoC server emulator
  * 
@@ -124,7 +128,7 @@ namespace DawnOfLight.GameServer.Spells
 		public override void ApplyEffectOnTarget(GameLiving target, double effectiveness)
 		{
 			// do not apply debuff to keep components or doors
-			if ((target is Keeps.GameKeepComponent) == false && (target is Keeps.GameKeepDoor) == false)
+			if ((target is Keeps.GameKeepComponent) == false && (target is GameKeepDoor) == false)
 			{
 				base.ApplyEffectOnTarget(target, effectiveness);
 			}
@@ -139,7 +143,7 @@ namespace DawnOfLight.GameServer.Spells
 		{
 			if (!target.IsAlive || target.ObjectState != GameLiving.eObjectState.Active) return;
 
-			if (target is Keeps.GameKeepDoor || target is Keeps.GameKeepComponent)
+			if (target is GameKeepDoor || target is Keeps.GameKeepComponent)
 			{
 				MessageToCaster("Your spell has no effect on the keep component!", eChatType.CT_SpellResisted);
 				return;

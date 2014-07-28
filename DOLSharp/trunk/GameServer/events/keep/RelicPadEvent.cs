@@ -17,9 +17,9 @@
  *
  */
 
-using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.Keeps.Relics;
 
-namespace DawnOfLight.Events
+namespace DawnOfLight.GameServer.Events.Keep
 {
     /// <summary>
     /// This class holds all possible relic events.

@@ -16,13 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Reflection;
 using DawnOfLight.Database;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// Manages NPC templates data
@@ -54,10 +55,10 @@ namespace DawnOfLight.GameServer
 		/// <summary>
 		/// Holds all NPC templates
 		/// </summary>
-		private static readonly Hashtable m_mobTemplates = new Hashtable(1024);
-		private static readonly Hashtable m_mobTemplatesByName = new Hashtable(1024);
+		private static readonly System.Collections.Hashtable m_mobTemplates = new System.Collections.Hashtable(1024);
+		private static readonly System.Collections.Hashtable m_mobTemplatesByName = new System.Collections.Hashtable(1024);
 
-		public Hashtable MobTemplates
+		public System.Collections.Hashtable MobTemplates
 		{
 			get { return m_mobTemplatesByName; }
 		}

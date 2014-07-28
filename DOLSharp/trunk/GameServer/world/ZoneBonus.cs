@@ -17,11 +17,12 @@
  *
  */
 
-using DawnOfLight.Language;
-using log4net;
 using System.Reflection;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.World
 {
     public class ZoneBonus
     {

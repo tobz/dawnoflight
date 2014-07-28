@@ -17,10 +17,14 @@
  *
  */
 
-using DawnOfLight.Language;
 using System.Collections.Generic;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CharacterClasses;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.PlayerClasses.@base;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.PlayerClass
+namespace DawnOfLight.GameServer.PlayerClasses.midgard
 {
 	[CharacterClass((int)eCharacterClass.Shadowblade, "Shadowblade", "MidgardRogue")]
 	public class ClassShadowblade : ClassMidgardRogue

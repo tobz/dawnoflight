@@ -1,6 +1,6 @@
 using DawnOfLight.GameServer.Spells;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.Effects.Spells
 {
 	public class FocusShellEffect : GameSpellEffect
 	{

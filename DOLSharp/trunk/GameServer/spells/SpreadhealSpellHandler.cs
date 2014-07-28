@@ -18,7 +18,10 @@
  */
 using System;
 using System.Collections;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using Hashtable = System.Collections.Hashtable;
 
 namespace DawnOfLight.GameServer.Spells
 {

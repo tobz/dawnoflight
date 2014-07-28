@@ -1,11 +1,12 @@
-using DawnOfLight.GameServer;
-using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
-using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.ServerProperties;
-using log4net;
 using System.Reflection;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Keeps.Guards;
+using DawnOfLight.GameServer.ServerProperties;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
+using log4net;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.AI.Brain.Guards
 {
 	/// <summary>
 	/// Brain Class for Area Capture Guards
@@ -115,11 +116,11 @@ namespace DawnOfLight.AI.Brain
 			foreach (GamePlayer player in Body.GetPlayersInRadius(WorldMgr.VISIBILITY_DISTANCE))
 			{
                 if (player == null) continue;
-                if (GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
+                if (DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
 				{
                     if ( !Body.IsWithinRadius( player, AggroRange ) )
                         continue;
-                    if ((Body as GameKeepGuard).Component != null && !GameServer.GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, player, true))
+                    if ((Body as GameKeepGuard).Component != null && !DawnOfLight.GameServer.GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, player, true))
 						continue;
 					if (Body is GuardStealther == false && player.IsStealthed)
 						continue;
@@ -155,9 +156,9 @@ namespace DawnOfLight.AI.Brain
 				if (player == null)
 					continue;
 
-				if (GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
+				if (DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
 				{
-					if ((Body as GameKeepGuard).Component != null && !GameServer.GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, player, true))
+					if ((Body as GameKeepGuard).Component != null && !DawnOfLight.GameServer.GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, player, true))
 					{
 						continue;
 					}
@@ -184,7 +185,7 @@ namespace DawnOfLight.AI.Brain
 				checkPlayer = target as GamePlayer;
 			if (checkPlayer == null)
 				return 0;
-			if (GameServer.GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, checkPlayer, true))
+			if (DawnOfLight.GameServer.GameServer.KeepManager.IsEnemy(Body as GameKeepGuard, checkPlayer, true))
 				return AggroLevel;
 			return 0;
 		}

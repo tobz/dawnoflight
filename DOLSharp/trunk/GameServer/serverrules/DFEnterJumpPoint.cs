@@ -19,7 +19,10 @@
 using System;
 using DawnOfLight.Base;
 using DawnOfLight.Database;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.Keep;
+using DawnOfLight.GameServer.Events.Scripts;
+using DawnOfLight.GameServer.GameObjects;
 
 namespace DawnOfLight.GameServer.ServerRules
 {

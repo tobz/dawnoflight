@@ -17,16 +17,18 @@
  *
  */
 
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Quests.Missions;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// Guild inside the game.
@@ -494,7 +496,7 @@ namespace DawnOfLight.GameServer
 			}
 		}
 
-		public Quests.AbstractMission Mission = null;
+		public AbstractMission Mission = null;
 
 		/// <summary>
 		/// Adds a player to the guild
@@ -653,7 +655,7 @@ namespace DawnOfLight.GameServer
 				if (removername == member.Name)
 					member.Out.SendMessage("You leave the guild.", eChatType.CT_System, eChatLoc.CL_SystemWindow);
 				else
-					member.Out.SendMessage(removername + " removed you from " + this.Name, PacketHandler.eChatType.CT_System, PacketHandler.eChatLoc.CL_SystemWindow);
+					member.Out.SendMessage(removername + " removed you from " + this.Name, eChatType.CT_System, eChatLoc.CL_SystemWindow);
 			}
 			catch (Exception e)
 			{
@@ -833,7 +835,7 @@ namespace DawnOfLight.GameServer
 		/// <param name="msg">message string</param>
 		/// <param name="type">message type</param>
 		/// <param name="loc">message location</param>
-		public void SendMessageToGuildMembers(string msg, PacketHandler.eChatType type, PacketHandler.eChatLoc loc)
+		public void SendMessageToGuildMembers(string msg, eChatType type, eChatLoc loc)
 		{
 			lock (m_onlineGuildPlayers)
 			{

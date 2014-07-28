@@ -19,9 +19,14 @@
 
 using System;
 using System.Collections.Generic;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.handlers.rr5;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects.rr5
 {
 
     public class SelectiveBlindnessEffect : TimedEffect
@@ -30,7 +35,7 @@ namespace DawnOfLight.GameServer.Effects
         private GameLiving m_EffectSource;
 
         public SelectiveBlindnessEffect(GameLiving source)
-            : base(RealmAbilities.SelectiveBlindnessAbility.DURATION)
+            : base(SelectiveBlindnessAbility.DURATION)
         {
             	m_EffectSource = source as GamePlayer;       
         }

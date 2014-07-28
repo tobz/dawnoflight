@@ -16,13 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects
 {
 	/// <summary>
 	/// A house vault.
@@ -233,7 +236,7 @@ namespace DawnOfLight.GameServer
 						continue;
 					}
 
-					observer.Client.Out.SendInventoryItemsUpdate(updateItems, PacketHandler.eInventoryWindowType.Update);
+					observer.Client.Out.SendInventoryItemsUpdate(updateItems, eInventoryWindowType.Update);
 
 					if (observer == player)
 						hasUpdatedPlayer = true;
@@ -248,7 +251,7 @@ namespace DawnOfLight.GameServer
 				// The above code is suspect, it seems to work 80% of the time, so let's make sure we update the player doing the move - Tolakram
 				if (hasUpdatedPlayer == false)
 				{
-					player.Client.Out.SendInventoryItemsUpdate(updateItems, PacketHandler.eInventoryWindowType.Update);
+					player.Client.Out.SendInventoryItemsUpdate(updateItems, eInventoryWindowType.Update);
 				}
 			}
 		}

@@ -16,10 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System.Reflection;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands
 {
 	/// <summary>
 	/// Providing some basic command handler functionality

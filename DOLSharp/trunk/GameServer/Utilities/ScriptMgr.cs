@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using System.CodeDom.Compiler;
 using System.Collections;
@@ -24,19 +25,21 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Base;
 using DawnOfLight.Base.Config;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.Commands;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.commands;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CharacterClasses;
+using DawnOfLight.GameServer.Packets.Server;
 using DawnOfLight.GameServer.ServerRules;
 using DawnOfLight.GameServer.Spells;
 using log4net;
 using Microsoft.CSharp;
 using Microsoft.VisualBasic;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	public class ScriptMgr
 	{
@@ -678,9 +681,9 @@ namespace DawnOfLight.GameServer
 		/// </summary>
 		/// <param name="asm">The assembly to search through</param>
 		/// <returns>Hashmap consisting of keyName => AbilityActionHandler Type</returns>
-		public static Hashtable FindAllAbilityActionHandler(Assembly asm)
+		public static System.Collections.Hashtable FindAllAbilityActionHandler(Assembly asm)
 		{
-			Hashtable abHandler = new Hashtable();
+			System.Collections.Hashtable abHandler = new System.Collections.Hashtable();
 			if (asm != null)
 			{
 				foreach (Type type in asm.GetTypes())
@@ -709,9 +712,9 @@ namespace DawnOfLight.GameServer
 		/// </summary>
 		/// <param name="asm">The assembly to search through</param>
 		/// <returns>Hashmap consisting of keyName => SpecActionHandler Type</returns>
-		public static Hashtable FindAllSpecActionHandler(Assembly asm)
+		public static System.Collections.Hashtable FindAllSpecActionHandler(Assembly asm)
 		{
-			Hashtable specHandler = new Hashtable();
+			System.Collections.Hashtable specHandler = new System.Collections.Hashtable();
 			if (asm != null)
 			{
 				foreach (Type type in asm.GetTypes())
@@ -784,9 +787,9 @@ namespace DawnOfLight.GameServer
 		/// <returns>
 		/// all handlers that were found, guildname(string) => classtype(Type)
 		/// </returns>
-		protected static Hashtable FindAllNPCGuildScriptClasses(eRealm realm, Assembly asm)
+		protected static System.Collections.Hashtable FindAllNPCGuildScriptClasses(eRealm realm, Assembly asm)
 		{
-			Hashtable ht = new Hashtable();
+			System.Collections.Hashtable ht = new System.Collections.Hashtable();
 			if (asm != null)
 			{
 				foreach (Type type in asm.GetTypes())
@@ -819,8 +822,8 @@ namespace DawnOfLight.GameServer
 			return ht;
 		}
 
-		protected static Hashtable[] m_gs_guilds = new Hashtable[(int)eRealm._Last + 1];
-		protected static Hashtable[] m_script_guilds = new Hashtable[(int)eRealm._Last + 1];
+		protected static System.Collections.Hashtable[] m_gs_guilds = new System.Collections.Hashtable[(int)eRealm._Last + 1];
+		protected static System.Collections.Hashtable[] m_script_guilds = new System.Collections.Hashtable[(int)eRealm._Last + 1];
 
 		/// <summary>
 		/// searches for a npc guild script
@@ -835,14 +838,14 @@ namespace DawnOfLight.GameServer
 			Type type = null;
 			if (m_script_guilds[(int)realm] == null)
 			{
-				Hashtable allScriptGuilds = new Hashtable();
+				System.Collections.Hashtable allScriptGuilds = new System.Collections.Hashtable();
 				ArrayList asms = new ArrayList(Scripts);
 				asms.Add(typeof(GameServer).Assembly);
 				foreach (Assembly asm in asms)
 				{
-					Hashtable scriptGuilds = FindAllNPCGuildScriptClasses(realm, asm);
+					System.Collections.Hashtable scriptGuilds = FindAllNPCGuildScriptClasses(realm, asm);
 					if (scriptGuilds == null) continue;
-					foreach (DictionaryEntry entry in scriptGuilds)
+					foreach (System.Collections.DictionaryEntry entry in scriptGuilds)
 					{
 						if (allScriptGuilds.ContainsKey(entry.Key)) continue; // guild is already found
 						allScriptGuilds.Add(entry.Key, entry.Value);

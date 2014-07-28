@@ -1,6 +1,6 @@
 using DawnOfLight.Database;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
 	public class DualThreatAbility : L3RAPropertyEnhancer
 	{

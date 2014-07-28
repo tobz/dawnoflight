@@ -20,6 +20,9 @@
 using System.Collections.Generic;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.Utilities;
 
 namespace DawnOfLight.GameServer.Spells
 {
@@ -142,7 +145,7 @@ namespace DawnOfLight.GameServer.Spells
 		protected override int CalculateEffectDuration(GameLiving target, double effectiveness)
 		{
 			double modifier = 1.0;
-			RealmAbilities.VeilRecoveryAbility ab = target.GetAbility<RealmAbilities.VeilRecoveryAbility>();
+			VeilRecoveryAbility ab = target.GetAbility<VeilRecoveryAbility>();
 			if (ab != null)
 				modifier -= ((double)ab.Amount / 100);
 

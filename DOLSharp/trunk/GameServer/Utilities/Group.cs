@@ -19,10 +19,13 @@
 
 using System.Collections.Generic;
 using System.Text;
-using DawnOfLight.Events;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Quests.Missions;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// This class represents a Group inside the game
@@ -50,8 +53,8 @@ namespace DawnOfLight.GameServer
 		}
 
 
-		private Quests.AbstractMission m_mission = null;
-		public Quests.AbstractMission Mission
+		private AbstractMission m_mission = null;
+		public AbstractMission Mission
 		{
 			get { return m_mission; }
 			set

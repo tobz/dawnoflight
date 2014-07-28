@@ -16,12 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-using DawnOfLight.Database;
 using System.Collections.Generic;
+using DawnOfLight.Database;
 
 // Tolakram - January 7, 2012
- 
-namespace DawnOfLight.GameServer
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.GameObjects
 {
 	/// <summary>
 	/// Interface for a GameInventoryObject

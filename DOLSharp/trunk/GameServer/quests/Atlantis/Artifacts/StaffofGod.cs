@@ -20,7 +20,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Atlantis;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities.Atlantis;
 
 namespace DawnOfLight.GameServer.Quests.Atlantis.Artifacts
 {

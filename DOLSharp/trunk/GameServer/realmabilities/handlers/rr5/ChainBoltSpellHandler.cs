@@ -17,7 +17,12 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Spells
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.RealmAbilities.handlers.rr5
 {
     /// <summary>
     /// Spell Handler for firing bolts

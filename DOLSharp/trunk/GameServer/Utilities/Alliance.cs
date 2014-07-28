@@ -16,11 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System.Collections;
-using System;
-using DawnOfLight.Database;
 
-namespace DawnOfLight.GameServer
+using System;
+using System.Collections;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Packets.Server;
+
+namespace DawnOfLight.GameServer.Utilities
 {
 	/// <summary>
 	/// Alliance are the alliance between guild in game
@@ -71,7 +73,7 @@ namespace DawnOfLight.GameServer
 				GameServer.Database.FillObjectRelations(m_dballiance);
 				//sirru 23.12.06 save changes to db for each guild
 				SaveIntoDatabase();
-				SendMessageToAllianceMembers(myguild.Name + " has joined the alliance of " + m_dballiance.AllianceName, PacketHandler.eChatType.CT_System, PacketHandler.eChatLoc.CL_SystemWindow);
+				SendMessageToAllianceMembers(myguild.Name + " has joined the alliance of " + m_dballiance.AllianceName, eChatType.CT_System, eChatLoc.CL_SystemWindow);
 			}
 		}
 		public void RemoveGuild(Guild myguild)
@@ -83,7 +85,7 @@ namespace DawnOfLight.GameServer
                 Guilds.Remove(myguild);
                 if (myguild.GuildID == m_dballiance.DBguildleader.GuildID)
                 {
-                    SendMessageToAllianceMembers(myguild.Name + " has disbanded the alliance of " + m_dballiance.AllianceName, PacketHandler.eChatType.CT_System, PacketHandler.eChatLoc.CL_SystemWindow);
+                    SendMessageToAllianceMembers(myguild.Name + " has disbanded the alliance of " + m_dballiance.AllianceName, eChatType.CT_System, eChatLoc.CL_SystemWindow);
                     ArrayList mgl = new ArrayList(Guilds);
                     foreach (Guild mg in mgl)
                     {
@@ -105,8 +107,8 @@ namespace DawnOfLight.GameServer
                 }
 				//sirru 23.12.06 save changes to db for each guild
 				myguild.SaveIntoDatabase();
-                myguild.SendMessageToGuildMembers(myguild.Name + " has left the alliance of " + m_dballiance.AllianceName, PacketHandler.eChatType.CT_System, PacketHandler.eChatLoc.CL_SystemWindow);
-                SendMessageToAllianceMembers(myguild.Name + " has left the alliance of " + m_dballiance.AllianceName, PacketHandler.eChatType.CT_System, PacketHandler.eChatLoc.CL_SystemWindow);
+                myguild.SendMessageToGuildMembers(myguild.Name + " has left the alliance of " + m_dballiance.AllianceName, eChatType.CT_System, eChatLoc.CL_SystemWindow);
+                SendMessageToAllianceMembers(myguild.Name + " has left the alliance of " + m_dballiance.AllianceName, eChatType.CT_System, eChatLoc.CL_SystemWindow);
 			}
 		}
 		public void Clear()
@@ -136,7 +138,7 @@ namespace DawnOfLight.GameServer
 		/// <summary>
 		/// send message to all member of alliance
 		/// </summary>
-		public void SendMessageToAllianceMembers(string msg, PacketHandler.eChatType type, PacketHandler.eChatLoc loc)
+		public void SendMessageToAllianceMembers(string msg, eChatType type, eChatLoc loc)
 		{
 			lock (Guilds.SyncRoot)
 			{

@@ -17,13 +17,18 @@
  *
  */
 
-using DawnOfLight.Database;
-using DawnOfLight.Events;
-using DawnOfLight.Language;
 using System.Reflection;
+using DawnOfLight.Database;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.CustomNPC;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.PlayerMoveItem, ClientStatus.PlayerInGame)]
 	public class PlayerMoveItemRequestHandler : IPacketHandler

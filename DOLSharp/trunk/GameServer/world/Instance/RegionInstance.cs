@@ -22,6 +22,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
 namespace DawnOfLight.GameServer.World.Instance

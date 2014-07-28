@@ -16,11 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
-using DawnOfLight.AI.Brain;
-using DawnOfLight.Events;
+using DawnOfLight.GameServer.AI.Brain;
 using DawnOfLight.GameServer.Effects;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Events;
+using DawnOfLight.GameServer.Events.GameObjects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Spells
 {
@@ -57,7 +62,7 @@ namespace DawnOfLight.GameServer.Spells
             m_pet.Z = z;
             m_pet.Heading = heading;
             m_pet.CurrentRegion = region;
-           // m_pet.CurrentSpeed = 0;
+            // m_pet.CurrentSpeed = 0;
             m_pet.Realm = Caster.Realm;
             m_pet.Race = 0;
             m_pet.Level = 44; // lowered in patch 1109b
@@ -87,10 +92,7 @@ namespace DawnOfLight.GameServer.Spells
         public IllusionBladeSummon(GameLiving caster, Spell spell, SpellLine line)
             : base(caster, spell, line) { }
     }
-}
 
-namespace DawnOfLight.GameServer
-{
     public class IllusionBladePet : GamePet
     {
         public override int MaxHealth
@@ -101,4 +103,3 @@ namespace DawnOfLight.GameServer
         public IllusionBladePet(INpcTemplate npcTemplate) : base(npcTemplate) { }
     }
 }
-

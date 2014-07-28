@@ -17,6 +17,8 @@
  *
  */
 using System;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.World;
 
 namespace DawnOfLight.GameServer.Scripts
 {

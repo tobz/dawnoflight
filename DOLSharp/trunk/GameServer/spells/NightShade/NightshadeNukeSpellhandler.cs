@@ -17,7 +17,10 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Spells
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.Spells.NightShade
 {
 	[SpellHandler("NightshadeNuke")]
 	public class NightshadeNuke : DirectDamageSpellHandler

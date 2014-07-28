@@ -36,7 +36,7 @@ using DawnOfLight.Database;
 9,Ram High,0,12,13,80,
 10,Ram Mid,0,12,13,80,
 11,Ram Low,0,12,13,80,*/
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.SiegeWeapon
 {
 	/// <summary>
 	/// GameMovingObject is a base class for boats and siege weapons.

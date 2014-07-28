@@ -17,9 +17,9 @@
  *
  */
 
-using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.Events
+namespace DawnOfLight.GameServer.Events.GameObjects
 {
 	/// <summary>
 	/// This class holds all possible GameLiving events.

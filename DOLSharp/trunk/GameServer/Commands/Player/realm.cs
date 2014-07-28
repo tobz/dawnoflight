@@ -17,12 +17,12 @@
 *
 */
 
-using DawnOfLight.GameServer.Keeps;
-using DawnOfLight.GameServer.ServerRules;
-using DawnOfLight.Language;
 using System.Collections.Generic;
+using DawnOfLight.GameServer.Keeps;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.ServerRules;
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands.Player
 {
 	[Command(
 	   "&realm",

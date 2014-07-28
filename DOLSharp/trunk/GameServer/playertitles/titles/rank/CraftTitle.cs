@@ -1,6 +1,7 @@
-using DawnOfLight.GameServer.PlayerTitles;
+using DawnOfLight.GameServer.Crafting;
+using DawnOfLight.GameServer.GameObjects;
 
-namespace DawnOfLight.GameServer.Scripts
+namespace DawnOfLight.GameServer.PlayerTitles.titles.rank
 {
 	public class CraftTitle : SimplePlayerTitle
 	{

@@ -18,8 +18,10 @@
  */
 
 using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Utilities;
 
-namespace DawnOfLight.GameServer.Spells.Atlantis
+namespace DawnOfLight.GameServer.Spells.Artifacts
 {
     /// <summary>
     /// Arrogance spell handler

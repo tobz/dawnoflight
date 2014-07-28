@@ -16,7 +16,9 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA. 
  */
 
-namespace DawnOfLight.GameServer.Commands
+using DawnOfLight.GameServer.World;
+
+namespace DawnOfLight.GameServer.commands.Player
 {
     /// <summary>
     /// Command handler for the /ignore command

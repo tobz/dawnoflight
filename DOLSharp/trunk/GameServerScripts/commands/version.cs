@@ -17,7 +17,8 @@
  *
  */
 using System.Reflection;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.commands;
+using DawnOfLight.GameServer.Packets.Server;
 
 namespace DawnOfLight.GameServer.Commands
 {

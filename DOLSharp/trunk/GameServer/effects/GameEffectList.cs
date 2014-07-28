@@ -21,9 +21,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using DawnOfLight.AI.Brain;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
 using log4net;
 
 namespace DawnOfLight.GameServer.Effects

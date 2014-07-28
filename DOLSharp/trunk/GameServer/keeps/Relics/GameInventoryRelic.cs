@@ -19,9 +19,10 @@
 
 using System.Reflection;
 using DawnOfLight.Database;
+using DawnOfLight.GameServer.GameObjects;
 using log4net;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Keeps.Relics
 {
 	/// <summary>
 	/// This class represents a relic in a players inventory

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using DawnOfLight.Database;
 
-namespace DawnOfLight.GameServer.RealmAbilities
+namespace DawnOfLight.GameServer.RealmAbilities.handlers
 {
 	/// <summary>
 	/// Falcon's Eye RA

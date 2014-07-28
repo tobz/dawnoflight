@@ -19,10 +19,11 @@
 
 using System.Collections.Generic;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.Crafting
 {
 	/// <summary>
 	/// AdvancedCraftingSkill is the skill for alchemy and spellcrafting whitch add all combine system

@@ -18,7 +18,9 @@
  */
 
 
-namespace DawnOfLight.GameServer.PropertyCalc
+using DawnOfLight.GameServer.GameObjects;
+
+namespace DawnOfLight.GameServer.PropertyCalculators
 {
     /// <summary>
     /// Calculator for Mythical Discumbering

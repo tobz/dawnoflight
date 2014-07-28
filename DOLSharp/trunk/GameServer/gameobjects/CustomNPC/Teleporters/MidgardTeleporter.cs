@@ -16,11 +16,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
+
 using System;
 using DawnOfLight.Database;
 using DawnOfLight.GameServer.Quests.Catacombs.Obelisks;
 
-namespace DawnOfLight.GameServer
+namespace DawnOfLight.GameServer.GameObjects.CustomNPC.Teleporters
 {
 	/// <summary>
 	/// Midgard teleporter.

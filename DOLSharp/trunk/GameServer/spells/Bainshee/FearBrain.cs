@@ -1,6 +1,8 @@
-using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.AI.Brain;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.AI.Brain
+namespace DawnOfLight.GameServer.Spells.Bainshee
 {
 	public class FearBrain : StandardMobBrain
 	{

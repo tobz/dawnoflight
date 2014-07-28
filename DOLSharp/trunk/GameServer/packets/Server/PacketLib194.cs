@@ -20,11 +20,12 @@
 using System;
 using System.Reflection;
 using DawnOfLight.Database;
-using DawnOfLight.GameServer.Behaviour;
-using DawnOfLight.GameServer.Quests;
+using DawnOfLight.GameServer.Behavior;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Quests.QuestsMgr;
 using log4net;
 
-namespace DawnOfLight.GameServer.PacketHandler
+namespace DawnOfLight.GameServer.Packets.Server
 {
 	[PacketLib(194, GameClient.eClientVersion.Version194)]
 	public class PacketLib194 : PacketLib193

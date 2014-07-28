@@ -18,9 +18,13 @@
  */
 
 using System.Collections.Generic;
-using DawnOfLight.GameServer.PacketHandler;
+using DawnOfLight.GameServer.Effects;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.RealmAbilities.handlers;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.Effects
+namespace DawnOfLight.GameServer.RealmAbilities.effects
 {
 	/// <summary>
 	/// The Empty Mind Effect
@@ -41,7 +45,7 @@ namespace DawnOfLight.GameServer.Effects
 		/// Constructs a new Empty Mind Effect
 		/// </summary>
 		public TheEmptyMindEffect(int effectiveness)
-			: base(RealmAbilities.TheEmptyMindAbility.m_duration)
+			: base(TheEmptyMindAbility.m_duration)
 		{
 			m_value = effectiveness;
 		}

@@ -17,11 +17,13 @@
  *
  */
 //							Written by Doulbousiouf (01/11/2004)					//
-using System.Collections;
-using DawnOfLight.GameServer.PacketHandler;
-using DawnOfLight.Language;
 
-namespace DawnOfLight.GameServer
+using System.Collections;
+using DawnOfLight.GameServer.Language;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.GameObjects.CustomNPC
 {
 	/// <summary>
 	/// Represents an in-game VaultKeeper NPC

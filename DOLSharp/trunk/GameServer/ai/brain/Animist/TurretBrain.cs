@@ -16,10 +16,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System.Collections.Generic;
-using DawnOfLight.GameServer;
 
-namespace DawnOfLight.AI.Brain
+using System.Collections.Generic;
+using DawnOfLight.GameServer.GameObjects;
+using DawnOfLight.GameServer.GameObjects.Animist;
+using DawnOfLight.GameServer.Spells;
+using DawnOfLight.GameServer.Utilities;
+
+namespace DawnOfLight.GameServer.AI.Brain.Animist
 {
 	public class TurretBrain : ControlledNpcBrain
 	{
@@ -186,7 +190,7 @@ namespace DawnOfLight.AI.Brain
 		{
 			foreach (GamePlayer player in Body.GetPlayersInRadius((ushort)spell.Range, Body.CurrentRegion.IsDungeon ? false : true))
 			{
-				if(GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
+				if(DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, player, true))
 					continue;
 
 				if(!player.IsAlive)
@@ -208,7 +212,7 @@ namespace DawnOfLight.AI.Brain
 			}
 			foreach (GameNPC npc in Body.GetNPCsInRadius((ushort)spell.Range, Body.CurrentRegion.IsDungeon ? false : true))
 			{
-				if(GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
+				if(DawnOfLight.GameServer.GameServer.ServerRules.IsAllowedToAttack(Body, npc, true))
 					continue;
 
 				if(!npc.IsAlive)

@@ -17,7 +17,7 @@
  *
  */
 
-namespace DawnOfLight.GameServer.Commands
+namespace DawnOfLight.GameServer.commands
 {
 	/// <summary>
 	/// Interface for classes that will handle commands

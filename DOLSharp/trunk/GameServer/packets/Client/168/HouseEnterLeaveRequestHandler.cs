@@ -17,9 +17,13 @@
  *
  */
 
+using DawnOfLight.GameServer.GameObjects;
 using DawnOfLight.GameServer.Housing;
+using DawnOfLight.GameServer.Packets.Server;
+using DawnOfLight.GameServer.Utilities;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.GameServer.PacketHandler.Client.v168
+namespace DawnOfLight.GameServer.Packets.Client._168
 {
 	[PacketHandler(PacketHandlerType.TCP, eClientPackets.HouseEnterLeave, ClientStatus.PlayerInGame)]
 	public class HouseEnterLeaveHandler : IPacketHandler

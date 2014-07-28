@@ -17,9 +17,9 @@
  *
  */
 
-using DawnOfLight.GameServer;
+using DawnOfLight.GameServer.World;
 
-namespace DawnOfLight.Events
+namespace DawnOfLight.GameServer.Events.World
 {
 	/// <summary>
 	/// This class holds all possible region events.
